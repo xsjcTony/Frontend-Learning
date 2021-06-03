@@ -1,0 +1,172 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    background: #eeeeee;
+}
+
+body {
+    min-width: 320px;
+    max-width: 750px;
+    margin: 0 auto;
+    background: #ffffff;
+}
+
+.header > img {
+    width: 100%;
+    vertical-align: bottom;
+}
+
+.main {
+    color: #ffffff;
+}
+
+.main > .section {
+    display: flex;
+    height: 100px;
+    background: skyblue;
+    margin: 4px 2px 4px 2px;
+}
+
+.main > .section > .col {
+    /*flex-grow: 1;*/
+    /*flex-shrink: 1;*/
+    flex: 1;
+    background: #ff5555;
+    border-left: 1px solid #ffffff;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.main > .section:nth-child(2) > .col {
+    background-color: #00a7f7;
+}
+
+.main > .section:nth-child(3) > .col {
+    background-color: #7cb823;
+}
+
+.main > .section:nth-child(4) > .col {
+    background-color: #ff9900;
+}
+
+.main > .section > .col:nth-child(1) {
+    border-left: none;
+}
+
+.section > .hotel > p {
+    margin: 15px 0;
+}
+
+.section > .hotel > img {
+    width: 42px;
+    height: 46px;
+}
+
+.main > .section > .col > div {
+    height: 50px;
+    line-height: 50px;
+    border-bottom: 1px solid #ffffff;
+    box-sizing: border-box;
+}
+
+.main > .section > .col > div:last-child {
+    border-bottom: none;
+}
+
+.main > .section:last-child {
+    height: 50px;
+    line-height: 50px;
+}
+
+.nav {
+    background: #ccc;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.nav > ul {
+    display: flex;
+    list-style: none;
+    background: #fff;
+}
+
+.nav > ul > li {
+    flex: 1;
+    height: 70px;
+    text-align: center;
+}
+
+.nav > ul > li > i{
+    margin-top: 12px;
+    display: inline-block;
+    width: 33px;
+    height: 33px;
+    background: url("../images/icons.png") no-repeat;
+    background-position: -35px -12px;
+}
+
+.nav>ul>li>p {
+    color:#666;
+    font-size: 12px;
+}
+
+.guide {
+    display: flex;
+    height: 80px;
+    background: #fff;
+}
+
+.guide > div {
+    flex: 1;
+    text-align: center;
+}
+
+.guide > div>i {
+    margin-top: 10px;
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    border: 1px solid #666666;
+    border-radius: 50%;
+}
+
+.guide>div:nth-child(1)>i {
+    font-size: 30px;
+}
+
+.guide>div:nth-child(2)>i {
+    font-size: 20px;
+}
+
+.guide>div:nth-child(3)>i {
+    font-size: 25px;
+}
+
+.guide > div>p {
+    color: #666;
+    font-size: 12px;
+}
+
+.footer {
+    height: 50px;
+    background: #ccc;
+}
+
+.footer >p {
+    float: left;
+    line-height: 50px;
+
+}
+
+.footer >p:first-child {
+    margin-right: 10px;
+}
+
+.footer >p>a {
+    text-decoration: none;
+    color: #333;
+}
