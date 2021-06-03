@@ -145,7 +145,7 @@ console.log(typeof num2); // 输出number
 ##### 注意点
 
 - `-value` 会改变数值的正负性
-- 本质上就是调用了 `Number(value)` 函数, 所以同 [`Number(value)`](#number(value))
+- 本质上就是调用了 `Number(value)` 函数, 所以同 [`Number(value)`](####Number(value))
 
 
 
@@ -305,7 +305,7 @@ console.log(typeof str); // 输出string
 
 ##### 注意点
 
-- 本质就是调用 `String()` 函数, 所以同 [`String(value)`](####)
+- 本质就是调用 `String()` 函数, 所以同 [`String(value)`](####String(value))
 
 ---
 
