@@ -1,4 +1,4 @@
-# 数据类型
+# 数据类型 (Data Type)
 
 ## 分类 (Classify)
 

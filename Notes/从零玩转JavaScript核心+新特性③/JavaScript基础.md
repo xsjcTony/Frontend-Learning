@@ -1,4 +1,4 @@
-# JavaScript基本概念
+# JavaScript基本概念 (Basic)
 
 > [Article: How browsers work](https://www.html5rocks.com/en/tutorials/internals/howbrowserswork/)
 
