@@ -133,6 +133,53 @@ var num = 123, value = 666; // 同时定义并初始化两个变量
 
 ---
 
+## 作用域 (Scope)
+
+
+
+### 全局变量
+
+- 定义在 `{}` 外面的变量
+
+- 有效范围是从定义变量的那一行开始直到文件末尾都可以使用
+
+	```js
+	let num = 123;
+	console.log(num); // 123
+	if(true) {
+	    console.log(num); // 123
+	}
+	console.log(num); // 123
+	```
+
+
+
+### 局部变量
+
+- 定义在 `{}` 里面的变量
+
+- 有效范围是从定义变量那一行开始直到大括号结束为止
+
+	```js
+	{
+	    let num = 666;
+	    console.log(num); // 666
+	}
+	console.log(num); // invalid
+	if(true) {
+	    console.log(num); // invalid
+	}
+	```
+
+
+
+### 注意点
+
+- `var` 定义的变量不区分全局和局部
+- `let` 定义的变量区分全局和局部
+
+---
+
 ## 注意点 (Notes)
 
 
