@@ -307,6 +307,50 @@ console.log(typeof str); // 输出string
 
 - 本质就是调用 `String()` 函数, 所以同 [`String(value)`](####String(value))
 
+
+
+### 字符串函数
+
+
+
+#### `Array.includes()`
+
+
+
+> [String.prototype.split() - JavaScript | MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/split)
+
+
+
+##### 作用
+
+- 分割一个 `String` 并将被分割的 `subString` 存入一个新的 `Array`
+
+##### 格式
+
+
+- `String.spilt(separator, limit);`
+
+##### 参数
+
+- `separator` : (Optional) 用来分割 `String` 的分割符, 如果省略则返回包括整个 `String` 的 `Array`
+- `limit` : (Optional) 一个非负整数, 指定返回的 `Array` 中的最多项数. 如果为 `0` 则返回 `[]`
+
+##### 返回值
+
+- 按照 `separator` 分割的包含所有 `subString` 的 `Array`
+
+##### 示例
+
+```js
+let str = "1,2,3";
+let res = str.spilt(",")
+console.log(res); // ["1", "2", "3"]
+```
+
+
+
+
+
 ---
 
 ## 布尔 (Boolean)
