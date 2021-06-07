@@ -749,11 +749,11 @@ say(); // "hello world"
 	function value() {
 	    console.log("fn value");
 	}
-	console.log(value); // 函数value()的定义
 	var value;
+	console.log(value); // 函数value()的定义
 	value = 123;
 	console.log(value); // 123
 	```
 
-	
+---
 
