@@ -734,7 +734,7 @@ say(); // "hello world"
 	demo(); // "demo1", 低级浏览器(<=IE10)会输出"demo2"但一般不考虑
 	```
 
-- 如果变量名称和函数同名, 那么函数优先级高于变量, <span style="color: red;">尽量避免变量名称和函数名称同名</span>
+- 如果变量名称和函数同名, 那么函数优先级高于变量 (变量不赋值), 反之变量优先级高于函数, <span style="color: red;">尽量避免变量名称和函数名称同名</span>
 
 	```js
 	// 预解析之前
@@ -746,10 +746,10 @@ say(); // "hello world"
 	console.log(value); // 123
 	
 	// 预解析之后
+	var value;
 	function value() {
 	    console.log("fn value");
 	}
-	var value;
 	console.log(value); // 函数value()的定义
 	value = 123;
 	console.log(value); // 123

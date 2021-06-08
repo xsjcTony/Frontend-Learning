@@ -428,6 +428,16 @@ console.log(res); // false
 	console.log(res); // true
 	```
 
+- `===` 判断来判断两个 `Function` 的名称, 表示判断两个 `Function` 是否存储在同一块内存中
+
+	```js
+	let demo = () => {
+	    console.log("demo");
+	}
+	
+	console.log(demo === demo); // true
+	```
+
 ---
 
 ## 逻辑运算符 (Logical Operator)
