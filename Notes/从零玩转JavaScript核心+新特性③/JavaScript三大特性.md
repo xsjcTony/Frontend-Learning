@@ -243,7 +243,7 @@ student.say(); // undefined, undefined
 
 ### 继承方式二 (修改父类的this)
 
-1. 通过 [`call()`](####call()) 或 [`apply()`](####apply()) 修改父类的 `this` 让父类的 `Property` 和 `Method` 属于子类
+1. 通过 `call()` 或 `apply()` 修改父类的 `this` 让父类的 `Property` 和 `Method` 属于子类
 2. 可以通过 `call()` 或 `apply()` 传递初始化参数
 
 

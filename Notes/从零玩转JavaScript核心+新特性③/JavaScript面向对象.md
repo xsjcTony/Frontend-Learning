@@ -36,7 +36,7 @@
 		- 添加行为
 
 			```js
-			obj.say = () => {
+			obj.say = function  {
 			    console.log("hello world");
 			}
 			```
@@ -270,4 +270,66 @@ person.say.apply(obj); // {name: "tony"}
 ```
 
 ---
+
+## 获取对象类型
+
+
+
+### 格式
+
+- 通过 `实例对象` 找到 `构造函数` 的 `name` 属性
+- `instance.constructor.name`
+
+
+
+### 示例
+
+```js
+let arr = new Array();
+console.log(arr.constructor.name); // Array
+
+class Person {
+  
+}
+
+let person = new Person();
+console.log(person.constructor.name); // Person
+```
+
+
+
+### 注意点
+
+- 通过 `typeof` 会输出 `object` , 因为创建对象的本质是 `new Object()`
+
+```js
+let arr = new Array();
+console.log(typeof arr); // object
+
+class Person {
+  // 本质
+  // let obj = new Object();
+  // let this = obj;
+  // return this
+}
+
+let person = new Person();
+console.log(typeof person); // object
+```
+
+
+
+### 原理
+
+1. 在 `实例对象` 中寻找 `constructor` , 找不到
+2. 去 `实例对象` 的 `__proto__` 也就是 `原型对象` 中寻找 `constructor` , 找到并指向 `构造函数`
+3. 在 `构造函数` 中寻找 `name` 属性, 找到并输出 `类名`
+
+![获取对象类型原理](D:\xsjcTony\it666\Frontend-Learning\Notes\从零玩转JavaScript核心+新特性③\images\find_class_name.png)
+
+---
+
+## `instanceof()`
+
+
 

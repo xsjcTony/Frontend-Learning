@@ -1,3 +1,7 @@
+# 类 (<ES6)
+
+
+
 ## <span style="color: red;"><不专业></span> 工厂函数 (Factory function)
 
 
