@@ -198,7 +198,42 @@ console.log(typeof num2); // 输出number
 
 ### 定义
 
-在JavaScript中, 被 `''` 和 `""` 括起来的内容都是字符串类型
+在JavaScript中, 被 `''` 和 `""` 和 <span style="color: yellow">` `` ` (>=ES6)</span> 括起来的内容都是字符串类型
+
+
+
+
+### 注意点
+
+- 被 ` `` ` 括起来的 `String` 可以是多行的
+
+    ```js
+    let str = `<ul>
+      <li>1</li>
+      <li>2</li>
+    </ul>`;
+    console.log(str);
+    ```
+
+- 被 ` `` ` 括起来的 `String` 中可以直接使用 `${}` 插入变量数值
+
+    ```js
+    let name1 = "Tony";
+    let name2 = "Lily";
+    let str = `${name1} loves ${name2}.`;
+    console.log(str); // "Tony loves Lily."
+    ```
+
+- 尽量避免多拼接 `String` , 因为会占用过多的内存空间
+
+- 实质上是 `new String(str)`
+
+    ```js
+    let str = "Tony loves Lily"; // let str = new String("Tony loves Lily");
+    console.log(str.length); 
+    ```
+
+    
 
 
 
@@ -309,11 +344,11 @@ console.log(typeof str); // 输出string
 
 
 
-### 字符串函数
+### 字符串方法
 
 
 
-#### `Array.includes()`
+#### `String.split()`
 
 
 
@@ -328,7 +363,7 @@ console.log(typeof str); // 输出string
 ##### 格式
 
 
-- `String.spilt(separator, limit);`
+- `str.spilt(separator, limit)`
 
 ##### 参数
 
@@ -345,6 +380,436 @@ console.log(typeof str); // 输出string
 let str = "1,2,3";
 let res = str.spilt(",")
 console.log(res); // ["1", "2", "3"]
+```
+
+
+
+#### `String.length`
+
+
+
+> [String length - JavaScript | MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/length)
+
+
+
+##### 作用
+
+- 返回一个 `String` 的长度, 为 `read-only` 的 `Property` , 不是 `Method`
+
+
+
+#### `String.charAt()`
+
+
+
+> [String.prototype.charAt() - JavaScript | MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/charAt)
+
+
+
+##### 作用
+
+- 返回一个包含指定单个 `UTF-16` 编码单位的新 `String`
+
+##### 格式
+
+
+- `str.charAt(index)`
+
+
+##### 参数
+
+- `index` : 索引位置, 必须是整数. 如果传入了非法参数或者没有提供, 则默认为 `0`
+
+##### 返回值
+
+- 包含在索引位置的单个 `UTF-16` 编码单位的新 `String` , 若 `index` 超出 `String` 的长度, 则返回空 `String
+
+##### 示例
+
+```js
+// index   0123
+let str = "abcd";
+let ch1 = str[1]; // 相同用法, 但低级浏览器不兼容
+let ch2 = str.charAt(1);
+console.log(ch1); 
+console.log(ch2);
+```
+
+
+
+### `String.indexOf()`
+
+
+
+> [String.prototype.indexOf() - JavaScript | MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/indexOf)
+
+
+
+#### 作用
+
+- 从左至右查找指定 `character` 在 `String` 中的位置
+
+#### 格式
+
+- `str.indexOf(character, fromIndex)`
+
+#### 参数
+
+- `character` : 想要查找的 `character`
+- `fromIndex` : (Optional) 开始进行查找的索引位置, 默认为 `0`
+
+#### 返回值
+
+- 指定 `character` 第一次出现的 `index` 数, 如果不存在会返回 `-1`
+
+#### 示例
+
+```js
+// index   012345
+let str = "cvavcd";
+let index = str.indexOf("v");
+console.log(index); // 1
+```
+
+
+
+### `String.lastIndexOf()`
+
+
+
+> [String.prototype.lastIndexOf() - JavaScript | MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/lastIndexOf)
+
+
+
+#### 作用
+
+- 从右至左查找指定 `character` 在 `String` 中的位置
+
+#### 格式
+
+- `str.lastIndexOf(element, fromIndex)`
+
+#### 参数
+
+- `element` : 想要查找的 `character`
+- `fromIndex` : (Optional) 开始进行查找的索引位置, 默认为 `+Infinity`
+
+#### 返回值
+
+- 指定 `character` 最后一次出现的 `index` 数, 如果不存在会返回 `-1`
+
+#### 示例
+
+```js
+// index   012345
+let str = "cvavcd";
+let index = str.lastIndexOf("v");
+console.log(index); // 3
+```
+
+
+
+### `String.includes()`
+
+
+
+> [String.prototype.includes() - JavaScript | MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/includes)
+
+
+
+#### 作用
+
+- 查找 `String` 中是否存在 指定 `String` , `case-sensitive`
+
+#### 格式
+
+- `str.includes(string, fromIndex)`
+
+#### 参数
+
+- `string` : 想要查找的 `String`
+- `fromIndex` : (Optional) 开始进行查找的索引位置, 默认为 `0`
+
+#### 返回值
+
+- 指定 `String` 存在则返回 `true` , 不存在则返回 `false`
+
+#### 示例
+
+```js
+let str = "I am Tony";
+let res1 = str.includes("am");
+let res2 = str.includes("Am");
+console.log(res1); // true
+console.log(res2); // false
+```
+
+
+
+### <span style="color: red"><不推荐></span> `Array.concat()`
+
+
+
+> [Array.prototype.concat() - JavaScript | MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/concat)
+
+
+
+#### 作用
+
+- 合并两个或多个 `String`
+
+#### 格式
+
+- `str.concat(str2)`
+
+#### 参数
+
+`string` : (Optional) 将要合并的 `String`
+
+#### 返回值
+
+- 一个新的合并后的 `String` , 不会修改原来的 `String` , 如果 `string` 参数省略, 则返回当前 `String` 的复制品
+
+#### 示例
+
+```js
+let str = "Tony";
+let str2 = " loves";
+let str3 = " Lily";
+console.log(str.concat(str2, str3)); // "Tony loves Lily"
+console.log(str + str2 + str3); // 推荐使用
+```
+
+
+
+### `String.substring()`
+
+
+
+> [String.prototype.substring() - JavaScript | MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/substring)
+
+
+
+#### 作用
+
+- 截取 `String` 中指定范围中的内容并放在一个新的 `String` 中
+
+#### 格式
+
+- `str.substring(start, end);`
+
+#### 参数
+
+- `start` : 索引起始位置 (包含)
+- `end` : 索引结束为止 (不包含)
+
+#### 返回值
+
+- 一个包含提取出的数据的新 `String`
+
+#### 示例
+
+```js
+// index   012345
+let str = "abcdef";
+let subStr = str.substring(1, 3);
+console.log(subStr); // "bc"
+```
+
+
+
+### `String.substr()`
+
+
+
+> [String.prototype.substr() - JavaScript | MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/substr)
+
+
+
+#### 作用
+
+- 截取 `String` 中指定范围中的内容并放在一个新的 `String` 中
+
+#### 格式
+
+- `str.substring(start, length);`
+
+#### 参数
+
+- `start` : 索引起始位置 (包含)
+- `length` : 截取的长度
+
+#### 返回值
+
+- 一个包含提取出的数据的新 `String`
+
+#### 示例
+
+```js
+// index   012345
+let str = "abcdef";
+let subStr = str.substr(1, 3);
+console.log(subStr); // "bcd"
+```
+
+
+
+### `String.split()`
+
+
+
+> [String.prototype.split() - JavaScript | MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/split)
+
+
+
+#### 作用
+
+- 将 `String` 分割并全部有序存储在一个新的 `Array` 中
+
+#### 格式
+
+- `str.split(separator, limit);`
+
+#### 参数
+
+- `separator` : (Optional) 分隔符, 每次遇到分隔符就截断 `String`
+- `limit` : `Array` 最多包含的 `element` 数量, 若为 `0` 则返回`[]`
+
+#### 返回值
+
+- 一个包含所有被分割的 `String` 片段的 `Array`
+
+#### 示例
+
+```js
+let str = "1-3-5";
+console.log(str.split("-")); // ["1", "3", "5"]
+```
+
+
+
+### `String.startsWith()`
+
+
+
+> [String.prototype.startsWith() - JavaScript | MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/startsWith)
+
+
+
+#### 作用
+
+- 判断 `String` 是否由指定的 `characters` 开头
+
+#### 格式
+
+```js
+startsWith(searchString)
+startsWith(searchString, position)
+```
+
+#### 参数
+
+- `searchString` : 指定在开头的 `characters`
+- `position` : (Optional) 开始进行查找的索引位置, 默认为 `0`
+
+#### 返回值
+
+- 若指定 `characters` 在开头找到, 则返回 `true` , 否则返回 `0`
+
+#### 示例
+
+```js
+let str = "Tony loves Lily.";
+let result1 = str.startsWith("Tony l");
+let result2 = str.startsWith("tony");
+console.log(result1); // true
+console.log(result2); // false
+```
+
+
+
+### `String.endsWith()`
+
+
+
+> [String.prototype.endsWith() - JavaScript | MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/endsWith)
+
+
+
+#### 作用
+
+- 判断 `String` 是否由指定的 `characters` 结尾
+
+#### 格式
+
+```js
+endsWith(searchString)
+endsWith(searchString, length)
+```
+
+#### 参数
+
+- `searchString` : 指定在结尾的 `characters`
+- `length` : (Optional) 查找 `String` 的长度, 默认为 `str.length`
+
+#### 返回值
+
+- 若指定 `characters` 在结尾找到, 则返回 `true` , 否则返回 `0`
+
+#### 示例
+
+```js
+let str = "Tony loves Lily!"
+let result1 = str.endsWith("y!");
+let result2 = str.endsWith("Lily");
+let result3 = str.endsWith("Lily", str.length - 1);
+console.log(result1); // true
+console.log(result2); // false
+console.log(result3); // true
+```
+
+
+
+### `String.replace()`
+
+
+
+> [String.prototype.replace() - JavaScript | MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replace)
+
+
+
+#### 作用
+
+- 返回一个由 `replacement` 替换所有 `pattern` 的新 `String`
+
+#### 格式
+
+```js
+replace(regexp, newSubstr)
+replace(regexp, replacerFunction)
+
+replace(substr, newSubstr)
+replace(substr, replacerFunction)
+```
+
+#### 参数
+
+- `regexp` (pattern) : 一段 `Regex` 表达式, 所有满足条件的 `pattern` 都会被 `replacement` 替换
+- `substr` : 一段 `String` , 第一个相同的部分会被 `replacement` 替换
+- `newSubstr` (replacement) : 替换所有的 `pattern`
+- `replacerFunction` (replacement) : 使用 `Function` 生成替换所有 `pattern` 的 `String`
+
+#### 返回值
+
+- 替换过后的新 `String`
+
+#### 示例
+
+```js
+let str = "abc";
+let newStr = str.replace("b", "m");
+console.log(str); // "abc"
+console.log(newStr); // "amc"
 ```
 
 
