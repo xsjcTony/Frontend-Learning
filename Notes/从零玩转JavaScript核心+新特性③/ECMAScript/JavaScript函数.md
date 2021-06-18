@@ -430,6 +430,24 @@ let func = () => {
 	let say = name => console.log("hello " + name);
 	say("tony"); // "hello tony"
 	```
+	
+- `箭头函数` 中的 `this` 不是 `调用者` , 是 `父作用域`
+
+    ```js
+    let p = {
+      name: "lnj",
+      say: function () {
+        console.log(this);
+      }
+      hi: () => {
+        console.log(this);
+      }
+    }
+    p.say(); // p
+    
+    ```
+
+    
 
 ---
 

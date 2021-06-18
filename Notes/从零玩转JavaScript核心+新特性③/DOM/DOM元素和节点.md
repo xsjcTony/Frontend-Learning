@@ -793,7 +793,7 @@ let parentElement = child.parentElement || child.parentNode; // 逻辑或 || 若
 </div>
 
 <script>
-  // 创建节点
+  // 创建节点(元素
   let span = document.createElement("span"); // <span></span>
 
   // 添加节点

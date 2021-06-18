@@ -152,10 +152,10 @@ obj.test(); // {name: "tony", test: f} // 当前调用方法的对象
 
 ### `function` 函数和 `箭头函数` 的 `this`
 
-- 如果 `箭头函数` 嵌套在 `function` 中, 那么箭头函数的 `this` 会指向 `function`
-- 如果单独使用箭头函数, 或者箭头函数套娃, 那么箭头函数全部指向 `window (0级作用域)`
-- 箭头函数的 `this` 可以通过 `let self = this` 来更改
-- `function` 和 `箭头函数` 尽量不要混淆使用, 否则会造成不必要的麻烦
+- `function` 的 `this` 指向 `调用者`
+
+- 如果 `箭头函数` 嵌套在 `function` 中, 那么 `箭头函数` 的 `this` 会指向 `function`
+- `箭头函数` 的 `this` 是其 `父作用域` 的 `this`
 
 
 
