@@ -8,7 +8,11 @@
 
 ---
 
-## 随机生成一个字母
+## 随机 (Random)
+
+
+
+### 随机生成一个字母
 
 > [Key Code Table](http://www.foreui.com/articles/Key_Code_Table.htm)
 
@@ -25,20 +29,9 @@ let num = getRandomIntInclusive(65, 90);
 String.fromCharCode(num); // 65 ~ 90 is character [A-Z]'s keycode
 ```
 
----
 
-## 监听键盘输入
 
-```js
-element.onkeydown = function (event) {
-  console.log(event.code); // 输入的物理键
-  console.log(event.key); // 输入的是什么东西
-}
-```
-
----
-
-## 生成随机整数
+### 生成随机整数
 
 - 包含 `min` 不包含 `max`
 
@@ -62,7 +55,67 @@ function getRandomIntInclusive(min, max) {
 
 ---
 
-## 参数太多的优化方法
+## 事件 (Event)
+
+
+
+> [HTML DOM Event Object | w3schools](https://www.w3schools.com/jsref/dom_obj_event.asp)
+
+
+
+### 覆盖系统默认事件
+
+- 在自定义事件中使用 `return false` 覆盖系统对应默认事件行为
+
+```js
+submitButton.onclick () => {
+  // do something
+  return false; // 阻止表单提交
+}
+```
+
+
+
+### 监听键盘输入
+
+```js
+element.onkeydown = function (event) {
+  console.log(event.code); // 输入的物理键
+  console.log(event.key); // 输入的是什么东西
+}
+```
+
+
+
+### 监听鼠标移入移出
+
+```js
+// 移入事件
+element.onmouseover = () => {}
+element.onmouseenter = () => {} // 建议初学者使用
+
+// 移出事件
+element.onmouseout = () => {}
+element.onmouseleave = () => {} // 建议初学者使用
+```
+
+
+
+### 监听鼠标移动
+
+```js
+element.onmousemove = () => {}
+```
+
+
+
+
+
+---
+
+## 优化
+
+### 参数太多的优化方法
 
 - 优化前
 
@@ -99,5 +152,30 @@ let snakeParameters = {
 	bodyImg: "images/body.png"
 }
 let snake = new Snake(snakeParameters);
+```
+
+
+
+
+
+---
+
+## 元素属性
+
+
+
+### 元素属性和取值相同
+
+- 在JavaScript中, 元素属性和取值相同, `element.attributeName` 就会返回 `true` , 反之返回 `false`
+
+```html
+<form>
+  <input type="submit" disabled="disabled"> <!-- 或 disabled -->
+</form>
+
+<script>
+	let submitButton = document.querySelector("input");
+  console.log(submitButton.disabled);
+</script>
 ```
 
