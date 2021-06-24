@@ -115,6 +115,8 @@ element.onmousemove = () => {}
 
 ## 优化
 
+
+
 ### 参数太多的优化方法
 
 - 优化前
@@ -152,6 +154,130 @@ let snakeParameters = {
 	bodyImg: "images/body.png"
 }
 let snake = new Snake(snakeParameters);
+```
+
+
+
+### 排它思想
+
+清除其他非选中颜色的样式, 值设置当前选中元素样式
+
+- <span style="color: yellow">>=ES6</span>
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>排它思想</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		ul {
+			width: 400px;
+			border: 1px solid #000000;
+			margin: 100px auto;
+			list-style: none;
+		}
+
+		ul > li {
+			cursor: pointer;
+		}
+
+		.current {
+			background: red;
+		}
+	</style>
+</head>
+<body>
+<ul>
+	<li class="current">我是第1个li</li>
+	<li>我是第2个li</li>
+	<li>我是第3个li</li>
+	<li>我是第4个li</li>
+	<li>我是第5个li</li>
+</ul>
+
+<script>
+	let prevIndex = 0;
+	let lis = document.querySelectorAll("li");
+
+	for(let i = 0; i < lis.length; i++) {
+		lis[i].onclick = () => {
+      // 排它
+			lis[prevIndex].className = "";
+      // 设置选中样式
+			lis[i].className = "current";
+      // 重新记录被选中的索引
+			prevIndex = i;
+		}
+	}
+</script>
+</body>
+</html>
+```
+
+- <span style="color: yellow"><ES6</span>
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>排它思想</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		ul {
+			width: 400px;
+			border: 1px solid #000000;
+			margin: 100px auto;
+			list-style: none;
+		}
+
+		ul > li {
+			cursor: pointer;
+		}
+
+		.current {
+			background: red;
+		}
+	</style>
+</head>
+<body>
+<ul>
+	<li class="current">我是第1个li</li>
+	<li>我是第2个li</li>
+	<li>我是第3个li</li>
+	<li>我是第4个li</li>
+	<li>我是第5个li</li>
+</ul>
+
+<script>
+	let prevIndex = 0;
+	let lis = document.querySelectorAll("li");
+
+	for(var i = 0; i < lis.length; i++) {
+		(function (index) {
+			lis[index].onclick = () => {
+				// 排它
+				lis[prevIndex].className = "";
+				// 设置选中样式
+				lis[index].className = "current";
+				// 重新记录被选中的索引
+				prevIndex = index;
+			}
+		})(i);
+	}
+</script>
+</body>
+</html>
 ```
 
 

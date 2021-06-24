@@ -377,6 +377,8 @@ for(initialize exp; condition exp; final exp) {
 
 - `condition expression` 可以省略, 默认就是 `true`
 
+- 若使用 `let` 定义变量, 则每次执行完循环体后会定义一个新的变量
+
 - 其它同 [`while`](##While)
 
 ---
