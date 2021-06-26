@@ -154,12 +154,20 @@ myFunc(parameter1, parameter2, .....); // execute all codes in the function;
 
 - `Function` 也是引用数据类型 (对象类型) , 所以可以保存到 `变量` 中
 
-	```js
-	let say = function () {
-	    console.log("hello world");
-	}
-	say(); // "hello world"
-	```
+  ```js
+  let say = function () {
+      console.log("hello world");
+  }
+  say(); // "hello world"
+  ```
+
+- 使用 `_` 开头可以告诉其他程序员这个方法最好不要调用, 当做私有方法, 是推荐的命名方式
+
+    ```js
+    function _change() {
+      console.log("private");
+    }
+    ```
 
 ---
 

@@ -356,25 +356,25 @@ console.log(typeof str); // 输出string
 
 
 
-##### 作用
+作用
 
 - 分割一个 `String` 并将被分割的 `subString` 存入一个新的 `Array`
 
-##### 格式
+格式
 
 
 - `str.spilt(separator, limit)`
 
-##### 参数
+参数
 
 - `separator` : (Optional) 用来分割 `String` 的分割符, 如果省略则返回包括整个 `String` 的 `Array`
 - `limit` : (Optional) 一个非负整数, 指定返回的 `Array` 中的最多项数. 如果为 `0` 则返回 `[]`
 
-##### 返回值
+返回值
 
 - 按照 `separator` 分割的包含所有 `subString` 的 `Array`
 
-##### 示例
+示例
 
 ```js
 let str = "1,2,3";
@@ -392,7 +392,7 @@ console.log(res); // ["1", "2", "3"]
 
 
 
-##### 作用
+作用
 
 - 返回一个 `String` 的长度, 为 `read-only` 的 `Property` , 不是 `Method`
 
@@ -406,25 +406,24 @@ console.log(res); // ["1", "2", "3"]
 
 
 
-##### 作用
+作用
 
 - 返回一个包含指定单个 `UTF-16` 编码单位的新 `String`
 
-##### 格式
+格式
 
 
 - `str.charAt(index)`
 
-
-##### 参数
+参数
 
 - `index` : 索引位置, 必须是整数. 如果传入了非法参数或者没有提供, 则默认为 `0`
 
-##### 返回值
+返回值
 
 - 包含在索引位置的单个 `UTF-16` 编码单位的新 `String` , 若 `index` 超出 `String` 的长度, 则返回空 `String
 
-##### 示例
+示例
 
 ```js
 // index   0123
@@ -437,7 +436,7 @@ console.log(ch2);
 
 
 
-### `String.indexOf()`
+#### `String.indexOf()`
 
 
 
@@ -445,24 +444,24 @@ console.log(ch2);
 
 
 
-#### 作用
+作用
 
 - 从左至右查找指定 `character` 在 `String` 中的位置
 
-#### 格式
+格式
 
 - `str.indexOf(character, fromIndex)`
 
-#### 参数
+参数
 
 - `character` : 想要查找的 `character`
 - `fromIndex` : (Optional) 开始进行查找的索引位置, 默认为 `0`
 
-#### 返回值
+返回值
 
 - 指定 `character` 第一次出现的 `index` 数, 如果不存在会返回 `-1`
 
-#### 示例
+示例
 
 ```js
 // index   012345
@@ -473,7 +472,7 @@ console.log(index); // 1
 
 
 
-### `String.lastIndexOf()`
+#### `String.lastIndexOf()`
 
 
 
@@ -481,24 +480,24 @@ console.log(index); // 1
 
 
 
-#### 作用
+作用
 
 - 从右至左查找指定 `character` 在 `String` 中的位置
 
-#### 格式
+格式
 
 - `str.lastIndexOf(element, fromIndex)`
 
-#### 参数
+参数
 
 - `element` : 想要查找的 `character`
 - `fromIndex` : (Optional) 开始进行查找的索引位置, 默认为 `+Infinity`
 
-#### 返回值
+返回值
 
 - 指定 `character` 最后一次出现的 `index` 数, 如果不存在会返回 `-1`
 
-#### 示例
+示例
 
 ```js
 // index   012345
@@ -509,7 +508,7 @@ console.log(index); // 3
 
 
 
-### `String.includes()`
+#### `String.includes()`
 
 
 
@@ -517,24 +516,24 @@ console.log(index); // 3
 
 
 
-#### 作用
+作用
 
 - 查找 `String` 中是否存在 指定 `String` , `case-sensitive`
 
-#### 格式
+格式
 
 - `str.includes(string, fromIndex)`
 
-#### 参数
+参数
 
 - `string` : 想要查找的 `String`
 - `fromIndex` : (Optional) 开始进行查找的索引位置, 默认为 `0`
 
-#### 返回值
+返回值
 
 - 指定 `String` 存在则返回 `true` , 不存在则返回 `false`
 
-#### 示例
+示例
 
 ```js
 let str = "I am Tony";
@@ -546,7 +545,7 @@ console.log(res2); // false
 
 
 
-### <span style="color: red"><不推荐></span> `Array.concat()`
+#### <span style="color: red"><不推荐></span> `Array.concat()`
 
 
 
@@ -554,23 +553,23 @@ console.log(res2); // false
 
 
 
-#### 作用
+作用
 
 - 合并两个或多个 `String`
 
-#### 格式
+格式
 
 - `str.concat(str2)`
 
-#### 参数
+参数
 
 `string` : (Optional) 将要合并的 `String`
 
-#### 返回值
+返回值
 
 - 一个新的合并后的 `String` , 不会修改原来的 `String` , 如果 `string` 参数省略, 则返回当前 `String` 的复制品
 
-#### 示例
+示例
 
 ```js
 let str = "Tony";
@@ -582,7 +581,7 @@ console.log(str + str2 + str3); // 推荐使用
 
 
 
-### `String.substring()`
+#### `String.substring()`
 
 
 
@@ -590,24 +589,24 @@ console.log(str + str2 + str3); // 推荐使用
 
 
 
-#### 作用
+作用
 
 - 截取 `String` 中指定范围中的内容并放在一个新的 `String` 中
 
-#### 格式
+格式
 
 - `str.substring(start, end);`
 
-#### 参数
+参数
 
 - `start` : 索引起始位置 (包含)
 - `end` : 索引结束为止 (不包含)
 
-#### 返回值
+返回值
 
 - 一个包含提取出的数据的新 `String`
 
-#### 示例
+示例
 
 ```js
 // index   012345
@@ -618,7 +617,7 @@ console.log(subStr); // "bc"
 
 
 
-### `String.substr()`
+#### `String.substr()`
 
 
 
@@ -626,24 +625,24 @@ console.log(subStr); // "bc"
 
 
 
-#### 作用
+作用
 
 - 截取 `String` 中指定范围中的内容并放在一个新的 `String` 中
 
-#### 格式
+格式
 
 - `str.substring(start, length);`
 
-#### 参数
+参数
 
 - `start` : 索引起始位置 (包含)
 - `length` : 截取的长度
 
-#### 返回值
+返回值
 
 - 一个包含提取出的数据的新 `String`
 
-#### 示例
+示例
 
 ```js
 // index   012345
@@ -654,7 +653,7 @@ console.log(subStr); // "bcd"
 
 
 
-### `String.split()`
+#### `String.split()`
 
 
 
@@ -662,24 +661,24 @@ console.log(subStr); // "bcd"
 
 
 
-#### 作用
+作用
 
 - 将 `String` 分割并全部有序存储在一个新的 `Array` 中
 
-#### 格式
+格式
 
 - `str.split(separator, limit);`
 
-#### 参数
+参数
 
 - `separator` : (Optional) 分隔符, 每次遇到分隔符就截断 `String`
 - `limit` : `Array` 最多包含的 `element` 数量, 若为 `0` 则返回`[]`
 
-#### 返回值
+返回值
 
 - 一个包含所有被分割的 `String` 片段的 `Array`
 
-#### 示例
+示例
 
 ```js
 let str = "1-3-5";
@@ -688,7 +687,7 @@ console.log(str.split("-")); // ["1", "3", "5"]
 
 
 
-### `String.startsWith()`
+#### `String.startsWith()`
 
 
 
@@ -696,27 +695,27 @@ console.log(str.split("-")); // ["1", "3", "5"]
 
 
 
-#### 作用
+作用
 
 - 判断 `String` 是否由指定的 `characters` 开头
 
-#### 格式
+格式
 
 ```js
 startsWith(searchString)
 startsWith(searchString, position)
 ```
 
-#### 参数
+参数
 
 - `searchString` : 指定在开头的 `characters`
 - `position` : (Optional) 开始进行查找的索引位置, 默认为 `0`
 
-#### 返回值
+返回值
 
 - 若指定 `characters` 在开头找到, 则返回 `true` , 否则返回 `0`
 
-#### 示例
+示例
 
 ```js
 let str = "Tony loves Lily.";
@@ -728,7 +727,7 @@ console.log(result2); // false
 
 
 
-### `String.endsWith()`
+#### `String.endsWith()`
 
 
 
@@ -736,27 +735,27 @@ console.log(result2); // false
 
 
 
-#### 作用
+作用
 
 - 判断 `String` 是否由指定的 `characters` 结尾
 
-#### 格式
+格式
 
 ```js
 endsWith(searchString)
 endsWith(searchString, length)
 ```
 
-#### 参数
+参数
 
 - `searchString` : 指定在结尾的 `characters`
 - `length` : (Optional) 查找 `String` 的长度, 默认为 `str.length`
 
-#### 返回值
+返回值
 
 - 若指定 `characters` 在结尾找到, 则返回 `true` , 否则返回 `0`
 
-#### 示例
+示例
 
 ```js
 let str = "Tony loves Lily!"
@@ -770,7 +769,7 @@ console.log(result3); // true
 
 
 
-### `String.replace()`
+#### `String.replace()`
 
 
 
@@ -778,11 +777,11 @@ console.log(result3); // true
 
 
 
-#### 作用
+作用
 
 - 返回一个由 `replacement` 替换所有 `pattern` 的新 `String`
 
-#### 格式
+格式
 
 ```js
 replace(regexp, newSubstr)
@@ -792,18 +791,18 @@ replace(substr, newSubstr)
 replace(substr, replacerFunction)
 ```
 
-#### 参数
+参数
 
 - `regexp` (pattern) : 一段 `Regex` 表达式, 所有满足条件的 `pattern` 都会被 `replacement` 替换
 - `substr` : 一段 `String` , 第一个相同的部分会被 `replacement` 替换
 - `newSubstr` (replacement) : 替换所有的 `pattern`
 - `replacerFunction` (replacement) : 使用 `Function` 生成替换所有 `pattern` 的 `String`
 
-#### 返回值
+返回值
 
 - 替换过后的新 `String`
 
-#### 示例
+示例
 
 ```js
 let str = "abc";

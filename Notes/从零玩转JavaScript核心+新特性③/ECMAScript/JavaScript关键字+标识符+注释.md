@@ -69,6 +69,19 @@ JavaScript预留的关键字, 虽然现在没有座位关键字, 但在升级版
 - 首字母小写, 第二个单词的首字母大写, 示例: `lastName`
 - 别用中文
 
+
+
+### `id` , `class` 命名规范(建议遵守)
+
+- `id` 若含有多个单词, 使用 `_` 连接
+
+- `class` 若含有多个单词, 使用 `-` 连接
+
+    ```html
+    <div id="tab_top"></div>
+    <div class="tab-content"></div>
+    ```
+
 ---
 
 ## 注释 (Comment)
