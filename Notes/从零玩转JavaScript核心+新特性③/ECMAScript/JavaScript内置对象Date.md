@@ -45,12 +45,52 @@ console.log(date.getSeconds()); // 7
 ## 格式化
 
 ```js
-let date = new Date("2019-11-11 09:08:07");
-console.log(formatDate(date)); // 2019-11-11 9:8:7
+let crtTime = new Date();
+console.log(dateFormat("yyyy-MM-dd hh:mm:ss", crtTime));
+console.log(dateFormat("yyyy-M-dd hh:mm:ss", crtTime));
+console.log(dateFormat("yy-M-dd", crtTime));
+console.log(dateFormat("hh:mm:ss", crtTime));
 
-function formatDate(date) {
-	return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
-}
+function dateFormat(format, date) {
+	// deal with year
+	// get yyyy
+	let yearStr = format.match(/y+/); // find one or more "y"
+	if(yearStr) {
+		yearStr = yearStr[0];
+		// get date's year
+		let yearNum = date.getFullYear() + "";
+		yearNum = yearNum.substr(4 - yearStr.length);
+		// replace yyyy by current year
+		format = format.replace(yearStr, yearNum);
+	}
+
+	// deal with other time
+	let obj = {
+		"M+": date.getMonth() + 1, // month need to be added by 1
+		"d+": date.getDate(),
+		"h+": date.getHours(),
+		"m+": date.getMinutes(),
+		"s+": date.getSeconds()
+	};
+	// traverse to get all time
+	for(let key in obj) {
+		let reg = new RegExp(key);
+		let formatStr = format.match(reg);
+		if(formatStr) {
+			formatStr = formatStr[0];
+			if(formatStr.length === 1) {
+				format = format.replace(formatStr, obj[key]);
+			}
+			else {
+				let numStr = "00" + obj[key];
+				numStr = numStr.substr((obj[key] + "").length);
+				format = format.replace(formatStr, numStr);
+			}
+		}
+	}
+
+	return format;
+	}
 ```
 
 
