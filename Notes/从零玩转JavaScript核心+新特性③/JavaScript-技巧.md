@@ -55,58 +55,6 @@ function getRandomIntInclusive(min, max) {
 
 ---
 
-## 事件 (Event)
-
-
-
-> [HTML DOM Event Object | w3schools](https://www.w3schools.com/jsref/dom_obj_event.asp)
-
-
-
-### 覆盖系统默认事件
-
-- 在自定义事件中使用 `return false` 覆盖系统对应默认事件行为
-
-```js
-submitButton.onclick () => {
-  // do something
-  return false; // 阻止表单提交
-}
-```
-
-
-
-### 监听键盘输入
-
-```js
-element.onkeydown = function (event) {
-  console.log(event.code); // 输入的物理键
-  console.log(event.key); // 输入的是什么东西
-}
-```
-
-
-
-### 监听鼠标移入移出
-
-```js
-// 移入事件
-element.onmouseover = () => {}
-element.onmouseenter = () => {} // 建议初学者使用
-
-// 移出事件
-element.onmouseout = () => {}
-element.onmouseleave = () => {} // 建议初学者使用
-```
-
-
-
-### 监听鼠标移动
-
-```js
-element.onmousemove = () => {}
-```
-
 
 
 
@@ -282,27 +230,18 @@ let snake = new Snake(snakeParameters);
 
 
 
+### 不占用全局命名空间的方法
 
+- 将使用的变量和函数全部封装到一个立即执行的函数当中, 并将函数绑定到window
 
----
-
-## 元素属性
-
-
-
-### 元素属性和取值相同
-
-- 在JavaScript中, 元素属性和取值相同, `element.attributeName` 就会返回 `true` , 反之返回 `false`
-
-```html
-<form>
-  <input type="submit" disabled="disabled"> <!-- 或 disabled -->
-</form>
-
-<script>
-	let submitButton = document.querySelector("input");
-  console.log(submitButton.disabled);
-</script>
+```js
+(function () {
+  let a = 1;
+  function printAB(b) {
+    console.log(a + b);
+  }
+  window.printAB = printAB; 
+})()
 ```
 
 

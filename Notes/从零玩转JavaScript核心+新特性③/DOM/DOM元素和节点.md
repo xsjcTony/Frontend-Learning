@@ -1073,6 +1073,25 @@ element.textContent = value // 纯文本添加
 </html>
 ```
 
+
+
+### 元素属性和取值相同
+
+- 在JavaScript中, 元素属性和取值相同, `element.attributeName` 就会返回 `true` , 反之返回 `false`
+
+```html
+<form>
+  <input type="submit" disabled="disabled"> <!-- 或 disabled -->
+</form>
+
+<script>
+	let submitButton = document.querySelector("input");
+  console.log(submitButton.disabled);
+</script>
+```
+
+
+
 ---
 
 ## 元素样式操作 (Element CSS CRUD)
@@ -1179,4 +1198,6 @@ element.style.cssProperty = value // 通过element.style.cssProperty的方式修
 ```
 
 ---
+
+## 
 
