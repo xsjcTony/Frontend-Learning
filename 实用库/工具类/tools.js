@@ -1,7 +1,6 @@
 (function () {
-	function getScreen() {
-		let width,
-			height;
+	function getScreenWidthHeight() {
+		let width, height;
 
 		if(window.innerWidth) {
 			width = window.innerWidth;
@@ -21,8 +20,9 @@
 			height: height
 		}
 	}
+
 	function getPageScroll() {
-		let x, y
+		let x, y;
 
 		if(window.innerWidth) {
 			x = window.pageXOffset;
@@ -42,6 +42,7 @@
 			y: y
 		}
 	}
+
 	function addEvent(element, name, fn) {
 		if(element.attachEvent) { // <IE9
 			element.attachEvent("on" + name, fn);
@@ -50,6 +51,7 @@
 			element.addEventListener(name, fn);
 		}
 	}
+
 	function getStyleAttribute(element, name) {
 		if(element.currentStyle) {
 			return element.currentStyle[name];
@@ -59,8 +61,90 @@
 		}
 	}
 
-	window.getScreen = getScreen;
+	function linearAnimation(ele, obj, fn) {
+		clearInterval(ele.timerId);
+		ele.timerId = setInterval(function () {
+			let flag = true;
+			for(let key in obj) {
+				let target = obj[key];
+				// 1.拿到元素当前的位置
+				let style = getComputedStyle(ele);
+				let begin = parseFloat(style[key]) || 0;
+				// 2.定义变量记录步长
+				let step = (begin - target) > 0 ? -13 : 13;
+				// 3.计算新的位置
+				begin += step;
+				console.log(Math.abs(target - begin), Math.abs(step));
+				if(Math.abs(target - begin) > Math.abs(step)) {
+					flag = false;
+				}
+				else {
+					begin = target;
+				}
+				// 4.重新设置元素的位置
+				ele.style[key] = begin + "px";
+			}
+			if(flag) {
+				clearInterval(ele.timerId);
+				fn && fn();
+			}
+		}, 100);
+	}
+
+	function easeAnimation(ele, obj, fn) {
+		clearInterval(ele.timerId);
+		ele.timerId = setInterval(function () {
+			let flag = true;
+			for(let key in obj) {
+				let target = obj[key];
+				// 1.拿到元素当前的位置
+				let style = getComputedStyle(ele);
+				let begin = parseInt(style[key]) || 0;
+				// 2.定义变量记录步长
+				// 公式: (结束位置 - 开始位置) * 缓动系数(0 ~1)
+				let step = (target - begin) * 0.3;
+				// 3.计算新的位置
+				begin += step;
+				if(Math.abs(Math.floor(step)) > 1) {
+					flag = false;
+				}
+				else {
+					begin = target;
+				}
+				// 4.重新设置元素的位置
+				ele.style[key] = begin + "px";
+			}
+			if(flag) {
+				clearInterval(ele.timerId);
+				fn && fn();
+			}
+		}, 100);
+	}
+
+	function dateFormat(format, date) {
+		let obj = {
+			"M+": date.getMonth() + 1,                 //月份
+			"d+": date.getDate(),                    //日
+			"h+": date.getHours(),                   //小时
+			"m+": date.getMinutes(),                 //分
+			"s+": date.getSeconds()                 //秒
+		};
+		if(/(y+)/.test(format)) {
+			format = format.replace(RegExp.$1, (date.getFullYear() + "").substr(4 - RegExp.$1.length));
+		}
+		for(let key in obj) {
+			if(new RegExp(`${key}`).test(format)) {
+				format = format.replace(RegExp.$1, (RegExp.$1.length === 1) ? (obj[key]) : (("00" + obj[key]).substr(("" + obj[key]).length)));
+			}
+		}
+		return format;
+	}
+
+	window.getScreenWidthHeight = getScreenWidthHeight;
 	window.getPageScroll = getPageScroll;
 	window.addEvent = addEvent;
 	window.getStyleAttribute = getStyleAttribute;
+	window.linearAnimation = linearAnimation;
+	window.easeAnimation = easeAnimation;
+	window.dateFormat = dateFormat;
 })();
