@@ -307,3 +307,53 @@ function easeAnimation(ele, target) {
 
 ---
 
+## 电商大图预览
+
+
+
+### 计算 `event.offsetX/Y`
+
+- 直接调用会有flick问题
+
+公式
+
+- 鼠标到元素左边的距离 = `event.pageX` - `element.offsetLeft`
+- 鼠标到元素上边的距离 = `event.pageY` - `element.offsetTop`
+
+![event_offset_no_flick](D:\xsjcTony\it666\Frontend-Learning\Notes\从零玩转JavaScript核心+新特性③\images\event_offset_no_flick.png)
+
+
+
+### 计算大图移动距离
+
+公式
+
+- 蒙版移动的距离 / 蒙版最大能移动的距离 = 大图移动的距离 / 大图最大能移动的距离
+- 大图最大能移动的距离 = 大盒子的宽 / 高 - 大图的宽 / 高
+- 大图移动的距离 = 蒙版移动的距离 / 蒙版最大能移动的距离 * 大图最大能移动的距离
+
+![online_shopping_large_image_preview](D:\xsjcTony\it666\Frontend-Learning\Notes\从零玩转JavaScript核心+新特性③\images\online_shopping_large_image_preview.png)
+
+
+
+
+
+---
+
+## 其他
+
+
+
+### 渲染模式
+
+共分两种
+
+- 标准模式 ( `CSS1Compat` )
+- 混杂模式 ( `BackCompat` )
+
+查询方式
+
+```js
+document.compatMode
+```
+

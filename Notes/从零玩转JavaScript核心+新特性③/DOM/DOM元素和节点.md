@@ -1103,16 +1103,22 @@ element.textContent = value // 纯文本添加
 格式
 
 ```js
-element.style
+element.style // 行内
 element.style.cssProperty
-getComputedStyle(element)
+getComputedStyle(element) // >=IE9 // 行内+CSS
 getComputedStyle(element.cssProperty)
+
+element.currentStyle // <IE9
 ```
 
 注意点
 
 - 通过 `element.style` 属性只能获取行内样式的属性值, 找不到 `CSS` 设置的属性值
-- `getComputedStyle()` 本质是 `window.getComputedStyle()` , 对象中保存了所有 `CSS` 设置的样式和属性值(包含浏览器默认)
+- `getComputedStyle()` 本质是 `window.getComputedStyle()` , 对象中保存了所有 `CSS` 设置的样式和属性值 (包含浏览器默认)
+- 通过 `getComputedStyle()` 既能获取 `CSS` 设置的样式, 也能获取行内设置的样式
+- 通过 `getComputedStyle()` 获取的元素宽高不包括 `border` 和 `padding`
+- `getComputedStyle()` 只支持 <span style="color: yellow;">>=IE9</span>
+- `element.currentStyle` 特性同 `getComputedStyle()`, 但只支持 <span style="color: yellow;"><IE9</span>
 
 示例
 
@@ -1199,5 +1205,119 @@ element.style.cssProperty = value // 通过element.style.cssProperty的方式修
 
 ---
 
-## 
+## 三大家族 `offset` / `clien
+
+
+
+### 元素 `offset` 属性
+
+
+
+offset宽高
+
+- 包含 `border` 和 `padding` 
+- 可以获取 `CSS` 和行内样式
+- 只能获取, 不能设置
+
+```js
+element.offsetWidth // 包含border和padding的宽度
+element.offsetHeight // 包含border和padding的高度
+```
+
+
+
+offsetTop / Left
+
+- 元素到第一个定位祖先元素之间的偏移位
+- 如果没有祖先元素是定位的, 那么就是到 `body` 的偏移位
+
+```js
+element.offsetTop
+element.offsetLeft
+```
+
+
+
+offsetParent
+
+- 元素的第一个定位祖先元素
+- 如果没有祖先元素是定位的, 那么就是 `body`
+
+```js
+element.offsetParent 
+```
+
+
+
+### 元素 `client` 属性
+
+
+
+client宽高
+
+- 包含 `padding` , 但不包含 `padding` 
+- 可以获取 `CSS` 和行内样式
+- 只能获取, 不能设置
+
+```js
+element.clientWidth // 包含padding的宽度
+element.clientHeight // 包含padding的高度
+```
+
+
+
+clientTop / Left
+
+- `border` 宽度
+
+```js
+element.clientTop // 顶部边框宽度
+element.clientLeft // 左边边框宽度
+```
+
+
+
+### 元素 `scroll` 属性
+
+
+
+scroll宽高
+
+- 内容没有超出元素范围时, `scroll` 宽高包含 `padding` , 等于 `client` 宽高
+- 内容超出元素范围时, `scroll` 宽高包含 `padding` 再加上超出元素内容 (超出 `padding` ) 的宽高
+- 只能获取, 不能设置
+
+```js
+element.scrollWidth // 包含padding和超出元素内容的宽度
+element.scrollHeight // 包含padding和超出元素内容的高度
+```
+
+
+
+scrollTop/ Left
+
+- 超出元素内容 (超出 `padding` ) 往上 / 左移动的范围
+
+```js
+element.scrollTop // 超出元素内容往上移动的范围
+element.scrollLeft // 超出元素内容往左移动的范围
+```
+
+
+
+### 图示
+
+![offset_client_width_height](D:\xsjcTony\it666\Frontend-Learning\Notes\从零玩转JavaScript核心+新特性③\images\offset_client_width_height.png)
+
+![offset_client_top_left](D:\xsjcTony\it666\Frontend-Learning\Notes\从零玩转JavaScript核心+新特性③\images\offset_client_top_left.png)
+
+![scroll_height_width](D:\xsjcTony\it666\Frontend-Learning\Notes\从零玩转JavaScript核心+新特性③\images\scroll_height_width.png)
+
+![scroll_top_left](D:\xsjcTony\it666\Frontend-Learning\Notes\从零玩转JavaScript核心+新特性③\images\scroll_top_left.png)
+
+---
+
+
+
+
 

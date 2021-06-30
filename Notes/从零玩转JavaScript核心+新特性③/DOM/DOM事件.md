@@ -475,7 +475,7 @@ element.onmouseover = () => {} // 父元素也会触发
 element.onmouseenter = () => {} // 建议初学者使用
 
 // 移出事件
-element.onmouseout = () => {}
+element.onmouseout = () => {} // 父元素
 element.onmouseleave = () => {} // 建议初学者使用
 ```
 
@@ -490,6 +490,14 @@ element.onmouseleave = () => {} // 建议初学者使用
 
 ```js
 element.onmousemove = () => {}
+```
+
+
+
+### 监听元素内容滚动
+
+```js
+element.onscroll = () => {}
 ```
 
 

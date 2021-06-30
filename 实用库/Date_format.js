@@ -1,40 +1,18 @@
 function dateFormat(format, date) {
-	// deal with year
-	// get yyyy
-	let yearStr = format.match(/y+/); // find one or more "y"
-	if(yearStr) {
-		yearStr = yearStr[0];
-		// get date's year
-		let yearNum = date.getFullYear() + "";
-		yearNum = yearNum.substr(4 - yearStr.length);
-		// replace yyyy by current year
-		format = format.replace(yearStr, yearNum);
-	}
-
-	// deal with other time
 	let obj = {
-		"M+": date.getMonth() + 1, // month need to be added by 1
-		"d+": date.getDate(),
-		"h+": date.getHours(),
-		"m+": date.getMinutes(),
-		"s+": date.getSeconds()
+		"M+": date.getMonth() + 1,                 //月份
+		"d+": date.getDate(),                    //日
+		"h+": date.getHours(),                   //小时
+		"m+": date.getMinutes(),                 //分
+		"s+": date.getSeconds()                 //秒
 	};
-	// traverse to get all time
+	if(/(y+)/.test(format)) {
+		format = format.replace(RegExp.$1, (date.getFullYear() + "").substr(4 - RegExp.$1.length));
+	}
 	for(let key in obj) {
-		let reg = new RegExp(key);
-		let formatStr = format.match(reg);
-		if(formatStr) {
-			formatStr = formatStr[0];
-			if(formatStr.length === 1) {
-				format = format.replace(formatStr, obj[key]);
-			}
-			else {
-				let numStr = "00" + obj[key];
-				numStr = numStr.substr((obj[key] + "").length);
-				format = format.replace(formatStr, numStr);
-			}
+		if(new RegExp(`${key}`).test(format)) {
+			format = format.replace(RegExp.$1, (RegExp.$1.length == 1) ? (obj[key]) : (("00" + obj[key]).substr(("" + obj[key]).length)));
 		}
 	}
-
 	return format;
 }
