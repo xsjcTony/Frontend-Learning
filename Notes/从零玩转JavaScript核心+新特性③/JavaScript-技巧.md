@@ -246,6 +246,63 @@ let snake = new Snake(snakeParameters);
 
 
 
+### 函数防抖 (debounce)
+
+- 优化高频率执行 JavaScript 代码的一种手段, 让被调用的函数在依次连续的高频操作过程中<span style="color: yellow;">只被调用一次</span>
+- 减少代码执行次数, 提升网页性能
+- 应用场景多为 `oninput` / `onmousemove` / `onscroll` / `onresize`
+
+封装好的函数防抖
+
+```js
+function debounce(fn, delay) {
+	let timerId = null;
+	return function () {
+		let self = this;
+		let args = arguments;
+
+		timerId && clearTimeout(timerId);
+		timerId = setTimeout(function () {
+			fn.apply(self, args);
+		}, delay || 1000);
+	}
+}
+```
+
+
+
+### 函数节流 (throttle)
+
+- 优化高频率执行 JavaScript 代码的一种手段, 让被调用的函数在依次连续的高频操作过程中<span style="color: yellow;">减少执行的次数</span>
+- 减少代码执行次数, 提升网页性能
+- 应用场景多为 `oninput` / `onmousemove` / `onscroll` / `onresize`
+
+封装好的函数节流
+
+```js
+function throttle(fn, delay) {
+	let timerId = null;
+	let flag = true;
+	return function () {
+		if(!flag) {
+			return;
+		}
+		flag = false;
+
+		let self = this;
+		let args = arguments;
+
+		timerId && clearTimeout(timerId);
+		timerId = setTimeout(function () {
+			flag = true;
+			fn.apply(self, args);
+		}, delay || 500);
+	}
+}
+```
+
+
+
 ---
 
 ## 动画
@@ -307,27 +364,25 @@ function easeAnimation(ele, target) {
 
 ---
 
-## 电商大图预览
+## 网页相关
 
 
 
-### 计算 `event.offsetX/Y`
+### 电商大图预览
+
+计算 `event.offsetX/Y`
 
 - 直接调用会有flick问题
 
 公式
-
 - 鼠标到元素左边的距离 = `event.pageX` - `element.offsetLeft`
 - 鼠标到元素上边的距离 = `event.pageY` - `element.offsetTop`
 
 ![event_offset_no_flick](D:\xsjcTony\it666\Frontend-Learning\Notes\从零玩转JavaScript核心+新特性③\images\event_offset_no_flick.png)
 
-
-
-### 计算大图移动距离
+计算大图移动距离
 
 公式
-
 - 蒙版移动的距离 / 蒙版最大能移动的距离 = 大图移动的距离 / 大图最大能移动的距离
 - 大图最大能移动的距离 = 大盒子的宽 / 高 - 大图的宽 / 高
 - 大图移动的距离 = 蒙版移动的距离 / 蒙版最大能移动的距离 * 大图最大能移动的距离
@@ -335,6 +390,57 @@ function easeAnimation(ele, target) {
 ![online_shopping_large_image_preview](D:\xsjcTony\it666\Frontend-Learning\Notes\从零玩转JavaScript核心+新特性③\images\online_shopping_large_image_preview.png)
 
 
+
+### 广告处于垂直中间
+
+公式
+
+- top值 = (网页可视区域高度 - 广告高度) / 2
+
+![ad_middle_top_calculation](D:\xsjcTony\it666\Frontend-Learning\Notes\从零玩转JavaScript核心+新特性③\images\ad_middle_top_calculation.png)
+
+
+
+### 顶部吸附
+
+获取网页滚动高度, 当高度超出临界值时, 设置需要吸附的元素的样式
+
+- `position: fixed`
+- `top: 0`
+
+
+
+### 返回顶部
+
+`window.scrollTo(x, y)`
+
+- `x` 表示让网页在水平方向滚动到的位置
+- `y` 表示让网页在垂直方向滚动到的位置
+
+
+
+### 滚动条
+
+公式
+
+- 滚动条公式
+    - 滚动条高度 / 滚动条滚动范围 = 容器的高度 / 内容的范围
+    - 滚动条高度 = 容器的高度 / 内容的范围 * 滚动条滚动范围
+
+- 内容滚动公式
+
+    - 滚动条滚动的距离 / 滚动条滚动范围 = 内容滚动的距离 / 内容最大滚动范围
+    - 内容滚动的距离 = 滚动条滚动的距离 / 滚动条滚动范围 * 内容最大滚动范围
+
+- `onmouseup` 结束移动的调用者要使用 `document`
+
+    ```js
+    document.onmouseup = function () {
+      progressBar.onmousemove = null;
+    }
+    ```
+
+    
 
 
 

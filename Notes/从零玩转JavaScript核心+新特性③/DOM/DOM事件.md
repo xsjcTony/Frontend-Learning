@@ -448,7 +448,7 @@ son.onclick = (event) => {
 - 在自定义事件中使用 `return false` 覆盖系统对应默认事件行为
 
 ```js
-submitButton.onclick () => {
+submitButton.onclick = function () {
   // do something
   return false; // 阻止表单提交
 }
@@ -471,12 +471,12 @@ element.onkeydown = function (event) {
 
 ```js
 // 移入事件
-element.onmouseover = () => {} // 父元素也会触发
-element.onmouseenter = () => {} // 建议初学者使用
+element.onmouseover = function () {} // 父元素也会触发
+element.onmouseenter = function () {} // 建议初学者使用
 
 // 移出事件
-element.onmouseout = () => {} // 父元素
-element.onmouseleave = () => {} // 建议初学者使用
+element.onmouseout = function () {} // 父元素
+element.onmouseleave = function () {} // 建议初学者使用
 ```
 
 区别:
@@ -488,16 +488,41 @@ element.onmouseleave = () => {} // 建议初学者使用
 
 ### 监听鼠标移动
 
+- 建议使用防抖 / 节流
+
 ```js
-element.onmousemove = () => {}
+element.onmousemove = function () {}
+```
+
+
+
+### 监听鼠标按下 / 抬起
+
+- 抬起多用于 `document.mouseup`
+
+``` js
+element.onmousedown = function () {} // 按下
+element.onmouseup = function () {} // 抬起
 ```
 
 
 
 ### 监听元素内容滚动
 
+- 建议使用防抖 / 节流
+
 ```js
-element.onscroll = () => {}
+element.onscroll = function () {}
+```
+
+
+
+### 监听宽高变化
+
+- 建议使用防抖 / 节流
+
+```js
+element.onresize = function () {}
 ```
 
 

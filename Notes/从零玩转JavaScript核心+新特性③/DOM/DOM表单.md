@@ -51,6 +51,7 @@ inputElement.onblur = () => {}
     - <span style="color: yellow">>=IE9</span>
     - <span style="color: yellow"><IE9</span> 可以使用 `onpropertychange` 事件实现实时监听
     - 通过代码给 `input` 设置数据不会触发 `oninput` 事件
+    - 建议使用防抖 / 节流
     
     ```js
     inputElement.oninput = () => {} // >=IE9
