@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>图片预加载</title>
+</head>
+<body>
+<script>
+/*  let img = document.createElement("img");
+  img.src = "images/img01.jpg";
+  document.body.appendChild(img);
+  console.log(img.offsetHeight);
+  img.onload = function () {
+    console.log(img.offsetHeight);
+  }*/
+
+let urls = ["images/img01.jpg", "images/img02.jpg", "images/img03.jpg"]
+
+preLoadImages(urls, function(images) {
+  console.log(images);
+});
+
+function preLoadImage(url, fn) {
+  let img = document.createElement("img");
+  img.src = url;
+  img.onload = function () {
+    fn(img);
+  }
+}
+
+function preLoadImages(urls, fn) {
+  let imageCount = urls.length;
+  let loadedCount = 0;
+  let images = [];
+  for(let i = 0; i < imageCount; i++) {
+    let url = urls[i];
+    preLoadImage(url, function (img) {
+      images.push(img);
+      loadedCount++;
+      if(loadedCount === imageCount) {
+        fn(images);
+      }
+    })
+  }
+}
+</script>
+</body>
+</html>

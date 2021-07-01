@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>JavaScript-数组练习4</title>
+	<script>
+		// 要求用户输入4个整数, 格式x,y,z,a   , 然后从小到大排序后输出
+		let str = prompt("输入4个整数");
+		let arr = str.split(",");
+
+		// 方法一: 选择排序 Selection Sort
+		// for(let i = 0; i < 3; i++) {
+		// 	for(let j = i; j < 3; j++) {
+		// 		if(arr[i] > arr[j + 1]) {
+		// 			let temp = arr[i];
+		// 			arr[i] = arr[j + 1];
+		// 			arr[j + 1] = temp;
+		// 		}
+		// 	}
+		// }
+
+		// 方法二: 冒泡排序 Bubble Sort
+		for(let i = 0; i < 3; i++) {
+			for(let j = 0; j < 3 - i; j++) {
+				if(arr[j] > arr[j + 1]) {
+					let temp = arr[j];
+					arr[j] = arr[j + 1];
+					arr[j + 1] = temp;
+				}
+			}
+		}
+
+		console.log(arr);
+	</script>
+</head>
+<body>
+
+</body>
+</html>

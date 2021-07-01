@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>JavaScript-继承方式一</title>
+	<script>
+			// 父类Person构造函数
+			function Person() {
+				this.name = null;
+				this.age = 0;
+				this.arrowSay = () => {
+					console.log(this.name, this.age);
+				}
+				this.normSay = function () {
+					console.log(this.name, this.age);
+				}
+				this.arrowFunc = () => {
+					console.log(this);
+				}
+				this.normFunc = function () {
+					console.log(this);
+				}
+			}
+
+			// 子类Student构造函数
+			function Student() {
+				this.score = 0;
+				this.study = () => {
+					console.log("day day up");
+				}
+			}
+
+			Student.prototype = new Person(); // 将子类构造函数的原型函数指向父类的实例对象
+			Student.prototype.constructor = Student; // 将子类的构造函数的原型对象的constructor重新指向子类的构造函数 (定义prototype之后的必要修复)
+
+			let student2 = new Student();
+
+			student2.name = "tony";
+			student2.age = 24;
+			student2.score = 100;
+			student2.arrowSay();
+			student2.normSay();
+			student2.study();
+			student2.arrowFunc();
+			student2.normFunc();
+	</script>
+</head>
+<body>
+
+</body>
+</html>

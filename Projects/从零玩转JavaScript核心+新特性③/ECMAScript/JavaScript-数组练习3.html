@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>JavaScript-数组练习3</title>
+	<script>
+		let res = Array(10);
+		res.fill(0);
+
+		let str = prompt("输入5个0~9的整数");
+
+		let arr = str.split(",");
+
+		for(let i = 0; i < arr.length; i++) {
+			res[arr[i]] += 1;
+		}
+
+		for(let i = 0; i < res.length; i++) {
+			for(let j = 0; j < res[i]; j++) {
+				console.log(i);
+			}
+		}
+	</script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>操作元素样式</title>
+	<style>
+		.box {
+			width: 200px;
+			height: 200px;
+			background-color: red;
+		}
+	</style>
+</head>
+<body>
+<div></div>
+
+<script>
+	let div = document.querySelector("div");
+
+	// 设置元素样式
+	div.className = "box"; // 将预先写好的css代码通过给予class名称应用到元素上
+
+	// 通过element.style.cssProperty的方式修改, 将css中的"-"换成驼峰命名法
+	div.style.width = "300px";
+	div.style.height = "300px";
+	div.style.backgroundColor = "blue";
+
+	// 获取元素样式
+	console.log(div.style.width); // 300px // 通过element.style属性只能获取行内样式的属性值, 找不到CSS设置的属性值
+	console.log(getComputedStyle(div).width); // 300px // 本质是window.getComputedStyle, 对象中保存了所有CSS设置的样式和属性值(包含浏览器默认)
+</script>
+</body>
+</html>

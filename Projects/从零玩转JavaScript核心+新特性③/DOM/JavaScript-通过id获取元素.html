@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+	<meta charset="UTF-8">
+	<title>通过id获取元素</title>
+</head>
+<body>
+<div id="box">我是div</div>
+
+<script>
+	let div = document.getElementById("box");
+	console.log(div); // <div id="box">I'm div</div>
+	console.log(typeof div); // object
+
+	let divNull = document.getElementById("123");
+	console.log(divNull); // null
+</script>
+</body>
+</html>

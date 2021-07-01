@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>通过选择器获取元素2</title>
+</head>
+<body>
+<div class="father">
+  <form>
+    <input type="text" name="test">
+    <input type="password" name="test">
+  </form>
+</div>
+<div class="father" id="box">我是div</div>
+
+<script>
+  let div1 = document.querySelectorAll("#box");
+  let div2 = document.querySelectorAll(".father");
+  let div3 = document.querySelectorAll("div>form");
+
+  console.log(div1); // ▶ NodeList [div#box.father]
+  console.log(div2); // ▶ NodeList(2) [div.father, div#box.father]
+  console.log(div3); // ▶ NodeList [form]
+
+  let divNull = document.querySelector(".null");
+  console.log(divNull); // null
+</script>
+</body>
+</html>

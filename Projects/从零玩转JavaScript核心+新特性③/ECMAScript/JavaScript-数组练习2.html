@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>JavaScript-数组练习2</title>
+	<script>
+		let arrInt = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+		let str = prompt("输入三个0~9的数, 格式x,y,z");
+		let arr = str.split(",");
+
+		for(let i = 0; i < arr.length; i++) {
+			arr[i] = +arr[i];
+			let index = arrInt.indexOf(arr[i]);
+			if(index != -1) {
+				arrInt.splice(index, 1);
+			}
+		}
+		console.log(arr);
+
+		console.log(arrInt);
+	</script>
+</head>
+<body>
+
+</body>
+</html>

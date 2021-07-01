@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>简易轮播图</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		div {
+			width: 670px;
+			border: 1px solid #000000;
+			margin: 100px auto;
+			position: relative;
+		}
+
+		img {
+			vertical-align: bottom;
+		}
+
+		span {
+			display: inline-block;
+			width: 30px;
+			height: 60px;
+			font-size: 40px;
+			line-height: 60px;
+			text-align: center;
+			color: #ffffff;
+			background-color: rgba(0, 0, 0, 0.5);
+			cursor: pointer;
+			position: absolute;
+			left: 0;
+			top: 50%;
+			transform: translateY(-50%);
+		}
+
+		span:last-child {
+			left: auto;
+			right: 0;
+		}
+	</style>
+</head>
+<body>
+<div>
+	<img src="images/ad1.jpg" alt="ad1">
+	<span id="preview">&lt;</span>
+	<span id="next">&gt;</span>
+</div>
+
+<script>
+	let mainAd = document.querySelector("img");
+	let previewButton = document.querySelector("#preview");
+	let nextButton = document.querySelector("#next");
+	let count = 0;
+
+	let images = [
+		"images/ad1.jpg",
+		"images/ad2.jpg",
+		"images/ad3.jpg",
+		"images/ad4.jpg",
+		"images/ad5.jpg"
+	];
+
+	let maxCount = images.length - 1;
+
+	previewButton.onclick = () => {
+		count--;
+		if(count < 0) {
+			count = maxCount;
+		}
+		mainAd.src = images[count];
+	}
+
+	nextButton.onclick = () => {
+		count++;
+		if(count > maxCount) {
+			count = 0;
+		}
+		mainAd.src = images[count];
+	}
+</script>
+</body>
+</html>

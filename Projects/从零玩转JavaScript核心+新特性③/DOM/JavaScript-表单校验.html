@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>表单校验</title>
+</head>
+<body>
+<div>
+	<form action="https://www.baidu.com/">
+		<input type="text" id="username" placeholder="username">
+		<input type="password" id="password" placeholder="password">
+		<input type="submit" id="submit">
+	</form>
+</div>
+
+<script>
+	let usernameInput = document.querySelector("#username");
+	let passwordInput = document.querySelector("#password");
+	let submitButton = document.querySelector("#submit");
+
+	submitButton.onclick = () => {
+		let username = usernameInput.value;
+		let password = passwordInput.value;
+
+		if(username.length < 6) {
+			usernameInput.style.background = "red";
+			return false;
+		}
+		else {
+			usernameInput.style.background = "none"
+		}
+
+		if(password.length < 6) {
+			passwordInput.style.background = "red";
+			return false;
+		}
+		else {
+			passwordInput.style.background = "none";
+		}
+	}
+</script>
+</body>
+</html>

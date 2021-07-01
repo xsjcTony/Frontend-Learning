@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>属性增删改查</title>
+</head>
+<body>
+<img src="" alt="我是alt222" title="我是title" nj="666">
+
+<script>
+	let img = document.querySelector("img");
+
+	// 获取元素属性
+	let alt = img.alt; // 我是alt222
+	let nj = img.getAttribute("nj"); // 666
+
+	// 修改元素属性
+	img.title = "新的title"; // title="新的title"
+	img.setAttribute("nj", "123"); // nj="123"
+
+	// 新增元素属性
+	img.setAttribute("tony", "lily"); // tony="lily"
+
+	// 删除元素属性
+	img.alt = ""; // alt
+	img.removeAttribute("nj"); // nj被删除
+</script>
+</body>
+</html>
