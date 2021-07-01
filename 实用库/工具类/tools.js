@@ -121,6 +121,23 @@
 		}, 100);
 	}
 
+	function easeAnimationFloor(target) {
+		clearInterval(this.timerId);
+		this.timerId = setInterval(function () {
+			let begin = getPageScroll().y;
+			let step = (target - begin) * 0.3;
+			begin += step;
+
+			if(Math.abs(Math.floor(step)) <= 1) {
+				clearInterval(timerId);
+				window.scrollTo(0, target);
+				return;
+			}
+
+			window.scrollTo(0, begin);
+		}, 50);
+	}
+
 	function dateFormat(format, date) {
 		let obj = {
 			"M+": date.getMonth() + 1,                 //月份
@@ -140,11 +157,74 @@
 		return format;
 	}
 
+	// 防抖函数
+	function debounce(fn, delay) {
+		let timerId = null;
+		return function () {
+			let self = this;
+			let args = arguments;
+
+			timerId && clearTimeout(timerId);
+			timerId = setTimeout(function () {
+				fn.apply(self, args);
+			}, delay || 1000);
+		}
+	}
+
+	// 函数节流
+	function throttle(fn, delay) {
+		let timerId = null;
+		let flag = true;
+		return function () {
+			if(!flag) {
+				return;
+			}
+			flag = false;
+
+			let self = this;
+			let args = arguments;
+
+			timerId && clearTimeout(timerId);
+			timerId = setTimeout(function () {
+				flag = true;
+				fn.apply(self, args);
+			}, delay || 500);
+		}
+	}
+
+	function preLoadImage(url, fn) {
+		let img = document.createElement("img");
+		img.src = url;
+		img.onload = function () {
+			fn(img);
+		}
+	}
+
+	function preLoadImages(urls, fn) {
+		let imageCount = urls.length;
+		let loadedCount = 0;
+		let images = [];
+		for(let i = 0; i < imageCount; i++) {
+			let url = urls[i];
+			preLoadImage(url, function (img) {
+				images.push(img);
+				loadedCount++;
+				if(loadedCount === imageCount) {
+					fn(images);
+				}
+			})
+		}
+	}
+
 	window.getScreenWidthHeight = getScreenWidthHeight;
 	window.getPageScroll = getPageScroll;
 	window.addEvent = addEvent;
 	window.getStyleAttribute = getStyleAttribute;
 	window.linearAnimation = linearAnimation;
 	window.easeAnimation = easeAnimation;
+	window.easeAnimationFloor = easeAnimationFloor;
 	window.dateFormat = dateFormat;
+	window.debounce = debounce;
+	window.throttle = throttle;
+	window.preLoadImages = preLoadImages;
 })();

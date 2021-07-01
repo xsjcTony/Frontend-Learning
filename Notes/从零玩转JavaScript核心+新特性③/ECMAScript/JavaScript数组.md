@@ -774,11 +774,11 @@ console.log(arr); // [1, 2, 0, 0, 5]
 
 
 
-#### 作用
+作用
 
 - 返回 `Array` 中满足传入的 `Function` 条件的第一个 `element` 的 `index` (从左至右)
 
-#### 格式
+格式
 
 ```js
 // Arrow function
@@ -797,7 +797,7 @@ findIndex(function callbackFn(element, index, array){ ... })
 findIndex(function callbackFn(element, index, array) { ... }, thisArg)
 ```
 
-#### 参数
+参数
 
 - `callbackFn` : 在每个 `element` 上将要执行的 `Function` , 条件满足返回 `true` , 否则返回 `false` , 可以包含 `1` 到 `3` 个 `parameter`
     - `element` : 当前遍历至的 `element`
@@ -805,11 +805,11 @@ findIndex(function callbackFn(element, index, array) { ... }, thisArg)
     - `array` : (Optional) 当前调用 `forEach()` 的 `Array`
 - `thisArg` : (Optional) 执行 `callbackFn` 的时候使用的 `this` 的数值
 
-#### 返回值
+返回值
 
 - 从左至右第一个满足传入的 `Function` 条件的 `element` 的 `index` , 如没有满足条件的则返回 `-1`
 
-#### 原理
+原理
 
 ```js
 Array.prototype.myFindIndex = function (fn) { // this是调用myFindIndex()的数组
@@ -822,7 +822,7 @@ Array.prototype.myFindIndex = function (fn) { // this是调用myFindIndex()的�
 }
 ```
 
-#### 示例
+示例
 
 ```js
 // index   0  1  2  3  4

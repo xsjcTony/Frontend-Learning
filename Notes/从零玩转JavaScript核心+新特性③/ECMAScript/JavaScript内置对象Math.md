@@ -224,13 +224,13 @@ console.log(Math.round(null)); // 0
 
 
 
-#### 作用
+作用
 
 - 生成 `0` (包括) 到 `1` (不包括) 之间的伪随机数
 
 
 
-#### 格式
+格式
 
 ```js
 Math.random()
@@ -238,13 +238,13 @@ Math.random()
 
 
 
-#### 返回值
+返回值
 
 - 一个 `Floating Point` ,  `0` (包括) 到 `1` (不包括) 之间的伪随机数
 
 
 
-#### 示例
+示例
 
 ```js
 console.log(Math.random()); // 0.15358706926636634
@@ -254,11 +254,54 @@ console.log(Math.random()); // 0.39131023666277076
 
 
 
+### `Math.min()`
 
 
 
+> [Math.min() - JavaScript | MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/min)
 
 
+
+作用
+
+- 取最小值
+
+
+
+格式
+
+```js
+Math.min()
+Math.min(value0)
+Math.min(value0, value1)
+Math.min(value0, value1, ... , valueN)
+```
+
+
+
+参数
+
+- `value1, value2, ...` : 一堆数
+
+    
+
+返回值
+
+- 参数中最小的数
+
+
+
+示例
+
+```js
+console.log(Math.min(2, 3, 1)); // 1
+
+console.log(Math.min(-2, -3.3, -1)); // -3.3
+
+const array1 = [2, 3, 1];
+
+console.log(Math.min(...array1)); // 1
+```
 
 
 

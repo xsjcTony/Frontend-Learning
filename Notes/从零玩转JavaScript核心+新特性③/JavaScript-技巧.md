@@ -303,6 +303,12 @@ function throttle(fn, delay) {
 
 
 
+### 图片预加载 (Image preload)
+
+
+
+
+
 ---
 
 ## 动画
@@ -440,7 +446,29 @@ function easeAnimation(ele, target) {
     }
     ```
 
-    
+
+
+
+### 流式布局 (Waterfall)
+
+1. 计算每一行的列数
+2. 遍历元素添加满第一行
+3. 将第一行每一个元素的高度存储到一个 `Array` 中
+4. 遍历余下元素, 寻找高度最低的一列, 将下一个元素插入
+5. 将元素定位设置成 `absolute` , `left` 采用上一行元素的 `offsetLeft` , `top` 采用 `Array` 中的高度值
+6. 将 `Array` 中的高度加上当前元素的高度
+7. 重复 `4~6` 遍历完所有元素为止
+
+![](D:\xsjcTony\it666\Frontend-Learning\Notes\从零玩转JavaScript核心+新特性③\images\waterfall.png)
+
+
+
+### 到达底部再加载
+
+- 当参照物元素 `offsetHeight` 的一半 + 该元素的 `offsetTop` < 滚动出去的范围 + 页面高度时, 执行加载
+- 建议给 `onscroll` 添加防抖
+
+![load_at_bottom](D:\xsjcTony\it666\Frontend-Learning\Notes\从零玩转JavaScript核心+新特性③\images\load_at_bottom.png)
 
 
 
