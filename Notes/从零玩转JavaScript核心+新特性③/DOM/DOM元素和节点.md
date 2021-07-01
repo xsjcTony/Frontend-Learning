@@ -1205,7 +1205,7 @@ element.style.cssProperty = value // 通过element.style.cssProperty的方式修
 
 ---
 
-## 三大家族 `offset` / `clien
+## 三大家族 `offset` / `client`
 
 
 

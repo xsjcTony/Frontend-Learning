@@ -305,6 +305,36 @@ function throttle(fn, delay) {
 
 ### 图片预加载 (Image preload)
 
+- `img.onload` 表示图片已经加载完了
+
+封装好的预加载函数
+
+```js
+function preLoadImage(url, fn) {
+	let img = document.createElement("img");
+	img.src = url;
+	img.onload = function () {
+		fn(img);
+	}
+}
+
+function preLoadImages(urls, fn) {
+	let imageCount = urls.length;
+	let loadedCount = 0;
+	let images = [];
+	for(let i = 0; i < imageCount; i++) {
+		let url = urls[i];
+		preLoadImage(url, function (img) {
+			images.push(img);
+			loadedCount++;
+			if(loadedCount === imageCount) {
+				fn(images);
+				}
+			})
+		}
+	}
+```
+
 
 
 
@@ -469,6 +499,15 @@ function easeAnimation(ele, target) {
 - 建议给 `onscroll` 添加防抖
 
 ![load_at_bottom](D:\xsjcTony\it666\Frontend-Learning\Notes\从零玩转JavaScript核心+新特性③\images\load_at_bottom.png)
+
+
+
+### 进度条
+
+公式
+
+- 鼠标点击的位置的 `offsetX` / 进度条的宽度 = 当前播放的时间 / 总时长
+- 当前播放的时间 = 鼠标点击的位置的 `offsetX` / 进度条的宽度 * 总时长
 
 
 

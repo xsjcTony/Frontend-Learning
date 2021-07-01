@@ -527,6 +527,16 @@ element.onresize = function () {}
 
 
 
+### 监听视频加载完毕
+
+- `<video>` 元素可用
+
+```js
+videoElement.oncanplay = function () {}
+```
+
+
+
 ### 添加事件的不同浏览器版本兼容
 
 ```js
