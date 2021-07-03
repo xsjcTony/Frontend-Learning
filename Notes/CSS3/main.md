@@ -2,6 +2,22 @@
 
 
 
+## 函数
+
+
+
+### `calc()`
+
+- 可以进行简单的 `+` , `-` , `*` , `/` 运算
+
+```css
+margin-left: calc(-200px / 2); /* margin-left: -100px; */
+```
+
+
+
+---
+
 ## background
 
 
@@ -12,7 +28,9 @@
 
 #### `bg-size` 的插入方法
 
-- 要放在 `bg-position` 后面, 中间加一个 `/` . 如下示例中为 `cover`
+- 如果没有 `bg-position` , 直接写即可
+
+- 如果有, 要放在 `bg-position` 后面, 中间加一个 `/` . 如下示例中为 `cover`
 
 ```css
 background: url("images/1.jpg") center center / cover no-repeat;
@@ -66,7 +84,7 @@ text-shadow: 5px 5px 5px #000000; /* text-shadow: h-shadow v-shadow blur-radius 
 
 ### 动态添加边框导致内容移位的优化方法
 
-- 先添加一个透明边框占位置
+- 先添加一个透明边框占位置, 再通过 `JavaScript` 添加类名覆盖
 
 ```css
 ul>li {
@@ -78,4 +96,8 @@ ul>li {
   border: 2px solid orange;
 }
 ```
+
+
+
+---
 
