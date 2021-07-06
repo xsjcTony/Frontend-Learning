@@ -101,3 +101,26 @@ ul>li {
 
 ---
 
+## 动画 (Animation)
+
+
+
+### step
+
+- 通过 `step(x)` 可以让一个动画分成 `x` 步来执行
+
+```css
+div {
+  animation: show 2.5s steps(5) 1.5s forwards; /* 把show动画分成5步来进行 */
+}
+
+@keyframes show {
+	from {
+		width: 0;
+	}
+	to {
+		width: 100px;
+	}
+}
+```
+

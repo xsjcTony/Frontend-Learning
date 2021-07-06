@@ -28,7 +28,7 @@
 浏览器端
 
 - 只能在服务器端运行, 直接打开 `html` 文件无效
-
+- 要指定格式为 `stylesheet/less`
 - 一定要先导入 `css` 再导入 `js`
 
 ```html
@@ -36,7 +36,8 @@
 <script src="//cdn.jsdelivr.net/npm/less@3.13"></script>
 ```
 
-或下载 `less.js` 或 `less.min.js` 再导入
+- 或下载 `less.js` 或 `less.min.js` 再导入
+    - <span style="color: yellow">(自己的经验)</span> 直接使用建议把 `less.js` 放在所有 `JavaScript` 的代码的最上面
 
 > [less.js/dist at master · less/less.js (github.com)](https://github.com/less/less.js/tree/master/dist)
 

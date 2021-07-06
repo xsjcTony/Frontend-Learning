@@ -511,6 +511,32 @@ function easeAnimation(ele, target) {
 
 
 
+
+
+---
+
+## 插件
+
+
+
+### 全屏滚动 (fullPage)
+
+> [fullPage.js | One Page Scroll sections Site Plugin](https://alvarotrigo.com/fullPage/)
+>
+> https://github.com/alvarotrigo/fullPage.js
+>
+> https://github.com/alvarotrigo/fullPage.js/tree/master/lang/chinese#fullpagejs
+
+- 一个jQuery的插件, 可以实现全屏翻页
+
+
+
+注意点
+
+- `afterLoad(origin, destination, direction)` 方法在第一次进入网页时也会调用, 只不过 `origin` 和 `direction` 为 `null`
+
+
+
 ---
 
 ## 其他
