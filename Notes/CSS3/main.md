@@ -33,7 +33,7 @@ margin-left: calc(-200px / 2); /* margin-left: -100px; */
 - 如果有, 要放在 `bg-position` 后面, 中间加一个 `/` . 如下示例中为 `cover`
 
 ```css
-background: url("images/1.jpg") center center / cover no-repeat;
+background: url("images/1.jpg") ncenter center / cover;
 ```
 
 ---
@@ -49,6 +49,16 @@ background: url("images/1.jpg") center center / cover no-repeat;
 ```css
 text-shadow: 5px 5px 5px #000000; /* text-shadow: h-shadow v-shadow blur-radius color|none|initial|inherit; */
 ```
+
+
+
+### 元素内的文字不换行
+
+```css
+white-space: nowrap;
+```
+
+
 
 ---
 
@@ -121,6 +131,24 @@ div {
 	to {
 		width: 100px;
 	}
+}
+```
+
+
+
+---
+
+## 其他
+
+
+
+### `object-fit`
+
+- 和 `background-size` 一样, 但可以应用于其他标签来调整元素中的内容, 比如 `<video>`
+
+```css
+video {
+  object-fit: cover; /* 填满整个父元素 */
 }
 ```
 
