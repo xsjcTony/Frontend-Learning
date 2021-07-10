@@ -149,7 +149,7 @@ $c: red;
 
 
 
-### <span style="color: yellow;">(几乎用不到)</span> 变量插值
+### 变量插值
 
 定义
 
@@ -406,114 +406,96 @@ div {
 
 ---
 
-## 内置函数 (Functions)
+## 函数 (Functions)
 
 
 
-> [Functions | Less.js](https://lesscss.org/functions/)
+### 内置函数
+
+> [Sass: Built-In Modules](https://sass-lang.com/documentation/modules)
+
+示例
+
+```scss
+div {
+  width: 200px;
+  height: 200px;
+  background: mix(red, blue); // purple
+}
+```
+
+常用内置函数
+
+```scss
+    /*
+    1.SASS中的内置函数
+    和LESS一样, SASS中也提供了很多内置函数方便我们使用
+    */
+
+    // 字符串函数
+    /*
+    unquote（$string）：删除字符串中的引号；
+    quote（$string）：给字符串添加引号；
+    To-upper-case（$string）：将字符串小写字母转换为大写字母
+    To-lower-case（$string）：将字符串大写字母转换为小写字母
+    */
+    // 数值函数
+    /*
+    percentage($value)：将不带单位的数转换成百分比值；
+    round($value)：将数值四舍五入，转换成一个最接近的整数；
+    ceil($value)：向上取整；
+    floor($value)：向下取整；
+    abs($value)：取数的绝对值；
+    min($numbers…)：找出几个数值之间的最小值；
+    max($numbers…)：找出几个数值之间的最大值；
+    random(): 获取随机数
+    */
+    // 颜色函数
+    /*
+    rgb($red,$green,$blue)：根据红、绿、蓝三个值创建一个颜色；
+    rgba($red,$green,$blue,$alpha)：根据红、绿、蓝和透明度值创建一个颜色；
+    red($color)：从一个颜色中获取其中红色值；
+    green($color)：从一个颜色中获取其中绿色值；
+    blue($color)：从一个颜色中获取其中蓝色值；
+    mix($color-1,$color-2,[$weight])：把两种颜色混合在一起。
+    */
+    // 列表函数
+    /*
+    length($list)：返回一个列表的长度值;
+    nth($list, $n)：返回一个列表中指定的某个标签值;
+    join($list1, $list2, [$separator])：将两个列给连接在一起，变成一个列表；
+    append($list1, $val, [$separator])：将某个值放在列表的最后；
+    zip($lists…)：将几个列表结合成一个多维的列表；
+    index($list, $value)：返回一个值在列表中的位置值。
+    */
+```
 
 
+
+### 自定义函数
+
+格式
+
+```scss
+@function myFunc($var) {
+  @return $var;
+}
+```
 
 注意点
 
-- `less` 的底层就是 `JavaScript`
-- 所以大部分 `JavaScript` 常用方法在 `less` 中都可以用
+- 不建议过多使用逻辑性的语句
 
-- 在上述网址照葫芦画瓢即可
+示例
 
-常用方法
+```scss
+@function square($num) {
+  @return $num * $num + px;
+}
 
-```less
-// 混杂方法
-/*
-image-size("file.jpg"); // => 100px 50px
-image-width("file.jpg"); // => 100px
-image-height("file.jpg"); // => 50px
-
-// 单位转换
-convert(9s, "ms"); // => 9000ms
-convert(14cm, mm); // => 140mm
-convert(8, mm); // => 8
-
-// 列表
-$list: "A", "B", C, "D";
-length($list); // => 4
-extract($list, 3); // => C
-*/
-// 数学
-/*
-ceil(2.1); // => 3 向上取整
-floor(2.1); // => 2 向下取整
-percentage(.3); // => 30% 转百分比
-round(1.67, 1); // => 1.7 四舍五入，保留一位小数点
-sqrt(25cm); // => 5cm 取平方根
-abs(-5cm); // => 5cm 取绝对值
-pi(); // => 3.141592653589793 圆周率π
-max(3px, 42px, 1px, 16px); // => 42px
-min(3px, 42px, 1px, 16px); // => 1px
-*/
-// 字符串
-/*
-replace("Hi Tom?", "Tom", "Jack"); // => "Hi Jack"
-*/
-// 判断类型
-/*
-isnumber(56px); // => true 是否含数字
-isstring("string"); // => true
-iscolor(#ff0); // => true
-iscolor(blue); // => true
-iskeyword(keyword); // => true
-isurl(url(...)); // => true
-ispixel(56px); // => true
-isem(7.8em); // => true
-ispercentage(7.8%); // => true
-isunit(4rem, rem); // => true 是否为指定单位
-isruleset($rules); // => true 是否为变量
-*/
-// 颜色操作
-/*
-增加饱和度
-saturate(color, 20%)
-减少饱和度
-desaturate(color, 20%)
-增加亮度
-lighten(color, 20%)
-减少亮度
-darken(color, 20%)
-降低透明度
-fadein(color, 10%)
-增加透明度
-fadeout(color, 10%)
-设置绝对不透明度(覆盖原透明度)
-fade(color, 20%)
-旋转色调角度
-spin(color, 10)
-将两种颜色混合，不透明度包括在计算中。
-mix(#f00, #00f, 50%)
-与白色混合
-tint(#007fff, 50%)
-与黑色混合
-shade(#007fff, 50%)
-灰度，移除饱和度
-greyscale(color)
-返回对比度最大的颜色
-contrast(color1, color2)
-*/
-// 颜色混合
-/*
-每个RGB 通道相乘，然后除以255
-multiply(color1, color2);
-与 multiply 相反
-screen(color1, color2);
-使之更浅或更暗
-overlay(color1, color2)
-避免太亮或太暗
-softlight(color1, color2)
-与overlay相同，但颜色互换
-hardlight(color1, color2)
-计算每个通道(RGB)基础上的两种颜色的平均值
-average(color1, color2)
-*/
+div {
+  width: square(2); // 4px
+}
 ```
 
 ---
@@ -526,11 +508,11 @@ average(color1, color2)
 
 定义
 
-- `less` 的初衷是让 `css` 和 `html` 一样有层级结构关系, 提升代码阅读性
+- `sass` 的初衷是让 `css` 和 `html` 一样有层级结构关系, 提升代码阅读性
 
 格式
 
-```less
+```scss
 /*
 .father {}
 .father .son {}
@@ -551,7 +533,7 @@ average(color1, color2)
 
 - `&` 的作用是告诉编译器将 `less` 转换成 `css` 时直接拼接在当前选择器后面即可, 不要用后代选择器 (默认)
 
-```less
+```scss
 /*
 .father {}
 .father .son {}
@@ -572,7 +554,7 @@ average(color1, color2)
 - `&::before` / `&::after`
 - 原理和伪类相同
 
-```less
+```scss
 /*
 .father {}
 .father::before {}
@@ -591,17 +573,19 @@ average(color1, color2)
 
 定义
 
-- 本质是使用 `并集选择器` , 而混合是直接复制黏贴
+- 本质是使用 `并集选择器` , 而 `混合` 是直接复制黏贴
 
 格式
 
-```less
-.childClass:extend(.parentClass)
+```scss
+.childClass {
+  @extend .parentClass
+}
 ```
 
 示例
 
-```less
+```scss
 /*
 .center,
 .father,
@@ -631,12 +615,14 @@ average(color1, color2)
   transform: translate(-50%, -50%);
 }
 
-.father:extend(.center) {
+.father {
+  @extend .center;
   width: 300px;
   height: 300px;
   background: red;
   
-  .son:extend(.center) {
+  .son {
+    @extend .center
     width: 200px;
     height: 200px;
     background: blue;
@@ -650,54 +636,98 @@ average(color1, color2)
 
 
 
-定义
+格式
 
-- 给 `混合` 添加执行限定条件
+- 支持 `@if` / `@else if` / `@else`
+
+示例
+
+```scss
+@mixin triangle($dir, $width, $color) {
+  width: 0;
+  height: 0;
+  border-width: $width;
+  border-style: solid solid solid solid;
+  
+  @if($dir == up) {
+    border-color: transparent transparent $color transparent;
+  }
+  @else if($dir == down) {
+    border-color: $color transparent transparent transparent;
+  }
+  @else if($dir == left) {
+    border-color: transparent $color transparent transparent;
+  }
+  @else if($dir == right) {
+    border-color: transparent transparent transparent $color;
+  }
+}
+
+div {
+  @include triangle(Up, 50px, blue); // 向上的蓝色50px高的三角形
+}
+```
+
+---
+
+## 循环 (Loop)
+
+
+
+### `for` 循环
 
 格式
 
-- 支持比较运算符 ( `>` , `<` , `>=` , `<=` , `=` )
+```scss
+@for $var from min through max {} // 包含min, 包含max, 一次循环+1
+@for $var from min to max {} // 包含min, 不包含max, 一次循环+1
+```
 
-```less
-.className($var1, $var2) when ($var1 = value) {} // 当$var1的值和value相等时, 才会调用
-div {
-  .className(value, value2); // 会调用
-  .className(newValue, value2); // 不会调用
+示例
+
+```scss
+li {
+  background: red;
+    
+  @for $i from 5 through 8 { // 第5~8个li背景变成蓝色
+    &:nth-child(#{$i}) { // 使用变量插值
+      background: blue;
+    }
+  }
+  
+  @for $j from 9 through 12 { // 第9~11个li背景变成蓝色
+    &:nth-child(#{$i}) { // 使用变量插值
+      background: blue;
+    }
+  }
 }
 ```
 
-- 支持逻辑运算符
 
-    - `,` 代表 `||`
 
-    ```less
-    .className($var1, $var2) when ($var1 = value), ($var2 = value2) {} // 满足其一即可调用
-    div {
-      .className(value, newValue2); // 会调用
-      .className(newValue, value2); // 会调用
-      .className(newValue, newValue2); // 不会调用
+### `while` 循环
+
+格式
+
+```scss
+@while(expression) {}
+```
+
+示例
+
+```scss
+li {
+  background: red;
+  
+  $i: 5;
+	@while($i <= 8) { // 第5~8个li背景变成蓝色
+  	&:nth-child(#{$i}) { // 使用变量插值
+      background: blue;
     }
-    ```
-
-    - `and` 代表 `&&`
-
-    ```less
-    .className($var1, $var2) when ($var1 = value) and ($var2 = value2) {} // 两者都满足才可调用
-    div {
-      .className(value, value2); // 会调用
-      .className(value, newValue2); // 不会调用
-      .className(newValue, value2); // 不会调用
-      .className(newValue, newValue2); // 不会调用
-    }
-    ```
-
-- 支持内置函数检查
-
-```less
-.className($var1, $var2) when (ispixel($var1)) {} // 当$var1的单位为像素(px)时才能调用
-div {
-  .className(10px, value2); // 会调用
-  .className(1, newValue2); // 不会调用
+    $i: $i + 1; // $i++
+  }
 }
 ```
+
+
 
