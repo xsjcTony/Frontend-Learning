@@ -511,6 +511,10 @@ function easeAnimation(ele, target) {
 
 
 
+### 将超出指定行数范围的文字用 `...` 代替
+
+> [josephschmitt/Clamp.js: Clamps an HTML element by adding ellipsis to it if the content inside is too long.](https://github.com/josephschmitt/Clamp.js/)
+
 
 
 ---
@@ -534,6 +538,17 @@ function easeAnimation(ele, target) {
 注意点
 
 - `afterLoad(origin, destination, direction)` 方法在第一次进入网页时也会调用, 只不过 `origin` 和 `direction` 为 `null`
+
+
+
+### 模板引擎
+
+- 通过 `JSON` 或 `JavaScript` 对象中的数据来渲染网页
+
+推荐
+
+- art-template (腾讯)
+    - [aui/art-template: High performance JavaScript templating engine](https://github.com/aui/art-template)
 
 
 

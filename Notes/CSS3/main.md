@@ -60,6 +60,22 @@ white-space: nowrap;
 
 
 
+### 限制一段文字的显示行数
+
+- 谷歌浏览器 (webkit)
+
+```css
+overflow: hidden;  /* 配合 -webkit-line-clamp 使用, 多余文字不显示 */
+text-overflow: ellipsis; /* 多余文字使用 "
+display: -webkit-box; /* 配合 -webkit-line-clamp 使用 */
+-webkit-line-clamp: 3; /* 限制行数为3行 */
+-webkit-box-orient: vertical; /* 配合 -webkit-line-clamp 使用 */
+```
+
+
+
+
+
 ---
 
 ## 选择器 (Selector)
@@ -150,5 +166,13 @@ div {
 video {
   object-fit: cover; /* 填满整个父元素 */
 }
+```
+
+
+
+### 在不影响布局的情况下隐藏元素
+
+```css
+visibility: hidden;
 ```
 
