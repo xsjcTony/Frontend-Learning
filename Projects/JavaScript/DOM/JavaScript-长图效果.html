@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>长图效果</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		.box {
+			width: 640px;
+			height: 300px;
+			border: 1px solid #000000;
+			margin: 100px auto;
+			overflow: hidden;
+			position: relative;
+		}
+
+		.box-top, .box-bottom {
+			width: 100%;
+			height: 150px;
+			position: absolute;
+			left: 0;
+			z-index: 999;
+		}
+
+		.box-bottom {
+			bottom: 0;
+		}
+
+		.box > img {
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+	</style>
+</head>
+<body>
+<div class="box">
+	<div class="box-top"></div>
+	<div class="box-bottom"></div>
+	<img src="images/long.gif" alt="long">
+</div>
+
+<script>
+	// get elements
+	let topBox = document.querySelector(".box-top");
+	let bottomBox = document.querySelector(".box-bottom");
+	let img = document.querySelector("img");
+	let div = document.querySelector(".box");
+
+	// calculate minimum offset value
+	let boxHeight = parseInt(getComputedStyle(div).height);
+	let imgHeight = parseInt(getComputedStyle(img).height);
+	let maxOffsetY = boxHeight - imgHeight;
+
+	let timerId = null;
+
+	// monitor top part
+	topBox.onmouseenter = () => {
+		let offsetY = parseInt(img.style.top) || 0;
+		timerId = setInterval(() => {
+			offsetY = offsetY - 10;
+			if(offsetY < maxOffsetY) {
+				clearInterval(timerId);
+				return;
+			}
+			img.style.top = offsetY + "px";
+		}, 10);
+	}
+
+	topBox.onmouseleave = () => {
+		clearInterval(timerId);
+	}
+
+	// monitor bottom part
+	bottomBox.onmouseenter = () => {
+		let offsetY = parseInt(img.style.top) || maxOffsetY;
+		timerId = setInterval(() => {
+			offsetY = offsetY + 10;
+			if(offsetY > 0) {
+				clearInterval(timerId);
+				return;
+			}
+			img.style.top = offsetY + "px";
+		}, 10);
+	}
+
+	bottomBox.onmouseleave = () => {
+		clearInterval(timerId);
+	}
+</script>
+</body>
+</html>

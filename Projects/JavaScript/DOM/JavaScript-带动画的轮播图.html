@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>带动画的自动轮播图</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		.box {
+			width: 670px;
+			height: 300px;
+			border: 1px solid #000000;
+			margin: 100px auto;
+			position: relative;
+			overflow: hidden;
+		}
+
+		ul {
+			list-style: none;
+			display: flex;
+		}
+
+		p {
+			position: absolute;
+			left: 0;
+			top: 50%;
+			transform: translateY(-50%);
+			width: 100%;
+			display: flex;
+			justify-content: space-between;
+		}
+
+		p>span {
+			width: 30px;
+			height: 60px;
+			background: rgba(0, 0, 0, 0.5);
+			color: #ffffff;
+			font-size: 40px;
+			cursor: pointer;
+		}
+	</style>
+	<script src="js/animation.js"></script>
+</head>
+<body>
+<div class="box">
+	<ul>
+		<li><img src="images/ad1.jpg" alt="ad1"></li>
+		<li><img src="images/ad2.jpg" alt="ad2"></li>
+		<li><img src="images/ad3.jpg" alt="ad3"></li>
+		<li><img src="images/ad1.jpg" alt="ad1"></li>
+	</ul>
+	<p>
+		<span class="left">&lt;</span>
+		<span class="right">&gt;</span>
+	</p>
+</div>
+
+<script>
+	// get elements
+	let box = document.querySelector(".box");
+	let prevBtn = document.querySelector(".left");
+	let nextBtn = document.querySelector(".right");
+	let ul = document.querySelector("ul");
+	let items = document.querySelectorAll("ul>li");
+	let imgWidth = parseInt(getComputedStyle(items[0]).width);
+	let currentIndex = 0;
+
+	// monitor button click
+	nextBtn.onclick = () => {
+		currentIndex++;
+		if(currentIndex > items.length - 1) {
+			currentIndex = 0;
+			ul.style.marginLeft = "0";
+			currentIndex++;
+		}
+		easeAnimation(ul, -currentIndex * imgWidth);
+	}
+
+	prevBtn.onclick = () => {
+		currentIndex--;
+		if(currentIndex < 0) {
+			currentIndex = items.length - 1;
+			ul.style.marginLeft = -(items.length - 1) * imgWidth + "px";
+			currentIndex--;
+		}
+		easeAnimation(ul, -currentIndex * imgWidth);
+	}
+
+	// auto
+	let autoTimerId = setInterval(() => {
+		nextBtn.onclick();
+	}, 2000);
+
+	box.onmouseenter = () => {
+		clearInterval(autoTimerId);
+	}
+
+	box.onmouseleave = () => {
+		autoTimerId = setInterval(() => {
+			nextBtn.onclick();
+		}, 2000);
+	}
+</script>
+</body>
+</html>

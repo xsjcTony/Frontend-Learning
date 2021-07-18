@@ -25,3 +25,8 @@
 - SASS
 - <span style="color: yellow; font-weight: bold">SCSS</span>
 
+
+
+## Ajax+jQuery
+
+- jQuery

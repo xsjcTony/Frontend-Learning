@@ -1,0 +1,288 @@
+.fl {
+	float: left;
+}
+.fr {
+	float: right;
+}
+.clearfix::after {
+	/*设置添加的子元素的内容为空*/
+	content: "";
+	/*设置添加的子元素为块级元素*/
+	display: block;
+	/*设置添加的子元素的高度为0*/
+	height: 0;
+	/*设置添加的子元素看不见*/
+	visibility: hidden;
+	/*给添加的子元素设置clear: both;*/
+	clear: both;
+}
+.clearfix {
+	/*兼容IE6*/
+	*zoom: 1;
+}
+body {
+	font: 12px/1.5 '\5FAE\8F6F\96C5\9ED1', tahoma, '\5b8b\4f53', sans-serif;
+	color: #666666;
+}
+body a {
+	color: #666666;
+}
+.toolbar {
+	width: 100%;
+	height: 40px;
+	border-top: 1px solid #c9c9c9;
+	border-bottom: 1px solid #c9c9c9;
+	background: #ffffff;
+	position: absolute;
+	left: 0;
+	top: 0;
+	z-index: 1999;
+}
+.toolbar .toolbar-in {
+	width: 970px;
+	height: 100%;
+	margin: 0 auto;
+	position: relative;
+}
+.toolbar .toolbar-in li:nth-child(1) {
+	width: 220px;
+	height: 40px;
+	background: url("../images/icons-top.png") no-repeat 0 -40px;
+	position: relative;
+	z-index: 999;
+}
+.toolbar .toolbar-in li:nth-child(1) a {
+	display: inline-block;
+	width: 100%;
+	height: 100%;
+}
+.toolbar .toolbar-in li:nth-child(2) .big-image {
+	position: absolute;
+	left: 0;
+	top: 0;
+	display: none;
+}
+.toolbar .toolbar-in li:nth-child(2):hover .big-image {
+	display: block;
+}
+.toolbar .toolbar-in li:nth-child(3) {
+	line-height: 40px;
+	margin-left: 20px;
+}
+.toolbar .toolbar-in li:nth-child(3) i {
+	display: inline-block;
+	width: 11px;
+	height: 11px;
+	background: url("../images/icons-top.png") no-repeat -150px -134px;
+	vertical-align: middle;
+}
+.toolbar .toolbar-in li:nth-child(3) a:hover {
+	color: orangered;
+}
+.toolbar .toolbar-in li:nth-child(3) a:hover i {
+	background-position: -170px -134px;
+}
+.toolbar .toolbar-in li:nth-child(4) {
+	line-height: 40px;
+	padding-left: 20px;
+	background: url("../images/platform-logo.png") no-repeat left center;
+}
+.toolbar .toolbar-in li:nth-child(4) a:hover {
+	color: orangered;
+}
+.nav {
+	width: 100%;
+	height: 88px;
+	position: fixed;
+	left: 0;
+	top: 42px;
+	z-index: 999;
+	background: url("../images/bg_top.png");
+}
+.nav .nav-in {
+	width: 1200px;
+	height: 100%;
+	margin: 0 auto;
+}
+.nav .nav-in h1 {
+	height: 100%;
+}
+.nav .nav-in h1 a {
+	display: inline-block;
+	height: 100%;
+	line-height: 88px;
+}
+.nav .nav-in h1 a img {
+	width: 129px;
+	vertical-align: middle;
+}
+.nav .nav-in ul li {
+	float: left;
+	width: 105px;
+	text-align: center;
+	line-height: 88px;
+	font-size: 14px;
+	font-weight: bold;
+	color: #cccccc;
+}
+.nav .nav-in ul li a:hover {
+	color: #e69800;
+}
+.nav .nav-in ul li:nth-child(3) a {
+	color: #e69800;
+}
+.nav .nav-in ul li:nth-child(4) a {
+	color: #e69800;
+}
+.nav .nav-in div {
+	width: 140px;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	background: #e69800;
+	margin-top: 24px;
+}
+.nav .nav-in div a {
+	font-size: 14px;
+	font-weight: bold;
+	color: #ffffff;
+}
+#myMenu {
+	background: url("../images/menu.png") no-repeat;
+	width: 31px;
+	height: 700px;
+	position: fixed;
+	left: 20px;
+	top: 160px;
+	z-index: 999;
+	display: none;
+}
+#myMenu li {
+	position: absolute;
+	left: 31px;
+	width: 20px;
+	height: 50px;
+	overflow: hidden;
+	transition: all 0.3s linear 0s;
+}
+#myMenu li a {
+	height: 100%;
+	display: flex;
+	justify-content: left;
+	align-items: center;
+}
+#myMenu li a i {
+	display: inline-block;
+	width: 0;
+	height: 0;
+	border-style: solid solid solid solid;
+	border-width: 6px;
+	border-color: transparent transparent transparent #e69800;
+	margin-left: 15px;
+}
+#myMenu li a div {
+	width: 165px;
+	height: 50px;
+	background: url("../images/icons.png") no-repeat -115px 0;
+	line-height: 30px;
+	padding-left: 15px;
+	box-sizing: border-box;
+	white-space: nowrap;
+	font-size: 18px;
+	color: #ffffff;
+}
+#myMenu li:nth-child(2) {
+	top: 20px;
+}
+#myMenu li:nth-child(3) {
+	top: 175px;
+}
+#myMenu li:nth-child(3) div {
+	background-position: -285px 0;
+}
+#myMenu li:nth-child(4) {
+	top: 330px;
+}
+#myMenu li:nth-child(4) div {
+	background-position: -455px 0;
+}
+#myMenu li:nth-child(5) {
+	top: 480px;
+}
+#myMenu li:nth-child(5) div {
+	background-position: -625px 0;
+}
+#myMenu li:nth-child(6) {
+	top: 635px;
+}
+#myMenu li:nth-child(6) div {
+	background-position: -795px 0;
+}
+#myMenu li.active {
+	width: 215px;
+}
+#myMenu li.active a {
+	color: #e69800;
+}
+#myMenu li:hover {
+	width: 215px;
+}
+#myMenu li:hover a {
+	color: #e69800;
+}
+#myMenu .menu-up,
+#myMenu .menu-down {
+	width: 25px;
+	height: 25px;
+	position: absolute;
+	left: 0;
+	cursor: pointer;
+	display: block;
+}
+#myMenu .menu-up {
+	top: 0;
+}
+#myMenu .menu-down {
+	bottom: 0;
+}
+.section-one {
+	background: url("../images/bg_section1.jpg") no-repeat center center / cover;
+}
+.section-one video {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+.section-one .play {
+	width: 81px;
+	height: 81px;
+	background: url("../images/icons.png") no-repeat 0 0;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+.section-one .play a {
+	display: inline-block;
+	width: 100%;
+	height: 100%;
+}
+.section-one img {
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+	bottom: 50px;
+}
+.section-two {
+	background: url("../images/bg_section2.jpg") no-repeat 0 0 / cover;
+}
+.section-two video {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+.footer-in {
+	width: 1200px;
+	height: 160px;
+	margin: 0 auto;
+}

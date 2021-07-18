@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>函数防抖</title>
+</head>
+<body>
+<input type="text">
+
+<script src="js/tools.js"></script>
+<script>
+  let input = document.querySelector("input");
+  let timerId = null;
+
+/*
+  input.oninput = function () {
+    timerId && clearTimeout(timerId);
+    timerId = setTimeout(function() {
+      console.log("send request");
+    }, 1000);
+  }
+*/
+
+  input.oninput = debounce(function (event) {
+	  console.log("send request");
+	  console.log(this);
+	  console.log(event);
+  });
+</script>
+</body>
+</html>

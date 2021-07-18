@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>返回顶部</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		img {
+			width: 100%;
+			vertical-align: middle;
+		}
+
+		span {
+			display: none;
+			width: 50px;
+			height: 50px;
+			line-height: 50px;
+			text-align: center;
+			background: red;
+			position: fixed;
+			right: 10px;
+			bottom: 10px;
+			cursor: pointer;
+		}
+	</style>
+</head>
+<body>
+<img src="images/nba-top.jpg" alt="top" id="top">
+<img src="images/nba-nav.jpg" alt="nav" id="nav">
+<img src="images/nba-body.jpg" alt="body">
+<span>TOP</span>
+
+<script src="js/tools.js"></script>
+<script>
+	// get elements
+	let backToTopBtn = document.querySelector("span");
+
+	// monitor window scroll
+	window.onscroll = function () {
+		// get window scrollY
+		let offsetY = getPageScroll().y;
+
+		// check if back to top button need to be displayed
+		offsetY >= 200 ? backToTopBtn.style.display = "block" : backToTopBtn.style.display = "none";
+	}
+
+	// monitor button onclick
+	let timerId = null;
+	backToTopBtn.onclick = function () {
+		// window.scrollTo(0, 0);
+		clearInterval(timerId);
+		timerId = setInterval(function () {
+			let begin = getPageScroll().y;
+			let target = 0;
+			let step = (target - begin) * 0.3;
+			begin += step;
+
+			if(Math.abs(Math.floor(step)) <= 1) {
+        clearInterval(timerId);
+        window.scrollTo(0, target);
+        return;
+			}
+
+			window.scrollTo(0, begin);
+		}, 50);
+	}
+</script>
+</body>
+</html>

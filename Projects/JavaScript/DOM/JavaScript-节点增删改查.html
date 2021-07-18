@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>节点增删改查</title>
+</head>
+<body>
+<div>
+  <h1>我是标题</h1>
+  <p>我是段落</p>
+</div>
+
+<script>
+  // 创建节点
+  let span = document.createElement("span"); // <span></span>
+
+  // 添加节点
+  let div = document.querySelector("div");
+  div.appendChild(span); // 将元素添加到该节点的子节点中的最后位置
+
+  // 插入节点
+  let h1 = document.querySelector("h1");
+  div.insertBefore(span, h1); // 将元素添加到h1标签之前
+
+  // 删除节点
+  span.parentNode.removeChild(span); // 删除span
+  div.parentNode.removeChild(div); // 删除div
+
+  // 克隆节点
+  let newDiv = div.cloneNode(true) // true代表包含子元素的克隆
+</script>
+</body>
+</html>

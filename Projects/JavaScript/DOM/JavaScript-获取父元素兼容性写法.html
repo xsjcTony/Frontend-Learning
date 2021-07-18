@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>获取父元素兼容性写法</title>
+</head>
+<body>
+<div>
+  <h1>1</h1>
+  <h2>2</h2>
+  <p class="item">3</p>
+  <p>4</p>
+  <span>5</span>
+</div>
+
+<script>
+  let child = document.querySelector(".item");
+  let parentElement = child.parentElement || child.parentNode;
+  console.log(parentElement);
+</script>
+</body>
+</html>

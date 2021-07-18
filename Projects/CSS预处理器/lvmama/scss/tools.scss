@@ -1,0 +1,58 @@
+/*工具类*/
+.fl{
+  float: left;
+}
+.fr{
+  float: right;
+}
+.clearfix::after{
+  /*设置添加的子元素的内容为空*/
+  content: "";
+  /*设置添加的子元素为块级元素*/
+  display: block;
+  /*设置添加的子元素的高度为0*/
+  height: 0;
+  /*设置添加的子元素看不见*/
+  visibility: hidden;
+  /*给添加的子元素设置clear: both;*/
+  clear: both;
+}
+.clearfix{
+  /*兼容IE6*/
+  *zoom:1;
+}
+/*水平垂直居中*/
+@mixin center(){
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+/*水平居中*/
+@mixin hCenter(){
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+/*垂直居中*/
+@mixin vCenter(){
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+/*三角形*/
+@mixin triangle($dir, $width, $color){
+  width: 0;
+  height: 0;
+  border-width: $width;
+  border-style: solid solid solid solid;
+  @if($dir == Up){
+    border-color: transparent transparent $color transparent;
+  }@else if($dir == Down){
+    border-color: $color transparent transparent transparent;
+  }@else if($dir == Left){
+    border-color: transparent $color transparent transparent;
+  }@else if($dir == Right){
+    border-color: transparent transparent transparent $color;
+  }
+}

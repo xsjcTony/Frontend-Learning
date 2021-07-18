@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Tab选项卡</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		.box {
+			width: 400px;
+			height: 300px;
+			border: 1px solid #000000;
+			margin: 100px auto;
+		}
+
+		.top {
+			list-style: none;
+			width: 100%;
+			height: 50px;
+			line-height: 50px;
+			text-align: center;
+			display: flex;
+			justify-content: space-between;
+		}
+
+		.top > li {
+			width: 80px;
+			height: 100%;
+			background: skyblue;
+			border-right: 1px solid #cccccc;
+			cursor: pointer;
+		}
+
+		.top > li:last-child {
+			border-right: none;
+		}
+
+		.bottom {
+			width: 100%;
+			height: 250px;
+		}
+
+		.bottom > .content {
+			width: 100%;
+			height: 100%;
+			display: none;
+		}
+
+		.bottom > .content:nth-child(1) {
+			background: red;
+			display: block;
+		}
+
+		.bottom > .content:nth-child(2) {
+			background: blue;
+		}
+
+		.bottom > .content:nth-child(3) {
+			background: green;
+		}
+
+		.bottom > .content:nth-child(4) {
+			background: yellow;
+		}
+
+		.bottom > .content:nth-child(5) {
+			background: purple;
+		}
+
+		.current {
+			background: red !important;
+		}
+	</style>
+</head>
+<body>
+<div class="box">
+	<ul class="top">
+		<li class="current">新闻</li>
+		<li>视频</li>
+		<li>音乐</li>
+		<li>军事</li>
+		<li>财经</li>
+	</ul>
+	<div class="bottom">
+		<div class="content">新闻内容</div>
+		<div class="content">视频内容</div>
+		<div class="content">音乐内容</div>
+		<div class="content">军事内容</div>
+		<div class="content">财经内容</div>
+	</div>
+</div>
+
+<script>
+	let tabs = document.querySelectorAll(".top>li");
+	let contents = document.querySelectorAll(".content");
+
+	// 自己写的, 能用但不好
+	/*for(let i = 0; i < tabs.length; i++) {
+		tabs[i].onclick = () => {
+			for(let j = 0; j < tabs.length; j++) {
+				tabs[j].className = "";
+				contents[j].style.display = "none";
+			}
+			tabs[i].className = "current";
+			contents[i].style.display = "block";
+		}
+	}*/
+
+	// 比较好的
+	// 定义变量保存上一次设置的索引
+	let previousIndex = 0;
+	// 给所有tab添加点击事件
+	for(let i = 0; i < tabs.length; i++) {
+		// 添加点击事件
+		tabs[i].onclick = function () {
+			// 清空上一次对应元素的样式
+			tabs[previousIndex].className = "";
+			contents[previousIndex].style.display = "none";
+			// 显示tab对应的内容并修改样式
+			this.className = "current";
+			contents[i].style.display = "block";
+			// 替换上一次设置的索引的值
+			previousIndex = i;
+		}
+	}
+</script>
+</body>
+</html>

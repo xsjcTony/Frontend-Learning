@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>获取元素的所有子节点</title>
+</head>
+<body>
+<div>
+  <h1>1</h1>
+  <h2>2</h2>
+  <p class="item">3</p>
+  <p>4</p>
+  <span>5</span>
+</div>
+
+<script>
+  let div = document.querySelector("div");
+
+  for(let node of div.childNodes) {
+    if(node.nodeType === Node.ELEMENT_NODE){
+      console.log(node);
+    }
+  }
+
+  console.log(div.children[0] === div.childNodes[1]); // true
+</script>
+</body>
+</html>

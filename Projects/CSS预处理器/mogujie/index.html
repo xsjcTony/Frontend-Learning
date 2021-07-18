@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>蘑菇街-时尚目的地</title>
+	<link rel="shortcut icon" href="favicon.ico"  type="image/x-icon"/>
+	<link rel="stylesheet" href="fonts/iconfont.css">
+	<link rel="stylesheet" href="css/reset.css">
+	<link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+<!--navigation bar-->
+<div class="nav">
+	<div class="nav-top">
+		<div class="nav-in clearfix">
+			<ul class="fr">
+				<li><a href="#"><i class="iconfont icon-xiazai45"></i>首页</a></li>
+				<li>|</li>
+				<li><a href="#"><i class="iconfont icon-icon-test"></i>商城</a></li>
+				<li>|</li>
+				<li><a href="#">我的订单</a></li>
+				<li>|</li>
+				<li><a href="#">关于我们<i class="iconfont icon-huaban"></i></a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="nav-bottom">
+		<div class="nav-in">
+			<h1 class="logo"><a href="#"><img src="images/logo.png" alt="logo"></a></h1>
+			<div class="menu"><i class="iconfont icon-caidan"></i>目录</div>
+			<form class="search">
+				<input type="text" placeholder="半身裙">
+				<input type="submit" value="">
+			</form>
+			<ul class="list">
+				<li>
+					<i class="iconfont icon-weixin"></i>
+					<p>消息</p>
+				</li>
+				<li>
+					<i class="iconfont icon-xingxing"></i>
+					<p>收藏</p>
+				</li>
+				<li>
+					<i class="iconfont icon-gouwuchekong"></i>
+					<p>购物车</p>
+				</li>
+				<li>
+					<i class="iconfont icon-ico"></i>
+					<p>下载APP</p>
+				</li>
+			</ul>
+			<div class="login">
+				<a href="#">
+					<img src="images/login.png" alt="login">
+					登录
+				</a>
+			</div>
+		</div>
+	</div>
+</div>
+<!--sticky navigation bar-->
+<div class="nav sticky-nav">
+	<div class="nav-bottom">
+		<div class="nav-in">
+			<h1 class="logo"><a href="#"><img src="images/logo.png" alt="logo"></a></h1>
+			<div class="menu"><i class="iconfont icon-caidan"></i>目录</div>
+			<form class="search">
+				<input type="text" placeholder="半身裙">
+				<input type="submit" value="">
+			</form>
+			<ul class="list">
+				<li>
+					<i class="iconfont icon-weixin"></i>
+					<p>消息</p>
+				</li>
+				<li>
+					<i class="iconfont icon-xingxing"></i>
+					<p>收藏</p>
+				</li>
+				<li>
+					<i class="iconfont icon-gouwuchekong"></i>
+					<p>购物车</p>
+				</li>
+				<li>
+					<i class="iconfont icon-ico"></i>
+					<p>下载APP</p>
+				</li>
+			</ul>
+			<div class="login">
+				<a href="#">
+					<img src="images/login.png" alt="login">
+					登录
+				</a>
+			</div>
+		</div>
+	</div>
+</div>
+<!--main-->
+<div class="main">
+	<div class="main-in">
+		<div class="banner">
+			<img src="images/banner.jpg" alt="banner">
+		</div>
+	</div>
+</div>
+<!--footer-->
+<div class="footer">
+	<div class="footer-in"></div>
+</div>
+<!--back to top button-->
+<div class="back">
+	<i class="iconfont icon-dingbu"></i>
+	<p>返回顶部</p>
+</div>
+
+<!--templates for art-template-->
+<script id="items" type="text/html">
+	<% for(let i = 0; i < list.length; i++) { %>
+		<% if(i === 2 || i === 3 || i === 4) { %>
+			<div class="item" style="width: 220px; height: 1160px;">
+				<div class="item-box"></div>
+			</div>
+		<% }else{ %>
+			<div class="item">
+				<div class="item-box">
+					<div class="item-top">
+						<% let scale = list[i].originW / list[i].originH %>
+						<% let imgHeight = 220 / scale %>
+						<img src="<%= list[i].cover %>" alt="cover" style="width: 220px; height: <%= imgHeight %>px">
+						<% if(list[i].isVideo) {%>
+						<div class="play"><img src="images/play.png" alt="play"></div>
+						<% } %>
+						<div class="title"><img src="images/sold.png" alt="sold"><%= list[i].itemNumbers %>件商品</div>
+						<div class="mask">
+							<ul>
+								<li><span><%= list[i].cFav %></span></li>
+								<li></li>
+							</ul>
+							<div class="mask-info">
+								<div class="mask-title"><img src="images/sold.png" alt="sold"><%= list[i].itemNumbers %>件商品</div>
+								<div class="mask-description">
+									<%= list[i].content %>
+								</div>
+							</div>
+						</div>
+					</div>
+					<% if(list[i].brandInfo.length !== 0) { %>
+					<div class="item-bottom clearfix">
+						<% for(let j = 0; j < list[i].brandInfo.length; j++) { %>
+						<a href="#">
+							<img src="<%= list[i].brandInfo[j].brandLogo %>" alt="brand_logo">
+							<%= list[i].brandInfo[j].brandName %>
+						</a>
+						<% } %>
+					</div>
+					<% } %>
+				</div>
+			</div>
+		<% } %>
+	<% } %>
+</script>
+<script id="category" type="text/html">
+	<div class="category">
+		<ul class="category-top">
+			<% for(let i = 0; i < cateList.length; i++) { %>
+				<li style="background: url('<%= cateList[i].cateIcon %>') no-repeat 0 0 / cover"><a href="#"><%= cateList[i].cateName %></a></li>
+			<% } %>
+		</ul>
+		<ul class="category-bottom">
+			<% for(let i = 0; i < wordList.length; i++) { %>
+			<li><a href="#"><%= wordList[i].word %></a></li>
+			<% } %>
+		</ul>
+	</div>
+</script>
+<script id="footer" type="text/html">
+	<div class="footer-logo">
+		<img src="images/footer-logo.png" alt="logo">
+	</div>
+	<div class="footer-helper clearfix">
+		<% for(let i = 0; i < clos.length; i++) { %>
+			<dl>
+				<% for(let j = 0; j < clos[i].length; j++) { %>
+					<% if(clos[i][j].isHeader) { %>
+						<dt><%= clos[i][j].title %></dt>
+					<% }else{ %>
+						<dd><a href="#"><%= clos[i][j].title %></a></dd>
+					<% } %>
+				<% } %>
+			</dl>
+		<% } %>
+	</div>
+	<ul class="footer-list">
+		<% for(let i = 0; i < list.length; i++) { %>
+			<li><a href="#"><%= list[i].title %></a></li>
+			<% if(i === list.length - 1) {break;} %>
+			<li>|</li>
+		<% } %>
+	</ul>
+	<div class="footer-line">
+		<span><%= line.title %></span>
+	</div>
+	<div class="footer-copyright">
+		<p>
+			<% for(let i = 0; i < copyright1[0].length; i++) { %>
+				<a href="#"><%= copyright1[0][i].title %></a>
+				<span>|</span>
+			<% } %>
+		</p>
+		<p>
+			<% for(let i = 0; i < copyright1[1].length; i++) { %>
+				<% if(copyright1[1][i].icon) { %>
+					<img src="<%= copyright1[1][i].icon %>" alt>
+				<% } %>
+				<a href="#"><%= copyright1[1][i].title %></a>
+				<span>|</span>
+			<% } %>
+		</p>
+	</div>
+</script>
+
+<script src="js/clamp.js"></script>
+<script src="js/tools.js"></script>
+<script src="js/template-web.js"></script>
+<script src="js/index.js"></script>
+</body>
+</html>

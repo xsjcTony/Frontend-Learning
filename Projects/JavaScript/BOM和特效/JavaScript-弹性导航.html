@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>弹性导航</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		.nav {
+			width: 900px;
+			height: 63px;
+			background: url("images/doubleOne.png") no-repeat right center;
+			border: 1px solid #000000;
+			margin: 100px auto;
+			position: relative;
+		}
+
+		ul {
+			position: relative;
+			z-index: 999;
+		}
+
+		ul>li {
+			list-style: none;
+			float: left;
+			width: 88px;
+			height: 63px;
+			line-height: 63px;
+			text-align: center;
+			cursor: pointer;
+		}
+
+		span {
+			display: inline-block;
+			width: 88px;
+			height: 63px;
+			background: url("images/tMall.png") no-repeat;
+			position: absolute;
+			left: 0;
+			top: 0;
+		}
+	</style>
+</head>
+<body>
+<div class="nav">
+	<ul>
+		<li>双11狂欢</li>
+		<li>服装会场</li>
+		<li>数码家电</li>
+		<li>家具建材</li>
+		<li>母婴童装</li>
+		<li>手机会场</li>
+		<li>美妆会场</li>
+		<li>进口会场</li>
+		<li>飞猪旅行</li>
+	</ul>
+	<span></span>
+</div>
+
+<script src="js/Animation.js"></script>
+<script>
+	let backgroundImg = document.querySelector("span");
+	let items = document.querySelectorAll("li");
+
+	for(let i = 0; i < items.length; i++) {
+		let item = items[i];
+		item.onclick = function() {
+			easeAnimation(backgroundImg, {"left": this.offsetLeft});
+		}
+	}
+</script>
+</body>
+</html>

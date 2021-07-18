@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>全选反选</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		.music {
+			width: 400px;
+			box-shadow: 0 0 5px #000000;
+			margin: 100px auto;
+			padding: 0 20px;
+			box-sizing: border-box;
+		}
+
+		.music>h3{
+			line-height: 40px;
+			text-align: center;
+			border-bottom: 1px solid #cccccc;
+		}
+
+		.music>ul>li {
+			border-bottom: 1px solid #cccccc;
+			list-style: none;
+			line-height: 30px;
+		}
+
+		.music>div {
+			line-height: 40px;
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+<div class="music">
+	<h3>歌曲排行榜</h3>
+	<ul>
+		<li><input type="checkbox">醒着做梦</li>
+		<li><input type="checkbox">男人不应该让女人流泪</li>
+		<li><input type="checkbox">女人不应该让男人太累</li>
+		<li><input type="checkbox">狂浪</li>
+		<li><input type="checkbox">生僻字</li>
+		<li><input type="checkbox">沙漠骆驼</li>
+		<li><input type="checkbox">最美的期待</li>
+		<li><input type="checkbox">光年之外</li>
+	</ul>
+	<div>
+		<button id="all_select">全选</button>
+		<button id="clear_select">全不选</button>
+		<button id="invert_select">反选</button>
+	</div>
+</div>
+
+<script>
+	let checkBoxs = document.querySelectorAll("input");
+	let selectAllBtn = document.querySelector("#all_select");
+	let clearSelectBtn = document.querySelector("#clear_select");
+	let invertSelectBtn = document.querySelector("#invert_select");
+
+	selectAllBtn.onclick = () => {
+		for(let checkBox of checkBoxs) {
+			checkBox.checked = true;
+		}
+	}
+
+	clearSelectBtn.onclick = () => {
+		for(let checkBox of checkBoxs) {
+			checkBox.checked = false;
+		}
+	}
+
+	invertSelectBtn.onclick = () => {
+		for(let checkBox of checkBoxs) {
+			checkBox.checked = !checkBox.checked;
+		}
+	}
+</script>
+</body>
+</html>

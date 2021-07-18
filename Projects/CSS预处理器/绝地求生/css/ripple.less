@@ -1,0 +1,36 @@
+.ripple {
+	width: 100px;
+	height: 100px;
+
+	span {
+		display: inline-block;
+		width: 25px;
+		height: 25px;
+		line-height: 22px;
+		text-align: center;
+		font-size: 25px;
+		color: @baseColor;
+		border-radius: 50%;
+		background: #ffffff;
+		.center();
+		z-index: 999;
+		animation: rippleSport1 1s 0s linear infinite;
+	}
+
+	b {
+		display: inline-block;
+		width: 25px;
+		height: 25px;
+		border-radius: 50%;
+		background: #ffffff;
+		.center();
+
+		&:nth-of-type(1) {
+			animation: rippleSport2 1s 0s linear infinite;
+		}
+
+		&:nth-of-type(2) {
+			animation: rippleSport3 1s 0s linear infinite;
+		}
+	}
+}

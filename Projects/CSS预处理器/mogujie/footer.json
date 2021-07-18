@@ -1,0 +1,195 @@
+{
+  "clos": [
+    [
+      {
+        "isHeader": true,
+        "link": "",
+        "title": "新手帮助"
+      },
+      {
+        "isHeader": false,
+        "link": "https://cs.mogu.com/help/faq.html?acm=3.mce.1_10_19kyo.32260.0.5Qe7XrrEB5vdt.pos_1-m_223508-sd_119",
+        "title": "常见问题"
+      },
+      {
+        "isHeader": false,
+        "link": "https://cs.mogu.com/help/selfservice.html?acm=3.mce.1_10_19kyk.32260.0.5Qe7XrrEB5vdu.pos_2-m_223506-sd_119",
+        "title": "自助服务"
+      },
+      {
+        "isHeader": false,
+        "link": "https://cs.mogu.com/help/contactus.html?acm=3.mce.1_10_19kym.32260.0.5Qe7XrrEB5vdv.pos_3-m_223507-sd_119",
+        "title": "联系客服"
+      },
+      {
+        "isHeader": false,
+        "link": "https://cs.mogu.com/help/feedback.html?acm=3.mce.1_10_19kyi.32260.0.5Qe7XrrEB5vdw.pos_4-m_223505-sd_119",
+        "title": "意见反馈"
+      }
+    ],
+    [
+      {
+        "isHeader": true,
+        "link": "",
+        "title": "权益保障"
+      },
+      {
+        "isHeader": false,
+        "link": "",
+        "title": "全国包邮"
+      },
+      {
+        "isHeader": false,
+        "link": "",
+        "title": "7天无理由退货"
+      },
+      {
+        "isHeader": false,
+        "link": "",
+        "title": "退货运费补贴"
+      },
+      {
+        "isHeader": false,
+        "link": "",
+        "title": "限时发货"
+      }
+    ],
+    [
+      {
+        "isHeader": true,
+        "link": "",
+        "title": "支付方式"
+      },
+      {
+        "isHeader": false,
+        "link": "",
+        "title": "微信支付"
+      },
+      {
+        "isHeader": false,
+        "link": "",
+        "title": "支付宝"
+      },
+      {
+        "isHeader": false,
+        "link": "",
+        "title": "白付美支付"
+      }
+    ],
+    [
+      {
+        "image": "",
+        "isHeader": true,
+        "link": "",
+        "title": "移动客户端下载"
+      },
+      {
+        "image": "https://s10.mogucdn.com/mlcdn/c45406/190221_3l1eje914h3h6ch88ce2l6eh0jl17_260x260.png",
+        "isHeader": false,
+        "link": "",
+        "title": "蘑菇街"
+      },
+      {
+        "image": "https://s10.mogucdn.com/mlcdn/c45406/190221_60dd5ic9e009acbjb005c8c2k8k89_260x260.png",
+        "isHeader": false,
+        "link": "",
+        "title": "美丽说"
+      },
+      {
+        "image": "https://s10.mogucdn.com/mlcdn/c45406/181029_1e2kfd9la7jg28063eleikgj3k033_158x144.png",
+        "isHeader": false,
+        "link": "",
+        "title": "uni引力"
+      }
+    ]
+  ],
+  "list": [
+    {
+      "link": "http://www.mogu-inc.com/home/home.html?acm=3.mce.1_10_19kz6.32163.0.5Qe7XrrEB5ve0.pos_0-m_223517-sd_119",
+      "title": "关于我们"
+    },
+    {
+      "link": "https://job.mogu.com?acm=3.mce.1_10_19kz8.32163.0.5Qe7XrrEB5ve1.pos_1-m_223518-sd_119",
+      "title": "招聘信息"
+    },
+    {
+      "link": "https://www.mogu.com/about?acm=3.mce.1_10_19kza.32163.0.5Qe7XrrEB5ve2.pos_2-m_223519-sd_119",
+      "title": "联系我们"
+    },
+    {
+      "link": "https://cycle.mogu.com/pc/zhaoshang?acm=3.mce.1_10_19kzg.32163.0.5Qe7XrrEB5ve3.pos_3-m_223522-sd_119",
+      "title": "商家入驻"
+    },
+    {
+      "link": "http://xd.mogu.com/work/home?acm=3.mce.1_10_19kzi.32163.0.5Qe7XrrEB5ve4.pos_4-m_223523-sd_119",
+      "title": "商家后台"
+    },
+    {
+      "link": "http://bbs.mogu.com?acm=3.mce.1_10_19kzm.32163.0.5Qe7XrrEB5ve5.pos_5-m_223525-sd_119",
+      "title": "商家社区"
+    },
+    {
+      "link": "https://cs.mogu.com/rule/index.html?acm=3.mce.1_10_1epzq.32163.0.5Qe7XrrEB5ve6.pos_6-m_343407-sd_119",
+      "title": "规则中心"
+    },
+    {
+      "link": "https://cs.mogu.com/rule/judgement.html?categoryId=1ng&acm=3.mce.1_10_1krsm.32163.0.5Qe7XrrEB5ve7.pos_7-m_484543-sd_119",
+      "title": "规则众议院"
+    },
+    {
+      "link": "https://securityreport.mogu.com/index?acm=3.mce.1_10_1fnr8.32163.0.5Qe7XrrEB5ve8.pos_8-m_365286-sd_119",
+      "title": "有害信息举报"
+    },
+    {
+      "link": "https://cs.mogu.com/rule/mogu.html?categoryId=1iq&ruleId=1536&acm=3.mce.1_10_1jtfw.32163.0.5Qe7XrrEB5ve9.pos_9-m_462282-sd_119",
+      "title": "用户隐私保护"
+    }
+  ],
+  "line": {
+    "link": "",
+    "title": "©2020 Mogu.com 杭州卷瓜网络有限公司"
+  },
+  "copyright1": [
+    [
+      {
+        "link": "https://s10.mogucdn.com/mlcdn/c45406/181119_0a3j5l86651d5ciklai091dd78d41_1239x1753.jpg?acm=3.mce.1_10_19kyq.32170.0.5Qe7XrrEB5vdG.pos_0-m_223509-sd_119",
+        "title": "营业执照：913301065526808764"
+      },
+      {
+        "link": "https://s11.mogucdn.com/mlcdn/c45406/190318_221djea3k0eac043j80450ekk07f0.pdf?acm=3.mce.1_10_19kyu.32170.0.5Qe7XrrEB5vdH.pos_1-m_223511-sd_119",
+        "title": "网络文化经营许可证：浙网文（2016）0349-219号"
+      },
+      {
+        "link": "https://s10.mogucdn.com/mlcdn/c45406/171109_1ll0b37l83lj8e3i35h28a92g31i3_1239x1754.jpg?acm=3.mce.1_10_19kys.32170.0.5Qe7XrrEB5vdI.pos_2-m_223510-sd_119",
+        "title": "增值电信业务经营许可证：浙B2-20110349"
+      },
+      {
+        "link": "https://s16.mogucdn.com/p2/160831/upload_506h1d771b5k20j9148ldjj0kdaab_960x1344.jpg?acm=3.mce.1_10_19l02.32170.0.5Qe7XrrEB5vdJ.pos_3-m_223533-sd_119",
+        "title": "安全责任书"
+      }
+    ],
+    [
+      {
+        "link": "",
+        "icon": "https://s3.mogucdn.com/mlcdn/c45406/190515_0gei4681dhlh0cf9ch0g33j97d88l_20x20.png",
+        "title": "浙公网安备 33010602010221号"
+      },
+      {
+        "link": "https://s3.mogucdn.com/mlcdn/c45406/180517_18k2jb35bgj4k7hc7jlkdaakb6haf.pdf?acm=3.mce.1_10_1i4u6.32170.0.5Qe7XrrEB5vdL.pos_5-m_423011-sd_119",
+        "title": "互联网药品信息服务资格证书编号：（浙)-经营性-2018-0002"
+      },
+      {
+        "link": "http://fw.zjfda.gov.cn/fda/info!detail.do?search['infoType']=30&search['xxgkGzdtType']=&id=59252&acm=3.mce.1_10_1i94i.32170.0.5Qe7XrrEB5vdM.pos_6-m_425789-sd_119",
+        "title": "浙网食A33010003"
+      },
+      {
+        "link": "https://s3.mogucdn.com/mlcdn/c45406/180622_7ad26gl9e679l0ilk6ic2bcdl2l0h.pdf?acm=3.mce.1_10_1ihmo.32170.0.5Qe7XrrEB5vdN.pos_7-m_431300-sd_119",
+        "title": "出版物网络交易平台服务经营备案证"
+      },
+      {
+        "link": "https://s3.mogucdn.com/mlcdn/c45406/180713_224e9f4ggdi3ic10lkck0989b4e03.pdf?acm=3.mce.1_10_1ineu.32170.0.5Qe7XrrEB5vdO.pos_8-m_435047-sd_119",
+        "title": "（浙）网械平台备字[2018]第00006号"
+      }
+    ]
+  ]
+}

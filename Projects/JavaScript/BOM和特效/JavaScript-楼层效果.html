@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>楼层效果</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		html, body {
+			width: 100%;
+			height: 100%;
+		}
+
+		ul {
+			width: 100%;
+			height: 100%;
+		}
+
+		ul > li {
+			list-style: none;
+			width: 100%;
+			height: 100%;
+			font-size: 100px;
+			text-align: center;
+		}
+
+		ol {
+			position: fixed;
+			left: 10px;
+			top: 50%;
+			transform: translateY(-50%);
+		}
+
+		ol>li {
+			list-style: none;
+			width: 100px;
+			line-height: 40px;
+			text-align: center;
+			border: 1px solid #000000;
+			cursor: pointer;
+		}
+
+		.selected {
+			background: deepskyblue;
+		}
+	</style>
+</head>
+<body>
+<ul>
+	<li>我是第1层</li>
+	<li>我是第2层</li>
+	<li>我是第3层</li>
+	<li>我是第4层</li>
+	<li>我是第5层</li>
+</ul>
+<ol>
+	<li class="selected">第1层</li>
+	<li>第2层</li>
+	<li>第3层</li>
+	<li>第4层</li>
+	<li>第5层</li>
+</ol>
+
+<script src="js/tools.js"></script>
+<script>
+	// initialize floors' color
+	let pages = document.querySelectorAll("ul>li");
+	let colorArr = ['green', 'blue', 'purple', 'red', 'yellow'];
+	for(let i = 0; i < pages.length; i++) {
+		pages[i].style.background = colorArr[i];
+	}
+
+	// selected upon onclick
+	let items = document.querySelectorAll("ol>li");
+	let currentItem = items[0];
+
+	// get screen height
+	let screenHeight = getScreenWidthHeight().height;
+
+	for(let i = 0; i < items.length; i++) {
+		items[i].onclick = function () {
+			currentItem.className = "";
+			this.className = "selected";
+			currentItem = this;
+
+			window.easeAnimationFloor(i * screenHeight);
+		}
+	}
+</script>
+</body>
+</html>
