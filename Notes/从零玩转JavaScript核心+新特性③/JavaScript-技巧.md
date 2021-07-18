@@ -517,6 +517,21 @@ function easeAnimation(ele, target) {
 
 
 
+### 显示访问网站的地名
+
+- 引入如下 `<script>` 标签然后取用其结果
+
+```html
+<script src="pv.sohu.com/cityjson"></script> <!-- var returnCitySN = {"cip": "119.147.179.60", "cid": "440000", "cname": "广东省"}; -->
+<script>
+	console.log(returnCitySN.cname); // 将这个通过DOM填入元素中
+</script>
+```
+
+
+
+
+
 ---
 
 ## 插件
