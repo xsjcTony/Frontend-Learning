@@ -30,3 +30,7 @@
 ## Ajax+jQuery
 
 - jQuery
+    - 基础
+    - 原理
+- Ajax
+

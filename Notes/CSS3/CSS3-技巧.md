@@ -74,6 +74,20 @@ display: -webkit-box; /* 配合 -webkit-line-clamp 使用 */
 
 
 
+---
+
+## `input` 系列 / 相关
+
+
+
+### `<textarea>` 禁止改变大小
+
+```css
+resize: none;
+```
+
+
+
 
 
 ---
@@ -174,5 +188,57 @@ video {
 
 ```css
 visibility: hidden;
+```
+
+
+
+### 将元素变模糊
+
+```css
+filter: blur(1px); /* 数值越大越模糊 */
+```
+
+
+
+### 进度条
+
+```html
+<head>
+  <style>
+    body {
+      background: #000000;
+    }
+
+    .bar {
+      width: 500px;
+      height: 4px;
+      background: rgba(255, 255, 255, 0.5);
+    }
+
+    .bar .line {
+      width: 0;
+      height: 100%;
+      background: #ffffff;
+    }
+
+    .bar .line .dot {
+      position: relative;
+      top: -5px;
+      left: 100%;
+      width: 14px;
+      height: 14px;
+      transform: translateX(-50%);
+      border-radius: 50%;
+      background: #ffffff;
+    }
+  </style>
+</head>
+<body>
+<div class="bar">
+	<div class="line">
+		<div class="dot"></div>
+	</div>
+</div>
+</body>
 ```
 

@@ -378,7 +378,7 @@ console.log(res); // 5
 
 ```js
 let arr = ["a", "b", "c"];
-let res = arr.push("d", "e");
+let res = arr.unshift("d", "e");
 console.log(arr); // ["d", "e", "a", "b", "c"]
 console.log(res); // 5
 ```
@@ -440,7 +440,7 @@ console.log(res); // c
 
 ```js
 let arr = ["a", "b", "c"];
-let res = arr.pop();
+let res = arr.shift();
 console.log(arr); // ["b", "c"]
 console.log(res); // a
 ```

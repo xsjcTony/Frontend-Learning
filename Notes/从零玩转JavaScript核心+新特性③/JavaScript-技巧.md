@@ -1,4 +1,4 @@
-# 技巧
+# JavaScript - 技巧
 
 
 
@@ -509,6 +509,11 @@ function easeAnimation(ele, target) {
 - 鼠标点击的位置的 `offsetX` / 进度条的宽度 = 当前播放的时间 / 总时长
 - 当前播放的时间 = 鼠标点击的位置的 `offsetX` / 进度条的宽度 * 总时长
 
+数据的取舍
+
+- `点击事件` / `移动事件` 都需要使用 鼠标位置距离可视区域左边/上方的距离 减去 进度条距离可视区域左边/上方的距离 来计算, 不然会有奇怪的flick现象
+- 类似上方 "电商大图预览"
+
 
 
 ### 将超出指定行数范围的文字用 `...` 代替
@@ -564,6 +569,14 @@ function easeAnimation(ele, target) {
 
 - art-template (腾讯)
     - [aui/art-template: High performance JavaScript templating engine](https://github.com/aui/art-template)
+
+
+
+### 基于jQuery的自定义滚动条
+
+> [jQuery custom content scroller – malihu | web design](http://manos.malihu.gr/jquery-custom-content-scroller/)
+
+- 一个基于jQuery的插件, 有各式各样的好看滚动条
 
 
 

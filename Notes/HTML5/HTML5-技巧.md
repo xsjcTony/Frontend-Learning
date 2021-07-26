@@ -36,6 +36,25 @@ button.onclick = function () {
 2. 在搜索框输入: `autoplay`
 3. 修改 `autoplay` 的选项为 `no user gesture is required`
 
+
+
+### 播放相关操作
+
+预加载 / 获取视频 / 播放时长 / 监听音频正在播放 / 暂停 / 播放 / 监听音频播放完毕
+
+- 同 `<video>`
+
+
+
+获取 / 设置音量
+
+- 取值为 `0~1`
+
+```js
+audioElement.volume; // 获取音量, 返回一个0~1的Number
+audioElement.volume = value; // 设置音量, 取值为0~1
+```
+
 ---
 
 ## `<figure>`
@@ -61,7 +80,9 @@ button.onclick = function () {
 
 
 
-### 预加载
+### 播放相关操作
+
+预加载
 
 - `oncanplay` 事件表示视频加载完毕
 
@@ -71,7 +92,7 @@ videoElement.oncanplay = function () {}
 
 
 
-### 获取视频 / 播放时长
+获取视频 / 播放时长
 
 - 返回视频的时长 (s)
 
@@ -82,7 +103,7 @@ videoElement.currentTime // 当前时长
 
 
 
-### 监听视频正在播放
+监听视频正在播放
 
 ```js
 videoElement.ontimeupdate = function () {}
@@ -90,7 +111,7 @@ videoElement.ontimeupdate = function () {}
 
 
 
-### 暂停 / 播放
+暂停 / 播放
 
 ```js
 videoElement.play()
@@ -99,7 +120,7 @@ videoElement.pause()
 
 
 
-### 监听视频播放完毕
+监听视频播放完毕
 
 ```js
 videoElement.onended = function() {}
@@ -107,7 +128,7 @@ videoElement.onended = function() {}
 
 
 
-### 视频全屏
+视频全屏
 
 - 兼容性写法
 
