@@ -286,25 +286,25 @@ console.log(a, b, c); // 1, 3, 5
 
 
 
-#### 作用
+作用
 
 - 从 `Array` 的一个位置开始删除并/或添加一些数据
 
-#### 格式
+格式
 
 - `arr.splice(start, deleteCount, item1, item2, .....);`
 
-#### 参数
+参数
 
 - `start` : 索引起始位置
 - `deleteCount` : 删除数据的个数
 - `item` : (Optional) 需要添加进 `Array` 的数据
 
-#### 返回值
+返回值
 
 - 一个包含所有被删除数据的 `Array`
 
-#### 示例
+示例
 
 ```js
 let arr = ["a", "b", "c"];
@@ -323,23 +323,23 @@ console.log(res); // ["b", "c"]
 
 
 
-#### 作用
+作用
 
 - 从 `Array` 末尾添加一个或多个数据
 
-#### 格式
+格式
 
 - `arr.push(item1, item2, .....);`
 
-#### 参数
+参数
 
 - `item` : 需要添加进 `Array` 的数据
 
-#### 返回值
+返回值
 
 - 新增内容之后的 `Array` 的长度
 
-#### 示例
+示例
 
 ```js
 let arr = ["a", "b", "c"];
@@ -358,23 +358,23 @@ console.log(res); // 5
 
 
 
-#### 作用
+作用
 
 - 从 `Array` 开始添加一个或多个数据
 
-#### 格式
+格式
 
 - `arr.unshift(item1, item2, .....);`
 
-#### 参数
+参数
 
 - `item` : 需要添加进 `Array` 的数据
 
-#### 返回值
+返回值
 
 - 新增内容之后的 `Array` 的长度
 
-#### 示例
+示例
 
 ```js
 let arr = ["a", "b", "c"];
@@ -393,19 +393,19 @@ console.log(res); // 5
 
 
 
-#### 作用
+作用
 
 - 删除 `Array` 中的最后一个数据
 
-#### 格式
+格式
 
 - `arr.pop();`
 
-#### 返回值
+返回值
 
 - 被删除的数据
 
-#### 示例
+示例
 
 ```js
 let arr = ["a", "b", "c"];
@@ -424,19 +424,19 @@ console.log(res); // c
 
 
 
-#### 作用
+作用
 
 - 删除 `Array` 中的第一个数据
 
-#### 格式
+格式
 
 - `arr.shift();`
 
-#### 返回值
+返回值
 
 - 被删除的数据
 
-#### 示例
+示例
 
 ```js
 let arr = ["a", "b", "c"];
@@ -455,19 +455,19 @@ console.log(res); // a
 
 
 
-#### 作用
+作用
 
 - 将 `Array` 转换为 `String`
 
-#### 格式
+格式
 
 - `arr.toString();`
 
-#### 返回值
+返回值
 
 - 表示数组内容的 `String`
 
-#### 示例
+示例
 
 ```js
 let arr = ["a", "b", "c"];
@@ -485,24 +485,24 @@ console.log(res); // "a,b,c"
 
 
 
-#### 作用
+作用
 
 - 将 `Array` 通过指定的连接符转换为 `String`
 
-#### 格式
+格式
 
 - `arr.join();`
 - `arr.join(separator);`
 
-#### 参数
+参数
 
 - `separator` : (Optional) 连接符
 
-#### 返回值
+返回值
 
 - 表示数组内容的 `String` , 如果是 `undefined` / `null` / 空 `Array` 则返回空 `String`
 
-#### 示例
+示例
 
 ```js
 let arr = ["a", "b", "c"];
@@ -520,23 +520,23 @@ console.log(res); // "a+b+c"
 
 
 
-#### 作用
+作用
 
 - 合并两个或多个 `Array`
 
-#### 格式
+格式
 
 - `arr.concat(arr2);`
 
-#### 参数
+参数
 
 `array` : (Optional) 将要合并的 `Array`
 
-#### 返回值
+返回值
 
 - 一个新的合并后的 `Array` , 不会修改原来的 `Array` , 如果 `array` 参数省略, 则返回当前 `Array` 的复制品
 
-#### 示例
+示例
 
 ```js
 let arr = [1, 3, 5];
@@ -557,19 +557,19 @@ console.log(arr2); // [2, 4, 6]
 
 
 
-#### 作用
+作用
 
 - 反转 `Array` 的内容
 
-#### 格式
+格式
 
 - `arr.reverse();`
 
-#### 返回值
+返回值
 
 - 反转后的 `Array`
 
-#### 示例
+示例
 
 ```js
 let arr = [1, 2, 3, 4, 5];
@@ -588,24 +588,24 @@ console.log(arr); // [5, 4, 3, 2, 1]
 
 
 
-#### 作用
+作用
 
 - 截取 `Array` 中指定范围中的内容并放在一个新的 `Array` 中
 
-#### 格式
+格式
 
 - `arr.slice(start, end);`
 
-#### 参数
+参数
 
 - `start` : 索引起始位置 (包含)
 - `end` : 索引结束为止 (不包含)
 
-#### 返回值
+返回值
 
 - 一个包含提取出的数据的新 `Array`
 
-#### 示例
+示例
 
 ```js
 // index   0  1  2  3  4
@@ -625,24 +625,24 @@ console.log(arr); // [1, 2, 3, 4, 5]
 
 
 
-#### 作用
+作用
 
 - 从左至右查找元素在 `Array` 中的位置
 
-#### 格式
+格式
 
 - `arr.indexOf(element, fromIndex);`
 
-#### 参数
+参数
 
 - `element` : 想要查找的元素
 - `fromIndex` : (Optional) 开始进行查找的索引位置, 默认为 `0`
 
-#### 返回值
+返回值
 
 - 元素第一次出现的 `index` 数, 如果元素不存在会返回 `-1`
 
-#### 示例
+示例
 
 ```js
 // index   0  1  2  3  4  5
@@ -663,24 +663,24 @@ console.log(res2); // -1
 
 
 
-#### 作用
+作用
 
 - 从右至左查找元素在 `Array` 中的位置
 
-#### 格式
+格式
 
 - `arr.lastIndexOf(element, fromIndex);`
 
-#### 参数
+参数
 
 - `element` : 想要查找的元素
 - `fromIndex` : (Optional) 开始进行查找的索引位置, 默认为 `Array.length - 1`
 
-#### 返回值
+返回值
 
 - `Array` 中元素最后一次出现的 `index` 数, 如果元素不存在会返回 `-1`
 
-#### 示例
+示例
 
 ```js
 // index   0  1  2  3  4  5
@@ -699,24 +699,24 @@ console.log(res); // 5
 
 
 
-#### 作用
+作用
 
 - 查找元素是否在 `Array` 中存在
 
-#### 格式
+格式
 
 - `arr.includes(element, fromIndex);`
 
-#### 参数
+参数
 
 - `element` : 想要查找的元素
 - `fromIndex` : (Optional) 开始进行查找的索引位置, 默认为 `0`
 
-#### 返回值
+返回值
 
 - 元素存在则返回 `true` , 不存在则返回 `false`
 
-#### 示例
+示例
 
 ```js
 // index   0  1  2  3  4  5
@@ -737,25 +737,25 @@ console.log(res2); // -1
 
 
 
-#### 作用
+作用
 
 - 把所有的元素变成一个数值
 
-#### 格式
+格式
 
 - `arr.fill(start, end);`
 
-#### 参数
+参数
 
 - `value` : 替换的值
 - `start` : (Optional) 开始进行替换的索引位置, 默认为 `0` (包含)
 - `end` : (Optional) 结束替换的索引位置, 默认为 `Array.length - 1` (不包含)
 
-#### 返回值
+返回值
 
 - 编辑过后的 `Array` 
 
-#### 示例
+示例
 
 ```js
 let arr = [1, 2, 3, 4, 5];
@@ -846,11 +846,11 @@ console.log(index); // 2
 
 
 
-#### 作用
+作用
 
 - 返回 `Array` 中满足传入的 `Function` 条件的第一个 `element` 的 `value` (从左至右)
 
-#### 格式
+格式
 
 ```js
 // Arrow function
@@ -869,7 +869,7 @@ find(function callbackFn(element, index, array){ ... })
 find(function callbackFn(element, index, array) { ... }, thisArg)
 ```
 
-#### 参数
+参数
 
 - `callbackFn` : 在每个 `element` 上将要执行的 `Function` , 条件满足返回 `true` , 否则返回 `false` , 可以包含 `1` 到 `3` 个 `parameter`
     - `element` : 当前遍历至的 `element`
@@ -877,11 +877,11 @@ find(function callbackFn(element, index, array) { ... }, thisArg)
     - `array` : (Optional) 当前调用 `forEach()` 的 `Array`
 - `thisArg` : (Optional) 执行 `callbackFn` 的时候使用的 `this` 的数值
 
-#### 返回值
+返回值
 
 - 从左至右第一个满足传入的 `Function` 条件的 `element` 的 `value` , 如没有满足条件的则返回 `undefined`
 
-#### 原理
+原理
 
 ```js
 Array.prototype.myFind = function (fn) { // this是调用myFind()的数组
@@ -894,7 +894,7 @@ Array.prototype.myFind = function (fn) { // this是调用myFind()的数组
 }
 ```
 
-#### 示例
+示例
 
 ```js
 // index   0  1  2  3  4
@@ -918,11 +918,11 @@ console.log(value); // 6
 
 
 
-#### 作用
+作用
 
 - 创建一个新的 `Array` , 包含原 `Array` 中满足传入的 `Function` 条件的所有 `element`
 
-#### 格式
+格式
 
 ```js
 // Arrow function
@@ -941,7 +941,7 @@ filter(function callbackFn(element, index, array){ ... })
 filter(function callbackFn(element, index, array) { ... }, thisArg)
 ```
 
-#### 参数
+参数
 
 - `callbackFn` : 在每个 `element` 上将要执行的 `Function` , 条件满足返回 `true` , 否则返回 `false` , 可以包含 `1` 到 `3` 个 `parameter`
     - `element` : 当前遍历至的 `element`
@@ -949,11 +949,11 @@ filter(function callbackFn(element, index, array) { ... }, thisArg)
     - `array` : (Optional) 当前调用 `forEach()` 的 `Array`
 - `thisArg` : (Optional) 执行 `callbackFn` 的时候使用的 `this` 的数值
 
-#### 返回值
+返回值
 
 - 一个新的 `Array` 包含所有满足传入的 `Function` 条件的 `element` , 若没有满足条件的 `element` , 则返回一个空 `Array`
 
-#### 原理
+原理
 
 ```js
 Array.prototype.myFilter = function (fn) { // this是调用myFind()的数组
@@ -967,7 +967,7 @@ Array.prototype.myFilter = function (fn) { // this是调用myFind()的数组
 }
 ```
 
-#### 示例
+示例
 
 ```js
 // index   0  1  2  3  4
@@ -991,11 +991,11 @@ console.log(res); // [2, 6, 6]
 
 
 
-#### 作用
+作用
 
 - 创建一个新的 `Array` , 包含原 `Array` 中所有 `element` 执行传入的 `Function` 之后的结果
 
-#### 格式
+格式
 
 ```js
 // Arrow function
@@ -1014,7 +1014,7 @@ map(function callbackFn(element, index, array){ ... })
 map(function callbackFn(element, index, array) { ... }, thisArg)
 ```
 
-#### 参数
+参数
 
 - `callbackFn` : 在每个 `element` 上将要执行的 `Function` , 条件满足返回 `true` , 否则返回 `false` , 可以包含 `1` 到 `3` 个 `parameter`
     - `element` : 当前遍历至的 `element`
@@ -1022,11 +1022,11 @@ map(function callbackFn(element, index, array) { ... }, thisArg)
     - `array` : (Optional) 当前调用 `forEach()` 的 `Array`
 - `thisArg` : (Optional) 执行 `callbackFn` 的时候使用的 `this` 的数值
 
-#### 返回值
+返回值
 
 - 一个新的 `Array` 包含所有 `element` 执行传入的 `Function` 的结果
 
-#### 原理
+原理
 
 ```js
 Array.prototype.myMap = function (fn) { // this是调用myFind()的数组
@@ -1038,7 +1038,7 @@ Array.prototype.myMap = function (fn) { // this是调用myFind()的数组
 }
 ```
 
-#### 示例
+示例
 
 ```js
 // index   0  1  2  3  4
@@ -1062,11 +1062,11 @@ console.log(res); // [undefined, 2, 6, undefined, 6]
 
 
 
-#### 作用
+作用
 
 - 对 `Array` 中的 `element` 进行排序, 默认为 `ascending` , 方式是先将 `element` 全部转化为 `String` , 再比较他们的 `UTF-16` 编码
 
-#### 格式
+格式
 
 ```js
 // Functionless
@@ -1082,17 +1082,17 @@ sort(compareFn)
 sort(function compareFn(firstEl, secondEl) { ... })
 ```
 
-#### 参数
+参数
 
 - `compareFunction` : (Optional) 决定排序顺序的 `Function` , 接收两个 `parameters` , 如果没有该函数, 则默认按照 `ascending` 排序
     - `firstEl` : 第一个用于比较的 `element`
     - `secondEl` : 第二个用于比较的 `element`
 
-#### 返回值
+返回值
 
 - 排序后的原 `Array` 
 
-#### 规律
+规律
 
 - 如果 `compareFunction(a, b)` 小于 `0` , 那么 `a` 会被排列到 `b` 之前
 
@@ -1103,7 +1103,7 @@ sort(function compareFn(firstEl, secondEl) { ... })
     - 如果需要 `ascending` 排序, 那么就返回 `a - b`
     - 如果需要 `descending` 排序, 那么就返回 `b - a`
 
-#### 示例
+示例
 
 ```js
 let arr1 = ["c", "a", "b"];

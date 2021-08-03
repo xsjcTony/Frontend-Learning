@@ -238,7 +238,7 @@ person.say.call(obj); // {name: "tony"}
 #### `apply()`
 
 - `function.apply(object, [parameters])`
-- 修改 `Function` 或 `Method` 中的 `this` 为指定的 `Object` , 并立即调用, 传递的 `parameter` 通过 `Array` 的形式写在后面
+- 修改 `Function` 或 `Method` 中的 `this` 为指定的 `Object` , 并立即调用, 传递的 `parameter` 通过 `Array` / `伪数组` 的形式写在后面
 
 ```js
 let obj = {

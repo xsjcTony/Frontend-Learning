@@ -107,7 +107,7 @@ element.addEventListener("eventName", function () {})
 格式
 
 ```js
-element.attachEvent("eventName", function () {})
+element.attachEvent("onEventName", function () {})
 ```
 
 注意点

@@ -653,40 +653,6 @@ console.log(subStr); // "bcd"
 
 
 
-#### `String.split()`
-
-
-
-> [String.prototype.split() - JavaScript | MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/split)
-
-
-
-作用
-
-- 将 `String` 分割并全部有序存储在一个新的 `Array` 中
-
-格式
-
-- `str.split(separator, limit);`
-
-参数
-
-- `separator` : (Optional) 分隔符, 每次遇到分隔符就截断 `String`
-- `limit` : `Array` 最多包含的 `element` 数量, 若为 `0` 则返回`[]`
-
-返回值
-
-- 一个包含所有被分割的 `String` 片段的 `Array`
-
-示例
-
-```js
-let str = "1-3-5";
-console.log(str.split("-")); // ["1", "3", "5"]
-```
-
-
-
 #### `String.startsWith()`
 
 

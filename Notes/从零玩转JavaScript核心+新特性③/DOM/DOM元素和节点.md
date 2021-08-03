@@ -264,7 +264,7 @@
 
 #### `HTMLElement.innerText`
 
-- 返回该 `Element` 的内容
+- 返回该 `Element` 的内容 (包含子元素中的文本内容)
 - 返回类型 `DOMString`
 - 不包含标签
 - 不包含空格

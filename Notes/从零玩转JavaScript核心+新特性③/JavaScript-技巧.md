@@ -2,9 +2,46 @@
 
 
 
-## `let self = this`
+## 面向对象 (Object-Oriented)
+
+
+
+### `let self = this`
 
 - 将当前的 `this` 存储进变量 `self` 中, 以便 `this` 更改后可以继续使用
+
+---
+
+## 数组 (Array)
+
+
+
+### `数组` 转换为 `伪数组`
+
+- 通过 `[].push.apply(obj, arr)` 将 `arr` 中的数据通过数组的形式传入 `obj` 中, 即可将 `obj` 变为 `伪数组`
+- `arr` 可以是 `数组` / 或 `伪数组`
+
+```js
+let arr = [1, 3, 5];
+let obj = {};
+[].push.apply(obj, arr);
+console.log(obj); // {0: 1, 1: 3, 2: 5, length: 3}
+```
+
+
+
+### `伪数组` 转换为 `数组`
+
+- 操作自定义 `伪数组` 时, 一律先转换为 `数组`
+
+- 通过 `[].slice.call(obj)` 将 `obj` 中的数据通过 `slice` 方法转换为 `数组` 赋值给 `arr` , 即可将 `obj` 变为 `数组`
+- `arr` 可以是 `数组` / 或 `伪数组`
+
+```js
+let obj = [0: 1, 1: 3, 2: 5, length: 3];
+let arr = [].slice.call(obj);
+console.log(arr); // [1, 3, 5]
+```
 
 ---
 
@@ -336,6 +373,19 @@ function preLoadImages(urls, fn) {
 ```
 
 
+
+### 代替 `window.onload` 的方案
+
+- `window.onload` 会等到 `DOM元素` 以及所有资源 ( 图片等 ) 加载完毕才会执行, 因此性能不好
+- 使用 `DOMContentLoaded` 代替可以使性能更好 (<span style="color: yellow;">>=IE9</span>)
+- 低级版本浏览器见如下代码
+
+```js
+document.addEventListener("DOMContentLoaded", function () {}); // >=IE9
+document.attachEvent("onreadystatechange", function () { // <IE9
+  if(document.readyState === "complete") {}
+});
+```
 
 
 
