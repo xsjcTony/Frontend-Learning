@@ -1,0 +1,144 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  background: url("../images/body_bg.jpg") no-repeat center 0;
+}
+
+.nav {
+  width: 100%;
+  height: 48px;
+}
+
+.nav > img {
+  width: 100%;
+  vertical-align: bottom;
+}
+
+.content {
+  overflow: hidden;
+  width: 1000px;
+  margin: 200px auto 0;
+  background: #ebdbd4;
+}
+
+.content > .left {
+  float: left;
+  width: 150px;
+}
+
+.content > .right {
+  float: right;
+  width: 240px;
+}
+
+.content > .center {
+  float: left;
+  width: 600px;
+  height: 168px;
+  background: url("../images/comment.png") no-repeat 0 0 / 600px 168px;
+}
+
+.center > .comment {
+  width: 570px;
+  height: 73px;
+  margin: 45px 0 0 15px;
+  resize: none;
+  border: none;
+  outline: none;
+}
+
+.center > .send {
+  width: 82px;
+  height: 30px;
+  margin: 4px 0 0 506px;
+  cursor: pointer;
+  color: #ffffff;
+  border: none;
+  background: #fd8040;
+}
+
+.content > .messageList {
+  float: left;
+  width: 600px;
+  background: #ffffff;
+}
+
+.messageList > .info {
+  padding: 10px 20px;
+  border-bottom: 2px solid #cccccc;
+}
+
+.info > .info-text {
+  line-height: 25px;
+  margin-bottom: 10px;
+}
+
+.info > .info-operation {
+  overflow: hidden;
+  width: 100%;
+}
+
+.info-operation > .info-time {
+  font-size: 13px;
+  float: left;
+  color: #cccccc;
+}
+
+.info-operation > .info-handle {
+  font-size: 13px;
+  float: right;
+}
+
+.info-handle > a {
+  margin-left: 10px;
+  padding-left: 25px;
+  text-decoration: none;
+  color: #cccccc;
+  background: url("../images/icons.png") no-repeat 0 0;
+}
+
+.info-handle > a:nth-child(2) {
+  background-position: 0 -17px;
+}
+
+.info-handle > a:nth-child(3) {
+  background-position: 0 -33px;
+}
+
+.pagination {
+  box-sizing: border-box;
+  width: 1000px;
+  height: 40px;
+  margin: 0 auto;
+  padding: 10px;
+  text-align: right;
+  background: #9f5024;
+}
+
+.pagination > a {
+  line-height: 20px;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin-left: 10px;
+  text-align: center;
+  text-decoration: none;
+  color: #2b2b2b;
+  border: 1px solid #cccccc;
+}
+
+.pagination > a:hover {
+  background: red;
+}
+
+.pagination > .current {
+  background: red;
+}

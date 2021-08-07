@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>无限循环滚动</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		div {
+			width: 600px;
+			border: 1px solid #000000;
+			margin: 100px auto;
+			overflow: hidden;
+			background: #000000;
+		}
+
+		ul {
+			list-style: none;
+			width: 1800px;
+		}
+
+		ul > li {
+			float: left;
+		}
+
+		ul > li > img {
+			vertical-align: bottom;
+		}
+	</style>
+	<script src="js/jquery-1.12.4.js"></script>
+	<script>
+		$(function () {
+			let ulMarginLeft = 0;
+			let timerId = autoPlay();
+
+			$("li").hover(function () {
+				clearInterval(timerId);
+				// mask
+				$(this).siblings().fadeTo(100, 0.5);
+				$(this).fadeTo(100, 1);
+			}, function () {
+				timerId = autoPlay();
+				$("li").fadeTo(100, 1);
+			});
+
+			function autoPlay() {
+				return setInterval(function () {
+					ulMarginLeft -= 10;
+					if(ulMarginLeft <= -1200) {
+						ulMarginLeft = 0;
+					}
+					$("ul").css("marginLeft", ulMarginLeft);
+				}, 50);
+			}
+		});
+	</script>
+</head>
+<body>
+<div>
+	<ul>
+		<li><img src="images/a.jpg" alt></li>
+		<li><img src="images/b.jpg" alt></li>
+		<li><img src="images/c.jpg" alt></li>
+		<li><img src="images/d.jpg" alt></li>
+		<li><img src="images/a.jpg" alt></li>
+		<li><img src="images/b.jpg" alt></li>
+	</ul>
+</div>
+</body>
+</html>

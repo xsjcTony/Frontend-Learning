@@ -1243,9 +1243,23 @@ node.clone(true)
 
 
 
-
-
 ### 注意点
 
 - 所有操作的节点或元素均为 `jQuery对象`
 - 如果 `jQuery对象` 中有多个 `DOM` 元素, 那么都会被遍历并执行相应CRUD方法
+
+---
+
+## `jQuery` 插件
+
+
+
+- 文件名格式为 `jquery.xxxxx.js`
+- 文件内部格式为如下
+
+```js
+;(function ($, window) {
+  // codes
+})(jQuery, window);
+```
+

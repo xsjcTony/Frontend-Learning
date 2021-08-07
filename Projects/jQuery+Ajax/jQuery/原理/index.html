@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>jQuery原理</title>
+  <script src="js/aquery-1.0.0.js"></script>
+<!--  <script src="js/jquery-1.12.4.js"></script>-->
+  <script>
+    $(function () {
+      function test1() {
+        alert("test1");
+      }
+      function test2() {
+        alert("test2");
+      }
+      console.log($("button").on("click", test1));
+      console.log($("button").on("click", test2));
+      console.log($("button").clone(true).insertAfter($("button").eq(1)));
+    })
+  </script>
+</head>
+<body>
+<button>我是按钮1</button>
+<button>我是按钮2</button>
+</body>
+</html>

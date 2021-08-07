@@ -140,9 +140,40 @@ function toFullVideo(videoDom){
     return videoDom.webkitRequestFullScreen();
   }else if(videoDom.mozRequestFullScreen){
     return videoDom.mozRequestFullScreen();
-  }else{
+  }else if(videoDom.msRequestFullscreen){
     return videoDom.msRequestFullscreen();
   }
 }
+```
+
+---
+
+## `<form>`
+
+
+
+### 提交数据
+
+- 使用 `method` 属性定义 `get` / `post` 方法
+- 给其中的 `input` 等元素添加 `name` 是属性
+
+```html
+<form action="#" method="post">
+	<input type="text">
+</form>
+```
+
+
+
+### 上传文件
+
+- 使用 `POST` 方法
+
+- 添加 `enctype` 属性, 值为 `multipart/form-data`
+
+```html
+<form action="#" method="post" enctype="multipart/form-data">
+	<input type="file">
+</form>
 ```
 

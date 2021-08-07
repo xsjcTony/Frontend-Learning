@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>02-jQuery入口函数测试</title>
+    <!--<script src="js/jquery-1.12.4.js"></script>-->
+    <script src="js/aquery-1.0.0.js"></script>
+    <script>
+        window.onload = function (ev) {
+        // $(function () {
+            /*
+            jQ入口函数传入不同参数得到的实例
+            1.传入 '' null undefined NaN  0  false
+            2.传入html片段
+            3.传入选择器
+            4.传入数组
+            5.传入伪数组
+            6.传入对象
+            7.传入DOM元素
+            8.传入基本数据类型
+             */
+            //  1.传入 '' null undefined NaN  0  false
+            // 会返回一个空的jQuery对象给我们
+            console.log($());
+            console.log($(''));
+            console.log($(null));
+            console.log($(undefined));
+            console.log($(NaN));
+            console.log($(0));
+            console.log($(false));
+
+            // 2.传入html片段
+            // 会将创建好的DOM元素存储到jQuery对象中返回
+            console.log($('<p>1</p><p>2</p><p>3</p>'));
+            // console.log($('    <div><p>1</p></div><div><p>2</p></div>    '));
+
+            // 3.传入选择器
+            // 会将找到的所有元素存储到jQuery对象中返回
+            console.log($('li'));
+
+            // 4.传入数组
+            // 会将数组中存储的元素依次存储到jQuery对象中立返回
+            var arr = [1, 2, 3, 4, 5, 6];
+            console.log($(arr));
+
+            // 5.传入伪数组
+            // 会将数组中存储的元素依次存储到jQuery对象中立返回
+            var likeArr = {0:"lnj", 1:"33", 2:"male", length: 3};
+            console.log($(likeArr));
+
+            // console.log(typeof arr);
+            // console.log(typeof likeArr);
+            // console.log(arr.toString());
+            // console.log(likeArr.toString());
+            // console.log(({}).toString.apply(arr));
+
+            // 6.传入对象
+            // 会将传入的对象存储到jQuery对象中返回
+            function Person() {}
+            console.log($(new Person()));
+
+            // 7.传入DOM元素
+            // 会将传入的DOM元素存储到jQuery对象中返回
+            console.log($(document.createElement('div')));
+
+            // 8.传入基本数据类型
+            // 会将传入的基本数据类型存储到jQuery对象中返回
+            console.log($(123));
+            console.log($(true));
+
+            /*
+             1.传入 '' null undefined NaN  0  false, 返回空的jQuery对象
+             2.字符串:
+             代码片段:会将创建好的DOM元素存储到jQuery对象中返回
+             选择器: 会将找到的所有元素存储到jQuery对象中返回
+             3.数组:
+             会将数组中存储的元素依次存储到jQuery对象中立返回
+             4.除上述类型以外的:
+             会将传入的数据存储到jQuery对象中返回
+            */
+            // });
+        }
+    </script>
+</head>
+<body>
+<ul>
+    <li class="item">ul中的li1</li>
+    <li class="item">ul中的li2</li>
+    <li class="item">ul中的li3</li>
+</ul>
+</body>
+</html>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>冲突问题</title>
+  <script src="js/jquery-1.12.4.js"></script>
+  <script>
+    let tony = jQuery.noConflict();
+    tony(function () {
+      alert("hello Tony");
+    });
+  </script>
+</head>
+<body>
+
+</body>
+</html>

@@ -632,6 +632,55 @@ function easeAnimation(ele, target) {
 
 ---
 
+## `JSON`
+
+
+
+### `eval()` / 非标准 `JSON` 字符串
+
+- `Uncaught SyntaxError: Unexpected token e in JSON at position 1` 代表服务端返回的不是标准的 `JSON` 字符串
+- 对于非标准 `JSON` 字符串要使用 `eval()` 方法来转换成 `对象` , 但是要在字符串前后加上 `(` 和 `)`
+- `eval()` 也可以转换标准的  `JSON` 字符串, 是万能的
+- <span style="color: yellow">企业开发中不要使用</span>
+
+```js
+let str = `{name: Tony, age: 24}`;
+let obj = eval("(" + str + ")");
+```
+
+
+
+---
+
+## `window`
+
+
+
+### 获取网页路径
+
+```js
+window.location.pathname // 包含文件名
+window.location.pathname.slice(0, window.location.pathname.lastIndexOf("/")) // 不包含文件名
+```
+
+
+
+---
+
+## `document`
+
+
+
+### 获取网页域名
+
+```js
+d
+```
+
+
+
+---
+
 ## 其他
 
 

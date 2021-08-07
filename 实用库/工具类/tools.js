@@ -225,6 +225,115 @@
     }
   }
 
+  /**
+   * ajax function
+   * @param {Object} option - an object including HTTP request type (either GET or POST), url, data, timeout, success callback function and error callback function
+   */
+  function ajax(option) {
+    // ajax
+    let xhr = new XMLHttpRequest();
+    let timer;
+
+    // GET
+    if(option.type.toUpperCase() === "GET") {
+      // deal with obj
+      let res = [];
+      for(let key in option.data) {
+        res.push(`${encodeURIComponent(key)}=${encodeURIComponent(option.data[key])}`);
+      }
+      option.url = `${option.url}?${res.join("&")}`;
+
+      xhr.open(option.type, option.url, true);
+      xhr.send();
+    }
+    // POST
+    else if(option.type.toUpperCase() === "POST") {
+      // deal with obj
+      let res = [];
+      for(let key in option.data) {
+        res.push(`${encodeURIComponent(key)}=${encodeURIComponent(option.data[key])}`);
+      }
+      let requestHeader = res.join("&");
+
+      xhr.open(option.type, option.url, true);
+      xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+      xhr.send(requestHeader);
+    }
+    // invalid type
+    else {
+      console.log("Invalid ajax type: " + option.type);
+      return;
+    }
+
+    xhr.onreadystatechange = function () {
+      if(xhr.readyState === 4) {
+        clearInterval(timer);
+        if(xhr.status >= 200 && xhr.status < 300 || xhr.status === 304) {
+          option.success(xhr);
+        } else {
+          option.error(xhr);
+        }
+      }
+    }
+
+    // timeout > 0
+    if(option.timeout) {
+      timer = setInterval(function () {
+        xhr.abort();
+        clearInterval(timer);
+      }, option.timeout);
+    }
+  }
+
+  /**
+   * Add cookie.
+   * @param {string} key - Key of the cookie.
+   * @param {string} value - Value of the cookie.
+   * @param {number} [expiryDays] - Expire time in days of the cookie in GMT format.
+   * @param {string} [path] - Path of the cookie.
+   * @param {string} [domain] - Domain of the cookie.
+   */
+  function addCookie(key, value, expiryDays, path, domain) {
+    // deal with default arguments value
+    path = path || window.location.pathname.slice(0, window.location.pathname.lastIndexOf("/"));
+    domain = domain || document.domain;
+    if(!expiryDays) {
+      document.cookie = `${key}=${value};path=${path};domain=${domain};`;
+    } else {
+      let date = new Date();
+      date.setDate(date.getDate() + expiryDays);
+      document.cookie = `${key}=${value};expires=${expiryDays};path=${path};domain=${domain};`;
+    }
+  }
+
+  /**
+   * Get cookie value based on given key.
+   * @param {string} key - Key of the cookie to search for.
+   * @returns {string} - The value of the cookie, undefined if key is not found.
+   */
+  function getCookie(key) {
+    let res = document.cookie.split(";");
+    for(let i = 0; i < res.length; i++) {
+      let temp = res[i].split("=");
+      if(temp[0].trim() === key) {
+        return temp[1];
+      }
+    }
+  }
+
+  /**
+   * Delete cookie based on given key.
+   * @param {string} key - Key of the cookie to be deleted.
+   * @param {string} [path] - Path of the cookie to be deleted.
+   */
+  function deleteCookie(key, path) {
+    if(path) {
+      addCookie(key, getCookie(key), -1, path);
+    } else {
+      addCookie(key, getCookie(key), -1);
+    }
+  }
+
   window.getScreenWidthHeight = getScreenWidthHeight;
   window.getPageScroll = getPageScroll;
   window.addEvent = addEvent;
@@ -236,4 +345,8 @@
   window.debounce = debounce;
   window.throttle = throttle;
   window.preLoadImages = preLoadImages;
+  window.ajax = ajax;
+  window.addCookie = addCookie;
+  window.getCookie = getCookie;
+  window.deleteCookie = deleteCookie;
 })();
