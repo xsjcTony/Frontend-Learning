@@ -9,6 +9,7 @@
 | 布尔                   | Boolean        | 基本        | Primitive             |
 | 未定义                 | Undefined      | 基本        | Primitive             |
 | 空值                   | Null           | 基本        | Primitive             |
+| Symbol (>=ES6)         | Symbol (>=ES6) | 基本        | Primitive             |
 | 对象                   | Object         | 引用        | Reference             |
 
 ---
@@ -41,7 +42,7 @@ console.log(res); // 输出number
 
 #### `Number(value)`
 
-##### 格式
+格式
 
 - `Number(value)`
 
@@ -60,7 +61,7 @@ console.log(num); // 输出456
 console.log(typeof num); // 输出number
 ```
 
-##### 注意点
+注意点
 
 - 如果字符串中没有数据或者由 `空格` 组成, 那么转换的结果是 `0`
 
@@ -116,7 +117,7 @@ console.log(num); // 输出NaN
 console.log(typeof num); // 输出number
 ```
 
-##### 总结
+总结
 
 - 空字符串 / `false` / `null` 转换为 `0`
 - 字符串中不仅仅有数值 / `undefined` 转换为 `NaN`
@@ -126,7 +127,7 @@ console.log(typeof num); // 输出number
 
 #### `+value` / `-value`
 
-##### 格式
+格式
 
 - `+value`
 
@@ -142,7 +143,7 @@ console.log(typeof num1); // 输出number
 console.log(typeof num2); // 输出number
 ```
 
-##### 注意点
+注意点
 
 - `-value` 会改变数值的正负性
 - 本质上就是调用了 `Number(value)` 函数, 所以同 [`Number(value)`](####Number(value))
@@ -151,7 +152,7 @@ console.log(typeof num2); // 输出number
 
 #### `parseInt(value)` / `parseFloat(value)`
 
-##### 格式
+格式
 
 - `parseInt(value)`
 
@@ -167,7 +168,7 @@ console.log(typeof num1); // 输出number
 console.log(typeof num2); // 输出number
 ```
 
-##### 注意点
+注意点
 
 - 从左至右提取数值, 一旦遇到非数值就会立即停止, 停止的时候如果还没有提取到数值就返回 `NaN`
 
@@ -241,7 +242,7 @@ console.log(typeof num2); // 输出number
 
 #### `value.toString()`
 
-##### 格式
+格式
 
 -  `value.toString()`
 
@@ -264,7 +265,7 @@ console.log(str);
 console.log(typeof str); // 输出string
 ```
 
-##### 注意点
+注意点
 
 - toString()是对拷贝的数据进行转换, 不会影响到原数据
 
@@ -288,7 +289,7 @@ let str = 123.toString(); // 会明确报错
 
 #### `String(value)`
 
-##### 格式
+格式
 
 - `String(value)`
 
@@ -315,7 +316,7 @@ console.log(str); // 输出123(字符串类型的数值)
 console.log(typeof str); // 输出string
 ```
 
-##### 注意点
+注意点
 
 - 常量, Number, Boolean, Undefined, Null 都可以通过 `String(value)` 的方式转换成String
 - 本质是根据数值新建, 不是转换
@@ -324,7 +325,7 @@ console.log(typeof str); // 输出string
 
 #### `value + ""` / `value + ''`
 
-##### 格式
+格式
 
 - `value + ""`
 
@@ -338,7 +339,7 @@ console.log(str); // 输出123
 console.log(typeof str); // 输出string
 ```
 
-##### 注意点
+注意点
 
 - 本质就是调用 `String()` 函数, 所以同 [`String(value)`](####String(value))
 
@@ -545,7 +546,7 @@ console.log(res2); // false
 
 
 
-#### <span style="color: red"><不推荐></span> `Array.concat()`
+#### <span style="color: red"><不推荐></span> `String.concat()`
 
 
 
@@ -797,7 +798,7 @@ console.log(newStr); // "amc"
 
 #### `Boolean(value)`
 
-##### 格式
+格式
 
 - `Boolean(value)`
 
@@ -808,7 +809,7 @@ console.log(flag); // 输出true
 console.log(typeof flag); // 输出boolean
 ```
 
-##### 注意点
+注意点
 
 - 字符串中只要有内容就会转换为 `true` , 字符串中没有内容就换转换为 `false`
 
@@ -877,7 +878,7 @@ console.log(flag); // 输出false
 console.log(typeof flag); // 输出boolean
 ```
 
-##### 总结
+总结
 
 - 空字符串 / `0` / `NaN` / `undefined` / `null` 会转换为 `false`
 - 其他的换转换为 `true`
@@ -901,6 +902,70 @@ console.log(typeof flag); // 输出boolean
 ---
 
 ## 对象 (Object)
+
+
+
+---
+
+## Symbol
+
+
+
+> [Symbol - JavaScript | MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol)
+
+
+
+### 定义
+
+- \>=ES6
+- 表示一个独一无二的值
+
+
+
+### 作用
+
+- 在企业开发中如果需要对一些第三方插件或框架自定义的时候, 可能会因为添加了同名的属性或者方法, 将框架中原有的属性或者方法覆盖掉
+- 为了避免这种情况的发生, 框架作者或者我们就可以使用 `Symbol` 作为属性或者方法的名称
+
+
+
+### 生成
+
+```js
+let x = Symbol(); // 虽然是Symbol(), 但他是基本数据类型
+let y = Symbol();
+console.log(x === y); // false
+```
+
+
+
+### 标记
+
+- 在生成 `Symbol` 时, 可以往 `()` 中传入标记
+- 标记除了方便查看以外, 没有其他任何意义
+
+```js
+let x = Symbol("x");
+let y = Symbol();
+console.log(x); // Symbol(x)
+console.log(y); // Symbol()
+
+let z = Symbol("x");
+console.log(z); // Symbol(x)
+console.log(x === z); // false
+```
+
+
+
+### 注意点
+
+- 生成 `Symbol` 的时候需要在后面加上 `()` , 但不能在前面加上 `new` , 因为其为基本数据类型, 不是引用数据类型
+- 通过 `Symbol()` 生成独一无二值时传入的 `字符串` 仅仅是一个标记, 只是方便阅读, 没有其他任何意义
+- 不能转换成数值
+- 不能做任何运算
+- `Symbol()` 生成的值作为属性或方法名称时, 一定要保存下来, 否则后续无法使用
+- `for循环` 无法遍历出 `Symbol` 的属性和方法
+    - 可以使用 `Object.getOwnPropertySymbols(obj)` 来获取 `obj` 对象的 `Symbol` 的属性和方法
 
 
 

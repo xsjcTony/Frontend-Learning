@@ -319,7 +319,7 @@ console.log(Object.prototype.__proto__); // null
 - 所有函数都是对象
 - 所有对象都有一个 `__proto__` 属性指向 `原型对象`
 
-![对象关系汇总图](D:\xsjcTony\it666\Frontend-Learning\Notes\从零玩转JavaScript核心+新特性③\images\objects_relationship.png)
+![对象关系汇总图](D:\xsjcTony\it666\Frontend-Learning\Notes\JavaScript\images\objects_relationship.png)
 
 ---
 
@@ -345,7 +345,7 @@ console.log(Object.prototype.__proto__); // null
 2. 访问 `__proto__` 去找 `原型对象` , 有则使用, 没有则跳转至 `3`
 3. 重复 `2` , 直到查找到 `Object原型对象` , 有则使用, 没有则 `报错`
 
-![原型链](D:\xsjcTony\it666\Frontend-Learning\Notes\从零玩转JavaScript核心+新特性③\images\prototype_chain.png)
+![原型链](D:\xsjcTony\it666\Frontend-Learning\Notes\JavaScript\images\prototype_chain.png)
 
 
 

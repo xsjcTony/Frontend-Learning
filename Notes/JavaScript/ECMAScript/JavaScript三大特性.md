@@ -206,7 +206,7 @@ student2.study(); // "day day up"
 
 #### 图示
 
-![继承方式一图示](D:\xsjcTony\it666\Frontend-Learning\Notes\从零玩转JavaScript核心+新特性③\images\inheritance_1.png)
+![继承方式一图示](D:\xsjcTony\it666\Frontend-Learning\Notes\JavaScript\images\inheritance_1.png)
 
 
 
@@ -280,7 +280,7 @@ student.study(); // "day day up"
 
 #### 图示
 
-![继承方式二图示](D:\xsjcTony\it666\Frontend-Learning\Notes\从零玩转JavaScript核心+新特性③\images\inheritance_2.png)
+![继承方式二图示](D:\xsjcTony\it666\Frontend-Learning\Notes\JavaScript\images\inheritance_2.png)
 
 
 
@@ -366,7 +366,7 @@ student.study(); // "day day up"
 
 #### 图示
 
-![继承方式三图示](D:\xsjcTony\it666\Frontend-Learning\Notes\从零玩转JavaScript核心+新特性③\images\inheritance_3.png)
+![继承方式三图示](D:\xsjcTony\it666\Frontend-Learning\Notes\JavaScript\images\inheritance_3.png)
 
 
 
@@ -465,7 +465,7 @@ person.run(); // Uncaught TypeError: person.run is not a function
 
 #### 图示
 
-![继承方式四图示](D:\xsjcTony\it666\Frontend-Learning\Notes\从零玩转JavaScript核心+新特性③\images\inheritance_4.png)
+![继承方式四图示](D:\xsjcTony\it666\Frontend-Learning\Notes\JavaScript\images\inheritance_4.png)
 
 ---
 

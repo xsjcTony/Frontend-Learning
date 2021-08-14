@@ -19,7 +19,7 @@
 - 代表当前 `window` 中的整个网页
 - 可以用于操作整个网页上的所有内容
 
-![window.document](D:\xsjcTony\it666\Frontend-Learning\Notes\从零玩转JavaScript核心+新特性③\images\window.document.png)
+![window.document](D:\xsjcTony\it666\Frontend-Learning\Notes\JavaScript\images\window.document.png)
 
 
 

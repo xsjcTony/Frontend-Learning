@@ -261,14 +261,16 @@ console.log(a, b, c); // 1, 3, 5
 
 - 可以使用扩展运算符 `...` 打包剩余的数据 **(>=ES6)**, 并且只能写在最后
 
-	```js
-	let [a, ...b] = [1, 3, 5];
-	console.log(a, b); // 1, [3, 5]
-	```
+  ```js
+  let [a, ...b] = [1, 3, 5];
+  console.log(a, b); // 1, [3, 5]
+  ```
 
-	> [Spread syntax (...) - JavaScript | MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax)
-	>
-	> [Rest parameters - JavaScript | MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/rest_parameters)
+- 使用解构赋值必须满足对象实现了 `Iterator` 接口
+
+  > [Spread syntax (...) - JavaScript | MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax)
+  >
+  > [Rest parameters - JavaScript | MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/rest_parameters)
 
 ---
 

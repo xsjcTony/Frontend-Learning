@@ -464,7 +464,7 @@ function easeAnimation(ele, target) {
 - 鼠标到元素左边的距离 = `event.pageX` - `element.offsetLeft`
 - 鼠标到元素上边的距离 = `event.pageY` - `element.offsetTop`
 
-![event_offset_no_flick](D:\xsjcTony\it666\Frontend-Learning\Notes\从零玩转JavaScript核心+新特性③\images\event_offset_no_flick.png)
+![event_offset_no_flick](D:\xsjcTony\it666\Frontend-Learning\Notes\JavaScript\images\event_offset_no_flick.png)
 
 计算大图移动距离
 
@@ -473,7 +473,7 @@ function easeAnimation(ele, target) {
 - 大图最大能移动的距离 = 大盒子的宽 / 高 - 大图的宽 / 高
 - 大图移动的距离 = 蒙版移动的距离 / 蒙版最大能移动的距离 * 大图最大能移动的距离
 
-![online_shopping_large_image_preview](D:\xsjcTony\it666\Frontend-Learning\Notes\从零玩转JavaScript核心+新特性③\images\online_shopping_large_image_preview.png)
+![online_shopping_large_image_preview](D:\xsjcTony\it666\Frontend-Learning\Notes\JavaScript\images\online_shopping_large_image_preview.png)
 
 
 
@@ -483,7 +483,7 @@ function easeAnimation(ele, target) {
 
 - top值 = (网页可视区域高度 - 广告高度) / 2
 
-![ad_middle_top_calculation](D:\xsjcTony\it666\Frontend-Learning\Notes\从零玩转JavaScript核心+新特性③\images\ad_middle_top_calculation.png)
+![ad_middle_top_calculation](D:\xsjcTony\it666\Frontend-Learning\Notes\JavaScript\images\ad_middle_top_calculation.png)
 
 
 
@@ -539,7 +539,7 @@ function easeAnimation(ele, target) {
 6. 将 `Array` 中的高度加上当前元素的高度
 7. 重复 `4~6` 遍历完所有元素为止
 
-![](D:\xsjcTony\it666\Frontend-Learning\Notes\从零玩转JavaScript核心+新特性③\images\waterfall.png)
+![](D:\xsjcTony\it666\Frontend-Learning\Notes\JavaScript\images\waterfall.png)
 
 
 
@@ -548,7 +548,7 @@ function easeAnimation(ele, target) {
 - 当参照物元素 `offsetHeight` 的一半 + 该元素的 `offsetTop` < 滚动出去的范围 + 页面高度时, 执行加载
 - 建议给 `onscroll` 添加防抖
 
-![load_at_bottom](D:\xsjcTony\it666\Frontend-Learning\Notes\从零玩转JavaScript核心+新特性③\images\load_at_bottom.png)
+![load_at_bottom](D:\xsjcTony\it666\Frontend-Learning\Notes\JavaScript\images\load_at_bottom.png)
 
 
 
@@ -674,10 +674,39 @@ window.location.pathname.slice(0, window.location.pathname.lastIndexOf("/")) // 
 ### 获取网页域名
 
 ```js
-d
+document.domain
 ```
 
 
+
+---
+
+## `DOM` 相关
+
+
+
+### 创建 `<img>` 元素
+
+- 本质相当于 `document.createElement("img")`
+
+```js
+let img = new Image(width, height);
+img.src = url;
+```
+
+
+
+---
+
+## 网络请求相关
+
+
+
+### 根地址
+
+- 在企业开发中, 一般开发阶段和部署阶段的服务器是不一样的, 因此为了避免大批量的更改请求地址, 需要统一设置一个根地址
+- 在发送请求的时候, 只写相对路径即可
+- 在 `axios` 中, 可以通过 `axios.defaults.baseURL` 来设置
 
 ---
 

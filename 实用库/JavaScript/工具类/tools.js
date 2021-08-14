@@ -5,12 +5,10 @@
     if(window.innerWidth) {
       width = window.innerWidth;
       height = window.innerHeight;
-    }
-    else if(document.compatMode === "BackCompat") {
+    } else if(document.compatMode === "BackCompat") {
       width = document.body.clientWidth;
       height = document.body.clientHeight;
-    }
-    else {
+    } else {
       width = document.documentElement.clientWidth;
       height = document.documentElement.clientHeight;
     }
@@ -18,7 +16,7 @@
     return {
       width: width,
       height: height
-    }
+    };
   }
 
   function getPageScroll() {
@@ -27,12 +25,10 @@
     if(window.innerWidth) {
       x = window.pageXOffset;
       y = window.pageYOffset;
-    }
-    else if(document.compatMode === "BackCompat") {
+    } else if(document.compatMode === "BackCompat") {
       x = document.body.scrollLeft;
       y = document.body.scrollTop;
-    }
-    else {
+    } else {
       x = document.documentElement.scrollLeft;
       y = document.documentElement.scrollTop;
     }
@@ -40,14 +36,13 @@
     return {
       x: x,
       y: y
-    }
+    };
   }
 
   function addEvent(element, name, fn) {
     if(element.attachEvent) { // <IE9
       element.attachEvent("on" + name, fn);
-    }
-    else { // >=IE9
+    } else { // >=IE9
       element.addEventListener(name, fn);
     }
   }
@@ -55,8 +50,7 @@
   function getStyleAttribute(element, name) {
     if(element.currentStyle) {
       return element.currentStyle[name];
-    }
-    else {
+    } else {
       return getComputedStyle(element)[name];
     }
   }
@@ -77,8 +71,7 @@
         console.log(Math.abs(target - begin), Math.abs(step));
         if(Math.abs(target - begin) > Math.abs(step)) {
           flag = false;
-        }
-        else {
+        } else {
           begin = target;
         }
         // 4.重新设置元素的位置
@@ -107,8 +100,7 @@
         begin += step;
         if(Math.abs(Math.floor(step)) > 1) {
           flag = false;
-        }
-        else {
+        } else {
           begin = target;
         }
         // 4.重新设置元素的位置
@@ -177,7 +169,7 @@
       timerId = setTimeout(function () {
         fn.apply(self, args);
       }, delay || 1000);
-    }
+    };
   }
 
   // 函数节流
@@ -198,7 +190,7 @@
         flag = true;
         fn.apply(self, args);
       }, delay || 500);
-    }
+    };
   }
 
   function preLoadImage(url, fn) {
@@ -206,7 +198,7 @@
     img.src = url;
     img.onload = function () {
       fn(img);
-    }
+    };
   }
 
   function preLoadImages(urls, fn) {
@@ -221,68 +213,71 @@
         if(loadedCount === imageCount) {
           fn(images);
         }
-      })
+      });
     }
   }
 
   /**
-   * ajax function
-   * @param {Object} option - an object including HTTP request type (either GET or POST), url, data, timeout, success callback function and error callback function
+   * Ajax function returning a Promise
+   * @param {Object} options - An object including HTTP request type (either GET or POST), url, data, timeout, success callback function and error callback function.
+   * @returns {Promise} A Promise object which status is fulfilled if request succeed or rejected if request failed.
    */
-  function ajax(option) {
-    // ajax
-    let xhr = new XMLHttpRequest();
-    let timer;
+  function ajax(options) {
+    return new Promise((resolve, reject) => {
+      // ajax
+      let xhr = new XMLHttpRequest();
+      let timer;
 
-    // GET
-    if(option.type.toUpperCase() === "GET") {
-      // deal with obj
-      let res = [];
-      for(let key in option.data) {
-        res.push(`${encodeURIComponent(key)}=${encodeURIComponent(option.data[key])}`);
-      }
-      option.url = `${option.url}?${res.join("&")}`;
-
-      xhr.open(option.type, option.url, true);
-      xhr.send();
-    }
-    // POST
-    else if(option.type.toUpperCase() === "POST") {
-      // deal with obj
-      let res = [];
-      for(let key in option.data) {
-        res.push(`${encodeURIComponent(key)}=${encodeURIComponent(option.data[key])}`);
-      }
-      let requestHeader = res.join("&");
-
-      xhr.open(option.type, option.url, true);
-      xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-      xhr.send(requestHeader);
-    }
-    // invalid type
-    else {
-      console.log("Invalid ajax type: " + option.type);
-      return;
-    }
-
-    xhr.onreadystatechange = function () {
-      if(xhr.readyState === 4) {
-        clearInterval(timer);
-        if(xhr.status >= 200 && xhr.status < 300 || xhr.status === 304) {
-          option.success(xhr);
-        } else {
-          option.error(xhr);
+      // GET
+      if(options.type.toUpperCase() === "GET") {
+        // deal with obj
+        let res = [];
+        for(let key in options.data) {
+          res.push(`${encodeURIComponent(key)}=${encodeURIComponent(options.data[key])}`);
         }
-      }
-    }
+        options.url = `${options.url}?${res.join("&")}`;
 
-    // timeout > 0
-    if(option.timeout) {
-      timer = setInterval(function () {
-        xhr.abort();
-        clearInterval(timer);
-      }, option.timeout);
-    }
+        xhr.open(options.type, options.url, true);
+        xhr.send();
+      }
+      // POST
+      else if(options.type.toUpperCase() === "POST") {
+        // deal with obj
+        let res = [];
+        for(let key in options.data) {
+          res.push(`${encodeURIComponent(key)}=${encodeURIComponent(options.data[key])}`);
+        }
+        let requestHeader = res.join("&");
+
+        xhr.open(options.type, options.url, true);
+        xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xhr.send(requestHeader);
+      }
+      // invalid type
+      else {
+        console.log("Invalid ajax type: " + options.type);
+        return;
+      }
+
+      xhr.onreadystatechange = function () {
+        if(xhr.readyState === 4) {
+          clearInterval(timer);
+          if(xhr.status >= 200 && xhr.status < 300 || xhr.status === 304) {
+            resolve(xhr);
+          } else {
+            reject(xhr);
+          }
+        }
+      };
+
+      // timeout > 0
+      if(options.timeout) {
+        timer = setInterval(function () {
+          xhr.abort();
+          clearInterval(timer);
+        }, options.timeout);
+      }
+    });
   }
 
   /**
@@ -334,6 +329,47 @@
     }
   }
 
+  function jsonp(options) {
+    options = options || {};
+    let callbackName = ("jQuery" + Math.random()).replace(".", "");
+
+    let url = options.url;
+    // jsonp key specified
+    if(options.jsonp) {
+      url += "?" + options.jsonp + "=";
+    } else {
+      url += "?callback=";
+    }
+    // jsonp value specified
+    if(options.jsonpCallback) {
+      callbackName = options.jsonpCallback;
+    }
+    url += callbackName;
+    // data specified
+    if(options.data) {
+      url += "&" + objToStr(options.data);
+    }
+    // get CORS data
+    let scriptTag = document.createElement("script");
+    scriptTag.src = url;
+    document.body.appendChild(scriptTag);
+    // define callback function
+    window[callbackName] = function (data) {
+      // delete used script tag
+      document.body.removeChild(scriptTag);
+      options.success(data);
+    };
+
+    function objToStr(obj) {
+      obj.t = (Math.random() + "").replace(".", "");
+      let arr = [];
+      for(let key in obj) {
+        arr.push(`${encodeURIComponent(key)}=${encodeURIComponent(obj[key])}`);
+      }
+      return arr.join("&");
+    }
+  }
+
   window.getScreenWidthHeight = getScreenWidthHeight;
   window.getPageScroll = getPageScroll;
   window.addEvent = addEvent;
@@ -349,4 +385,5 @@
   window.addCookie = addCookie;
   window.getCookie = getCookie;
   window.deleteCookie = deleteCookie;
+  window.jsonp = jsonp;
 })();

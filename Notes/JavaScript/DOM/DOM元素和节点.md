@@ -32,7 +32,7 @@
 
 ### 图示
 
-![DOM树](D:\xsjcTony\it666\Frontend-Learning\Notes\从零玩转JavaScript核心+新特性③\images\dom_tree.gif)
+![DOM树](D:\xsjcTony\it666\Frontend-Learning\Notes\JavaScript\images\dom_tree.gif)
 
 
 
@@ -1307,13 +1307,13 @@ element.scrollLeft // 超出元素内容往左移动的范围
 
 ### 图示
 
-![offset_client_width_height](D:\xsjcTony\it666\Frontend-Learning\Notes\从零玩转JavaScript核心+新特性③\images\offset_client_width_height.png)
+![offset_client_width_height](D:\xsjcTony\it666\Frontend-Learning\Notes\JavaScript\images\offset_client_width_height.png)
 
-![offset_client_top_left](D:\xsjcTony\it666\Frontend-Learning\Notes\从零玩转JavaScript核心+新特性③\images\offset_client_top_left.png)
+![offset_client_top_left](D:\xsjcTony\it666\Frontend-Learning\Notes\JavaScript\images\offset_client_top_left.png)
 
-![scroll_height_width](D:\xsjcTony\it666\Frontend-Learning\Notes\从零玩转JavaScript核心+新特性③\images\scroll_height_width.png)
+![scroll_height_width](D:\xsjcTony\it666\Frontend-Learning\Notes\JavaScript\images\scroll_height_width.png)
 
-![scroll_top_left](D:\xsjcTony\it666\Frontend-Learning\Notes\从零玩转JavaScript核心+新特性③\images\scroll_top_left.png)
+![scroll_top_left](D:\xsjcTony\it666\Frontend-Learning\Notes\JavaScript\images\scroll_top_left.png)
 
 ---
 

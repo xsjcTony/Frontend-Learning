@@ -431,7 +431,7 @@ son.onclick = (event) => {
 
 ### 图示
 
-![事件执行三个阶段](D:\xsjcTony\it666\Frontend-Learning\Notes\从零玩转JavaScript核心+新特性③\images\event_three_parts.png)
+![事件执行三个阶段](D:\xsjcTony\it666\Frontend-Learning\Notes\JavaScript\images\event_three_parts.png)
 
 ---
 

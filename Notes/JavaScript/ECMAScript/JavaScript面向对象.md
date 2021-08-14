@@ -80,6 +80,10 @@
 
 	- 依然能如上同样获取 `Property` 和执行 `Method`
 
+注意点
+
+- 如果想用变量名作为对象属性 / 方法的名称, 那么必须加上 `[]`
+
 ---
 
 ## 方法 (Method)
@@ -325,7 +329,7 @@ console.log(typeof person); // object
 2. 去 `实例对象` 的 `__proto__` 也就是 `原型对象` 中寻找 `constructor` , 找到并指向 `构造函数`
 3. 在 `构造函数` 中寻找 `name` 属性, 找到并输出 `类名`
 
-![获取对象类型原理](D:\xsjcTony\it666\Frontend-Learning\Notes\从零玩转JavaScript核心+新特性③\images\find_class_name.png)
+![获取对象类型原理](D:\xsjcTony\it666\Frontend-Learning\Notes\JavaScript\images\find_class_name.png)
 
 ---
 
@@ -353,7 +357,7 @@ console.log(typeof person); // object
 
 ### 原理图示
 
-![instanceof() 原理图示](D:\xsjcTony\it666\Frontend-Learning\Notes\从零玩转JavaScript核心+新特性③\images\instanceof_&_isPrototypeOf.png)
+![instanceof() 原理图示](D:\xsjcTony\it666\Frontend-Learning\Notes\JavaScript\images\instanceof_&_isPrototypeOf.png)
 
 
 
@@ -415,7 +419,7 @@ console.log(student instanceof Student); // true
 
 ### 原理图示
 
-![isPrototypeOf() 原理图示](D:\xsjcTony\it666\Frontend-Learning\Notes\从零玩转JavaScript核心+新特性③\images\instanceof_&_isPrototypeOf.png)
+![isPrototypeOf() 原理图示](D:\xsjcTony\it666\Frontend-Learning\Notes\JavaScript\images\instanceof_&_isPrototypeOf.png)
 
 
 
@@ -909,7 +913,7 @@ console.log(num1, num2); // 123, 666
 
 #### 原理图示
 
-![深拷贝原理图示](D:\xsjcTony\it666\Frontend-Learning\Notes\从零玩转JavaScript核心+新特性③\images\deep_copy.png)
+![深拷贝原理图示](D:\xsjcTony\it666\Frontend-Learning\Notes\JavaScript\images\deep_copy.png)
 
 
 
@@ -947,7 +951,7 @@ console.log(person2);
 
 #### 原理图示
 
-![浅拷贝原理图示](D:\xsjcTony\it666\Frontend-Learning\Notes\从零玩转JavaScript核心+新特性③\images\shallow_copy.png)
+![浅拷贝原理图示](D:\xsjcTony\it666\Frontend-Learning\Notes\JavaScript\images\shallow_copy.png)
 
 ---
 
