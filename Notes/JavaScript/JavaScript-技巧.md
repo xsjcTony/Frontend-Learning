@@ -10,6 +10,13 @@
 
 - 将当前的 `this` 存储进变量 `self` 中, 以便 `this` 更改后可以继续使用
 
+
+
+### `Object.keys()`
+
+- 会返回一个数组, 包含了该对象的属性名称, 顺序和普通 `loop` 的顺序一样
+- 只有实现了 `Iterator` 接口的才能使用
+
 ---
 
 ## 数组 (Array)
@@ -34,13 +41,12 @@ console.log(obj); // {0: 1, 1: 3, 2: 5, length: 3}
 
 - 操作自定义 `伪数组` 时, 一律先转换为 `数组`
 
-- 通过 `[].slice.call(obj)` 将 `obj` 中的数据通过 `slice` 方法转换为 `数组` 赋值给 `arr` , 即可将 `obj` 变为 `数组`
-- `arr` 可以是 `数组` / 或 `伪数组`
+- 通过 `Array.from()` 将 `伪数组` 转换为 `数组`
 
 ```js
-let obj = [0: 1, 1: 3, 2: 5, length: 3];
-let arr = [].slice.call(obj);
-console.log(arr); // [1, 3, 5]
+let obj = { 0: 1, 1: 3, 2: 5, length: 3 }
+let arr = Array.from(obj)
+console.log(arr) // [1, 3, 5]
 ```
 
 ---

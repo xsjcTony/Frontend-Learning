@@ -88,3 +88,76 @@ console.log(it.next()); // 789 (执行结果), {value: true, done: false} (next�
 console.log(it.next()); // {value: undefined, done: true} (next方法返回的值, 已经迭代完毕)
 ```
 
+
+
+## 应用场景
+
+- 让函数返回多个值
+
+```js
+function* calculate (a, b) {
+  yield a + b
+  yield a - b
+}
+
+let it = calculate(10, 5)
+console.log(it.next().value) // 15
+console.log(it.next().value) // 5
+```
+
+- 在任意对象上快速部署 `Iterator` 接口
+
+```js
+let obj = {
+  name: 'Tony',
+  age: 24,
+  gender: 'male'
+}
+
+function* gen () {
+  let keys = Object.keys(obj)
+  for (let key of keys) {
+    yield obj[key];
+  }
+}
+obj[Symbol.iterator] = gen;
+
+let it = obj[Symbol.iterator]();
+console.log(it.next()) // {value: "Tony", done: false}
+console.log(it.next()) // {value: 24, done: false}
+console.log(it.next()) // {value: "male", done: false}
+console.log(it.next()) // {value: undefined, done: true}
+```
+
+- 用同步流程表示异步操作 (相当于 `async` / `await` 的实现原理)
+
+```js
+function request () {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve('data fetched.')
+    }, 1000)
+  })
+}
+
+function* gen () {
+  yield request()
+  yield request()
+  yield request()
+}
+
+let it = gen()
+it.next().value.then((data) => {
+  console.log(data, 1) // data fetched. 1
+  return it.next().value
+}).then((data) => {
+  console.log(data, 2) // data fetched. 2
+  return it.next().value
+}).then((data) => {
+  console.log(data, 3) // data fetched. 3
+  return it.next().value
+}).catch(error => console.log(error))
+```
+
+
+
