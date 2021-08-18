@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>promise-练习</title>
+</head>
+<body>
+<script src="js/MyPromise.js"></script>
+<script>
+  let arr = [
+    "http://www.it666.com/files/system/block_picture_1555415767.png",
+    "http://www.it666.com/files/system/block_picture_1555422597.jpg",
+    "http://www.it666.com/files/system/block_picture_1555419713.jpg"
+  ];
+
+  /*
+    loadImage(arr[0]).then(img => {
+      console.log("1");
+      document.body.appendChild(img);
+      return loadImage(arr[1]);
+    }).then(img => {
+      console.log("2");
+      document.body.appendChild(img);
+      return loadImage(arr[2]);
+    }).then(img => {
+      console.log("3");
+      document.body.appendChild(img);
+    }).catch(error => console.log(error));
+  */
+
+  Promise.all([loadImage(arr[0]), loadImage(arr[1]), loadImage(arr[2])])
+    .then(result => result.forEach(img => document.body.appendChild(img)))
+    .catch(error => console.log(error));
+
+  function loadImage(url) {
+    return new Promise((resolve, reject) => {
+      let img = new Image();
+      img.src = url;
+      img.onload = function () {
+        resolve(img);
+      };
+      img.onerror = function () {
+        reject("Image fails to load.");
+      };
+    });
+  }
+</script>
+</body>
+</html>

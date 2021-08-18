@@ -550,3 +550,83 @@ function addEvent(element, name, fn) {
 }
 ```
 
+---
+
+## 移动端事件
+
+
+
+### touch
+
+定义
+
+- 原生JavaScript为移动端新增的事件
+- PC端无法使用
+- 包含三种
+    - `touchstart` : 手指按下
+    - `touchmove` : 手指按下后在元素上移动
+    - `touchend` : 手指抬起
+
+示例
+
+```js
+let div = document.querySelector('div')
+div.ontouchstart = function () {
+  console.log('finger pressed down')
+}
+div.ontouchend = function () {
+  console.log('finger raised up')
+}
+div.ontouchmove = function () {
+  console.log('finger moving')
+}
+```
+
+事件对象
+
+- `touch` 事件对象中有很多属性, 比较重要的有如下三个
+    - `touches` : 当前屏幕上所有的手指的列表
+    - `targetTouches` : 当前元素中所有的手指的列表 <span style="color: yellow">(在企业开发中使用比较多)</span>
+    - `changedTouches` :  新增 / 离开的所有手指的列表 (一般都是1个, 因为很难两个手指同时放下或者抬起)
+
+手指位置
+
+- 手指列表中的每一个 `Touch` (手指信息) 包含了一些位置信息
+    - `target`
+        - 触发事件的元素
+    - `offsetX` / `offsetY`
+        - 触发事件相对于当前元素的位置 (左上角为 `0` / `0 `)
+
+    - `clientX` / `clientY` <span style="color: yellow">(webkit内核的浏览器 (Chrome, Edge) 有 `bug` , 会显示和 `pageX/Y` 一样的数据, 需要使用火狐等其他浏览器)</span>
+        - 触发事件相对于当前可视区域的位置 (左上角为 `0` / `0` )
+        - 可视区域不包括滚动出去的范围
+        - 在 `webkit` 浏览器中可以使用 `pageX/Y - window.scrollX/Y` 来代替
+    - `pageX` / `pageY`
+        - 触发事件相对于整个页面的位置 (左上角为 `0` / `0 `)
+        - 整个页面包括滚动出去的范围
+    - `screenX` / `screenY` <span style="color: yellow">(企业开发中一般用不上)</span>
+        - 触发事件相对于整个显示器左上角的位置 (左上角为 `0` / `0` )
+
+![](D:\xsjcTony\it666\Frontend-Learning\Notes\JavaScript\images\mobile_page_client_screen_X_Y.png)
+
+
+
+### 点透问题
+
+定义
+
+- 当一个元素覆盖了另一个元素 (无论是不是父子关系), 覆盖的元素监听 `touch` 事件, 而下面的元素监听 `click` 事件, 并且 `touch` 事件触发后覆盖的元素消失了, 那么就会触发下面的元素的 `click` 事件
+
+原因
+
+- 当手指触摸到屏幕的时候, 系统会生成 `touch` 和 `click` 两个事件
+- `touch` 事件先执行, 执行完后从文档上消失了
+- `click` 事件有 `100~300ms` 的延迟, 所以会后执行
+- `click` 事件执行的时候, 触发该事件的元素已经消失了, 对应的位置现在是下面的元素, 所以就触发了下面的元素的 `click` 事件
+
+解决方案
+
+- 在 `touch` 事件中添加 `event.preventDefault()` 阻止事件扩散
+- 新版本 `Zepto` 中的 `tap` 事件已经修复了该 `BUG`
+- 使用 `Fastclick` 插件, 链接: [ftlabs/fastclick: Polyfill to remove click delays on browsers with touch UIs](https://github.com/ftlabs/fastclick)
+

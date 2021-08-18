@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>02-zepto-选择器</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        div {
+            width: 200px;
+            height: 200px;
+            background: red;
+            margin-bottom: 20px;
+        }
+        .one {
+            background: green;
+        }
+        #two {
+            background: blue;
+        }
+    </style>
+    <script src="js/zepto.js"></script>
+    <script src="js/event.js"></script>
+    <script src="js/selector.js"></script>
+</head>
+<body>
+<button>我是按钮</button>
+<div></div>
+<div class="one"></div>
+<div id="two"></div>
+
+<script>
+  $('button').click(function () {
+    // $('div').css({ background: 'yellow' })
+    // $('.one').css({ background: 'yellow' })
+    // $('#two').css({ background: 'yellow' })
+    $('div:first').css({ background: 'yellow' })
+  })
+</script>
+</body>
+</html>

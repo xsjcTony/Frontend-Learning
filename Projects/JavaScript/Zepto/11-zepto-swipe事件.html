@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>11-zepto-swipe事件</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        div {
+            width: 100px;
+            height: 100px;
+            background: red;
+            margin: 100px 0 0 100px;
+        }
+    </style>
+    <script src="js/zepto.js"></script>
+    <script src="js/event.js"></script>
+    <script src="js/touch.js"></script>
+</head>
+<body>
+<div></div>
+
+<script>
+  $('div').swipe(function () {
+    console.log('swiped')
+  })
+  $('div').swipeLeft(function () {
+    console.log('swiped left')
+  })
+  $('div').swipeRight(function () {
+    console.log('swiped right')
+  })
+  $('div').swipeUp(function () {
+    console.log('swiped up')
+  })
+  $('div').swipeDown(function () {
+    console.log('swiped down')
+  })
+</script>
+</body>
+</html>

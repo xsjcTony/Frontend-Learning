@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Generator-应用场景1</title>
+</head>
+<body>
+<script>
+  function* calculate (a, b) {
+    yield a + b
+    yield a - b
+  }
+
+  let it = calculate(10, 5)
+  console.log(it.next().value)
+  console.log(it.next().value)
+</script>
+</body>
+</html>

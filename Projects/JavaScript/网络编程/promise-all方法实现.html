@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>promise-all方法实现</title>
+</head>
+<body>
+<script src="js/MyPromise.js"></script>
+<script>
+  let p1 = new MyPromise((resolve, reject) => resolve("111"));
+  let p2 = new MyPromise((resolve, reject) => reject("222"));
+  let p3 = new MyPromise((resolve, reject) => resolve("333"));
+
+  let pp = MyPromise.all([p1, p2, p3]);
+  console.log(pp);
+  pp.then(msg => console.log(msg)).catch(error => console.log(error));
+</script>
+</body>
+</html>

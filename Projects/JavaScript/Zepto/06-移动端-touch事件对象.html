@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>06-移动端-touch事件对象</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        div {
+            width: 150px;
+            height: 150px;
+            display: inline-block;
+            background: red;
+        }
+        .box2 {
+            background: blue;
+        }
+    </style>
+</head>
+<body>
+<div class="box1"></div>
+<div class="box2"></div>
+
+<script>
+    let div1 = document.querySelector('.box1')
+    let div2 = document.querySelector('.box2')
+
+    div1.ontouchstart = function (event) {
+      // console.log('touches', event.touches)
+      // console.log('targetTouches', event.targetTouches)
+      console.log('pressed down', event.changedTouches)
+    }
+    /*div2.ontouchstart = function (event) {
+      console.log('touches2', event.touches)
+      console.log('targetTouches2', event.targetTouches)
+      console.log('changedTouches2', event.changedTouches)
+    }*/
+    div1.ontouchend = function (event) {
+      // console.log('targetTouches', event.targetTouches)
+      console.log('raised up', event.changedTouches)
+    }
+</script>
+</body>
+</html>

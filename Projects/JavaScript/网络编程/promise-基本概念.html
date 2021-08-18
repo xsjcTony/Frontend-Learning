@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>promise-基本概念</title>
+</head>
+<body>
+<script>
+  function request() {
+    return new Promise(function (resolve, reject) {
+      setTimeout(function () {
+        resolve("拿到的数据");
+      }, 1000);
+    });
+  }
+
+  request().then(function (data) {
+    console.log(data, 1);
+    return request();
+  }).then(function (data) {
+    console.log(data, 2);
+    return request();
+  }).then(function (data) {
+    console.log(data, 3);
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>jsonp-练习</title>
+  <script src="js/jquery-1.12.4.js"></script>
+</head>
+<body>
+<input type="text" placeholder="search">
+<ul></ul>
+<script>
+  let ul = $("ul");
+  $("input").on("input", function () {
+    $.ajax({
+      url: "https://www.baidu.com/sugrec?prod=pc&from=pc_web&wd=" + $(this).val(),
+      dataType: "jsonp",
+      jsonp: "cb",
+      success: function (msg) {
+        createItems(msg.g);
+      }
+    })
+  })
+
+  function createItems(list) {
+    ul.html("");
+    $.each(list, function (index, element) {
+      ul.append($(`<li>${element.q}</li>`));
+    })
+  }
+</script>
+</body>
+</html>

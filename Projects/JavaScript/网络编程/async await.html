@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>async await</title>
+</head>
+<body>
+<script>
+  function request () {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve('data fetched.')
+      }, 1000)
+    })
+  }
+
+  async function gen () {
+    let res1 = await request()
+    console.log(res1, 1)
+    let res2 = await request()
+    console.log(res2, 2)
+    let res3 = await request()
+    console.log(res3, 3)
+  }
+
+  gen().catch(error => console.log(error))
+</script>
+</body>
+</html>

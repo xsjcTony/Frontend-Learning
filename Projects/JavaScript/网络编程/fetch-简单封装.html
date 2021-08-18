@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>fetch-简单封装</title>
+</head>
+<body>
+<script src="js/EasyHttp.js"></script>
+<script>
+  EasyHttp.post("http://127.0.0.1/jQuery/fetch.php", {
+    teacher: "Tony",
+    age: 24
+  }).then(data => console.log(data))
+    .catch(error => console.log(error));
+</script>
+</body>
+</html>

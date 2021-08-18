@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>12-zepto-swipe事件练习</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            touch-action: none;
+        }
+        .box {
+            overflow: hidden;
+        }
+        .box-top {
+            width: 100%;
+            height: 50px;
+        }
+        .box-top > ul {
+            list-style: none;
+            width: 100%;
+            height: 100%;
+            display: flex;
+        }
+        .box-top > ul > li {
+            flex-grow: 1;
+            text-align: center;
+            line-height: 50px;
+            font-size: 16px;
+            background: #6c6c6c;
+        }
+        .box-top > .line {
+            width: 50%;
+            height: 3px;
+            background: #f40;
+            position: relative;
+            left: 0;
+            bottom: 3px;
+        }
+        .box-top > ul > .active {
+            color: #f40;
+            background: #ccc;
+        }
+        .box-bottom {
+            width: 200%;
+            display: flex;
+            position: relative;
+            left: 0;
+        }
+        .box-bottom > ul {
+            list-style: none;
+            flex-grow: 1;
+        }
+    </style>
+    <script src="js/zepto.js"></script>
+    <script src="js/event.js"></script>
+    <script src="js/touch.js"></script>
+    <script src="js/fx.js"></script>
+    <script src="js/selector.js"></script>
+</head>
+<body>
+<div class="box">
+    <div class="box-top">
+        <ul>
+            <li class="active">新闻</li>
+            <li>军事</li>
+        </ul>
+        <p class="line"></p>
+    </div>
+    <div class="box-bottom">
+        <ul class="list1">
+            <li>我是新闻的内容1</li>
+            <li>我是新闻的内容2</li>
+            <li>我是新闻的内容3</li>
+            <li>我是新闻的内容4</li>
+            <li>我是新闻的内容5</li>
+            <li>我是新闻的内容6</li>
+            <li>我是新闻的内容7</li>
+            <li>我是新闻的内容8</li>
+            <li>我是新闻的内容9</li>
+            <li>我是新闻的内容10</li>
+        </ul>
+        <ul class="list2">
+            <li>我是军事的内容1</li>
+            <li>我是军事的内容2</li>
+            <li>我是军事的内容3</li>
+            <li>我是军事的内容4</li>
+            <li>我是军事的内容5</li>
+            <li>我是军事的内容6</li>
+            <li>我是军事的内容7</li>
+            <li>我是军事的内容8</li>
+            <li>我是军事的内容9</li>
+            <li>我是军事的内容10</li>
+        </ul>
+    </div>
+</div>
+
+<script>
+  // custom toggle event
+  $('.box-top li').on('toggle', function () {
+    $(this).addClass('active').siblings().removeClass()
+    $('.line').animate({ left: $(this).index() * $(this).width() }, 300)
+    $('.box-bottom').animate({ left: -$(this).index() * $('.list1').width() }, 300)
+  })
+  // click toggle
+  $('.box-top li').click(function () {
+    $(this).triggerHandler('toggle')
+  })
+  // swipe toggle
+  $('.box-bottom').swipeLeft(function () {
+    $('.box-top li:last').triggerHandler('toggle')
+  })
+  $('.box-bottom').swipeRight(function () {
+    $('.box-top li:first').triggerHandler('toggle')
+  })
+</script>
+</body>
+</html>

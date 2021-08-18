@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>jsonp-封装</title>
+  <script>
+    function jsonp(options) {
+      options = options || {};
+      let callbackName = ("jQuery" + Math.random()).replace(".", "");
+
+      let url = options.url;
+      // jsonp key specified
+      if(options.jsonp) {
+        url += "?" + options.jsonp + "=";
+      } else {
+        url += "?callback=";
+      }
+      // jsonp value specified
+      if(options.jsonpCallback) {
+        callbackName = options.jsonpCallback;
+      }
+      url += callbackName;
+      // data specified
+      if(options.data) {
+        url += "&" + objToStr(options.data);
+      }
+      // get CORS data
+      let scriptTag = document.createElement("script");
+      scriptTag.src = url;
+      document.body.appendChild(scriptTag);
+      // define callback function
+      window[callbackName] = function (data) {
+        // delete used script tag
+        document.body.removeChild(scriptTag);
+        options.success(data);
+      }
+
+      function objToStr(obj) {
+        obj.t = (Math.random() + "").replace(".", "");
+        let arr = [];
+        for(let key in obj) {
+          arr.push(`${encodeURIComponent(key)}=${encodeURIComponent(obj[key])}`);
+        }
+        return arr.join("&");
+      }
+    }
+  </script>
+  <script>
+    window.onload = function () {
+      jsonp({
+        url: "http://127.0.0.1:80/jQuery/jsonp.php",
+        data: {
+          name: "Tony",
+          age: 24
+        },
+        jsonp: "cb",
+        jsonpCallback: "test",
+        success: function (msg) {
+          console.log(msg);
+        }
+      });
+    }
+  </script>
+</head>
+<body>
+</body>
+</html>

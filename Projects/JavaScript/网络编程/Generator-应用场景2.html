@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Generator-应用场景2</title>
+</head>
+<body>
+<script>
+  /*let obj = {
+    name: 'Tony',
+    age: 24,
+    gender: 'male',
+    [Symbol.iterator] () {
+      let keys = Object.keys(this)
+      let index = 0
+      let self = this
+      return {
+        next () {
+          if (index < keys.length) {
+            return { value: self[keys[index++]], done: false }
+          } else {
+            return { value: self[keys[index]], done: true }
+          }
+        }
+      }
+    }
+  }
+
+  let it = obj[Symbol.iterator]();
+  console.log(it.next())
+  console.log(it.next())
+  console.log(it.next())
+  console.log(it.next())
+
+  for (let value of obj) {
+    console.log(value)
+  }*/
+
+  let obj = {
+    name: 'Tony',
+    age: 24,
+    gender: 'male'
+  }
+
+  function* gen () {
+    let keys = Object.keys(obj)
+    for (let key of keys) {
+      yield obj[key];
+    }
+  }
+  obj[Symbol.iterator] = gen;
+
+  let it = obj[Symbol.iterator]();
+  console.log(it.next())
+  console.log(it.next())
+  console.log(it.next())
+  console.log(it.next())
+</script>
+</body>
+</html>

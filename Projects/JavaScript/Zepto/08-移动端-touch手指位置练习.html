@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>08-移动端-touch手指位置练习</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        div {
+            width: 100px;
+            height: 100px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+<div></div>
+<script>
+  // 通过手指拖拽div
+  let div = document.querySelector('div')
+  let startX
+  let startY
+  let flag = false
+  div.ontouchstart = function (event) {
+    if (flag) {return}
+    flag = true
+    startX = event.targetTouches[0].clientX
+    startY = event.targetTouches[0].clientY
+  }
+  div.ontouchmove = function (event) {
+    let moveX = event.targetTouches[0].clientX
+    let moveY = event.targetTouches[0].clientY
+    let offsetX = moveX - startX
+    let offsetY = moveY - startY
+    div.style.transform = `translate(${offsetX}px, ${offsetY}px)`
+  }
+</script>
+</body>
+</html>

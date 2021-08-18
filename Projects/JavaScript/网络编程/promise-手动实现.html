@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>promise-手动实现</title>
+</head>
+<body>
+<script src="js/MyPromise.js"></script>
+<script>
+  let promise = new MyPromise(function (resolve, reject) {
+    // setTimeout(function () {
+    //   resolve("111");
+    //   // reject("aaa");
+    //   console.log(p2);
+    // }, 1000);
+    // resolve("111");
+    reject("aaa");
+  });
+
+
+  let p2 = promise.then(data => {
+    console.log("success1", data);
+    xxx;
+  }).catch(data => {
+    console.log("fail1", data);
+    xxx;
+  }).then(data => console.log("success2", data))
+  .catch(data => console.log("fail2", data));
+</script>
+</body>
+</html>

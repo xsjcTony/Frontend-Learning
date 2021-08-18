@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>01-zepto-初体验</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        div {
+            width: 200px;
+            height: 200px;
+            background: skyblue;
+        }
+    </style>
+    <script src="js/zepto.js"></script>
+    <script src="js/event.js"></script>
+</head>
+<body>
+<button>我是按钮</button>
+<div></div>
+<script>
+  $('button').click(function () {
+    $('div').css({ background: 'red' })
+  })
+</script>
+</body>
+</html>

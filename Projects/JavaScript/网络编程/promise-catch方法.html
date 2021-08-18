@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>promise-catch方法</title>
+</head>
+<body>
+<script>
+  let promise = new Promise(function (resolve, reject) {
+    resolve();
+    // reject();
+  });
+
+  promise.then(function () {
+    console.log("success");
+    xxx
+  }).catch(function (e) {
+    console.log("fail", e);
+  });
+</script>
+</body>
+</html>

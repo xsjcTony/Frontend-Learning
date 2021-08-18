@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>promise-race方法</title>
+</head>
+<body>
+<script src="js/MyPromise.js"></script>
+<script>
+  /*
+    let p1 = new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve("111");
+      }, 3000);
+    });
+    let p2 = new Promise((resolve, reject) => {
+      setTimeout(() => {
+        reject("222");
+      }, 1000);
+    });
+    let p3 = new Promise((resolve, reject) => {
+      setTimeout(() => {
+        reject("333");
+      }, 800);
+    });
+
+    Promise.race([p1, p2, p3])
+      .then(msg => console.log(msg))
+      .catch(error => console.log(error));
+  */
+
+  let url = "http://www.it666.com/files/system/block_picture_1555415767.png";
+
+  MyPromise.race([loadImage(url), timeout()])
+    .then(value => console.log(value))
+    .catch(error => console.log(error));
+
+  function loadImage(url) {
+    return new MyPromise((resolve, reject) => {
+      let img = new Image();
+      setTimeout(() => {
+        img.src = url;
+      }, 2000)
+      img.onload = function () {
+        resolve(img);
+      };
+      img.onerror = function () {
+        reject("Image fails to load.");
+      };
+    });
+  }
+
+  function timeout() {
+    return new MyPromise((resolve, reject) => {
+      setTimeout(() => {
+        reject("timeout");
+      }, 3000);
+    })
+  }
+</script>
+</body>
+</html>

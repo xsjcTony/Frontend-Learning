@@ -19,6 +19,9 @@
 - JSON
 - 网络编程
     - 数据存储方案
+        - LocalStorage
+        - SessionStorage
+        - Cookie
     - JSONP
     - Promise
     - fetch
@@ -26,6 +29,9 @@
     - Symbol (Notes in ECMAScript)
     - Iterator
     - Generator
+    - async / await
+- Zepto
+- iScroll
 
 
 

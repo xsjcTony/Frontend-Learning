@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>10-移动端-点透问题</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        div {
+            text-align: center;
+            font-size: 40px;
+        }
+        .click {
+            width: 300px;
+            height: 300px;
+            background: red;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            top: 100px;
+        }
+        .tap {
+            width: 200px;
+            height: 200px;
+            background: blue;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            top: 150px;
+        }
+    </style>
+    <!--<script src="zepto.js"></script>
+    <script src="event.js"></script>
+    <script src="touch.js"></script>-->
+    <script src="js/fastclick.js"></script>
+</head>
+<body>
+<div class="click">click</div>
+<div class="tap">tap</div>
+
+<script>
+  if ('addEventListener' in document) {
+    document.addEventListener('DOMContentLoaded', function () {
+      FastClick.attach(document.body)
+    }, false)
+  }
+
+  let clickDiv = document.querySelector('.click')
+  let tapDiv = document.querySelector('.tap')
+
+  /*tapDiv.ontouchstart = function (event) {
+    this.style.display = 'none'
+    event.preventDefault()
+  }*/
+
+  /*$(tapDiv).tap(function () {
+    this.style.display = 'none'
+  })*/
+
+  // 这里的click事件不是原生的, 是FastClick中的click事件
+  // 该click事件已经解决了100~300ms延迟的问题
+  tapDiv.addEventListener('click', function () {
+    tapDiv.style.display = 'none'
+  })
+  clickDiv.onclick = function () {
+    console.log('click')
+  }
+</script>
+</body>
+</html>

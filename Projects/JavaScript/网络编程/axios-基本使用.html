@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>axios-基本使用</title>
+</head>
+<body>
+<script src="js/axios.js"></script>
+<script>
+  axios.defaults.timeout = 2000;
+  axios.defaults.baseURL = "http://127.0.0.1";
+
+  axios.post("/jQuery/axios.php", {
+    teacher: "Tony",
+    age: 24
+  }).then(res => console.log(res.data))
+    .catch(error => console.log(error));
+</script>
+</body>
+</html>

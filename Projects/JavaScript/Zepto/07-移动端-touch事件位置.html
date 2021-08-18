@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>07-移动端-touch事件位置</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        div {
+            width: 1000px;
+            height: 100px;
+            margin: 50px 0 0 50px;
+            background: linear-gradient(to right, red, green);
+        }
+    </style>
+</head>
+<body>
+<div></div>
+<script>
+  let div = document.querySelector('div')
+
+  div.ontouchstart = function (event) {
+    // console.log(event.targetTouches[0].screenX)
+    // console.log(event.targetTouches[0].screenY)
+    console.log(event.targetTouches[0].clientX)
+    console.log(event.targetTouches[0].clientY)
+    console.log(event.targetTouches[0].pageX)
+    console.log(event.targetTouches[0].pageY)
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>05-移动端-touch事件</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        div {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+<div></div>
+<script>
+    let div = document.querySelector('div')
+    div.ontouchstart = function () {
+      console.log('finger pressed down')
+    }
+    div.ontouchend = function () {
+      console.log('finger raised up')
+    }
+    div.ontouchmove = function () {
+      console.log('finger moving')
+    }
+</script>
+</body>
+</html>

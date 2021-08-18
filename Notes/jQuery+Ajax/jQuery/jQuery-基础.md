@@ -27,7 +27,7 @@
 <script src="js/jquery-1.12.4.js"></script>
 ```
 
-- 或者使用 `CDN`
+### 使用 `CDN`
 
 - > [jquery CDN by jsDelivr](https://www.jsdelivr.com/package/npm/jquery)
 
