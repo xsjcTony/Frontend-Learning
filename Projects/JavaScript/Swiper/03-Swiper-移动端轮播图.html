@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>03-Swiper-移动端轮播图</title>
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css">
+    <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            touch-action: none;
+        }
+        div {
+            width: 100%;
+        }
+        ul {
+            list-style: none;
+        }
+        ul > li > img {
+            width: 100%;
+            vertical-align: bottom;
+        }
+        .my-bullet {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            background: #fff;
+            border-radius: 50%;
+            margin: 0 5px;
+        }
+        .my-bullet-active {
+            background: #f40;
+        }
+        .swiper-button-prev,
+        .swiper-button-next {
+            width: 30px;
+            height: 50px;
+            background: rgba(0, 0, 0, 0.3)
+        }
+        .swiper-button-prev::after,
+        .swiper-button-next::after {
+            content: '<';
+            display: inline-block;
+            width: 30px;
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 30px;
+            color: #fff;
+        }
+        .swiper-button-next::after {
+            content: '>';
+        }
+    </style>
+</head>
+<body>
+<div class="swiper-container">
+    <ul class="swiper-wrapper">
+        <li class="swiper-slide"><img src="images/img1.jpg" alt></li>
+        <li class="swiper-slide"><img src="images/img2.jpg" alt></li>
+        <li class="swiper-slide"><img src="images/img3.jpg" alt></li>
+        <li class="swiper-slide"><img src="images/img4.jpg" alt></li>
+    </ul>
+    <div class="swiper-pagination"></div>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+</div>
+
+<script>
+  const swiper = new Swiper('.swiper-container', {
+    pagination: {
+      el: '.swiper-pagination',
+      bulletClass: 'my-bullet',
+      bulletActiveClass: 'my-bullet-active'
+    },
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev'
+    },
+    loop: true,
+    autoplay: {
+      delay: 2000,
+      disableOnInteraction: false
+    }
+  })
+</script>
+</body>
+</html>

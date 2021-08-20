@@ -32,6 +32,7 @@
     - async / await
 - Zepto
 - iScroll
+- Swiper
 
 
 

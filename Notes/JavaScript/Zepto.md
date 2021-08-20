@@ -83,9 +83,9 @@
 ### 动画
 
 - 要使用 `animate()` 动画方法, 则需要导入 `fx` 模块
-
 - 由于不需要兼容低级浏览器, `Zepto` 直接使用了 `css3` 的 `transition` 属性来完成动画
 - 若需要使用 `show` / `hide` / `toggle` / `fade*()` 方法的动画形式, 则需要导入 `fx_method` 模块
+- `Zepto` 没有 `stop()` , 所以如果想要使用需要自行添加
 
 ---
 
@@ -199,4 +199,22 @@ $('div').swipeDown(function () {
   console.log('swiped down')
 })
 ```
+
+---
+
+## 扩展方法
+
+- 和 `jQuery` 一样使用 `extend` 来添加方法, 格式如下
+
+```js
+;(function ($) {
+  $.extend($.fn, {
+    foo: function () {
+      // do something
+    }
+  })
+})(Zepto)
+```
+
+
 

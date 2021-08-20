@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02-Swiper-基本使用</title>
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css">
+    <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            touch-action: none;
+            box-sizing: border-box;
+        }
+        .swiper-container {
+            width: 200px;
+            height: 300px;
+            border: 1px solid #000;
+            margin: 100px auto;
+        }
+        .swiper-container > .swiper-wrapper {
+            list-style: none;
+        }
+        .swiper-pagination-bullet {
+            background: red;
+        }
+        .swiper-button-next,
+        .swiper-button-prev {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+<div class="swiper-container">
+    <ul class="swiper-wrapper">
+        <li class="swiper-slide">Slide 1</li>
+        <li class="swiper-slide">Slide 2</li>
+        <li class="swiper-slide">Slide 3</li>
+    </ul>
+    <div class="swiper-pagination"></div>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+</div>
+<script>
+  const swiper = new Swiper('.swiper-container', {
+    pagination: {
+      el: '.swiper-pagination'
+    },
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev'
+    },
+    loop: true,
+    autoplay: {
+      delay: 1000
+    },
+    speed: 5000
+  })
+</script>
+</body>
+</html>

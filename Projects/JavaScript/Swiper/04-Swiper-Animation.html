@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>04-Swiper-Animation</title>
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css">
+    <link rel="stylesheet" href="css/animate.min.css">
+    <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
+    <script src="js/swiper.animate1.0.3.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            touch-action: none;
+            box-sizing: border-box;
+        }
+        p {
+            width: 200px;
+            height: 200px;
+            line-height: 200px;
+            text-align: center;
+            background: #f00;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+<div class="swiper-container">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide">
+            <p class="ani" swiper-animate-effect="fadeInUp">内容</p>
+        </div>
+        <div class="swiper-slide">Slide 2</div>
+        <div class="swiper-slide">Slide 3</div>
+    </div>
+</div>
+<script>
+  const swiper = new Swiper('.swiper-container', {
+    on:{
+      init: function(){
+        swiperAnimateCache(this); //隐藏动画元素
+        swiperAnimate(this); //初始化完成开始动画
+      },
+      slideChangeTransitionEnd: function(){
+        swiperAnimate(this); //每个slide切换结束时也运行当前slide动画
+      }
+    }
+  })
+</script>
+</body>
+</html>
