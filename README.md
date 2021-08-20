@@ -36,6 +36,8 @@
 - 动画插件
     - Animate.css
     - WOW.js
+    - ScrollReveal
+- Canvas
 
 
 
