@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02-WOW.js</title>
+    <link rel="stylesheet" href="css/animate.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .box {
+            width: 400px;
+            height: 200px;
+            border: 1px solid #000;
+            margin: 100px auto;
+        }
+        .box1 {
+            width: 200px;
+            height: 200px;
+            background: red;
+            float: left;
+        }
+        .box2 {
+            width: 200px;
+            height: 200px;
+            background: blue;
+            float: right;
+        }
+    </style>
+    <script src="js/wow.js"></script>
+</head>
+<body>
+<div class="box">
+    <div class="box1 wow animate__slideInLeft" data-wow-duration="3s" data-wow-delay="1s" data-wow-iteration="2"></div>
+    <div class="box2 wow animate__slideInRight"></div>
+</div>
+<script>
+  new WOW().init()
+</script>
+</body>
+</html>

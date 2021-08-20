@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>03-WOW.js-位置计算</title>
+    <link rel="stylesheet" href="css/animate.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .box {
+            width: 400px;
+            height: 800px;
+            margin: 0 auto;
+            border: 1px solid #000;
+            overflow: auto;
+            overflow-x: hidden;
+        }
+        .box > div {
+            line-height: 200px;
+            width: 400px;
+            height: 200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .box > div:nth-child(odd) {
+            background: red;
+        }
+        .box > div:nth-child(even) {
+            background: blue;
+        }
+    </style>
+    <script src="js/wow.js"></script>
+</head>
+<body>
+<div class="box">
+    <div class="wow animate__slideInLeft">我是第1个div</div>
+    <div class="wow animate__slideInRight">我是第2个div</div>
+    <div class="wow animate__slideInLeft">我是第3个div</div>
+    <div class="test wow animate__slideInRight" data-wow-offset="600">我是第4个div</div>
+    <div>我是第5个div</div>
+    <div>我是第6个div</div>
+    <div>我是第7个div</div>
+    <div>我是第8个div</div>
+    <div>我是第9个div</div>
+    <div>我是第10个div</div>
+    <div>我是第11个div</div>
+    <div>我是第12个div</div>
+    <div>我是第13个div</div>
+    <div>我是第14个div</div>
+    <div>我是第15个div</div>
+    <div>我是第16个div</div>
+    <div>我是第17个div</div>
+    <div>我是第18个div</div>
+    <div>我是第19个div</div>
+    <div>我是第20个div</div>
+    <div>我是第21个div</div>
+    <div>我是第22个div</div>
+    <div>我是第23个div</div>
+    <div>我是第24个div</div>
+    <div>我是第25个div</div>
+    <div>我是第26个div</div>
+    <div>我是第27个div</div>
+    <div>我是第28个div</div>
+    <div>我是第29个div</div>
+    <div>我是第30个div</div>
+</div>
+
+<script>
+  const wow = new WOW({
+    animateClass: 'animate__animated',
+    scrollContainer: '.box'
+  })
+  wow.init()
+
+  // data-wow-offset calculation
+  /*let div = document.querySelector('.test')
+  let windowHeight = window.innerHeight
+  let divOffsetTop = div.offsetTop
+  window.onscroll = function () {
+    let offsetTop = document.documentElement.scrollTop
+    let result = windowHeight + offsetTop - divOffsetTop
+    console.log(result)
+  }*/
+</script>
+</body>
+</html>

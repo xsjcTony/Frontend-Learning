@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>04-ScrollReveal-基本使用</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        div {
+            line-height: 200px;
+            width: 400px;
+            height: 200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        div:nth-child(odd) {
+            background: red;
+        }
+        div:nth-child(even) {
+            background: blue;
+        }
+    </style>
+    <script src="js/scrollreveal.js"></script>
+</head>
+<body>
+<div>我是第1个div</div>
+<div>我是第2个div</div>
+<div>我是第3个div</div>
+<div>我是第4个div</div>
+<div>我是第5个div</div>
+<div>我是第6个div</div>
+<div>我是第7个div</div>
+<div>我是第8个div</div>
+<div>我是第9个div</div>
+<div>我是第10个div</div>
+<div>我是第11个div</div>
+<div>我是第12个div</div>
+<div>我是第13个div</div>
+<div>我是第14个div</div>
+<div>我是第15个div</div>
+<div>我是第16个div</div>
+<div>我是第17个div</div>
+<div>我是第18个div</div>
+<div>我是第19个div</div>
+<div>我是第20个div</div>
+<div>我是第21个div</div>
+<div>我是第22个div</div>
+<div>我是第23个div</div>
+<div>我是第24个div</div>
+<div>我是第25个div</div>
+<div>我是第26个div</div>
+<div>我是第27个div</div>
+<div>我是第28个div</div>
+<div>我是第29个div</div>
+<div>我是第30个div</div>
+</body>
+<script>
+  const scrollReveal = ScrollReveal({
+    reset: true,
+    duration: 3000,
+    delay: 0,
+    rotate: {
+      x: 0,
+      y: 0,
+      z: 45
+    },
+    opacity: 0.5,
+    scale: 0.5,
+    distance: '500px',
+    origin: 'left',
+    easing: 'ease-in-out',
+    beforeReveal (ele) {
+      console.log('beforeReveal', ele)
+    },
+    afterReveal (ele) {
+      console.log('afterReveal', ele)
+    },
+    beforeReset (ele) {
+      console.log('beforeReset', ele)
+    },
+    afterReset (ele) {
+      console.log('afterReset', ele)
+    }
+  })
+  scrollReveal.reveal('div')
+</script>
+</html>
