@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>18-Canvas-动画封装</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        canvas {
+            display: block;
+            margin: 100px auto;
+            background: yellowgreen;
+        }
+    </style>
+</head>
+<body>
+<canvas width="500" height="400"></canvas>
+<script>
+  const canvas = document.querySelector('canvas')
+
+  class Person {
+    constructor (canvas, x, y) {
+      this.canvas = canvas
+      this.ctx = canvas.getContext('2d')
+      this.x = x
+      this.y = y
+      this.index = 0
+      this.timerId = null
+      /**
+       * 0 - 下面
+       * 1 - 左面
+       * 2 - 右面
+       * 3 - 上面
+       * @type {number}
+       */
+      this.direction = 0
+    }
+
+    render () {
+      const ctx = this.ctx
+
+      const img = new Image()
+      img.onload = () => {
+        // calculate width and height of each frame
+        this.frameWidth = img.width / 4
+        this.frameHeight = img.height / 4
+
+        ctx.drawImage(img,
+          0, this.frameHeight * this.direction, this.frameWidth, this.frameHeight,
+          this.x, this.y, this.frameWidth, this.frameHeight)
+
+        this.img = img
+      }
+      img.src = 'images/person.png'
+    }
+
+    _run (stepX, stepY) {
+      const ctx = this.ctx
+
+      clearInterval(this.timerId)
+      this.timerId = setInterval(() => {
+        ctx.clearRect(0, 0, canvas.width, canvas.height)
+
+        if (stepX !== 0) {
+          this.x += stepX
+        }
+
+        if (stepY !== 0) {
+          this.y += stepY
+        }
+
+        ctx.drawImage(this.img,
+          this.frameHeight * this.index, this.frameHeight * this.direction, this.frameWidth, this.frameHeight,
+          this.x, this.y, this.frameWidth, this.frameHeight)
+        this.index++
+        if (this.index > 3) {
+          this.index = 0
+        }
+      }, 200)
+    }
+
+    moveDown () {
+      this.direction = 0
+      this._run(0, 5)
+    }
+
+    moveUp () {
+      this.direction = 3
+      this._run(0, -5)
+    }
+
+    moveLeft () {
+      this.direction = 1
+      this._run(-5, 0)
+    }
+
+    moveRight () {
+      this.direction = 2
+      this._run(5, 0)
+    }
+
+    stop () {
+      clearInterval(this.timerId)
+    }
+  }
+
+  const person = new Person(canvas, 100, 100)
+  person.render()
+  person.moveDown()
+
+  window.onkeydown = function (event) {
+    const key = event.key
+
+    switch (key.toLowerCase()) {
+      case 'w':
+        person.moveUp()
+        break
+      case 's':
+        person.moveDown()
+        break
+      case 'a':
+        person.moveLeft()
+        break
+      case 'd':
+        person.moveRight()
+        break
+    }
+  }
+</script>
+</body>
+</html>

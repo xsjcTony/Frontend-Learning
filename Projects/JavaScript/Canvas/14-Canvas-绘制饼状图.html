@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>14-Canvas-绘制饼状图</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        canvas {
+            display: block;
+            margin: 100px auto;
+            background: yellowgreen;
+        }
+    </style>
+</head>
+<body>
+<canvas width="500" height="400"></canvas>
+<script>
+  const canvas = document.querySelector('canvas')
+  const ctx = canvas.getContext('2d')
+
+  // calculate the coordinate of center of the canvas
+  const centerX = ctx.canvas.width / 2
+  const centerY = ctx.canvas.height / 2
+
+  // draw pie chart
+  let startAngle = 0
+
+  for (let i = 1; i <= 4; i++) {
+    const endAngle = i * Math.PI / 2
+
+    ctx.beginPath()
+    ctx.moveTo(centerX, centerY)
+    ctx.arc(centerX, centerY, 100, startAngle, endAngle)
+    ctx.fillStyle = randomColor()
+    ctx.fill()
+
+    startAngle = endAngle
+  }
+
+  /**
+   * Generate a random color based on RGB value.
+   * @returns {string} - A CSS <color> rgb() string.
+   */
+  function randomColor () {
+    const red = Math.floor(Math.random() * 256) // 0 ~ 255
+    const green = Math.floor(Math.random() * 256) // 0 ~ 255
+    const blue = Math.floor(Math.random() * 256) // 0 ~ 255
+    return `rgb(${red}, ${green}, ${blue})`
+  }
+</script>
+</body>
+</html>

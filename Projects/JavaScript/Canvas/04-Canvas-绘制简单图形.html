@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>04-Canvas-绘制简单图形</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        canvas {
+            display: block;
+            margin: 0 auto;
+            background: yellowgreen;
+        }
+    </style>
+</head>
+<body>
+<canvas width="500" height="500"></canvas>
+<script>
+  let canvas = document.querySelector('canvas')
+  let ctx = canvas.getContext('2d')
+
+  ctx.beginPath()
+  ctx.moveTo(50, 50)
+  ctx.lineTo(200, 50)
+  ctx.lineTo(200, 200)
+  ctx.closePath()
+  ctx.lineWidth = 20
+  ctx.lineJoin = 'round'
+  ctx.stroke()
+</script>
+</body>
+</html>

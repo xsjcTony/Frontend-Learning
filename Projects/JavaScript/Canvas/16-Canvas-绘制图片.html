@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>16-Canvas-绘制图片</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        canvas {
+            display: block;
+            margin: 100px auto;
+            background: yellowgreen;
+        }
+    </style>
+</head>
+<body>
+<canvas width="500" height="400"></canvas>
+<script>
+  const canvas = document.querySelector('canvas')
+  const ctx = canvas.getContext('2d')
+
+  // draw image
+  const img = new Image()
+  img.onload = function () {
+    ctx.drawImage(img, 50, 50, 100, 100, 100, 100, 200, 200)
+  }
+  img.src = 'images/lnj.jpg'
+</script>
+</body>
+</html>

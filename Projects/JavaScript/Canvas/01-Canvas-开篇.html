@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01-Canvas-开篇</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        canvas {
+            background: red;
+        }
+    </style>
+</head>
+<body>
+<canvas width="500" height="500"></canvas>
+<script>
+  let canvas = document.querySelector('canvas')
+  let ctx = canvas.getContext('2d')
+  ctx.moveTo(50, 50.5)
+  ctx.lineTo(200, 50.5)
+  ctx.stroke()
+</script>
+</body>
+</html>

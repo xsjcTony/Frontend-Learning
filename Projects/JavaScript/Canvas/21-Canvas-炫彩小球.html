@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>21-Canvas-炫彩小球</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        canvas {
+            display: block;
+            margin: 100px auto;
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+<body>
+<canvas width="500" height="400"></canvas>
+<script>
+  const canvas = document.querySelector('canvas')
+  const ctx = canvas.getContext('2d')
+
+  class Ball {
+    /**
+     *
+     * @param {HTMLCanvasElement} canvas
+     * @param {number} x
+     * @param {number} y
+     */
+    constructor (canvas, x, y) {
+      this.canvas = canvas
+      this.x = x
+      this.y = y
+      this.radius = 30
+      this.color = this._randomColor()
+      this.ctx = this.canvas.getContext('2d')
+      this.canvasWidth = this.ctx.canvas.width
+      this.canvasHeight = this.ctx.canvas.height
+      this.dx = this._getRandomInt(-5, 6) // -5 ~ 5 integer
+      this.dy = this._getRandomInt(-5, 6) // -5 ~ 5 integer
+      this.dr = this._getRandomArbitrary(0.5, 1) // 0.5 ~ 1 float
+    }
+
+    render () {
+      const ctx = this.ctx
+
+      // ctx.clearRect(0, 0, this.canvasWidth, this.canvasHeight)
+      ctx.beginPath()
+      ctx.arc(this.x, this.y, this.radius, 0, 360 * Math.PI / 180)
+      ctx.fillStyle = this.color
+      ctx.fill()
+    }
+
+    update () {
+      this.x += this.dx
+      this.y += this.dy
+      this.radius -= this.dr
+
+      return !(this.radius <= 0 ||
+        this.x <= 0 - this.radius ||
+        this.x >= this.canvasWidth + this.radius ||
+        this.y <= 0 - this.radius ||
+        this.y >= this.canvasHeight + this.radius)
+    }
+
+    _randomColor () {
+      let red = this._getRandomInt(0, 256)
+      let green = this._getRandomInt(0, 256)
+      let blue = this._getRandomInt(0, 256)
+      return `rgb(${red}, ${green}, ${blue})`
+    }
+
+    _getRandomArbitrary (min, max) {
+      return Math.random() * (max - min) + min
+    }
+
+    _getRandomInt (min, max) {
+      return Math.floor(Math.random() * (max - min) + min)
+    }
+  }
+
+  // const ball = new Ball(canvas, 100, 100)
+  // ball.render()
+  // setInterval(() => {
+  //   ball.update()
+  //   ball.render()
+  // }, 50)
+
+  const list = []
+  canvas.onmousemove = function (event) {
+    const x = event.offsetX
+    const y = event.offsetY
+
+    const ball = new Ball(canvas, x, y)
+    ball.render()
+    list.push(ball)
+  }
+  setInterval(() => {
+    ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height)
+    for (let i = list.length - 1; i >= 0; i--) {
+      const ball = list[i]
+      console.log(i, list.length)
+      if (ball.update()) {
+        ball.render()
+      } else {
+        list.splice(i, 1)
+      }
+    }
+  }, 30)
+</script>
+</body>
+</html>

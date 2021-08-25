@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>17-Canvas-绘制动画</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        canvas {
+            display: block;
+            margin: 100px auto;
+            background: yellowgreen;
+        }
+    </style>
+</head>
+<body>
+<canvas width="500" height="400"></canvas>
+<script>
+  const canvas = document.querySelector('canvas')
+  const ctx = canvas.getContext('2d')
+
+  // draw image
+  const img = new Image()
+  img.onload = function () {
+    // calculate width and height of each frame
+    const frameWidth = img.width / 4
+    const frameHeight = img.height / 4
+
+    // calculate image position
+    const originX = ctx.canvas.width / 2 - frameWidth / 2
+    const originY = ctx.canvas.height / 2 - frameHeight / 2
+
+    // draw frame
+    let index = 0
+    setInterval(() => {
+      ctx.clearRect(0, 0, 500, 400)
+      ctx.drawImage(img, frameHeight * index, frameHeight * 2, frameWidth, frameHeight, originX, originY, frameWidth, frameHeight)
+      index++
+      if (index > 3) {
+        index = 0
+      }
+    }, 200)
+  }
+  img.src = 'images/person.png'
+</script>
+</body>
+</html>

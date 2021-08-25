@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>06-Canvas-虚线</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        canvas {
+            display: block;
+            margin: 0 auto;
+            background: yellowgreen;
+        }
+    </style>
+</head>
+<body>
+<canvas width="500" height="500"></canvas>
+<script>
+    let canvas = document.querySelector('canvas')
+    let ctx = canvas.getContext('2d')
+
+    ctx.moveTo(100, 100)
+    ctx.lineTo(400, 100)
+    ctx.lineWidth = 20
+    ctx.strokeStyle = 'blue'
+    ctx.setLineDash([5, 10])
+    // console.log(ctx.getLineDash())
+    ctx.lineDashOffset = 35
+    ctx.stroke()
+</script>
+</body>
+</html>

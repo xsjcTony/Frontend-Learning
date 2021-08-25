@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02-Canvas-线条属性</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        canvas {
+            background: yellowgreen;
+        }
+    </style>
+</head>
+<body>
+<canvas></canvas>
+<script>
+  let canvas = document.querySelector('canvas')
+  let ctx = canvas.getContext('2d')
+
+  ctx.lineWidth = 50
+  ctx.strokeStyle = 'blue'
+  ctx.lineCap = 'round'
+  ctx.moveTo(50, 50)
+  ctx.lineTo(200, 50)
+  ctx.stroke()
+</script>
+</body>
+</html>

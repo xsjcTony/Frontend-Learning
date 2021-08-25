@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>03-Canvas-绘制多根线条</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        canvas {
+            background: yellowgreen;
+        }
+    </style>
+</head>
+<body>
+<canvas></canvas>
+<script>
+  let canvas = document.querySelector('canvas')
+  let ctx = canvas.getContext('2d')
+
+  ctx.moveTo(50, 50)
+  ctx.lineTo(200, 50)
+  ctx.lineWidth = 20
+  ctx.strokeStyle = 'blue'
+  ctx.stroke()
+
+  ctx.beginPath()
+  ctx.moveTo(50, 100)
+  ctx.lineTo(200, 100)
+  ctx.lineWidth = 10
+  ctx.strokeStyle = 'red'
+  ctx.stroke()
+
+  ctx.beginPath()
+  ctx.moveTo(50, 150)
+  ctx.lineTo(200, 150)
+  ctx.lineWidth = 10
+  ctx.strokeStyle = 'green'
+  ctx.stroke()
+</script>
+</body>
+</html>

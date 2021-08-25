@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>15-Canvas-绘制文字</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        canvas {
+            display: block;
+            margin: 100px auto;
+            background: yellowgreen;
+        }
+    </style>
+</head>
+<body>
+<canvas width="500" height="400"></canvas>
+<script>
+  const canvas = document.querySelector('canvas')
+  const ctx = canvas.getContext('2d')
+
+  const canvasWidth = ctx.canvas.width
+  const canvasHeight = ctx.canvas.height
+
+  // draw reference line
+  ctx.beginPath()
+  ctx.moveTo(0, canvasHeight / 2 - 0.5)
+  ctx.lineTo(canvasWidth, canvasHeight / 2 - 0.5)
+  ctx.stroke()
+  ctx.moveTo(canvasWidth / 2 - 0.5, 0)
+  ctx.lineTo(canvasWidth / 2 - 0.5, canvasHeight)
+  ctx.stroke()
+
+  // draw character
+  const str = 'Tony loves Lily'
+  ctx.font = '30px comic sans ms'
+  ctx.textBaseline = 'bottom'
+  ctx.textAlign = 'center'
+  ctx.strokeText(str, canvasWidth / 2, canvasHeight / 2)
+  // ctx.fillText(str, canvasWidth / 2, canvasHeight / 2)
+</script>
+</body>
+</html>

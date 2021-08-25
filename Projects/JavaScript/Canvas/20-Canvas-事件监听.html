@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>20-Canvas-事件监听</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        canvas {
+            display: block;
+            margin: 100px auto;
+            background: yellowgreen;
+        }
+    </style>
+</head>
+<body>
+<canvas width="500" height="400"></canvas>
+<script>
+  const canvas = document.querySelector('canvas')
+  const ctx = canvas.getContext('2d')
+
+  const rectX = 100
+  const rectY = 100
+  const rectWidth = 100
+  const rectHeight = 100
+  ctx.rect(rectX, rectY, rectWidth, rectHeight)
+  ctx.stroke()
+
+  // monitor rectangle onclick
+  canvas.onclick = function (event) {
+    const x = event.offsetX
+    const y = event.offsetY
+
+    if (ctx.isPointInPath(x, y)) {
+      console.log('rectangle clicked')
+    } else {
+      console.log('rectangle not clicked')
+    }
+  }
+</script>
+</body>
+</html>

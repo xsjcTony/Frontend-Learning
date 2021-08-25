@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>07-Canvas-绘制表格</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        canvas {
+            display: block;
+            margin: 100px auto;
+        }
+    </style>
+</head>
+<body>
+<canvas width="500" height="400"></canvas>
+<script>
+  const canvas = document.querySelector('canvas')
+  const ctx = canvas.getContext('2d')
+
+  const gridSize = 20
+  const canvasWidth = ctx.canvas.width
+  const canvasHeight = ctx.canvas.height
+
+  const numRow = Math.floor(canvasHeight / gridSize)
+  const numColumn = Math.floor(canvasWidth / gridSize)
+
+  // draw rows
+  for (let i = 0; i < numRow; i++) {
+    ctx.beginPath()
+    ctx.moveTo(0, i * gridSize - 0.5)
+    ctx.lineTo(canvasWidth, i * gridSize - 0.5)
+    ctx.strokeStyle = '#ccc'
+    ctx.stroke()
+  }
+
+  // draw columns
+  for (let i = 0; i < numColumn; i++) {
+    ctx.beginPath()
+    ctx.moveTo(i * gridSize - 0.5, 0)
+    ctx.lineTo(i * gridSize - 0.5, canvasHeight)
+    ctx.strokeStyle = '#ccc'
+    ctx.stroke()
+  }
+
+  // draw coordinate system
+  // origin
+  const originX = gridSize
+  const originY = canvasHeight - gridSize
+  // end point
+  const endX = canvasWidth - gridSize
+  const endY = gridSize
+  // draw x-axis
+  ctx.beginPath()
+  ctx.moveTo(originX, originY - 0.5)
+  ctx.lineTo(endX, originY - 0.5)
+  ctx.strokeStyle = '#000'
+  ctx.stroke()
+  // draw x-axis arrow
+  ctx.lineTo(endX - 10, originY - 0.5 + 5)
+  ctx.lineTo(endX - 10, originY - 0.5 - 5)
+  ctx.lineTo(endX, originY - 0.5)
+  ctx.fill()
+  // draw y-axis
+  ctx.beginPath()
+  ctx.moveTo(originX - 0.5, originY)
+  ctx.lineTo(originX - 0.5, endY)
+  ctx.strokeStyle = '#000'
+  ctx.stroke()
+  // draw y-axis arrow
+  ctx.lineTo(originX - 0.5 + 5, endY + 10)
+  ctx.lineTo(originX - 0.5 - 5, endY + 10)
+  ctx.lineTo(originX - 0.5, endY)
+  ctx.fill()
+
+  // data
+  const list = [
+    {
+      x: 100,
+      y: 300
+    },
+    {
+      x: 200,
+      y: 200
+    },
+    {
+      x: 300,
+      y: 250
+    },
+    {
+      x: 400,
+      y: 100
+    }
+  ]
+  const dotSize = 20
+  // draw data point
+  for (const dot of list) {
+    ctx.beginPath()
+    ctx.moveTo(dot.x - dotSize / 2 - 0.5, dot.y - dotSize / 2 - 0.5)
+    ctx.lineTo(dot.x - dotSize / 2 + dotSize - 0.5, dot.y - dotSize / 2 - 0.5)
+    ctx.lineTo(dot.x - dotSize / 2 + dotSize - 0.5, dot.y - dotSize / 2 + dotSize - 0.5)
+    ctx.lineTo(dot.x - dotSize / 2 - 0.5, dot.y - dotSize / 2 + dotSize - 0.5)
+    ctx.closePath()
+    ctx.fill()
+  }
+  // draw data line
+  ctx.beginPath()
+  for (let i = 0; i < list.length; i++) {
+    if (i === 0) {
+      ctx.moveTo(list[i].x - 0.5, list[i].y - 0.5)
+    } else {
+      ctx.lineTo(list[i].x - 0.5, list[i].y - 0.5)
+    }
+  }
+  ctx.stroke()
+</script>
+</body>
+</html>

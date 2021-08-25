@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>08-Canvas-折线图封装</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        canvas {
+            display: block;
+            margin: 100px auto;
+        }
+    </style>
+</head>
+<body>
+<script src="js/LineChart.js"></script>
+<script>
+  const list = [
+    {
+      x: 100,
+      y: 300
+    },
+    {
+      x: 200,
+      y: 200
+    },
+    {
+      x: 300,
+      y: 250
+    },
+    {
+      x: 400,
+      y: 100
+    }
+  ]
+
+  const lineChart = new LineChart(500, 400)
+  lineChart.drawGrid()
+  lineChart.drawCoordSys()
+  lineChart.drawDataPoint(list)
+  lineChart.drawDataLine(list)
+</script>
+</body>
+</html>

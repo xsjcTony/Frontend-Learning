@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>11-Canvas-渐变色</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        canvas {
+            display: block;
+            margin: 100px auto;
+            background: yellowgreen;
+        }
+    </style>
+</head>
+<body>
+<canvas width="500" height="400"></canvas>
+<script>
+  let canvas = document.querySelector('canvas')
+  let ctx = canvas.getContext('2d')
+
+  const linearGradient = ctx.createLinearGradient(100, 100, 300, 300)
+  linearGradient.addColorStop(0, 'green')
+  linearGradient.addColorStop(0.5, 'red')
+  linearGradient.addColorStop(1, 'blue')
+  // ctx.createRadialGradient()
+  ctx.fillStyle = linearGradient
+  ctx.fillRect(100, 100, 200, 200)
+</script>
+</body>
+</html>
