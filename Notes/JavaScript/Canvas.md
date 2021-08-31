@@ -39,6 +39,8 @@ let ctx = canvas.getContext('2d')
 
 ## 画布宽高
 
+- 默认为宽 `300px` , 高 `150px`
+
 
 
 ### 修改

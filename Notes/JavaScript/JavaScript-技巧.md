@@ -17,6 +17,22 @@
 - 会返回一个数组, 包含了该对象的属性名称, 顺序和普通 `loop` 的顺序一样
 - 只有实现了 `Iterator` 接口的才能使用
 
+
+
+### 阻止对象被修改
+
+- 使用 `Object.freeze({})` 来创建对象即可
+- 修改对象时
+    - 普通模式不会报错, 但对象也不会被修改
+    - `use strict` 模式会报错
+
+```js
+const obj = Object.freeze({
+  name: 'Tony'
+})
+obj.name = 'Lily' // 无效 / 报错
+```
+
 ---
 
 ## 数组 (Array)

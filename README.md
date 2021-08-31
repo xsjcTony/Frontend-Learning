@@ -38,6 +38,7 @@
     - WOW.js
     - ScrollReveal
 - Canvas
+- SVG
 
 
 
