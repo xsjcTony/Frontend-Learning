@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ECharts-饼状图</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        div {
+            width: 600px;
+            height: 400px;
+            border: 1px solid #000;
+            margin: 10px auto;
+        }
+    </style>
+    <script src="js/echarts.js"></script>
+</head>
+<body>
+<div></div>
+<script>
+  const div = document.querySelector('div')
+  const myChart = echarts.init(div)
+  const option = {
+    title: {
+      text: 'ECharts 入门示例'
+    },
+    legend: {
+      data: ['销量', '产量', '容量']
+    },
+    series: [
+      {
+        radius: '30%',
+        center: ['10%', '50%'],
+        type: 'pie',
+        data: [
+          { value: 123, name: '销量' },
+          { value: 456, name: '产量' },
+          { value: 789, name: '容量' }
+        ]
+      }
+    ]
+  }
+  myChart.setOption(option)
+</script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ECharts-标题组件</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        div {
+            width: 600px;
+            height: 400px;
+        }
+    </style>
+    <script src="js/echarts.js"></script>
+</head>
+<body>
+<div></div>
+<script>
+  const div = document.querySelector('div')
+  const myChart = echarts.init(div)
+  const option = {
+    title: {
+      show: true,
+      text: 'ECharts 入门示例',
+      subtext: 'ECharts learning',
+      top: 10,
+      left: 10,
+      borderWidth: 5,
+      borderColor: '#f00'
+    },
+    legend: {
+      data: ['销量', '产量']
+    },
+    xAxis: {
+      data: ['衬衫', '羊毛衫', '雪纺衫', '裤子', '高跟鞋', '袜子']
+    },
+    yAxis: {},
+    series: [
+      {
+        name: '销量',
+        type: 'bar',
+        data: [5, 20, 36, 10, 10, 20]
+      },
+      {
+        name: '产量',
+        type: 'bar',
+        data: [50, 120, 136, 60, 40, 80]
+      }
+    ]
+  }
+  myChart.setOption(option)
+</script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ECharts-弹窗组件</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        div {
+            width: 600px;
+            height: 400px;
+            border: 1px solid #000;
+            margin: 10px auto;
+        }
+    </style>
+    <script src="js/echarts.js"></script>
+</head>
+<body>
+<div></div>
+<script>
+  const div = document.querySelector('div')
+  const myChart = echarts.init(div)
+  const option = {
+    title: {
+      text: 'ECharts 入门示例'
+    },
+    tooltip: {
+      show: true,
+      trigger: 'axis'
+    },
+    legend: {
+      data: ['销量', '产量']
+    },
+    xAxis: {
+      data: ['衬衫', '羊毛衫', '雪纺衫', '裤子', '高跟鞋', '袜子']
+    },
+    yAxis: {},
+    series: [
+      {
+        name: '销量',
+        type: 'bar',
+        data: [5, 20, 36, 10, 10, 20],
+        markPoint: {
+          data: [
+            { type: 'max', name: 'maximum' },
+            { type: 'min', name: 'minimum' }
+          ]
+        },
+        markLine: {
+          data: [
+            { type: 'max', name: 'maximum' },
+            { type: 'min', name: 'minimum' },
+            { type: 'average', name: 'average' }
+          ]
+        }
+      }
+    ]
+  }
+  myChart.setOption(option)
+</script>
+</body>
+</html>
