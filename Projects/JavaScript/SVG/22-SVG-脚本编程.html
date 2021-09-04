@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SVG-脚本编程</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        svg {
+            display: block;
+            margin: 10px auto;
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+<body>
+<!--
+<svg>
+    <circle cx="100" cy="100" r="50" fill="#f00"></circle>
+    <image xlink:href="images/lnj.jpg" x="200" y="200"></image>
+</svg>
+-->
+<script>
+  const SVG_NS = 'http://www.w3.org/2000/svg'
+  const XLINK_NS = 'http://www.w3.org/1999/xlink'
+
+  const svg = document.createElementNS(SVG_NS, 'svg')
+  svg.setAttribute('width', '500')
+  svg.setAttribute('height', '500')
+  document.body.appendChild(svg)
+
+  const circle = document.createElementNS(SVG_NS, 'circle')
+  circle.setAttribute('cx', '100')
+  circle.setAttribute('cy', '100')
+  circle.setAttribute('r', '50')
+  circle.setAttribute('fill', '#f00')
+  svg.appendChild(circle)
+
+  const image = document.createElementNS(SVG_NS, 'image')
+  image.setAttribute('x', '200')
+  image.setAttribute('y', '200')
+  image.setAttributeNS(XLINK_NS, 'xlink:href', 'images/lnj.jpg')
+  svg.appendChild(image)
+</script>
+</body>
+</html>

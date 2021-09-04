@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SVG-复合动画</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        svg {
+            display: block;
+            width: 500px;
+            height: 500px;
+            margin: 10px auto;
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+<body>
+<svg>
+    <circle id="my_circle" cx="100" cy="100" r="50" fill="blue">
+        <!--
+        <animate attributeName="r" from="50" to="100" dur="2s" fill="freeze" begin="click" restart="always"></animate>
+        <animate attributeName="fill" from="blue" to="red" dur="2s" fill="freeze" begin="click" restart="always"></animate>
+        -->
+        <animate id="to_right" attributeName="cx" from="100" to="300" dur="2s" begin="0;to_left.end" fill="freeze"></animate>
+        <animate id="to_left" attributeName="cx" from="300" to="100" dur="2s" begin="to_right.end" fill="freeze"></animate>
+    </circle>
+</svg>
+</body>
+</html>

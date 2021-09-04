@@ -698,7 +698,10 @@ background: url('path/to/circle.svg');
 - `xlink:href` : 指向需要执行动画的元素的 `id` , 比如 `#my_circle`
 - `repeatCount` : 动画执行的次数, `infinite` 为无限执行
 - `repeatDur` : 动画总共执行的时间, 单位为 `s`
-- `begin` : 动画开始的时间, 单位为 `s` , 取值可以包含 `事件` , 比如 `mouseenter + 2s`
+- `begin` : 动画开始的时间, 单位为 `s`
+    - 开头写上 `0;` 表示一进来就立即执行一次
+    - 取值可以包含 `事件` , 比如 `mouseenter + 2s`
+    - 取值可以包含另一个动画的结束, 比如 `animateId.end + 2s` , 需要给指向的动画添加 `id`
 - `restart` : 动画开始执行之后是否可以被重新开始执行, 取值为 `always` / `whenNotActive` / `never`
     - `always` : 默认值, 任何时候都可以重新开始执行
     - `whenNotActive` : 执行过程中不可以重新开始, 需要等待执行完毕
@@ -713,3 +716,99 @@ background: url('path/to/circle.svg');
 
 - 给元素添加 `id` , 在动画标签中添加 `xlink:href` 并指向元素的 `id`
 - 将动画标签直接嵌套在需要执行动画的元素标签中
+- 可以为同一个元素添加多个动画
+
+```html
+<svg>
+    <circle id="my_circle" cx="100" cy="100" r="50" fill="blue">
+        <animate id="to_right" attributeName="cx" from="100" to="300" dur="2s" begin="0;to_left.end" fill="freeze"></animate>
+        <animate id="to_left" attributeName="cx" from="300" to="100" dur="2s" begin="to_right.end" fill="freeze"></animate>
+    </circle>
+</svg>
+```
+
+
+
+### 形变动画
+
+- 使用 `<animateTransform>` 标签
+- `attributeName` 属性永远为 `transform`
+- 需要额外添加 `type` 属性, 指定形变类型
+    - `translate` : 平移, 基于坐标系, 单位为 `px`
+    - `rotate` : 旋转, 单位为 `deg` , 默认基于坐标系, 在 `from` 和 `to` 中可以在角度之后指定参考点位, 如 `from="0 100 100"`
+    - `scale` : 缩放, 单位为 `倍数` , 基于坐标系
+
+```html
+<svg>
+    <rect x="100" y="100" width="300" height="200" fill="blue">
+        <!--<animateTransform attributeName="transform" type="translate" from="0 0" to="100 0" dur="2s" begin="click" fill="freeze"></animateTransform>-->
+        <!--<animateTransform attributeName="transform" type="rotate" from="0 100 100" to="45 100 100" dur="2s" begin="click" fill="freeze"></animateTransform>-->
+        <animateTransform attributeName="transform" type="scale" from="1 1" to="0.5 1" dur="2s" begin="click" fill="freeze"></animateTransform>
+    </rect>
+</svg>
+```
+
+
+
+### 路径动画
+
+- 使用 `<animateMotion>` 标签
+- 没有 `attributeName` 属性
+- 需要添加 `path` 属性, 值为一个 `路径` 
+- `路径` 中的坐标是以执行动画的元素为基准
+- `rotate` 属性可以让元素自动翻转
+
+```html
+<svg width="500" height="500" viewBox="-100 -100 500 500">
+    <rect x="0" y="0" width="40" height="40" fill="rgba(255, 0, 0, 0.5)">
+        <animateMotion path="M 0 0 C 0 300 300 300 300 0" dur="5s" begin="click" fill="freeze" rotate="auto"></animateMotion>
+    </rect>
+</svg>
+```
+
+---
+
+## 脚本编程
+
+定义
+
+- 通过 `JavaScript` 来操作 `SVG`
+
+注意点
+
+- 通过 `JavaScript` 创建 `SVG` 时, 必须为其创建 `命名空间` , 并使用 `document.createElementNS()` 来创建 `SVG`
+
+```js
+const SVG_NS = 'http://www.w3.org/2000/svg'
+const svg = document.createElementNS(SVG_NS, 'svg')
+document.body.appendChild(svg)
+```
+
+- 创建 `SVG` 相关标签时, 也全部需要带上 `命名空间`
+
+```js
+const circle = document.createElementNS(SVG_NS, 'circle')
+circle.setAttribute('cx', '100')
+circle.setAttribute('cy', '100')
+circle.setAttribute('r', '50')
+circle.setAttribute('fill', '#f00')
+svg.appendChild(circle)
+```
+
+- 使用 `xlink` 相关属性也必须指定 `命名空间`
+
+```js
+const XLINK_NS = 'http://www.w3.org/1999/xlink'
+const image = document.createElementNS(SVG_NS, 'image')
+image.setAttribute('x', '200')
+image.setAttribute('y', '200')
+image.setAttributeNS(XLINK_NS, 'xlink:href', 'images/lnj.jpg')
+svg.appendChild(image)
+```
+
+框架
+
+> [SVG.js v3.0 | Home](https://svgjs.dev/docs/3.0/)
+>
+> [Snap.svg - Home](http://snapsvg.io/)
+

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SVG-ViewBox</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        svg {
+            display: block;
+            margin: 10px auto;
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+<body>
+<svg width="200" height="200" viewBox="0 0 200 200">
+    <circle cx="100" cy="100" r="50" fill="red"></circle>
+</svg>
+<svg width="200" height="200" viewBox="50 0 200 200">
+    <circle cx="100" cy="100" r="50" fill="red"></circle>
+</svg>
+<svg width="200" height="200" viewBox="0 50 200 200">
+    <circle cx="100" cy="100" r="50" fill="red"></circle>
+</svg>
+<svg width="200" height="200" viewBox="0 0 400 400">
+    <circle cx="100" cy="100" r="50" fill="red"></circle>
+</svg>
+<svg width="200" height="200" viewBox="0 0 100 100">
+    <circle cx="100" cy="100" r="50" fill="red"></circle>
+</svg>
+<svg width="200" height="200" viewBox="0 0 200 200">
+    <circle cx="50" cy="50" r="50" fill="red"></circle>
+</svg>
+<svg width="200" height="200" viewBox="0 0 400 400">
+    <circle cx="50" cy="50" r="50" fill="red"></circle>
+</svg>
+<svg width="200" height="200" viewBox="0 0 150 150">
+    <circle cx="50" cy="50" r="50" fill="red"></circle>
+</svg>
+<svg width="200" height="200" viewBox="0 0 50 150">
+    <circle cx="50" cy="50" r="50" fill="red"></circle>
+</svg>
+<svg width="200" height="200" viewBox="0 0 150 50">
+    <circle cx="50" cy="50" r="50" fill="red"></circle>
+</svg>
+<svg width="200" height="200" viewBox="0 0 50 150" preserveAspectRatio="xMinYMax">
+    <circle cx="50" cy="50" r="50" fill="red"></circle>
+</svg>
+<svg width="200" height="200" viewBox="0 0 150 50" preserveAspectRatio="xMaxYMid">
+    <circle cx="50" cy="50" r="50" fill="red"></circle>
+</svg>
+</body>
+</html>

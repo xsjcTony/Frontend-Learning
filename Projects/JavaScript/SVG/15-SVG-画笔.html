@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SVG-画笔</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        svg {
+            display: block;
+            width: 500px;
+            height: 500px;
+            margin: 20px auto;
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+<body>
+<svg>
+    <defs>
+        <!--<pattern id="my_pattern" width="0.2" height="0.2">-->
+        <pattern id="my_pattern" width="20" height="20" patternUnits="userSpaceOnUse">
+            <circle cx="10" cy="10" r="10" fill="red"></circle>
+        </pattern>
+    </defs>
+    <rect x="100" y="100" width="300" height="200" fill="url(#my_pattern)"></rect>
+</svg>
+</body>
+</html>

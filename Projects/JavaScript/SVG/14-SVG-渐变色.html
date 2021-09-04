@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SVG-渐变色</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        svg {
+            display: block;
+            width: 500px;
+            height: 500px;
+            margin: 20px auto;
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+<body>
+<svg>
+    <defs>
+        <!--<linearGradient x1="0" y1="0" x2="1" y2="1" id="my_linear_gradient">-->
+        <linearGradient x1="100" y1="100" x2="400" y2="100" id="my_linear_gradient" gradientUnits="userSpaceOnUse">
+            <stop offset="0" stop-color="pink"></stop>
+            <stop offset="1" stop-color="skyblue"></stop>
+        </linearGradient>
+    </defs>
+    <rect x="100" y="100" width="300" height="200" fill="url(#my_linear_gradient)"></rect>
+</svg>
+</body>
+</html>

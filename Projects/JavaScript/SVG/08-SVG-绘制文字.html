@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SVG-绘制文字</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        svg {
+            display: block;
+            width: 500px;
+            height: 500px;
+            margin: 20px auto;
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+<body>
+<svg>
+    <line x1="0" y1="250" x2="500" y2="250" stroke="red"></line>
+    <line x1="250" y1="0" x2="250" y2="500" stroke="red"></line>
+    <text x="250" y="250" style="font-size: 40px" stroke="#f00" fill="none" text-anchor="middle" dominant-baseline="middle">Tony loves Lily.</text>
+    <text>
+        <tspan x="100" y="100">Tony</tspan>
+        <tspan x="100" y="200">loves</tspan>
+        <tspan x="100" y="300">Lily</tspan>
+    </text>
+</svg>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SVG-动画</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        svg {
+            display: block;
+            width: 500px;
+            height: 500px;
+            margin: 10px auto;
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+<body>
+<svg>
+    <!--
+    <circle id="my_circle" cx="100" cy="100" r="50" fill="blue"></circle>
+    <animate attributeName="r" from="50" to="100" dur="2s" xlink:href="#my_circle" fill="freeze"></animate>
+    -->
+    <circle id="my_circle" cx="100" cy="100" r="50" fill="blue">
+        <animate attributeName="r" from="50" to="100" dur="2s" fill="freeze" begin="click" restart="always"></animate>
+    </circle>
+</svg>
+</body>
+</html>

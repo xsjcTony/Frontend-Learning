@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SVG-形变</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        svg {
+            display: block;
+            width: 500px;
+            height: 500px;
+            margin: 20px auto;
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+<body>
+<svg>
+    <rect x="100" y="20" width="300" height="200" fill="blue"></rect>
+    <!--<rect x="100" y="250" width="300" height="200" fill="blue" transform="translate(100, 0)"></rect>-->
+    <!--<rect x="100" y="250" width="300" height="200" fill="blue" transform="scale(0.5, 1.2)"></rect>-->
+    <rect x="100" y="250" width="300" height="200" fill="blue" transform="rotate(15)"></rect>
+</svg>
+</body>
+</html>

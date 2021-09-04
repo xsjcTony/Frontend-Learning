@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SVG-结构元素</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        svg {
+            display: block;
+            width: 500px;
+            height: 500px;
+            margin: 20px auto;
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+<body>
+<svg>
+    <!--<g fill="red" id="my_group">
+        <circle cx="100" cy="100" r="100"></circle>
+        <circle cx="100" cy="200" r="50"></circle>
+        <circle cx="100" cy="300" r="30"></circle>
+    </g>
+    <use xlink:href="#my_group" x="300"></use>-->
+
+    <!--<defs>
+        <g id="my_group">
+            <circle cx="100" cy="100" r="100"></circle>
+            <circle cx="100" cy="200" r="50"></circle>
+            <circle cx="100" cy="300" r="30"></circle>
+        </g>
+    </defs>
+    <use xlink:href="#my_group" fill="blue"></use>-->
+
+    <symbol id="my_symbol">
+        <circle cx="100" cy="100" r="100"></circle>
+        <circle cx="100" cy="200" r="50"></circle>
+        <circle cx="100" cy="300" r="30"></circle>
+    </symbol>
+    <use xlink:href="#my_symbol" fill="green"></use>
+</svg>
+</body>
+</html>
