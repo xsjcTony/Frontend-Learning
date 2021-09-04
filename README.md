@@ -30,13 +30,15 @@
     - Iterator
     - Generator
     - async / await
-- Zepto
-- iScroll
-- Swiper
-- 动画插件
-    - Animate.css
-    - WOW.js
-    - ScrollReveal
+- 流行框架
+    - Zepto
+    - iScroll
+    - Swiper
+    - 动画插件
+        - Animate.css
+        - WOW.js
+        - ScrollReveal
+    - ECharts
 - Canvas
 - SVG
 
@@ -58,4 +60,8 @@
 - Ajax
     - Ajax
     - PHP基础
+
+
+
+## Bootstrap
 
