@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap-栅格系统</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        body > div {
+            height: 100px;
+            background: red;
+        }
+        .container > .row {
+            height: 100%;
+            background: blue;
+        }
+        .row > div {
+            background: skyblue;
+        }
+        .row > div:nth-child(2) {
+            background: deeppink;
+        }
+        .row > div:nth-child(3) {
+            background: orangered;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-2 col-xl-6">我是第1列</div>
+        <div class="col-lg-4 col-xl-4">我是第2列</div>
+        <div class="col-lg-6 col-xl-2">我是第3列</div>
+    </div>
+</div>
+<script src="js/jquery.js"></script>
+<script src="js/bootstrap.bundle.js"></script>
+</body>
+</html>

@@ -55,23 +55,6 @@ audioElement.volume; // 获取音量, 返回一个0~1的Number
 audioElement.volume = value; // 设置音量, 取值为0~1
 ```
 
----
-
-## `<figure>`
-
-
-
-定义
-
-- 代表一段独立的内容, 经常和 `<figcaption>` 配合使用
-
-
-
-`<figcaption>`
-
-- 这段内容的标题
-- 写在父节点 `<figure>` 中的第一个或最后一个
-
 
 
 ---

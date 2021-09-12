@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GSAP-动画管理</title>
+    <script src="js/TweenMax.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        div {
+            width: 100px;
+            height: 100px;
+            background: #ccc;
+            border: 1px solid #000;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+<div class="box1"></div>
+<div class="box2"></div>
+<div class="box3"></div>
+
+<script>
+  const timelineMax = new TimelineMax()
+
+  timelineMax.add(
+    TweenMax.to('.box1', 3, { x: 500 })
+  )
+  timelineMax.add(
+    TweenMax.to('.box2', 3, { x: 400 })
+  )
+  timelineMax.add(
+    TweenMax.to('.box3', 3, { x: 300 })
+  )
+</script>
+</body>
+</html>

@@ -26,7 +26,7 @@
     - Promise
     - fetch
     - axios
-    - Symbol (Notes in ECMAScript)
+    - Symbol (Notes in JavaScript -> ECMAScript)
     - Iterator
     - Generator
     - async / await
@@ -65,3 +65,7 @@
 
 ## Bootstrap
 
+- Bootstrap
+- ScrollMagic (Notes in JavaScript -> 框架)
+- GSAP (Notes in JavaScript -> 框架 -> 动画插件)
+- Velocity (Notes in JavaScript -> 框架 -> 动画插件)

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GSAP-循环动画</title>
+    <script src="js/TweenMax.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        div {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            background: #ccc;
+            border: 1px solid #000;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+<div class="box"></div>
+<div class="box"></div>
+<div class="box"></div>
+<div class="box"></div>
+<div class="box"></div>
+<div class="box"></div>
+<div class="box"></div>
+<div class="box"></div>
+<div class="box"></div>
+<div class="box"></div>
+
+<script>
+  const divs = document.querySelectorAll('.box')
+  TweenMax.staggerTo(divs, 3, {
+    cycle: {
+      height: [100, 150, 200],
+      backgroundColor: ['#f00', '#0f0', '#00f']
+    }
+  }, 3)
+</script>
+</body>
+</html>

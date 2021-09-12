@@ -607,51 +607,6 @@ function easeAnimation(ele, target) {
 
 
 
-
-
----
-
-## 插件
-
-
-
-### 全屏滚动 (fullPage)
-
-> [fullPage.js | One Page Scroll sections Site Plugin](https://alvarotrigo.com/fullPage/)
->
-> https://github.com/alvarotrigo/fullPage.js
->
-> https://github.com/alvarotrigo/fullPage.js/tree/master/lang/chinese#fullpagejs
-
-- 一个jQuery的插件, 可以实现全屏翻页
-
-
-
-注意点
-
-- `afterLoad(origin, destination, direction)` 方法在第一次进入网页时也会调用, 只不过 `origin` 和 `direction` 为 `null`
-
-
-
-### 模板引擎
-
-- 通过 `JSON` 或 `JavaScript` 对象中的数据来渲染网页
-
-推荐
-
-- art-template (腾讯)
-    - [aui/art-template: High performance JavaScript templating engine](https://github.com/aui/art-template)
-
-
-
-### 基于jQuery的自定义滚动条
-
-> [jQuery custom content scroller – malihu | web design](http://manos.malihu.gr/jquery-custom-content-scroller/)
-
-- 一个基于jQuery的插件, 有各式各样的好看滚动条
-
-
-
 ---
 
 ## `JSON`

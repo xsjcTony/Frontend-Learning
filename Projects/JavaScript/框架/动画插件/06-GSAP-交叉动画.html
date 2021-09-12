@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GSAP-交叉动画</title>
+    <script src="js/TweenMax.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        div {
+            width: 100px;
+            height: 100px;
+            background: #f00;
+        }
+
+        .box2 {
+            background: #00f;
+        }
+
+        .box3 {
+            background: #0f0;
+        }
+    </style>
+</head>
+<body>
+<div class="box1"></div>
+<div class="box2"></div>
+<div class="box3"></div>
+
+<script>
+  // TweenMax.staggerTo(['.box1', '.box2', '.box3'], 3, { x: 500 }, 3)
+  // TweenMax.staggerFrom(['.box1', '.box2', '.box3'], 3, { x: 500 }, 3)
+  TweenMax.staggerFromTo(['.box1', '.box2', '.box3'], 3, { x: 500 }, { x: 200 }, 3)
+</script>
+</body>
+</html>

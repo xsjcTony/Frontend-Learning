@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>test</title>
+    <link rel="stylesheet" href="css/swiper-bundle.css">
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="css/test.css">
+    <script src="js/swiper-bundle.js"></script>
+    <script src="js/swiper.animate1.0.3.min.js"></script>
+    <script src="js/jquery.js"></script>
+</head>
+<body>
+<div class="section2-bottom">
+    <div class="swiper">
+        <p class="swiper-line"></p>
+        <p class="swiper-name">
+            <span>珊瑚橙<br>绮境森林<br>仲夏紫<br>亮黑色</span>
+        </p>
+        <p class="swiper-num">
+            <span>01<br>02<br>03<br>04</span>
+        </p>
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <img src="images/orange_left.png" class="ani" swiper-animate-effect="mySlideInUp" alt>
+                <img src="images/orange_right.png" class="ani" swiper-animate-effect="mySlideInUp" swiper-animate-delay="0.1s" alt>
+            </div>
+            <!-- /slide 1 -->
+            <div class="swiper-slide">
+                <img src="images/green_left.png" class="ani" swiper-animate-effect="mySlideInDown" alt>
+                <img src="images/green_right.png" class="ani" swiper-animate-effect="mySlideInUp" swiper-animate-delay="0.1s" alt>
+            </div>
+            <!-- /slide 2 -->
+            <div class="swiper-slide">
+                <img src="images/purple_left.png" class="ani" swiper-animate-effect="mySlideInUp" alt>
+                <img src="images/purple_right.png" class="ani" swiper-animate-effect="mySlideInUp" swiper-animate-delay="0.1s" alt>
+            </div>
+            <!-- /slide 3 -->
+            <div class="swiper-slide">
+                <img src="images/black_left.png" class="ani" swiper-animate-effect="mySlideInUp" alt>
+                <img src="images/black_right.png" class="ani" swiper-animate-effect="mySlideInUp" swiper-animate-delay="0.1s" alt>
+            </div>
+            <!-- /slide4 -->
+        </div>
+        <div class="swiper-pagination"></div>
+    </div>
+</div>
+
+<script>
+  const swiper = new Swiper('.swiper', {
+    on: {
+      init: function () {
+        swiperAnimateCache(this)
+        swiperAnimate(this)
+      },
+      slideChangeTransitionStart: function () {
+        swiperAnimate(this)
+      },
+      slideChangeTransitionEnd: function () {
+        const offsetY = this.activeIndex * 45
+        $('.swiper-name>span').animate({ top: -offsetY }, 1000)
+        $('.swiper-num>span').animate({ top: -offsetY }, 1000)
+      }
+    },
+    pagination: {
+      el: '.swiper-pagination',
+      type: 'bullets',
+      bulletClass: 'my-bullet',
+      bulletActiveClass: 'my-bullet-active'
+    },
+    effect: 'fade',
+    autoplay: {
+      delay: 3000
+    }
+  })
+
+</script>
+</body>
+</html>

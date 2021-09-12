@@ -1,0 +1,169 @@
+.section2-bottom {
+  width: 70%;
+  margin: 0 auto;
+  padding: 100px 0;
+}
+.section2-bottom .swiper {
+  overflow: hidden;
+  width: 100%;
+  height: 34vw;
+  border-radius: 35px;
+}
+.section2-bottom .swiper .swiper-line {
+  position: absolute;
+  top: 10%;
+  left: 5%;
+  width: 4vw;
+  height: 3px;
+  background: #fff;
+  z-index: 999;
+}
+.section2-bottom .swiper .swiper-name, .section2-bottom .swiper .swiper-num {
+  font-size: 40px;
+  height: 45px;
+  line-height: 45px;
+  overflow: hidden;
+  color: #fff;
+  position: absolute;
+  left: 5%;
+  top: 12%;
+  z-index: 999;
+}
+.section2-bottom .swiper .swiper-name span, .section2-bottom .swiper .swiper-num span {
+  position: relative;
+  top: 0;
+}
+.section2-bottom .swiper .swiper-num {
+  left: auto;
+  right: 5%;
+  top: 5%;
+}
+.section2-bottom .swiper .swiper-slide {
+  position: relative;
+}
+.section2-bottom .swiper .swiper-slide img {
+  position: absolute;
+}
+.section2-bottom .swiper .swiper-slide:nth-child(1) {
+  background: #ffdbc6;
+}
+.section2-bottom .swiper .swiper-slide:nth-child(1) img:nth-child(1) {
+  bottom: -40%;
+  left: 15%;
+  z-index: 1;
+  width: 36%;
+}
+.section2-bottom .swiper .swiper-slide:nth-child(1) img:nth-child(2) {
+  bottom: -60%;
+  left: 30%;
+  width: 36%;
+}
+.section2-bottom .swiper .swiper-slide:nth-child(2) {
+  background: #ace3e5;
+}
+.section2-bottom .swiper .swiper-slide:nth-child(2) img:nth-child(1) {
+  bottom: 40%;
+  left: 40%;
+  width: 48%;
+}
+.section2-bottom .swiper .swiper-slide:nth-child(2) img:nth-child(2) {
+  top: 40%;
+  left: 25%;
+  width: 48%;
+}
+.section2-bottom .swiper .swiper-slide:nth-child(3) {
+  background: #e0daf5;
+}
+.section2-bottom .swiper .swiper-slide:nth-child(3) img:nth-child(1) {
+  bottom: -40%;
+  left: 30%;
+  width: 34%;
+}
+.section2-bottom .swiper .swiper-slide:nth-child(3) img:nth-child(2) {
+  bottom: -30%;
+  left: 41%;
+  width: 38%;
+}
+.section2-bottom .swiper .swiper-slide:nth-child(4) {
+  background: #dbdbdb;
+}
+.section2-bottom .swiper .swiper-slide:nth-child(4) img:nth-child(1) {
+  bottom: -30%;
+  left: 27%;
+  width: 25%;
+}
+.section2-bottom .swiper .swiper-slide:nth-child(4) img:nth-child(2) {
+  bottom: -30%;
+  left: 45%;
+  width: 25%;
+}
+.section2-bottom .swiper .swiper-pagination {
+  position: absolute;
+  right: 10%;
+  bottom: 10%;
+  left: auto;
+  width: auto;
+}
+.section2-bottom .swiper .swiper-pagination .my-bullet {
+  display: inline-block;
+  width: 1.3vw;
+  height: 1.3vw;
+  margin: 0 15px;
+  border-radius: 50%;
+  background: #000;
+}
+.section2-bottom .swiper .swiper-pagination .my-bullet:nth-child(1) {
+  background: #ff6b29;
+  color: #ff6b29;
+}
+.section2-bottom .swiper .swiper-pagination .my-bullet:nth-child(2) {
+  background: #16c196;
+  color: #16c196;
+}
+.section2-bottom .swiper .swiper-pagination .my-bullet:nth-child(3) {
+  background: #9676ff;
+  color: #9676ff;
+}
+.section2-bottom .swiper .swiper-pagination .my-bullet:nth-child(4) {
+  background: #434040;
+  color: #434040;
+}
+.section2-bottom .swiper .swiper-pagination .my-bullet-active {
+  position: relative;
+  top: 3px;
+  margin: 0 12px;
+  border: 3px solid #fff;
+  box-shadow: 0 0 10px;
+}
+
+/* animations
+---------------------------------------------------------------- */
+@keyframes mySlideInUp {
+  0% {
+    transform: translate3d(0, 20%, 0);
+    visibility: visible;
+    opacity: 0;
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+}
+.mySlideInUp {
+  animation-name: mySlideInUp;
+}
+
+@keyframes mySlideInDown {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, -20%, 0);
+    visibility: visible;
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+.mySlideInDown {
+  animation-name: mySlideInDown;
+}

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GSAP-开篇</title>
+    <script src="js/TweenMax.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .box {
+            width: 100px;
+            height: 100px;
+            background: #f00;
+        }
+    </style>
+</head>
+<body>
+<div class="box"></div>
+
+<script>
+  // new TweenMax('.box', 3, { x: 500 })
+  // TweenMax.to('.box', 3, { x: 500 })
+  // TweenMax.from('.box', 3, { x: 500 })
+  TweenMax.fromTo('.box', 3, { x: 500 }, { x: 200 })
+</script>
+</body>
+</html>

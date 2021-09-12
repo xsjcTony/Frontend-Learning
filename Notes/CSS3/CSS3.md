@@ -18,6 +18,17 @@ margin-left: calc(-200px / 2); /* margin-left: -100px; */
 
 ---
 
+## 单位
+
+> [CSS values and units - Learn web development | MDN](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Values_and_units)
+
+- `vw` : 视口宽度的 `1%`
+- `vh` : 视口宽度的 `1%`
+
+
+
+---
+
 ## background
 
 
