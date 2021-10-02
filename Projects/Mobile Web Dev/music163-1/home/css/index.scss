@@ -1,0 +1,227 @@
+@import '../../css/common';
+
+/* variables
+---------------------------------------------------------------- */
+$themeColor: #fd271b;
+
+/* main content
+---------------------------------------------------------------- */
+
+.main {
+    width: 100%;
+    height: 100%;
+
+    .main-in {
+        width: 100%;
+        height: (4831.2rem / 100);
+        padding: 0 (30rem / 100);
+        box-sizing: border-box;
+
+        .pull-down {
+            position: relative;
+            width: 100%;
+            height: (88rem / 100);
+            text-align: center;
+
+            img {
+                @include center();
+            }
+
+            svg {
+                @include center();
+            }
+        }
+
+        .pull-up {
+            width: 100%;
+            height: (98rem / 100);
+            padding-top: (29rem / 100);
+            box-sizing: border-box;
+            font-size: (24rem / 100);
+            text-align: center;
+        }
+
+        .swiper {
+            width: 100%;
+            height: (266rem / 100);
+            margin-top: (30rem / 100);
+            border-radius: (10rem / 100);
+
+            .swiper-wrapper {
+                .swiper-slide {
+                    position: relative;
+
+                    span {
+                        position: absolute;
+                        right: 0;
+                        bottom: 0;
+                        padding: (5rem / 100) (10rem / 100);
+                        border-top-left-radius: (10rem / 100);
+                        background: deepskyblue;
+                        color: #fff;
+                        font-size: (22rem / 100);
+                    }
+                }
+            }
+
+            .swiper-pagination {
+                .my-bullet {
+                    display: inline-block;
+                    width: (14rem / 100);
+                    height: (14rem / 100);
+                    margin: 0 (6rem / 100);
+                    border-radius: 50%;
+                    background: #ccc;
+                }
+
+                .my-bullet-active {
+                    background: $themeColor;
+                }
+            }
+        }
+
+        .nav {
+            width: 100%;
+            padding: (44rem / 100) 0;
+
+            ul {
+                display: flex;
+                justify-content: space-between;
+                list-style: none;
+
+                li {
+                    text-align: center;
+
+                    img {
+                        display: block;
+                        width: (98rem / 100);
+                        border-radius: 50%;
+                        background: $themeColor;
+                    }
+
+                    span {
+                        display: block;
+                        padding-top: (20rem / 100);
+                        font-size: (22rem / 100);
+                    }
+
+                    p {
+                        position: relative;
+
+                        .nav-date {
+                            @include hCenter();
+                            top: 38%;
+                            color: $themeColor;
+                            font-size: (22rem / 100);
+                            font-style: normal;
+                        }
+                    }
+                }
+            }
+        }
+
+        .recommend,
+        .exclusive,
+        .album,
+        .mv,
+        .broadcast {
+            width: 100%;
+            border-top: 1px solid #ccc;
+
+            .category-top {
+                display: flex;
+                justify-content: space-between;
+                width: 100%;
+                padding-top: (50rem / 100);
+
+                h3 {
+                    color: #333;
+                    font-size: (34rem / 100);
+                    font-weight: 700;
+                }
+
+                span {
+                    padding: (10rem / 100) (20rem / 100);
+                    border: 1px solid #ccc;
+                    border-radius: (33rem / 100);
+                    font-size: (26rem / 100);
+                    font-weight: 700;
+                }
+            }
+
+            .category-bottom {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-between;
+                width: 100%;
+                margin-top: (36rem / 100);
+                list-style: none;
+
+                li {
+                    margin-bottom: (40rem / 100);
+
+                    div {
+                        position: relative;
+                        overflow: hidden;
+                        width: 100%;
+                        border-radius: (10rem / 100);
+
+                        p {
+                            &:nth-of-type(1) {
+                                position: absolute;
+                                top: 0;
+                                right: (10rem / 100);
+
+                                img {
+                                    position: relative;
+                                    top: (-7rem / 100);
+                                    width: (26rem / 100);
+                                }
+
+                                span {
+                                    color: #fff;
+                                    font-size: (26rem / 100);
+                                }
+                            }
+
+                            &:nth-of-type(2) {
+                                position: absolute;
+                                top: (10rem / 100);
+                                left: (10rem / 100);
+
+                                img {
+                                    width: (50rem / 100);
+                                    border: 1px solid #fff;
+                                    border-radius: 50%;
+                                    box-sizing: border-box;
+                                    background: rgba(0, 0, 0, 0.5);
+                                }
+                            }
+
+                            &:nth-of-type(3) {
+                                position: absolute;
+                                right: (10rem / 100);
+                                bottom: (10rem / 100);
+
+                                img {
+                                    width: (50rem / 100);
+                                }
+                            }
+                        }
+                    }
+
+                    .category-title {
+                        padding-top: (15rem / 100);
+                        color: #333;
+                        font-size: (26rem / 100);
+                    }
+
+                    .category-singer {
+                        color: #ccc;
+                        font-size: (24rem / 100);
+                    }
+                }
+            }
+        }
+    }
+}

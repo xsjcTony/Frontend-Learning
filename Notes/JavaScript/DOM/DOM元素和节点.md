@@ -1255,7 +1255,7 @@ element.offsetParent
 
 client宽高
 
-- 包含 `padding` , 但不包含 `padding` 
+- 包含 `padding` , 但不包含 `border` 
 - 可以获取 `CSS` 和行内样式
 - 只能获取, 不能设置
 

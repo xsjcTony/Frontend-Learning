@@ -193,6 +193,7 @@ $s: div;
 定义
 
 - 可以进行简单的 `+` , `-` , `*` , `/` 运算
+- 除法运算一定要包含在 `()` 中, 并且只能给 `被除数` (前面的值) 加单位
 - 和 `JavaScript` 中的基本运算几乎相同
 - 要写上单位, 但写在哪里都可以
 
@@ -200,7 +201,7 @@ $s: div;
 
 ```scss
 margin-left: (-200px * 0.5); // margin-left: -100px;
-margin-left: (-200 / 2px); // margin-left: -100px;
+margin-left: (-200px / 2); // margin-left: -100px; // 除法一定要严格按照这种格式, 只能前面的值加单位
 margin-left: (-200px + 100px); // margin-left: -100px;
 
 margin-left: (-200 + 100); // 缺少单位

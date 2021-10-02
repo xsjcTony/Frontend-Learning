@@ -2,7 +2,7 @@
 
 
 
-## 面向对象 (Object-Oriented)
+## 对象 (Object)
 
 
 
@@ -32,6 +32,14 @@ const obj = Object.freeze({
 })
 obj.name = 'Lily' // 无效 / 报错
 ```
+
+
+
+### 判断对象是否为空
+
+- 判断 `Object.getOwnPropertyNames(obj)` 的 `length` 是否为 `0`
+
+- 判断 `Object.keys(obj)` 的 `length` 是否为 `0`
 
 ---
 

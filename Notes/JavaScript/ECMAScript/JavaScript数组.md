@@ -147,11 +147,11 @@ for(let value of arr) {
 
 
 
-##### 作用
+作用
 
 - 遍历 `Array` 并针对每一个 `element` 执行传入的 `Function`
 
-##### 格式
+格式
 
 ```js
 // Arrow function
@@ -170,7 +170,7 @@ forEach(function callbackFn(element, index, array) { ... })
 forEach(function callbackFn(element, index, array) { ... }, thisArg)
 ```
 
-##### 参数
+参数
 
 - `callbackFn` : 在每个 `element` 上将要执行的 `Function` , 可以包含 `1` 到 `3` 个 `parameter`
     - `element` : 当前遍历至的 `element`
@@ -178,11 +178,11 @@ forEach(function callbackFn(element, index, array) { ... }, thisArg)
     - `array` : (Optional) 当前调用 `forEach()` 的 `Array`
 - `thisArg` : (Optional) 执行 `callbackFn` 的时候使用的 `this` 的数值
 
-##### 返回值
+返回值
 
 - `undefined`
 
-##### 原理
+原理
 
 ```js
 Array.prototype.myForEach = function (fn) { // this是调用myForEach()的数组
@@ -192,7 +192,7 @@ Array.prototype.myForEach = function (fn) { // this是调用myForEach()的数组
 }
 ```
 
-##### 示例
+示例
 
 ```js
 // index   0  1  2  3  4

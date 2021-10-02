@@ -618,42 +618,6 @@ console.log(subStr); // "bc"
 
 
 
-#### `String.substr()`
-
-
-
-> [String.prototype.substr() - JavaScript | MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/substr)
-
-
-
-作用
-
-- 截取 `String` 中指定范围中的内容并放在一个新的 `String` 中
-
-格式
-
-- `str.substring(start, length);`
-
-参数
-
-- `start` : 索引起始位置 (包含)
-- `length` : 截取的长度
-
-返回值
-
-- 一个包含提取出的数据的新 `String`
-
-示例
-
-```js
-// index   012345
-let str = "abcdef";
-let subStr = str.substr(1, 3);
-console.log(subStr); // "bcd"
-```
-
-
-
 #### `String.startsWith()`
 
 

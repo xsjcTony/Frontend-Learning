@@ -1,0 +1,295 @@
+@charset "UTF-8";
+html, body {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  background-color: transparent;
+  font: 14px/1.5 Helvetica, sans-serif, STHeiTi;
+  color: #333;
+  outline: 0;
+}
+
+img {
+  vertical-align: bottom;
+}
+
+.img-fluid {
+  width: 100%;
+}
+
+/*浮动工具类*/
+.fl {
+  float: left;
+}
+
+.fr {
+  float: right;
+}
+
+/*清除浮动工具类*/
+.clearfix::after {
+  content: '';
+  display: block;
+  height: 0;
+  visibility: hidden;
+  clear: both;
+}
+
+.clearfix {
+  *zoom: 1;
+}
+
+/*自定义居中混合*/
+/* variables
+---------------------------------------------------------------- */
+/* main content
+---------------------------------------------------------------- */
+.main {
+  width: 100%;
+  height: 100%;
+}
+.main .main-in {
+  width: 100%;
+  height: 48.312rem;
+  padding: 0 0.3rem;
+  box-sizing: border-box;
+}
+.main .main-in .pull-down {
+  position: relative;
+  width: 100%;
+  height: 0.88rem;
+  text-align: center;
+}
+.main .main-in .pull-down img {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+.main .main-in .pull-down svg {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+.main .main-in .pull-up {
+  width: 100%;
+  height: 0.98rem;
+  padding-top: 0.29rem;
+  box-sizing: border-box;
+  font-size: 0.24rem;
+  text-align: center;
+}
+.main .main-in .swiper {
+  width: 100%;
+  height: 2.66rem;
+  margin-top: 0.3rem;
+  border-radius: 0.1rem;
+}
+.main .main-in .swiper .swiper-wrapper .swiper-slide {
+  position: relative;
+}
+.main .main-in .swiper .swiper-wrapper .swiper-slide span {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  padding: 0.05rem 0.1rem;
+  border-top-left-radius: 0.1rem;
+  background: deepskyblue;
+  color: #fff;
+  font-size: 0.22rem;
+}
+.main .main-in .swiper .swiper-pagination .my-bullet {
+  display: inline-block;
+  width: 0.14rem;
+  height: 0.14rem;
+  margin: 0 0.06rem;
+  border-radius: 50%;
+  background: #ccc;
+}
+.main .main-in .swiper .swiper-pagination .my-bullet-active {
+  background: #fd271b;
+}
+.main .main-in .nav {
+  width: 100%;
+  padding: 0.44rem 0;
+}
+.main .main-in .nav ul {
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+}
+.main .main-in .nav ul li {
+  text-align: center;
+}
+.main .main-in .nav ul li img {
+  display: block;
+  width: 0.98rem;
+  border-radius: 50%;
+  background: #fd271b;
+}
+.main .main-in .nav ul li span {
+  display: block;
+  padding-top: 0.2rem;
+  font-size: 0.22rem;
+}
+.main .main-in .nav ul li p {
+  position: relative;
+}
+.main .main-in .nav ul li p .nav-date {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 38%;
+  color: #fd271b;
+  font-size: 0.22rem;
+  font-style: normal;
+}
+.main .main-in .recommend,
+.main .main-in .exclusive,
+.main .main-in .album,
+.main .main-in .mv,
+.main .main-in .broadcast {
+  width: 100%;
+  border-top: 1px solid #ccc;
+}
+.main .main-in .recommend .category-top,
+.main .main-in .exclusive .category-top,
+.main .main-in .album .category-top,
+.main .main-in .mv .category-top,
+.main .main-in .broadcast .category-top {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding-top: 0.5rem;
+}
+.main .main-in .recommend .category-top h3,
+.main .main-in .exclusive .category-top h3,
+.main .main-in .album .category-top h3,
+.main .main-in .mv .category-top h3,
+.main .main-in .broadcast .category-top h3 {
+  color: #333;
+  font-size: 0.34rem;
+  font-weight: 700;
+}
+.main .main-in .recommend .category-top span,
+.main .main-in .exclusive .category-top span,
+.main .main-in .album .category-top span,
+.main .main-in .mv .category-top span,
+.main .main-in .broadcast .category-top span {
+  padding: 0.1rem 0.2rem;
+  border: 1px solid #ccc;
+  border-radius: 0.33rem;
+  font-size: 0.26rem;
+  font-weight: 700;
+}
+.main .main-in .recommend .category-bottom,
+.main .main-in .exclusive .category-bottom,
+.main .main-in .album .category-bottom,
+.main .main-in .mv .category-bottom,
+.main .main-in .broadcast .category-bottom {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 0.36rem;
+  list-style: none;
+}
+.main .main-in .recommend .category-bottom li,
+.main .main-in .exclusive .category-bottom li,
+.main .main-in .album .category-bottom li,
+.main .main-in .mv .category-bottom li,
+.main .main-in .broadcast .category-bottom li {
+  margin-bottom: 0.4rem;
+}
+.main .main-in .recommend .category-bottom li div,
+.main .main-in .exclusive .category-bottom li div,
+.main .main-in .album .category-bottom li div,
+.main .main-in .mv .category-bottom li div,
+.main .main-in .broadcast .category-bottom li div {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  border-radius: 0.1rem;
+}
+.main .main-in .recommend .category-bottom li div p:nth-of-type(1),
+.main .main-in .exclusive .category-bottom li div p:nth-of-type(1),
+.main .main-in .album .category-bottom li div p:nth-of-type(1),
+.main .main-in .mv .category-bottom li div p:nth-of-type(1),
+.main .main-in .broadcast .category-bottom li div p:nth-of-type(1) {
+  position: absolute;
+  top: 0;
+  right: 0.1rem;
+}
+.main .main-in .recommend .category-bottom li div p:nth-of-type(1) img,
+.main .main-in .exclusive .category-bottom li div p:nth-of-type(1) img,
+.main .main-in .album .category-bottom li div p:nth-of-type(1) img,
+.main .main-in .mv .category-bottom li div p:nth-of-type(1) img,
+.main .main-in .broadcast .category-bottom li div p:nth-of-type(1) img {
+  position: relative;
+  top: -0.07rem;
+  width: 0.26rem;
+}
+.main .main-in .recommend .category-bottom li div p:nth-of-type(1) span,
+.main .main-in .exclusive .category-bottom li div p:nth-of-type(1) span,
+.main .main-in .album .category-bottom li div p:nth-of-type(1) span,
+.main .main-in .mv .category-bottom li div p:nth-of-type(1) span,
+.main .main-in .broadcast .category-bottom li div p:nth-of-type(1) span {
+  color: #fff;
+  font-size: 0.26rem;
+}
+.main .main-in .recommend .category-bottom li div p:nth-of-type(2),
+.main .main-in .exclusive .category-bottom li div p:nth-of-type(2),
+.main .main-in .album .category-bottom li div p:nth-of-type(2),
+.main .main-in .mv .category-bottom li div p:nth-of-type(2),
+.main .main-in .broadcast .category-bottom li div p:nth-of-type(2) {
+  position: absolute;
+  top: 0.1rem;
+  left: 0.1rem;
+}
+.main .main-in .recommend .category-bottom li div p:nth-of-type(2) img,
+.main .main-in .exclusive .category-bottom li div p:nth-of-type(2) img,
+.main .main-in .album .category-bottom li div p:nth-of-type(2) img,
+.main .main-in .mv .category-bottom li div p:nth-of-type(2) img,
+.main .main-in .broadcast .category-bottom li div p:nth-of-type(2) img {
+  width: 0.5rem;
+  border: 1px solid #fff;
+  border-radius: 50%;
+  box-sizing: border-box;
+  background: rgba(0, 0, 0, 0.5);
+}
+.main .main-in .recommend .category-bottom li div p:nth-of-type(3),
+.main .main-in .exclusive .category-bottom li div p:nth-of-type(3),
+.main .main-in .album .category-bottom li div p:nth-of-type(3),
+.main .main-in .mv .category-bottom li div p:nth-of-type(3),
+.main .main-in .broadcast .category-bottom li div p:nth-of-type(3) {
+  position: absolute;
+  right: 0.1rem;
+  bottom: 0.1rem;
+}
+.main .main-in .recommend .category-bottom li div p:nth-of-type(3) img,
+.main .main-in .exclusive .category-bottom li div p:nth-of-type(3) img,
+.main .main-in .album .category-bottom li div p:nth-of-type(3) img,
+.main .main-in .mv .category-bottom li div p:nth-of-type(3) img,
+.main .main-in .broadcast .category-bottom li div p:nth-of-type(3) img {
+  width: 0.5rem;
+}
+.main .main-in .recommend .category-bottom li .category-title,
+.main .main-in .exclusive .category-bottom li .category-title,
+.main .main-in .album .category-bottom li .category-title,
+.main .main-in .mv .category-bottom li .category-title,
+.main .main-in .broadcast .category-bottom li .category-title {
+  padding-top: 0.15rem;
+  color: #333;
+  font-size: 0.26rem;
+}
+.main .main-in .recommend .category-bottom li .category-singer,
+.main .main-in .exclusive .category-bottom li .category-singer,
+.main .main-in .album .category-bottom li .category-singer,
+.main .main-in .mv .category-bottom li .category-singer,
+.main .main-in .broadcast .category-bottom li .category-singer {
+  color: #ccc;
+  font-size: 0.24rem;
+}

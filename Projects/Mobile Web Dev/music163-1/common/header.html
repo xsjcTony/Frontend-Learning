@@ -1,0 +1,71 @@
+<link rel="stylesheet" href="../common/css/header.css">
+<!-- /header css -->
+
+<div class="header-in">
+    <div class="header-default clearfix">
+        <div class="header-center">
+            <div class="header-center-box">
+                <div class="header-center-wrapper">
+                    <img src="../common/images/topbar-it666-search.png" alt>
+                    <input type="text" placeholder="大家都在搜 那个女孩">
+                </div>
+                <div class="header-switch">
+                    <i></i>
+                    <span class="active">动态</span>
+                    <span>附近</span>
+                </div>
+                <span class="header-title">我的音乐</span>
+            </div>
+        </div>
+        <div class="header-left"></div>
+        <div class="header-cancel">
+            <a href="javascript:">取消</a>
+        </div>
+        <div class="header-right"></div>
+    </div>
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="search-ad">
+                <img src="../common/images/search-banner.gif" class="img-fluid" alt>
+                <span>&times;</span>
+            </div>
+            <div class="search-history">
+                <div class="history-top">
+                    <h6>搜索历史</h6>
+                    <img src="../common/images/search-it666-delete.png" alt>
+                </div>
+                <ul class="history-bottom"></ul>
+            </div>
+            <div class="search-hot">
+                <div class="hot-top">
+                    <h6>热搜榜</h6>
+                </div>
+                <ul class="hot-bottom"></ul>
+            </div>
+            <div class="search-current">
+                <div class="current-top">搜索 "Tony"</div>
+                <ul class="current-bottom"></ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /HTML content -->
+
+<script id="trending_topic" type="text/html">
+    <% for (let i = 0; i < data.length; i++) { %>
+    <li>
+        <span class="hot-left"><%= i + 1 %></span>
+        <div class="hot-right">
+            <div>
+                <span><%= data[i].searchWord %></span>
+                <i><%= data[i].score %></i>
+                <% if (data[i].iconUrl) { %>
+                <img src="<%= data[i].iconUrl %>" alt>
+                <% } %>
+            </div>
+            <p><%= data[i].content %></p>
+        </div>
+    </li>
+    <% } %>
+</script>
+<!-- /trending topic template -->

@@ -88,19 +88,13 @@
 
 ## 方法 (Method)
 
-
-
 > [Method definitions - JavaScript | MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Method_definitions)
 
-
-
-### 和 `Function` 的区别
+和 `Function` 的区别
 
 - `Function` 可以独立运行, 不需要和 `Class` 绑定在一起, 而 `Method` 需要 `Object` 来调用
 
-
-
-#### 示例
+示例
 
 ```js
 // Function

@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>网易云音乐</title>
+    <meta name="keywords" content="网易云音乐，音乐，播放器，网易，下载，播放，DJ，免费，明星，精选，歌单，识别音乐，收藏，分享音乐，音乐互动，高音质，320K，音乐社交，官网，移动站，music.163.com">
+    <meta name="description" content="网易云音乐是一款专注于发现与分享的音乐产品，依托专业音乐人、DJ、好友推荐及社交功能，为用户打造全新的音乐生活。">
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="apple-touch-icon" href="../apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="../apple-touch-icon114.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="../apple-touch-icon152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon180.png">
+    <script>
+      const scale = 1 / window.devicePixelRatio
+      const text = `<meta name="viewport" content="width=device-width, initial-scale=${scale}, maximum-scale=${scale}, minimum-scale=${scale}, user-scalable=no">`
+      document.write(text)
+      document.documentElement.style.fontSize = window.innerWidth / 7.5 + 'px'
+    </script>
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/swiper-bundle.css">
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+<!-- S header -->
+<div class="header">
+    <div class="header-in">
+        <img src="images/search-it666-back.png" class="go-back" alt>
+        <div class="search-box">
+            <img src="images/topbar-it666-search.png" alt>
+            <input type="text" placeholder="请输入搜索的内容">
+            <img src="images/search-it666-close.png" class="clear-text" alt>
+        </div>
+    </div>
+</div>
+<!-- E header -->
+
+<!-- S navigation -->
+<div class="nav">
+    <ul>
+        <li class="active">综合</li>
+        <li class="single">单曲</li>
+        <li class="video">视频</li>
+        <li class="singer">歌手</li>
+        <li class="album">专辑</li>
+        <li class="playlist">歌单</li>
+        <li class="dj">主播电台</li>
+        <li class="user">用户</li>
+        <span></span>
+    </ul>
+</div>
+<!-- E navigation -->
+
+<!-- S main content -->
+<div class="main">
+    <div class="main-in">
+        <div class="comprehensive active"></div>
+        <div class="single">
+            <div class="single-top">
+                <div class="top-left">
+                    <p class="select-all">
+                        <i></i>
+                        <span>全选</span>
+                    </p>
+                    <p class="play-all">
+                        <img src="images/detail-it666-play.png" alt>
+                        <span>播放全部</span>
+                    </p>
+                </div>
+                <div class="top-right">
+                    <p class="multiple-select">
+                        <img src="images/detail-it666-menu.png" alt>
+                        <span>多选</span>
+                    </p>
+                    <span class="multiple-select-complete">完成</span>
+                </div>
+            </div>
+            <ul class="list"></ul>
+        </div>
+        <div class="video">
+            <ul class="list"></ul>
+        </div>
+        <div class="singer">
+            <ul class="list"></ul>
+        </div>
+        <div class="album">
+            <ul class="list"></ul>
+        </div>
+        <div class="playlist">
+            <ul class="list"></ul>
+        </div>
+        <div class="dj">
+            <ul class="list"></ul>
+        </div>
+        <div class="user">
+            <ul class="list"></ul>
+        </div>
+
+        <div class="pull-up">
+            <img src="images/pull-up.gif" alt>
+            <span>上拉加载更多</span>
+        </div>
+        <!-- /pull up to load more -->
+    </div>
+</div>
+
+<script id="single_item" type="text/html">
+    <% for (let i = 0; i < songs.length; i++) { %>
+    <li data-song-id="<%= songs[i].id %>">
+        <i></i>
+        <div>
+            <div class="bottom-left">
+                <p class="song-name"><%= songs[i].name %></p>
+                <p>
+                    <img src="images/sq.png" alt>
+                    <span class="song-singer"><%= songs[i].artists[0].name %></span>&nbsp;-&nbsp;<span><%= songs[i].album.name %></span>
+                </p>
+            </div>
+            <div class="bottom-right">
+                <% if (songs[i].mvid !== 0) { %>
+                <img src="images/detail-it666-video.png" alt>
+                <% } %>
+                <img src="images/detail-it666-more.png" alt>
+            </div>
+        </div>
+    </li>
+    <% } %>
+</script>
+<script id="video_item" type="text/html">
+    <% for (let i = 0; i < videos.length; i++) { %>
+    <li>
+        <div class="video-left">
+            <img src="<%= videos[i].coverUrl %>" alt>
+            <p>
+                <img src="images/home-small-play.png" alt>
+                <span><%= videos[i].playTime %></span>
+            </p>
+        </div>
+        <div class="video-right">
+            <p class="video-title"><%= videos[i].title %></p>
+            <p class="video-info"><%= videos[i].durationms %>, by <%= videos[i].creator[0].userName %></p>
+        </div>
+    </li>
+    <% } %>
+</script>
+<script id="singer_item" type="text/html">
+    <% for (let i = 0; i < artists.length; i++) { %>
+    <li>
+        <div class="singer-avatar">
+            <img src="<%= artists[i].img1v1Url %>" alt>
+            <% if (artists[i].identityIconUrl) { %>
+            <img src="<%= artists[i].identityIconUrl %>" alt>
+            <% } %>
+        </div>
+        <div class="singer-info">
+            <p class="singer-name"><%= artists[i].name %></p>
+            <span>&plus; 关注</span>
+        </div>
+    </li>
+    <% } %>
+</script>
+<script id="album_item" type="text/html">
+    <% for (let i = 0; i < albums.length; i++) { %>
+    <li>
+        <div class="album-left">
+            <img src="<%= albums[i].picUrl %>" alt>
+            <i></i>
+        </div>
+        <div class="album-right">
+            <p class="album-title">
+                <%= albums[i].name %>
+                <% if (albums[i].alias[0]) { %>
+                <span>(<%= albums[i].alias[0] %>)</span>
+                <% } %>
+            </p>
+            <p class="album-info">
+                <%= albums[i].artist.name %>
+                <% if (albums[i].containedSong) { %>
+                包含单曲: <%= albums[i].containedSong %>
+                <% } else { %>
+                <%= albums[i].publishTime %>
+                <% } %>
+            </p>
+        </div>
+    </li>
+    <% } %>
+</script>
+<script id="playlist_item" type="text/html">
+    <% for (let i = 0; i < playlists.length; i++) { %>
+    <li>
+        <div class="playlist-left">
+            <img src="<%= playlists[i].coverImgUrl %>" alt>
+            <i></i>
+        </div>
+        <div class="playlist-right">
+            <p class="playlist-title"><%= playlists[i].name %></p>
+            <p class="playlist-info">
+                <%= playlists[i].trackCount %>首音乐
+                by&nbsp;<span><%= playlists[i].creator.nickname %></span>,
+                播放<%= playlists[i].playCount %>次
+            </p>
+        </div>
+    </li>
+    <% } %>
+</script>
+<script id="dj_item" type="text/html">
+    <% for (let i = 0; i < djRadios.length; i++) { %>
+    <li data-djradio-id="<%= djRadios[i].id %>">
+        <div class="dj-left">
+            <img src="<%= djRadios[i].picUrl %>" alt>
+            <i></i>
+        </div>
+        <div class="dj-right">
+            <p class="dj-title"><%= djRadios[i].name %></p>
+            <p class="dj-info">
+                <%= djRadios[i].programCount %>个声音
+                by&nbsp;<span><%= djRadios[i].dj.nickname %></span>,
+                播放<%= djRadios[i].playCount %>次
+            </p>
+            <% if (i === 0) { %>
+            <p class="dj-play"><span>&#9654;开始播放</span></p>
+            <% } %>
+        </div>
+    </li>
+    <% } %>
+</script>
+<script id="user_item" type="text/html">
+    <% for (let i = 0; i < userprofiles.length; i++) { %>
+    <li>
+        <div class="user-left">
+            <img src="<%= userprofiles[i].avatarUrl %>" alt>
+            <% if (userprofiles[i].authStatus === 1) { %>
+            <img src="https://p5.music.126.net/obj/wo3DlcOGw6DClTvDisK1/4874132307/4499/f228/d867/da64b9725e125943ad4e14e4c72d0884.png" alt>
+            <% } %>
+        </div>
+        <div class="user-right">
+            <div class="user-info">
+                <p class="user-name">
+                    <span><%= userprofiles[i].nickname %></span>
+                    <% if (userprofiles[i].gender === 1) { %>
+                    <img src="images/detail-it666-man.png" alt>
+                    <% } else if (userprofiles[i].gender === 2) { %>
+                    <img src="images/detail-it666-woman.png" alt>
+                    <% } %>
+                </p>
+                <% if (userprofiles[i].authStatus === 1 || !userprofiles[i].signature) { %>
+                <p class="user-signature">网易音乐人</p>
+                <% } else { %>
+                <p class="user-signature"><%= userprofiles[i].signature %></p>
+                <% } %>
+            </div>
+            <span class="user-follow">+ 关注</span>
+        </div>
+    </li>
+    <% } %>
+</script>
+<script id="comprehensive_item" type="text/html">
+    <% for (let i = 0; i < order.length; i++) { %>
+    <div class="comprehensive-category <% if (order[i] === 'song') { %>
+    single
+    <% } else if (order[i] === 'playList') { %>
+    playlist
+    <% } else if (order[i] === 'new_mlog') { %>
+    video
+    <% } else if (order[i] === 'artist') { %>
+    singer
+    <% } else if (order[i] === 'album') { %>
+    album
+    <% } else if (order[i] === 'circle') { %>
+    dj
+    <% } else if (order[i] === 'sim_query') { %>
+    relative
+    <% } else if (order[i] === 'user') { %>
+    user
+    <% } %>">
+        <div class="comprehensive-top">
+            <% if (order[i] === 'song') { %>
+            <h6>单曲</h6>
+            <span>播放全部</span>
+            <% } else if (order[i] === 'playList') { %>
+            <h6>歌单</h6>
+            <% } else if (order[i] === 'new_mlog') { %>
+            <h6>视频</h6>
+            <% } else if (order[i] === 'artist') { %>
+            <h6>歌手</h6>
+            <% } else if (order[i] === 'album') { %>
+            <h6>专辑</h6>
+            <% } else if (order[i] === 'circle') { %>
+            <h6>主播电台</h6>
+            <% } else if (order[i] === 'sim_query') { %>
+            <h6>相关搜索</h6>
+            <% } else if (order[i] === 'user') { %>
+            <h6>用户</h6>
+            <% } %>
+        </div>
+        <ul class="list"></ul>
+        <% if ($data[order[i]].more && (order[i] !== 'sim_query')) { %>
+        <div class="comprehensive-bottom" data-name="<% if (order[i] === 'song') { %>
+    single
+    <% } else if (order[i] === 'playList') { %>
+    playlist
+    <% } else if (order[i] === 'new_mlog') { %>
+    video
+    <% } else if (order[i] === 'artist') { %>
+    singer
+    <% } else if (order[i] === 'album') { %>
+    album
+    <% } else if (order[i] === 'circle') { %>
+    dj
+    <% } else if (order[i] === 'sim_query') { %>
+    relative
+    <% } else if (order[i] === 'user') { %>
+    user
+    <% } %>"><%= $data[order[i]].moreText %> &gt;</div>
+        <% } %>
+    </div>
+    <% } %>
+</script>
+<script id="relative_item" type="text/html">
+    <% for (let i = 0; i < sim_querys.length; i++) { %>
+    <li><%= sim_querys[i].keyword %></li>
+    <% } %>
+</script>
+<!-- /templates -->
+<!-- E main content -->
+
+<!-- S footer -->
+<div class="footer"></div>
+<!-- E footer -->
+
+<!-- S JavaScript -->
+<script src="../js/zepto.js"></script>
+<script src="../js/event.js"></script>
+<script src="../js/ajax.js"></script>
+<script src="../js/form.js"></script>
+<script src="../js/ie.js"></script>
+<script src="../js/fx.js"></script>
+<script src="../js/fx_methods.js"></script>
+<script src="../js/touch.js"></script>
+<!-- /Zepto -->
+<script src="../js/iscroll-probe.js"></script>
+<script src="../js/swiper-bundle.js"></script>
+<script src="../js/axios.js"></script>
+<script src="../js/api.js"></script>
+<!-- /axios -->
+<script src="../js/template-web.js"></script>
+<script src="../js/clamp.js"></script>
+<script src="../js/tools.js"></script>
+<script src="js/index.js"></script>
+<!-- E JavaScript -->
+</body>
+</html>

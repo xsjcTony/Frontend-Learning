@@ -1,0 +1,439 @@
+@charset "UTF-8";
+html, body {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  background-color: transparent;
+  font: 14px/1.5 Helvetica, sans-serif, STHeiTi;
+  color: #333;
+  outline: 0;
+}
+
+img {
+  vertical-align: bottom;
+}
+
+.img-fluid {
+  width: 100%;
+}
+
+/*浮动工具类*/
+.fl {
+  float: left;
+}
+
+.fr {
+  float: right;
+}
+
+/*清除浮动工具类*/
+.clearfix::after {
+  content: '';
+  display: block;
+  height: 0;
+  visibility: hidden;
+  clear: both;
+}
+
+.clearfix {
+  *zoom: 1;
+}
+
+/*自定义居中混合*/
+/* variables
+---------------------------------------------------------------- */
+/* header
+---------------------------------------------------------------- */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  width: 100%;
+  height: 0.88rem;
+  padding: 0 0.3rem;
+  box-sizing: border-box;
+}
+.header .header-in {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+.header .header-in img {
+  width: 0.56rem;
+  height: 0.56rem;
+}
+.header .header-in div {
+  color: #fff;
+  text-align: center;
+}
+.header .header-in div .header-title {
+  font-size: 0.3rem;
+}
+.header .header-in div .header-singer {
+  font-size: 0.22rem;
+}
+
+/* main
+---------------------------------------------------------------- */
+.main {
+  width: 100%;
+  height: 100%;
+}
+.main .bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: center top / auto 100% no-repeat;
+  filter: blur(150px);
+}
+.main .main-in {
+  position: relative;
+  z-index: 666;
+  width: 100%;
+  height: 100%;
+  padding: 0.88rem 0.3rem 2.08rem;
+  box-sizing: border-box;
+  background: rgba(0, 0, 0, 0.5);
+}
+.main .main-in .main-default {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.main .main-in .main-default .default-user {
+  position: relative;
+  z-index: 99;
+}
+.main .main-in .main-default .default-user img {
+  position: absolute;
+  left: 50%;
+  width: 2.5rem;
+  transition: all 0.3s linear;
+  transform: translateX(-0.627rem) rotate(-30deg);
+  transform-origin: 0.627rem 0.627rem;
+}
+.main .main-in .main-default .default-info {
+  position: absolute;
+  top: 2.4rem;
+  width: 100%;
+  height: 5rem;
+}
+.main .main-in .main-default .default-info .disc-bg {
+  width: 5rem;
+  height: 5rem;
+  border: 0.25rem solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  box-sizing: border-box;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+.main .main-in .main-default .default-info .swiper {
+  width: 100%;
+  height: 100%;
+}
+.main .main-in .main-default .default-info .swiper .swiper-wrapper .swiper-slide .disc-image {
+  width: 5rem;
+  height: 5rem;
+  background: url(../images/player-it666-disc.png) 0 0/100% auto no-repeat;
+  animation: discSpin 20s linear 0s infinite paused;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+.main .main-in .main-default .default-info .swiper .swiper-wrapper .swiper-slide .disc-image img {
+  width: 3.2rem;
+  height: 3.2rem;
+  border-radius: 50%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+.main .main-in .main-default .default-comment {
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  bottom: 0.6rem;
+  left: 0;
+  width: 100%;
+}
+.main .main-in .main-default .default-comment li img {
+  width: 0.56rem;
+  height: 0.56rem;
+}
+.main .main-in .main-lyric {
+  display: none;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+}
+.main .main-in .main-lyric .lyric-top {
+  display: flex;
+  align-items: center;
+  position: relative;
+  z-index: 99;
+  width: 100%;
+}
+.main .main-in .main-lyric .lyric-top img {
+  width: 0.56rem;
+  height: 0.56rem;
+}
+.main .main-in .main-lyric .lyric-top .volume-progress-bar {
+  flex: 1;
+  height: 0.05rem;
+  margin: 0 0.2rem;
+  background: rgba(255, 255, 255, 0.5);
+}
+.main .main-in .main-lyric .lyric-top .volume-progress-bar .volume-progress-line {
+  position: relative;
+  width: 50%;
+  height: 100%;
+  background: #fff;
+}
+.main .main-in .main-lyric .lyric-top .volume-progress-bar .volume-progress-line .volume-progress-dot {
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  width: 0.2rem;
+  height: 0.2rem;
+  border-radius: 50%;
+  background: #fff;
+  transform: translate(-50%, -50%);
+}
+.main .main-in .main-lyric .lyric-bottom {
+  position: absolute;
+  bottom: 50%;
+  left: 0;
+  width: 100%;
+  height: 0.8rem;
+  transform: translateY(50%);
+}
+.main .main-in .main-lyric .lyric-bottom .lyric-list {
+  width: 100%;
+}
+.main .main-in .main-lyric .lyric-bottom .lyric-list li {
+  overflow: hidden;
+  width: 100%;
+  height: 0.8rem;
+  color: #666;
+  font-size: 0.3rem;
+  line-height: 0.8rem;
+  text-align: center;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.main .main-in .main-lyric .lyric-bottom .lyric-list li.selected {
+  color: #aaa;
+}
+.main .main-in .main-lyric .lyric-bottom .lyric-list li.active {
+  color: #fff;
+}
+.main .main-in .main-lyric .lyric-bottom .lyric-timeline {
+  display: none;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 0.8rem;
+}
+.main .main-in .main-lyric .lyric-bottom .lyric-timeline img {
+  width: 0.56rem;
+  height: 0.56rem;
+}
+.main .main-in .main-lyric .lyric-bottom .lyric-timeline div {
+  flex: 1;
+  height: 0.02rem;
+  margin: 0 0.2rem;
+  background: rgba(255, 255, 255, 0.2);
+}
+.main .main-in .main-lyric .lyric-bottom .lyric-timeline span {
+  color: #fff;
+  font-size: 0.18rem;
+}
+.main .main-in.active .main-default {
+  display: none;
+}
+.main .main-in.active .main-lyric {
+  display: block;
+}
+
+/* footer
+---------------------------------------------------------------- */
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 999;
+  width: 100%;
+  padding: 0 0.3rem;
+  box-sizing: border-box;
+}
+.footer .footer-in {
+  width: 100%;
+}
+.footer .footer-in .footer-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 0.88rem;
+}
+.footer .footer-in .footer-top span {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.18rem;
+}
+.footer .footer-in .footer-top .progress-bar {
+  flex: 1;
+  height: 0.05rem;
+  margin: 0 0.2rem;
+  background: rgba(255, 255, 255, 0.5);
+}
+.footer .footer-in .footer-top .progress-bar .progress-line {
+  position: relative;
+  width: 0;
+  height: 100%;
+  background: #fff;
+}
+.footer .footer-in .footer-top .progress-bar .progress-line .progress-dot {
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  width: 0.2rem;
+  height: 0.2rem;
+  border-radius: 50%;
+  background: #fff;
+  transform: translate(-50%, -50%);
+}
+.footer .footer-in .footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 1.2rem;
+}
+.footer .footer-in .footer-bottom li img {
+  width: 0.56rem;
+  height: 0.56rem;
+}
+.footer .footer-in .footer-bottom li.play img {
+  width: 1rem;
+  height: 1rem;
+}
+.footer .footer-in .footer-bottom li.play img:last-of-type {
+  display: none;
+}
+.footer .footer-in .footer-bottom li.play.active img:first-of-type {
+  display: none;
+}
+.footer .footer-in .footer-bottom li.play.active img:last-of-type {
+  display: block;
+}
+
+/* module
+---------------------------------------------------------------- */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+}
+.modal .modal-main {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 0 0.3rem;
+  border-top-left-radius: 0.4rem;
+  border-top-right-radius: 0.4rem;
+  box-sizing: border-box;
+  background: #fff;
+}
+.modal .modal-main .modal-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 0.88rem;
+  font-size: 0.28rem;
+}
+.modal .modal-main .modal-top img {
+  width: 0.56rem;
+  height: 0.56rem;
+}
+.modal .modal-main .modal-top .modal-top-left {
+  display: flex;
+  align-items: center;
+}
+.modal .modal-main .modal-top .modal-top-right {
+  display: flex;
+  align-items: center;
+}
+.modal .modal-main .modal-top .modal-top-right span {
+  margin-left: 0.1rem;
+}
+.modal .modal-main .modal-list {
+  width: 100%;
+  height: 4.4rem;
+  overflow: hidden;
+}
+.modal .modal-main .modal-list .modal-middle {
+  width: 100%;
+}
+.modal .modal-main .modal-list .modal-middle li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 0.88rem;
+  border-bottom: 1px solid #ccc;
+  box-sizing: border-box;
+  font-size: 0.28rem;
+}
+.modal .modal-main .modal-list .modal-middle li p {
+  display: flex;
+  align-items: center;
+}
+.modal .modal-main .modal-list .modal-middle li p span {
+  color: #666;
+  font-size: 0.22rem;
+}
+.modal .modal-main .modal-list .modal-middle li img {
+  width: 0.32rem;
+  height: 0.32rem;
+  padding: 0.12rem;
+}
+.modal .modal-main .modal-bottom {
+  width: 100%;
+  height: 1.2rem;
+  font-size: 0.28rem;
+  line-height: 1.2rem;
+  text-align: center;
+}
+
+/* animations
+---------------------------------------------------------------- */
+@keyframes discSpin {
+  from {
+    transform: translate(-50%, -50%);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}

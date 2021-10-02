@@ -806,6 +806,10 @@ image.setAttributeNS(XLINK_NS, 'xlink:href', 'images/lnj.jpg')
 svg.appendChild(image)
 ```
 
+方法
+
+- `getTotalLength()` : 获取 `path` 的长度
+
 框架
 
 > [SVG.js v3.0 | Home](https://svgjs.dev/docs/3.0/)

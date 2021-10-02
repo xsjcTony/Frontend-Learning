@@ -941,6 +941,7 @@ jQueryObj.trigger("eventName.tony"); // 只会触发第一个
 定义
 
 - 找一个在 `入口函数` 执行之前就有的元素来监听之后动态添加的一些元素的某些事件
+- 移除使用 `undelegate()`
 
 格式
 

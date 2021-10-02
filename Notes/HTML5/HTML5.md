@@ -49,6 +49,10 @@
 
 ## 标签属性
 
+
+
+### 自带属性
+
 - `role` : 增强语义性, 当现有 `HTML` 标签不能充分表达语义的时候, 就可以借助 `role` 来说明, 辅助工具可以借助 `role` 识别标签实际作用
 
 ```html
@@ -69,5 +73,28 @@
     <button type="button" class="close" ></button>
     ```
 
-    
+
+
+
+### 自定义属性
+
+- 格式为 `data-*`
+- 用于保存一些私有数据
+- 可以在 `JavaScript` 中通过 `dataset` 获取
+- 若 `*` 的内容中间有 `-` , 则 `JavaScript` 中会默认转换为驼峰命名
+
+```html
+<body>
+<div data-aelita='Tony'></div>
+<div data-my-name='Lily'></div>
+  
+<script>
+  const div = document.querySelector('div')
+  console.log(div.dataset.aelita) // 'Tony'
+  console.log(div.dataset.myName) // 'Lily'
+</script>
+</body>
+```
+
+
 

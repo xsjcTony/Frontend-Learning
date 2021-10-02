@@ -23,5 +23,9 @@ minute = minute >= 10 ? minute : "0" + minute;
 let second = Math.floor(differSecond % 60);
 second = second >= 10 ? second : "0" + second;
 
-// 输出
-// return `相差${day}天${hour}小时${minute}分钟${second}秒`
+return {
+  day: day,
+  hour: hour,
+  minute: minute,
+  second: second
+}

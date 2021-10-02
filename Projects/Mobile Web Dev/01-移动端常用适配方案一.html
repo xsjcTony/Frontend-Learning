@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>移动端常用适配方案一</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .top {
+            position: relative;
+        }
+
+        .top > img {
+            width: 100%;
+            height: auto;
+        }
+
+        .top > p {
+            position: absolute;
+            top: 33px;
+            left: 50%;
+            color: #fff;
+            font-size: 16px;
+            transform: translateX(-50%);
+        }
+
+        .middle, .bottom {
+            position: relative;
+            height: 124px;
+        }
+
+        .main {
+            display: inline-block;
+            padding: 4px;
+            border: 1px dashed #0d7efb;
+            border-radius: 5px;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .main > img:nth-of-type(1) {
+            width: 175px;
+            height: 116px;
+            vertical-align: bottom;
+        }
+
+        .main > img:nth-of-type(2) {
+            width: 35px;
+            height: 35px;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            top: 25px;
+        }
+
+        .bottom {
+            margin-top: 14px;
+        }
+
+        @media screen and (min-width: 375px) {
+            .top > p {
+                top: 40px;
+                font-size: 18px;
+            }
+
+            .middle, .bottom {
+                height: 143px;
+            }
+
+            .main > img:nth-of-type(1) {
+                width: 206px;
+                height: 135px;
+            }
+
+            .main > img:nth-of-type(2) {
+                width: 42px;
+                height: 42px;
+                top: 30px;
+            }
+
+            .bottom {
+                margin-top: 17px;
+            }
+        }
+
+        @media screen and (min-width: 414px) {
+            .top > p {
+                top: 43px;
+                font-size: 20px;
+            }
+
+            .middle, .bottom {
+                height: 160px;
+            }
+
+            .main {
+                padding: 5px;
+            }
+
+            .main > img:nth-of-type(1) {
+                width: 227px;
+                height: 150px;
+            }
+
+            .main > img:nth-of-type(2) {
+                width: 45px;
+                height: 45px;
+                top: 35px;
+            }
+
+            .bottom {
+                margin-top: 19px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="top">
+    <img src="images/bg.png" alt>
+    <p>实名认证</p>
+</div>
+<div class="middle">
+    <div class="main">
+        <img src="images/back.png" alt>
+        <img src="images/add.png" alt>
+    </div>
+</div>
+<div class="bottom">
+    <div class="main">
+        <img src="images/back.png" alt>
+        <img src="images/add.png" alt>
+    </div>
+</div>
+</body>
+</html>

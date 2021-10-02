@@ -1,0 +1,465 @@
+@import '../../css/common';
+
+/* variables
+---------------------------------------------------------------- */
+$themeColor: #fd271b;
+
+/* header
+---------------------------------------------------------------- */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    width: 100%;
+    height: (88rem / 100);
+    padding: 0 (30rem / 100);
+    box-sizing: border-box;
+
+    .header-in {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+
+        img {
+            width: (56rem / 100);
+            height: (56rem / 100);
+        }
+
+        div {
+            color: #fff;
+            text-align: center;
+
+            .header-title {
+                font-size: (30rem / 100);
+            }
+
+            .header-singer {
+                font-size: (22rem / 100);
+            }
+        }
+    }
+}
+
+/* main
+---------------------------------------------------------------- */
+.main {
+    width: 100%;
+    height: 100%;
+
+    .bg {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: center top / auto 100% no-repeat;
+        filter: blur(150px);
+    }
+
+    .main-in {
+        position: relative;
+        z-index: 666;
+        width: 100%;
+        height: 100%;
+        padding: (88rem / 100) (30rem / 100) (208rem / 100);
+        box-sizing: border-box;
+        background: rgba(0, 0, 0, 0.5);
+
+        .main-default {
+            position: relative;
+            width: 100%;
+            height: 100%;
+
+            .default-user {
+                position: relative;
+                z-index: 99;
+
+                img {
+                    position: absolute;
+                    left: 50%;
+                    width: (250rem / 100);
+                    transition: all 0.3s linear;
+                    transform: translateX((-62.7rem / 100)) rotate(-30deg);
+                    transform-origin: (62.7rem / 100) (62.7rem / 100);
+                }
+            }
+
+            .default-info {
+                position: absolute;
+                top: (240rem / 100);
+                width: 100%;
+                height: (500rem / 100);
+
+                .disc-bg {
+                    width: (500rem / 100);
+                    height: (500rem / 100);
+                    border: (25rem / 100) solid rgba(255, 255, 255, 0.2);
+                    border-radius: 50%;
+                    box-sizing: border-box;
+                    @include center();
+                }
+
+                .swiper {
+                    width: 100%;
+                    height: 100%;
+
+                    .swiper-wrapper {
+                        .swiper-slide {
+                            .disc-image {
+                                width: (500rem / 100);
+                                height: (500rem / 100);
+                                background: url(../images/player-it666-disc.png) 0 0 / 100% auto no-repeat;
+                                animation: discSpin 20s linear 0s infinite paused;
+                                @include center();
+
+                                img {
+                                    width: (320rem / 100);
+                                    height: (320rem / 100);
+                                    border-radius: 50%;
+                                    @include center();
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            .default-comment {
+                display: flex;
+                justify-content: space-between;
+                position: absolute;
+                bottom: (60rem / 100);
+                left: 0;
+                width: 100%;
+
+                li {
+                    img {
+                        width: (56rem / 100);
+                        height: (56rem / 100);
+                    }
+                }
+            }
+        }
+
+        .main-lyric {
+            display: none;
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            height: 100%;
+
+            .lyric-top {
+                display: flex;
+                align-items: center;
+                position: relative;
+                z-index: 99;
+                width: 100%;
+
+                img {
+                    width: (56rem / 100);
+                    height: (56rem / 100);
+                }
+
+                .volume-progress-bar {
+                    flex: 1;
+                    height: (5rem / 100);
+                    margin: 0 (20rem / 100);
+                    background: rgba(255, 255, 255, 0.5);
+
+                    .volume-progress-line {
+                        position: relative;
+                        width: 50%;
+                        height: 100%;
+                        background: #fff;
+
+                        .volume-progress-dot {
+                            position: absolute;
+                            top: 50%;
+                            left: 100%;
+                            width: (20rem / 100);
+                            height: (20rem / 100);
+                            border-radius: 50%;
+                            background: #fff;
+                            transform: translate(-50%, -50%);
+                        }
+                    }
+                }
+            }
+
+            .lyric-bottom {
+                position: absolute;
+                bottom: 50%;
+                left: 0;
+                width: 100%;
+                height: (80rem / 100);
+                transform: translateY(50%);
+
+                .lyric-list {
+                    width: 100%;
+
+                    li {
+                        overflow: hidden;
+                        width: 100%;
+                        height: (80rem / 100);
+                        color: #666;
+                        font-size: (30rem / 100);
+                        line-height: (80rem / 100);
+                        text-align: center;
+                        white-space: nowrap;
+                        text-overflow: ellipsis;
+
+                        &.selected {
+                            color: #aaa;
+                        }
+
+                        &.active {
+                            color: #fff;
+                        }
+                    }
+                }
+
+                .lyric-timeline {
+                    display: none;
+                    justify-content: space-between;
+                    align-items: center;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: (80rem / 100);
+
+                    img {
+                        width: (56rem / 100);
+                        height: (56rem / 100);
+                    }
+
+                    div {
+                        flex: 1;
+                        height: (2rem / 100);
+                        margin: 0 (20rem / 100);
+                        background: rgba(255, 255, 255, 0.2);
+                    }
+
+                    span {
+                        color: #fff;
+                        font-size: (18rem / 100);
+                    }
+                }
+            }
+        }
+
+        &.active {
+            .main-default {
+                display: none;
+            }
+
+            .main-lyric {
+                display: block;
+            }
+        }
+    }
+}
+
+/* footer
+---------------------------------------------------------------- */
+.footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 999;
+    width: 100%;
+    padding: 0 (30rem / 100);
+    box-sizing: border-box;
+
+    .footer-in {
+        width: 100%;
+
+        .footer-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            height: (88rem / 100);
+
+            span {
+                color: rgba(255, 255, 255, 0.5);
+                font-size: (18rem / 100);
+            }
+
+            .progress-bar {
+                flex: 1;
+                height: (5rem / 100);
+                margin: 0 (20rem / 100);
+                background: rgba(255, 255, 255, 0.5);
+
+                .progress-line {
+                    position: relative;
+                    width: 0;
+                    height: 100%;
+                    background: #fff;
+
+                    .progress-dot {
+                        position: absolute;
+                        top: 50%;
+                        left: 100%;
+                        width: (20rem / 100);
+                        height: (20rem / 100);
+                        border-radius: 50%;
+                        background: #fff;
+                        transform: translate(-50%, -50%);
+                    }
+                }
+            }
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            height: (120rem / 100);
+
+            li {
+                img {
+                    width: (56rem / 100);
+                    height: (56rem / 100);
+                }
+
+                &.play {
+                    img {
+                        width: (100rem / 100);
+                        height: (100rem / 100);
+
+                        &:last-of-type {
+                            display: none;
+                        }
+                    }
+
+                    &.active {
+                        img {
+                            &:first-of-type {
+                                display: none;
+                            }
+
+                            &:last-of-type {
+                                display: block;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+/* module
+---------------------------------------------------------------- */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+
+    .modal-main {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        padding: 0 (30rem / 100);
+        border-top-left-radius: (40rem / 100);
+        border-top-right-radius: (40rem / 100);
+        box-sizing: border-box;
+        background: #fff;
+
+        .modal-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            height: (88rem / 100);
+            font-size: (28rem / 100);
+
+            img {
+                width: (56rem / 100);
+                height: (56rem / 100);
+            }
+
+            .modal-top-left {
+                display: flex;
+                align-items: center;
+            }
+
+            .modal-top-right {
+                display: flex;
+                align-items: center;
+
+                span {
+                    margin-left: (10rem / 100);
+                }
+            }
+        }
+
+        .modal-list {
+            width: 100%;
+            height: (440rem / 100);
+            overflow: hidden;
+
+            .modal-middle {
+                width: 100%;
+
+                li {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    width: 100%;
+                    height: (88rem / 100);
+                    border-bottom: 1px solid #ccc;
+                    box-sizing: border-box;
+                    font-size: (28rem / 100);
+
+                    p {
+                        display: flex;
+                        align-items: center;
+
+                        span {
+                            color: #666;
+                            font-size: (22rem / 100);
+                        }
+                    }
+
+                    img {
+                        width: (32rem / 100);
+                        height: (32rem / 100);
+                        padding: (12rem / 100);
+                    }
+                }
+            }
+        }
+
+        .modal-bottom {
+            width: 100%;
+            height: (120rem / 100);
+            font-size: (28rem / 100);
+            line-height: (120rem / 100);
+            text-align: center;
+        }
+    }
+}
+
+/* animations
+---------------------------------------------------------------- */
+@keyframes discSpin {
+    from {
+        transform: translate(-50%, -50%);
+    }
+    to {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}

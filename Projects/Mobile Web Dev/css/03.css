@@ -1,0 +1,76 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/*
+!* iphone5
+---------------------------------------------------------------- *!
+html {
+    font-size: (320px / 7.5);
+}
+
+!* iphone6
+---------------------------------------------------------------- *!
+@media screen and (min-width: 375px) {
+    html {
+        font-size: (375px / 7.5);
+    }
+}
+
+!* iphone6 Plus
+---------------------------------------------------------------- *!
+@media screen and (min-width: 414px) {
+    html {
+        font-size: (414px / 7.5);
+    }
+}
+*/
+.top {
+  position: relative;
+}
+.top img {
+  width: 100%;
+  height: auto;
+}
+.top p {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 0.8rem;
+  font-size: 0.36rem;
+  color: #fff;
+}
+
+.middle, .bottom {
+  position: relative;
+  height: 2.9rem;
+}
+.middle .main, .bottom .main {
+  display: inline-block;
+  padding: 0.1rem;
+  border: 1px dashed #0d7efb;
+  border-radius: 0.05rem;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.middle .main img, .bottom .main img {
+  vertical-align: bottom;
+}
+.middle .main img:nth-of-type(1), .bottom .main img:nth-of-type(1) {
+  width: 4.1rem;
+  height: 2.7rem;
+}
+.middle .main img:nth-of-type(2), .bottom .main img:nth-of-type(2) {
+  width: 0.84rem;
+  height: 0.84rem;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 0.6rem;
+}
+
+.bottom {
+  margin-top: 0.35rem;
+}

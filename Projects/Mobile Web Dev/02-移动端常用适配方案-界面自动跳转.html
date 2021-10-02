@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>移动端常用适配方案-界面自动跳转</title>
+</head>
+<body>
+<script>
+  function isPc () {
+    const userAgentInfo = window.navigator.userAgent
+    if (/iphone/i.test(userAgentInfo)) {
+      return false
+    } else if (/android/i.test(userAgentInfo)) {
+      return false
+    }
+    return true
+  }
+
+  if (!isPc()) {
+    window.location.href="https://m.jd.com/"
+  }
+</script>
+</body>
+</html>

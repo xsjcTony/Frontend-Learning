@@ -18,14 +18,58 @@ margin-left: calc(-200px / 2); /* margin-left: -100px; */
 
 ---
 
-## 单位
+## 单位 (Unit)
 
 > [CSS values and units - Learn web development | MDN](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Values_and_units)
 
-- `vw` : 视口宽度的 `1%`
-- `vh` : 视口宽度的 `1%`
+像素
 
+- 固定单位
+- 单位符号为 `px`
 
+- 一个小方格就是一个像素
+- 不会随着视口大小的变化而变化
+
+百分比
+
+- 动态单位
+- 单位符号为 `%`
+- 以当前元素的父元素作为参考进行计算
+- 子元素的 `width` / `height` 分别根据父元素的 `width` / `height` 来计算
+- 子元素的 `margin` / `padding` 根据父元素的 `宽度` 来计算
+- `border` 类属性不能使用百分比
+
+em
+
+- 动态单位
+- 单位符号为 `em`
+- 大小相对于 `font-size` 属性 (比如 `font-size: 12px` , 则 `1em` 为 `12px` )
+- 从当前元素开始寻找 `font-size` , 若没有则寻找祖先元素, 找到为止
+- 若当前元素以及所有祖先元素都没有设置, 则使用浏览器的默认字体大小
+
+rem
+
+- 动态单位
+- 单位符号为 `rem`
+- 大小相对于 `根元素` ( `html` ) 的 `font-size` 属性
+- 如果 `根元素` ( `html` ) 没有设置, 则使用浏览器的默认字体大小
+- 当前元素和祖先元素的字体大小不会影响 `rem` 的值
+
+vw / vh
+
+- 动态单位
+- 单位符号为 `vw` / `vh`
+- `1vw` 等于视口宽度的 `1%`
+- `1vh` 等于视口高度的 `1%`
+- 会随着视口大小的变化而变化
+
+vmin / vmax
+
+- 动态单位
+- 单位符号为 `vmin` / `vmax`
+- `vmin` 等于 `vw` 和 `vh` 中较小的那一个
+- `vmax` 等于 `vw` 和 `vh` 中较大的那一个
+- 可以保证移动设备屏幕旋转后尺寸不变
 
 ---
 
@@ -37,7 +81,9 @@ margin-left: calc(-200px / 2); /* margin-left: -100px; */
 
 > [CSS background property](https://www.w3schools.com/cssref/css3_pr_background.asp)
 
-#### `bg-size` 的插入方法
+
+
+### `bg-size` 的插入方法
 
 - 如果没有 `bg-position` , 直接写即可
 
@@ -87,7 +133,7 @@ display: -webkit-box; /* 配合 -webkit-line-clamp 使用 */
 
 ---
 
-## `input` 系列 / 相关
+## input系列 / 相关
 
 
 
@@ -107,7 +153,7 @@ resize: none;
 
 
 
-### `:first-child`
+### :first-child
 
 - 只生效于其不仅是第一个child还是正确类型, 如果需要选择第一个当前类型则应使用 `:nth-of-type(x)`
 
@@ -126,10 +172,16 @@ resize: none;
 
 
 
+### :not()
+
+- `()` 中应用选择器, 可以去除一些不想应用样式的元素而给剩下的统一设置样式
+
+
+
 
 ---
 
-## 边框 (Border)
+## Border
 
 
 
@@ -152,7 +204,7 @@ ul>li {
 
 ---
 
-## 动画 (Animation)
+## Animation
 
 
 
@@ -179,6 +231,53 @@ div {
 
 ---
 
+## Overflow
+
+
+
+### `scroll` 不显示滚动条
+
+- `webkit` 内核浏览器
+
+```css
+&::-webkit-scrollbar {
+		display: none;
+}
+```
+
+- 其他浏览器
+    1. 给父元素写死 `width` / `height`
+    2. 给父元素设置 `overflow: hidden`
+    3. 给滚动元素设置 `padding-bottom ` / `padding-right` 将滚动条挤出父元素
+
+
+
+---
+
+## Position
+
+
+
+### `fixed` 可以将其他元素作为定位参考
+
+- `position: fixed` 的元素会以父元素中有任意 `transform` / `perspective` / `filter` 值不为 `none` 的元素作为定位参考, 其他情况都参照视口
+
+
+
+---
+
+## flex-box
+
+
+
+### 内容将容器撑大
+
+- 使用 `flex-shrink` 无法解决, 需要给将 `flex` 容器撑大的元素设置 `min-width: 0`
+
+
+
+---
+
 ## 移动端
 
 
@@ -187,6 +286,22 @@ div {
 
 ```css
 touch-action: none;
+```
+
+
+
+---
+
+## transform
+
+
+
+### 更改形变中心点
+
+- 使用 `transform-origin` 属性
+
+```css
+transform-origin: 50px 30px; /* 从左上角数 向右50像素, 向下30像素的位置 */
 ```
 
 
@@ -244,15 +359,16 @@ filter: blur(1px); /* 数值越大越模糊 */
       width: 0;
       height: 100%;
       background: #ffffff;
+      position: relative
     }
 
     .bar .line .dot {
-      position: relative;
-      top: -5px;
+      position: absolute;
+      top: 50%;
       left: 100%;
       width: 14px;
       height: 14px;
-      transform: translateX(-50%);
+      transform: translate(-50%, -50%);
       border-radius: 50%;
       background: #ffffff;
     }
@@ -277,5 +393,15 @@ filter: blur(1px); /* 数值越大越模糊 */
 ```css
 pointer-events: none; /* 不触发事件 */
 pointer-events: auto; /* 触发事件 */
+```
+
+
+
+### 元素宽度随着内容变化
+
+```css
+div {
+  	width: fit-content;
+}
 ```
 

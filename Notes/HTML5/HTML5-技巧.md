@@ -57,6 +57,14 @@ audioElement.volume = value; // 设置音量, 取值为0~1
 
 
 
+### 更换音频地址需要刷新才能播放新音频
+
+```js
+audioElement.load()
+```
+
+
+
 ---
 
 ## `<video>`

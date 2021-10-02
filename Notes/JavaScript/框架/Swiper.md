@@ -14,7 +14,7 @@
 - 支持PC, 平板电脑, 手机等移动终端
 - 纯 `JavaScript` 打造, 无依赖
 
-
+---
 
 ## 基本使用
 
@@ -46,7 +46,7 @@
 const swiper = new Swiper('.swiper-container')
 ```
 
-
+---
 
 ## 高级使用
 
@@ -164,7 +164,7 @@ const swiper = new Swiper('.swiper-container', {
 })
 ```
 
-
+---
 
 ## Animate
 
@@ -206,3 +206,35 @@ const mySwiper = new Swiper('.swiper-container', {
 }) 
 ```
 
+---
+
+## 其他
+
+
+
+### swiper内容实时改变
+
+- 只要swiper的内容会被改变 (从服务器获取等), 则需要加上如下
+
+```js
+const swiper = new Swiper('.swiper-container', {
+  observer: true,
+  observeParents: true,
+  observeSlideChildren: true
+})
+```
+
+
+
+### 修复动态添加内容后 `loop` 失效
+
+```js
+mySwiper.loopCreate()
+mySwiper.slideToLoop(0)
+```
+
+
+
+### swiper被隐藏 (display: none) 无法触发事件
+
+- 可以通过其他方式, 比如定位偏移出屏幕的方式来隐藏, 避免 `swiper` 元素使用 `display: none`
