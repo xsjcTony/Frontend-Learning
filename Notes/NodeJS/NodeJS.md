@@ -158,32 +158,6 @@ console.log(aModule.fn(10, 20)) // 30
 
 ---
 
-## Global全局对象
-
-
-
-`__dirname`
-
-- 当前JavaScript文件所处的 `目录`
-
-`__filename`
-
-- 当前JavaScript文件的 `绝对路径`
-
-`setTimeout()` / `clearTimeout()`
-
-- 和浏览器中的一样
-
-`setInterval()` / `clearInterval()`
-
-- 和浏览器中的一样
-
-`console` 
-
-- 和浏览器中的一样
-
----
-
 ## 包 (package)
 
 
@@ -230,4 +204,125 @@ console.log(aModule.fn(10, 20)) // 30
 - `npm uninstall *packageName*` : 卸载指定的包
 - `npm update *packageName*` : 更新指定的包
     - 如果更新出错, 也可以使用安装命令直接安装最新版本
+
+---
+
+## global全局对象
+
+> [Global objects | Node.js v14.18.0 Documentation](https://nodejs.org/dist/latest-v14.x/docs/api/globals.html)
+
+
+
+### 散件
+
+`__dirname`
+
+- 当前JavaScript文件所处的 `目录`
+
+`__filename`
+
+- 当前JavaScript文件的 `绝对路径`
+
+`setTimeout()` / `clearTimeout()`
+
+- 和浏览器中的一样
+
+`setInterval()` / `clearInterval()`
+
+- 和浏览器中的一样
+
+`console` 
+
+- 和浏览器中的一样
+
+
+
+### Buffer
+
+> [Buffer | Node.js v14.18.0 Documentation](https://nodejs.org/dist/latest-v14.x/docs/api/buffer.html)
+
+定义
+
+- `global` 对象上的一个类
+- 专门用于存储字节数据 (二进制数据)
+
+本质
+
+- `Buffer` 本质上就是一个 `数组`
+- 可以通过 `索引` 来操作 `Buffer` 中的值
+
+```js
+const buffer = Buffer.from([1, 3, 5])
+console.log(buffer) // <Buffer 01 03 05>
+
+buffer[0] = 7
+console.log(buffer) // <Buffer 07 03 05>
+```
+
+创建 `Buffer` 对象
+
+- `Buffer.alloc()`
+
+    - `size` : 要开辟的存储空间的大小 (单位为 `Byte` )
+    - `fill` : (Optional) 想要预先存储在这块存储空间中的内容
+    - `encoding` : (Optional) 编码方式, 默认为 `utf-8` , 一般不需要修改
+
+    - 注意点
+        - 通过 `console.log()` 输出 `Buffer` , 会自动将存储的内容 ( `二进制` ) 转换成 `16进制` 再输出
+
+    ```js
+    const buffer = Buffer.alloc(5, 17)
+    console.log(buffer) // <Buffer 11 11 11 11 11>
+    ```
+
+- `Buffer.from()`
+
+    - `string` : 根据 `数组` / `字符串` 中的数据转换为 `二进制` 并存进 `Buffer` 中
+    - `encoding` : (Optional) 编码方式, 默认为 `utf-8` , 一般不需要修改
+
+    ```js
+    const buffer = Buffer.from('abc')
+    console.log(buffer) // <Buffer 61 62 63>
+    ```
+
+常用实例方法
+
+- `toString()` : 将二进制数据转换成字符串
+
+    ```js
+    const buffer = Buffer.from([97, 98, 99])
+    console.log(buffer.toString()) // abc
+    ```
+
+- `write()` : 往 `Buffer` 中写入数据
+
+    - `string` : 需要写入的数据
+    - `offset` : (Optional) 开始存储数据的位置 (索引), 默认为 `0`
+    - `length` : (Optional) 存储数据的字节数, 默认为 `buffer.length - offset`
+    - `encoding` : (Optional) 编码方式, 默认为 `utf-8` , 一般不需要修改
+
+    ```js
+    const buffer = Buffer.alloc(5)
+    console.log(buffer) // <Buffer 00 00 00 00 00>
+    
+    buffer.write('abcdefg', 2, 2)
+    console.log(buffer) // <Buffer 00 00 61 62 00>
+    console.log(buffer.toString()) // ab
+    ```
+
+- `slice()` : 根据现有的 `Buffer` 剪切出一个新的 `Buffer`
+
+    - `start` : (Optional) 开始截取的索引位置 (包含), 默认为 `0`
+    - `end` : (Optional) 结束截取的索引位置 (不包含), 默认为 `buffer.length`
+
+    ```js
+    const buffer1 = Buffer.from('abcdefg')
+    const buffer2 = buffer1.slice(2, 4)
+    console.log(buffer2) // <Buffer 63 64>
+    console.log(buffer2.toString()) // cd
+    ```
+
+常用静态方法
+
+
 
