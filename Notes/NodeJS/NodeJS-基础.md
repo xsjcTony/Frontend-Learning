@@ -937,6 +937,33 @@ URL的组成
     }).listen(3000)
     ```
 
+
+
+### VM
+
+定义
+
+- 一个可以执行JavaScript代码的虚拟环境
+
+- 并不是一个安全的环境, 不能用来执行不信任的代码
+
+- 不在 `global` 全局对象中, 使用前需要手动导入
+
+    ```js
+    const vm = require('vm')
+    ```
+
+环境
+
+- 执行字符串中的代码的环境
+
+| 环境                  | 本地变量 | 全局变量 |
+| --------------------- | -------- | -------- |
+| vm.runInThisContext() | 不能访问 | 可以访问 |
+| vm.runInNewContext()  | 不能访问 | 不能访问 |
+
+- `vm.runInNewContext()` 相对安全一些
+
 ---
 
 ## 包 (Package)
@@ -985,6 +1012,70 @@ URL的组成
 - `npm uninstall *packageName*` : 卸载指定的包
 - `npm update *packageName*` : 更新指定的包
     - 如果更新出错, 也可以使用安装命令直接安装最新版本
+- `npm adduser` : 用于添加用户信息
+- `npm publish` : 发布当前的包
+- `npm link` : 将当前包注册为全局包
+
+
+
+### 自定义包
+
+
+
+#### 基本流程
+
+1. 新建一个包文件夹
+2. 在 `包` 根目录创建 `package.json` 文件
+3. 在 `包` 中编写业务逻辑代码
+4. 将 `包` 上传到 `npm` 官网
+    - `npm adduser`
+    - `npm publish`
+
+
+
+#### `package.json` 属性详解
+
+基本属性
+
+
+- `name` : 包的名称, 必须是唯一的, 由小写英文字母, 数字和下划线组成, 不能包含空格
+- `description` : 包的简要说明
+- `version` : 符合语义化版本识别规范的版本字符串
+    + 主版本号 : 当你做了不兼容的 API 修改
+    + 子版本号 : 当你做了向下兼容的功能性新增
+    + 修订号 : 当你做了向下兼容的问题修正
+- `keywords` : 关键字 `数组` , 通常用于搜索
+- `author` : 包的作者
+- `maintainers` : 维护者 `数组` , 每个元素要包含name, email (可选), web (可选) 字段
+- `contributors` : 贡献者 `数组` , 格式与 `maintainers` 相同。包的 `author` 应该是贡献者数组的第一个元素
+- `bugs` : 提交bug的地址, 可以是网站或者电子邮件地址
+- `license` : 开源协议 (许可证)
+- `licenses` : 许可证 `数组` , 每个元素要包含type (许可证名称) 和url (链接到许可证文本的地址)字段
+- `repositories` : 仓库托管地址数组, 每个元素要包含type (仓库类型，如git), url (仓库的地址) 和path (相对于仓库的路径, 可选)字段
+- `dependencies` : 生产环境包的依赖, 一个关联 `数组` , 由包的 `名称` 和 `版本号` 组成
+- `devDependencies` : 开发环境包的依赖, 一个关联 `数组` , 由包的 `名称` 和 `版本号` 组成
+
+核心属性
+
+- `main` : 指定包的 `入口文件`
+    - 不指定的情况下默认为 `index.js` 
+    - 如果找不到 `入口文件` 就会报错
+- `scripts` : 用于保存命令行指令, 是一个 `对象`
+    - 使用 `npm run xxx` 即可运行事先保存好的命令, 用于简化操作
+    - 如果 `key` 叫做 `test` / `start` , 那么可以不写 `run` , `npm run test` / `npm run start` 和 `npm test` / `npm start` 效果相同
+
+全局包专用属性
+
+- `bin` : 用于将命令行指令映射到文件
+    - 比如 `"lily": "index.js"` 即意为在安装完毕之后在命令行直接输入 `lily` 就会运行 `index.js` 文件
+
+
+
+#### 自定义全局包
+
+- 给 `package.json` 文件添加 `bin` 属性映射命令到文件
+- 在文件最上方添加 `#! /usr/bin/env node` 意为在环境中查找 `node` 运行命令指向的文件
+
 
 ---
 
@@ -999,10 +1090,12 @@ URL的组成
 `__dirname`
 
 - 当前JavaScript文件所处的 `目录`
+- 可以直接使用, 但本质上不属于 `global` , 原因见原理笔记
 
 `__filename`
 
 - 当前JavaScript文件的 `绝对路径`
+- 可以直接使用, 但本质上不属于 `global` , 原因见原理笔记
 
 `setTimeout()` / `clearTimeout()`
 
@@ -1015,4 +1108,14 @@ URL的组成
 `console` 
 
 - 和浏览器中的一样
+
+`process`
+
+- 掌管当前NodeJS进程的模块
+- `process.argv` : 以 `数组` 的形式包含了命令行参数信息, 以空格分割
+    - 若命令为 `node xxx.js zzz aaa`
+    - 则第一项为 `node.exe` 的安装位置的 `绝对路径`
+    - 第二项为当前执行 `xxx.js` 文件的 `绝对路径`
+    - 第三 / 四项分别为 `zzz` 和 `aaa`
+    - 以此类推
 

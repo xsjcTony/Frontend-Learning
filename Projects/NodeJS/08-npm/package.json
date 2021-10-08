@@ -1,0 +1,19 @@
+{
+  "name": "08-npm",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "jquery": "^3.6.0",
+    "swiper": "^7.0.8"
+  },
+  "devDependencies": {
+    "fastclick": "^1.0.6"
+  }
+}
