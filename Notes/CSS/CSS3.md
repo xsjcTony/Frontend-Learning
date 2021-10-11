@@ -312,6 +312,12 @@ transform-origin: 50px 30px; /* 从左上角数 向右50像素, 向下30像素�
 
 
 
+### 查询是否需要添加私有前缀
+
+> [Can I use... Support tables for HTML5, CSS3, etc](https://caniuse.com/)
+
+
+
 ### `object-fit`
 
 - 和 `background-size` 一样, 但可以应用于其他标签来调整元素中的内容, 比如 `<video>`

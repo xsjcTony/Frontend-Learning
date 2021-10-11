@@ -1085,8 +1085,6 @@ URL的组成
 
 
 
-### 散件
-
 `__dirname`
 
 - 当前JavaScript文件所处的 `目录`
