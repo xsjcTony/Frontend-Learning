@@ -450,7 +450,7 @@ module.exports = {
 安装
 
 ```
-npm install --save-dev less-loader less
+npm i -D html-withimg-loader
 ```
 
 - 与其他 `rule` 配合使用
@@ -471,8 +471,6 @@ module.exports = {
   }
 }
 ```
-
-
 
 ---
 
@@ -710,6 +708,51 @@ module.exports = {
   }
 }
 ```
+
+
+
+### postcss-sprites
+
+[2createStudio/postcss-sprites: Generate sprites from stylesheets.](https://github.com/2createstudio/postcss-sprites)
+
+用途
+
+- 基于 `PostCSS` 的插件
+- 用于将一堆图片合并为 `精灵图`
+
+安装插件
+
+```
+npm i -D postcss-sprites
+```
+
+配置 `postcss.config.js`
+
+```js
+// postcss.config.js
+module.exports = {
+  plugins: {
+    'postcss-sprites': {
+      spritePath: './bundle/images', // 输出目录, 必须要设置
+      
+      groupBy: (image) => { // 根据图片的上级目录分类
+        const path = image.url.substring(0, image.url.lastIndexOf('/')) // path: "../images/header/1.png" => "../images/header"
+        const name = path.substring(path.lastIndexOf('/') + 1) // name: "../images/header/" => "header"
+        return Promise.resolve(name)
+      },
+      
+      filterBy: (image) => { // 过滤图片
+        if (!/\.png$/.test(image.url)) { // 不处理除了png之外的任何图片
+          return Promise.reject()
+        }
+        return Promise.resolve()
+      }
+    }
+  }
+}
+```
+
+
 
 
 
@@ -990,6 +1033,103 @@ if (module.hot) {
   })
 }
 ```
+
+
+
+### ImageMinimizerWebpackPlugin
+
+[ImageMinimizerWebpackPlugin | webpack](https://webpack.js.org/plugins/image-minimizer-webpack-plugin/)
+
+用途
+
+- 压缩打包的图片
+
+安装插件
+
+- 插件本体
+
+```
+npm i -D image-minimizer-webpack-plugin
+```
+
+- 插件依赖 (imagemin - lossless [不损失质量] 模式)
+
+```
+npm i -D imagemin-gifsicle imagemin-jpegtran imagemin-optipng imagemin-svgo
+```
+
+配置 `webpack.config.js` 配置文件
+
+- 引入
+
+    ```js
+    const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin')
+    ```
+
+- 在配置中将其创建并加进 `plugins` 数组中
+
+    - 示例不包含 `svg` 格式设置
+    - 具体设置分别参考
+    - `gif` : [imagemin/imagemin-gifsicle: Imagemin plugin for Gifsicle](https://github.com/imagemin/imagemin-gifsicle)
+    - `jpg` / `jpeg` : [imagemin/imagemin-jpegtran: jpegtran plugin for imagemin](https://github.com/imagemin/imagemin-jpegtran)
+    - `png` : [imagemin/imagemin-optipng: optipng plugin for imagemin](https://github.com/imagemin/imagemin-optipng)
+    - `svg` : [imagemin/imagemin-svgo: SVGO plugin for imagemin](https://github.com/imagemin/imagemin-svgo)
+
+    ```js
+    plugins: [
+      new ImageMinimizerPlugin({
+        minimizerOptions: {
+          plugins: [
+            ['gifsicle', { interlaced: true }],
+            ['jpegtran', { progressive: true }],
+            ['optipng', { optimizationLevel: 5 }]
+          ]
+        }
+      })
+    ]
+    ```
+
+
+
+### EslintWebpackPlugin
+
+[EslintWebpackPlugin | webpack](https://webpack.js.org/plugins/eslint-webpack-plugin/)
+
+[webpack-contrib/eslint-webpack-plugin: A ESLint plugin for webpack](https://github.com/webpack-contrib/eslint-webpack-plugin)
+
+用途
+
+- 一个插件化的 `JavaScript` 代码检查工具
+- 企业开发中, 项目负责人会定制一套 `ESLint` 规则, 应用到项目上
+- 在编译打包时, 如果语法有错或者代码不符合规范就会报错, 并提示相关信息
+
+安装插件
+
+```
+npm i -D eslint eslint-webpack-plugin 
+```
+
+配置 `webpack.config.js` 配置文件
+
+- 引入插件
+
+    ```js
+    const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
+    ```
+
+- 在配置中将其创建并加进 `optimization.minimizer` 数组中
+
+- 具体设置见文档: [CssMinimizerWebpackPlugin | webpack](https://webpack.js.org/plugins/css-minimizer-webpack-plugin/)
+
+    ```js
+    optimization: {
+      minimize: true, // 在 develop 环境也开启代码压缩, 否则默认只在 production 环境压缩
+      minimizer: [
+        '...', // 扩展现有的 minimizer (webpack5自带默认设置的terser-webpack-plugin)
+        new CssMinimizerPlugin()
+      ]
+    }
+    ```
 
 
 
