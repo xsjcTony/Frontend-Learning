@@ -1,4 +1,4 @@
-# webpack
+# webpack - 基础 (Basic)
 
 
 
@@ -1109,26 +1109,32 @@ npm i -D imagemin-gifsicle imagemin-jpegtran imagemin-optipng imagemin-svgo
 npm i -D eslint eslint-webpack-plugin 
 ```
 
+配置 `.eslintrc.js`
+
+- 具体设置见文档: [ESLint - Pluggable JavaScript linter](https://eslint.org/)
+
 配置 `webpack.config.js` 配置文件
 
 - 引入插件
 
     ```js
-    const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
+    const ESLintPlugin = require('eslint-webpack-plugin')
     ```
 
-- 在配置中将其创建并加进 `optimization.minimizer` 数组中
+- 在配置中将其创建并加进 `plugins` 数组中
 
-- 具体设置见文档: [CssMinimizerWebpackPlugin | webpack](https://webpack.js.org/plugins/css-minimizer-webpack-plugin/)
+- 具体设置见文档: [EslintWebpackPlugin | webpack](https://webpack.js.org/plugins/eslint-webpack-plugin/)
 
     ```js
-    optimization: {
-      minimize: true, // 在 develop 环境也开启代码压缩, 否则默认只在 production 环境压缩
-      minimizer: [
-        '...', // 扩展现有的 minimizer (webpack5自带默认设置的terser-webpack-plugin)
-        new CssMinimizerPlugin()
-      ]
-    }
+    plugins: [
+      new ESLintPlugin({
+        extensions: ['js', 'ts'],
+        context: './',
+        exclude: 'node_modules',
+        files: 'src',
+        fix: true
+      })
+    ]
     ```
 
 
@@ -1251,10 +1257,59 @@ module.exports = {
         pathRewrite: { '': '/api' } // 重写路径, 在前面添加上"/api"
       }
     ],
-    hot: 'only',
+    hot: 'only'
   }
 }
 ```
 
 ---
+
+## Webpack-merge
+
+定义
+
+- 用于分开维护配置文件, 分为 `生产` 和 `开发` 还有 `公共` 三个配置文件
+
+安装
+
+```shell
+npm i -D webpack-merge
+```
+
+用法
+
+- 将 `webpack.config.js` 按 `定义` 所说分为三个文件
+
+- 在 `生产` 和 `开发` 中导入
+
+    ```js
+    const { merge } = require('webpack-merge')
+    ```
+
+- 将原本的 `module.exports` 变成一个变量, 比如 `devConfig`
+
+- 将 `公共` 配置文件导入
+
+    ```js
+    const commonConfig = require('./webpack.config.common.js')
+    ```
+
+- 文件最后写上
+
+    ```js
+    module.exports = merge(CommonConfig, devConfig)
+    ```
+
+- 修改 `package.json` 中 `scripts` 中的对应命令, 比如
+
+    ```json
+    "scripts": {
+      "dev": "npx webpack --config webpack.config.dev.js",
+      "prod": "npx webpack --config webpack.config.prod.js"
+    }
+    ```
+
+---
+
+
 

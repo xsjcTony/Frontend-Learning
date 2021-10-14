@@ -9,6 +9,9 @@ module.exports = {
     node: true,
     es2021: true
   },
+  plugins: [
+    'import'
+  ],
   rules: {
     'block-spacing': ['error', 'always'],
     'brace-style': ['warn', '1tbs', { allowSingleLine: true }],
@@ -19,7 +22,7 @@ module.exports = {
         ignoreDestructuring: false
       }
     ],
-    'comma-dangle': ['error', 'only-multiline'],
+    'comma-dangle': ['error', 'never'],
     'comma-spacing': [
       'error',
       {
@@ -128,6 +131,8 @@ module.exports = {
     ],
     eqeqeq: ['error', 'always'],
     'no-with': 'error',
-    'object-curly-spacing': ['error', 'always']
+    'object-curly-spacing': ['error', 'always'],
+    'import/first': 'error',
+    'import/no-webpack-loader-syntax': 'error'
   }
 }
