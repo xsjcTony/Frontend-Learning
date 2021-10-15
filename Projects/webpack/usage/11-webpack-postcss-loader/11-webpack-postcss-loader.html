@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <script>
+      const scale = 1 / window.devicePixelRatio
+      const text = `<meta name="viewport" content="width=device-width, initial-scale=${ scale }, maximum-scale=${ scale }, minimum-scale=${ scale }, user-scalable=no">`
+      document.write(text)
+      document.documentElement.style.fontSize = window.innerWidth / 7.5 + 'px'
+    </script>
+    <title>webpack-postcss-loader</title>
+</head>
+<body>
+<script src="bundle/bundle.js"></script>
+</body>
+</html>

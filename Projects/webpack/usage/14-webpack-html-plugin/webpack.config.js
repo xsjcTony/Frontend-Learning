@@ -1,0 +1,49 @@
+const path = require('path')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+
+module.exports = {
+  mode: 'development',
+  entry: './index.js',
+  output: {
+    path: path.resolve(__dirname, 'bundle'),
+    filename: 'bundle.js'
+  },
+  devtool: 'eval-cheap-module-source-map',
+  module: {
+    rules: [
+      {
+        test: /\.(png|jpg|gif)$/,
+        type: 'asset',
+        parser: {
+          dataUrlCondition: {
+            maxSize: 100 * 1024 // 200kb
+          }
+        },
+        generator: {
+          filename: 'images/[name][ext]'
+          // publicPath: 'http://127.0.0.1/assets/'
+        }
+      },
+      {
+        test: /\.(eot|json|svg|ttf|woff|woff2)$/,
+        type: 'asset/resource',
+        generator: {
+          filename: 'font/[name][ext]'
+          // publicPath: 'http://127.0.0.1/assets/'
+        }
+      },
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader']
+      }
+    ]
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: './index.html',
+      minify: {
+        collapseWhitespace: true
+      }
+    })
+  ]
+}

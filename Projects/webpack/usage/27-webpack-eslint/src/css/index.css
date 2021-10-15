@@ -1,0 +1,42 @@
+.animal {
+    width: 128px;
+    height: 128px;
+}
+
+.animal1 {
+    background: url(../images/animal/animal1.png) no-repeat;
+}
+
+.animal2 {
+    background: url(../images/animal/animal2.png) no-repeat;
+}
+
+.animal3 {
+    background: url(../images/animal/animal3.jpg) no-repeat;
+}
+
+.animal4 {
+    background: url(../images/animal/animal4.png) no-repeat;
+}
+
+.header {
+    width: 84px;
+    height: 84px;
+}
+
+.header1 {
+    background: url(../images/headers/1.png) no-repeat;
+}
+
+.header2 {
+    background: url(../images/headers/2.png) no-repeat;
+}
+
+.header3 {
+    background: url(../images/headers/3.png) no-repeat;
+}
+
+.header4 {
+    background: url(../images/headers/4.png) no-repeat;
+}
+

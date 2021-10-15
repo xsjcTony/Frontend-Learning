@@ -1,0 +1,7 @@
+div {
+    border: 10px solid #f00;
+}
+
+p:nth-of-type(even) {
+    background: skyblue;
+}

@@ -1,0 +1,6 @@
+@import "custom.css";
+
+.size {
+    height: 300px;
+    transform: translate(200px, 200px);
+}
