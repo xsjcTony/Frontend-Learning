@@ -14,7 +14,7 @@ module.exports = {
   ],
   rules: {
     'block-spacing': ['error', 'always'],
-    'brace-style': ['warn', '1tbs', { allowSingleLine: true }],
+    'brace-style': ['error', '1tbs', { allowSingleLine: true }],
     camelcase: [
       'error',
       {
@@ -98,7 +98,7 @@ module.exports = {
     'no-new-func': 'error',
     'wrap-iife': ['error', 'outside'],
     'no-loop-func': 'error',
-    'no-param-reassign': ['error', { props: true }],
+    'no-param-reassign': ['warn', { props: true }],
     'prefer-spread': 'error',
     'prefer-arrow-callback': [
       'error',
@@ -125,7 +125,7 @@ module.exports = {
       'error',
       {
         vars: 'all',
-        args: 'after-used',
+        args: 'none',
         ignoreRestSiblings: true
       }
     ],
