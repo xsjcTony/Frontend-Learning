@@ -339,11 +339,146 @@ console.log(result) // let sum = 10 + 66;
 校验
 
 - 用于校验参数的 `名称` / `数据类型` 是否正确
+
 - 使用 `schema-utils` [schema-utils - npm](https://www.npmjs.com/package/schema-utils)
+
 - 安装 `npm i -D schema-utils`
+
+    ```js
+    // ReplaceLoader.js
+    const { validate } = require('schema-utils')
+    
+    /**
+     * @param {string|Buffer} content 源文件的内容
+     * @param {object} [map] 可以被 https://github.com/mozilla/source-map 使用的 SourceMap 数据
+     * @param {any} [meta] meta 数据，可以是任何内容
+     */
+    module.exports = function (content, map, meta) {
+      // get options
+      const options = this.query
+      // set validate rules
+      const schema = {
+        type: 'object', // type of options must be an object
+        properties: { // properties can be passed in
+          name: {
+            type: 'string' // type of property name must be string
+          }
+        },
+        additionalProperties: false
+      }
+    
+      validate(schema, options, { name: 'ReplaceLoader', baseDataPath: 'options' })
+    
+      return content.replace(/Tony/g, this.query.name)
+    }
+    ```
 
 
 
 ### 同步Loader
 
 - 正常开发 `函数` 功能
+- 如果 `loader` 中没有返回 `string` 或者 `Buffer` , 那么就会报错
+- 代码见上述 `参数处理`
+
+
+
+### 异步Loader
+
+- 在 `同步Loader` 的基础上
+- 使用 `this.async()` 获取 `callback`
+- 调用 `callback` 来返回结果
+- `callback` 接收4个参数
+    - `err` : 一个 `Error` 或者 `null`
+    - `result` : 一个 `string` 或者 `Buffer`
+    - `map` : 可以被 https://github.com/mozilla/source-map 使用的 SourceMap 数据
+    - `meta` : meta数据，可以是任何内容
+
+```js
+/**
+ * @param {string|Buffer} content 源文件的内容
+ * @param {object} [map] 可以被 https://github.com/mozilla/source-map 使用的 SourceMap 数据
+ * @param {any} [meta] meta 数据，可以是任何内容
+ */
+module.exports = function (content, map, meta) {
+  // get options
+  const options = this.query
+  // get async callback
+  const callback = this.async()
+  // async operations
+  setTimeout(() => {
+    const result = content.replace(/Tony/g, options.name)
+    // invoke callback
+    callback(null, result, map, meta)
+  }, 3000)
+}
+```
+
+
+
+### Loader功能实现
+
+- 在读取文件的方法中获取 `配置文件` 中的 `rules`
+- 遍历这些 `rules` , 使用 `test` 中的规则来判断文件是否需要被 `loader` 处理
+- 需要的话从 `loader` 的最后一个开始遍历, 引入 `loader`
+- 使用 `loader` 处理文件
+- 返回文件内容
+
+---
+
+## Plugin
+
+
+
+### 发布订阅模式
+
+定义
+
+- `订阅者` 将联系方式添加到了 `发布者` 的缓存列表中
+- `发布者` 达成条件后就会遍历缓存列表依次通知所有 `订阅者`
+
+
+
+### Tapable
+
+[tapable - npm](https://www.npmjs.com/package/tapable)
+
+[Plugin API - Tapable | webpack](https://webpack.js.org/api/plugins/#tapable)
+
+定义
+
+- 一套 `发布订阅模式` 的实现
+
+安装
+
+```shell
+npm i -D tapable
+```
+
+引入
+
+- 按需导入
+
+```js
+const {
+	SyncHook,
+	SyncBailHook,
+	SyncWaterfallHook,
+	SyncLoopHook,
+	AsyncParallelHook,
+	AsyncParallelBailHook,
+	AsyncSeriesHook,
+	AsyncSeriesBailHook,
+	AsyncSeriesWaterfallHook
+} = require("tapable")
+```
+
+钩子 (Hook) 类型
+
+- `SyncHook` : 同步串行钩子
+    - 在 `触发事件` 后按照 `绑定` 的先后顺序执行所有的 `事件处理函数`
+    - 不关心 `事件处理函数` 的返回值
+- `SyncBailHook` : 同步串行钩子
+    - 在 `触发事件` 后按照 `绑定` 的先后顺序执行所有的 `事件处理函数`
+    - 关心 `事件处理函数` 的返回值
+    - 只要有一个 `事件处理函数` 的返回值不是 `undefined` , 那么会中断执行, 忽略后面所有的 `事件处理函数`
