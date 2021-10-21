@@ -753,3 +753,26 @@ class MyPromise {
 
 ---
 
+## 实现 Promise 串行
+
+[精读《用 Reduce 实现 Promise 串行执行》 - SegmentFault 思否](https://segmentfault.com/a/1190000016832285?utm_source=tag-newest)
+
+```js
+let myPromises = [/* Promise 数组*/]
+// 完整写法
+myPromises.reduce((previousPromise, nextPromise) => {
+  return previousPromise.then(() => {
+    return nextPromise()
+  })
+}, Promise.resolve())
+// 简写
+myPromises.reduce((previousPromise, nextPromise) => previousPromise.then(() => nextPromise()), Promise.resolve())
+
+// 更加简化
+async function runPromises(myPromises) {
+  for (let promise of myPromises) {
+    await promise()
+  }
+}
+```
+

@@ -428,14 +428,17 @@ module.exports = function (content, map, meta) {
 
 ## Plugin
 
-
-
-### 发布订阅模式
+[Plugin API | webpack](https://webpack.js.org/api/plugins/)
 
 定义
 
-- `订阅者` 将联系方式添加到了 `发布者` 的缓存列表中
-- `发布者` 达成条件后就会遍历缓存列表依次通知所有 `订阅者`
+- 本质上是一个 `类`
+- 可以在打包过程中的特定阶段执行
+
+原理
+
+- 通过 `Tapable` 在不同的阶段发送了不同的通知
+- 编写 `plugin` 时需要注册我们需要监听的通知
 
 
 
@@ -448,6 +451,11 @@ module.exports = function (content, map, meta) {
 定义
 
 - 一套 `发布订阅模式` 的实现
+
+发布订阅模式
+
+- `订阅者` 将联系方式添加到了 `发布者` 的缓存列表中
+- `发布者` 达成条件后就会遍历缓存列表依次通知所有 `订阅者`
 
 安装
 
@@ -473,12 +481,149 @@ const {
 } = require("tapable")
 ```
 
-钩子 (Hook) 类型
 
-- `SyncHook` : 同步串行钩子
-    - 在 `触发事件` 后按照 `绑定` 的先后顺序执行所有的 `事件处理函数`
-    - 不关心 `事件处理函数` 的返回值
-- `SyncBailHook` : 同步串行钩子
-    - 在 `触发事件` 后按照 `绑定` 的先后顺序执行所有的 `事件处理函数`
-    - 关心 `事件处理函数` 的返回值
-    - 只要有一个 `事件处理函数` 的返回值不是 `undefined` , 那么会中断执行, 忽略后面所有的 `事件处理函数`
+
+#### 钩子 (Hook) 类型
+
+##### 同步钩子
+
+- 通过 `tap()` 方法绑定
+- 通过 `call()` 方法调用
+    - `SyncHook` : 同步串行钩子
+        - 在 `触发事件` 后按照 `绑定` 的先后顺序执行所有的 `事件处理函数`
+        - 不关心 `事件处理函数` 的返回值
+    - `SyncBailHook` : 同步串行钩子
+        - 在 `触发事件` 后按照 `绑定` 的先后顺序执行所有的 `事件处理函数`
+        - 关心 `事件处理函数` 的返回值
+        - 只要有一个 `事件处理函数` 的返回值不是 `undefined` , 那么会中断执行, 忽略后面所有的 `事件处理函数`
+    - `SyncWaterfallHook` : 同步串行钩子
+        - 在 `触发事件` 后按照 `绑定` 的先后顺序执行所有的 `事件处理函数`
+        - 关心 `事件处理函数` 的返回值
+        - 会将上一个 `事件处理函数` 的返回值作为参数传递给下一个 `事件处理函数`
+    - `SyncLoopHook` : 同步串行钩子
+        - 在 `触发事件` 后按照 `绑定` 的先后顺序执行所有的 `事件处理函数`
+        - 关心 `事件处理函数` 的返回值
+        - 如果当前 `事件处理函数` 的返回值不是 `undefined` , 那么就会重新执行 `事件处理函数` 队列, 直到所有 `事件处理函数` 都返回 `undefined` 为止
+
+##### 异步钩子
+
+- 若 `事件处理函数` 中有 `异步代码` , 则必须使用 `异步钩子`
+
+- 通过 `tapAsync()` / `tapPromise()` 方法绑定
+
+- 通过 `callAsync()` / `promise()` 方法调用
+
+    - `AsyncParallelHook` : 异步并行钩子
+
+        - 在 `触发事件` 后会同时执行所有的 `事件处理函数`
+
+        - 不关心 `事件处理函数` 的返回值
+
+        - `tapAsync()` 方法绑定会有
+
+            - 会自动传递一个 `callback` 参数给 `事件处理函数`
+            - 每个 `事件处理函数` 执行完毕之后必须通过 `callback` 告诉系统已经执行完毕了
+            - 当所有 `事件处理函数` 都调用过 `callback` 之后, 告诉 `callAsync()` 所有 `事件处理函数` 已经全部执行完毕了
+
+            ```js
+            const { AsyncParallelHook } = require('tapable')
+            
+            class Lesson {
+              constructor () {
+                this.hooks = {
+                  // 创建发布者对象, 用于处理Vue订阅和发布
+                  vue: new AsyncParallelHook(['description']),
+                }
+              }
+              tap () {
+                // 绑定事件 (订阅消息)
+                this.hooks.vue.tapAsync('zs', (description, callback) => {
+                  setTimeout(() => {
+                    console.log('zs', description)
+                    callback()
+                  }, 3000)
+                })
+              }
+              call () {
+                // 触发事件 (发布消息)
+                this.hooks.vue.callAsync('Vue课程上线了', () => { console.log('end') })
+              }
+            }
+            
+            const lesson = new Lesson()
+            lesson.tap()
+            lesson.call()
+            ```
+
+        - `tapPromise()` 方法绑定会有
+
+            - 必须返回一个 `Promsie` 对象
+            - `异步代码` 执行完毕后必须调用 `resolve()` 告诉系统已经执行完毕了
+            - 当所有 `事件处理函数` 都调用过 `resolve()` 之后, 告诉 `promise()` 所有 `事件处理函数` 已经全部执行完毕了
+
+            ```js
+            const { AsyncParallelHook } = require('tapable')
+            
+            class Lesson {
+              constructor () {
+                this.hooks = {
+                  // 创建发布者对象, 用于处理Vue订阅和发布
+                  vue: new AsyncParallelHook(['description']),
+                }
+              }
+              tap () {
+                // 绑定事件 (订阅消息)
+                this.hooks.vue.tapPromise('zs', (description) => {
+                  return new Promise((resolve, reject) => {
+                    setTimeout(() => {
+                      console.log('zs', description)
+                      resolve()
+                    }, 3000)
+                  })
+                })
+              }
+              call () {
+                // 触发事件 (发布消息)
+                this.hooks.vue.promise('Vue课程上线了').then(() => { console.log('end') })
+              }
+            }
+            
+            const lesson = new Lesson()
+            lesson.tap()
+            lesson.call()
+            ```
+
+    - `AsyncSeriesHook` : 异步串行钩子
+
+        - 在 `触发事件` 后按照 `绑定` 的先后顺序执行所有的 `事件处理函数`
+        - 先执行的 `事件处理函数` 必须执行完毕才会执行后面的
+        - 若没有执行 `callback` 回调函数或调用 `resolve()` 告知执行完毕, 那么后面的所有 `事件处理函数` 都不会被执行
+        - 其他和 `AsyncParallelHook` 一样
+        
+    - `AsyncSeriesWaterfallHook` : 异步串行钩子
+    
+        - 和 `AsyncSeriesHook` 一样
+        - 会将上一个 `事件处理函数` 的返回值作为参数传递给下一个 `事件处理函数`
+        - 若函数执行出现问题, 在 `callback` 中返回 `error` 或调用 `reject()` , 会跳过执行剩余的 `事件处理函数` 并直接结束
+
+​    
+
+### 编写Plugin
+
+- `webpack` 在打包时会自动调用插件 `类` 中的 `apply()` 方法, 传入一个参数 `compiler`
+    - `compiler.options` : `webpack` 的 `配置文件`
+    - `compiler.hooks` : `webpack` 提供的基于 `Tapable` 的 `钩子` [Compiler Hooks | webpack](https://webpack.js.org/api/compiler-hooks/)
+        - `entryOption` : 给 `webpack` 编译器传递 `配置文件` 后
+        - `run` : `webpack` 编译器 `run` 方法被执行
+        - `emit` : 打包文件写入之前
+        - `afterEmit` : 打包文件写入之后
+        - `done` : 打包完成
+
+- 通过插件 `类` 中的 `constructor()` 来获取 `options`
+
+
+
+### Plugin功能实现
+
+- 本质上就是利用 `Tapable` 增加 `钩子`
+

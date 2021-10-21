@@ -1161,6 +1161,85 @@ students.sort((a, b) => { // ascending order by students' age
 console.log(students); // [{name: "tony", age: 24}, {name: "aelita", age: 21}, {name: "lily", age: 18}, {name: "muxi", age: 16}]
 ```
 
+
+
+### Array.reduce()
+
+
+
+> [Array.prototype.reduce() - JavaScript | MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce)
+
+
+
+作用
+
+- 对 `数组` 中的每个 `元素` 执行一个的 `reducer函数` (升序执行), 将其结果汇总为单个 `返回值`
+
+格式
+
+```js
+// Arrow function
+reduce((previousValue, currentValue) => { ... } )
+reduce((previousValue, currentValue, currentIndex) => { ... } )
+reduce((previousValue, currentValue, currentIndex, array) => { ... } )
+reduce((previousValue, currentValue, currentIndex, array) => { ... }, initialValue)
+
+// Callback function
+reduce(callbackFn)
+reduce(callbackFn, initialValue)
+
+// Inline callback function
+reduce(function callbackFn(previousValue, currentValue) { ... })
+reduce(function callbackFn(previousValue, currentValue, currentIndex) { ... })
+reduce(function callbackFn(previousValue, currentValue, currentIndex, array){ ... })
+reduce(function callbackFn(previousValue, currentValue, currentIndex, array) { ... }, initialValue)
+```
+
+参数
+
+- `callbackFn` : 一个 `reducer` 函数, 接收4个参数
+
+    - `previousValue` : `initialValue` 或上一个 `callbackFn` 的 `返回值`
+    - `currentValue` : 当前遍历至的 `元素`
+    - *currentIndex* Optional
+    - `index` : (Optional) 当前遍历至的 `元素` 的 `索引`
+    - `array` : (Optional) 当前调用 `reduce()` 的 `Array`
+
+- `initialValue` : (Optional) 初始值
+    - 如果该值没有指定, 那么第一个 `previousValue` 是第一个 `元素`, `currentValue` 是第二个 `元素` , 遍历将从第二个 `元素` 开始
+    - 如果该值指定了, 那么第一个 `previousValue` 是 `initialValue` , `currentValue` 是第一个 `元素` , 遍历将从第一个 `元素` 
+
+返回值
+
+- 最后一个 `reducer` 的返回值
+
+示例
+
+```js
+const array1 = [1, 2, 3, 4];
+const reducer = (previousValue, currentValue) => previousValue + currentValue;
+
+// 1 + 2 + 3 + 4
+console.log(array1.reduce(reducer));
+// expected output: 10
+
+// 5 + 1 + 2 + 3 + 4
+console.log(array1.reduce(reducer, 5));
+// expected output: 15
+
+
+// 使用 reduce 实现 Promise 串行
+let myPromises = [/* Promise 数组*/]
+// 完整写法
+myPromises.reduce((previousPromise, nextPromise) => {
+  return previousPromise.then(() => {
+    return nextPromise()
+  })
+}, Promise.resolve())
+// 简写
+myPromises.reduce((previousPromise, nextPromise) => previousPromise.then(() => nextPromise()), Promise.resolve())
+```
+
 ---
 
 ## 二维数组

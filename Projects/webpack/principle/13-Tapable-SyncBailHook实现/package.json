@@ -1,0 +1,13 @@
+{
+  "name": "01-ast",
+  "version": "1.0.0",
+  "description": "",
+  "main": ".eslintrc.js",
+  "scripts": {},
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "tapable": "^2.2.1"
+  }
+}

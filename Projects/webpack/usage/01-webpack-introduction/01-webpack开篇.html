@@ -20,7 +20,7 @@ webpack是一套基于NodeJS的"模块打包工具",
 例如: 不同功能都放到了不同模块中了, 那么如何维护模块之间的关系也变成一个难题了
     <script src="./header.js"></script>
     <script src="./content.js"></script>
-    <script src="./index.js"></script>
+    <script src="./index.mjs"></script>
     <script src="./footer.js"></script> // 如果index.js中用到了footer,就会报错
 例如: ... ...
 
@@ -34,7 +34,7 @@ npm init -y
 npm install --save-dev webpack
 npm install --save-dev webpack-cli
 4.2在终端中输入打包的指令
-npx webpack index.js
+npx webpack index.mjs
 注意点:
 index.js就是需要打包的文件
 打包之后的文件会放到dist目录中, 名称叫做main.js
@@ -42,7 +42,7 @@ index.js就是需要打包的文件
 <!--<script src="Header.js"></script>-->
 <!--<script src="Content.js"></script>-->
 <!--<script src="Footer.js"></script>-->
-<!--<script src="index.js"></script>-->
-<script src="dist/main.js"></script>
+<!--<script src="index.mjs"></script>-->
+<script src="dist/main.ejs"></script>
 </body>
 </html>
