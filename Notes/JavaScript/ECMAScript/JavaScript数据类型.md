@@ -744,6 +744,44 @@ console.log(newStr); // "amc"
 
 
 
+#### String.padStart()
+
+[String.prototype.padStart() - JavaScript | MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/padStart)
+
+作用
+
+- 用另一个 `字符串` 填充当前 `字符串` (如果需要的话，会重复多次), 以便产生的 `字符串` 达到给定的长度
+- 如果 `字符串` 长度比指定的长度长, 那么会直接返回它本身
+- 从当前字符串的左侧开始填充
+
+格式
+
+```js
+padStart(targetLength)
+padStart(targetLength, padString)
+```
+
+参数
+
+- `targetLength` : 目标 `字符串` 的长度
+- `padString` : (Optional), 默认为 `" "` (U+0020, 'SPACE'), 用于填充的 `字符串`
+
+返回值
+
+- 处理过后的 `字符串`
+
+示例
+
+```js
+const str1 = '5'
+console.log(str1.padStart(1, '0')) // 05
+
+const fullNumber = '2034399002125581'
+const last4Digits = fullNumber.slice(-4)
+const maskedNumber = last4Digits.padStart(fullNumber.length, '*')
+console.log(maskedNumber) // ************5581
+```
+
 
 
 ---

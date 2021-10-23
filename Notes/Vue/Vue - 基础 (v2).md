@@ -48,6 +48,10 @@
 
 ### 基本模板
 
+- `Vue实例对象` 的配置中的 `this` 指向其本身 ( `Vue实例对象` / `View Model` )
+- 在配置中一般不要使用 `箭头函数` , 因为 `this` 的指向会被破坏
+- `data` 中的键值可以直接通过访问 `Vue实例对象` 的 `属性` 获得, 比如 `this.name` / `vue.name`
+
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -78,7 +82,7 @@
 
 ---
 
-## 数据绑定 (Data binding)
+## 数据绑定 (Data bindings)
 
 
 
@@ -157,7 +161,7 @@
 
 ---
 
-## 指令 (Directive)
+## 指令 (Directives)
 
 [API - 指令 — Vue.js](https://cn.vuejs.org/v2/api/#指令)
 
@@ -395,7 +399,7 @@
 
 - 相当于 `JavaScript` 中的 `for...in` 循环
 
-- 可以遍历 `Array` / `Object` / `number` / `string` / `Iterable (>=v2.6)`
+- 可以遍历 `Array` / `Object` / `number` / `string` / `Iterable (v2.6+)`
 
 - 使用特定语法 `alias in expression`
 
@@ -733,7 +737,7 @@
 
 - 只能在注册了指令的 `Vue实例对象` 的控制区域中使用
 - 在 `Vue实例对象` 中的 `directives` 中注册
-- 一个 `指令` 是一个 `对象` , `对象` 中有 `definition`
+- 一个 `指令` 是一对 `键值` , `key` 为 `指令` 名称, `value` 为 `definition`
 - 其他和 `全局指令` 的注册方法基本一样
 
 ```html
@@ -761,5 +765,109 @@
 
 ---
 
+## 计算属性 (Computed Properties)
 
+[计算属性和侦听器 — Vue.js](https://cn.vuejs.org/v2/guide/computed.html)
+
+- 通过 `函数` 进行一些复杂的逻辑计算, 将 `返回值` 作为 `属性` , 可以在模板 `{{ }}` 插值语法中直接使用
+- 适合不经常发生变化的数据, 由于缓存的原因相比 `methods` 更加节省性能
+- `computed` 中的函数只要其中使用的数据没有发生变化, 那么就只会被调用一次, 而 `methods` 中的函数每次执行都会被调用
+- 在 `Vue实例对象` 中的 `computed` 中添加
+- <span style="color: #ff0;">虽然定义的时候是通过 `函数` 返回的数据, 但他在被访问的时候本质上是一个 `属性` , 所以在使用的时候不能在后面加上 `()` , 当然也不能传递参数</span>
+
+```html
+<div id="app">
+    <p>{{ msg }}</p> <!-- abcdef -->
+    <p>{{ reversedMsg }}</p> <!-- fedcba -->
+</div>
+<script src="js/vue.js"></script>
+<script>
+  const vue = new Vue({
+    el: '#app',
+    data: {
+      name: 'Tony',
+      age: 24,
+      msg: 'abcdef'
+    },
+    // 定义计算属性
+    computed: {
+      reversedMsg () {
+        return this.msg.split('').reverse().join('') // this 指向 vm (Vue实例对象)
+      }
+    }
+  })
+</script>
+```
+
+---
+
+## 过滤器 (Filters)
+
+[过滤器 — Vue.js](https://cn.vuejs.org/v2/guide/filters.html)
+
+- 用于格式化插入的文本数据
+- 可以在 `{{ }}` 插值语法 / `v-bind` `表达式` 中使用 `(v2.1.0+)`
+- 语法为 `{{ msg | filter }}` / `:attr="exp | filter"`
+- 过滤器可以串联, 比如 `{{ msg | filterA | filterB }}`
+- 过滤器本质是 `函数` , 所以可以传递 `参数` , 比如 `{{ msg | filterA('arg1', arg2) }}` , 但 `msg` 永远是第一个 `参数`
+- `全局过滤器` 和 `局部过滤器` 重名时, 会采用 `局部过滤器`
+
+
+
+### 全局过滤器
+
+- 使用 `Vue.filter()` 注册
+- 该方法接收两个参数
+    - `id` : 过滤器的名称
+    - `definition` : (Optional) 过滤器的详细信息, 如果不写那么该方法作用就是一个 `getter` , 返回已注册的过滤器
+        - 处理数据的函数接受一个参数, 是当前要被处理的数据
+
+```html
+<div id="app">
+    <p>{{ name | formatter1 | formatter2 }}</p> <!-- 知播渔大学, 指趣大学, 前端大学, C++大学 -->
+</div>
+<script src="js/vue.js"></script>
+<script>
+  // 定义全局过滤器
+  Vue.filter('formatter1', value => value.replace(/学院/g, '大学')) // 将所有 "学院" 替换为 "大学"
+  Vue.filter('formatter2', value => value.replace(/区块链/g, 'C++')) // 将所有 "区块链" 替换为 "C++"
+  const vue = new Vue({
+    el: '#app',
+    data: {
+      name: '知播渔学院, 指趣学院, 前端学院, 区块链学院'
+    }
+  })
+</script>
+```
+
+
+
+### 局部过滤器
+
+- 只能在注册了过滤器的 `Vue实例对象` 的控制区域中使用
+- 在 `Vue实例对象` 中的 `filters` 中注册
+- 一个 `过滤器` 是一对 `键值` , `key` 为 `过滤器` 名称, `value` 为 `definition`
+- 其他和 `全局过滤器` 的注册方法基本一样
+
+```html
+<div id="app">
+    <p>{{ name | formatter1 | formatter2 }}</p> <!-- 知播渔大学, 指趣大学, 前端大学, C++大学 -->
+</div>
+<script src="js/vue.js"></script>
+<script>
+  const vue = new Vue({
+    el: '#app',
+    data: {
+      name: '知播渔学院, 指趣学院, 前端学院, 区块链学院'
+    },
+    // 定义局部过滤器
+    filters: {
+      formatter1: value => value.replace(/学院/g, '大学'), // 将所有 "学院" 替换为 "大学"
+      formatter2: value => value.replace(/区块链/g, 'C++') // 将所有 "区块链" 替换为 "C++"
+    }
+  })
+</script>
+```
+
+---
 
