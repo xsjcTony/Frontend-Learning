@@ -447,6 +447,57 @@
 </script>
 ```
 
+#### 就地复用 (修改) 原则
+
+- `v-for` 在渲染元素的时候, 会先查看 `缓存` 中有没有需要渲染的 `元素`
+- 如果 `缓存` 中没有需要渲染的 `元素` , 就会创建一个新的放到 `缓存` 中
+- 如果 `缓存` 中有需要渲染的 `元素` , 就不会创建新的, 而是直接复用 (修改) 原有的
+
+![v-for_default.png](D:\xsjcTony\it666\Frontend-Learning\Notes\Vue\images\v-for_default.png)
+
+- 想要强制其重新排序, 需要绑定一个特殊的属性 `key` , 提供一个排序提示 [API - key — Vue.js](https://cn.vuejs.org/v2/api/#key)
+- `key` 必须是每个元素中独一无二的属性
+- 使用 `v-for` 时尽量绑定一个 `key` , 除非遍历的内容特别简单或刻意依赖默认行为的性能提升
+
+![v-for_key.png](D:\xsjcTony\it666\Frontend-Learning\Notes\Vue\images\v-for_key.png)
+
+```html
+<div id="app">
+    <form>
+        <input type="text" v-model="name">
+        <input type="submit" value="添加" @click.prevent="add">
+    </form>
+    <ul>
+        <li v-for="(person, index) in persons" :key="person.id">
+            <input type="checkbox">
+            <span>{{ index }} --- {{ person.name }}</span>
+        </li>
+    </ul>
+</div>
+<script src="js/vue.js"></script>
+<script>
+  const vue = new Vue({
+    el: '#app',
+    data: {
+      persons: [
+        { name: '张三', id: 3 },
+        { name: '李四', id: 2 },
+        { name: '王五', id: 1 }
+      ],
+      name: ''
+    },
+    methods: {
+      add () {
+        const newId = this.persons[0].id + 1
+        const newPerson = { name: this.name, id: newId }
+        this.persons.unshift(newPerson)
+        this.name = ''
+      }
+    }
+  })
+</script>
+```
+
 
 
 ### v-bind
@@ -867,6 +918,429 @@
     }
   })
 </script>
+```
+
+---
+
+## 过渡动画 (Transition & Animation)
+
+[进入/离开 & 列表过渡 — Vue.js](https://cn.vuejs.org/v2/guide/transitions.html)
+
+- `Vue` 在插入 / 更新 / 移除 `DOM` 时, 可以应用 `transition` / `animation`
+- 支持以下
+    - 在 `css` 中通过对应的 `class` 编写过渡动画
+    - 配合第三方 `css动画库` 使用, 比如 `Animate.css`
+    - 在 `过渡钩子函数` 中使用 `JavaScript` 直接操作 `DOM`
+    - 配合第三方 `JavaScript动画库` 使用, 比如 `Velocity.js`
+
+
+
+### 进入 / 离开
+
+- 将需要应用过渡动画的 `元素` / `组件` 放到 `Vue` 封装的组件 `<transition>` 中
+
+- 支持四种情况
+
+    - v-if
+    - v-show
+    - 动态组件
+    - 组件根节点
+
+- 可以给 `<transition>` 设置 `name` 属性, 会改变其对应的 `class` 名称
+
+- <span style="color: #ff0">一个 `<transition>` 只能放一个 `元素` / 一组 `v-if` , 其余的不会被执行过渡动画</span>
+
+- 在进入 / 离开的过渡动画中, 会有6个类名
+
+    - `v-enter`：进入过渡的开始状态
+    - `v-enter-active`：进入过渡生效时的状态, 可以被用来定义进入过渡的过程时间 / 延迟 / 曲线函数
+    - `v-enter-to`：进入过渡的结束状态
+    - `v-leave`：离开过渡的开始状态
+    - `v-leave-active`：离开过渡生效时的状态, 可以被用来定义离开过渡的过程时间 / 延迟 / 曲线函数
+    - `v-leave-to`：离开过渡的结束状态
+
+    ![transition_classes.png](D:\xsjcTony\it666\Frontend-Learning\Notes\Vue\images\transition_classes.png)
+
+- 类名取决于 `<transition>` 组件的 `name` 属性, 比如 `<transition name="fade">` 的对应类名就是 `fade-enter-active` 等等, `v-` 为没有 `name` 属性的默认类名的前缀
+
+```html
+<head>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .box {
+            width: 200px;
+            height: 200px;
+            background: red;
+        }
+        .fade-enter,
+        .fade-leave-to {
+            opacity: 0;
+        }
+        .fade-enter-to,
+        .fade-leave {
+            opacity: 1;
+        }
+        .fade-enter-active,
+        .fade-leave-active {
+            transition: all 3s;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <button @click="toggle">我是按钮</button>
+    <transition name="fade">
+        <div class="box" v-show="isShowed"></div>
+    </transition>
+</div>
+<script src="js/vue.js"></script>
+<script>
+  const vue = new Vue({
+    el: '#app',
+    data: {
+      isShowed: true
+    },
+    methods: {
+      toggle () {
+        this.isShowed = !this.isShowed
+      }
+    }
+  })
+</script>
+</body>
+```
+
+
+
+### 初始渲染
+
+- 给 `<transition>` 添加 `appear` 属性可以让初始的渲染也拥有过渡动画
+
+```html
+<div id="app">
+    <button @click="toggle">我是按钮</button>
+    <transition name="fade" appear>
+        <div class="box" v-show="isShowed"></div>
+    </transition>
+</div>
+```
+
+
+
+### JavaScript钩子
+
+- 除了使用 `css` 的 `transition` / `animation` 之外, 还可以使用 `JavaScript钩子函数` 对 `DOM` 进行操作
+- 使用 `v-on` 在 `<transition>` 中声明 `钩子函数` 的名称
+- 一共有 `8` 个事件
+    - `before-enter` : 进入开始之前
+    - `enter` : 进入的执行过程
+    - `after-enter` : 进入执行完毕之后
+    - `enter-cancelled` : 进入过程被取消
+    - `before-leave` : 离开开始之前
+    - `leave` : 离开的执行过程
+    - `after-leave` : 离开执行完毕之后
+    - `leave-cancelled` : 离开过程被取消
+- 每个 `钩子函数` 都有一个参数是 `el` , 代表了执行过渡的 `元素`
+- `enter` / `leave` 还有另外一个参数是 `done` , 是执行完毕的回调函数, 直接调用 `done()` 
+- `钩子函数` 可以和 `css` 结合, 也可以单独使用
+- <span style="color: #ff0;">只使用 `JavaScript` 过渡的时候, `enter` / `leave` 中必须调用 `done()` 告知过程已经完成, 否则 `after-enter` / `after-leave` 不会被执行</span>
+- 如果只使用了 `JavaScript` 的方式来操作 `DOM` , 那么建议添加 `v-bind:css="false"` 让 `Vue` 跳过对 `css` 的检测, 可以避免执行过程中被 `css` 影响
+- <span style="color: #0ff">如果在 `JavaScript` 中使用了 `css` 的 `transition` , 那么需要加上 `el.offsetWidth` 或 `el.offsetHeight` 才能正常使用</span>
+- <span style="color: #0ff">如果使用了 `初始渲染` , 那么需要给 `done()` 添加一些延迟才能正常使用, 比如说 `setTimeout(() => { done() }, 0)`</span>
+
+原生 `JavaScript` 示例
+
+```html
+<head>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .box {
+            width: 200px;
+            height: 200px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <button @click="toggle">我是按钮</button>
+    <transition @before-enter="beforeEnter" @enter="enter" @after-enter="afterEnter" :css="false" appear>
+        <div class="box" v-show="isShowed"></div>
+    </transition>
+</div>
+<script src="js/vue.js"></script>
+<script>
+  const vue = new Vue({
+    el: '#app',
+    data: {
+      isShowed: true
+    },
+    methods: {
+      toggle () {
+        this.isShowed = !this.isShowed
+      },
+      // 进入动画开始之前
+      beforeEnter (el) {
+        el.style.opacity = '0'
+      },
+      // 进入动画执行过程中
+      enter (el, done) {
+        el.offsetWidth
+        el.style.transition = 'all 3s'
+        setTimeout(() => { done() }, 0)
+      },
+      // 进入动画执行完毕之后
+      afterEnter (el) {
+        el.style.opacity = '1'
+        el.style.marginLeft = '500px'
+      }
+    }
+  })
+</script>
+</body>
+```
+
+配合 `Velocity.js` 示例
+
+- 不要使用 `Velocity` 的 `v2.x` , 有 `BUG`
+
+```html
+<head>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .box {
+            width: 200px;
+            height: 200px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <button @click="toggle">我是按钮</button>
+    <transition @before-enter="beforeEnter" @enter="enter" :css="false">
+        <div class="box" v-show="isShowed"></div>
+    </transition>
+</div>
+<script src="js/vue.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.2.3/velocity.min.js"></script>
+<script>
+  const vue = new Vue({
+    el: '#app',
+    data: {
+      isShowed: true
+    },
+    methods: {
+      toggle () {
+        this.isShowed = !this.isShowed
+      },
+      // 进入动画开始之前
+      beforeEnter (el) {
+        el.style.opacity = '0'
+        el.style.marginLeft = '0'
+      },
+      // 进入动画执行过程中
+      enter (el, done) {
+        Velocity(el, { opacity: 1, marginLeft: '500px' }, { duration: 3000, complete: done })
+      }
+    }
+  })
+</script>
+</body>
+```
+
+
+
+### 自定义动画类名
+
+- 可以通过以下 `属性` 来自定义动画的 `class` 名称
+    - `enter-class` : 对应 `v-enter`
+    - `enter-active-class` : 对应 `v-enter-active`
+    - `enter-to-class` : 对应 `v-enter-to`
+    - `leave-class` : 对应 `v-leave`
+    - `leave-active-class` : 对应 `v-leave-active`
+    - `leave-to-class` : 对应 `v-leave-to`
+
+原生 `css` 示例
+
+```html
+<head>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .box {
+            width: 200px;
+            height: 200px;
+            background: red;
+        }
+        .custom-enter-aelita {
+            opacity: 0;
+            margin-left: 0;
+        }
+        .custom-enter-to-aelita {
+            opacity: 1;
+            margin-left: 500px;
+        }
+        .custom-enter-active-aelita {
+            transition: all 3s;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <button @click="toggle">我是按钮</button>
+    <transition appear
+                enter-class="custom-enter-aelita"
+                enter-active-class="custom-enter-active-aelita"
+                enter-to-class="custom-enter-to-aelita">
+        <div class="box" v-show="isShowed"></div>
+    </transition>
+</div>
+<script src="js/vue.js"></script>
+<script>
+  const vue = new Vue({
+    el: '#app',
+    data: {
+      isShowed: true
+    },
+    methods: {
+      toggle () {
+        this.isShowed = !this.isShowed
+      }
+    }
+  })
+</script>
+</body>
+```
+
+配合 `animate.css` 示例
+
+- 不同 `animate.css` 版本的 `class` 名称是不一样的
+
+```html
+<head>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .box {
+            width: 200px;
+            height: 200px;
+            background: red;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+</head>
+<body>
+<div id="app">
+    <button @click="toggle">我是按钮</button>
+    <transition appear
+                enter-active-class="animate__animated animate__bounceInRight"
+                leave-active-class="animate__animated animate__fadeOutDown">
+        <div class="box" v-show="isShowed"></div>
+    </transition>
+</div>
+<script src="js/vue.js"></script>
+<script>
+  const vue = new Vue({
+    el: '#app',
+    data: {
+      isShowed: true
+    },
+    methods: {
+      toggle () {
+        this.isShowed = !this.isShowed
+      }
+    }
+  })
+</script>
+</body>
+```
+
+
+
+### 列表动画
+
+- 想要同时渲染整个列表中所有 `元素` , 需要使用 `<transition-group>` 组件
+- <span style="color: #ff0">该组件中的 `元素` 一定要绑定 `:key` , 并且一定要是唯一的值, 不然会造成动画混乱</span>
+- 整个 `<transition-group>` 默认会由 `<span>` 呈现, 所有子元素都被包裹在其中, 通过 `tag` 属性可以更换为其他元素
+- `appear` 可以照常使用
+
+```html
+<head>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .v-enter,
+        .v-leave-to {
+            opacity: 0;
+        }
+
+        .v-enter-to,
+        .v-leave {
+            opacity: 1;
+        }
+
+        .v-enter-active,
+        .v-leave-active {
+            transition: all 1s;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <form>
+        <input type="text" v-model="name">
+        <input type="submit" value="添加" @click.prevent="add">
+    </form>
+    <transition-group appear tag="ul"> <!-- 下面所有的<li>都会被包裹在<ul>中, 不设置的话默认为<span> -->
+        <li v-for="(person, index) in persons" :key="person.id" @click="remove(index)">
+            <input type="checkbox">
+            <span>{{ index }} --- {{ person.name }}</span>
+        </li>
+    </transition-group>
+</div>
+<script src="js/vue.js"></script>
+<script>
+  const vue = new Vue({
+    el: '#app',
+    data: {
+      persons: [
+        { name: '张三', id: 1 },
+        { name: '李四', id: 2 },
+        { name: '王五', id: 3 }
+      ],
+      name: '',
+      nextId: 4
+    },
+    methods: {
+      add () {
+        const newPerson = { name: this.name, id: this.nextId++ }
+        this.persons.unshift(newPerson)
+        this.name = ''
+      },
+      remove (index) {
+        this.persons.splice(index, 1)
+      }
+    }
+  })
+</script>
+</body>
 ```
 
 ---
