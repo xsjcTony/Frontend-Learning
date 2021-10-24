@@ -1343,5 +1343,348 @@
 </body>
 ```
 
+
+
+### 过渡模式
+
+- 通过给 `<transition>` 添加 `mode` 属性来指定
+- `in-out` : 新元素先进行过渡, 完成之后当前元素过渡离开
+- `out-in` : 当前元素先进行过渡, 完成之后新元素过渡进入
+
 ---
+
+## 组件 (Components)
+
+[组件基础 — Vue.js](https://cn.vuejs.org/v2/guide/components.html)
+
+- 前端开发中把一个很大的界面拆分为多个小的界面, 每一个小界面就是一个 `组件`
+- 将大界面拆分为小界面就是 `组件化`
+- `组件化` 可以简化 `Vue实例对象` 的代码, 可以提高复用性
+
+
+
+### 自定义组件
+
+- 除了 `Vue` 本身自带的组件, 我们还可以定义自己的组件
+
+
+
+#### 全局组件
+
+- 任何一个 `Vue实例对象` 控制区域都可以使用的 `自定义组件`
+
+创建步骤
+
+1. 使用 `<template>` 模板编写组件的代码
+    - `自定义组件` 只能有一个 `根元素`
+
+2. 创建组件构造器 [API - Vue.extend — Vue.js](https://cn.vuejs.org/v2/api/#Vue-extend)
+
+3. 注册已经创建好的组件 [API - Vue.component — Vue.js](https://cn.vuejs.org/v2/api/#Vue-component)
+
+4. 使用注册好的组件
+
+- 实际上可以把 `1~2` 合并为直接将 `自定义组件` 的 `options` 对象丢进 `Vue.component()` 中
+
+```html
+<div id="app">
+    <abc></abc> <!-- 使用组件 -->
+</div>
+<script src="js/vue.js"></script>
+<template id="info">
+    <div>
+        <img src="images/fm.jpg" alt>
+        <p>我是描述信息</p>
+    </div>
+</template>
+<script>
+  // 注册组件, 直接传入对象
+  Vue.component('abc', {
+    // 组件模板只能有一个根元素
+    template: '#info'
+  })
+  // Vue实例对象
+  const vue = new Vue({
+    el: '#app',
+    data: {}
+  })
+</script>
+```
+
+
+
+#### 局部组件
+
+- 只有在注册了该 `局部组件` 的 `Vue实例对象` 的控制区域中才可以使用
+
+创建步骤
+
+1. 使用 `<template>` 模板编写组件的代码
+
+2. 在 `Vue实例对象` 中的 `components` 中添加 `对象`
+
+3. key` 为要注册的 `组件` 的名称, `value` 为该 `自定义组件` 的 `options` 对象
+
+4. 使用注册好的组件
+
+```html
+<div id="app">
+    <abc></abc> <!-- 使用组件 -->
+</div>
+<script src="js/vue.js"></script>
+<template id="info">
+    <div>
+        <img src="images/fm.jpg" alt>
+        <p>我是描述信息</p>
+    </div>
+</template>
+<script>
+  // Vue实例对象
+  const vue = new Vue({
+    el: '#app',
+    data: {},
+    // 自定义局部组件
+    components: {
+      abc: { // 组件名称
+        template: '#info' // 组件模板
+      }
+    }
+  })
+</script>
+```
+
+
+
+#### data / methods
+
+- `自定义组件` 也可以使用 `data` / `methods` 等
+- <span style="color: #ff0">`data` 格式和 `Vue实例对象` 中的不太一样, 必须是一个 `函数` , 其中返回一个 `对象` , 作为该组件的 `data`</span>
+- 原因是因为 `组件` 可以被复用, 这样每次创建 `组件` 就会创建一个新的 `data` , 绑定到这个创建的 `组件` 上, 避免了数据混乱 / 共用
+
+```html
+<div id="app">
+    <abc></abc> <!-- 使用组件 -->
+    <abc></abc> <!-- 复用组件 -->
+    <abc></abc> <!-- 复用组件 -->
+</div>
+<script src="js/vue.js"></script>
+<template id="info">
+    <div>
+        <button @click="add">累加</button>
+        <p>{{ number }}</p>
+    </div>
+</template>
+<script>
+  // Vue实例对象
+  const vue = new Vue({
+    el: '#app',
+    data: {},
+    // 自定义局部组件
+    components: {
+      // 组件名称
+      abc: {
+        // 组件模板
+        template: '#info',
+        // 组件数据
+        data: function () {
+          return {
+            number: 0
+          }
+        },
+        // 组件方法
+        methods: {
+          add () {
+            this.number++
+          }
+        }
+      }
+    }
+  })
+</script>
+```
+
+
+
+### 组件切换
+
+- `组件` 之间的切换
+
+
+
+#### v-if切换
+
+- 使用 `v-if` 来有条件的渲染 / 销毁 `组件`
+- <span style="color: #f40">不推荐使用, 因为会销毁 `组件` , 无法保存 `组件` 的状态, 例如 `checkbox` 的选中状态等</span>
+- <span style="color: #0ff;">推荐使用 `动态组件` 来切换</span>
+
+
+
+#### 动态组件
+
+[组件基础 - 动态组件 — Vue.js](https://cn.vuejs.org/v2/guide/components.html#动态组件)
+
+[动态组件 & 异步组件 — Vue.js](https://cn.vuejs.org/v2/guide/components-dynamic-async.html)
+
+- 使用 `Vue` 封装好的 `<component>` 组件来实现组件之间的切换
+- 通过绑定 `is` 属性来控制渲染哪一个 `组件`
+- 默认不会保存 `组件` 的状态, 如果想要保存, 需要通过 `<keep-alive>` 标签包裹, 缓存失活的 `组件`
+
+```html
+<div id="app">
+    <button @click="toggle">切换</button>
+    <keep-alive>
+        <component :is="name"></component>
+    </keep-alive>
+</div>
+<script src="js/vue.js"></script>
+<template id="home">
+    <div>
+        <p>我是首页</p>
+        <input type="checkbox">
+    </div>
+</template>
+<template id="photo">
+    <div>
+        <img src="images/fm.jpg" alt>
+    </div>
+</template>
+<script>
+  // 自定义全局组件
+  Vue.component('home', {
+    template: '#home'
+  })
+  Vue.component('photo', {
+    template: '#photo'
+  })
+  // Vue实例对象
+  const vue = new Vue({
+    el: '#app',
+    data: {
+      name: 'home'
+    },
+    methods: {
+      toggle () {
+        this.name = this.name === 'home' ? 'photo' : 'home'
+      }
+    }
+  })
+</script>
+```
+
+
+
+### 组件动画
+
+- 给 `组件` 添加动画和给 `元素` 添加动画是一样的
+- 单个 `组件` 使用 `<transition>`
+- 多个 `组件` 使用 `<transition-group>`
+- 默认情况下进入 / 离开动画是同时执行的, 如果想分开执行, 需要指定 `过渡模式`
+
+```html
+<head>
+    <style>
+        .v-enter,
+        .v-leave-to {
+            opacity: 0;
+            margin-left: 500px;
+        }
+        .v-enter-to,
+        .v-leave {
+            opacity: 1;
+        }
+        .v-enter-active,
+        .v-leave-active {
+            transition: all 1s;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <button @click="toggle">切换</button>
+    <transition mode="out-in">
+        <keep-alive>
+            <component :is="name"></component>
+        </keep-alive>
+    </transition>
+</div>
+<script src="js/vue.js"></script>
+<template id="home">
+    <div>
+        <p>我是首页</p>
+        <input type="checkbox">
+    </div>
+</template>
+<template id="photo">
+    <div>
+        <img src="images/fm.jpg" alt>
+    </div>
+</template>
+<script>
+  // 自定义全局组件
+  Vue.component('home', {
+    template: '#home'
+  })
+  Vue.component('photo', {
+    template: '#photo'
+  })
+  // Vue实例对象
+  const vue = new Vue({
+    el: '#app',
+    data: {
+      name: 'home'
+    },
+    methods: {
+      toggle () {
+        this.name = this.name === 'home' ? 'photo' : 'home'
+      }
+    }
+  })
+</script>
+</body>
+```
+
+
+
+### 父子组件
+
+- 在一个 `组件` 中又定义了其它 `组件` 就是 `父子组件`
+- `局部组件` 本质上就是最简单的 `父子组件` , 因为 `Vue实例对象` 可以看做是一个 `大组件`
+- `自定义组件` 也可以使用 `components` , 在其中再定义 `组件` 就是 `子组件`
+- `子组件` 只能在 `父组件` 中使用
+
+```html
+<div id="app">
+    <father></father>
+</div>
+<script src="js/vue.js"></script>
+<template id="father">
+    <div>
+        <p>我是父组件</p>
+        <son></son>
+    </div>
+</template>
+<template id="son">
+    <div>
+        <p>我是子组件</p>
+    </div>
+</template>
+<script>
+  // Vue实例对象
+  const vue = new Vue({
+    el: '#app',
+    // 局部组件
+    components: {
+      father: {
+        template: '#father',
+        // 在自定义组件中定义子组件
+        components: {
+          son: {
+            template: '#son'
+          }
+        }
+      }
+    }
+  })
+</script>
+```
 
