@@ -1367,8 +1367,6 @@
 
 - 除了 `Vue` 本身自带的组件, 我们还可以定义自己的组件
 
-
-
 #### 全局组件
 
 - 任何一个 `Vue实例对象` 控制区域都可以使用的 `自定义组件`
@@ -1411,8 +1409,6 @@
 </script>
 ```
 
-
-
 #### 局部组件
 
 - 只有在注册了该 `局部组件` 的 `Vue实例对象` 的控制区域中才可以使用
@@ -1452,8 +1448,6 @@
   })
 </script>
 ```
-
-
 
 #### data / methods
 
@@ -1509,15 +1503,11 @@
 
 - `组件` 之间的切换
 
-
-
 #### v-if切换
 
 - 使用 `v-if` 来有条件的渲染 / 销毁 `组件`
 - <span style="color: #f40">不推荐使用, 因为会销毁 `组件` , 无法保存 `组件` 的状态, 例如 `checkbox` 的选中状态等</span>
 - <span style="color: #0ff;">推荐使用 `动态组件` 来切换</span>
-
-
 
 #### 动态组件
 
@@ -1580,67 +1570,14 @@
 - 多个 `组件` 使用 `<transition-group>`
 - 默认情况下进入 / 离开动画是同时执行的, 如果想分开执行, 需要指定 `过渡模式`
 
+以 `动态组件` 例子为基础加入动画
+
 ```html
-<head>
-    <style>
-        .v-enter,
-        .v-leave-to {
-            opacity: 0;
-            margin-left: 500px;
-        }
-        .v-enter-to,
-        .v-leave {
-            opacity: 1;
-        }
-        .v-enter-active,
-        .v-leave-active {
-            transition: all 1s;
-        }
-    </style>
-</head>
-<body>
-<div id="app">
-    <button @click="toggle">切换</button>
-    <transition mode="out-in">
-        <keep-alive>
-            <component :is="name"></component>
-        </keep-alive>
-    </transition>
-</div>
-<script src="js/vue.js"></script>
-<template id="home">
-    <div>
-        <p>我是首页</p>
-        <input type="checkbox">
-    </div>
-</template>
-<template id="photo">
-    <div>
-        <img src="images/fm.jpg" alt>
-    </div>
-</template>
-<script>
-  // 自定义全局组件
-  Vue.component('home', {
-    template: '#home'
-  })
-  Vue.component('photo', {
-    template: '#photo'
-  })
-  // Vue实例对象
-  const vue = new Vue({
-    el: '#app',
-    data: {
-      name: 'home'
-    },
-    methods: {
-      toggle () {
-        this.name = this.name === 'home' ? 'photo' : 'home'
-      }
-    }
-  })
-</script>
-</body>
+<transition mode="out-in">
+    <keep-alive>
+        <component :is="name"></component>
+    </keep-alive>
+</transition>
 ```
 
 
@@ -1688,3 +1625,63 @@
 </script>
 ```
 
+#### 数据传递
+
+- `子组件` 无法访问 `父组件` 的 `数据` 
+- 如果想要访问, 必须通过 `父组件` 传递
+- `父组件` 通过在 `子组件` 的标签中使用 `v-bind` 传递数据
+    - `:tag="data"`
+    - 传递时的 `tag` 应使用 `kebab-case` , 因为 `HTML` 属性不在意大小写
+- `子组件` 通过配置中的 `props` 接收数据, 是一个 `数组`
+    - `props: ["tag1", "tag2"]`
+    - 接收时的 `tag` 应使用 `camel-case` (驼峰命名), 不然插值语法中无法使用 (也可以接收使用 `kebab-case` , 而插值语法中使用 `camel-case` , 但不推荐)
+
+```html
+<div id="app">
+    <father></father>
+</div>
+<script src="js/vue.js"></script>
+<template id="father">
+    <div>
+        <p>{{ name }}</p>
+        <p>{{ age }}</p>
+        <son :parent-name="name" :parent-age="age"></son> <!-- 通过v-bind给子组件传递数据, 传递时使用kebab-case -->
+    </div>
+</template>
+<template id="son">
+    <div>
+        <p>{{ parentName }}</p>
+        <p>{{ parentAge }}</p>
+        <p>我是子组件</p>
+    </div>
+</template>
+<script>
+  // Vue实例对象
+  const vue = new Vue({
+    el: '#app',
+    // 局部组件
+    components: {
+      father: {
+        template: '#father',
+        // 父组件的数据
+        data: function () {
+          return {
+            name: 'Tony',
+            age: 24
+          }
+        },
+        // 在自定义组件中定义子组件
+        components: {
+          son: {
+            template: '#son',
+            // 子组件中通过props接收数据
+            props: ['parentName', 'parentAge'] // 接收时使用camel-case
+          }
+        }
+      }
+    }
+  })
+</script>
+```
+
+#### 方法传递
