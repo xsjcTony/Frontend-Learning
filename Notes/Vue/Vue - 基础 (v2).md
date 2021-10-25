@@ -397,11 +397,11 @@
 
 ### v-for
 
-- 相当于 `JavaScript` 中的 `for...in` 循环
+- 相当于 `JavaScript` 中的 `for...of` 循环
 
 - 可以遍历 `Array` / `Object` / `number` / `string` / `Iterable (v2.6+)`
 
-- 使用特定语法 `alias in expression`
+- 使用特定语法 `alias in expression` / `alias of expression`
 
 - 也可以为 `数组` 的 `索引` / `对象` 的 `键值` , `索引` 指定别名
 
@@ -732,6 +732,51 @@
     methods: {
       myFn () { alert('Tony') }
     }
+  })
+</script>
+```
+
+
+
+### v-slot
+
+- 定义模板指向的 `具名插槽`
+- 格式为 `v-slot:name`
+- 缩写为 `#name`
+- 只能用于 `<template>` 标签中
+- `#:name="tag"` 可以用于接收 `作用域插槽` 暴露出来的数据
+
+```html
+<div id="app">
+    <my-comp>
+        <!-- 完整写法 -->
+        <template v-slot:one> <!-- 将内容插入到具名插槽one中 -->
+            <div>我是追加的内容1</div>
+            <div>我是追加的内容11</div>
+        </template>
+        <!-- 缩写 -->
+        <template #two> <!-- 将内容插入到具名插槽two中 -->
+            <div>我是追加的内容2</div>
+            <div>我是追加的内容22</div>
+        </template>
+    </my-comp>
+</div>
+<template id="my_comp">
+    <div>
+        <div>我是头部</div>
+        <slot name="one">我是默认数据1</slot> <!-- 具名插槽, 名称为one -->
+        <slot name="two">我是默认数据2</slot> <!-- 具名插槽, 名称为two -->
+        <div>我是底部</div>
+    </div>
+</template>
+<script src="js/vue.js"></script>
+<script>
+  Vue.component('myComp', {
+    template: '#my_comp'
+  })
+
+  const vue = new Vue({
+    el: '#app'
   })
 </script>
 ```
@@ -1887,4 +1932,113 @@
     ```
 
     
+
+### 插槽
+
+[插槽 — Vue.js](https://cn.vuejs.org/v2/guide/components-slots.html)
+
+- `插槽` 可以理解为一个坑
+- 使用者可以根据自己的需求来填这个坑
+- `插槽` 可以指定默认数据, 如果使用者没有填充, 默认数据就会被渲染
+- `组件` 使用时双标签中的内容就视为填充的 `数据`
+- 如果 `组件` 中没有定义 `插槽` , 那么使用 `组件` 的双标签中的所有内容都会被抛弃
+
+
+
+#### 匿名插槽
+
+- 没有指定名称的 `插槽`
+- 有多少个 `匿名插槽` , 填充的数据就会被拷贝并渲染多少份
+- <span style="color: #ff0">企业开发中一个 `组件` 内不要写多于一个的 `匿名插槽` , 想要使用其他 `插槽` 可以使用 `具名插槽`</span>
+- `匿名插槽` 实际上也有名称, 是 `default` , 可以在 `v-slot` 中使用
+
+```html
+<div id="app">
+    <father></father>
+</div>
+<template id="father">
+    <div>
+        <son>
+            <!-- 双标签中的所有内容会被视为填坑的数据 -->
+            <div>我是追加的内容1</div>
+            <div>我是追加的内容2</div>
+            <div>我是追加的内容3</div>
+        </son>
+    </div>
+</template>
+<template id="son">
+    <div>
+        <div>我是头部</div>
+        <slot>我是默认数据</slot> <!-- 匿名插槽1 -->
+        <slot>我是默认数据</slot> <!-- 匿名插槽2, 要被填充的数据也会被拷贝并渲染到这个插槽中 -->
+        <div>我是底部</div>
+    </div>
+</template>
+<script src="js/vue.js"></script>
+<script>
+  // 父组件
+  Vue.component('father', {
+    template: '#father',
+    components: {
+      son: {
+        template: '#son'
+      }
+    }
+  })
+</script>
+```
+
+
+
+#### 具名插槽
+
+- 顾名思义, 指定了名称的 `插槽`
+- 通过 `name` 属性给 `<slot>` 指定名称
+- 通过 `<template>` 配合 `v-slot` 来填充内容, 具体见 `指令 => v-slot`
+- <span style="color: #ff0;">通过 `slot` 属性指定 `具名插槽` 的做法虽然还能用但是已经被**废弃**了, 不要使用, `v3.x` 中会被移除</span>
+
+
+
+#### 作用域插槽
+
+- 带数据的 `插槽`
+- 让 `父组件` 在填充 `子组件` 插槽内容时也能使用 `子组件` 的 `数据`
+- 在 `子组件` 的 `<slot>` 中通过 `v-bind` 暴露数据给 `父组件`
+- 格式为 `:tag="data"`
+- 在 `父组件` 的 `<template>` 中通过 `v-slot` 接收 `子组件` 暴露的数据
+- 接收格式为 `#slotName="scopeName"` , 使用格式为 `scopeName.tag`
+- <span style="color: #ff0;">通过 `slot-scope` 属性接收数据的做法虽然还能用但是已经被废弃了, 不要使用, `v3.x` 中会被移除</span>
+- 典型的应用场景是 `子组件` 提供数据, `父组件` 决定如何渲染
+
+该示例中 `Vue实例对象` 的控制区域可以视为 `父组件`
+
+```html
+<div id="app">
+    <my-comp>
+        <template #default="abc"> <!-- 匿名插槽的名称为 default, 作用域取名为abc -->
+            <li v-for="name in abc.names">{{ name }}</li> <!-- abc.names就是接收到的数据 -->
+        </template>
+    </my-comp>
+</div>
+<template id="my_comp">
+    <div>
+        <div>我是头部</div>
+        <slot :names="names">我是默认内容</slot> <!-- 将子组件的names数据暴露给父组件 -->
+        <div>我是底部</div>
+    </div>
+</template>
+<script src="js/vue.js"></script>
+<script>
+  Vue.component('myComp', {
+    template: '#my_comp',
+    data: function () {
+      return {
+        names: ['zs', 'ls', 'ww', 'zl']
+      }
+    }
+  })
+</script>
+```
+
+---
 
