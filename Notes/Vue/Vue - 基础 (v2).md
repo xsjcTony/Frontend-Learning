@@ -1388,13 +1388,13 @@
 <div id="app">
     <abc></abc> <!-- 使用组件 -->
 </div>
-<script src="js/vue.js"></script>
 <template id="info">
     <div>
         <img src="images/fm.jpg" alt>
         <p>我是描述信息</p>
     </div>
 </template>
+<script src="js/vue.js"></script>
 <script>
   // 注册组件, 直接传入对象
   Vue.component('abc', {
@@ -1427,13 +1427,13 @@
 <div id="app">
     <abc></abc> <!-- 使用组件 -->
 </div>
-<script src="js/vue.js"></script>
 <template id="info">
     <div>
         <img src="images/fm.jpg" alt>
         <p>我是描述信息</p>
     </div>
 </template>
+<script src="js/vue.js"></script>
 <script>
   // Vue实例对象
   const vue = new Vue({
@@ -1461,13 +1461,13 @@
     <abc></abc> <!-- 复用组件 -->
     <abc></abc> <!-- 复用组件 -->
 </div>
-<script src="js/vue.js"></script>
 <template id="info">
     <div>
         <button @click="add">累加</button>
         <p>{{ number }}</p>
     </div>
 </template>
+<script src="js/vue.js"></script>
 <script>
   // Vue实例对象
   const vue = new Vue({
@@ -1526,7 +1526,6 @@
         <component :is="name"></component>
     </keep-alive>
 </div>
-<script src="js/vue.js"></script>
 <template id="home">
     <div>
         <p>我是首页</p>
@@ -1538,6 +1537,7 @@
         <img src="images/fm.jpg" alt>
     </div>
 </template>
+<script src="js/vue.js"></script>
 <script>
   // 自定义全局组件
   Vue.component('home', {
@@ -1593,7 +1593,6 @@
 <div id="app">
     <father></father>
 </div>
-<script src="js/vue.js"></script>
 <template id="father">
     <div>
         <p>我是父组件</p>
@@ -1605,6 +1604,7 @@
         <p>我是子组件</p>
     </div>
 </template>
+<script src="js/vue.js"></script>
 <script>
   // Vue实例对象
   const vue = new Vue({
@@ -1633,16 +1633,13 @@
 - 如果想要访问, 必须通过 `父组件` 传递
 - `父组件` 通过在 `子组件` 的标签中使用 `v-bind` 传递数据
     - `:tag="data"`
-    - 传递时的 `tag` 应使用 `kebab-case` , 因为 `HTML` 属性不在意大小写
 - `子组件` 通过配置中的 `props` 接收数据, 是一个 `数组`
     - `props: ["tag1", "tag2"]`
-    - 接收时的 `tag` 应使用 `camel-case` (驼峰命名), 不然插值语法中无法使用 (也可以接收使用 `kebab-case` , 而插值语法中使用 `camel-case` , 但不推荐)
 
 ```html
 <div id="app">
     <father></father>
 </div>
-<script src="js/vue.js"></script>
 <template id="father">
     <div>
         <p>{{ name }}</p>
@@ -1657,6 +1654,7 @@
         <p>我是子组件</p>
     </div>
 </template>
+<script src="js/vue.js"></script>
 <script>
   // Vue实例对象
   const vue = new Vue({
@@ -1696,7 +1694,6 @@
 <div id="app">
     <father></father>
 </div>
-<script src="js/vue.js"></script>
 <template id="father">
     <div>
         <button @click="say('Tony')">我是按钮</button>
@@ -1708,6 +1705,7 @@
         <button @click="sonSay">我是按钮</button> <!-- 使用子组件的方法 -->
     </div>
 </template>
+<script src="js/vue.js"></script>
 <script>
   const vue = new Vue({
     el: '#app',
@@ -1751,7 +1749,6 @@
 <div id="app">
     <father></father>
 </div>
-<script src="js/vue.js"></script>
 <template id="father">
     <div>
         <button @click="say">我是按钮</button>
@@ -1763,6 +1760,7 @@
         <button @click="sonSay">我是按钮</button> <!-- 使用子组件的方法 -->
     </div>
 </template>
+<script src="js/vue.js"></script>
 <script>
   // Vue实例对象
   const vue = new Vue({
@@ -1797,7 +1795,96 @@
 </script>
 ```
 
+#### 多级传递
+
+- 默认情况下无论是 `数据` 还是 `方法` , 都只能一级一级的往下传递
+
 
 
 ### 命名规范
+
+说明
+
+- `kebab-case` : 短横线分隔命名, 以下统一使用 `kebab`
+- `camelCase` : 驼峰命名, 以下统一使用 `camel`
+- 纯小写字符串不受以下限制
+
+规范
+
+- 注册 `组件` 时, 如果使用了 `camel` 命名, 那么使用的时候需要转换为 `kebab` 命名
+
+    ```html
+    <div id="app">
+      	<my-comp></my-comp> <!-- 转换成kebab才能使用 -->
+    </div>
+    <script>
+    	Vue.component('myComp', {/*...*/}) // 使用camel注册
+    </script>
+    ```
+
+- `父组件` 给 `子组件` 传递 `数据` 的时候, 如果使用了 `kebab` 命名, 那么 `子组件` 接收的时候必须使用 `camel` 命名
+
+    - `父组件` 传递时不能使用 `camel` , 因为 `HTML` 标签的属性名称无视大小写
+
+    ```html
+    <template id="father">
+    		<div>
+          	<p>[{ name }]</p> <!-- Tony -->
+          	<son :parent-name="name"></son> <!-- 使用kebab进行数据传递 -->
+      	</div>
+    </template>
+    <script>
+    	Vue.component('father', {
+        template: '#father',
+        data: function () {
+          return {
+            name: 'Tony'
+          }
+        },
+        components: {
+          // 子组件
+          son: {
+            template: '#son',
+            // 接收父组件传递的数据
+            props: ['parentName'] // 接收时使用camel才能接收
+          }
+        }
+      })
+    </script>
+    ```
+
+- `父组件` 给 `子组件` 传递 `方法` 的时候, 不能使用 `camel` 命名, 因为 `HTML` 标签的属性名称无视大小写
+
+    ```html
+    <template id="father">
+    		<div>
+          	<button @click="say">我是按钮</button>
+          	<son @parent-say="name"></son> <!-- 使用kebab进行方法传递 -->
+      	</div>
+    </template>
+    <script>
+    	Vue.component('father', {
+        template: '#father',
+        methods: {
+          say () {
+            console.log('Tony')
+          }
+        },
+        components: {
+          // 子组件
+          son: {
+            template: '#son',
+            methods: {
+        			sonSay () {
+                // 接收父组件传递的方法
+        				this.$emit('parent-say') // 同样使用kebab进行接收
+      				}
+      			}
+          }
+        }
+      })
+    </script>
+    ```
+
+    
 
