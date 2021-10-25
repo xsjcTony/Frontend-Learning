@@ -1627,6 +1627,8 @@
 
 #### 数据传递
 
+##### 父组件 => 子组件
+
 - `子组件` 无法访问 `父组件` 的 `数据` 
 - 如果想要访问, 必须通过 `父组件` 传递
 - `父组件` 通过在 `子组件` 的标签中使用 `v-bind` 传递数据
@@ -1684,4 +1686,118 @@
 </script>
 ```
 
+##### 子组件 => 父组件
+
+- 利用 `父组件` 可以给 `子组件` 传递方法的特点
+- 在 `子组件` 中调用 `父组件` 中的方法时, 将想要传递给 `父组件` 的数据作为 `参数` 传递
+- 传递 `参数` 的方法是 `this.$emit('method', args)`
+
+```html
+<div id="app">
+    <father></father>
+</div>
+<script src="js/vue.js"></script>
+<template id="father">
+    <div>
+        <button @click="say('Tony')">我是按钮</button>
+        <son @parent-say="say"></son> <!-- 通过v-bind给子组件传递数据, 传递时使用kebab-case -->
+    </div>
+</template>
+<template id="son">
+    <div>
+        <button @click="sonSay">我是按钮</button> <!-- 使用子组件的方法 -->
+    </div>
+</template>
+<script>
+  const vue = new Vue({
+    el: '#app',
+    // 局部组件
+    components: {
+      father: {
+        template: '#father',
+        methods: {
+          say (data) {
+            alert(data)
+          }
+        },
+        // 在自定义组件中定义子组件
+        components: {
+          son: {
+            template: '#son',
+            methods: {
+              sonSay () {
+                // 使用$emit传递数据, 第一个参数是方法名称, 后面的参数都是要传递的参数(数据)
+                this.$emit('parent-say', 'Tony loves Lily')
+              }
+            }
+          }
+        }
+      }
+    }
+  })
+</script>
+```
+
 #### 方法传递
+
+- `子组件` 无法访问 `父组件` 的 `方法`
+- 如果想要访问, 必须通过 `父组件` 传递
+- `父组件` 通过在 `子组件` 的标签中使用 `v-on` 传递数据
+    - `@tag="method"`
+- `子组件` 通过配置中的 `methods` 自定义一个 `方法` 并在其中接收父组件的 `方法`
+    - `this.$emit('method')`
+
+```html
+<div id="app">
+    <father></father>
+</div>
+<script src="js/vue.js"></script>
+<template id="father">
+    <div>
+        <button @click="say">我是按钮</button>
+        <son @parent-say="say"></son> <!-- 通过v-bind给子组件传递数据, 传递时使用kebab-case -->
+    </div>
+</template>
+<template id="son">
+    <div>
+        <button @click="sonSay">我是按钮</button> <!-- 使用子组件的方法 -->
+    </div>
+</template>
+<script>
+  // Vue实例对象
+  const vue = new Vue({
+    el: '#app',
+    // 局部组件
+    components: {
+      father: {
+        template: '#father',
+        // 父组件的方法
+        methods: {
+          say () {
+            alert('Tony')
+          }
+        },
+        // 在自定义组件中定义子组件
+        components: {
+          son: {
+            template: '#son',
+            // 子组件中通过methods中的自定义方法接收方法
+            methods: {
+              // 自定义方法
+              sonSay () {
+                // 接收父组件传递过来的方法
+                this.$emit('parent-say')
+              }
+            }
+          }
+        }
+      }
+    }
+  })
+</script>
+```
+
+
+
+### 命名规范
+
