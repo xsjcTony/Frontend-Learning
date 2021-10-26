@@ -16,7 +16,7 @@
 - 可以用于管理 `共享状态`
 - 方便整个程序中的任何 `组件` 都可以获取 / 修改 `Vuex` 中保存的 `公共状态`
 - 集成到了 `Vue Devtools` 中
-- <span style="color: #0ff">`Vuex3.x` 应用于 `Vue2.x`</span>
+- <span style="color: #0ff">`Vuex 3.x` 应用于 `Vue 2.x`</span>
 
 ---
 
