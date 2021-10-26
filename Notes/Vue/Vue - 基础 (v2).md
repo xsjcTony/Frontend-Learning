@@ -2042,3 +2042,46 @@
 
 ---
 
+## Watch
+
+[API - watch — Vue.js (vuejs.org)](https://cn.vuejs.org/v2/api/#watch)
+
+- `watch` 属性是专门监听数据变化的, 是一个 `对象`
+- `key` 为需要观察的 `数据`
+- `value` 为 `回调函数` 或者 `方法名`
+- 只要 `数据` 发生了变化, 就会自动调用对应数据的 `回调函数`
+- `回调函数` 会接受两个参数, 第一个为 `newValue` , 第二个为 `oldValue`
+
+```html
+<div id="app">
+    <input type="tel" v-model.number="num1">
+    <span>+</span>
+    <input type="tel" v-model.number="num2">
+    <span>=</span>
+    <input type="text" disabled="disabled" :value="sum">
+</div>
+<script src="js/vue.js"></script>
+<script src="js/vue-router.js"></script>
+<script>
+  const vue = new Vue({
+    el: '#app',
+    data: {
+      num1: 0,
+      num2: 0,
+      sum: 0
+    },
+    // watch属性
+    watch: {
+      // 监听num1的变化
+      num1: function (newValue, oldValue) {
+        this.sum = newValue + this.num2
+      },
+      // 监听num2的变化
+      num2: function (newValue, oldValue) {
+        this.sum = newValue + this.num1
+      }
+    }
+  })
+</script>
+```
+

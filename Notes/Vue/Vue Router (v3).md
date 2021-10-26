@@ -140,7 +140,9 @@ const vue = new Vue({
 - `routes` : 路由规则, 是一个 `数组` , 每一项是一个 `对象`
     - `path` : (必须要有) `hash` 值
     - `component` : 对应要显示的 `组件`
+    - `components` : `命名视图` 组件
     - `redirect` : 重定向到的路由
+    - `children` : 用于配置 `嵌套路由 `
 - `linkActiveClass` : 全局配置 `<router-link>` 组件默认的激活的 `class` 名称 (对 `v-slot` 的用法无效)
 
 ---
@@ -159,7 +161,7 @@ const vue = new Vue({
 
 ## 参数传递
 
-[路由组件传参 | Vue Router](https://router.vuejs.org/zh/guide/essentials/passing-props.html#布尔模式)
+[动态路由匹配 | Vue Router](https://router.vuejs.org/zh/guide/essentials/dynamic-matching.html)
 
 - 传递方式一: `URL` 参数传递
 
@@ -209,4 +211,92 @@ const vue = new Vue({
       }
     }
     ```
+    
+
+---
+
+## 嵌套路由
+
+[嵌套路由 | Vue Router](https://router.vuejs.org/zh/guide/essentials/nested-routes.html)
+
+- 在 `子组件` 中定义 `<router-link>` 和 `<router-view>` , 作为 `子路由` 的 `导航` 和 `出口`
+
+    ```html
+    <template id="one">
+        <div class="page-one">
+            <router-link to="/one/sub_one" custom v-slot="{ navigate }">
+                <button @click="navigate" role="link">第一个子界面</button>
+            </router-link>
+            <router-link to="/one/sub_two" custom v-slot="{ navigate }">
+                <button @click="navigate" role="link">第二个子界面</button>
+            </router-link>
+            <router-view></router-view>
+        </div>
+    </template>
+    ```
+
+- 在 `路由规则` 的该 `子路由` 归属的 `父路由` 中定义 `children` 属性, 在其中定义子路由
+
+    ```js
+    const routes = [
+      {
+        path: '/one',
+        component: one,
+        // 定义属于 /one 的子路由
+        children: [
+          { path: 'sub_one', component: subOne }, // 子路由不需要写父路由的路径, 也不需要写"/"
+          { path: 'sub_two', component: subTwo }
+        ]
+      },
+      { path: '/two', component: two }
+    ]
+    ```
+
+---
+
+## 命名视图
+
+[命名视图 | Vue Router](https://router.vuejs.org/zh/guide/essentials/named-views.html)
+
+- 类似 `具名插槽`
+
+- 让不同的 `<router-view>` 出口显示不同的内容
+
+- 当 `路由地址` 被匹配的时候同时指定多个 `出口` , 并且每个 `出口` 中显示的内容不同
+
+- 没有被命名的 `<router-view>` 名称默认为 `default` , 和 `匿名插槽` 一样, 并且有几个就会被渲染几份
+
+- 使用 `name` 属性给 `<router-view>` 指定名称
+
+    ```html
+    <div id="app">
+        <router-view name="name1"></router-view>
+        <router-view name="name2"></router-view>
+    </div>
+    ```
+
+- 在 `路由规则` 中使用 `components` 来指定 `命名视图` 的渲染规则
+
+    ```js
+    const routes = [
+      {
+        path: '/',
+        components: {
+          name1: one,
+          name2: two
+        }
+      }
+    ]
+    ```
+
+---
+
+## Watch
+
+- 属于 `Vue实例对象` , 详情见 `Vue` 笔记
+- `watch` 还能够监听 `路由地址` 的变化
+- 可以用于判断是从哪个界面跳转过来的
+- 监听的 `key` 为 `$route.path`
+
+
 
