@@ -93,5 +93,39 @@ new Vue({
 
 ---
 
+## Getters
 
+[Getter | Vuex](https://vuex.vuejs.org/zh/guide/getters.html#通过属性访问)
 
+- 可以理解为是 `store` 的 `计算属性`
+- 会根据它的依赖被缓存起来, 只有依赖值发生了改变才会重新计算
+
+- 和 `mutations` 一样, `getters` 中的所有方法都会自动传入一个 `state` 参数
+- 想要访问的话可以通过 `this.$store.getters` 访问
+
+getters示例
+
+```js
+const store = new Vuex.Store({
+  state: {
+    msg: 'Tony'
+  },
+  mutations: {},
+  getters: {
+    format: state => state.msg + ' loves Lily'
+  }
+})
+```
+
+获取getters数据示例
+
+- 虽然获取了三次, 但只会计算一次
+
+```html
+<div id="app">
+  	<p>{{ this.$store.state.msg }}</p> <!-- Tony -->
+    <p>{{ this.$store.getters.format }}</p> <!-- Tony loves Lily -->
+    <p>{{ this.$store.getters.format }}</p> <!-- Tony loves Lily -->
+    <p>{{ this.$store.getters.format }}</p> <!-- Tony loves Lily -->
+</div>
+```
