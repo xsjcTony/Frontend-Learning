@@ -2242,3 +2242,38 @@
 
 ---
 
+## 渲染函数
+
+[渲染函数 & JSX — Vue.js](https://cn.vuejs.org/v2/guide/render-function.html)
+
+- 有些时候相比于使用 `{{ }}` 模板, `渲染函数` 会更加好用, 因为他可以发挥 `JavaScript` 完全编程的能力
+- 在 `Vue实例对象` / `组件` 中使用 `render` 属性
+- 它是一个 `方法` , 接收的 `参数`
+    - `createElement` : 一个 `函数` , `字符串模板` 的代替方案, 返回一个 `VNode` ( `虚拟节点` ), 其接收的 `参数` : [createElement  — Vue.js](https://cn.vuejs.org/v2/guide/render-function.html#createElement-参数) 
+- 该方式会直接覆盖 `Vue实例对象` 的控制区域
+
+```html
+<div id="app">
+    <!--<one></one>--> <!-- 不需要了, 因为整个div#app会直接被createElement生成的VNode覆盖掉 -->
+</div>
+<template id="one">
+    <div>
+        <p>我是组件123</p>
+    </div>
+</template>
+<script src="js/vue.js"></script>
+<script>
+  // 注册组件
+  Vue.component('one', {
+    template: '#one'
+  })
+  // Vue实例对象
+  const vue = new Vue({
+    el: '#app',
+    render: function (createElement) {
+      return createElement('one')
+    }
+  })
+</script>
+```
+
