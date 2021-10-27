@@ -2279,7 +2279,7 @@
 
 ---
 
-## 单文件组件 (Single-File Component)
+## 单文件组件 (Single-File Component / SFC)
 
 [单文件组件 — Vue.js](https://cn.vuejs.org/v2/guide/single-file-components.html)
 

@@ -103,13 +103,13 @@ vue create my-project
   ```
 
     - 需要选择什么时候进行 `格式检查` , 通过 `↑` / `↓` 键来选择, 通过 `Space` 来选择 / 取消选择, 通过 `a` 键来全选 / 全不选, 通过 `i` 键来反选, `Enter` 键确认
-    
+  
     ```shell
     Pick additional lint features: (Press <space> to select, <a> to toggle all, <i> to invert selection)
     >(*) Lint on save
      ( ) Lint and fix on commit
     ```
-    
+  
 - 选择在哪里保存 `babel` / `ESLint` 等配置文件
 
 ```shell
@@ -161,6 +161,18 @@ npm run serve
 - 打包项目到 `dist` 目录中
 
 ```shell
-n
+npm run build
 ```
+
+---
+
+## 修改项目webpack配置
+
+[webpack 相关 | Vue CLI](https://cli.vuejs.org/zh/guide/webpack.html)
+
+- 创建 `vue.config.js` 文件
+- 添加 `configureWebpack` 属性, 可以是一个 `对象` , 里面和 `webpack.config.js` 设置一样
+- 但不是所有 `webpack` 选项都可以这样配置, 因为有些是基于 `vue.config.js` 的 [配置参考 | Vue CLI](https://cli.vuejs.org/zh/config/#vue-config-js)
+    - `outputDir` 代替 `webpack` 的 `output.path` , 并且不需要写在 `configureWebpack` 中
+- 先查看 `配置参考` 文档查询 `Vue-CLI` 的封装能否满足需求, 如果不能再去 `configureWebpack` 属性中修改 `webpack` 配置
 
