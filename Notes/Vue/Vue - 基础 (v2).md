@@ -2085,3 +2085,114 @@
 </script>
 ```
 
+---
+
+## 生命周期钩子 (Lifecyele Hooks)
+
+[API - 生命周期钩子 — Vue.js (vuejs.org)](https://cn.vuejs.org/v2/api/#选项-生命周期钩子)
+
+- 一个 `实例` ( `组件` ) 在从生到死的特定阶段调用的 `方法` (钩子函数)
+- 生命周期 `钩子` = 生命周期 `函数` = 生命周期 `事件` , 只是叫法区别
+- 直接写在 `Vue实例对象` 中, `key` 为 `钩子` 名称, `value` 为 `函数`
+- 系统会在特定阶段自动调用这些 `钩子函数`
+- <span style="color: #f40;">不要使用 `箭头函数` , 因为 `this` 不会正确指向 `Vue实例对象`</span>
+- 创建期间的 `钩子`
+    - `beforeCreate` : `Vue实例` 创建好了 `事件` / `生命周期方法` , 但还没有初始化 `data` / `methods` , 因此该 `钩子` 中无法访问这两个属性
+    - `created` : `Vue实例` 已经初始化好了 `data` / `methods` , 可以在该 `钩子` 中访问这两个属性
+    - `beforeMount` :  `Vue实例` 已经完成了 `模板` 的编译, 但还没有挂载到 `界面` 上
+    - `mounted` : `Vue实例` 已经将完成编译的 `模板` 渲染到 `界面` 中指定的位置上了
+- 运行期间的 `钩子`
+    - `beforeUpdate` : 一旦数据发生变化, 该 `钩子` 就会被调用, 此时 `data` 中的数据是最新的, 但是 `界面` 上显示的还是旧的
+    - `updated` : `Vue实例` 已经完成了数据的更新, 此时 `data` 和 `界面` 上的数据都是最新的
+- 销毁期间的 `钩子`
+    - `beforeDestroy` : `Vue实例` 准备被销毁, 但还没有执行, `data` / `methods` 仍然可以访问, 并且这是最后一个可以访问到 `组件` 的 `data` / `methods` 的 `方法`
+    - `destroyed` : `Vue实例` 完全销毁后调用, 其所有内容均无法再访问使用, <span style="color: #f40">即使能访问到, 也绝对不要在这个 `方法` 中操作, 最后一个可以操作其内容的 `方法` 是 `beforeDestroy`</span>
+
+示例
+
+```html
+<div id="app">
+    <p>{{ msg }}</p>
+    <button @click="change">切换</button>
+    <one v-if="isShow"></one>
+</div>
+<template id="one">
+    <div>
+        <p>我是组件</p>
+    </div>
+</template>
+<script src="js/vue.js"></script>
+<script>
+  // 注册组件
+  Vue.component('one', {
+    template: '#one',
+    data: function () {
+      return {
+        msg: 'message'
+      }
+    },
+    methods: {
+      bark () {
+        console.log('bark')
+      }
+    },
+    /* 生命周期钩子元素 */
+    // 销毁期间 (点击 切换 按钮销毁该组件)
+    beforeDestroy: function () {
+      console.log(this.msg) // message
+      console.log(this.bark) // f bark ()
+    },
+    destroyed: function () {
+      console.log('destroyed') // destroyed
+    }
+  })
+  // Vue实例对象
+  const vue = new Vue({
+    el: '#app',
+    data: {
+      msg: 'Tony',
+      isShow: true
+    },
+    methods: {
+      say () {
+        console.log('say')
+      },
+      change () {
+        this.isShow = !this.isShow
+      }
+    },
+    /* 生命周期钩子函数 */
+    // 创建期间
+    beforeCreate: function () {
+      console.log(this.msg) // undefined
+      console.log(this.say) // undefined
+    },
+    created: function () {
+      console.log(this.msg) // Tony
+      console.log(this.say) // f say ()
+    },
+    beforeMount: function () {
+      console.log(document.querySelector('p').innerHTML) // {{ msg }}
+    },
+    mounted: function () {
+      console.log(document.querySelector('p').innerHTML) // Tony
+    },
+    // 运行期间 (将 msg 从 Tony 更改成 Lily)
+    beforeUpdate: function () {
+      console.log(this.msg) // Lily
+      console.log(document.querySelector('p').innerHTML) // Tony
+    },
+    updated: function () {
+      console.log(this.msg) // Lily
+      console.log(document.querySelector('p').innerHTML) // Lily
+    }
+  })
+</script>
+```
+
+`生命周期` 图示
+
+![vue_instance_lifecycle.png](D:\xsjcTony\it666\Frontend-Learning\Notes\Vue\images\vue_instance_lifecycle.png)
+
+---
+

@@ -298,5 +298,7 @@ const vue = new Vue({
 - 可以用于判断是从哪个界面跳转过来的
 - 监听的 `key` 为 `$route.path`
 
+---
+
 
 
