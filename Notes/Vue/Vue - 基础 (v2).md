@@ -2277,3 +2277,52 @@
 </script>
 ```
 
+---
+
+## 单文件组件 (Single-File Component)
+
+[单文件组件 — Vue.js](https://cn.vuejs.org/v2/guide/single-file-components.html)
+
+- 文件扩展名为 `.vue`
+- 所有 `SFC` 都由三个部分组成
+    - `<template>` : 用于编写 `组件` 的 `HTML` 结构代码
+    - `<script>` : 用于编写 `组件` 的业务逻辑代码
+    - `<style>` : 用于编写 `组件` 的样式代码
+
+
+
+### `App.vue` 文件示例
+
+```vue
+<template>
+    <div id="app"></div>
+</template>
+
+<script>
+export default {
+  name: 'App'
+}
+</script>
+
+<style scoped>
+
+</style>
+```
+
+
+
+### `<script>` 
+
+- `SFC` 需要作为一个模块处理, 所以使用 `ESM` 的方式暴露出去 `export default { /* ... */ }`
+
+- `name` : `组件` 名称
+- `data` : 和 `组件` 中的用法一样, 必须是一个 `函数` , 返回一个 `对象`
+- 其他诸如 `methods` 等都和之前 `组件` 中的一样
+- `components` : 需要使用 `ESM` 的 `import Comp from './path/to/One.vue'` 导入之后使用, `components: { One: One }` , `.vue` 后缀可以不用写
+
+
+
+### `<style>`
+
+- 默认情况下 `组件` 中的 `<style>` 中的样式是 `全局样式`
+- 给 `<style>` 标签添加 `scoped` 属性来指定该 `SFC` 中的样式只应用于这个 `组件` , 是 `局部样式`
