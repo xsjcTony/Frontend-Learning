@@ -2196,3 +2196,49 @@
 
 ---
 
+## 特殊属性
+
+[API - 特殊attribute — Vue.js](https://cn.vuejs.org/v2/api/#特殊-attribute)
+
+
+
+### ref
+
+- 用来给 `元素` 或 `子组件` 注册引用信息
+- 引用信息将会注册在 `父组件` 的 `$refs` 对象上
+- 在普通的 `DOM` 元素上使用, 那么指向的就是 `DOM` 元素, 可以用来获取 `DOM` , 虽然 `Vue` 推荐 `数据驱动` , 但迫不得已需要操作 `DOM` 的时候可以用这种方法获取
+- 如果用在 `子组件` 上, 那么指向的就是 `组件实例` (通过原生 `JavaScript` 获取只能获取到 `组件` 的 `HTML` , 而不是 `组件实例` )
+- <span style="color: #0ff;">反正就是永远不要使用原生 `JavaScript` 获取 `DOM` , 如果迫不得已要使用则通过 `ref` 绑定, 使用 `vm.$refs` 获取</span>
+
+```html
+<div id="app">
+    <button @click="myFn">我是按钮</button>
+    <p ref="myP">我是原生的DOM</p>
+    <one id="my_one" ref="myOne"></one>
+</div>
+<template id="one">
+    <div>
+        <p>我是组件</p>
+    </div>
+</template>
+<script src="js/vue.js"></script>
+<script>
+  // 注册组件
+  Vue.component('one', {
+    template: '#one'
+  })
+  // Vue实例对象
+  const vue = new Vue({
+    el: '#app',
+    methods: {
+      myFn () {
+        console.log(this.$refs.myP) // <p>我是原生的DOM</p>
+        console.log(this.$refs.myOne) // VueComponent {...}
+      }
+    }
+  })
+</script>
+```
+
+---
+
