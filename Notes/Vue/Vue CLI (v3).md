@@ -176,3 +176,20 @@ npm run build
     - `outputDir` 代替 `webpack` 的 `output.path` , 并且不需要写在 `configureWebpack` 中
 - 先查看 `配置参考` 文档查询 `Vue-CLI` 的封装能否满足需求, 如果不能再去 `configureWebpack` 属性中修改 `webpack` 配置
 
+---
+
+## 注意点
+
+- 修改 `.browserslistrc` 之后必须重新打包
+- 使用 `postcss.config.js` 文件配置 `PostCSS` 之后必须手动开启 `autoprefixer` , 否则会覆盖 `Vue` 默认开启 `autoprefixer` 的设定
+
+```js
+module.exports = {
+  plugins: {
+    // 如果配置了该文件, 需要重新添加autoprefixer避免覆盖vue2默认配置
+    autoprefixer: {},
+    // ...
+  }
+}
+```
+

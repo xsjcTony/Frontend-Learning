@@ -355,6 +355,12 @@ PostCSS
 - 用于使用 `PostCSS` 来处理 `css`
 - 与 `style-loader` 和 `css-loader` 配合使用
 
+安装
+
+```shell
+npm i -D postcss-loader postcss
+```
+
 用法
 
 - 安装需要使用的 `Plugin`
@@ -449,11 +455,45 @@ module.exports = {
 
 安装
 
-```
+```shell
 npm i -D html-withimg-loader
 ```
 
 - 与其他 `rule` 配合使用
+
+用法
+
+- 在 `配置文件` 中的 `module` 的 `rules` 中添加规则
+
+```js
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.(htm|html)$/,
+        loader: 'html-withimg-loader'
+      }
+    ]
+  }
+}
+```
+
+
+
+### html-loader
+
+[html-loader - npm](https://www.npmjs.com/package/html-loader)
+
+定义
+
+- 用于处理 `HTML` 中的包含 `变量` 的 `字符串模板`
+- <span style="color: #ff0">配合 `Vue 2` 的话, 最多使用 `v1.3.2` 版本, 不然会报错</span>
+
+安装
+
+```shell
+npm i -D html-loader
+```
 
 用法
 
@@ -688,6 +728,7 @@ module.exports = {
 
 - 基于 `PostCSS` 的插件
 - 用于将 `CSS` 属性的 `px` 单位转换为 `rem` 单位
+- <span style="color: #ff0">配合 `Vue 2` 的话, 最多使用 `v5.1.1` 版本, 因为再新的要求 `PostCSS 8` , 而 `Vue 2` 使用的是 `v7.x`</span>
 
 安装插件
 
@@ -754,8 +795,6 @@ module.exports = {
 
 
 
-
-
 ### HtmlWebpackPlugin
 
 [HtmlWebpackPlugin | webpack](https://webpack.js.org/plugins/html-webpack-plugin/)
@@ -765,6 +804,7 @@ module.exports = {
 用途
 
 - 打包时自动创建 `html` 文件并引入相关资源
+- <span style="color: #f40;">注意该插件无法处理 `HTML` 文件中 `<script>` 中用到 `变量` 的 `字符串模板` , 需要借助 `html-loader`</span>
 
 安装插件
 
