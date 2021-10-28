@@ -2295,17 +2295,32 @@
 
 ```vue
 <template>
-    <div id="app"></div>
+  <div id="app">
+    <img alt="Vue logo" src="./assets/logo.png">
+    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  </div>
 </template>
 
 <script>
+import HelloWorld from './components/HelloWorld.vue'
+
 export default {
-  name: 'App'
+  name: 'App',
+  components: {
+    HelloWorld
+  }
 }
 </script>
 
 <style scoped>
-
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
+}
 </style>
 ```
 
@@ -2318,7 +2333,7 @@ export default {
 - `name` : `组件` 名称
 - `data` : 和 `组件` 中的用法一样, 必须是一个 `函数` , 返回一个 `对象`
 - 其他诸如 `methods` 等都和之前 `组件` 中的一样
-- `components` : 需要使用 `ESM` 的 `import Comp from './path/to/One.vue'` 导入之后使用, `components: { One: One }` , `.vue` 后缀可以不用写
+- `components` : 需要使用 `ESM` 的 `import Comp from './path/to/One.vue'` 导入之后使用, `components: { One: One }`
 
 
 
