@@ -2341,3 +2341,76 @@ export default {
 
 - 默认情况下 `组件` 中的 `<style>` 中的样式是 `全局样式`
 - 给 `<style>` 标签添加 `scoped` 属性来指定该 `SFC` 中的样式只应用于这个 `组件` , 是 `局部样式`
+
+---
+
+## 插件 (Plugins)
+
+[插件 — Vue.js (vuejs.org)](https://cn.vuejs.org/v2/guide/plugins.html)
+
+- 用来为 `Vue` 添加全局功能
+- 通过 `Vue.use()` 使用插件
+- 必须在 `new Vue()` 之前调用 `Vue.use()`
+- 给 `Vue` 添加 `实例方法` 的时候必须使用 `$` 开头的方法名
+
+
+
+### 组件插件
+
+- 将 `组件` 封装为 `插件` 的原因是为了方便对 `组件` 进行扩展
+
+- 如果想通过 `Vue.use()` 来注册 `组件` , 必须先将 `组件` 封装成一个 `插件`
+- 先将组件封装成一个 `SFC` (.vue) 文件, 然后再通过一个配套的 `JavaScript` 文件导入 `组件`
+- 暴露一个 `install` 方法 (第一个参数为 `Vue` , 第二个参数是由 `Vue.use()` 传入的 `options` )
+- 在需要使用该封装好的 `组件插件` 的地方引入这个 `JavaScript` 文件, 使用 `Vue.use()` 即可
+
+最简单的封装示例
+
+- `Loading.vue`
+
+```vue
+<template>
+    <div class="container">
+        <div class="loading"></div>
+        <p class="title">正在加载...</p>
+    </div>
+</template>
+
+<script>
+export default {
+  name: 'Loading'
+}
+</script>
+
+<style scoped lang="scss">
+/* style */
+</style>
+```
+
+- `index.js`
+
+```js
+import Loading from './Loading.vue'
+
+export default {
+  install: function(Vue) {
+    Vue.component(Loading.name, Loading)
+  }
+}
+
+```
+
+- `main.js` 
+
+```js
+import Vue from 'vue'
+import App from './App.vue'
+import Loading from './plugin/loading/index'
+
+Vue.use(Loading)
+
+new Vue({
+  render: h => h(App)
+}).$mount('#app')
+```
+
