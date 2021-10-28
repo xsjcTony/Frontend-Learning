@@ -80,8 +80,6 @@ Vue.component(Switch.name, Switch)
 
 ## 使用组件
 
-[组件 | Element](https://element.eleme.io/#/zh-CN/component/layout)
-
 - 查看文档, 复制对应代码到 `.vue` 文件的 `<template>` 中即可
 
 示例
@@ -114,6 +112,5 @@ export default {
 <style>
 
 </style>
-
 ```
 
