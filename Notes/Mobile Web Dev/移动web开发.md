@@ -252,6 +252,7 @@ const scale = 1 / window/devicePixelRatio
       const text = `<meta name="viewport" content="width=device-width, initial-scale=${scale}, maximum-scale=${scale}, minimum-scale=${scale}, user-scalable=no">`
       document.write(text)
       document.documentElement.style.fontSize = window.innerWidth / 7.5 + 'px'
+      document.documentElement.setAttribute('data-dpr', window.devicePixelRatio + '')
     </script>
 </head>
 <body>
@@ -260,8 +261,27 @@ const scale = 1 / window/devicePixelRatio
 </html>
 ```
 
+#### 防止字体大小随着 `DPR` 变化而变化
+
+- 给 `HTML` 标签设置 `data-dpr` 为当前的 `DPR`
+- 在样式中根据 `DPR` 计算字体大小
+
+```scss
+/*根据dpr计算font-size*/
+@mixin font_dpr($font-size) {
+    font-size: $font-size;
+    [data-dpr='2'] & {
+        font-size: $font-size * 2;
+    }
+    [data-dpr='3'] & {
+        font-size: $font-size * 3;
+    }
+}
+```
+
 ---
 
 ## 属性
 
 - `apple-touch-icon` : 苹果 `safari` 浏览器的 `私有属性` , 指定 `将网页保存到主屏幕` 时的图标
+
