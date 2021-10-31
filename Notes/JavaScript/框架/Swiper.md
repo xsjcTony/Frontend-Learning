@@ -238,3 +238,14 @@ mySwiper.slideToLoop(0)
 ### swiper被隐藏 (display: none) 无法触发事件
 
 - 可以通过其他方式, 比如定位偏移出屏幕的方式来隐藏, 避免 `swiper` 元素使用 `display: none`
+
+---
+
+## Vue
+
+- `Vue 3` 可以直接使用官方的版本 [Swiper Vue.js Components](https://swiperjs.com/vue)
+- `Vue 2` 需要使用 `vue-awesome-swiper` [surmon-china/vue-awesome-swiper: 🏆 Swiper component for @vuejs](https://github.com/surmon-china/vue-awesome-swiper)
+    - 建议使用 `Swiper v5.4.5` , 不要使用再高的版本, `BUG` 很多
+    - 如果碰上从网络获取数据翻到最后一页不继续的 `BUG` , 可以给 `<swiper>` 标签添加 `v-if="banners.length > 0"` 即可, `banners` 为 `props` 中接收的数据的名称
+- 对 `swiper` 本身的样式修改无法穿透 `scoped` 的 `<style>` , 需要另起一个 `<style>` 标签来放置相关样式
+

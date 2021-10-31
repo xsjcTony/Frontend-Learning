@@ -193,3 +193,9 @@ module.exports = {
 }
 ```
 
+---
+
+## 兼容性
+
+- `Vue CLI` 要 `v5.x` 才能支持 `ESLint v8.x` , `Vue CLI v4.x` 及以下版本最多支持到 `ESLint v7.x` , 支持 `ESLint v7.x` 的 `Vue CLI` 最低版本未知
+

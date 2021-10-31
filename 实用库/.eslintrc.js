@@ -2,7 +2,10 @@ module.exports = {
   root: true,
   parserOptions: {
     ecmaVersion: 'latest',
-    sourceType: 'module'
+    sourceType: 'module',
+    ecmaFeatures: {
+      modules: true
+    }
   },
   env: {
     browser: true,
@@ -92,7 +95,7 @@ module.exports = {
       }
     ],
     'prefer-template': 'error',
-    'template-curly-spacing': ['error', 'never'],
+    'template-curly-spacing': ['error', 'always'],
     'no-eval': ['error', { allowIndirect: false }],
     'no-useless-escape': 'error',
     'no-new-func': 'error',
@@ -145,6 +148,7 @@ module.exports = {
     // eslint-plugin-import
     'import/first': 'error',
     'import/no-webpack-loader-syntax': 'error',
-    'import/newline-after-import': ['error', { count: 1 }]
+    'import/newline-after-import': ['error', { count: 1 }],
+    'import/extensions': ['error', { vue: 'always' }]
   }
 }

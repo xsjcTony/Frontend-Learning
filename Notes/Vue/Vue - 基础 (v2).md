@@ -1678,8 +1678,9 @@
 - 如果想要访问, 必须通过 `父组件` 传递
 - `父组件` 通过在 `子组件` 的标签中使用 `v-bind` 传递数据
     - `:tag="data"`
-- `子组件` 通过配置中的 `props` 接收数据, 是一个 `数组`
+- `子组件` 通过配置中的 `props` 接收数据, 是一个 `数组` , 或者 `对象` [API - props — Vue.js](https://cn.vuejs.org/v2/api/#props)
     - `props: ["tag1", "tag2"]`
+    - <span style="color: #f40;">这里只是示例, 真正开发的时候应使用 `对象` 来提供详细信息, 具体见文档</span>
 
 ```html
 <div id="app">
@@ -2413,4 +2414,14 @@ new Vue({
   render: h => h(App)
 }).$mount('#app')
 ```
+
+---
+
+
+
+
+
+---
+
+## 兼容性
 

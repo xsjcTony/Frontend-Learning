@@ -2,15 +2,16 @@
 
 ## 分类 (Classify)
 
-| JavaScript数据类型分类 | 英文 / English | 基本 / 引用 | Primitive / Reference |
-| ---------------------- | -------------- | ----------- | --------------------- |
-| 数值                   | Number         | 基本        | Primitive             |
-| 字符串                 | String         | 基本        | Primitive             |
-| 布尔                   | Boolean        | 基本        | Primitive             |
-| 未定义                 | Undefined      | 基本        | Primitive             |
-| 空值                   | Null           | 基本        | Primitive             |
-| Symbol (>=ES6)         | Symbol (>=ES6) | 基本        | Primitive             |
-| 对象                   | Object         | 引用        | Reference             |
+| JavaScript数据类型分类 | 英文 / English  | 基本 / 引用 | Primitive / Reference |
+| ---------------------- | --------------- | ----------- | --------------------- |
+| 数值                   | Number          | 基本        | Primitive             |
+| 字符串                 | String          | 基本        | Primitive             |
+| 布尔                   | Boolean         | 基本        | Primitive             |
+| 未定义                 | Undefined       | 基本        | Primitive             |
+| 空值                   | Null            | 基本        | Primitive             |
+| Symbol (>=ES6)         | Symbol (>=ES6)  | 基本        | Primitive             |
+| BigInt                 | BigInt (>=ES10) | 基本        | Primitive             |
+| 对象                   | Object          | 引用        | Reference             |
 
 ---
 
@@ -970,6 +971,17 @@ console.log(x === z); // false
     - 可以使用 `Object.getOwnPropertySymbols(obj)` 来获取 `obj` 对象的 `Symbol` 的属性和方法
 
 
+
+---
+
+## BigInt
+
+
+
+### 定义
+
+- 用于表示大于 `2^53 - 1` 的整数
+- `ES10` 新增
 
 ---
 

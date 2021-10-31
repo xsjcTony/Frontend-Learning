@@ -276,6 +276,12 @@ div {
 
 
 
+### flex-item的display
+
+- `flex-item` , 即 `flex-box` 的下一级儿子元素, 默认的 `display` 均为 `block` , 无法更改
+
+
+
 ---
 
 ## 移动端

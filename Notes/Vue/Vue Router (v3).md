@@ -300,5 +300,23 @@ const vue = new Vue({
 
 ---
 
+## 优化
+
+
+
+### 组件按需加载
+
+- 通过 `ES6 import` 的方式加载 `SFC组件` , 无论有没有被用到, 都会被加载进来
+- 通过 `动态导入` 来实现
+
+```js
+// import Foo from './Foo.vue' // 这种是直接导入, 
+const Foo = () => import('./Foo.vue') // 推荐使用这种异步导入, 做到懒加载的效果
+
+const router = new VueRouter({
+  routes: [{ path: '/foo', component: Foo }]
+})
+```
+
 
 

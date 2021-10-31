@@ -729,6 +729,7 @@ module.exports = {
 - 基于 `PostCSS` 的插件
 - 用于将 `CSS` 属性的 `px` 单位转换为 `rem` 单位
 - <span style="color: #ff0">配合 `Vue 2` 的话, 最多使用 `v5.1.1` 版本, 因为再新的要求 `PostCSS 8` , 而 `Vue 2` 使用的是 `v7.x`</span>
+- <span style="color: #0ff">除了使用 `通配符 *` , 还可以将 `px` 来改成大写的 `Px` 来防止被转换</span>
 
 安装插件
 

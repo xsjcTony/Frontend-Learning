@@ -138,3 +138,74 @@ myScroll.refresh()
 ### 滚动区域不可以被其他元素覆盖
 
 - 滚动区域是不可以被其他元素覆盖的, 哪怕是没有内容的元素, 只是宽高覆盖到也会失效
+
+
+
+### 拖拽卡顿 / 报错
+
+- 取消系统的默认拖拽事件
+
+```css
+/* css */
+html,
+body {
+  touch-action: none;
+}
+```
+
+- 给 `iScroll` 添加额外配置
+
+```js
+new IScroll('#wrapper', {
+	// ...
+  scrollX: false,
+  scrollY: true,
+  disablePointer: true,
+  disableTouch: false,
+  disableMouse: true
+})
+```
+
+---
+
+## Vue
+
+- 封装一个 `SFC` 组件
+- 定义最外层结构, 将内两层定义为 `<slot>`
+- 在需要使用滚动的组件中
+
+```vue
+<template>
+		<ScrollView>
+  			<!-- content... -->
+  	</ScrollView>
+</template>
+```
+
+- 在滚动组件的 `mounted()` 生命周期钩子中创建 `iScroll实例对象`
+- 通过 `MutationObserver` 监听子节点的改动, 重新计算 `iScroll` 的滚动范围 [MutationObserver() - Web APIs | MDN](https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver/MutationObserver)
+
+```vue
+<script>
+export default {
+  name: 'ScrollView',
+  mounted () {
+    this.iScroll = new IScroll('#wrapper', { /* options */ })
+    // 创建观察者对象
+    // 回调函数参数: (发生变化的数组, 观察者对象)
+    const observer = new MutationObserver ((mutationList, observer) => {
+      this.iScroll.refresh() // 刷新滚动范围
+    })
+    // 定义观察内容
+    const config = {
+      childList: true,  // 观察目标子节点的变化，是否有添加或者删除
+  		subtree: true,    // 默认为false, 设置为true可以观察后代节点
+      attributeFilter: ['height', 'offsetHeight'] // 观察特定属性
+    }
+    // 告诉观察者对象需要观察谁, 需要观察什么内容
+    observer.observe(this.$refs.wrapper, config)
+  }
+}
+</script>
+```
+
