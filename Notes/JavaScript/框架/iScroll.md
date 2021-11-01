@@ -182,6 +182,18 @@ new IScroll('#wrapper', {
 </template>
 ```
 
+- 给容器的父元素设置固定的宽高 (可以通过 `固定定位` )
+- 给容器设置样式, 让其等于父元素宽高
+
+```vue
+<style scoped lang="scss">
+#wrapper {
+  	width: 100%;
+  	height: 100%
+}
+</style>
+```
+
 - 在滚动组件的 `mounted()` 生命周期钩子中创建 `iScroll实例对象`
 - 通过 `MutationObserver` 监听子节点的改动, 重新计算 `iScroll` 的滚动范围 [MutationObserver() - Web APIs | MDN](https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver/MutationObserver)
 

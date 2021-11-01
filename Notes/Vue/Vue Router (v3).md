@@ -300,6 +300,24 @@ const vue = new Vue({
 
 ---
 
+## 编程式导航
+
+[编程式的导航 | Vue Router](https://router.vuejs.org/zh/guide/essentials/navigation.html)
+
+
+
+### router.push()
+
+- 可以在 `Vue实例对象` 中通过 `this.$router.push` 来调用
+- 相当于 `<router-link :to="...">`
+- 会向 `history` 添加记录
+- 参数
+    - `location` : 路径 / 地址
+    - `onComplete` : (Optional) 导航成功的 `回调函数`
+    - `onAbort` : (Optional) 导航终止的 `回调函数`
+
+---
+
 ## 优化
 
 
