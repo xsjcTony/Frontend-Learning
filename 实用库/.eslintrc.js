@@ -101,7 +101,6 @@ module.exports = {
     'no-new-func': 'error',
     'wrap-iife': ['error', 'outside'],
     'no-loop-func': 'error',
-    'no-param-reassign': ['warn', { props: true }],
     'prefer-spread': 'error',
     'prefer-arrow-callback': [
       'error',

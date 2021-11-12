@@ -285,3 +285,11 @@ const scale = 1 / window/devicePixelRatio
 
 - `apple-touch-icon` : 苹果 `safari` 浏览器的 `私有属性` , 指定 `将网页保存到主屏幕` 时的图标
 
+
+
+---
+
+## 其他
+
+- 在移动端不建议使用 `高斯模糊` ( `css` 中的 `blur` ), 因为非常非常消耗性能, 连续设定会非常卡顿
+
