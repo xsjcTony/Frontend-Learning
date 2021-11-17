@@ -34,6 +34,7 @@
     - `state` : 相当于组件中的data, 专门用于保存共享数据(状态)
     - `mutations` : 专门用于保存修改共享数据的方法
         - 其中的所有方法都会接收一个参数 `state` , 就是上述的 `state` , 其中保存了共享数据
+        - 后面可以跟上其他需要传入的参数, 如果多于一个, 需要以 `对象` 的方式书写, 作为 `payload` , 可以使用 `解构赋值`
 
 ```js
 const store = new Vuex.Store({
@@ -129,3 +130,87 @@ const store = new Vuex.Store({
     <p>{{ this.$store.getters.format }}</p> <!-- Tony loves Lily -->
 </div>
 ```
+
+
+
+### mapGetters
+
+- 将 `store` 中的 `getter` 映射到局部 `计算属性`
+- 比如将 `this.xxx` 映射为 `this.$store.getters.xxx`
+
+```js
+import { mapGetters } from 'vuex'
+
+export default {
+  computed: {
+    ...mapGetters([
+      'isShow'
+    ])
+  }
+}
+
+// 或者通过对象方式可以重新命名
+export default {
+  computed: {
+    ...mapGetters({
+      isFlag: 'isShow' // 可以通过this.isFlag调用
+    })
+  }
+}
+```
+
+---
+
+## Actions
+
+[Action | Vuex](https://vuex.vuejs.org/zh/guide/actions.html)
+
+- 用于保存触发 `mutations` 中保存的方法的方法
+- 可以包含任意 `异步操作`
+- `mutations` 只能使用 `同步操作` 
+- 本质是触发 `mutations` 中的方法, 而不是直接修改状态
+
+参数
+
+- 接收一个 `context` 参数, 后面可以跟随其他的需要使用的参数
+- 后面跟随的参数如果多于一个, 需要使用 `对象` 的方式书写, 作为 `payload` 传入
+- `context` 与 `store` 实例具有相同的属性和方法
+- 通过 `context.commit` 来触发 `mutations` 中的方法
+- 经常使用 `解构赋值` 来获取 `commit`
+
+```js
+const store = new Vuex.store({
+  state: {
+    msg: 'Tony'
+  },
+  mutations: {
+    changeMsg (state, newMsg) {
+      state.msg = newMsg
+    }
+  },
+  actions: {
+    changeMsg ({ commit }, newMsg) {
+      commit('changeMsg', newMsg)
+    }
+  }
+})
+```
+
+在组件中使用
+
+- 拿到全局的 `Vuex` 对象
+- 使用 `dispatch` 方法即可
+
+
+
+### mapActions
+
+- 将 `store` 中的 `actions` 映射到局部 `方法`
+- 比如将 `this.myFn(xxx)` 映射为 `this.$store.dispatch('myFn', xxx)`
+
+- 格式和 `mapGetters` 一样, 可以直接使用 `数组` 或使用 `对象` 进行重命名
+
+---
+
+## Modules
+
