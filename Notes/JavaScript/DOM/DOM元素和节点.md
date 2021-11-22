@@ -207,7 +207,7 @@
 
 
 
-#### `Element.children`
+#### Element.children
 
 - 返回一个 `伪数组` 包含该元素的所有子元素
 - 返回类型 `HTMLCollection []`
@@ -216,7 +216,7 @@
 
 
 
-#### `Element.firstElementChild`
+#### Element.firstElementChild
 
 - 返回该 `Element` 的第一个子元素
 - 返回类型 `Element`
@@ -225,7 +225,7 @@
 
 
 
-#### `Element.lastElementChild`
+#### Element.lastElementChild
 
 - 返回该 `Element` 的最后一个子元素
 - 返回类型 `Element`
@@ -234,7 +234,7 @@
 
 
 
-#### `Element.previousElementSibling`
+#### Element.previousElementSibling
 
 - 返回该 `Element` 的上一个元素
 - 返回类型 `Element`
@@ -243,7 +243,7 @@
 
 
 
-#### `Element.nextElementSibling`
+#### Element.nextElementSibling
 
 - 返回该 `Element` 的下一个元素
 - 返回类型 `Element`
@@ -252,7 +252,7 @@
 
 
 
-#### `Element.innerHTML`
+#### Element.innerHTML
 
 - 返回该 `Element` 的内容
 - 返回类型 `DOMString`
@@ -262,7 +262,7 @@
 
 
 
-#### `HTMLElement.innerText`
+#### HTMLElement.innerText
 
 - 返回该 `Element` 的内容 (包含子元素中的文本内容)
 - 返回类型 `DOMString`
@@ -1205,7 +1205,7 @@ element.style.cssProperty = value // 通过element.style.cssProperty的方式修
 
 ---
 
-## 三大家族 `offset` / `client`
+## 三大家族 offset / client / scroll
 
 
 

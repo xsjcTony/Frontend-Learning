@@ -1,3 +1,5 @@
+/* eslint ember-suave/lines-between-object-properties: 'off' */
+
 module.exports = {
   root: true,
   parserOptions: {
@@ -127,7 +129,7 @@ module.exports = {
       'error',
       {
         vars: 'all',
-        args: 'none',
+        args: 'after-used',
         ignoreRestSiblings: true
       }
     ],
@@ -144,10 +146,15 @@ module.exports = {
       { blankLine: 'always', prev: '*', next: 'iife' },
       { blankLine: 'always', prev: 'iife', next: '*' }
     ],
+    'no-multi-spaces': ['error', { ignoreEOLComments: true }],
+
     // eslint-plugin-import
     'import/first': 'error',
     'import/no-webpack-loader-syntax': 'error',
     'import/newline-after-import': ['error', { count: 1 }],
-    'import/extensions': ['error', { vue: 'always' }]
+    'import/extensions': ['error', { vue: 'always' }],
+
+    // eslint-plugin-ember-suave
+    'ember-suave/lines-between-object-properties': ['error', 'always', { exceptAfterSingleLine: true }]
   }
 }
