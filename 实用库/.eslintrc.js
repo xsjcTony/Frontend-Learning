@@ -152,7 +152,7 @@ module.exports = {
     'import/first': 'error',
     'import/no-webpack-loader-syntax': 'error',
     'import/newline-after-import': ['error', { count: 1 }],
-    'import/extensions': ['error', { vue: 'always' }],
+    'import/extensions': ['error', 'always'],
 
     // eslint-plugin-ember-suave
     'ember-suave/lines-between-object-properties': ['error', 'always', { exceptAfterSingleLine: true }]
