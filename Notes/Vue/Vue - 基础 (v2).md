@@ -2419,7 +2419,33 @@ new Vue({
 
 ---
 
+## 实例方法
 
+
+
+### vm.$nextTick
+
+- 将 `回调函数` 延迟到下次 `DOM` 更新完毕之后执行
+- `this` 绑定到调用他的 `Vue实例对象` 上
+
+```js
+new Vue({
+  // ...
+  methods: {
+    // ...
+    example: function () {
+      // 修改数据
+      this.message = 'changed'
+      // DOM 还没有更新
+      this.$nextTick(function () {
+        // DOM 现在更新了
+        // `this` 绑定到当前实例
+        this.doSomethingElse()
+      })
+    }
+  }
+})
+```
 
 
 

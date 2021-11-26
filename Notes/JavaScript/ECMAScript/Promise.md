@@ -414,7 +414,7 @@ throw new Error("This is not a function.");
 
 ---
 
-## `all()`
+## Promise.all()
 
 
 
