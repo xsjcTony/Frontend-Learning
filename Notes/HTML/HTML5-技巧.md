@@ -26,8 +26,6 @@ button.onclick = function () {
 
 
 
-
-
 方案二:
 
 - 修改谷歌浏览器的配置
@@ -136,6 +134,12 @@ function toFullVideo(videoDom){
   }
 }
 ```
+
+
+
+### iOS中监听加载完毕
+
+- iOS系统的 `Safari` 浏览器中不会自动加载音频, 所以 `oncanplay` 无法自动触发, 使用 `ondurationchange` 来监听
 
 ---
 

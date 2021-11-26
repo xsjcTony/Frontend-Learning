@@ -292,4 +292,6 @@ const scale = 1 / window/devicePixelRatio
 ## 其他
 
 - 在移动端不建议使用 `高斯模糊` ( `css` 中的 `blur` ), 因为非常非常消耗性能, 连续设定会非常卡顿
+- 在 `iOS` 的 `Safari` 浏览器中监听 `<audio>` / `<video>` 是否加载完毕时要使用 `ondurationchange` , 因为 `oncanplay` 不会自动触发
+- 可以使用 `vconsole` 插件在移动端启用 `控制台` : [vconsole - npm](https://www.npmjs.com/package/vconsole)
 

@@ -74,11 +74,13 @@ new Vue({
 
 ---
 
-## 修改数据
+## Mutations
 
 - <span style="color: #ff0">不要在 `Vuex` 中直接修改 `共享数据` , 这样很不利于调试错误, 不利于维护</span>
 - 在 `组件` 的方法中使用 `this.$store.commit()` 来调用 `mutations` 中的修改共享数据的方法
 - `commit()` 中写上 `mutations` 中想要调用的方法名称
+- 可以在 `组件` 的 `methods` 中使用 `mapMutations` 来直接通过 `this.xxx` 的方式访问 `mutations`
+- <span style="color: #f40;">切记不要使用会被改变的 `state` 中的值作为 `paylopad` , 否则容易出现无限循环, 如果是 `数组` 或 `对象` , 可以使用 `...` (展开运算符) 来避免响应式触发</span>
 
 ```js
 new Vue({
