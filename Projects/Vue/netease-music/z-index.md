@@ -1,0 +1,12 @@
+# z-index list 
+- AppHeader: 999
+- AppTab: 999
+- PlaylistDetail: 1999
+  - ListDetailHeader: 999
+- MusicPlayer
+  - NormalPlayer: 2999
+    - player-wrapper: 9
+  - MiniPlayer: 2999
+  - ListPlayer: 2999
+- PersonalAccount: 1999
+  - AccountHeader: 999
