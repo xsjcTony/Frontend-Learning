@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Vue-指令v-on.keyModifier</title>
+</head>
+<body>
+<div id="app">
+    <input type="text" @keyup.ffff="myFn"> <!-- 只有按 F2 才会触发事件 -->
+</div>
+<script src="js/vue.js"></script>
+<script>
+  Vue.config.keyCodes.ffff = 113 // 将keyCode为113的按键(F2)绑定给ffff, 使用@event.ffff="callback"即可
+  const vue = new Vue({
+    el: '#app',
+    data: {},
+    methods: {
+      myFn () { alert('Tony') }
+    }
+  })
+</script>
+</body>
+</html>

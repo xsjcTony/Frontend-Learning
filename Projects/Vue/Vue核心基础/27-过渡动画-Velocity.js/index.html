@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Vue-过渡动画-Velocity.js</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .box {
+            width: 200px;
+            height: 200px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <button @click="toggle">我是按钮</button>
+    <transition @before-enter="beforeEnter" @enter="enter" :css="false">
+        <div class="box" v-show="isShowed"></div>
+    </transition>
+</div>
+<script src="js/vue.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.2.3/velocity.min.js"></script>
+<script>
+  const vue = new Vue({
+    el: '#app',
+    data: {
+      isShowed: true
+    },
+    methods: {
+      toggle () {
+        this.isShowed = !this.isShowed
+      },
+      // 进入动画开始之前
+      beforeEnter (el) {
+        el.style.opacity = '0'
+        el.style.marginLeft = '0'
+      },
+      // 进入动画执行过程中
+      enter (el, done) {
+        Velocity(el, { opacity: 1, marginLeft: '500px' }, { duration: 3000, complete: done })
+      }
+    }
+  })
+</script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Vue-组件-匿名插槽</title>
+</head>
+<body>
+<div id="app">
+    <father></father>
+</div>
+<template id="father">
+    <div>
+        <son>
+            <!-- 双标签中的所有内容会被视为填坑的数据 -->
+            <div>我是追加的内容1</div>
+            <div>我是追加的内容2</div>
+            <div>我是追加的内容3</div>
+        </son>
+    </div>
+</template>
+<template id="son">
+    <div>
+        <div>我是头部</div>
+        <slot>我是默认数据</slot> <!-- 匿名插槽1 -->
+        <slot>我是默认数据</slot> <!-- 匿名插槽2, 要被填充的数据也会被拷贝并渲染到这个插槽中 -->
+        <div>我是底部</div>
+    </div>
+</template>
+<script src="js/vue.js"></script>
+<script>
+  // 父组件
+  Vue.component('father', {
+    template: '#father',
+    components: {
+      son: {
+        template: '#son'
+      }
+    }
+  })
+
+  const vue = new Vue({
+    el: '#app'
+  })
+</script>
+</body>
+</html>

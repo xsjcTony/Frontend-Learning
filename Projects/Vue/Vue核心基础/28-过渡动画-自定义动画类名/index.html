@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Vue-过渡动画-自定义动画类名</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .box {
+            width: 200px;
+            height: 200px;
+            background: red;
+        }
+        .custom-enter-aelita {
+            opacity: 0;
+            margin-left: 0;
+        }
+        .custom-enter-to-aelita {
+            opacity: 1;
+            margin-left: 500px;
+        }
+        .custom-enter-active-aelita {
+            transition: all 3s;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <button @click="toggle">我是按钮</button>
+    <transition appear
+                enter-class="custom-enter-aelita"
+                enter-active-class="custom-enter-active-aelita"
+                enter-to-class="custom-enter-to-aelita">
+        <div class="box" v-show="isShowed"></div>
+    </transition>
+</div>
+<script src="js/vue.js"></script>
+<script>
+  const vue = new Vue({
+    el: '#app',
+    data: {
+      isShowed: true
+    },
+    methods: {
+      toggle () {
+        this.isShowed = !this.isShowed
+      }
+    }
+  })
+</script>
+</body>
+</html>

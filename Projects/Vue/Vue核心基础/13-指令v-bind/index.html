@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Vue-指令v-bind</title>
+</head>
+<body>
+<div id="app">
+    <!--<input type="text" v-bind:placeholder="userName">-->
+    <input type="text" :placeholder="userName">
+</div>
+<script src="js/vue.js"></script>
+<script>
+  const vue = new Vue({
+    el: '#app',
+    data: {
+      userName: 'Username'
+    }
+  })
+</script>
+</body>
+</html>

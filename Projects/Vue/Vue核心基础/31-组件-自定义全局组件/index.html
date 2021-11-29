@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Vue-组件-自定义全局组件</title>
+</head>
+<body>
+<div id="app">
+    <abc></abc> <!-- 使用组件 -->
+</div>
+<script src="js/vue.js"></script>
+<script>
+  // 组件构造器
+  const Profile = Vue.extend({
+    // 组件模板只能有一个根元素
+    template: `
+        <div>
+            <img src="images/fm.jpg">
+            <p>我是描述信息</p>
+        </div>
+    `
+  })
+  // 注册组件
+  Vue.component('abc', Profile)
+  //
+  const vue = new Vue({
+    el: '#app',
+    data: {
+
+    }
+  })
+</script>
+</body>
+</html>

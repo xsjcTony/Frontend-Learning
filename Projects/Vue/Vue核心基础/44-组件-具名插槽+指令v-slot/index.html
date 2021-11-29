@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Vue-组件-具名插槽+指令v-slot</title>
+</head>
+<body>
+<div id="app">
+    <my-comp>
+        <!-- 完整写法 -->
+        <template v-slot:one> <!-- 将内容插入到具名插槽one中 -->
+            <div>我是追加的内容1</div>
+            <div>我是追加的内容11</div>
+        </template>
+        <!-- 缩写 -->
+        <template #two> <!-- 将内容插入到具名插槽two中 -->
+            <div>我是追加的内容2</div>
+            <div>我是追加的内容22</div>
+        </template>
+    </my-comp>
+</div>
+<template id="my_comp">
+    <div>
+        <div>我是头部</div>
+        <slot name="one">我是默认数据1</slot> <!-- 具名插槽, 名称为one -->
+        <slot name="two">我是默认数据2</slot> <!-- 具名插槽, 名称为two -->
+        <div>我是底部</div>
+    </div>
+</template>
+<script src="js/vue.js"></script>
+<script>
+  // 父组件
+  Vue.component('myComp', {
+    template: '#my_comp'
+  })
+
+  const vue = new Vue({
+    el: '#app'
+  })
+</script>
+</body>
+</html>

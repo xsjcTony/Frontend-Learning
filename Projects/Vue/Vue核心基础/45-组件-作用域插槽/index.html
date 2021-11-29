@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Vue-组件-作用域插槽</title>
+</head>
+<body>
+<div id="app">
+    <my-comp>
+        <template #default="abc"> <!-- 匿名插槽的名称为 default, 作用域取名为abc -->
+            <li v-for="name in abc.names">{{ name }}</li> <!-- abc.names就是接收到的数据 -->
+        </template>
+    </my-comp>
+</div>
+<template id="my_comp">
+    <div>
+        <div>我是头部</div>
+        <slot :names="names">我是默认内容</slot> <!-- 将子组件的names数据暴露给父组件 -->
+        <div>我是底部</div>
+    </div>
+</template>
+<script src="js/vue.js"></script>
+<script>
+  Vue.component('myComp', {
+    template: '#my_comp',
+    data: function () {
+      return {
+        names: ['zs', 'ls', 'ww', 'zl']
+      }
+    }
+  })
+  const vue = new Vue({
+    el: '#app'
+  })
+</script>
+</body>
+</html>

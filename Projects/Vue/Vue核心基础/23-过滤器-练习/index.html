@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Vue-过滤器练习</title>
+</head>
+<body>
+<div id="app">
+    <p>{{ time | dateFormatter('yyyy-MM-dd') }}</p>
+</div>
+<script src="js/vue.js"></script>
+<script>
+  Vue.filter('dateFormatter', (value, format) => {
+    console.log(format)
+    const date = new Date(value)
+    const year = date.getFullYear()
+    const month = date.getMonth() + 1 + ''
+    const day = date.getDate() + ''
+    const hour = date.getHours() + ''
+    const minute = date.getMinutes() + ''
+    const second = date.getSeconds() + ''
+    if (format==='yyyy-MM-dd') { return `${ year }-${ month.padStart(2, '0') }-${ day.padStart(2, '0') }` }
+    return `${ year }-${ month.padStart(2, '0') }-${ day.padStart(2, '0') } ${ hour.padStart(2, '0') }:${ minute.padStart(2, '0') }:${ second.padStart(2, '0') }`
+  })
+  const vue = new Vue({
+    el: '#app',
+    data: {
+      time: Date.now()
+    }
+  })
+</script>
+</body>
+</html>

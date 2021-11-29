@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Vue-指令v-on.modifier</title>
+    <style>
+        .a {
+            width: 300px;
+            height: 300px;
+            background: red;
+        }
+        .b {
+            width: 200px;
+            height: 200px;
+            background: blue;
+        }
+        .c {
+            width: 100px;
+            height: 100px;
+            background: green;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <button @click.once="myFn">once</button> <!-- 只执行一次回调函数 -->
+    <a href="https://www.google.com/" @click.prevent="myFn">prevent</a> <!-- 阻止元素默认行为 -->
+    <div class="a" @click="myFn1">
+        <div class="b" @click.stop="myFn2"> <!-- 阻止了事件冒泡, 事件不会冒泡到 a -->
+            <div class="c" @click="myFn3"></div> <!-- 没有阻止, 事件会冒泡到 b -->
+        </div>
+    </div>
+    <div class="a" @click="myFn1">
+        <div class="b" @click.self="myFn2"> <!-- 点击 c 不会执行回调函数, 因为不是点击 b 本身触发的 -->
+            <div class="c" @click="myFn3"></div>
+        </div>
+    </div>
+    <div class="a" @click.capture="myFn1">
+        <div class="b" @click.capture="myFn2">
+            <div class="c" @click.capture="myFn3"></div> <!-- 添加.capture之后输出顺序为事件捕获的 a, b, c, 而默认事件冒泡的顺序为 c, b, a -->
+        </div>
+    </div>
+</div>
+<script src="js/vue.js"></script>
+<script>
+  const vue = new Vue({
+    el: '#app',
+    data: {},
+    methods: {
+      myFn () { alert('Tony') },
+      myFn1 () { console.log('爷爷') },
+      myFn2 () { console.log('爸爸') },
+      myFn3 () { console.log('儿子') }
+    }
+  })
+</script>
+</body>
+</html>

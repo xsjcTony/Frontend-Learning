@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Vue-Vuex-getters</title>
+</head>
+<body>
+<div id="app">
+    <p>{{ this.$store.state.msg }}</p> <!-- Tony -->
+    <p>{{ this.$store.getters.format }}</p> <!-- Tony loves Lily -->
+    <p>{{ this.$store.getters.format }}</p> <!-- Tony loves Lily -->
+    <p>{{ this.$store.getters.format }}</p> <!-- Tony loves Lily -->
+</div>
+<script src="js/vue.js"></script>
+<script src="js/vuex.js"></script>
+<script>
+  // 创建Vuex对象
+  const store = new Vuex.Store({
+    state: {
+      msg: 'Tony'
+    },
+    mutations: {},
+    getters: {
+      format: state => state.msg + ' loves Lily'
+    }
+  })
+  // Vue实例对象
+  const vue = new Vue({
+    el: '#app',
+    // 绑定Vuex对象
+    store
+  })
+</script>
+</body>
+</html>

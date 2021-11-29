@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Vue-局部过滤器</title>
+</head>
+<body>
+<div id="app">
+    <p>{{ name | formatter1 | formatter2 }}</p> <!-- 知播渔大学, 指趣大学, 前端大学, C++大学 -->
+</div>
+<script src="js/vue.js"></script>
+<script>
+  const vue = new Vue({
+    el: '#app',
+    data: {
+      name: '知播渔学院, 指趣学院, 前端学院, 区块链学院'
+    },
+    // 定义局部过滤器
+    filters: {
+      formatter1: value => value.replace(/学院/g, '大学'), // 将所有 "学院" 替换为 "大学"
+      formatter2: value => value.replace(/区块链/g, 'C++') // 将所有 "区块链" 替换为 "C++"
+    }
+  })
+</script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Vue-数据共享</title>
+</head>
+<body>
+<div id="app">
+    <grandfather></grandfather>
+</div>
+<template id="grandfather">
+    <div>
+        <p>{{ this.$store.state.msg }}</p>
+        <father></father>
+    </div>
+</template>
+<template id="father">
+    <div>
+        <p>{{ this.$store.state.msg }}</p>
+        <son></son>
+    </div>
+</template>
+<template id="son">
+    <div>
+        <p>{{ this.$store.state.msg }}</p>
+    </div>
+</template>
+<script src="js/vue.js"></script>
+<script src="js/vuex.js"></script>
+<script>
+  // 创建 Vuex 对象
+  const store = new Vuex.Store({
+    // 相当于组件中的data, 专门用于保存共享状态(数据)
+    state: {
+      msg: 'Tony loves Lily.'
+    }
+  })
+
+  // 爷爷组件
+  Vue.component('grandfather', {
+    template: '#grandfather',
+    store,
+    components: {
+      // 爸爸组件
+      father: {
+        template: '#father',
+        components: {
+          // 儿子组件
+          son: {
+            template: '#son'
+          }
+        }
+      }
+    }
+  })
+  // Vue实例对象
+  const vue = new Vue({
+    el: '#app'
+  })
+</script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Vue基本模板</title>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+<!-- View -->
+<div id="app">
+    <p>{{ name }}</p>
+</div>
+<script>
+  // View Model
+  const vue = new Vue({
+    el: '#app',
+    // Model
+    data: {
+      name: 'Tony'
+    }
+  })
+</script>
+</body>
+</html>

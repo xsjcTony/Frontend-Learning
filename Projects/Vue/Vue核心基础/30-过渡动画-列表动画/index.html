@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Vue-过渡动画-列表动画</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .v-enter,
+        .v-leave-to {
+            opacity: 0;
+        }
+
+        .v-enter-to,
+        .v-leave {
+            opacity: 1;
+        }
+
+        .v-enter-active,
+        .v-leave-active {
+            transition: all 1s;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <form>
+        <input type="text" v-model="name">
+        <input type="submit" value="添加" @click.prevent="add">
+    </form>
+    <transition-group appear tag="ul"> <!-- 下面所有的<li>都会被包裹在<ul>中, 不设置的话默认为<span> -->
+        <li v-for="(person, index) in persons" :key="person.id" @click="remove(index)">
+            <input type="checkbox">
+            <span>{{ index }} --- {{ person.name }}</span>
+        </li>
+    </transition-group>
+</div>
+<script src="js/vue.js"></script>
+<script>
+  const vue = new Vue({
+    el: '#app',
+    data: {
+      persons: [
+        { name: '张三', id: 1 },
+        { name: '李四', id: 2 },
+        { name: '王五', id: 3 }
+      ],
+      name: '',
+      nextId: 4
+    },
+    methods: {
+      add () {
+        const newPerson = { name: this.name, id: this.nextId++ }
+        this.persons.unshift(newPerson)
+        this.name = ''
+      },
+      remove (index) {
+        this.persons.splice(index, 1)
+      }
+    }
+  })
+</script>
+</body>
+</html>

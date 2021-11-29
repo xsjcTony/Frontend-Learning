@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Vue-指令v-show</title>
+</head>
+<body>
+<div id="app">
+    <p v-show="show">我是show</p>
+    <p v-show="hidden">我是hidden</p>
+    <p v-show="true">我是true</p>
+    <p v-show="false">我是false</p>
+    <p v-show="age >= 18">我是age >= 18</p>
+    <p v-show="age < 18">我是age < 18</p>
+</div>
+<script src="js/vue.js"></script>
+<script>
+  const vue = new Vue({
+    el: '#app',
+    data: {
+      show: true,
+      hidden: false,
+      age: 18
+    }
+  })
+</script>
+</body>
+</html>

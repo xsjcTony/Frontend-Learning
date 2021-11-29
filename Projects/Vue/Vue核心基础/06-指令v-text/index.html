@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Vue-指令v-text</title>
+</head>
+<body>
+<div id="app">
+    <p>++++{{ name }}++++</p>
+    <p v-text="name">++++++++</p>
+    <p v-text="msg">++++++++</p>
+</div>
+<script src="js/vue.js"></script>
+<script>
+  const vue = new Vue({
+    el: '#app',
+    data: {
+      name: 'Tony',
+      msg: '<span>我是span</span>'
+    }
+  })
+</script>
+</body>
+</html>

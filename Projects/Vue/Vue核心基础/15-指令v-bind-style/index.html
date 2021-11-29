@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Vue-指令v-bind:style</title>
+</head>
+<body>
+<div id="app">
+    <!--<p :style="{ color: 'red', 'font-size': '100px' }">我是段落</p>--> <!-- 引号包裹带 - 的属性名 -->
+    <p :style="{ color: 'red', fontSize: '100px' }">我是段落</p> <!-- 驼峰命名带 - 的属性名 -->
+    <p :style="[obj1, obj2]">我是段落</p> <!-- 接收样式对象, 多个对象放在数组中 -->
+</div>
+<script src="js/vue.js"></script>
+<script>
+  const vue = new Vue({
+    el: '#app',
+    data: {
+      obj1: {
+        color: 'blue',
+        fontSize: '100px'
+        // 'font-size': '100px' // 也可以使用
+      },
+      obj2: {
+        backgroundColor: 'red'
+      }
+    }
+  })
+</script>
+</body>
+</html>

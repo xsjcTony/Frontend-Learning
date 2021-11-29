@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Vue-Vue Router-基本使用</title>
+</head>
+<body>
+<div id="app">
+    <router-link to="/one">one组件</router-link>
+    <router-link to="/two">two组件</router-link>
+    <router-view></router-view>
+</div>
+<template id="one">
+    <div class="page-one">
+        <p>我是第一个界面</p>
+    </div>
+</template>
+<template id="two">
+    <div class="page-two">
+        <p>我是第二个界面</p>
+    </div>
+</template>
+<script src="js/vue.js"></script>
+<script src="js/vue-router.js"></script>
+<script>
+  // 定义组件
+  const one = {
+    template: '#one'
+  }
+  const two = {
+    template: '#two'
+  }
+  // 定义路由规则
+  const routes = [
+    { path: '/one', component: one },
+    { path: '/two', component: two }
+  ]
+  // 创建路由对象
+  const router = new VueRouter({
+    routes // (ES6缩写) 相当于 routes: routes
+  })
+  // Vue实例对象
+  const vue = new Vue({
+    el: '#app',
+    // 注册局部组件
+    components: {
+      one,
+      two
+    },
+    // 绑定路由对象
+    router // (ES6缩写) 相当于 router: router
+  })
+</script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Vue-局部自定义指令</title>
+</head>
+<body>
+<div id="app">
+    <p v-color="pColor">我是段落</p> <!-- 指令绑定到元素上时, 将文字颜色变成 绑定值 的颜色 -->
+</div>
+<script src="js/vue.js"></script>
+<script>
+  const vue = new Vue({
+    el: '#app',
+    data: {
+      pColor: 'deeppink'
+    },
+    // 定义局部指令
+    directives: {
+      color: { // 指令名称
+        bind (el, binding) { // 指令执行的生命周期阶段
+          el.style.color = binding.value // 将颜色调整为指令的绑定值
+        }
+      }
+    }
+  })
+</script>
+</body>
+</html>

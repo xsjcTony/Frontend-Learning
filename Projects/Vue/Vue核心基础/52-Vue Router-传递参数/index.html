@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Vue-Vue Router-传递参数</title>
+    <style>
+        /* 激活的<router-link>显示红色背景 */
+        .aelita-active {
+            background: #f00;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <!-- 通过router-link设置url的hash值时, 不用写#符号 -->
+    <router-link to="/one?name=Tony&age=24" custom v-slot="{ navigate, isActive }">
+        <button @click="navigate" role="link" :class="[isActive && 'aelita-active']">one组件</button>  <!-- 将router-link渲染成<button>, 指向one组件 -->
+    </router-link>
+    <router-link to="/two/Lily/24" custom v-slot="{ navigate, isActive }">
+        <button @click="navigate" role="link" :class="[isActive && 'aelita-active']">two组件</button>  <!-- 将router-link渲染成<button>, 指向two组件 -->
+    </router-link>
+    <router-view></router-view>
+</div>
+<template id="one">
+    <div class="page-one">
+        <p>我是第一个界面</p>
+    </div>
+</template>
+<template id="two">
+    <div class="page-two">
+        <p>我是第二个界面</p>
+    </div>
+</template>
+<script src="js/vue.js"></script>
+<script src="js/vue-router.js"></script>
+<script>
+  // 定义组件
+  const one = {
+    template: '#one',
+    created: function () {
+      const { name, age } = this.$route.query
+      console.log(name, age)
+    }
+  }
+  const two = {
+    template: '#two',
+    created: function () {
+      const { name, age } = this.$route.params
+      console.log(name, age)
+    }
+  }
+  // 定义路由规则
+  const routes = [
+    { path: '/one', component: one },
+    { path: '/two/:name/:age', component: two }
+  ]
+  // 创建路由对象
+  const router = new VueRouter({
+    routes, // (ES6缩写) 相当于 routes: routes
+    linkActiveClass: 'aelita-active' // 全局覆盖默认的 router-link-active 类名
+  })
+  // Vue实例对象
+  const vue = new Vue({
+    el: '#app',
+    // 注册局部组件
+    components: {
+      one,
+      two
+    },
+    // 绑定路由对象
+    router // (ES6缩写) 相当于 router: router
+  })
+</script>
+</body>
+</html>

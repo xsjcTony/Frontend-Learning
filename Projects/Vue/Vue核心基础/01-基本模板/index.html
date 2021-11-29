@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Vue基本模板</title>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <!-- 使用模板语法将数据放进去 -->
+    <p>{{ name }}</p>
+</div>
+<script>
+  // 创建Vue实例对象
+  const vue = new Vue({
+    // 需要控制界面上哪个区域
+    el: '#app',
+    // 被控制区域的数据
+    data: {
+      name: 'Tony'
+    }
+  })
+</script>
+</body>
+</html>

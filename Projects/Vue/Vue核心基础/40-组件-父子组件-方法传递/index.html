@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Vue-组件-父子组件-方法传递</title>
+</head>
+<body>
+<div id="app">
+    <father></father>
+</div>
+<script src="js/vue.js"></script>
+<template id="father">
+    <div>
+        <button @click="say">我是按钮</button>
+        <son @parent-say="say"></son> <!-- 通过v-bind给子组件传递数据, 传递时使用kebab-case -->
+    </div>
+</template>
+<template id="son">
+    <div>
+        <button @click="sonSay">我是按钮</button> <!-- 使用子组件的方法 -->
+    </div>
+</template>
+<script>
+  // Vue实例对象
+  const vue = new Vue({
+    el: '#app',
+    // 局部组件
+    components: {
+      father: {
+        template: '#father',
+        // 父组件的方法
+        methods: {
+          say () {
+            alert('Tony')
+          }
+        },
+        // 在自定义组件中定义子组件
+        components: {
+          son: {
+            template: '#son',
+            // 子组件中通过methods中的自定义方法接收方法
+            methods: {
+              // 自定义方法
+              sonSay () {
+                // 接收父组件传递过来的方法
+                this.$emit('parent-say')
+              }
+            }
+          }
+        }
+      }
+    }
+  })
+</script>
+</body>
+</html>

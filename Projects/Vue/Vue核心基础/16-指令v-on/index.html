@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Vue-指令v-on</title>
+</head>
+<body>
+<div id="app">
+    <button v-on:click="myFn">我是按钮</button> <!-- 完整写法 -->
+    <button @click="myFn">我是按钮</button> <!-- 缩写 -->
+    <button @click="myFn()">我是按钮</button> <!-- 回调函数添加 (), 没有参数时可写可不写 -->
+    <button @click="myFn2('Tony', 24)">我是按钮</button> <!-- 给回调函数传递参数 -->
+    <button @click="myFn2('Tony', 24, $event)">我是按钮</button> <!-- 给回调函数传递原生事件对象 -->
+    <button @click="myFn3">我是按钮</button> <!-- 在回调函数中使用 data 中的数据 -->
+</div>
+<script src="js/vue.js"></script>
+<script>
+  const vue = new Vue({
+    el: '#app',
+    data: {
+      gender: 'male'
+    },
+    methods: {
+      myFn () { alert('Tony') },
+      myFn2 (name, age, event) { console.log(name, age, event) },
+      myFn3 () { console.log(this.gender) }
+    }
+  })
+</script>
+</body>
+</html>

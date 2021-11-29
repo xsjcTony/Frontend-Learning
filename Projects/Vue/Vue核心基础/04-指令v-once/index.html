@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Vue-指令v-once</title>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+<!-- View -->
+<div id="app">
+    <p>原始数据: {{ name }}</p>
+    <p v-once>当前数据: {{ name }}</p>
+</div>
+<script>
+  // View Model
+  const vue = new Vue({
+    el: '#app',
+    // Model
+    data: {
+      name: 'Tony'
+    }
+  })
+</script>
+</body>
+</html>

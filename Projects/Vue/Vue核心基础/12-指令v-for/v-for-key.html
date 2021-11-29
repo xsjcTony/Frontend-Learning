@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Vue-指令v-for:key</title>
+</head>
+<body>
+<div id="app">
+    <form>
+        <input type="text" v-model="name">
+        <input type="submit" value="添加" @click.prevent="add">
+    </form>
+    <ul>
+        <li v-for="(person, index) in persons" :key="person.id">
+            <input type="checkbox">
+            <span>{{ index }} --- {{ person.name }}</span>
+        </li>
+    </ul>
+</div>
+<script src="js/vue.js"></script>
+<script>
+  const vue = new Vue({
+    el: '#app',
+    data: {
+      persons: [
+        { name: '张三', id: 3 },
+        { name: '李四', id: 2 },
+        { name: '王五', id: 1 }
+      ],
+      name: ''
+    },
+    methods: {
+      add () {
+        const newId = this.persons[0].id + 1
+        const newPerson = { name: this.name, id: newId }
+        this.persons.unshift(newPerson)
+        this.name = ''
+      }
+    }
+  })
+</script>
+</body>
+</html>

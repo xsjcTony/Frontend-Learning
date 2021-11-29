@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Vue-Vuex-修改共享数据</title>
+</head>
+<body>
+<div id="app">
+    <son1></son1>
+    <son2></son2>
+</div>
+<template id="son1">
+    <div>
+        <button @click="add">+1</button>
+        <button @click="subtract">-1</button>
+        <input type="text" :value="this.$store.state.count">
+    </div>
+</template>
+<template id="son2">
+    <div>
+        <p>{{ this.$store.state.count }}</p>
+    </div>
+</template>
+<script src="js/vue.js"></script>
+<script src="js/vuex.js"></script>
+<script>
+  // 创建Vuex对象
+  const store = new Vuex.Store({
+    state: {
+      count: 0
+    },
+    mutations: {
+      addCount (state) {
+        state.count++
+      },
+      subtractCount (state) {
+        state.count--
+      }
+    }
+  })
+  // Vue实例对象
+  const vue = new Vue({
+    el: '#app',
+    // 绑定Vuex对象
+    store,
+    components: {
+      son1: {
+        template: '#son1',
+        methods: {
+          add () {
+            this.$store.commit('addCount')
+          },
+          subtract () {
+            this.$store.commit('subtractCount')
+          }
+        }
+      },
+      son2: {
+        template: '#son2'
+      }
+    }
+  })
+</script>
+</body>
+</html>

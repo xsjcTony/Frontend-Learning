@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Vue-组件-自定义组件-data/methods</title>
+</head>
+<body>
+<div id="app">
+    <abc></abc> <!-- 使用组件 -->
+    <abc></abc> <!-- 复用组件 -->
+    <abc></abc> <!-- 复用组件 -->
+</div>
+<script src="js/vue.js"></script>
+<template id="info">
+    <div>
+        <button @click="add">累加</button>
+        <p>{{ number }}</p>
+    </div>
+</template>
+<script>
+  // Vue实例对象
+  const vue = new Vue({
+    el: '#app',
+    data: {},
+    // 自定义局部组件
+    components: {
+      // 组件名称
+      abc: {
+        // 组件模板
+        template: '#info',
+        // 组件数据
+        data: function () {
+          return {
+            number: 0
+          }
+        },
+        // 组件方法
+        methods: {
+          add () {
+            this.number++
+          }
+        }
+      }
+    }
+  })
+</script>
+</body>
+</html>

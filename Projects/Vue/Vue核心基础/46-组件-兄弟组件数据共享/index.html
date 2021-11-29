@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Vue-组件-兄弟组件数据共享</title>
+</head>
+<body>
+<div id="app">
+    <father></father>
+</div>
+<template id="father">
+    <div>
+        <son1 @parent-change="change"></son1>
+        <son2 :parent-num="num"></son2>
+    </div>
+</template>
+<template id="son1">
+    <div>
+        <button @click="add">+1</button>
+        <button @click="subtract">-1</button>
+        <input type="text" :value="count">
+    </div>
+</template>
+<template id="son2">
+    <div>
+        <p>{{ parentNum }}</p>
+    </div>
+</template>
+<script src="js/vue.js"></script>
+<script>
+  Vue.component('father', {
+    template: '#father',
+    data: function () {
+      return {
+        num: 0
+      }
+    },
+    methods: {
+      change (newCount) {
+        this.num = newCount
+      }
+    },
+    components: {
+      son1: {
+        template: '#son1',
+        data: function () {
+          return {
+            count: 0
+          }
+        },
+        methods: {
+          add () {
+            this.count++
+            this.$emit('parent-change', this.count)
+          },
+          subtract () {
+            this.count--
+            this.$emit('parent-change', this.count)
+          }
+        }
+      },
+      son2: {
+        template: '#son2',
+        props: ['parentNum']
+      }
+    }
+  })
+  const vue = new Vue({
+    el: '#app'
+  })
+</script>
+</body>
+</html>

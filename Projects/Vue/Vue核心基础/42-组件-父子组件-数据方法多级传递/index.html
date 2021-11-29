@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Vue-组件-父子组件-数据方法多级传递</title>
+</head>
+<body>
+<div id="app">
+    <grandfather></grandfather>
+</div>
+<template id="grandfather">
+    <div>
+        <p>{{ name }}</p>
+        <button @click="gfSay">我是爷爷</button>
+        <father :gf-name="name" @gf-say="gfSay"></father> <!-- 给爸爸组件传递数据和方法 -->
+    </div>
+</template>
+<template id="father">
+    <div>
+        <p>{{ gfName }}</p>
+        <button @click="fSay">我是爸爸</button>
+        <son :f-name="gfName" @f-say="fSay"></son> <!-- 给儿子组件传递数据和方法 -->
+    </div>
+</template>
+<template id="son">
+    <div>
+        <p>{{ fName }}</p>
+        <button @click="sSay">我是儿子</button>
+    </div>
+</template>
+<script src="js/vue.js"></script>
+<script>
+  // 爷爷组件
+  Vue.component('grandfather', {
+    template: '#grandfather',
+    // 爷爷组件的数据
+    data: function () {
+      return {
+        name: 'Tony'
+      }
+    },
+    // 爷爷组件的方法
+    methods: {
+      gfSay () {
+        console.log('爷爷方法')
+      }
+    },
+    components: {
+      // 爸爸组件
+      father: {
+        template: '#father',
+        // 接收爷爷组件的数据
+        props: ['gfName'],
+        methods: {
+          // 接收爷爷组件的方法
+          fSay () {
+            this.$emit('gf-say')
+          }
+        },
+        components: {
+          // 儿子组件
+          son: {
+            template: '#son',
+            // 接收爸爸组件的数据
+            props: ['fName'],
+            methods: {
+              // 接收爸爸组件的方法
+              sSay () {
+                this.$emit('f-say')
+              }
+            }
+          }
+        }
+      }
+    }
+  })
+
+  const vue = new Vue({
+    el: '#app'
+  })
+</script>
+</body>
+</html>

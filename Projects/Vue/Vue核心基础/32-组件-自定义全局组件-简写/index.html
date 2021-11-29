@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Vue-组件-自定义全局组件-简写</title>
+</head>
+<body>
+<div id="app">
+    <abc></abc> <!-- 使用组件 -->
+</div>
+<script src="js/vue.js"></script>
+<template id="info">
+    <div>
+        <img src="images/fm.jpg" alt>
+        <p>我是描述信息</p>
+    </div>
+</template>
+<script>
+  // 注册组件, 直接传入对象
+  Vue.component('abc', {
+    // 组件模板只能有一个根元素
+    template: '#info'
+  })
+  // Vue实例对象
+  const vue = new Vue({
+    el: '#app',
+    data: {}
+  })
+</script>
+</body>
+</html>

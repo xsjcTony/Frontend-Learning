@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Vue-渲染函数</title>
+</head>
+<body>
+<div id="app">
+    <!--<one></one>-->
+</div>
+<template id="one">
+    <div>
+        <p>我是组件123</p>
+    </div>
+</template>
+<script src="js/vue.js"></script>
+<script>
+  // 注册组件
+  Vue.component('one', {
+    template: '#one'
+  })
+  // Vue实例对象
+  const vue = new Vue({
+    el: '#app',
+    render: function (createElement) {
+      return createElement('one')
+    }
+  })
+</script>
+</body>
+</html>

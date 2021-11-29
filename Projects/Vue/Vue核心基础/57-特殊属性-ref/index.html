@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Vue-特殊属性-ref</title>
+</head>
+<body>
+<div id="app">
+    <button @click="myFn">我是按钮</button>
+    <p ref="myP">我是原生的DOM</p>
+    <one id="my_one" ref="myOne"></one>
+</div>
+<template id="one">
+    <div>
+        <p>我是组件</p>
+    </div>
+</template>
+<script src="js/vue.js"></script>
+<script>
+  // 注册组件
+  Vue.component('one', {
+    template: '#one'
+  })
+  // Vue实例对象
+  const vue = new Vue({
+    el: '#app',
+    methods: {
+      myFn () {
+        console.log(this.$refs.myP) // <p>我是原生的DOM</p>
+        console.log(this.$refs.myOne) // VueComponent {...}
+      }
+    }
+  })
+</script>
+</body>
+</html>

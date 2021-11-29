@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Vue-过渡动画</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .box {
+            width: 200px;
+            height: 200px;
+            background: red;
+        }
+        .fade-enter,
+        .fade-leave-to {
+            opacity: 0;
+        }
+        .fade-enter-to,
+        .fade-leave {
+            opacity: 1;
+        }
+        .fade-enter-active,
+        .fade-leave-active {
+            transition: all 3s;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <button @click="toggle">我是按钮</button>
+    <transition name="fade" appear>
+        <div class="box" v-show="isShowed"></div>
+    </transition>
+</div>
+<script src="js/vue.js"></script>
+<script>
+  const vue = new Vue({
+    el: '#app',
+    data: {
+      isShowed: true
+    },
+    methods: {
+      toggle () {
+        this.isShowed = !this.isShowed
+      }
+    }
+  })
+</script>
+</body>
+</html>

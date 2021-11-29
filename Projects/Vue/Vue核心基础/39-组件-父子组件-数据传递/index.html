@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Vue-组件-父子组件-数据传递</title>
+</head>
+<body>
+<div id="app">
+    <father></father>
+</div>
+<script src="js/vue.js"></script>
+<template id="father">
+    <div>
+        <p>{{ name }}</p>
+        <p>{{ age }}</p>
+        <son :parent-name="name" :parent-age="age"></son> <!-- 通过v-bind给子组件传递数据, 传递时使用kebab-case -->
+    </div>
+</template>
+<template id="son">
+    <div>
+        <p>{{ parentName }}</p>
+        <p>{{ parentAge }}</p>
+        <p>我是子组件</p>
+    </div>
+</template>
+<script>
+  // Vue实例对象
+  const vue = new Vue({
+    el: '#app',
+    // 局部组件
+    components: {
+      father: {
+        template: '#father',
+        // 父组件的数据
+        data: function () {
+          return {
+            name: 'Tony',
+            age: 24
+          }
+        },
+        // 在自定义组件中定义子组件
+        components: {
+          son: {
+            template: '#son',
+            // 子组件中通过props接收数据
+            props: ['parentName', 'parentAge'] // 接收时使用camel-case
+          }
+        }
+      }
+    }
+  })
+</script>
+</body>
+</html>

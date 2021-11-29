@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Vue-指令v-bind:class</title>
+    <style>
+        .size {
+            font-size: 100px;
+        }
+        .color {
+            color: red;
+        }
+        .active {
+            background: skyblue;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <!--<p :class="['size', 'color', flag ? 'active' : '']">我是段落</p>--> <!-- 使用三目运算符实现按需绑定 -->
+    <p :class="['size', 'color', { active: flag }]">我是段落</p> <!-- 使用对象实现按需绑定 -->
+    <p :class="obj">我是段落</p> <!-- 接收对象 -->
+</div>
+<script src="js/vue.js"></script>
+<script>
+  const vue = new Vue({
+    el: '#app',
+    data: {
+      flag: false,
+      // 对象key为 类名, value为 是否需要绑定
+      obj: {
+        size: true,
+        color: false,
+        active: true
+      }
+    }
+  })
+</script>
+</body>
+</html>

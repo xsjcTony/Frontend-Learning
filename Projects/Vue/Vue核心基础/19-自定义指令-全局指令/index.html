@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Vue-全局自定义指令</title>
+</head>
+<body>
+<div id="app">
+    <p v-color="pColor">我是段落</p> <!-- 指令绑定到元素上时, 将文字颜色变成 绑定值 的颜色 -->
+    <input type="text" v-focus> <!-- 元素被插入父节点时, 该元素获得焦点 -->
+</div>
+<script src="js/vue.js"></script>
+<script>
+  // 绑定 v-color
+  Vue.directive('color', {
+    bind (el, binding) {
+      el.style.color = binding.value // 将颜色调整为指令的绑定值
+    }
+  })
+  // 绑定 v-focus
+  Vue.directive('focus', {
+    inserted (el) {
+      el.focus() // 元素获得焦点
+    }
+  })
+  const vue = new Vue({
+    el: '#app',
+    data: {
+      pColor: 'deeppink'
+    }
+  })
+</script>
+</body>
+</html>

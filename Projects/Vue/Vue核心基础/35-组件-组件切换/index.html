@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Vue-组件-组件切换</title>
+</head>
+<body>
+<div id="app">
+    <button @click="toggle">切换</button>
+    <home v-if="isShowed"></home>
+    <photo v-else></photo>
+</div>
+<script src="js/vue.js"></script>
+<template id="home">
+    <div>
+        <p>我是首页</p>
+    </div>
+</template>
+<template id="photo">
+    <div>
+        <img src="images/fm.jpg" alt>
+    </div>
+</template>
+<script>
+  // 自定义全局组件
+  Vue.component('home', {
+    template: '#home'
+  })
+  Vue.component('photo', {
+    template: '#photo'
+  })
+  // Vue实例对象
+  const vue = new Vue({
+    el: '#app',
+    data: {
+      isShowed: true
+    },
+    methods: {
+      toggle () {
+        this.isShowed = !this.isShowed
+      }
+    }
+  })
+</script>
+</body>
+</html>

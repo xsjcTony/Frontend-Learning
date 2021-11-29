@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Vue-生命周期钩子</title>
+</head>
+<body>
+<div id="app">
+    <p>{{ msg }}</p>
+    <button @click="change">切换</button>
+    <one v-if="isShow"></one>
+</div>
+<template id="one">
+    <div>
+        <p>我是组件</p>
+    </div>
+</template>
+<script src="js/vue.js"></script>
+<script>
+  // 注册组件
+  Vue.component('one', {
+    template: '#one',
+    data: function () {
+      return {
+        msg: 'message'
+      }
+    },
+    methods: {
+      bark () {
+        console.log('bark')
+      }
+    },
+    /* 生命周期钩子元素 */
+    // 销毁期间 (点击 切换 按钮销毁该组件)
+    beforeDestroy: function () {
+      console.log(this.msg) // message
+      console.log(this.bark) // f bark ()
+    },
+    destroyed: function () {
+      console.log('destroyed') // destroyed
+    }
+  })
+  // Vue实例对象
+  const vue = new Vue({
+    el: '#app',
+    data: {
+      msg: 'Tony',
+      isShow: true
+    },
+    methods: {
+      say () {
+        console.log('say')
+      },
+      change () {
+        this.isShow = !this.isShow
+      }
+    },
+    /* 生命周期钩子函数 */
+    // 创建期间
+    beforeCreate: function () {
+      console.log(this.msg) // undefined
+      console.log(this.say) // undefined
+    },
+    created: function () {
+      console.log(this.msg) // Tony
+      console.log(this.say) // f say ()
+    },
+    beforeMount: function () {
+      console.log(document.querySelector('p').innerHTML) // {{ msg }}
+    },
+    mounted: function () {
+      console.log(document.querySelector('p').innerHTML) // Tony
+    },
+    // 运行期间 (将 msg 从 Tony 更改成 Lily)
+    beforeUpdate: function () {
+      console.log(this.msg) // Lily
+      console.log(document.querySelector('p').innerHTML) // Tony
+    },
+    updated: function () {
+      console.log(this.msg) // Lily
+      console.log(document.querySelector('p').innerHTML) // Lily
+    }
+  })
+</script>
+</body>
+</html>

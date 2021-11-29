@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Vue-计算属性</title>
+</head>
+<body>
+<div id="app">
+    <p>{{ msg }}</p> <!-- abcdef -->
+    <p>{{ reversedMsg }}</p> <!-- fedcba -->
+</div>
+<script src="js/vue.js"></script>
+<script>
+  const vue = new Vue({
+    el: '#app',
+    data: {
+      name: 'Tony',
+      age: 24,
+      msg: 'abcdef'
+    },
+    // 定义计算属性
+    computed: {
+      reversedMsg () {
+        return this.msg.split('').reverse().join('') // this 指向 vm (Vue实例对象)
+      }
+    }
+  })
+</script>
+</body>
+</html>

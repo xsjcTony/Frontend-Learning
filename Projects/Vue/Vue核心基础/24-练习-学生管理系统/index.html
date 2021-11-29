@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Vue-学生管理系统</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #app {
+            width: 800px;
+            margin: 50px auto;
+        }
+
+        table {
+            width: 100%;
+            background: #000;
+        }
+
+        table tr {
+            background: #fff;
+            text-align: center;
+        }
+
+        form {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <form v-show="isShowed">
+        <input type="text" placeholder="请输入序号" v-model.number="person.id">
+        <input type="text" placeholder="请输入姓名" v-model="person.name">
+        <input type="text" placeholder="请输入分数" v-model.number="person.score">
+        <input type="submit" value="新增" @click.prevent="add">
+        <input type="submit" value="查询" @click.prevent="query">
+    </form>
+    <table>
+        <tr>
+            <th>序号</th>
+            <th>姓名</th>
+            <th>分数</th>
+            <th>时间</th>
+            <th>操作</th>
+        </tr>
+        <tr v-for="(person, index) in persons">
+            <td><input type="text" v-model="person.id" :disabled="isDisabled"></td>
+            <td><input type="text" v-model="person.name" :disabled="isDisabled"></td>
+            <td><input type="text" v-model="person.score" :disabled="isDisabled"></td>
+            <td><input type="text" :value="person.time | dateFormatter" disabled="disabled"></td>
+            <td>
+                <a href="#" @click.prevent="edit">编辑</a>
+                <a href="#" @click.prevent="remove(index)">删除</a>
+                <br>
+                <a href="#" @click.prevent="toggle">更多操作</a>
+            </td>
+        </tr>
+    </table>
+</div>
+<script src="js/vue.js"></script>
+<script>
+  // 过滤器
+  Vue.filter('dateFormatter', (value, format) => {
+    const date = new Date(value)
+    const year = date.getFullYear()
+    const month = date.getMonth() + 1 + ''
+    const day = date.getDate() + ''
+    const hour = date.getHours() + ''
+    const minute = date.getMinutes() + ''
+    const second = date.getSeconds() + ''
+    if (format === 'yyyy-MM-dd') { return `${ year }-${ month.padStart(2, '0') }-${ day.padStart(2, '0') }` }
+    return `${ year }-${ month.padStart(2, '0') }-${ day.padStart(2, '0') } ${ hour.padStart(2, '0') }:${ minute.padStart(2, '0') }:${ second.padStart(2, '0') }`
+  })
+  // Vue实例对象 (vm)
+  const vue = new Vue({
+    el: '#app',
+    // 数据 (Model)
+    data: {
+      isDisabled: true,
+      isShowed: false,
+      persons: [
+        {
+          id: 1,
+          name: 'zs',
+          score: 99,
+          time: Date.now()
+        },
+        {
+          id: 2,
+          name: 'ls',
+          score: 88,
+          time: Date.now()
+        },
+        {
+          id: 3,
+          name: 'ww',
+          score: 88,
+          time: Date.now()
+        }
+      ],
+      person: {
+        id: '',
+        name: '',
+        score: ''
+      }
+    },
+    // 方法
+    methods: {
+      edit () {
+        this.isDisabled = !this.isDisabled
+      },
+      toggle () {
+        this.isShowed = !this.isShowed
+      },
+      remove (index) {
+        this.persons.splice(index, 1)
+      },
+      add () {
+        this.person.time = Date.now()
+        this.persons.push(this.person)
+        this.person = {
+          id: '',
+          name: '',
+          score: ''
+        }
+      },
+      query () {
+        this.persons = this.persons.filter((person) => {
+          if (person.score === this.person.score) { return true }
+        })
+      }
+    }
+  })
+</script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Vue-数据双向绑定</title>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+<!-- View -->
+<div id="app">
+    <input type="text" v-model="msg">
+</div>
+<script>
+  // View Model
+  const vue = new Vue({
+    el: '#app',
+    // Model
+    data: {
+      msg: 'Tony'
+    }
+  })
+</script>
+</body>
+</html>
