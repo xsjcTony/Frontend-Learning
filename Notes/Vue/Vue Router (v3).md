@@ -54,6 +54,10 @@ const routes = [
 
 - 使用 `new VueRouter()` 创建, 传入一个 `对象`
 - `routes` : 路由规则
+- `mode` : 路由模式
+  - <span style="color: #ff0;">`hash` : 默认模式, 在 `URL` 前面加一个 `#` (不推荐)</span>
+  - `history` : HTML5 history模式, 注意默认情况下在打包上线之后不能刷新, 否则会报错 `404 Not Found` , 需要在服务器上进行额外配置
+
 
 ```js
 const router = new VueRouter({
