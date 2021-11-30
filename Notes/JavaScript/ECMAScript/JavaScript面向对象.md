@@ -115,6 +115,54 @@ obj.test(); // "hello world"
 
 ---
 
+## Object类静态方法
+
+
+
+### Object.defineProperty
+
+> [Object.defineProperty() - JavaScript | MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty)
+
+- 该方法用于给 `对象` 新增或修改 `属性`
+- 三个参数分别为需要修改的 `对象` , 需要修改的 `属性` 名称, 以及一个对于本次修改的描述 `descriptor`
+- `obj.property = value` 的的方式在 `strict mode` 下会报错
+
+```js
+const obj = { name: 'Tony' }
+
+// 给obj对象新增/修改name属性
+Object.defineProperty(obj, 'name', { // 第三个参数为descriptor对象
+  value: 'Lily', // 属性的取值, 新增时默认为undefined
+  writable: true, // 该属性是否可以使用obj.name = xxx的方式修改, 新增时认为false
+  configurable: true, // 该属性的descriptor是否可以再次通过defineProperty改变, 以及是否可以从对象中删除, 新增时默认false
+  enumerable: true // 该属性是否可以迭代, 比如for-in循环, 新增时默认为false
+})
+```
+
+- 给属性添加 `get` / `set` 方法之后, 以后只要获取这个属性的值就会自动调用 `get` , 设置这个属性的值就会自动调用 `set`
+- 设置了 `get` / `set` 方法之后, 那么 `descriptor` 中的 `value` 和 `writable` 会失效
+
+```js
+const obj = {}
+let oldValue = 'Tony'
+
+// 给obj对象新增/修改name属性
+Object.defineProperty(obj, 'name', { // 第三个参数为descriptor对象
+  get () {
+    return oldValue
+  },
+  set (newValue) {
+    if (newValue !== oldValue){
+      (oldValue = newValue)
+    }
+  }
+})
+```
+
+
+
+---
+
 ## `this`
 
 
