@@ -1,4 +1,4 @@
-# Vue - 原理 (v2)
+# Vue - 实现 (v2)
 
 
 
@@ -66,12 +66,14 @@ new Observer(obj)
 
 1. 处理 `el` , 将对应的 `DOM元素` 挂载到 `$el` 上
 2. 将 `data` 挂载到 `$data` 上
-   - 挂载之前通过 `defineProperty` 给所有数据添加 `getter` / `setter`
-   - 将 `$data` 中第一层的键值挂载到 `实例` 上
+   - 通过 `defineProperty` 给所有数据添加 `getter` / `setter`
 3. 将 `methods` 挂载到 `$methods` 上
-4. 根据 `$el` 和 `$data` 来编译渲染
-   1. 将控制区域中的 `DOM` 中的元素保存到 `DocumentFragment` 内存中 (同时也会自动从 `DOM` 中移除)
-   2. 查找 `指令` 和 `模板` 并进行相应的处理
+4. 将 `computed` 挂载到 `$computed` 上
+   - 将 `$computed` 中的所有数据代理到 `$data` 中
+5. 将 `$data` 中的数据代理到 `实例` 上
+6. 根据 `$el` 和 `$data` 来编译渲染
+   1. 编译 `$el` 指定的控制区域, 将其中的 `DOM` 放进 `DocumentFragment` 内存中 (同时也会自动从 `DOM` 中移除)
+   2. 查找 `指令` 和 `模板` , 根据 `数据` 和 `方法` 等并进行相应的处理
 
 ---
 
@@ -132,3 +134,6 @@ new Observer(obj)
 - 给元素添加 `EventListener` , 将指令中的方法作为回调函数
 - 修改回调函数的 `this` 为 `实例`
 
+---
+
+## 计算属性
