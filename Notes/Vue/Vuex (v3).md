@@ -80,6 +80,7 @@ new Vue({
 - 在 `组件` 的方法中使用 `this.$store.commit()` 来调用 `mutations` 中的修改共享数据的方法
 - `commit()` 中写上 `mutations` 中想要调用的方法名称
 - 可以在 `组件` 的 `methods` 中使用 `mapMutations` 来直接通过 `this.xxx` 的方式访问 `mutations`
+- 只能包含 `同步操作`
 - <span style="color: #f40;">切记不要使用会被改变的 `state` 中的值作为 `paylopad` , 否则容易出现无限循环, 如果是 `数组` 或 `对象` , 可以使用 `...` (展开运算符) 来避免响应式触发</span>
 
 ```js
@@ -215,4 +216,46 @@ const store = new Vuex.store({
 ---
 
 ## Modules
+
+[Module | Vuex](https://vuex.vuejs.org/zh/guide/modules.html)
+
+- 将仓库分割成 `模块`
+- 每个 `模块` 有自己的 `state` / `getters` / `mutations` / `actions` 等, 不会互相冲突
+- `模块` 可以嵌套 `子模块`
+- 获取数据通过 `this.$store.state.moduleName.dataName` 获取
+- `getters` 直接获取即可, 不需要加 `模块` 名称, 且 `key` 不能重复
+- `mutations` / `actions` 皆为直接调用, 若遇到同名则依次全部执行
+
+```js
+const login = {
+  state: {
+    loggedIn: false // 使用 this.$store.home.login.loggedIn 获取
+  },
+  mutations: {
+    changeStatus (state, payload) {
+      state.loggedIn = payload
+    }
+  }
+}
+
+const home = {
+  state: {
+    name: 'Tony'
+  },
+  mutations: {
+    changeName (state, payload) {
+      state.name = payload
+    }
+  },
+  modules: {
+    login // 模块嵌套模块
+  }
+}
+
+const store = new Vuex.Store({
+  modules: {
+    home
+  }
+})
+```
 
