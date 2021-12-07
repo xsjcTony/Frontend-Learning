@@ -31,7 +31,7 @@ export default {
 }
 ```
 
-
+---
 
 ## 给所有Vue实例挂载$store仓库对象
 
@@ -56,7 +56,7 @@ const install = (Vue, options) => {
 }
 ```
 
-
+---
 
 ## 数据共享
 
@@ -71,77 +71,7 @@ class Store {
 }
 ```
 
-
-
-## getters
-
-- 遍历创建 `Store` 时传入的 `getters` 对象, 通过 `defineProperty` 的 `getter` 来传入 `state` , 然后拿到返回值
-
-```js
-this.getters = options.getters ?? {}
-for (const key in getters) {
-  Object.defineProperty(this.getters, key, {
-    get: () => {
-      return getters[key](this.state)
-    }
-  })
-}
-```
-
-
-
-## mutations
-
-- 遍历创建 `Store` 时传入的 `mutations` 对象, 通过 `defineProperty` 将 `value` 设置为一个方法, 传入 `state` 和 `payload`
-- 创建一个 `commit` 方法, 调用 `this.mutations` 中的对应方法
-- 需要使用 `箭头函数` , 以将 `this` 绑定到 `Store` 类
-
-```js
-commit = (mutation, payload) => {
-  this.mutations[mutation](payload)
-}
-```
-
-```js
-this.mutations = options.mutations ?? {}
-for (const key in mutations) {
-  Object.defineProperty(this.mutations, key, {
-    value: (payload) => {
-      mutations[key](this.state, payload)
-    }
-  })
-}
-```
-
-
-
-## actions
-
-- 遍历创建 `Store` 时传入的 `actions` 对象, 通过 `defineProperty` 将 `value` 设置为一个方法, 传入 `Store` 类 和 `payload`
-- 创建一个 `dispatch` 方法, 调用 `this.actions` 中的对应方法
-- 需要使用 `箭头函数` , 以将 `this` 绑定到 `Store` 类
-
-```js
-dispatch = (action, payload) => {
-  this.actions[action](payload)
-}
-```
-
-```js
-parseActions (actions = {}) {
-  this.actions = {}
-
-  for (const key in actions) {
-    Object.defineProperty(this.actions, key, {
-      value: (payload) => {
-        actions[key](this, payload)
-      }
-    })
-  }
-}
-```
-
-
+---
 
 ## modules
 
@@ -225,6 +155,85 @@ initModules (rootModule, arr = []) {
   for (const childModuleName in rootModule._children) {
     const childModule = rootModule._children[childModuleName]
     this.initModules(childModule, [...arr, childModuleName])
+  }
+}
+```
+
+3. 依次按照下述, 处理每个模块中的 `getters` / `mutations` / `actions`
+
+---
+
+## getters
+
+- 遍历创建 `Store` 时传入的 `getters` 对象, 通过 `defineProperty` 的 `getter` 来传入 `state` , 然后拿到返回值
+
+```js
+this.getters = options.getters ?? {}
+for (const key in getters) {
+  Object.defineProperty(this.getters, key, {
+    get: () => {
+      return getters[key](this.state)
+    }
+  })
+}
+```
+
+---
+
+## mutations
+
+- 遍历传入的 `mutations` 对象, 将每一个 `key` 设置为一个 `数组` , 其中每一项是一个 `方法` , 传入 `Store` 类 和 `payload`
+- 因为可以同名并且依次执行, 所以采用 `数组` 的形式
+- 创建一个 `commit` 方法, 调用 `this.mutations` 中的对应方法
+
+```js
+commit = (mutation, payload) => {
+  this.mutations[mutation] ? this.mutations[mutation].forEach((mutation) => {
+    mutation(payload)
+  }) : console.error(`Mutation ${mutation} not found.`)
+}
+```
+
+```js
+parseMutations (options) {
+  const mutations = options.mutations ?? {}
+  this.mutations = this.mutations ?? {}
+
+  for (const key in mutations) {
+    this.mutations[key] = this.mutations[key] ?? []
+    this.mutations[key].push((payload) => {
+      mutations[key](options.state, payload)
+    })
+  }
+}
+```
+
+---
+
+## actions
+
+- 遍历传入的 `actions` 对象, 将每一个 `key` 设置为一个 `数组` , 其中每一项是一个 `方法` , 传入 `Store` 类 和 `payload`
+- 因为可以同名并且依次执行, 所以采用 `数组` 的形式
+- 创建一个 `dispatch` 方法, 调用 `this.actions` 中的对应方法
+- 需要使用 `箭头函数` , 以将 `this` 绑定到 `Store` 类
+
+```js
+dispatch = (action, payload) => {
+  this.actions[action] ? this.actions[action].forEach((action) => {
+    action(payload)
+  }) : console.error(`Action ${action} not found.`)
+}
+```
+
+```js
+parseActions (actions = {}) {
+  this.actions = this.actions ?? {}
+
+  for (const key in actions) {
+    this.actions[key] = this.actions[key] ?? []
+    this.actions[key].push((payload) => {
+      actions[key](this, payload)
+    })
   }
 }
 ```
