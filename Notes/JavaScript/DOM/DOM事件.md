@@ -550,6 +550,28 @@ function addEvent(element, name, fn) {
 }
 ```
 
+
+
+### 监听hash值变化
+
+- 使用 `window.location.hash` 获取当前 `hash` 值, 带 `#`
+
+```js
+window.addEventListener('hashchange', () => { /* do something */ })
+```
+
+
+
+### 监听前进 / 后退
+
+- 使用 `window.location.pathname` 获取当前 `路径`
+
+```js
+window.addEventListener('popstate', () => { /* do something */ })
+```
+
+
+
 ---
 
 ## 移动端事件

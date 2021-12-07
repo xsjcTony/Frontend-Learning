@@ -119,6 +119,16 @@ window.location.reload();
 window.location.reload(true);
 ```
 
+
+
+### 获取当前路径
+
+```js
+window.loaction.pathname
+```
+
+
+
 ---
 
 ## `History`
@@ -156,6 +166,16 @@ window.history.go(-n); // 后退n个页面
 ```js
 window.history.go(0); // 0代表刷新, 正数代表前进的页面数量, 负数代表后退的页面数量
 ```
+
+
+
+### pushState
+
+- 给浏览器的 `history` 添加一层, 并跳转
+- 三个参数
+  - 一个可以 `被序列化` 的包含要跳转至的页面的 `状态 (state) ` 的 `对象`
+  - 跳转后的 `title` , 由于会被浏览器忽略, 所以传 `null`
+  - 要跳转至的 `URL`
 
 ---
 
