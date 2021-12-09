@@ -2257,6 +2257,7 @@
 - 它是一个 `方法` , 接收的 `参数`
     - `createElement` : 一个 `函数` , `字符串模板` 的代替方案, 返回一个 `VNode` ( `虚拟节点` ), 其接收的 `参数` : [createElement  — Vue.js](https://cn.vuejs.org/v2/guide/render-function.html#createElement-参数) 
 - 该方式会直接覆盖 `Vue实例对象` 的控制区域
+- 渲染函数中可以使用 `JSX`
 
 ```html
 <div id="app">

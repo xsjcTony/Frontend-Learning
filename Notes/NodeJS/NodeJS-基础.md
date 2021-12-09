@@ -44,7 +44,7 @@
 ## 程序执行方式
 
 - 可以直接在命令行工具中编写并执行JavaScript代码
-    - 使用 `REPL` : 9Read, Eval, Print, Loop) 交互式解释器
+    - 使用 `REPL` : (Read, Eval, Print, Loop) 交互式解释器
 - 可以在命令行工具中直接执行JavaScript文件中的代码
     - 在JavaScript代码文件的目录中打开命令行工具, 输入 `node *fileName*`
     - `WebStorm` 中配置好之后也可以直接运行 (右键 => `run`) <span style="color: yellow;">(企业开发中常用方式)</span>
@@ -155,6 +155,10 @@ console.log(aModule.fn(10, 20)) // 30
 - 导入第三方模块
     - 不用添加路径
     - 会按照 `module.paths` 数组中的路径依次查找
+
+---
+
+## 常用
 
 
 
@@ -963,6 +967,15 @@ URL的组成
 | vm.runInNewContext()  | 不能访问 | 不能访问 |
 
 - `vm.runInNewContext()` 相对安全一些
+
+
+
+### process
+
+- `process.argv` : 命令行参数 `数组` ( `string[]` )
+  - 第一项: `nodeJS` 的路径
+  - 第二项: 当前执行的 `JavaScript` 文件的路径
+  - 其余为命令行参数, 以 `空格` 作为分隔
 
 ---
 

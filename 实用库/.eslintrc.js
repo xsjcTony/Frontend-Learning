@@ -15,7 +15,8 @@ module.exports = {
     es2021: true
   },
   plugins: [
-    'import'
+    'import',
+    'ember-suave'
   ],
   rules: {
     'block-spacing': ['error', 'always'],
