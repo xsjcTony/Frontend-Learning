@@ -75,6 +75,37 @@ console.log(arr) // [1, 3, 5]
 
 ---
 
+## 函数 (Function)
+
+
+
+### 函数柯里化 (Currying)
+
+- 一种优化代码的方式
+
+- 将 `function (a, b, c)` 优化为 `function (a)(b)(c)`
+
+```js
+function demo (a, b) {
+  return a + b
+}
+demo(10, 20) // 30
+
+// 可以通过柯里化变成
+
+function demo (a) {
+  return function (b) {
+    return a + b
+  }
+}
+demo(10)(20) // 30
+
+```
+
+
+
+---
+
 ## 随机 (Random)
 
 

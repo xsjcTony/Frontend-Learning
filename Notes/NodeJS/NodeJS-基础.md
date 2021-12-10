@@ -976,6 +976,19 @@ URL的组成
   - 第一项: `nodeJS` 的路径
   - 第二项: 当前执行的 `JavaScript` 文件的路径
   - 其余为命令行参数, 以 `空格` 作为分隔
+- `process.env` : 当前系统环境变量
+  - `USERPROFILE` : 当前用户目录 (windows)
+
+- `process.platform` : 当前系统平台
+  - `win32` : Windows
+  - `darwin` : MacOS
+
+
+
+
+### util
+
+- `util.promisify()` : 将把 `err` 作为第一个参数的回调函数作为最后一个参数的方法转换成返回 `Promise` 的版本
 
 ---
 
