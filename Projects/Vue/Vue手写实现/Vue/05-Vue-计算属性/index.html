@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue - 计算属性</title>
+</head>
+<body>
+<div id="app">
+    <input type="text" a-model="name">
+    <input type="text" a-model="time.hour">
+    <input type="text" a-model="time.minute">
+    <input type="text" a-model="time.second">
+    <div a-html="html">Lorem ipsum.</div>
+    <div a-text="text">Lorem ipsum.</div>
+    <p>{{ name }}</p>
+    <p>{{ gender }} - {{ age }}</p>
+    <p>{{ name }} - {{ gender }} - {{ age }}</p>
+    <p>computed: {{ getName }}</p>
+    <ul>
+        <li>{{ time.hour }}</li>
+        <li>{{ time.minute }}</li>
+        <li>{{ time.second }}</li>
+    </ul>
+    <button a-on:click="myFn(a, b)">a-on:click</button>
+    <button @click="myFn2">@click</button>
+    <button a-on:click="myFn3(a, $event, b)">$event</button>
+</div>
+</body>
+<script src="../Aue.js"></script>
+<script>
+  const vm = new Aue({
+    el: '#app',
+
+    data: {
+      name: 'Tony',
+      gender: 'male',
+      age: 24,
+      time: {
+        hour: 11,
+        minute: 12,
+        second: 13
+      },
+      html: `<div>我是html</div>`,
+      text: `<div>我是text</div>`
+    },
+
+    methods: {
+      myFn (a, b) {
+        console.log(a, b, this.name, this.gender, this.age)
+      },
+
+      myFn2 (event) {
+        console.log(this.name, event.target)
+      },
+
+      myFn3 (a, event, b) {
+        console.log(a, event.target, b)
+      }
+    },
+
+    computed: {
+      getName () {
+        return `${ this.name }666`
+      }
+    }
+  })
+  console.log(vm)
+</script>
+</html>

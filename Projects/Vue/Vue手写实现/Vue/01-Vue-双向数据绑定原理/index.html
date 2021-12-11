@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue - 双向数据绑定</title>
+</head>
+<body>
+<script>
+  const obj = {
+    name: { a: 'abc' },
+    age: 24,
+    extra: ''
+  }
+
+  // 用于快速给传入的对象的所有属性都添加 get 和 set 方法
+  class Observer {
+    constructor (obj) {
+      this.observer(obj)
+    }
+
+    observer (obj) {
+      if (obj && typeof obj === 'object') {
+        for (const key in obj) {
+          this.defineReactive(obj, key, obj[key])
+        }
+      }
+    }
+
+    defineReactive (obj, key, value) {
+      this.observer(value) // 如果取值是一个对象, 那么也给其每一个属性添加getter和setter
+
+      const self = this // 保存当前上下文的this
+      Object.defineProperty(obj, key, {
+        enumerable: false,
+        get () {
+          return value
+        },
+
+        set (newValue) {
+          if (newValue !== value) {
+            self.observer(newValue) // 如果被赋值了一个对象, 那么也给其每一个属性添加getter和setter
+            value = newValue
+          }
+        }
+      })
+    }
+  }
+
+  new Observer(obj)
+  obj.name = 'Tony'
+  obj.extra = { k: 'v' }
+  console.log(obj)
+</script>
+</body>
+</html>
