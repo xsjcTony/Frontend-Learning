@@ -464,6 +464,7 @@ delete from tableName where columnName=value;
 
 - 为了合理分配存储空间来存储数据
 - 设计数据库时需要合理使用数据类型, 来优化数据库体积
+- 在 `MySQL` 中每一行最多存储 `65,534` 个字节, 除非使用 `大文本` 数据类型
 
 
 
@@ -478,9 +479,9 @@ delete from tableName where columnName=value;
 
 | 整数类型种类  | 存储空间 | 存储数字范围 (有符号 / 无符号) (signed / unsigned)           | 描述       |
 | ------------- | -------- | ------------------------------------------------------------ | ---------- |
-| TINYINT       | 1 Byte   | (-128, 127) / (0, 255)                                       | 小整数值   |
-| SMALLINT      | 2 Byte   | (-32,768, 32,767) / (0, 65,535)                              | 大整数值   |
-| MEDIUMINT     | 3 Byte   | (-8,388,608, 8,388,607) / (0, 16,777,215)                    | 大整数值   |
+| TINYINT       | 1 Byte   | (-128, 127) / (0, 255)                                       | 超小整数值 |
+| SMALLINT      | 2 Byte   | (-32,768, 32,767) / (0, 65,535)                              | 小整数值   |
+| MEDIUMINT     | 3 Byte   | (-8,388,608, 8,388,607) / (0, 16,777,215)                    | 中整数值   |
 | INT / INTEGER | 4 Byte   | (-2,147,483,648, 2,147,483,647) / (0, 4,294,967,295)         | 大整数值   |
 | BIGINT        | 8 Byte   | (-9,223,372,036,854,775,808, 9,223,372,036,854,775,807) / (0, 18,446,744,073,709,551,615) | 超大整数值 |
 
@@ -555,13 +556,96 @@ create table tableName (
 
 
 
-- 文本
-- 枚举
-- 集合
-- 日期
-- 布尔 (Boolean)
+#### 大文本
 
-整数类型
+- 用于存储长文本
+- 可以突破每行数据最多 `65,534` 字节的限制
+- 本质是占用了 `10` 个字节, 引用了实际保存数据的地址, 并没有占用每一行所能保存的字节数
+
+| 大文本类型种类 | 存储空间               | 描述         |
+| -------------- | ---------------------- | ------------ |
+| TINYTEXT       | 0 ~ 255 Byte           | 短文本数据   |
+| TEXT           | 0 ~ 65,535 Byte        | 普通文本数据 |
+| MEDIUMTEXT     | 0 ~ 16,777,215 Byte    | 中等文本数据 |
+| LONGTEXT       | 0 ~ 4,294,967,295 Byte | 长文本数据   |
+
+```mysql
+create table tableName (
+		column1 text,
+  	column2 longtext
+);
+```
+
+
+
+#### 枚举
+
+- 取值只能是几个固定值中的 `一个` 时使用
+- 若插入了可选取值之外的值会报错
+- 本质上是通过 `整数类型` 来实现的
+- 不同于其他编程语言, `MySQL` 的 `枚举` 是从 `1` 开始的, 其他语言是从 `0` 开始的
+- 可以通过 `整数类型` 来插入
+
+```mysql
+create table tableName (
+		column1 enum(value1, value2)
+);
+
+insert into tableName values (2); /* 可以使用数字插入, 插入的是value2 */
+```
+
+
+
+#### 集合
+
+- 取值只能是几个固定值中的 `任意几个` 时使用
+- 若插入了可选取值之外的值会报错
+- <span style="color: #ff0;">插入值的时候 `,` 两边不能有空格, 不然会报错</span>
+- 本质上是通过 `整数类型` 来实现的
+- 每一项取值的数值是 `2^n` , `n` 从 `0` 开始递增, 结果为所有数值加起来, 比如同时选择了第 `1 / 2 / 4` 项, 则底层存储的数值为 `1 + 2 + 8 = 11`
+
+```mysql
+create table tableName (
+    column1 set('value1', 'value2', 'value3')
+);
+
+insert into tableName values ('value1,value3'); /* 每个值中间的,两边不可以有空格 */
+```
+
+
+
+#### 日期
+
+- 专门用于保存时间 / 日期
+- 插入时间 / 日期的时候需要用 `''` 单引号包裹起来
+
+| 日期类型种类 | 存储空间 | 格式                | 描述              |
+| ------------ | -------- | ------------------- | ----------------- |
+| DATE         | 3 Byte   | YYYY-MM-DD          | 日期值            |
+| TIME         | 3 Byte   | HH:MM:SS            | 时间值 / 持续时间 |
+| DATETIME     | 8 Byte   | YYYY-MM-DD HH:MM:SS | 混合日期和时间值  |
+
+
+
+#### 布尔 (Boolean)
+
+- 用于保存真假值
+- 本质上是通过 `整数类型` 来实现的
+- `0` 表示 `false` , 其他任何数表示 `true` (同 `C / C++` )
+- 传 `整数类型` / `true` / `false` 以外的值会报错
+
+```mysql
+create table person (
+    flag boolean
+);
+
+insert into person values (false);
+insert into person values (true);
+insert into person values (0); /* false */
+insert into person values (1); /* true */
+```
+
+
 
 
 
