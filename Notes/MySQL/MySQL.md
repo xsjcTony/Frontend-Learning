@@ -367,6 +367,27 @@ alter table tableName drop columnName;
 alter table tableName engine=engineName;
 ```
 
+
+
+### 多表之间的关系
+
+一对一
+
+- 一般不需要拆分
+- 比如一夫一妻制
+
+一对多
+
+- 一般需要拆分
+- 比如一个人有多个汽车, 一个班有多个学生, ......
+- 一般会拆分成两张表
+
+多对多
+
+- 一般需要拆分
+- 比如一个学生有多个老师并且一个老师有多个学生
+- 一般会拆分成两张表, 外加一张中间关系表
+
 ---
 
 ## 数据 (Data)
@@ -455,6 +476,8 @@ delete from tableName
 ```mysql
 delete from tableName where columnName=value;
 ```
+
+
 
 
 
@@ -645,8 +668,224 @@ insert into person values (0); /* false */
 insert into person values (1); /* true */
 ```
 
+---
+
+## 数据完整性
+
+定义
+
+- 确保保存到数据库中的数据都是正确的
+- 在创建表时给表添加约束
+- 分为三类:
+  - 实体完整性: 表中的每一行数据都是一个 `实体` (entity)
+  - 域完整性: 一行数据中的每个单元格都是一个 `域`
+  - 参照完整性: 又名引用完整性
 
 
 
+### 实体完整性
+
+定义
+
+- `实体完整性` 意为保证每一行数据的 `唯一性`
+- 约束类型共有 `主键` / `唯一` / `自动增长列` 三种
+
+#### 主键 (primary key)
+
+- 用于唯一的标识表中的每一条数据, 类似于现实生活中的身份证
+- 一张表中只有一个 `primary key` , 不能出现多个
+- 其数据不能为 `null` , 且不能重复
+- 在某一列之后添加 `primary key` 关键字, 或者在最后写上 `primary key(columnName)` 来指定主键
+- 添加数据时如果发现了重复的 `primary key` , 那么就会报错
+
+```mysql
+create table tableName (
+		column1 dataType primary key
+);
+/* 或者 */
+create table tableName (
+		column1 dataType,
+  	primary key(column1)
+);
+```
+
+- `联合主键` : 将表中的多个列当做一个整体, 作为主键使用
+
+```mysql
+create table tableName (
+  	column1 dataType,
+  	column2 dataType,
+  	primary key(column1, column2)
+);
+```
+
+#### 唯一 (unique)
+
+- 约束表中的某个列中的数据永不重复
+- 在定义列之后加 `unique` 关键字
+- 与 `primary key` 不同的是, `unique` 在一张表中可以有多个并且值可以是 `null` , 而 `primary key` 只能有一个且值不能为 `null`
+
+```mysql
+create table tableName (
+  	column1 dataType unique
+);
+```
+
+#### 自动增长列 (auto_increment)
+
+- 让某一列的取值从 `1` 开始递增
+- 设置 `auto_increment` 的列必须是 `主键` 或 `联合主键` 中的列之一, 或者是 `唯一` 的键
+- 传值的时候除了可以传 `数字` 之外, 还可以传 `default` / `null` , 那么会自动插入上一次插入的值+1 (若已存在, 则继续+1直到值不存在为止)
+
+#### <span style="color: #0ff;">主键选择规则</span>
+
+- <span style="color: #0ff;">最少性: 能用一个列作为 `主键` , 就不要使用多个列</span>
+- <span style="color: #0ff;">稳定性: 能用不被操作 (修改) 的列作为 `主键` , 就不要用会被操作 (修改) 的列</span>
+- <span style="color: #0ff;">一般情况下会定义一个叫做 `id` 的列, 类型是 `整数类型` (int) , 并且 `自动增长` (auto_increment)</span>
+
+#### 修改约束
+
+- 添加 `主键`
+
+```mysql
+alter table tableName add primary key(columnName);
+```
+
+- 添加 `唯一`
+
+```mysql
+alter table tableName add unique(columnName);
+```
+
+- 添加 `自动增长列` (前提是该列必须是 `主键` 之一或 `唯一` 的)
+
+```mysql
+alter table tableName modify columnName dataType auto_increment;
+```
+
+
+
+### 域完整性
+
+定义
+
+- 保证每个单元格数据的正确性
+
+#### 正确的数据类型
+
+- 使用 `TINYINT UNSIGNED` 来表示人的年龄
+- 使用 `ENUM` 来表示人的性别
+- 使用 `TEXT` 类型来存储比较多的文字
+- ......
+
+#### 非空 (NOT NULL)
+
+- 插入值的时候若没有填值或插入 `null` 的时候会报错
+- 可以和 `default` 配合使用
+
+```mysql
+create table tableName (
+		column1 dataType NOT NULL
+);
+```
+
+#### 默认值 (DEFAULT)
+
+- 来给某一列指定默认的值, 在插入的数据中没有被指定时或传入 `default` 时使用
+- 可以和 `not null` 配合使用
+
+```mysql
+create table tableName (
+		column1 dataType DEFAULT defaultValue
+);
+```
+
+
+
+### 参照完整性
+
+定义
+
+- 保证多个表之间引用关系的正确性
+- 通过 `外键` 来实现关系引用并保证参照完整性
+
+#### 外键 (foreign key)
+
+- 一张表中指向另一张表中的 `主键` 的列
+- 在表最后通过 `foreign key` 以及 `references` 关键字即可
+- 只有 `InnoDB` 存储引擎支持
+- `外键` 的数据类型必须和他指向的 `主键` 的数据类型一致
+- 在 `一对多` 的关系中, `外键` 应该被定义到多的那个表
+- 在 `对对对` 的关系中, `外键` 应该被定义到中间关系表, 并且其拥有多个 `外键`
+- 定义 `外键` 的表称之为 `从表` , 被 `外键` 引用的表称之为 `主表`
+
+```mysql
+create table table1 (
+		column1 dataType primary key
+);
+
+create table table2 (
+		column1 dataType,
+  	column2 dataType,
+  	foreign key (column1) references table1(column1) 
+);
+```
+
+#### 修改约束
+
+- 添加 `外键`
+
+```mysql
+alter table tableName add foreign key (columnName) references mainTableName(primaryKeyName)
+```
+
+- 查看 `外键`
+
+```mysql
+show create table tableName;
+```
+
+- 删除 `外键`
+
+```mysql
+alter table tableName drop foreign key foreignKeyName; /* 外键名称要通过查看外键查看 */
+```
+
+#### 外键操作
+
+- 严格操作 (上述都是严格操作)
+  - 主表不存在对应数据, 从表就不允许添加
+  - 主表不允许删除从表引用着的数据
+  - 主表不允许修改从表引用着的数据
+- 置空操作
+  - 在删除主表中被从表引用着的数据时, 同时删除从表关联的数据 (变成 `null` )
+
+```mysql
+foreign key (column1) references table1(column1) on delete set null
+```
+
+- 级联操作 (cascade)
+  - 在修改主表中被从表引用着的数据时, 同时修改从表关联的数据 (无法删除)
+
+```mysql
+foreign key (column1) references table1(column1) on update cascade
+```
+
+- 可以配合起来使用
+
+```mysql
+foreign key (column1) references table1(column1) on delete set null on update cascade
+```
 
 ---
+
+## 高级查询 (Query)
+
+
+
+
+
+
+
+
+
