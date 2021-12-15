@@ -164,6 +164,7 @@ show create database databaseName;
 | AND / `&&`          | 与 (相当于 `JavaScript` 中的 `&&` ) |                                                              |
 | OR / `||`           | 或 (相当于 `JavaScript` 中的 `||` ) |                                                              |
 | NOT                 | 非 (相当于 `JavaScript` 中的 `!` )  |                                                              |
+| LIKE                | 模糊查询                            | 见 `高级查询` -> `模糊查询`                                  |
 
 
 
@@ -883,9 +884,245 @@ foreign key (column1) references table1(column1) on delete set null on update ca
 
 
 
+### 完整单表查询
+
+```mysql
+select [all | distinct] columnNames from tableName [where conditions] [order by asc | desc] [group by columnName] [having conditions] [limit startIndex number];
+```
+
+
+
+### 结果集
+
+定义
+
+- 通过 `查询语句` 查询出来的结果
+- 以 `表` 的形式返回
+- 是单独的一张新的 `表`
+- 不是真实存在的, 存储在 `内存` 中
+
+#### 给列起别名
+
+```mysql
+select column1 as alias1, column2 as alias2, ... from tableName;
+```
+
+
+
+### 伪表 (dual)
+
+- 一张虚拟的, 不存在的表
+- 为了让一些查询方式符合 `MySQL` 规范, 比如字段表达式
+- 名称为 `dual` , 查询的时候使用 `from dual` , 意为从 `伪表` 中查询
+
+
+
+### 字段表达式
+
+- 可以直接利用查询语句来查询表达式的结果
+- 为了符合 `MySQL` 规范, 从 `伪表` 中查询
+
+```mysql
+select 6+6; /* 不符合规范 */
+select 6+6 from dual; /* 符合MySQL规范, 但本质上 from dual 是废话 */
+```
+
+
+
+### 通配符
+
+- 配合 `模糊查询` 使用
+
+- `_` : 表示任意 `一个` 字符
+  - `a_c` : abc, adc, ......
+  - `_a_c` : 1abc, 3adc, ......
+- `%` : 表示任意 `0 ~ N个` 字符
+  - `a%c` : abc, adc, abbc, ac, ......
+  - `%a%c` : 1abc, abc1, 2abbc, 3adc, ......
+
+
+
+### 模糊查询 (LIKE)
+
+- `WHERE` 条件表达式种类之一
+- 利用 `通配符` 完成
+
+```mysql
+select columnName from tableName where columnName like expression;
+```
+
+
+
+### 排序 (ORDER BY)
+
+- `asc` : 升序排序
+- `desc` : 降序排序
+- 只指定 `order by` 不指定顺序的话, 默认按照 `升序` 进行排序
+- 可以指定多个列的排序顺序, 若前一个相等, 则应用后一个
+
+```mysql
+select column1, column2, ... from tableName order by column1 [asc | desc], column2 [asc | desc], ...;
+```
+
+
+
+### 聚合函数
+
+#### 常用
+
+| 函数    | 示例                                                        | 描述                 |
+| ------- | ----------------------------------------------------------- | -------------------- |
+| count() | select count(columnName) from tableName [where conditions]; | 统计查询到的结果数量 |
+| sum()   | select sum(columnName) from tableName [where conditions];   | 求和                 |
+| avg()   | select avg(columnName) from tableName [where conditions];   | 求平均值             |
+| max()   | select max(columnName) from tableName [where conditions];   | 获取最大值           |
+| min()   | select min(columnName) from tableName [where conditions];   | 获取最小值           |
+
+#### 数值类
+
+| 函数       | 示例                                                         | 描述               |
+| ---------- | ------------------------------------------------------------ | ------------------ |
+| rand()     | select rand() from dual; / select columnName from tableName order by rand(); (随机排序) | 生成随机数 (0 ~ 1) |
+| round()    | select round(3.5) from dual;                                 | 四舍五入           |
+| ceil()     | select ceil(3.1) from dual;                                  | 向上取整           |
+| floor()    | select floor(3.9) from dual;                                 | 向下取整           |
+| truncate() | select truncate(3.14159265, 2) from dual; (截取两位小数)     | 截取小数位         |
+
+#### 字符串类
+
+| 函数        | 示例                                                     | 描述                         |
+| ----------- | -------------------------------------------------------- | ---------------------------- |
+| ucase()     | select ucase('tony') from dual;                          | 转换为大写                   |
+| lcase()     | select lcase('TONY') from dual;                          | 转换为小写                   |
+| left()      | select left('hello world', 3) from dual; (hel)           | 从左边指定位置开始截取       |
+| right()     | select right('hello world', 3) from dual; (rld)          | 从右边指定位置开始截取       |
+| substring() | select substring('hello world', 3, 5) from dual; (llo w) | 从指定位置开始截取指定个字符 |
+
+
+
+### 数据分组 (GROUP BY)
+
+- 将数据分组, 相同的数据会被分到一个组中
+- `select` 后面必须是 `分组字段` / `聚合函数` , 否则就只会返回分组中的第一条数据
+- `group by` 后面跟的也是 `分组字段` , 前后必须一致
+
+```mysql
+select [columnName || functions] from tableName group by [columnName] /* 前后 columnName 分组字段必须一致 */
+```
+
+
+
+### having (条件查询)
+
+- 是 `条件查询` , 和 `where` 很像
+- 但是 `where` 去 `数据库` 中查找, 而 `having` 是去 `结果集` 中查找
+- 当需要寻找 `结果集` 中有但 `数据库` 中没有的数据时使用
+
+```mysql
+select columnName from tableName having conditions;
+```
+
+
+
+### 分页 (limit)
+
+- 根据 `开始的索引` 和 `需要的个数` 来返回相应的数据
+
+```mysql
+select columnName from tableName limit startIndex, number; /* 从第 startIndex 索引的数据开始, 返回 number 条数据 */
+```
+
+
+
+### 查询选项
+
+- `all` : 显示所有查询出来的数据 (默认行为)
+- `distinct` : 去除结果集中重复的数据之后再显示 (只有所有查询的列的数据都相同才会去重)
+
+```mysql
+select [all | distinct] columnName from tableName; /* all 可以省略 */
+```
 
 
 
 
 
+### 多表查询
 
+- 只需要在 `单表查询` 的基础上增加额外的 `表` 即可
+- 默认返回 `笛卡尔` 集 (拿一张表的每一条数据去和另一张表的每一条数据相乘)
+
+```mysql
+select columnName from table1, table2, ...;
+```
+
+
+
+#### union
+
+- 在 `纵向` 上将多张表的数据拼接起来
+- 使用 `union` 将多个 `单表查询语句` 拼接起来
+- 返回的 `结果集` 的 `列名` 是第一张表的
+- <span style="color: #f90">必须要保证每张表查询的字段个数一致</span>
+- 默认情况下会自动去重 (必须所有查询的字段都相同)
+- 使用 `union all` 来避免默认的去重行为
+
+```mysql
+select columnName from table1 union select columnName from table2 union ...; /* 默认去重 */
+select columnName from table1 union all select columnName from table2 union all ...; /* 使用 union all 指定不去重 */
+```
+
+
+
+#### 连接查询 (join)
+
+- 将多张表中关联的字段连接在一起
+- 用于查询多张表中满足数据的条件
+- 在查询指定字段时, 必须要在字段前加上其表名, 比如 `table1.column1`
+
+##### 内连接 (inner join)
+
+- 和 `where` 作用相同
+- 只会返回满足条件的数据
+
+```mysql
+select tableName.columnName from tabl1 inner join table2 on conditions; /* 比如 on table1.column1 = table2.column2 */
+```
+
+
+
+##### 外连接
+
+- 会返回不符合条件的数据, 返回哪张表取决于是 `左外连接` 还是 `右外连接`
+
+###### 左外连接 (left join)
+
+- 左边的表不看条件, 会返回其中的所有数据
+- 右边的表只会返回满足条件的数据
+
+```mysql
+select tableName.columnName from table1 left join table2 on conditions;
+```
+
+###### 右外连接 (right join)
+
+- 右边的表不看条件, 会返回其中的所有数据
+- 左边的表只会返回满足条件的数据
+
+```mysql
+select tableName.columnName from table1 right join table2 on conditions;
+```
+
+
+
+
+
+##### 交叉连接 (cross join)
+
+
+
+
+
+##### 全连接 (full join)
+
+- `MySQL` 不支持
