@@ -1080,7 +1080,7 @@ select columnName from table1 union all select columnName from table2 union all 
 - 用于查询多张表中满足数据的条件
 - 在查询指定字段时, 必须要在字段前加上其表名, 比如 `table1.column1`
 
-##### 内连接 (inner join)
+内连接 (inner join)
 
 - 和 `where` 作用相同
 - 只会返回满足条件的数据
@@ -1091,11 +1091,11 @@ select tableName.columnName from tabl1 inner join table2 on conditions; /* 比�
 
 
 
-##### 外连接
+外连接
 
 - 会返回不符合条件的数据, 返回哪张表取决于是 `左外连接` 还是 `右外连接`
 
-###### 左外连接 (left join)
+左外连接 (left join)
 
 - 左边的表不看条件, 会返回其中的所有数据
 - 右边的表只会返回满足条件的数据
@@ -1104,7 +1104,7 @@ select tableName.columnName from tabl1 inner join table2 on conditions; /* 比�
 select tableName.columnName from table1 left join table2 on conditions;
 ```
 
-###### 右外连接 (right join)
+右外连接 (right join)
 
 - 右边的表不看条件, 会返回其中的所有数据
 - 左边的表只会返回满足条件的数据
@@ -1115,7 +1115,7 @@ select tableName.columnName from table1 right join table2 on conditions;
 
 
 
-##### 交叉连接 (cross join)
+交叉连接 (cross join)
 
 - 如果没有指定条件, 那么会返回 `笛卡尔` 集 (即基本多表查询的返回结果)
 - 如果指定了条件, 那么就相当于 `内连接` (inner join)
@@ -1127,7 +1127,7 @@ select tableName.columnName from table1 cross join table2 on conditions;
 
 
 
-##### 全连接 (full join)
+全连接 (full join)
 
 - `MySQL` 不支持
 
@@ -1140,19 +1140,19 @@ select tableName.columnName from table1 cross join table2 on conditions;
 - 如果既没有指定条件, 又没有同名的字段, 那么就会返回 `笛卡尔` 集 (即基本多表查询的返回结果)
 - 默认情况下会去除重复的判断字段 (比如条件)
 
-##### 自然内连接 (natural join)
+自然内连接 (natural join)
 
 ```mysql
 select tableName.columnName from table1 natural join table2;
 ```
 
-##### 自然左外连接 (natural left join)
+自然左外连接 (natural left join)
 
 ```mysql
 select tableName.columnName from table1 natural left join table2;
 ```
 
-##### 自然右外连接 (natural right join)
+自然右外连接 (natural right join)
 
 ```mysql
 select tableName.columnName from table1 natural right join table2;
@@ -1164,19 +1164,19 @@ select tableName.columnName from table1 natural right join table2;
 
 - 在使用 `连接查询` 时, 若多张表需要判断的条件的字段名称一致时, 可以使用 `using` 来简化语法
 
-##### 内连接 (inner join)
+内连接 (inner join)
 
 ```mysql
 select tableName.columnName from table1 inner join table2 using(columnName);
 ```
 
-##### 左外连接 (left join)
+左外连接 (left join)
 
 ```mysql
 select tableName.columnName from table1 left join table2 using(columnName);
 ```
 
-##### 右外连接 (right join)
+右外连接 (right join)
 
 ```mysql
 select tableName.columnName from table1 right join table2 using(columnName);
@@ -1188,7 +1188,7 @@ select tableName.columnName from table1 right join table2 using(columnName);
 
 - 将一个 `查询语句` 的 `结果` 作为另一个 `查询语句` 的 `条件` / `表` 来使用
 
-##### 作为条件
+作为条件
 
 - 标准子查询 (结果为一条数据)
 
@@ -1202,7 +1202,7 @@ select columnName from tableName where columnName = (select columnName from tabl
 select columnName from tableName where columnName in(select columnName from tableName ......);
 ```
 
-##### 作为表
+作为表
 
 - <span style="color: #ff0;">必须要给子查询的结果起一个 `别名` 才能作为表使用</span>
 
@@ -1212,7 +1212,173 @@ select columnName from (select columnName from tableName ......) as t;
 
 ---
 
-## 事务
+## 事务 (transaction)
+
+定义
+
+- 用于处理容易出错的数据
+- 用来维护数据库的完整性
+- 保证成批的 `SQL` 语句要么全部执行, 要么全部不执行
+- 用来管理 `insert` / `update` / `delete` 语句
+- 只有 `InnoDB` 引擎才支持 `事务`
+
+本质
+
+- 开启事务的时候拷贝一张一模一样的表
+- 执行相关的操作都是在拷贝的这张表中进行操作
+- 如果失败了, 执行 `rollback` , 那么系统会自动删除这张拷贝的表, 不会影响原有的数据
+- 如果陈宫了, 执行 `commit` , 那么系统会利用拷贝的这张表中的最新的数据覆盖原有表中的数据, 会影响到原有的数据
+
+
+
+### 基本语法
+
+- 开启事务
+
+```mysql
+start transaction;
+```
+
+- 提交事务 (用于成功时)
+
+```mysql
+commit;
+```
+
+- 回滚事务 (用于失败时)
+
+```mysql
+rollback;
+```
+
+
+
+### 回滚点
+
+- 为 `事务` 创建 `回滚点`
+- 使用 `savepoint` 关键字跟上 `回滚点` 名称
+- 回滚时使用 `rollback to` 关键字跟上想要回滚的 `回滚点` 名称
+
+```mysql
+start transaction;
+/* transaction updates */
+savepoint rollbackPointName;
+/* transaction updates */
+
+rollback to rollbackPointName;
+```
+
+
+
+### 特点
+
+#### 原子性
+
+- 关注的是状态
+- 事务开启后的所有操作, 要么全部成功, 要么全部失败, 不可能出现部分成功或失败的情况
+- 事务执行过程中如果出错, 哪怕不手动回滚, 系统也会强制自动回滚
+
+#### 永久性
+
+- 事务完成后, 事务对数据库的所有操作是永久的, 操作完成之后就不能再回滚
+
+#### 隔离性 (重点)
+
+- 数据库允许多个并发事务同时对齐数据进行读写和修改
+- `隔离性` 可以防止多个事务并发执行时由于交叉执行而导致的数据不一致
+
+隔离级别
+
+- 不同的隔离级别有不同的行为模式
+
+| 隔离级别          | 英文 (也用于设置) | 描述                                         | 脏读 | 不可重复读 | 幻读 |
+| ----------------- | ----------------- | -------------------------------------------- | ---- | ---------- | ---- |
+| 读未提交          | read uncommitted  | 一个事务可以读取另一个未提交事务的数据       | ✔    | ✔          | ✔    |
+| 读已提交          | read committed    | 一个事务要等另一个事务提交后才能读取数据     | ❌    | ✔          | ✔    |
+| 可重复读          | repeatable read   | 一个事务范围内多个相同的查询返回相同的结果   | ❌    | ❌          | ✔    |
+| 串行化 (性能很差) | serializable      | 前一个事务没有执行完, 后面一个事务就不能执行 | ❌    | ❌          | ❌    |
+
+概念
+
+- 脏读: 能够读取到其他事务没有提交的数据
+- 不可重复读: 一个事务范围内多次查询的结果不同
+- 幻读: 由于其他事务对数据的更改, 导致当前事务读取到的数据并不是最新的数据, 会导致一些操作失败
+
+查看隔离级别
+
+- 全局
+
+```mysql
+select @@global.transaction_isolation;
+```
+
+- 当前会话 (一个终端窗口就是一个会话)
+
+```mysql
+select @@transaction_isolation;
+```
+
+设置隔离级别
+
+- 全局
+
+```mysql
+set global transaction isolation level levelName;
+```
+
+- 当前会话
+
+```mysql
+set session transaction isolation level levelName;
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
