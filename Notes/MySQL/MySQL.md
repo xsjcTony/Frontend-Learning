@@ -1115,14 +1115,108 @@ select tableName.columnName from table1 right join table2 on conditions;
 
 
 
-
-
 ##### 交叉连接 (cross join)
 
+- 如果没有指定条件, 那么会返回 `笛卡尔` 集 (即基本多表查询的返回结果)
+- 如果指定了条件, 那么就相当于 `内连接` (inner join)
 
+```mysql
+select tableName.columnName from table1 cross join table2;
+select tableName.columnName from table1 cross join table2 on conditions;
+```
 
 
 
 ##### 全连接 (full join)
 
 - `MySQL` 不支持
+
+
+
+#### 自然连接 (natural)
+
+- 用于简化 `内连接` / `外连接`
+- 如果多张表需要判断的条件的字段名称一致, 那么 `自然连接` 会自动判断, 不用编写条件
+- 如果既没有指定条件, 又没有同名的字段, 那么就会返回 `笛卡尔` 集 (即基本多表查询的返回结果)
+- 默认情况下会去除重复的判断字段 (比如条件)
+
+##### 自然内连接 (natural join)
+
+```mysql
+select tableName.columnName from table1 natural join table2;
+```
+
+##### 自然左外连接 (natural left join)
+
+```mysql
+select tableName.columnName from table1 natural left join table2;
+```
+
+##### 自然右外连接 (natural right join)
+
+```mysql
+select tableName.columnName from table1 natural right join table2;
+```
+
+
+
+#### using
+
+- 在使用 `连接查询` 时, 若多张表需要判断的条件的字段名称一致时, 可以使用 `using` 来简化语法
+
+##### 内连接 (inner join)
+
+```mysql
+select tableName.columnName from table1 inner join table2 using(columnName);
+```
+
+##### 左外连接 (left join)
+
+```mysql
+select tableName.columnName from table1 left join table2 using(columnName);
+```
+
+##### 右外连接 (right join)
+
+```mysql
+select tableName.columnName from table1 right join table2 using(columnName);
+```
+
+
+
+#### 子查询
+
+- 将一个 `查询语句` 的 `结果` 作为另一个 `查询语句` 的 `条件` / `表` 来使用
+
+##### 作为条件
+
+- 标准子查询 (结果为一条数据)
+
+```mysql
+select columnName from tableName where columnName = (select columnName from tableName ......);
+```
+
+- 非标准子查询 (结果为多条数据)
+
+```mysql
+select columnName from tableName where columnName in(select columnName from tableName ......);
+```
+
+##### 作为表
+
+- <span style="color: #ff0;">必须要给子查询的结果起一个 `别名` 才能作为表使用</span>
+
+```mysql
+select columnName from (select columnName from tableName ......) as t;
+```
+
+---
+
+## 事务
+
+
+
+
+
+
+
