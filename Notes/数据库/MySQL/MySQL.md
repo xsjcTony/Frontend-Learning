@@ -188,7 +188,7 @@ MySQL默认创建的数据库
 
 
 
-### 创建 (Create)
+创建 (Create)
 
 - 最基础的语句, 如果数据库已存在, 那么就会报错
 
@@ -217,7 +217,7 @@ create database if not exists `create` charset=utf8mb4;
 
  
 
-### 删除 (Delete)
+删除 (Delete)
 
 - 最基础的语句, 如果要删除的数据库不存在, 那么就会报错
 
@@ -233,7 +233,7 @@ drop database if exists databaseName;
 
 
 
-### 修改 (Update)
+修改 (Update)
 
 - 对于 `数据库` , 只能修改它的 `字符集`
 
@@ -243,7 +243,7 @@ alter database databaseName charset=utf8mb4;
 
 
 
-### 查看 (Read)
+查看 (Read)
 
 - 查看所有数据库
 
@@ -271,7 +271,7 @@ use databaseName;
 
 
 
-### 查看 (Read)
+查看 (Read)
 
 - 查看某个数据库中所有表 (需要指定数据库之后才能查看)
 
@@ -287,7 +287,7 @@ desc tableName;
 
 
 
-### 创建 (Create)
+创建 (Create)
 
 - 添加 `if not exists` 来在已有该名称的表的情况下跳过创建操作, 避免报错
 
@@ -309,7 +309,7 @@ create table if not exists tableName (
 
 
 
-### 删除 (Delete)
+删除 (Delete)
 
 - 添加 `if exists` 来在表不存在的情况下跳过删除操作, 避免报错
 
@@ -319,7 +319,7 @@ drop table if exists tableName;
 
 
 
-### 修改 (Update)
+修改 (Update)
 
 修改表名
 
@@ -397,7 +397,7 @@ alter table tableName engine=engineName;
 
 ### 增删改查 (CRUD)
 
-#### 插入 (Create)
+插入 (Create)
 
 - `字段名称` 和 `值` 必须一一对应
 
@@ -419,7 +419,7 @@ insert into tableName (columnName1, columnName2) values (value1, value2), (value
 
 
 
-#### 查询 (Read)
+查询 (Read)
 
 - 查询表中所有的数据 ( `*` 为通配符)
 
@@ -442,7 +442,7 @@ select columnName1, columnName2, ... from tableName where anotherColumnName=anot
 
 
 
-#### 更新 (Update)
+更新 (Update)
 
 - 更新整张表中某一列所有的数据
 
@@ -464,7 +464,7 @@ update tableName set columnName1=value1, columnName2=value2 where anotherColumnN
 
 
 
-#### 删除 (Delete)
+删除 (Delete)
 
 - 删除表中的所有数据
 
@@ -1332,15 +1332,140 @@ set global transaction isolation level levelName;
 set session transaction isolation level levelName;
 ```
 
+---
+
+## 视图 (view)
+
+定义
+
+- 将 `结果集` 缓存起来
+- 本质和 `结果集` 一样是一张虚拟的表
+
+作用
+
+- 简化 `SQL` 语句
+- 隐藏表的真实结构
+- 提升数据安全性
 
 
 
+### 基本语法
+
+- 创建视图
+- 一般 `视图` 名称使用下划线拼接
+
+```mysql
+create view view_name as select ...;
+```
+
+- 使用 `视图` 时, 将其当做 `表` 来使用即可
+
+```mysql
+select columnName from view_name;
+```
+
+- 修改 `视图` 内容
+
+```mysql
+alter view view_name as select ...;
+```
+
+- 删除 `视图`
+- 加上 `if exists` 来自动跳过不存在的情况, 避免报错
+
+```mysql
+drop view view_name;
+drop view if exists view_name;
+```
 
 
 
+### 更新视图数据 (增删改查)
+
+- 语法和 `表` 中的增删改查基本一致
+- <span style="color: #ff0">操作 `视图` 中的数据本质上是操作原始 `表` 中的数据</span>
+- 修改数据时只能修改原表中有的数据, 由其他方法 (比如说 `聚合函数` ) 生成的数据不能修改
 
 
 
+### 视图算法
+
+- 在 `create` 和 `view ` 关键字中间指定
+
+```mysql
+create [algorithm={merge | temptable | undefined}] view view_name as select ...;
+```
+
+- `merge` : 合并式 (替代式) 算法
+  - 将视图的语句和外层的语句合并之后再执行
+  - ✔ **允许** 更新视图中的数据
+
+```mysql
+/* 视图语句 */
+create algorithm=merge view view_name as select * from tableName;
+/* 查询语句 */
+select * from view_name;
+/* merge模式本质上会合并成如下语句在执行 */
+select * from (select * from tableName) as t;
+
+/* 可以执行针对视图的增删改查 */
+insert into view_name values ...; /* ✔ */
+```
+
+- `temptable` : 临时表 (具代式) 算法
+  - 将视图生成一个临时表, 再执行外层的语句
+  - ❌ **不允许** 更新视图中的数据
+
+```mysql
+/* 视图语句 */
+create algorithm=temptable view view_name as select * from tableName;
+/* 查询语句 */
+select * from view_name;
+/* temptable模式本质上会先生成一个临时表 */
+(select * from tableName) as t;
+/* 再执行查询语句 */
+select * from t;
+
+/* 不可以执行针对视图的增删改查 */
+insert into view_name values ...; /* ❌ */
+```
+
+- `undefined` : 未定义算法 (默认)
+  - 由 `MySQL` 自己决定使用哪种算法
+  - 不指定即为该算法
+  - 一般情况下 `MySQL` 会自动选择 `merge` 算法
+
+
+
+### 视图限制
+
+- 在创建视图的语句最后加上 `with check option`
+
+```mysql
+create view view_name as select ... with check option;
+```
+
+#### 基本限制
+
+- 在有 `with check option` 的情况下
+  - 保证数据 `update` 之后也要符合 `where` 的条件, 否则报错
+  - 保证 `insert` 之后的数据也能被视图查询出来
+  - 不限制 `delete`
+  - 对于没有 `where` 条件的视图, `with check option` 是多余的
+
+#### 更新限制
+
+- 只能更新原始表中有的数据
+- 由下列生成的数据都是不能更新的
+  - 聚合函数
+  - distinct
+  - group by
+  - having
+  - union
+  - from子句包含多张表
+  - select中应用了不可更新的形势图
+
+---
 
 
 
