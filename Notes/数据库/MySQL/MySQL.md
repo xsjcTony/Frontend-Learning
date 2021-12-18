@@ -1469,6 +1469,8 @@ create view view_name as select ... with check option;
 
 ## 变量 (variable)
 
+- 在 `MySQL` 中, 采用下划线全小写的命名方式, 比如 `user_name`
+
 
 
 ### 定义变量
@@ -1536,7 +1538,8 @@ prepare example from 'select * from tableName where id=?;';
 
 2. 发送 `预处理SQL` 语句到 `MySQL` 服务器
 3. `MySQL` 服务器对 `预处理SQL` 语句进行解析, 但不会执行
-4. 在客户端准备相关数据 (使用变量)
+4. 在客户端准备相关数据
+   - <span style="color: #f90;">预处理只能使用 `全局变量` , 不能使用 `局部变量`</span>
 
 ```mysql
 set @data=xx;
@@ -1764,15 +1767,133 @@ end repeat;
 
 ---
 
+## 批量处理数据
+
+- 在 `存储过程` / `自定义函数` 中都可以使用
+- 用于批量执行 `SQL` 语句, 避免逐条执行造成的性能浪费
+- 在批量语句之前加上 `set autocommit = 0;`
+- 调用完之后加上 `commit;` 即可
+- 本质是 `set autocommit = 0` 之后, 所有的操作要在 `commit` 之后才执行, 约等于开启了一个 `事务` , 但还是有所不同
+
+```mysql
+set autocommit = 0;
+/* SQL statements */
+commit;
+```
+
+---
+
+## 索引
+
+定义
+
+- 相当于字典中的目录 (拼音 / 偏旁部首)
+- 可以通过索引快速的找到想要的结果
+- 若没有索引就只能从前往后一条一条的查询
+- 帮助提升数据的查询速度
+
+优点
+
+- 大大加快数据索引速度
+- 没有任何限制, 所有 `MySQL` 字段都可以用作索引
+
+缺点
+
+- 索引是真实存在的并且会占用空间, 增加数据库的体积
+- 对作为索引的字段进行增删改查, 那么系统会花费时间去更新维护索引
+
+原则
+
+- 对经常用于查询的字段应该创建索引
+
+  - `where` 条件字段
+  - `group by` 分组字段
+  - `order by` 排序字段
+
+  - ......
+
+- 对于 `主键` / `外键` / `唯一` 键, 系统都会自动创建索引, 无需手动操作
+
+- 对于数据量小的表, **不要**刻意使用索引
+
+分类
+
+- 单值索引: 将某个字段的值作为索引
+- 复合索引: 将多个字段的值作为索引
+- 唯一索引 (唯一键) : 索引列中的值必须是唯一的, 但 **允许** 为 `null`
+- 主键索引: 是一种特殊的 `唯一索引` , 但 **不允许** 为 `null`
 
 
 
+### 查看是否使用索引
+
+- 在 `查询语句` 前添加 `explain` 关键字
+- 若结果中 `key` 这个字段不为 `null` , 那么说明该 `查询语句` 用到了索引
+
+```mysql
+explain select ...;
+```
 
 
 
+### 添加索引
+
+- 默认添加索引
+
+  - 给表设置 `主键` / `外键` , 那么系统就会自动创建对应的所以
+
+  - 给表设置 `唯一` 键, 那么系统就会创建对应的索引
+
+
+- 创建表时通过指定字段来添加索引
+
+```mysql
+create table table_name (
+		column_name dataType,
+  	index index_name (column_name) /* 为 column_name 字段添加索引 */
+);
+```
+
+- 给已存在的表的指定字段添加索引
+  - `create index` 的方法必须要指定索引名称
+  - `alter table` 的方式不一定要指定
+
+```mysql
+create index index_name on tableName (column_name) /* 必须要有 index_name */
+alter table tableName add index index_name (column_name)  /* 可以没有 index_name */
+```
 
 
 
+### 删除索引
+
+```mysql
+drop index index_name on tableName;
+```
+
+
+
+### 索引算法
+
+[MySQL :: MySQL 8.0 Reference Manual :: 8.3.9 Comparison of B-Tree and Hash Indexes](https://dev.mysql.com/doc/refman/8.0/en/index-btree-hash.html)
+
+- 决定了如何创建索引
+- 决定了如何查找索引对应的数据
+- 分为 `BTREE` / `HASH` 两种
+
+#### BTREE
+
+- 默认算法
+
+- 基于 `平衡多叉排序树` 实现
+- 能够缩短查找的次数
+
+#### HASH
+
+- 只能用于 `Memory ` 存储引擎
+
+- 基于 `哈希表` 实现
+- 能够一次性定位到指定数据
 
 
 
