@@ -1467,15 +1467,302 @@ create view view_name as select ... with check option;
 
 ---
 
+## 变量 (variable)
 
 
 
+### 定义变量
+
+- 全局变量
+- 可以在任何地方定义
+
+```mysql
+@variableName
+```
+
+- 局部变量
+- 只能在 `存储过程` 或 `函数` 中定义
+
+```mysql
+declare variableName dataType;
+declare variableName dataType default defaultValue; /* 使用 default 关键字来给局部变量定义一个默认值 */
+```
 
 
 
+### 变量赋值
+
+```mysql
+set @globalVariable=var_value;
+set localVariable=var_value;
+select columnName into @globalVariable from tableName;
+select columnName into localVariable from tableName;
+```
+
+---
+
+## 预处理
+
+定义
+
+- 由 `MySQL` 提出的一种减轻服务器压力的技术
 
 
 
+### 传统MySQL处理流程
+
+1. 在客户端准备 `SQL` 语句
+2. 发送 `SQL` 语句到 `MySQL` 服务器
+3. `MySQL` 服务器对 `SQL` 语句进行解析, 然后编译, 再执行该 `SQL` 语句
+4. 服务器将执行结果返回给客户端
+
+弊端
+
+- 哪怕多次传递的语句大部分内容是相同的, 每次还是要重复传递
+- 哪怕语句是相同的, 每次执行之前还是要先解析, 编译之后才能执行
+
+
+
+### 预处理的处理流程
+
+1. 在客户端准备 `预处理SQL` 语句
+
+```mysql
+/* 格式 */
+prepare preprocessing_name from SQL_statement;
+/* 例子 */
+prepare example from 'select * from tableName where id=?;';
+```
+
+2. 发送 `预处理SQL` 语句到 `MySQL` 服务器
+3. `MySQL` 服务器对 `预处理SQL` 语句进行解析, 但不会执行
+4. 在客户端准备相关数据 (使用变量)
+
+```mysql
+set @data=xx;
+```
+
+5. `MySQL` 服务器对数据和 `预处理SQL` 编译, 然后执行该 `SQL` 语句
+
+```mysql
+execute preprocessing_name using @data;
+```
+
+6. 服务器将执行结果返回给客户端
+
+优点
+
+- 只对 `SQL` 语句进行了一次解析
+- 重复内容大大减少 (网络传输更快)
+
+---
+
+## 存储过程 (Stored Procedure)
+
+[MySQL :: MySQL 8.0 Reference Manual :: 13.1.17 CREATE PROCEDURE and CREATE FUNCTION Statements](https://dev.mysql.com/doc/refman/8.0/en/create-procedure.html)
+
+定义
+
+- 类似于其他编程语言的 `函数`
+- 用于封装一组特定功能的 `SQL` 语句集
+
+
+
+### 基本语法
+
+- 创建
+
+```mysql
+create procedure procedureName (parameter dataType, ...)
+begin
+		/* SQL statements */
+		/* 可以使用 declare 关键字定义局部变量 */
+end;
+```
+
+- 调用
+
+```mysql
+call procedureName(arguments);
+```
+
+- 删除
+  - 加上 `if exists` 防止不存在时报错
+
+```mysql
+drop procedure procedureName;
+drop procedure if exists procedureName;
+```
+
+
+
+### 查看存储过程
+
+- `MySQL` 服务器中所有存储过程
+
+```mysql
+show procedure status;
+```
+
+- 指定 `数据库` 中的存储过程
+
+```mysql
+show procedure status where db='db_name';
+```
+
+- 指定存储过程的 `源代码`
+
+```mysql
+show create procedure procedureName;
+```
+
+
+
+### 参数
+
+存储过程的参数有三种
+
+- `in` : 输入参数 (默认)
+- `out` : 输出参数
+- `inout` : 输入输出参数
+
+```mysql
+create procedure procedureName (in parameter dataType, out parameter dataType)
+begin
+		/* SQL statements */
+end;
+```
+
+输入参数
+
+- 外界传递的参数
+
+输出参数
+
+- `MySQL` 返回给外界的参数
+- `MySQL` 的 `存储过程` 中不能使用 `return` 返回值, 需要通过 `输出参数` 来向外返回一个值
+- 使用方法是在外界定义一个变量, 然后将这个变量当做 `输出参数` 传进来, 那么调用该 `存储过程` 之后这个变量的值就会被修改, 形成返回值的效果
+
+输入输出参数
+
+- 同时具备了 `输入参数` 和 `输出参数` 的功能
+- 要注意 `数据类型`
+
+---
+
+## 自定义函数
+
+[MySQL :: MySQL 8.0 Reference Manual :: 13.1.17 CREATE PROCEDURE and CREATE FUNCTION Statements](https://dev.mysql.com/doc/refman/8.0/en/create-procedure.html)
+
+定义
+
+- 和 `存储过程` 很像, 但是不需要手动通过 `call` 调用
+- 和 `聚合函数` 一样会在 `SQL` 语句中自动被调用
+
+
+
+### 基本语法
+
+- 创建
+
+```mysql
+create function functionName (parameter dataType, ...) returns dataType characteristic
+begin
+		/* SQL statements */
+		return exampleValue;
+end;		
+```
+
+
+
+### 特征 (characteristic)
+
+- `函数` 必须指定 `特征`
+- 可以指定多个特征, 通过 `空格` 来分隔
+
+- `存储过程` 一样可以使用 `特征` , 但不是强制要求
+
+| 函数特征                                       | 描述                                             |
+| ---------------------------------------------- | ------------------------------------------------ |
+| DETERMINISTIC                                  | 确定的, 相同的参数 **一定** 会输出相同的结果     |
+| NOT DETERMINISTIC (默认, 若上述两条都没有指定) | 不确定的, 相同的参数 **不一定** 会输出相同的结果 |
+| NO SQL                                         | 没有SQL语句                                      |
+| READS SQL DATA                                 | 包含SQL语句, 但只读取数据, 不会修改数据          |
+| MODIFIES SQL DATA                              | 包含SQL语句, 会读取 / 修改数据                   |
+| CONTAINS SQL (默认, 若上述四条都没有指定)      | 包含SQL语句, 但既不会读取, 也不会修改数据        |
+
+- `DETERMINISTIC` / `NOT DETERMINISTIC` 必须要指定其一
+- `NO SQL` / `READS SQL DATA` / `MODIFIES SQL DATA` / `CONTAINS SQL` 只是用于声明, 并不会影响程序执行
+
+```mysql
+/* 例子 */
+create function fn_add (a int, b int) returns int deterministic contains sql /* 确定的, 包含SQL语句但不读写数据 */
+begin
+    declare sum int default 0;
+    set sum = a + b;
+    return sum;
+end;
+
+select fn_add(1, 4) from dual; /* 输出 5 */
+```
+
+
+
+### 条件语句
+
+- 同样适用于 `存储过程`
+
+#### if
+
+```mysql
+if conditions then
+		/* statements */
+elseif conditions then
+		/* statements */
+else
+		/* statements */
+end if;
+```
+
+#### case
+
+```mysql
+case
+when conditions then
+		/* statements */
+when conditions then
+		/* statements */
+else	/* 可选, 相当于其他语言的 default */
+		/* statements */
+end case;
+```
+
+
+
+### 循环语句
+
+- 同样适用于 `存储过程`
+
+#### while
+
+```mysql
+while conditions do
+		/* statements */
+end while;
+```
+
+#### repeat
+
+- 类似于其他编程语言中的 `do ... while` 循环
+
+```mysql
+repeat
+		/* statements */
+until conditions
+end repeat;
+```
+
+---
 
 
 
