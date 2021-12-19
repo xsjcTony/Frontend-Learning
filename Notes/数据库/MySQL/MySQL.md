@@ -1895,9 +1895,16 @@ drop index index_name on tableName;
 - 基于 `哈希表` 实现
 - 能够一次性定位到指定数据
 
+---
 
+## 连接池 (connection pool)
 
+- 负责分配, 管理和释放数据库连接
+- 允许应用程序重复使用一个现有的数据库连接, 而不是重新再建立一个
+- 不使用连接池而频繁的创建 / 销毁连接非常消耗服务器的性能
+- `NodeJS` 中可以使用 `Sequelize` 
 
+![connection_pool.png](D:\xsjcTony\it666\Frontend-Learning\Notes\数据库\MySQL\images\connection_pool.png)
 
 
 
