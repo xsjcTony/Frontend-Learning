@@ -1,0 +1,25 @@
+{
+  "development": {
+    "username": "root",
+    "password": "123456",
+    "database": "demo_development",
+    "host": "127.0.0.1",
+    "dialect": "mysql",
+    "seederStorage": "sequelize",
+    "seederStorageTableName": "sequelize_seed"
+  },
+  "test": {
+    "username": "root",
+    "password": "123456",
+    "database": "demo_test",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "root",
+    "password": "123456",
+    "database": "demo_production",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  }
+}
