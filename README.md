@@ -89,6 +89,7 @@
 
 - 基础
 - 原理 / 实现
+- 常用包
 
 
 
@@ -111,3 +112,10 @@
         - Mint UI (不推荐)
         - Vant
 
+
+
+## 数据库
+
+- MySQL
+  - Sequelize
+- MongoDB
