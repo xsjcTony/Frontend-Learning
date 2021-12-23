@@ -290,16 +290,113 @@ db.collection.find(
 
 
 
-
-
 ### 条件查询 (query)
 
 - 条件默认是 `AND ` 关系, 没有顺序要求, 只要同时满足多个条件即可
 - 若某个字段的取值又是 `文档` , 那么在判断的时候通过 `outerField.innerField` 的方式来指向嵌套文档的字段, <span style="color: #0ff;">需要用引号 `''` 包裹起来</span>
 
+#### 条件操作符
 
+[Query and Projection Operators — MongoDB Manual](https://docs.mongodb.com/manual/reference/operator/query/)
 
+- 运算符皆以 `$` 开头
 
+##### 比较操作符
+
+[Comparison Query Operators — MongoDB Manual](https://docs.mongodb.com/manual/reference/operator/query-comparison/)
+
+- 用于指定和 `<value>` 的对比关系
+
+```js
+db.<collection>.find(
+	{ <field>: { <operator>: <value> } },
+  <projection>
+)
+```
+
+| 比较运算符 | 描述           | 注意点                                             |
+| ---------- | -------------- | -------------------------------------------------- |
+| $eq        | 等于           | 默认, 可以省略                                     |
+| $gt        | 大于           |                                                    |
+| $gte       | 大于等于       |                                                    |
+| $in        | 在 `数组` 中   | { \<field>: { $in: [\<value1>, \<value2>, ...] } } |
+| $lt        | 小于           |                                                    |
+| $lte       | 小于等于       |                                                    |
+| $ne        | 不等于         | 若没有需要判断的字段, 也算作 `不等于`              |
+| $nin       | 不在 `数组` 中 | 若没有需要判断的字段, 也算作不在 `数组` 中         |
+
+##### 逻辑操作符
+
+[Logical Query Operators — MongoDB Manual](https://docs.mongodb.com/manual/reference/operator/query-logical/)
+
+- 用于组合多个 `<expression>` 表达式
+- 可以嵌套
+
+```js
+// top-level
+db.<collection>.find(
+	{
+    <operator>: [
+    	<expression1>,
+    	<expression2>
+    ]
+  },
+  <projection>
+)
+  
+// nested
+db.<collection>.find(
+	{
+    <field>: {
+    	<operator>: [
+    		<expression1>,
+    		<expression2>
+    	]
+  	}
+  },
+  <projection>
+)
+```
+
+| 逻辑操作符 | 描述                                     | 类似         | 注意点                                                       |
+| ---------- | ---------------------------------------- | ------------ | ------------------------------------------------------------ |
+| $and       | 逻辑与, 匹配条件 **全部** 成立的文档     | 1 && 2       | 默认, 可以省略                                               |
+| $not       | 逻辑非, 匹配条件不成立的文档             | !1           | 不能用作 `top-level` 的操作符, 若没有需要判断的字段也会匹配到 |
+| $nor       | 逻辑或非, 匹配条件 **全部** 不成立的文档 | ! (1 \|\| 2) | 若没有需要判断的字段也会匹配到                               |
+| $or        | 逻辑或, 匹配至少一个条件成立的文档       | 1 \|\| 2     |                                                              |
+
+##### 字段操作符
+
+[Element Query Operators — MongoDB Manual](https://docs.mongodb.com/manual/reference/operator/query-element/)
+
+```js
+db.<collection>.find(
+	{
+    <field>: { $exists: <boolean> }
+  },
+  <projection>
+)
+```
+
+| 字段操作符 | 描述                                                         |
+| ---------- | ------------------------------------------------------------ |
+| $exists    | 查询包含某个字段的文档, 一般可以配合 `$ne` / `$nin` / `$not` / `$nor` 等操作符来使用 |
+| $type      | 查询指定字段是指定类型的文档, 具体数据类型查看: [$type — MongoDB Manual](https://docs.mongodb.com/manual/reference/operator/query/type/#available-types) |
+
+##### 数组操作符
+
+[Array Query Operators — MongoDB Manual](https://docs.mongodb.com/manual/reference/operator/query-array/)
+
+- 用于操作数组
+
+```js
+```
+
+| 数组操作符 | 描述 |
+| ---------- | ---- |
+| $all       |      |
+| $elemMatch |      |
+| $size      |      |
 
 
 
