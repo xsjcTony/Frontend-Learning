@@ -10,6 +10,8 @@
 
 - 存储文档 (BSON) 的 `非关系型` 数据库
 - `BSON` : Binary JSON
+- 默认端口号为 `27017`
+- `MongoDB` 原生支持 `JavaScript`
 
 ---
 
@@ -372,7 +374,7 @@ db.<collection>.find(
 ```js
 db.<collection>.find(
 	{
-    <field>: { $exists: <boolean> }
+    <field>: { <operator>: <value> }
   },
   <projection>
 )
@@ -390,17 +392,120 @@ db.<collection>.find(
 - 用于操作数组
 
 ```js
+db.<collection>.find(
+	{
+    <field>: { <operator>: <value> }
+  },
+  <projection>
+)
 ```
 
-| 数组操作符 | 描述 |
-| ---------- | ---- |
-| $all       |      |
-| $elemMatch |      |
-| $size      |      |
+| 数组操作符 | 描述                                               |
+| ---------- | -------------------------------------------------- |
+| $all       | 匹配数组中包含所有指定查询值的文档                 |
+| $elemMatch | 匹配数组中至少有一项能完全匹配所有的查询条件的文档 |
+| $size      | 匹配数组长度为指定长度的文档                       |
+
+##### 运算操作符
+
+[Evaluation Query Operators — MongoDB Manual](https://docs.mongodb.com/manual/reference/operator/query-evaluation/)
+
+- 这里只有 `$regex` , 更多见文档
+- 可以直接在 `$in` / `$nin` 中使用 `正则表达式`
+
+```js
+// 通过正则表达式匹配满足条件的文档
+db.<collection>.find(
+	{
+    <field>: { $regex: /pattern/, $options: '<options>' } },
+  	<field>: { $regex: 'pattern', $options: '<options>' } },
+  	<field>: { $regex: /pattern/<options> } }
+  }
+)
+
+db.<collection>.find(
+	{
+    <field>: { $in: [/pattern/<option>, /pattern/<option>] }
+  }
+)
+```
 
 
 
+### 文档游标 (Cursor)
 
+定义
+
+- 执行 `find()` 之后的返回值
+- 指向被找到的文档 (类似于 `C` 的 `指针` )
+
+注意点
+
+[Iterate a Cursor in mongosh — MongoDB Manual](https://docs.mongodb.com/manual/tutorial/iterate-a-cursor/#std-label-read-operations-cursors)
+
+- 默认情况下 `游标` 会在遍历完所有文档 `10分钟` 之后自动关闭当前 `游标`
+- 若不想自动关闭, 可以调用 `cursor.noCursorTimeout()` 让 `游标` 不自动关闭, 一直有效
+
+```js
+let cursor = db.<collection>.find().noCursorTimeout()
+```
+
+- 可以调用 `cursor.close()` 来手动关门 `游标`
+
+#### 常用方法
+
+[Cursor Methods — MongoDB Manual](https://docs.mongodb.com/manual/reference/method/js-cursor/)
+
+- 游标方法可以在 `find()` 后链式调用
+
+##### 循环方法
+
+- `hasNext()` : 是否还有下一个文档
+- `next()` : 取出下一个文档
+- `forEach()` : 依次取出所有文档
+
+```js
+// 循环打印所有的文档
+let cursor = db.<collection>.find()
+cursor.forEach(printjson)
+```
+
+##### 分页函数
+
+- `limit()` : 取出多少个文档
+- `skip()` : 跳过多少个方法, 类似 `offset`
+
+```js
+// skip() 永远会在 limit() 之前执行
+db.<collection>.find().limit(number).skip(number)
+```
+
+##### 排序函数
+
+- `sort()` : 按照指定规则排序
+- `<ordering>` 为 `1` 表示升序, `-1` 表示降序
+
+```js
+// sort() 永远会在 limit() / skip() 之前执行
+db.<collection>.find().sort({ <field>: <ordering>, ... })
+```
+
+##### 统计函数
+
+- `count()` : 统计集合中文档的个数
+  - 与 `db.<collection>.count()` 效果相同
+  - 不要在没有 `<query>` 条件时使用, 因为在 `分布式` 的情况下是不准确的
+- `<applySkipLimit>` : 是否应用 `skip()` / `limit()` 的效果, 默认为 `false` , 即不应用
+  - 若为 `true` , 则效果与 `cursor.size()` 相同
+- 在某些drivers中已弃用, 可以使用 `db.<collection>.countDocuments()` / `db.<collection>.estimatedDocumentCount()` : [Collection Methods — MongoDB Manual](https://docs.mongodb.com/manual/reference/method/js-collection/)
+
+```js
+db.<collection>.find(<query>).count(<applySkipLimit>)
+```
+
+---
+
+## 更新
 
 
 
