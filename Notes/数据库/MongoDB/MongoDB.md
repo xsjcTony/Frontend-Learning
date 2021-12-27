@@ -301,7 +301,7 @@ db.collection.find(
 
 [Query and Projection Operators — MongoDB Manual](https://docs.mongodb.com/manual/reference/operator/query/)
 
-- 运算符皆以 `$` 开头
+- 所有操作符皆以 `$` 开头
 
 ##### 比较操作符
 
@@ -316,7 +316,7 @@ db.<collection>.find(
 )
 ```
 
-| 比较运算符 | 描述           | 注意点                                             |
+| 比较操作符 | 描述           | 注意点                                             |
 | ---------- | -------------- | -------------------------------------------------- |
 | $eq        | 等于           | 默认, 可以省略                                     |
 | $gt        | 大于           |                                                    |
@@ -509,7 +509,56 @@ db.<collection>.find(<query>).count(<applySkipLimit>)
 
 
 
+### 更新文档
 
+- 使用 `db.<collection>.updateOne()` / `db.<collection>.updateMany()` 来更新一个 / 多个文档
+  - `<filter>` : 和 `find()` 中的 `<query>` 一样, 是筛选条件
+  - `<update>` : 更改的内容
+  - `<options>` : 相关更新选项
+
+```js
+// updateOne 会更新找到的第一个符合 <filter> 的文档, 而 updateMany 会更新所有符合条件的
+db.<collection>.updateOne(
+	<filter>,
+  <update>,
+  <options>
+)
+```
+
+
+
+### 更新操作符
+
+[Update Operators — MongoDB Manual](https://docs.mongodb.com/manual/reference/operator/update/#std-label-update-operators)
+
+- 操作符皆以 `$` 开头
+
+#### 字段操作符
+
+[Field Update Operators — MongoDB Manual](https://docs.mongodb.com/manual/reference/operator/update-field/)
+
+- 用于操作 `字段` 
+
+```js
+db.<collection>.updateOne(
+	<filter>,
+  {
+  	<operator>: { <field>: <value>, ... }
+  },
+  <options>
+)
+```
+
+| 字段操作符 | 描述                                          | 注意点                                                       |
+| ---------- | --------------------------------------------- | ------------------------------------------------------------ |
+| $set       | 更新 / 新增字段, 字段存在就更新, 不存在就新增 | 嵌套对象通过 `'field.nestedKey'` 的方式更新, 嵌套数组通过 `'field.index'` 的方式更新 |
+| $unset     | 删除字段, 若字段不存在则不做任何操作          | `<value>` 不重要, 删除嵌套数组的元素时, 会将值设置为 `null` , 而不会改变数组长度 |
+|            |                                               |                                                              |
+|            |                                               |                                                              |
+|            |                                               |                                                              |
+|            |                                               |                                                              |
+|            |                                               |                                                              |
+|            |                                               |                                                              |
 
 
 
