@@ -111,12 +111,6 @@
         - Element
         - Mint UI (不推荐)
         - Vant
-- 原理
-    - Vue (v2)
-    - Vuex
-    - Vue Router
-    - Vue CLI
-
 
 
 
