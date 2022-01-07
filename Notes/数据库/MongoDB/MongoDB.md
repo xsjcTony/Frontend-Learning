@@ -1,4 +1,4 @@
-# MongoDB
+# MongoDB (v5.x)
 
 
 
@@ -321,7 +321,7 @@ db.<collection>.find(
 | $eq        | 等于           | 默认, 可以省略                                     |
 | $gt        | 大于           |                                                    |
 | $gte       | 大于等于       |                                                    |
-| $in        | 在 `数组` 中   | { \<field>: { $in: [\<value1>, \<value2>, ...] } } |
+| $in |在 `数组` 中|{ \<field>: { $in: [\<value1>, \<value2>, ...] } }|
 | $lt        | 小于           |                                                    |
 | $lte       | 小于等于       |                                                    |
 | $ne        | 不等于         | 若没有需要判断的字段, 也算作 `不等于`              |
@@ -597,9 +597,10 @@ db.<collection>.updateOne(
 | $push      | 向 `数组` 字段中添加元素 (不去重)         | 相当于不会自动去重的 `$addToSet`                             |
 | $pop       | 删除 `数组` 字段中的第一个 / 最后一个元素 | `{ $pop: { <field>: 1 } }` 即为删除最后一个元素, `-1` 为删除第一个元素 / `数组` 被清空之后会保留空 `数组` |
 | $pull      | 删除 `数组` 字段中所有符合条件的元素      | 可以配合 `正则表达式` , `<query>` 等指定条件 / 删除 `数组` 必须要完全一模一样 (包括顺序) 才能删除 / 删除 `文档` 即使顺序不一样或字段个数不一样, 只要有匹配的就可以删除 |
-| $pullAll   |                                           |                                                              |
-|            |                                           |                                                              |
-|            |                                           |                                                              |
+| $pullAll   | 批量删除 `数组` 字段中的元素              | 删除 `数组` / `文档` 时, 必须要一模一样 (包括顺序) 才能删除  |
+| $          | 更新 `数组` 字段中满足条件的第一个元素    | 格式为 `{ "<arrayField>.$": <value> }` / 配合 `$set` 等使用 / 需要更新的 `数组` 字段必须出现在 `<query>` 中 / 相当于复用 `<query>` 条件 |
+| $[]        | 更新 `数组` 字段中的所有元素              | 格式为 `{ "<arrayField>.$[]": <value> }` / 配合 `$set` 等使用 |
+
 
 - 数组操作符 - Modifier
 
@@ -616,6 +617,360 @@ db.<collection>.updateOne(
 | 数组操作符 - Modifier | 描述                                   |
 | --------------------- | -------------------------------------- |
 | $each                 | 将 `$push` 和 `$addToSet` 改为逐个添加 |
+
+---
+
+## 删除
+
+
+
+### 删除文档
+
+- 使用 `db.<collection>.deleteOne()` / `db.<collection>.deleteMany()` 来删除一个 / 多个文档
+  - `<filter>` : 和 `find()` 中的 `<query>` 一样, 是筛选条件
+  - `<options>` : 相关删除选项
+
+```js
+// deleteOne 会删除找到的第一个符合 <filter> 的文档, 而 deleteMany 会删除所有符合条件的
+db.<collection>.updateOne(
+	<filter>,
+  <options>
+)
+```
+
+---
+
+## 聚合操作 (Aggregation Pipeline)
+
+[db.collection.aggregate() — MongoDB Manual](https://docs.mongodb.com/manual/reference/method/db.collection.aggregate/)
+
+定义
+
+- 通过一个方法完成一系列的操作
+- 每一个操作称之为一个 `阶段` (stage)
+- 上一个 `阶段` 处理完毕的结果会被传给下一个 `阶段`
+- 所有 `阶段` 都处理完毕之后会返回一个新的 `结果集`
+- 不会修改原有文档, 会返回一个新的文档
+
+格式
+
+- `<pipeline>` : 定义每个 `阶段` 的操作, 是一个 `数组` , 包含了各个 `聚合阶段`
+- `<options>` : `聚合操作` 的额外配置
+
+```js
+db.<collection>.aggregate(
+	<pipeline>,
+  <options>
+)
+```
+
+
+
+### 聚合阶段
+
+[Aggregation Pipeline Stages — MongoDB Manual](https://docs.mongodb.com/manual/reference/operator/aggregation-pipeline/)
+
+格式
+
+- `<value>` 取值中若需要访问原有文档中的字段, 需要在字段名称前加上 `$` , 比如 `$name.firstName` 
+
+```js
+db.<collection>.aggregate(
+	[
+    { <stage>: { <field>: <value> } },
+    ...
+  ],
+  <options>
+)
+```
+
+
+
+#### $project
+
+定义
+
+- 对输入的文档进行再次投影
+- 按照需要的格式生成 `结果集`
+
+格式
+
+```js
+db.<collection>.aggregate(
+	[
+    { $project: { <field>: < 1 | 0 > }}
+  ],
+  <options>
+)
+```
+
+注意点
+
+- 若使用了原有文档中不存在的字段, 那么会自动使用 `null` 填充
+
+
+
+#### $match
+
+定义
+
+- 筛选符合条件的 `文档`
+- 和 `find()` 方法中的 `<query>` 一样
+
+格式
+
+```js
+db.<collection>.aggregate(
+	[
+    { $match: <query> }
+  ],
+  <options>
+)
+```
+
+
+
+#### $limit
+
+定义
+
+- 指定获取 `文档` 的个数
+- 和 `游标` 的 `limit` 方法一样
+
+格式
+
+```js
+db.<collection>.aggregate(
+	[
+    { $limit: { <field>: <number> }}
+  ],
+  <options>
+)
+```
+
+
+
+#### $skip
+
+定义
+
+- 指定跳过 `文档` 的个数
+- 和 `游标` 的 `skip` 方法一样
+
+格式
+
+```js
+db.<collection>.aggregate(
+	[
+    { $skip: { <field>: <number> }}
+  ],
+  <options>
+)
+```
+
+注意点
+
+- 由于 `聚合操作` 的特性, `$skip` 和 `$limit` 的先后顺序很重要
+- 一般的分页操作会将 `$skip` 写在 `$limit` 之前
+
+
+
+#### $unwind
+
+定义
+
+- 展开 `数组` 字段
+- `数组` 中有n个元素就返回n个 `文档`
+
+格式
+
+- `path` : 指定需要展开的 `数组` 字段
+- `includeArrayIndex` (optional) : 指定显示 `索引` 的字段名称
+- `preserveNullAndEmptyArrays` (optional) : 指定是否需要过滤数组为 `null` , 不存在字段, `[]` 的情况
+  - `true` 不过滤, `false` 过滤
+  - 默认为 `false`
+
+```js
+db.<collection>.aggregate(
+	[
+    { $unwind: { path: <field>, <option>: <value> }}
+  ],
+  <options>
+)
+```
+
+注意点
+
+- 若使用了原有文档中不存在的字段, 那么会自动使用 `null` 填充
+
+
+
+#### $sort
+
+定义
+
+- 对 `文档` 进行排序
+- 和 `游标` 中的 `sort` 方法一样
+
+格式
+
+```js
+db.<collection>.aggregate(
+	[
+    { $sort: { <field>: < 1 | -1 > }}
+  ],
+  <options>
+)
+```
+
+
+
+#### $lookup
+
+[$lookup (aggregation) — MongoDB Manual](https://docs.mongodb.com/manual/reference/operator/aggregation/lookup/#mongodb-pipeline-pipe.-lookup)
+
+定义
+
+- 关联查询
+- 使用 `left outer join`
+
+格式 (关联查询)
+
+- `from` : 关联集合名称
+- `localField` : 当前集合中的字段名称
+- `foreignField` : 关联集合中的字段名称
+- `as` : 输出字段的名称
+
+```js
+db.<collection>.aggregate(
+	[
+    { $lookup: {
+      from: <collection to join>,
+      localField: <field from the input documents>,
+      foreignField: <field from the documents of the 'from' collection>,
+      as: <output array field>
+    }}
+  ],
+  <options>
+)
+```
+
+格式 (无关联查询)
+
+- `from` : 关联集合名称
+- `let` : 定义给关联集合的聚合操作中使用的当前集合的常量 (映射)
+- `pipeline` : 关联集合的聚合操作, 是一个 `数组`
+- `as` : 输出字段的名称
+
+```js
+db.<collection>.aggregate(
+	[
+    { $lookup: {
+      from: <joined collection>,
+      let: { <var_1>: <expression>, …, <var_n>: <expression> },
+      pipeline: [ <pipeline to run on joined collection> ],
+      as: <output array field>
+    }}
+  ],
+  <options>
+)
+```
+
+注意点
+
+- 字段名称不需要 `$`
+- `无关联查询` 格式想要进行关联查询需要引入 `关联查询` 格式中的 `localField` 和 `foreignField`
+
+
+
+#### $group
+
+[$group (aggregation) — MongoDB Manual](https://docs.mongodb.com/manual/reference/operator/aggregation/group/#mongodb-pipeline-pipe.-group)
+
+定义
+
+- 关联查询
+- 使用 `left outer join`
+
+格式 (关联查询)
+
+- `_id` : 分组规则
+- `<field>` : 定义新字段
+- `<accumulator>` : 累加器, 诸如 `$sum` / `$push` 之类
+
+```js
+db.<collection>.aggregate(
+	[
+    { $group: {
+      _id: <value>, // Group By value
+      <field>: { <accumulator> : <value> },
+      ...
+    }}
+  ],
+  <options>
+)
+```
+
+
+
+#### $out
+
+[$out (aggregation) — MongoDB Manual](https://docs.mongodb.com/manual/reference/operator/aggregation/out/)
+
+定义
+
+- 将前面阶段处理完的 `文档` 写入一个新的 `集合`
+
+格式 (输出到当前数据库)
+
+```js
+db.<collection>.aggregate([
+  { $out: <collection-name> }
+])
+```
+
+格式 (指定数据库)
+
+- `db` : 输出的数据库
+- `coll` : 输出的集合名称
+
+```js
+db.<collection>.aggregate([
+  { $out: {
+  	db: <output-db>,
+    coll: <collection-name>
+  }}
+])
+```
+
+注意点
+
+- 如果集合不存在, 那么会自动创建
+- <span style="color: #ff0">如果集合已经存在, 那么就会覆盖</span>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
