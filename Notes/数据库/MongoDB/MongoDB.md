@@ -672,7 +672,7 @@ db.<collection>.aggregate(
 
 格式
 
-- `<value>` 取值中若需要访问原有文档中的字段, 需要在字段名称前加上 `$` , 比如 `$name.firstName` 
+- `<value>` 取值中若需要访问原有文档中的字段, 需要在字段名称前加上 `$` , 比如 `$name.firstName` (expression)
 
 ```js
 db.<collection>.aggregate(
@@ -950,7 +950,93 @@ db.<collection>.aggregate([
 
 
 
+### 额外配置
 
+格式
+
+```js
+db.<collection>.aggregate(
+	<pipeline>,
+  {
+  	<option>: <value>
+  }
+)
+```
+
+#### allowDiskUse
+
+定义
+
+- 默认情况下, `聚合操作` 占用的内存不能超过 `100MB` , 如果超过就会报错
+- 将 `allowDiskUse` 设置为 `true` 会将超出 `100MB` 的数据写入到临时文件中, 然后再继续操作, 防止报错
+- 默认为 `false`
+
+格式
+
+```js
+db.<collection>.aggregate(
+	<pipeline>,
+  {
+  	allowDiskUse: true
+  }
+)
+```
+
+
+
+### 表达式
+
+#### 字段路径表达式
+
+- 使用 `$` 开头和 `.` 来连接, 指示内嵌文档字段路径
+
+```js
+$<field>.<sub-field>
+```
+
+#### 系统变量表达式
+
+- `$$CURRENT` 表示当前操作的文档
+
+```js
+$$CURRENT.<field> // 等价于 $<field>
+```
+
+#### 常量表达式
+
+- `$literal: <value>` 表示常量 `<value>`
+
+```js
+$literal: <value> // 比如 $literal: '$age' 就表示常量字符串 '$age' 而不是 age 字段
+```
+
+
+
+### 数据类型转换操作符 ($convert)
+
+[$convert (aggregation) — MongoDB Manual](https://docs.mongodb.com/manual/reference/operator/aggregation/convert/#mongodb-expression-exp.-convert)
+
+- 将数据转换成指定类型
+
+格式
+
+- `input` : 需要转换的字段
+- `to` : 转换之后的数据类型
+- `onError` (optional) : 出现错误的处理方案, 不写的话默认会抛出一个 `Error`
+- `onNull` (optional) : `input` 不存在或为 `null` 时的返回值, 不写的话默认返回 `null`
+
+```js
+{ $convert: {
+  input: <expression>,
+  to: <type expression>,
+  onError: <expression>,
+  onNull: <expression>
+}}
+```
+
+---
+
+## 索引
 
 
 
