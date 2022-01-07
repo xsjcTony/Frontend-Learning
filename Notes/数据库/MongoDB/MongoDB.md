@@ -90,7 +90,7 @@ show dbs
 创建新数据库
 
 ```shell
-user databaseName
+use databaseName
 ```
 
 查看集合
@@ -1038,17 +1038,109 @@ $literal: <value> // 比如 $literal: '$age' 就表示常量字符串 '$age' 而
 
 ## 索引
 
+[Indexes — MongoDB Manual](https://docs.mongodb.com/manual/indexes/)
+
+定义
+
+- 和 `MySQL` 中的 `索引` 一样
+- 用于提升数据的查询速度
+- 默认情况下会给 `主键` `_id` 自动创建 `索引`
 
 
 
+### 基本单值索引
+
+[Single Field Indexes — MongoDB Manual](https://docs.mongodb.com/manual/core/index-single/)
+
+#### 获取索引
+
+[db.collection.getIndexes() — MongoDB Manual](https://docs.mongodb.com/manual/reference/method/db.collection.getIndexes/)
+
+```js
+db.<collection>.getIndexes()
+```
+
+#### 创建索引
+
+[db.collection.createIndex() — MongoDB Manual](https://docs.mongodb.com/manual/reference/method/db.collection.createIndex/#mongodb-method-db.collection.createIndex)
+
+[db.collection.createIndexes() — MongoDB Manual](https://docs.mongodb.com/manual/reference/method/db.collection.createIndexes/)
+
+- `keys` : 需要创建索引的字段, 是一个 `文档` , 包含需要创建索引的字段名称和排序顺序
+  - `order` : `1` 为升序排序, `-1` 为降序排序
+- `keyPatterns` : 需要创建索引的字段, 是一个 `数组` , 包含数个 `keys`
+- `options` : 索引额外配置
+
+```js
+db.<collection>.createIndex(
+  {
+    <field>: <order>
+  },
+  <options>
+)
+
+db.<collection>.createIndexes(
+	<keyPatterns>,
+  <options>
+)
+```
 
 
 
+### 查看是否使用了索引
+
+[db.collection.explain() — MongoDB Manual](https://docs.mongodb.com/manual/reference/method/db.collection.explain/)
+
+```js
+db.<collection>.explain().<method()>
+```
+
+- 查看 `winningPlan` -> `stage` 中的取值来判断是否使用了索引
+  - `COLLSCAN` : 遍历整个集合的查询, 没有使用索引
+  - `IXSCAN` : 通过索引查询
+  - `FETCH` : 通过索引存储的地址取出对应的文档
 
 
 
+### 复合索引
+
+[Compound Indexes — MongoDB Manual](https://docs.mongodb.com/manual/core/index-compound/)
+
+- 将多个字段的值作为索引
+
+```js
+db.<collection>.createIndexes(
+	[
+  	{ <field>: <order>, <field>: <order> } // 在创建索引时指定多个字段就是符合索引
+  ],
+  <options>
+)
+```
+
+注意点
+
+- 只支持前缀查询
+  - 比如使用了字段 `A, B, C` 创建了复合索引, 那么在查询时
+    - 查询字段 `A, B, C` / `A, B` / `A, C` / `A` 会使用索引查询
+    - 查询字段 `B, C` / `B` / `C` 不会使用索引查询
 
 
+
+### 多键索引
+
+[Multikey Indexes — MongoDB Manual](https://docs.mongodb.com/manual/core/index-multikey/)
+
+- 专门针对 `数组` 字段
+- 会为 `数组` 字段的每个元素都创建一个索引
+
+```js
+db.<collection>.createIndexes(
+	[
+  	{ <arrayField>: <order> } // 在创建索引时指定数组字段, 创建的就是多键索引
+  ],
+  <options>
+)
+```
 
 
 
