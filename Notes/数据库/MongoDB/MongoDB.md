@@ -1149,15 +1149,98 @@ db.<collection>.createIndexes(
 - 如果排序的字段正好是索引的字段, 那么会大大提升排序效率
   - 默认情况下如果排序的字段不是索引字段, 那么是在执行的时候再去排序, 然后再输出
   - 如果排序的字段正好是索引字段, 那么在执行的时候直接根据索引取出对应的文档即可
-- 如果是 `复合索引` , 那么只有在排序的字段是 `前缀索引`的情况才会使用索引, 才会使用索引来排序
+- 如果是 `复合索引` , 那么只有在排序的字段是 `前缀索引` 的情况才会使用索引, 才会使用索引来排序
 
 
 
+### 索引额外配置
+
+#### 唯一索引
+
+[Unique Indexes — MongoDB Manual](https://docs.mongodb.com/manual/core/index-unique/#std-label-index-type-unique)
+
+- 只要某个字段的取值是唯一的, 那么就可以手动给这个字段添加 `唯一索引`
+- 默认情况下`MongoDB` 自动给 `主键` 添加的索引就是 `唯一索引`
+- 添加 `唯一索引` 之后, 这个字段的取值就一定不能重复
+- 添加其他数据时, 若不包含 `唯一索引` 的字段, 那么第一次会成功并且用 `null` 填充, 之后都会失败
+- 给 `复合索引` 添加唯一性之后, `复合索引` 的取值就一定不能重复
+
+```js
+db.<collection>.createIndexes(
+	[
+  	{ <field>: <order> }
+  ],
+  {
+  	unique: true // 唯一索引
+  }
+)
+```
+
+#### 稀疏索引
+
+[Sparse Indexes — MongoDB Manual](https://docs.mongodb.com/manual/core/index-sparse/)
+
+- 默认情况下会给每一个文档都创建索引
+- `稀疏索引` 只会为存在索引字段, 并且取值不为 `null` 的文档创建索引
+- 可以优化索引占用的存储空间
+- `唯一索引` 配合 `稀疏索引` 可以让缺少索引字段的相同数据被多次添加
+
+```js
+db.<collection>.createIndexes(
+	[
+  	{ <field>: <order> }
+  ],
+  {
+  	sparse: true // 稀疏索引
+  }
+)
+```
+
+#### 日期索引
+
+[TTL Indexes — MongoDB Manual](https://docs.mongodb.com/manual/core/index-ttl/)
+
+- 专门用于处理 `日期` 字段或包含 `日期` 的 `数组` 字段
+- 可以在创建索引的时候, 指定索引的 `生存时间`
+- 一旦索引超过了指定的生存时间, 那么会被 `MongoDB` 自动删除
+- `数组` 字段中会选取最早的一个日期来进行计算
+- `MongoDB` 无法保证及时性, 就是不一定会精准的在指定时间删除, 但是一定会在之后的某个时间删除
+- 只能给 `单值索引` / `多键索引` 设置 `生存时间` , `复合索引` 不可以使用
+
+```js
+db.<collection>.createIndexes(
+	[
+  	{ <dateField>: <order> }
+  ],
+  {
+  	expireAfterSeconds: 5 // 5秒后删除
+  }
+)
+```
 
 
 
+### 删除索引
 
+[db.collection.dropIndex() — MongoDB Manual](https://docs.mongodb.com/manual/reference/method/db.collection.dropIndex/)
 
+[db.collection.dropIndexes() — MongoDB Manual](https://docs.mongodb.com/manual/reference/method/db.collection.dropIndexes/)
+
+- 在 `MongoDB` 中没有修改索引的方法, 想要修改必须先删除再添加
+- 可以使用 `索引名称` 或创建索引时的定义来删除
+- 使用 `索引定义` 删除 `复合索引` 时, 必须要一模一样 (包括顺序) 才能删除
+
+```js
+db.<collection>.dropIndexes(
+	[
+    <indexName | indexDefine>
+  ]
+)
+```
+
+---
+
+## 数据模型
 
 
 
