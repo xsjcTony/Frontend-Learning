@@ -1240,9 +1240,262 @@ db.<collection>.dropIndexes(
 
 ---
 
-## 数据模型
+## 文档之间的关系
+
+- `MongoDB` 对于 `文档` 的格式并没有强制性要求, 但是仍然可以在 `文档` 中表达数据之间的关系
+- 在 `MongoDB` 中文档之间的关系可以分为
+  - `内嵌式结构` : 在一个 `文档` 中包含了另一个 `文档`
+  - `规范式结构` : 将 `文档` 存储在不同的 `集合` 中, 然后通过某一个字段来建立 `文档` 之间的关系
 
 
 
+### 一对一
 
+`内嵌式结构` 的表达
+
+- 优势
+  - 一次查询就能得到所有数据
+- 劣势
+  - 如果数据比较复杂, 不方便管理和更新
+- 应用场景
+  - 数据不复杂 / 查询频率比较高的数据
+
+```js
+{
+  name: 'zs',
+  age: 18,
+  card: {
+    num: '1234567890123456',
+    date: '2022-12-08'
+  }
+}
+```
+
+`规范式结构` 的表达
+
+- 优势
+  - 数据比较复杂时, 方便管理和更新
+- 劣势
+  - 查询数据相对于 `内嵌式结构` 稍微有一点复杂
+- 应用场景
+  - 数据比较复杂 / 更新频率比较高的数据
+- 可以使用 `$lookup` 聚合操作查询
+
+```js
+// 集合persons
+{
+  _id: 456,
+  name: 'zs',
+  age: 18,
+  cardId: 123
+}
+
+// 集合cards
+{
+  _id: 123,
+  num: '1234567890123456',
+  date: '2022-12-08',
+  userId: 456
+}
+```
+
+
+
+### 一对多
+
+`内嵌式结构` 的表达
+
+- 优势
+  - 一次查询就能得到所有数据
+- 劣势
+  - 冗余数据较多, 不方便管理和更新
+- 应用场景
+  - 数据不复杂 / 查询频率比较高的数据
+
+```js
+{
+  name: 'zs',
+  age: 18,
+  books: [
+    {
+      name: 'HTML',
+      price: 88
+    }, {
+      name: 'CSS',
+      price: 88
+    }
+  ]
+}
+```
+
+`规范式结构` 的表达
+
+- 优势
+  - 冗余数据较少, 方便管理和更新
+- 劣势
+  - 查询数据相对于 `内嵌式结构` 稍微有一点复杂
+- 应用场景
+  - 数据比较复杂 / 更新频率比较高的数据
+- 可以使用 `$lookup` 聚合操作查询
+
+```js
+// 集合persons
+{
+  _id: 123,
+  name: 'ls',
+  age: 20,
+  booksId: [1, 2]
+}
+
+// 集合books
+{
+  _id: 1,
+  name: 'HTML',
+  price: 88,
+  userId: 123
+}
+{
+  _id: 2,
+  name: 'CSS',
+  price: 88,
+  userId: 123
+}
+```
+
+
+
+### 多对多
+
+`内嵌式结构` 的表达
+
+- 优势
+  - 一次查询就能得到所有数据
+- 劣势
+  - 冗余数据较多, 不方便管理和更新
+- 应用场景
+  - 数据不复杂 / 查询频率比较高的数据
+
+```js
+// 集合students
+{
+  name: 'zs',
+  teachers: [
+    { name: 'it666' },
+    { name: 'itzb' }
+  ]
+}
+{
+  name: 'ls',
+  teachers: [
+    { name: 'it666' },
+    { name: 'itzb' }
+  ]
+}
+
+// 集合teachers
+{
+  name: 'it666',
+  students: [
+    { name: 'zs' },
+    { name: 'ls' }
+  ]
+}
+{
+  name: 'itzb',
+  students: [
+    { name: 'zs' },
+    { name: 'ls' }
+  ]
+}
+```
+
+`规范式结构` 的表达
+
+- 优势
+  - 冗余数据较少, 方便管理和更新
+- 劣势
+  - 查询数据相对于 `内嵌式结构` 稍微有一点复杂
+- 应用场景
+  - 数据比较复杂 / 更新频率比较高的数据
+- 可以使用 `$lookup` 聚合操作查询
+
+```js
+// 集合students
+{
+  _id: 1,
+  name: 'zs'
+}
+{
+  _id: 2,
+  name: 'ls'
+}
+
+// 集合teachers
+{
+  _id: 3,
+  name: 'it666'
+}
+{
+  _id: 4,
+  name: 'itzb'
+}
+
+// 关系 (中间表)
+{
+  stuId: 1,
+  teacherId: 3
+}
+{
+  stuId: 1,
+  teacherId: 4
+}
+{
+  stuId: 2,
+  teacherId: 3
+}
+{
+  stuId: 2,
+  teacherId: 4
+}
+```
+
+
+
+### 树形结构
+
+- 除开 `内嵌式结构` / `规范式结构` 之外的另一种表达数据之间关系的方式
+- 对于经常需要查询子节点的数据, 添加 `parent` 属性
+
+```js
+// 要查看非关系型数据库有几种类型, 使用 db.<collection>.find({ parent: 'No-Relational' }) 即可
+{ name: 'Database', parent: 'null' }
+{ name: 'No-Relational', parent: 'Database' }
+{ name: 'Document', parent: 'No-Relational' }
+{ name: 'MongoDB', parent: 'Document' }
+{ name: 'Key-Value', parent: 'No-Relational' }
+{ name: 'Redis', parent: 'Key-Value' }
+```
+
+- 对于经常需要查询父节点的数据, 添加 `children` 属性
+
+```js
+// 要查看MongoDB是什么类型的数据库, 使用 db.<collection>.find({ children: { $in: ['MongoDB'] } }) 即可
+{ name: 'Database', children: ['Relational', 'No-Relational'] }
+{ name: 'No-Relational', children: ['Key-Value', 'Document'] }
+{ name: 'Document', children: ['MongoDB'] }
+{ name: 'MongoDB', children: [] }
+```
+
+- 对于经常查询祖先或后代节点的数据, 添加 `ancestors` 属性
+
+```js
+// 若要查询MongoDB的祖先, 使用 db.<collection>.find({ name: 'MongoDB' })
+// 若要查询Database的后代, 使用 db.<collection>.find({ ancestors: { $in: ['Database'] } })
+{ name: 'Database', ancestors: [] }
+{ name: 'No-Relational', ancestors: ['Database'] }
+{ name: 'Document', ancestors: ['Database', 'No-Relational'] }
+{ name: 'MongoDB', ancestors: ['Database', 'No-Relational', 'Document'] }
+```
+
+- 结合 `DFS` / `BFS` 算法来实现树形结构
 
