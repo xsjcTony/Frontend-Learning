@@ -125,3 +125,5 @@
 - MySQL
   - Sequelize
 - MongoDB
+  - Mongoose
+- Redis
