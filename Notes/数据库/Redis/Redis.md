@@ -135,12 +135,24 @@ user gender male
 names Tony Lily Aelita
 ```
 
+#### 应用场景
+
+- 可以用于实现一些简单的数据结构
+  - `栈` 结构 (stack 先进后出 FILO) : 使用 `LPUSH` + `LPOP`
+  - `队列` 结构 (queue 先进先出 FIFO) : 使用 `LPUSH` + `RPOP`
+
 
 
 ### Set
 
 - 一堆无序的数据, 当成一个整体作为 `value` 存储
 - `Set` 中的数据不能重复
+
+#### 应用场景
+
+- 抽奖: 使用 `SRANDMEMBER` 来随机抽取成员
+- 绑定标签
+- 社交关系: 使用 `交集` / `并集` / `差集` 等等功能快速实现
 
 
 
@@ -167,14 +179,79 @@ names Tony Lily Aelita
 - 使用 `select` 切换数据库
 
 ```js
-select index // select 1 即为使用序号为 1 的数据库
+SELECT index // select 1 即为使用序号为 1 的数据库
+```
+
+查询当前数据库中的 `key`
+
+[KEYS – Redis](https://redis.io/commands/keys)
+
+- `*` 代表查询所有
+- <span style="color: #ff0;">由于是单线程操作, 比较耗时, 不推荐企业开发中使用</span>
+
+```js
+KEYS pattern
+```
+
+清空数据库
+
+- `flushdb` 清空当前数据库
+- `flushall` 清空所有数据库 (离职操作)
+- `v4.x+` 添加了 `ASYNC` 选项
+- <span style="color: #ff0;">由于是单线程操作, 比较耗时, 不推荐企业开发中使用</span>
+
+```js
+FLUSHDB
+FLUSHALL
+```
+
+计算当前数据库中 `key` 的总数
+
+- <span style="color: #0ff;">不耗时, 可以大胆使用</span>
+
+```js
+DBSIZE
+```
+
+查看某个 `key` 的 `value` 的数据类型
+
+```js
+TYPE key
+```
+
+查看 `key` 是否存在
+
+- 可以指定多个 `key`
+- 返回存在的 `key` 的个数
+
+```js
+EXISTS key [key ...]
+```
+
+ `key` 的过期时间
+
+- 通过 `expire` 设置 `key` 的过期时间
+  - 返回 `1` 为设置成功
+  - 返回 `0` 为没有设置
+- 通过 `ttl` 查看 `key` 的剩余时间 (秒)
+  - 若没有设置过期时间, 会返回 `-1`
+- 通过 `persist` 取消 `key` 的过期时间
+  - 返回 `1` 为取消成功
+  - 返回 `0` 为 `key` 不存在或没有过期时间
+
+```js
+EXPIRE key seconds // 设置过期时间
+TTL key // 查看剩余时间
+PERSIST key // 取消过期时间
 ```
 
 
 
-### 字符串
 
-基本操作
+
+### String (字符串)
+
+增删改查
 
 - 新增 / 修改
 
@@ -183,20 +260,20 @@ select index // select 1 即为使用序号为 1 的数据库
   - 若 `key` 不存在, 即为新增
 
 ```js
-set key value
+SET key value
 ```
 
 - 获取
 
 ```js
-get key
+GET key
 ```
 
 - 删除
   - 返回值为删除的 `key` 的个数
 
 ```js
-del key
+DEL key
 ```
 
 高级操作
@@ -204,14 +281,14 @@ del key
 - 只有在 `key` 不存在的情况下才新增 (只新增)
 
 ```js
-setnx key value
-set key value nx
+SETNX key value
+SET key value nx
 ```
 
 - 只有在 `key` 存在的情况下才修改 (只更新)
 
 ```js
-set key value xx
+SET key value xx
 ```
 
 - 批量操作
@@ -219,9 +296,478 @@ set key value xx
   - 不能使用 `set` 的 `options`
 
 ```js
-mget key [key ...]
-mset key value [key value ...]
+MGET key [key ...]
+MSET key value [key value ...]
 ```
+
+其他操作
+
+- 设置新值, 返回旧值
+  - 会将新值设置给 `key`
+  - 返回旧的 `value`
+
+```js
+GETSET key value
+```
+
+- 拼接字符串
+  - 返回拼接之后字符串的长度
+
+```js
+APPEND key value
+```
+
+- 获取字符串长度
+  - 中文的长度取决于 `字符编码`
+
+```js
+STRLEN key
+```
+
+- 获取字符串的一部分
+  - 起始 / 结束的索引都是包括的 (inclusive)
+  - 负数代表从最后开始计数, 比如 `-1` 代表最后一个字符
+
+```js
+GETRANGE key startIndex endIndex
+```
+
+- 从指定位置开始修改字符串
+  - 起始索引是包括的 (inclusive)
+  - 不要使用 `负数` 索引
+
+```js
+SETRANGE key startIndex value
+```
+
+自增自减
+
+- `+1` 自增 / `-1` 自减
+  - 返回自增 / 自减之后的字符串
+  - 若操作的 `key` 不存在, 那么视为 `0` 并开始处理
+  - 无法操作非 `integer` 类型的字符串
+
+```js
+INCR key // 自增
+DECR key // 自减
+```
+
+- 增加 / 减少指定 `整数`
+  - 返回增加 / 减少之后的字符串
+  - 若操作的 `key` 不存在, 那么视为 `0` 并开始处理
+  - 无法操作非 `integer` 类型的字符串
+
+```js
+INCRBY key increment // 增加x
+DECRBY key decrement // 减少x
+```
+
+- 增加 / 减少指定 `小数` / `整数`
+  - 返回增加 / 减少之后的字符串
+  - 若操作的 `key` 不存在, 那么视为 `0` 并开始处理
+  - 无法操作非 `float` 类型的字符串
+  - 没有 `decrbyfloat` 方法, 若想减少, 使用 `负数`
+
+```js
+INCRBYFLOAT key increment // 正数为增加, 负数为减少
+```
+
+
+
+### Hash (哈希)
+
+增删改查
+
+- 新增 / 修改
+  - 若 `key` 存在, 即为修改
+  - 若 `key` 不存在, 即为新增
+
+```js
+HSET key field value
+```
+
+- 获取
+
+```js
+HGET key field
+```
+
+- 删除
+  - 删除的 `字段` 的个数
+  - `HDEL` 用于删除 `hash` 中的 `字段`
+  - 若要删除整个 `key` , 直接使用 `DEL`
+
+```js
+HDEL key field [field ...]
+```
+
+高级操作
+
+- 批量操作
+  - 在 `HSET` / `HGET` 命令的 `SET` 前加上 `M`
+  - `v4.x+` 之后可以直接使用 `HSET` 代替 `HMSET`
+
+```js
+HMGET key field [field ...]
+HMSET key field value [field value ...] // v4.x+ 之后可以直接使用 HSET
+```
+
+- 查询指定 `key` 中 `字段` 的个数
+
+```js
+HLEN key
+```
+
+- 查询指定 `key` 中有没有指定的 `字段`
+  - 返回 `1` 代表有
+  - 返回 `0` 代表没有
+
+```js
+HEXISTS key field
+```
+
+其他操作
+
+- 查询指定 `key` 中的所有 `字段`
+  - <span style="color: #ff0;">由于是单线程操作, 比较耗时, 不推荐企业开发中使用</span>
+
+```js
+HKEYS key
+```
+
+- 查询指定 `key` 中的所有 `字段` 的 `value`
+  - <span style="color: #ff0;">由于是单线程操作, 比较耗时, 不推荐企业开发中使用</span>
+
+```js
+HVALS key
+```
+
+- 查询指定 `key` 中的所有 `字段` 和其 `value`
+  - <span style="color: #ff0;">由于是单线程操作, 比较耗时, 不推荐企业开发中使用</span>
+
+```js
+HGETALL key
+```
+
+
+
+### List (列表)
+
+增删改查
+
+- 插入
+  - 若 `key` 不存在, 即为新建一个空 `List` , 然后再插入
+  - `LPUSH` 将数据一个一个的插入到 `List` 的最开始
+  - `RPUSH` 将数据一个一个的插入到 `List` 的最后
+
+```js
+LPUSH key element [element ...]
+RPUSH key element [element ...]
+```
+
+- 获取
+  - `LRANGE` 按索引范围取出元素
+    - `startIndex` 和 `stopIndex` 都是包括的 (inclusive)
+    - `负数` 从最后开始反向计数
+  - `LINDEX` 按索引取出单个元素
+    - `负数` 从最后开始反向计数
+
+```js
+LRANGE key startIndex stopIndex
+LRANGE key 0 -1 // 获取所有元素
+LINDEX key index
+```
+
+- 修改
+  - 根据索引修改元素
+  - `负数` 从最后开始反向计数
+
+```js
+LSET key index element
+```
+
+- 删除
+  - POP删除
+    - `LPOP` 删除 `List` 最开始的元素
+    - `RPOP` 删除 `List` 最后的元素
+    - `返回值`
+      - 被删除的元素
+      - 若 `key` 不存在, 则返回 `nil`
+    - `v6.2.0+` 开始可以增加 `count` 来指定删除几个元素
+  
+  ```js
+  LPOP key
+  RPOP key
+  ```
+  
+  - 指定元素删除
+    - `count > 0` : 从 `List` 的头开始搜索到尾, 移除与 `element` 相等的元素, 数量为 `count`
+    - `count < 0` : 从 `List` 的尾开始搜索到头, 移除与 `element` 相等的元素, 数量为 `count` 的 `绝对值`
+    - `count = 0` : 移除 `List` 中所有与 `element` 相等的元素
+    - `返回值` 为删除的元素的个数
+  
+  ```js
+  LREM key count element
+  ```
+  
+  - 根据索引截取 (trim)
+    - `startIndex` 和 `stopIndex` 都是包括的 (inclusive)
+    - `负数` 从最后开始反向计数
+  
+  
+  ```js
+  LTRIM key startIndex stopIndex
+  ```
+
+其他操作
+
+- 在指定元素之前 / 之后插入数据
+  - `pivot` : 插入数据的参照物
+  - `BEFORE | AFTER` : 在 `pivot` 的前面 or 后面插入数据
+  - `element` : 要插入的元素
+  - `返回值`
+    - 若成功插入, 返回插入后 `List` 的长度
+    - 若没有找到 `pivot` , 返回 `-1`
+
+
+```js
+LINSERT key BEFORE pivot element // 在 pivot 之前插入 element
+LINSERT key AFTER pivot element // 在 pivot 之后插入 element
+```
+
+- 获取 `List` 的长度
+  - 若 `key` 不存在, 则返回 `0` (视为空 `List` )
+  - 若 `Key` 存在但不是 `List` , 报错
+
+```js
+LLEN key
+```
+
+
+
+### Set (集合)
+
+增删改查
+
+- 新增 / 修改
+  - 若 `key` 不存在, 即为新建一个空 `Set` , 然后再插入
+  - 若 `key` 存在, 则插入到当前的 `Set`
+  - 若 `key` 不是一个 `Set` , 则报错
+  - 若要添加的成员已存在与 `Set` 中, 则会被忽略
+
+```js
+SADD key member [member ...]
+```
+
+- 获取
+  - 获取所有成员
+    - <span style="color: #ff0;">由于是单线程操作, 比较耗时, 不推荐企业开发中使用</span>
+  
+  ```js
+  SMEMBERS key
+  ```
+  
+  - 随机获取指定数量的成员
+    - 若指定了 `count` , 则返回一个 `List` , 包含了成员
+    - 若没有指定 `count` , 则返回一个 `字符串` , 是一个随机的成员
+    - 若 `count` 为 `负数` , 则每个成员都可以出现多次, 结果总数量为 `count` 的 `绝对值`
+    - 若 `key` 不存在则返回 `nil`
+  
+  ```js
+  SRANDMEMBER key [count]
+  ```
+
+
+- 删除
+  - 随机删除
+    - 工作机制和 `随机获取` 一样, 但多了删除的步骤
+  
+  ```js
+  SPOP key [count]
+  ```
+  
+  - 删除指定的元素
+    - 若指定的成员不在 `Set` 中, 则被忽略
+    - `返回值`
+      - 被删除的成员的个数
+      - 若 `key` 不存在, 则视为空 `Set` , 返回 `0`
+      - 若 `key` 不是 `Set` , 则报错
+  
+  ```js
+  SREM key member [member ...]
+  ```
+
+其他操作
+
+- 统计 `Set` 中元素的个数
+
+```js
+SCARD key
+```
+
+- 判断 `Set` 中是否有指定元素
+  - `1` 代表有
+  - `0` 代表没有或 `key` 不存在
+  - `SISMEMBER` 用于判断一个成员
+  - `v6.2.0+` : `SMISMEMBER` 用于判断多个成员
+
+
+```js
+SISMEMBER key member
+SMISMEMBER key member [member ...] // v6.2.0+ 以上版本才有
+```
+
+高级操作
+
+- `Set` 是可以支持 `Set` 之间的操作的, 比如求 `交集` / `并集` / `差集`
+  - 不存在的 `key` 视为空 `Set`
+- 交集
+
+```js
+SINTER key [key ...]
+```
+
+- 并集
+
+```js
+SUNION key [key ...]
+```
+
+- 差集
+  - 差集的顺序是很重要的
+
+```js
+SDIFF key [key ...]
+```
+
+
+
+### ZSet (有序集合)
+
+增删改查
+
+- 新增 / 修改
+  - 若 `key` 不存在, 即为新建一个空 `ZSet` , 然后再插入
+  - 若 `key` 存在, 则插入到当前的 `ZSet`
+  - 若 `key` 不是一个 `ZSet` , 则报错
+  - 若要添加的成员已存在与 `ZSet` 中, 则会更新其 `权重` 值 (score) , 然后在正确的排序位置重新插入
+  - `权重` 值可以是 `浮点` (float)
+
+```js
+ZADD key score member [score member ...]
+```
+
+- 获取
+
+  - 根据 `排名` (Rank) 获取
+    - `startRank` 和 `stopRank` 都是包括的 (inclusive)
+    - `负数` 从最后开始反向计数
+    - `WITHSCORES` : 可选属性, 在返回的结果中是否添加 `权重` 值
+      - 返回结果从 `member1, member2, ...` 变为 `member1, score1, member2, score2, ...`
+
+  ```js
+  ZRANGE key startRank stopRank [WITHSCORES]
+  ```
+
+  - 根据权重获取
+    - 默认情况下 `min` 和 `max` 都是包括的 (inclusive)
+    - 在 `min` / `max` 前面添加 `(` 可以让他们变成不包括的 (exclusive)
+    - `min` / `max` 可以是 `-inf` / `+inf` , 这样就可以不用知道具体的 `权重` 值范围
+
+  ```js
+  ZRANGE key min max [WITHSCORES]
+  ```
+
+
+- 删除
+
+  - 删除指定的元素
+    - 若指定的成员不在 `ZSet` 中, 则被忽略
+    - `返回值`
+      - 被删除的成员的个数
+      - 若 `key` 不存在, 则视为空 `Set` , 返回 `0`
+      - 若 `key` 不是 `ZSet` , 则报错
+
+  ```js
+  ZREM key member [member ...]
+  ```
+
+  - 删除指定 `排名` 范围内的元素
+    - `startRank` 和 `stopRank` 都是包括的 (inclusive)
+    - `负数` 从最后开始反向计数
+
+  ```js
+  ZREMRANGEBYRANK key startRank stopRank
+  ```
+
+  - 删除指定 `权重` 范围内的元素
+    - 默认情况下 `min` 和 `max` 都是包括的 (inclusive)
+    - 在 `min` / `max` 前面添加 `(` 可以让他们变成不包括的 (exclusive)
+    - `min` / `max` 可以是 `-inf` / `+inf` , 这样就可以不用知道具体的 `权重` 值范围
+
+  ```js
+  ZREMRANGEBYSCORE key min max
+  ```
+
+其他操作
+
+- 统计 `ZSet` 中成员的个数
+
+```js
+ZCARD key
+```
+
+- 查询指定成员的 `权重` 值
+  - 如果指定成员或 `key` 不存在, 返回 `nil`
+
+
+```js
+ZSCORE key member
+```
+
+- 查询指定 `权重` 范围内的成员个数
+  - 默认情况下 `min` 和 `max` 都是包括的 (inclusive)
+  - 在 `min` / `max` 前面添加 `(` 可以让他们变成不包括的 (exclusive)
+  - `min` / `max` 可以是 `-inf` / `+inf` , 这样就可以不用知道具体的 `权重` 值范围
+
+```js
+ZCOUNT key min max
+```
+
+高级操作
+
+- `Set` 是可以支持 `Set` 之间的操作的, 比如求 `交集` / `并集` / `差集`
+  - 不存在的 `key` 视为空 `Set`
+- 交集
+
+```js
+SINTER key [key ...]
+```
+
+- 并集
+
+```js
+SUNION key [key ...]
+```
+
+- 差集
+  - 差集的顺序是很重要的
+
+```js
+SDIFF key [key ...]
+```
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
