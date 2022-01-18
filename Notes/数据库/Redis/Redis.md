@@ -135,7 +135,7 @@ user gender male
 names Tony Lily Aelita
 ```
 
-#### 应用场景
+应用场景
 
 - 可以用于实现一些简单的数据结构
   - `栈` 结构 (stack 先进后出 FILO) : 使用 `LPUSH` + `LPOP`
@@ -148,7 +148,7 @@ names Tony Lily Aelita
 - 一堆无序的数据, 当成一个整体作为 `value` 存储
 - `Set` 中的数据不能重复
 
-#### 应用场景
+应用场景
 
 - 抽奖: 使用 `SRANDMEMBER` 来随机抽取成员
 - 绑定标签
@@ -161,6 +161,10 @@ names Tony Lily Aelita
 - 一堆有序的数据, 当成一个整体作为 `value` 存储
 - 有序版的 `Set` 
 - 通过 `权重` 来实现排序
+
+应用场景
+
+- 排行榜
 
 ---
 
@@ -734,36 +738,55 @@ ZSCORE key member
 ZCOUNT key min max
 ```
 
-高级操作
-
-- `Set` 是可以支持 `Set` 之间的操作的, 比如求 `交集` / `并集` / `差集`
-  - 不存在的 `key` 视为空 `Set`
-- 交集
+- 增加 / 减少成员的 `权重`
+  - `increment` 为 `正数` 就是增加, `负数` 就是减少
+  - 若成员不存在, 则新建这个成员, `权重` 值为 `increment`
+  - 若 `key` 不存在, 则新建一个 `ZSet` , 添加该成员, `权重` 值为 `increment`
+  - 若 `key` 不是一个 `ZSet` , 则报错
+  - `返回值` 为更改后的 `权重`
 
 ```js
-SINTER key [key ...]
+ZINCRBY key increment member
 ```
 
-- 并集
+- 从大到小排序
+  - 默认排序为从小到大
+  - 使用 `ZREV` 打头的方法
 
 ```js
-SUNION key [key ...]
-```
-
-- 差集
-  - 差集的顺序是很重要的
-
-```js
-SDIFF key [key ...]
+ZREVRANGVE key startRank stopRank [WITHSCORES]
 ```
 
 
 
+### 发布订阅
 
+[Pub/Sub – Redis](https://redis.io/topics/pubsub)
 
+- 订阅频道
 
+```js
+SUBSCRIBE channel [channel ...]
+```
 
+- 发布消息
 
+```js
+PUBLISH channel message
+```
+
+- 退订频道
+  - 若没有指定 `channel` , 则退订所有
+
+```js
+UNSUBSCRIBE [channel [channel ...]]
+```
+
+---
+
+## 数据持久化 (Persistence)
+
+[Redis Persistence – Redis](https://redis.io/topics/persistence)
 
 
 
