@@ -788,6 +788,211 @@ UNSUBSCRIBE [channel [channel ...]]
 
 [Redis Persistence – Redis](https://redis.io/topics/persistence)
 
+定义
+
+- 将 `内存` 中的数据写入到 `磁盘` 中
+- `Redis` 和大部分主流数据库一样, 提供两种方式
+  - RDB
+  - AOF
+
+
+
+### RDB
+
+定义
+
+- 全称为 `Redis Database`
+
+- 是一种 `快照` (snapshot)
+- 原封不动的将 `内存` 中保存的数据写入到 `磁盘` 中
+- 服务器重启时, 直接从 `磁盘` 文件中恢复数据
+
+#### 触发方式
+
+- 手动执行 `SAVE` 命令
+  - 是 `同步` 的, 会阻塞进程
+  - 如果已存在旧的 `RDB` 文件, 会利用新的覆盖旧的
+
+```js
+SAVE
+```
+
+- 手动执行 `BGSAVE` 命令
+  - 是 `异步` 的, 会在后台执行, 不会阻塞进程
+  - 如果已存在旧的 `RDB` 文件, 会利用新的覆盖旧的
+
+```js
+BGSAVE
+```
+
+- 修改配置文件 `redis.windows-service.conf`
+
+  - `dir` : `RDB` 文件保存的目录 , 默认为 `./`
+
+  - `dbfilename` : `RDB` 文件的名称 , 默认为 `dumb.rdb`
+
+  - `save` : 自动生成条件
+
+    ```js
+    SAVE seconds actions // 比如 SAVE 60 10000 意思就是如果60秒内做了10000次操作, 就自动保存
+    ```
+
+  - `stop-writes-on-bgsave-error` : 运行 `BGSAVE` 时若发生错误是否需要停止, 取值为 `yes` / `no` , 默认为 `yes`
+
+  - `rdbcompression` : 写入时是否需要压缩, 取值为 `yes` / `no` , 默认为 `yes`
+
+  - `rdbchecksum` : 写入完成之后是否进行校验, 取值为 `yes` / `no` , 默认为 `yes`
+
+#### 弊端
+
+- 无法控制生成的频率, 如果频率过高会导致性能消耗较大
+
+- 数据容易丢失
+
+  - 服务器宕机之前一段时间的数据, 若未写入 `RDB` 文件就会丢失
+
+  ```js
+  SADD name Tony
+  SAVE // or BGSAVE or 自动保存
+  SADD name Lily // 丢失
+  // 宕机
+  ```
+
+- 耗时 / 耗性能
+
+  - `RDB` 是一次性把内存中的所有数据写入到磁盘中的, 如果写入的数据比较多, 那么就会比较耗时
+  - 每次写入时, 就算一些相同的数据已经写入过了, 也会再次完整写入, 浪费 `I/O` 资源
+  - `SAVE` 会阻塞后续命令执行
+  - `BGSAVE` 会开启 `子进程` 专门负责写入, 但是会消耗内存空间
+
+#### 推荐配置
+
+```js
+dir /rdbdiskpath // 应使用一个比较大的磁盘路径
+dbfilename dumb-${port}.rdb // 加上端口号用于区分
+stop-writes-on-bgsave-error yes
+rdbcompression yes
+rdbchecksum yes
+```
+
+
+
+### AOF
+
+定义
+
+- 全称为 `Append Only File`
+- 是一种 `日志`
+- 将所有用户操作的 `指令` 写入到 `磁盘` 中
+- 服务器重启时, 重新执行这些 `指令` 以达到恢复数据的目的
+
+#### 触发方式
+
+- `always`
+
+  - 每条命令都即时写入到文件中
+  - 优点: 数据不会丢失
+  - 缺点: 磁盘 `I/O` 消耗较大
+
+- `everysec`
+
+  - 每隔 `1` 秒写入一次数据, 就是先收集 `1` 秒内的所有命令, 然后再一次性写入
+  - 优点: 磁盘 `I/O` 相对较小
+  - 缺点: 容易丢失宕机前 `1` 秒中的数据
+
+- `no`
+
+  - 让 `操作系统` 决定什么时候写入, 完全看 `操作系统` 心情
+  - <span style="color: #ff0">不可控, 容易丢失大量数据, 不推荐</span>
+
+- 修改配置文件 `redis.windows-service.conf`
+
+  - 三选一, 默认为 `everysec`
+
+  ```js
+  appendfsync always
+  appendfsync everysec
+  appendfsync no
+  ```
+
+#### 文件重写机制
+
+- 随着时间推移, `AOF` 文件会越来越大, 导致
+  - 磁盘消耗越来越大
+  - 写入速度越来越慢
+  - 恢复时间原来越长
+- 重写机制
+  - 对 `AOF` 文件中保存的内容进行优化
+    - 降低文件体积
+    - 提升文件的恢复速度
+  - 自动去除冗余命令
+  - 自动去除没有用的命令
+  - 本质上是自动生成能够恢复到当前数据库状态的最简命令
+
+```js
+// 优化前
+SET name Tony
+SET name Lily
+SET name Aelita
+// 优化后
+SET name Aelita
+
+/* --- */
+
+// 优化前
+INCR count
+INCR count
+// 优化后
+SET count 2
+
+/* --- */
+
+// 优化前
+EXPIRE name 3
+// 优化后
+// SET name 和 EXPIRE name 都不需要保存了, 因为已经过期
+```
+
+- 触发重写机制
+
+  - 手动调用命令 `BGREWRITEAOF`
+    - 是 `异步` 的, 不会阻塞进程
+    - 开启一个新的 `子进程` , 根据内容中的数据, 自动生成命令写入到 `AOF ` 文件中
+
+  ```js
+  BGREWRITEAOF
+  ```
+
+  - 修改配置文件 `redis.windows-service.conf`
+    - `auto-aof-rewrite-min-size` : `AOF` 文件体积达到多大时进行重写 , 默认为 `64mb`
+    - `auto-aof-rewrite-percentage` : 对比上一次的重写, 文件体积增长了百分之多少之后进行重写, 默认为 `100`
+
+#### 推荐配置
+
+```js
+appendonly yes // 是否适用AOF, 默认为 no
+appendfilename "appendonly-${port}.aof" // AOF 文件名, 默认为 "appendonly.aof"
+appendfsync everysec // 写入命令的同步机制, 默认为 everysec
+dir /rdbdiskpath // 保存AOF文件路径, 默认为 ./
+auto-aof-rewrite-min-size 64mb // 默认为 64mb
+auto-aof-rewrite-percentage 100 // 默认为 100
+no-appendfsync-on-rewrite yes // AOF 重写时是否正常写入当前操作的命令, 默认为 no, no数据更安全, yes更加注重性能
+```
+
+
+
+### 选择 / 对比
+
+- `AOF` 优先级高于 `RDB` : 如果二者同时打开, 重启之后会优先从 `AOF` 中恢复数据
+- `RDB` 体积小于 `AOF` : 原因是 `RDB` 会在保存时对数据进行压缩
+- `RDB` 恢复速度比 `AOF` 快
+- `AOF` 数据安全性高于 `RDB`
+- 两者各有所长, 是互补的关系, 可以结合使用
+
+
+
+
+
 
 
 
