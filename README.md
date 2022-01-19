@@ -127,3 +127,5 @@
 - MongoDB
   - Mongoose
 - Redis
+  - redis
+  - ioredis
