@@ -77,3 +77,43 @@ await client.quit() // 正规的断开
 await client.disconnect() // 强行断开
 ```
 
+---
+
+# node-redis-sentinel
+
+[redis-sentinel - npm](https://www.npmjs.com/package/redis-sentinel)
+
+[ortoo/node-redis-sentinel: Sentinel client for redis](https://github.com/ortoo/node-redis-sentinel)
+
+- 基于 `Redis-Sentinel` 操作 `Redis` 服务器
+
+
+
+## 基本使用
+
+```js
+import sentinel from 'redis-sentinel'
+
+// 所有sentinel节点的信息
+const endpoints = [
+  { host: '127.0.0.1', port: 26379 },
+  { host: '127.0.0.1', port: 26380 },
+  // ...
+]
+
+// 额外配置
+const opts = {}
+
+// 主节点的名称, 默认为 'mymaster'
+const masterName = 'mymaster'
+
+// 连接 Redis-Sentinel
+const redisClient = sentinel.createClient(endpoints, masterName, opts) // masterName 和 opts 是可选的
+
+// 通过 redisClient 实例对象操作 redis, API 和 Node-Redis 相同
+```
+
+
+
+
+

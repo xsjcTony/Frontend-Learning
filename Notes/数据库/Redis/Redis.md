@@ -989,7 +989,164 @@ no-appendfsync-on-rewrite yes // AOF 重写时是否正常写入当前操作的�
 - `AOF` 数据安全性高于 `RDB`
 - 两者各有所长, 是互补的关系, 可以结合使用
 
+---
 
+## 主从复制 (Master/replica replication)
+
+[Replication – Redis](https://redis.io/topics/replication)
+
+定义
+
+- 和 `MongoDB` 的 `复制集` 是一个概念
+- 使用多台保存了相同内容的 `Redis` 服务器来组成一个数据库 `集群`
+- `集群` 中的每一台 `Redis` 服务器称之为一个 `节点`
+- 好处
+  - 高可用性 (配合 `Redis-Sentinel` 才能实现)
+    - 即使有一台服务器宕机了, 用户还可以继续使用其他的服务器
+  - 数据安全性
+    - 即使有一台服务器坏了, 由于还有其他保存了相同内容的服务器, 不会导致数据丢失
+  - 数据分流
+    - 把请求分流到不同的服务器, 就可以降低服务器的压力, 加快数据处理速度
+    - 将多台服务器安装到不同的区域, 采用就近原则, 提升用户的访问速度
+- 特点
+  - 必须有一个 `主节点`
+    - 主要负责数据的读取和写入
+  - 除了 `主节点` 以外的 `节点` 称之为 `副节点`
+    - 默认情况下只能读取数据, 无法写入数据
+    - 主要负责从主节点不断复制数据
+  - 和 `MongoDB` 不同, `Redis` 的 `主从复制` 中如果 `主节点` 宕机了, 不会进行自动选举
+    - 如果需要自动选举需要借助 `Redis Sentinel` 实现
+
+
+
+### 搭建
+
+1. 拷贝多份安装包
+2. 修改配置文件 `redis.windows-service.conf`
+   - 修改端口号 `port`
+   - 修改绑定的IP `bind`
+   - 指定主节点 `slaveof host port`
+3. 注册服务
+
+```shell
+redis-server --service-install redis.windows-service.conf --service-name serviceName
+```
+
+4. 启动服务
+5. 查看主从状态
+
+```js
+redis-cli -h host -p port
+INFO replication
+```
+
+
+
+### 原理
+
+- 初始化同步
+
+  1. 只要在任意一台服务器上配置或执行了 `SLAVEOF` 指令, 那么就可以建立 `主从关系` 了
+
+  2. 主要建立了 `主从关系` , 那么 `从节点` 就会自动给 `主节点` 发送 `全量复制请求`
+
+  3. `主节点` 收到请求后, 会自动调用 `BGSAVE` , 生成 `RDB` 文件
+
+  4. 如果 `主节点` 在 `BGSAVE` 的过程中收到了其他的指令, 那么会先缓存到 `指令缓冲区` 中
+
+  5. `主节点` 生成好 `RDB` 文件之后, 就会将 `RDB` 文件发送给 `从节点` , 发送期间的指令也会缓存到 `指令缓冲区` 中
+
+  6. 主节点` 在发送完 `RDB` 文件之后, 还会将 `指令缓冲区` 中缓存的指令也发送给 `从节点`
+
+  7. `从节点` 接收到 `RDB` 文件和 `指令缓冲区` 中的指令之后, 会先 `格式化` 自己 (清空自身原有的数据)
+
+  8. `从节点` 加载 `RDB` 文件恢复数据, 再执行 `指令缓冲区` 中的指令
+
+- 后续同步
+
+  - `主节点` 只要接收到一个指令, 就会立即发送给 `从节点`
+  - `从节点` 只要接收到 `主节点` 发送的指令, 就会立即执行
+
+
+
+### Redis-Sentinel
+
+[Redis Sentinel Documentation – Redis](https://redis.io/topics/sentinel)
+
+定义
+
+- 用于监控 `主从结构` 中每个 `节点` 的状态
+- 给 `Redis-Sentinel` 添加多个 `Sentinel 节点` , 让这些节点来监控 `主从结构` 的状态
+  - 本质上是一台特殊的 `Redis` 服务器
+  - 不用于存储数据, 专门用于处理 `主从结构`
+- 一旦发现 `主节点` 宕机了, 那么就让这些 `Sentinel 节点` 重新从 `从节点` 中选举出一个新的 `主节点`
+
+原理
+
+- `Redis-Sentinel` 有三个定时任务, 分别用于
+  - 获取 `主从关系` , 发现 `新节点`
+    - 每隔 `10` 秒, 每个 `sentinel` 节点对 `主节点` 和 `从节点` 执行 `INFO` 命令
+      - 确定 `主从关系`
+      - 发现新 `节点`
+  - 交换信息, 投票选出新 `主节点`
+    - 每隔 `2` 秒, 每个 `sentinel` 节点通过 `主节点` 的 `channel` ( `sentinel:hello` 通道 ) 交换信息 (发布订阅模式)
+      - 为故障判断 / 信息交互提供通道
+  - 监听节点是否可用 (是否宕机)
+    - 每隔 `1` 秒, 每个 `sentinel` 节点对所有 `主节点` / `从节点` / 其他 `sentinel` 节点执行 `ping` 操作
+      - 通过 `心跳检测` 来判断 `节点` 是否发生故障
+
+主观下线 vs 客观下线
+
+- 主观下线: 一个 `sentinel` 节点认为 `主节点` 挂了
+- 客观下线: 多个 `sentinel` 节点认为 `主节点` 挂了 (推荐)
+
+
+
+#### 选举规则
+
+简略
+
+1. 先从 `sentinel` 节点中选举出一个 `领导` `sentinel` 节点
+2. `领导` `Sentinel` 节点从剩余 `从节点` 中再自动选举出一个 `主节点`
+
+详细
+
+1. 一旦有一个 `sentinel` 节点没有收到 `主节点` 的相应, 就会主观认为 `主节点` 挂了
+2. 这个发现 `主节点` 挂了的 `sentinel` 节点就会发起 `选举`
+3. 这个发起选举的 `sentinel` 节点称之为 `候选节点`
+4. `候选节点` 会给其他的 `sentinel` 节点发送 `选举请求`
+5. 默认情况下其他 `sentinel` 节点只要没有投过 `同意票` , 那么就会默认投出 `同意票`
+   - 为了防止选举过程中另一个 `sentinel` 节点再次发起选举
+6. 如果有超过半数的 `sentinel` 节点同意, 那么 `候选节点` 就会变为 `领导` `sentinel` 节点
+7. `领导` `sentinel` 节点给所有 `从节点` 发送 `SLAVEOF NO ONE` 来断开到 `主节点` 的连接
+8. 选择新 `主节点` 的条件遵循以下顺序
+   - `优先级` 比较高的 (如果没有配置过, 默认都是一样的)
+   - 内容最完整的 ( `offset` 用于记录保存了多少数据 )
+   - 选举 `进程ID` 最小的
+9. `领导` `sentinel` 给其他 `从节点` 发送 `SLAVEOF host port` 来让他们连接到新的 `主节点`
+
+
+
+#### 搭建
+
+1. 搭建一个 `主从结构`
+2. 搭建一个 `奇数` 个 `sentinel` 节点的 `Redis-Sentinel`
+3. 创建并修改配置文件 `sentinel.conf`
+
+```js
+port 26380 // 当前 Sentinel 服务运行的端口
+sentinel monitor mymaster 127.0.0.1 6379 2 // 主节点名称 服务器地址 端口 客观下线票数
+sentinel down-after-milliseconds mymaster 60000 // 主观下线时间
+sentinel failover-timeout mymaster 180000 // 故障转移超时时间
+sentinel parallel-syncs mymaster 1 // 故障转移之后, 从节点是串行还是并行同步数据, 1 代表串行, 2 代表并行
+daemonize yes // 用于启动服务
+```
+
+4. 注册 `sentinel` 服务
+
+```shell
+redis-server --service-install sentinel.conf --sentinel --service-name serviceName
+```
 
 
 
