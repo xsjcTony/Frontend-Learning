@@ -86,6 +86,7 @@ await client.disconnect() // 强行断开
 [ortoo/node-redis-sentinel: Sentinel client for redis](https://github.com/ortoo/node-redis-sentinel)
 
 - 基于 `Redis-Sentinel` 操作 `Redis` 服务器
+- 也可以使用 `ioredis` (推荐)
 
 
 
@@ -113,7 +114,38 @@ const redisClient = sentinel.createClient(endpoints, masterName, opts) // master
 // 通过 redisClient 实例对象操作 redis, API 和 Node-Redis 相同
 ```
 
+---
 
+# ioredis
+
+[ioredis - npm](https://www.npmjs.com/package/ioredis)
+
+[luin/ioredis: 🚀 A robust, performance-focused, and full-featured Redis client for Node.js.](https://github.com/luin/ioredis)
+
+- 全能的 `Redis` 服务器的 `NodeJS` 端
+- 支持 `Cluster` / `Sentinel` 等
+
+
+
+## 基本使用
+
+```js
+import Redis from 'ioredis'
+
+// 告诉 ioredis 都有哪些分片服务器
+const cluster = new Redis.Cluster([
+  {
+    port: 6379,
+    host: '127.0.0.1'
+  },
+  // 其他分片服务器的主节点
+])
+
+// 通过cluster连接对象来操作Redis
+await cluster.set('name', 'Tony')
+const res = await cluster.get('name')
+
+```
 
 
 
