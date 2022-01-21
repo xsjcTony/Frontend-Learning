@@ -57,7 +57,7 @@ server.on('request', (req, res) => {
 
 
 
-## 返回静态资源
+### 返回静态资源
 
 ```js
 // staticServer.js
@@ -100,7 +100,7 @@ export async function readFile (req, res, rootPath) {
 
 
 
-## 返回动态网页
+### 返回动态网页
 
 - 使用 `ejs` [ejs - npm](https://www.npmjs.com/package/ejs)
 
@@ -118,4 +118,36 @@ export function renderHTML (req, res, fileName) {
   })
 }
 ```
+
+---
+
+## JSON schema 校验
+
+[ajv - npm](https://www.npmjs.com/package/ajv)
+
+[Ajv JSON schema validator](https://ajv.js.org/)
+
+- 使用 `ajv` 完成
+
+安装
+
+```shell
+npm i ajv
+```
+
+基本使用
+
+```js
+import Ajv from 'ajv'
+import schema from '/path/to/schema.js'
+
+const ajv = new Ajv()
+
+const validate = ajv.compile(schema)
+const valid = validate(data) // true or false
+
+if (!valid) { console.log(validate.errors) }
+```
+
+
 
