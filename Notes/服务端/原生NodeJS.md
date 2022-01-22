@@ -149,5 +149,9 @@ const valid = validate(data) // true or false
 if (!valid) { console.log(validate.errors) }
 ```
 
+---
 
+## 后端结构分层
+
+![general_backend_hierarchy.png](D:\xsjcTony\it666\Frontend-Learning\Notes\服务端\images\general_backend_hierarchy.png)
 
