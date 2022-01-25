@@ -1,0 +1,35 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    width: 100%;
+    height: 100%;
+    background: #ccc;
+}
+form{
+    width: 500px;
+    margin: 50px auto;
+    background: rgba(0,0,0,0.5);
+    padding: 10px;
+}
+div{
+    text-align: center;
+    margin-bottom: 10px;
+}
+input, select{
+    width: 90%;
+    height: 50px;
+}
+input[type='submit']{
+    width: 63%;
+    margin-right: 20px;
+    margin-top: 10px;
+}
+a{
+    vertical-align: bottom;
+}
+p{
+    color: #f00;
+    display: none;
+}

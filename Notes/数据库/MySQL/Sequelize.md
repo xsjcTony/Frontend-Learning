@@ -69,7 +69,7 @@ $ npm i ibm_db #DB2
 ```js
 import { Sequelize } from 'sequelize'
 
-const sequelize = new Sequelize('d', 'username', 'password', {
+const sequelize = new Sequelize('database', 'username', 'password', {
   host: '127.0.0.1', // 服务器地址
   dialect: 'mysql', // 数据库类型
   port: 3306, // 端口号

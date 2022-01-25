@@ -639,7 +639,7 @@ console.log(buffer) // <Buffer 07 03 05>
     const fs = require('fs')
     const path = require('path')
     
-    const writeStream = fs.createWriteStream(path.join(__dirname, 'Lily.txt'), { encoding: 'utf-8' })
+    const writeStream = fs.createWriteStream(path.join(__dirname, 'Lily.txt'), { flag: 'a' }) // 'a' 代表继续写入, 'w' 代表清除之后在写入
     
     writeStream.on('open', function () {
     
