@@ -136,6 +136,6 @@
 
 - 原生NodeJS
 - Express
-- KOA2
+- KOA (v2.x)
 - Egg.js
   - 单元测试
