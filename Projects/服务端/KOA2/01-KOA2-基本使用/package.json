@@ -1,0 +1,24 @@
+{
+  "name": "koa2-practical",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "@koa/router": "^10.1.1",
+    "@types/koa": "^2.13.4",
+    "@types/koa__router": "^8.0.11",
+    "@types/koa-bodyparser": "^4.3.5",
+    "ejs": "^3.1.6",
+    "koa": "^2.13.4",
+    "koa-bodyparser": "^4.3.0",
+    "koa-onerror": "^4.1.0",
+    "koa-static": "^5.0.0",
+    "koa-views": "^8.0.0"
+  }
+}

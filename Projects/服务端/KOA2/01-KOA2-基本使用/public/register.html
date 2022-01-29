@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>注册</title>
+    <link rel="stylesheet" href="css/register.css">
+    <script src="js/jquery-3.1.1.js"></script>
+    <script src="js/register.js"></script>
+</head>
+<body>
+<form action="/api/user/register" method="post">
+    <div>
+        <input id="userName" type="text" placeholder="请输入用户名" name="username">
+        <p id="emailTip">用户名必须是邮箱</p>
+        <p id="userNameTip">用户名已存在</p>
+    </div>
+    <div>
+        <input id="password" type="password" placeholder="请输入密码" name="password">
+        <p id="passwordTip">必须由字母数字组成</p>
+    </div>
+    <div>
+        <input id="repPwd" type="password" placeholder="再次输入密码">
+        <p id="repetitionTip">两次输入密码不一致</p>
+    </div>
+    <div>
+        <select name="gender" id="gender">
+            <option value ="男">男</option>
+            <option value ="女">女</option>
+            <option value ="妖" selected>妖</option>
+        </select>
+    </div>
+    <div>
+        <input type="submit" value="注册">
+        <a href="/login.html">已有账号去登录</a>
+    </div>
+</form>
+</body>
+</html>
