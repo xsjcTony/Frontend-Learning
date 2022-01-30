@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登录</title>
+    <link rel="stylesheet" href="css/register.css">
+</head>
+<body>
+<form action="/api/user/login" method="post">
+    <div>
+        <input id="userName" type="text" placeholder="请输入用户名" name="username">
+        <p id="userNameTip">用户名已存在</p>
+    </div>
+    <div>
+        <input id="password" type="password" placeholder="请输入密码" name="password">
+        <p id="passwordTip">必须由字母数字组成</p>
+    </div>
+    <div>
+        <input type="submit" value="登录">
+        <a href="/register.html">没有账号去注册</a>
+    </div>
+</form>
+</body>
+</html>

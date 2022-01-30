@@ -18,6 +18,7 @@
 - 由 `Express` 原班人马打造
 - 由于语法太新, 兼容性可能不太好
 - `KOA` 比较轻量级, 将很多功能封装到了独立的模块中, 若想要使用需要先安装对应的模块
+- 理论上, 所有 `中间件` 都是 `async` 异步的
 
 ---
 
@@ -41,13 +42,15 @@ npm i koa
   - `ctx.request` 可以拿到 `req` 对象
   - `ctx.response` 可以拿到 `res` 对象
 - `ctx.body` 相当于 `res.writeHead()` + `res.end()`
+- 所有 `中间件` 都是 `async` 异步的
+- 调用 `next()` 时需要使用 `await`
 
 ```js
 import Koa from 'koa'
 
 const app = new Koa()
 
-app.use((ctx) => {
+app.use(async (ctx, next) => {
   ctx.body = 'Hello Koa'
 })
 
@@ -298,8 +301,8 @@ app.on('error', (err, ctx) => {
 
 ## 保存登录状态
 
-- `koa-generic-session`
-- `koa-redis`
+- `koa-generic-session` [koa-generic-session - npm](https://www.npmjs.com/package/koa-generic-session)
+- `koa-redis` [koa-redis - npm](https://www.npmjs.com/package/koa-redis#options)
 
 ---
 
@@ -312,6 +315,10 @@ app.on('error', (err, ctx) => {
 写入到文件
 
 - 使用 `koa-morgan` [koa-morgan - npm](https://www.npmjs.com/package/koa-morgan)
+
+注意点 
+
+- <span style="color: #ff0;">一定要放在任何 `静态资源` / `路由` / `动态网页` 之前</span>
 
 
 
