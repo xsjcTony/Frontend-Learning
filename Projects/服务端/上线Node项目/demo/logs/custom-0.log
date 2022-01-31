@@ -1,0 +1,6 @@
+yyyy-01-Mo 19:05:27: Executing (default): SELECT 1+1 AS result
+yyyy-01-Mo 19:05:27: Executing (default): CREATE TABLE IF NOT EXISTS `User` (`id` INTEGER UNSIGNED auto_increment , `username` VARCHAR(255) NOT NULL UNIQUE, `password` VARCHAR(255) NOT NULL, `gender` ENUM('男', '女', '妖'), PRIMARY KEY (`id`)) ENGINE=InnoDB;
+yyyy-01-Mo 19:05:27: Executing (default): SHOW INDEX FROM `User`
+yyyy-01-Mo 19:38:22: Executing (default): SELECT 1+1 AS result
+yyyy-01-Mo 19:38:22: Executing (default): CREATE TABLE IF NOT EXISTS `User` (`id` INTEGER UNSIGNED auto_increment , `username` VARCHAR(255) NOT NULL UNIQUE, `password` VARCHAR(255) NOT NULL, `gender` ENUM('男', '女', '妖'), PRIMARY KEY (`id`)) ENGINE=InnoDB;
+yyyy-01-Mo 19:38:22: Executing (default): SHOW INDEX FROM `User`

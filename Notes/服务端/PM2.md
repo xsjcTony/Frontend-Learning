@@ -18,7 +18,7 @@
 - 自带 `日志记录` , 可以很方便的记录 `错误日志` / `自定义日志`
   - 自定义日志: `console.log()` 的内容会被自动记录到 `自定义日志` 中
   - 错误日志: `console.error()` 的内容会被自动记录到 `错误日志` 中
-- 能够启动多个 `NodeJS` 进程, 重复利用服务器资源
+- 能够启动多个 `NodeJS` 进程, 充分利用服务器资源
 
 ---
 
@@ -62,6 +62,54 @@ pm2 start app.js
 | pm2 monit [appName\|appId] | 监控应用程序             |
 | pm2 stop appName\|appId    | 停止指定应用程序         |
 | pm2 delete appName\|appId  | 关闭并删除指定应用程序   |
+
+---
+
+## 常用配置
+
+[PM2 - Ecosystem File](https://pm2.keymetrics.io/docs/usage/application-declaration/)
+
+- 经典配置 `pm2.config.json` (也可以是 `JavaScript` 文件)
+
+```json
+{
+  "apps": {
+    "name": "reg-login-proj",
+    "script": "./www.js",
+    "watch": true,
+    "ignore_watch": [
+      "node_modules",
+      "logs"
+    ],
+    "error_file": "./logs/error.log",
+    "out_file": "./logs/custom.log",
+    "log_date_format": "YYYY-MM-DD HH:mm:ss"
+  }
+}
+
+```
+
+- 根据 `配置文件` 启动应用程序
+
+```shell
+pm2 start pm2.config.json
+```
+
+---
+
+## 集群模式 (Cluster mode)
+
+- 开启多个 `NodeJS` 进程, 充分利用服务器资源
+
+- 在 `配置文件` 中加上需要开启的进程数
+  - 不要超过 `CPU` 的核数
+  - `-1` 代表 `CPU` 核数 `-1`
+
+```json
+"instances": 4
+```
+
+
 
 
 

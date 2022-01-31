@@ -1,0 +1,15 @@
+yyyy-01-Mo 18:18:53: Executing (default): SELECT 1+1 AS result
+yyyy-01-Mo 18:18:53: Executing (default): CREATE TABLE IF NOT EXISTS `User` (`id` INTEGER UNSIGNED auto_increment , `username` VARCHAR(255) NOT NULL UNIQUE, `password` VARCHAR(255) NOT NULL, `gender` ENUM('男', '女', '妖'), PRIMARY KEY (`id`)) ENGINE=InnoDB;
+yyyy-01-Mo 18:18:53: Executing (default): SHOW INDEX FROM `User`
+yyyy-01-Mo 18:20:51: {
+yyyy-01-Mo 18:20:51:   cookie: {
+yyyy-01-Mo 18:20:51:     path: '/',
+yyyy-01-Mo 18:20:51:     httpOnly: true,
+yyyy-01-Mo 18:20:51:     maxAge: 86400000,
+yyyy-01-Mo 18:20:51:     overwrite: true,
+yyyy-01-Mo 18:20:51:     signed: true
+yyyy-01-Mo 18:20:51:   },
+yyyy-01-Mo 18:20:51:   id: 1,
+yyyy-01-Mo 18:20:51:   username: '123@qq.com',
+yyyy-01-Mo 18:20:51:   gender: '男'
+yyyy-01-Mo 18:20:51: }

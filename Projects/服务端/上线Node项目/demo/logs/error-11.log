@@ -1,0 +1,12 @@
+You have triggered an unhandledRejection, you may have forgotten to catch a Promise rejection:
+Error [ERR_UNSUPPORTED_ESM_URL_SCHEME]: Only file and data URLs are supported by the default ESM loader. On Windows, absolute paths must be valid file:// URLs. Received protocol 'd:'
+    at new NodeError (node:internal/errors:371:5)
+    at defaultResolve (node:internal/modules/esm/resolve:1016:11)
+    at ESMLoader.resolve (node:internal/modules/esm/loader:422:30)
+    at ESMLoader.getModuleJob (node:internal/modules/esm/loader:222:40)
+    at ESMLoader.import (node:internal/modules/esm/loader:276:22)
+    at importModuleDynamically (node:internal/modules/cjs/loader:1041:29)
+    at importModuleDynamicallyWrapper (node:internal/vm/module:437:21)
+    at importModuleDynamically (node:vm:381:46)
+    at importModuleDynamicallyCallback (node:internal/process/esm_loader:35:14)
+    at C:\nvm\v16.13.2\node_modules\pm2\lib\ProcessContainer.js:301:26
