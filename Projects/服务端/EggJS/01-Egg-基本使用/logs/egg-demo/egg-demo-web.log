@@ -1,0 +1,107 @@
+2022-02-01 00:39:49,359 WARN 50108 [-/127.0.0.1/-/81ms POST /login] missing csrf token. See https://eggjs.org/zh-cn/core/security.html#安全威胁csrf的防范
+2022-02-01 00:39:49,360 WARN 50108 [-/127.0.0.1/-/82ms POST /login] nodejs.ForbiddenError: missing csrf token
+    at Object.throw (D:\xsjcTony\it666\服务端\EggJS\Aelita\node_modules\koa\lib\context.js:97:11)
+    at Object.assertCsrf (D:\xsjcTony\it666\服务端\EggJS\Aelita\node_modules\egg-security\app\extend\context.js:162:32)
+    at csrf (D:\xsjcTony\it666\服务端\EggJS\Aelita\node_modules\egg-security\lib\middlewares\csrf.js:33:9)
+    at dispatch (D:\xsjcTony\it666\服务端\EggJS\Aelita\node_modules\egg-security\node_modules\koa-compose\index.js:42:32)
+    at D:\xsjcTony\it666\服务端\EggJS\Aelita\node_modules\egg-security\node_modules\koa-compose\index.js:34:12
+    at dispatch (D:\xsjcTony\it666\服务端\EggJS\Aelita\node_modules\koa\node_modules\koa-compose\index.js:42:32)
+    at session (D:\xsjcTony\it666\服务端\EggJS\Aelita\node_modules\koa-session\index.js:41:13)
+    at dispatch (D:\xsjcTony\it666\服务端\EggJS\Aelita\node_modules\koa\node_modules\koa-compose\index.js:42:32)
+    at overrideMethod (D:\xsjcTony\it666\服务端\EggJS\Aelita\node_modules\koa-override\index.js:38:12)
+    at dispatch (D:\xsjcTony\it666\服务端\EggJS\Aelita\node_modules\koa\node_modules\koa-compose\index.js:42:32)
+message: "missing csrf token"
+pid: 50108
+hostname: DESKTOP-LES7VH3
+
+2022-02-01 00:44:47,738 WARN 38440 [-/127.0.0.1/-/10ms POST /login] invalid csrf token. See https://eggjs.org/zh-cn/core/security.html#安全威胁csrf的防范
+2022-02-01 00:44:47,739 WARN 38440 [-/127.0.0.1/-/11ms POST /login] nodejs.ForbiddenError: invalid csrf token
+    at Object.throw (D:\xsjcTony\it666\服务端\EggJS\Aelita\node_modules\koa\lib\context.js:97:11)
+    at Object.assertCsrf (D:\xsjcTony\it666\服务端\EggJS\Aelita\node_modules\egg-security\app\extend\context.js:162:32)
+    at csrf (D:\xsjcTony\it666\服务端\EggJS\Aelita\node_modules\egg-security\lib\middlewares\csrf.js:33:9)
+    at dispatch (D:\xsjcTony\it666\服务端\EggJS\Aelita\node_modules\egg-security\node_modules\koa-compose\index.js:42:32)
+    at D:\xsjcTony\it666\服务端\EggJS\Aelita\node_modules\egg-security\node_modules\koa-compose\index.js:34:12
+    at dispatch (D:\xsjcTony\it666\服务端\EggJS\Aelita\node_modules\koa\node_modules\koa-compose\index.js:42:32)
+    at session (D:\xsjcTony\it666\服务端\EggJS\Aelita\node_modules\koa-session\index.js:41:13)
+    at dispatch (D:\xsjcTony\it666\服务端\EggJS\Aelita\node_modules\koa\node_modules\koa-compose\index.js:42:32)
+    at overrideMethod (D:\xsjcTony\it666\服务端\EggJS\Aelita\node_modules\koa-override\index.js:38:12)
+    at dispatch (D:\xsjcTony\it666\服务端\EggJS\Aelita\node_modules\koa\node_modules\koa-compose\index.js:42:32)
+message: "invalid csrf token"
+pid: 38440
+hostname: DESKTOP-LES7VH3
+
+2022-02-01 00:45:46,349 WARN 38440 [-/127.0.0.1/-/0ms POST /login] invalid csrf token. See https://eggjs.org/zh-cn/core/security.html#安全威胁csrf的防范
+2022-02-01 00:45:46,350 WARN 38440 [-/127.0.0.1/-/1ms POST /login] nodejs.ForbiddenError: invalid csrf token
+    at Object.throw (D:\xsjcTony\it666\服务端\EggJS\Aelita\node_modules\koa\lib\context.js:97:11)
+    at Object.assertCsrf (D:\xsjcTony\it666\服务端\EggJS\Aelita\node_modules\egg-security\app\extend\context.js:162:32)
+    at csrf (D:\xsjcTony\it666\服务端\EggJS\Aelita\node_modules\egg-security\lib\middlewares\csrf.js:33:9)
+    at dispatch (D:\xsjcTony\it666\服务端\EggJS\Aelita\node_modules\egg-security\node_modules\koa-compose\index.js:42:32)
+    at D:\xsjcTony\it666\服务端\EggJS\Aelita\node_modules\egg-security\node_modules\koa-compose\index.js:34:12
+    at dispatch (D:\xsjcTony\it666\服务端\EggJS\Aelita\node_modules\koa\node_modules\koa-compose\index.js:42:32)
+    at session (D:\xsjcTony\it666\服务端\EggJS\Aelita\node_modules\koa-session\index.js:41:13)
+    at dispatch (D:\xsjcTony\it666\服务端\EggJS\Aelita\node_modules\koa\node_modules\koa-compose\index.js:42:32)
+    at overrideMethod (D:\xsjcTony\it666\服务端\EggJS\Aelita\node_modules\koa-override\index.js:38:12)
+    at dispatch (D:\xsjcTony\it666\服务端\EggJS\Aelita\node_modules\koa\node_modules\koa-compose\index.js:42:32)
+message: "invalid csrf token"
+pid: 38440
+hostname: DESKTOP-LES7VH3
+
+2022-02-01 00:46:06,149 WARN 38440 [-/127.0.0.1/-/0ms POST /login] invalid csrf token. See https://eggjs.org/zh-cn/core/security.html#安全威胁csrf的防范
+2022-02-01 00:46:06,150 WARN 38440 [-/127.0.0.1/-/1ms POST /login] nodejs.ForbiddenError: invalid csrf token
+    at Object.throw (D:\xsjcTony\it666\服务端\EggJS\Aelita\node_modules\koa\lib\context.js:97:11)
+    at Object.assertCsrf (D:\xsjcTony\it666\服务端\EggJS\Aelita\node_modules\egg-security\app\extend\context.js:162:32)
+    at csrf (D:\xsjcTony\it666\服务端\EggJS\Aelita\node_modules\egg-security\lib\middlewares\csrf.js:33:9)
+    at dispatch (D:\xsjcTony\it666\服务端\EggJS\Aelita\node_modules\egg-security\node_modules\koa-compose\index.js:42:32)
+    at D:\xsjcTony\it666\服务端\EggJS\Aelita\node_modules\egg-security\node_modules\koa-compose\index.js:34:12
+    at dispatch (D:\xsjcTony\it666\服务端\EggJS\Aelita\node_modules\koa\node_modules\koa-compose\index.js:42:32)
+    at session (D:\xsjcTony\it666\服务端\EggJS\Aelita\node_modules\koa-session\index.js:41:13)
+    at dispatch (D:\xsjcTony\it666\服务端\EggJS\Aelita\node_modules\koa\node_modules\koa-compose\index.js:42:32)
+    at overrideMethod (D:\xsjcTony\it666\服务端\EggJS\Aelita\node_modules\koa-override\index.js:38:12)
+    at dispatch (D:\xsjcTony\it666\服务端\EggJS\Aelita\node_modules\koa\node_modules\koa-compose\index.js:42:32)
+message: "invalid csrf token"
+pid: 38440
+hostname: DESKTOP-LES7VH3
+
+2022-02-01 00:46:21,392 WARN 15812 [-/127.0.0.1/-/2ms POST /login] invalid csrf token. See https://eggjs.org/zh-cn/core/security.html#安全威胁csrf的防范
+2022-02-01 00:46:21,393 WARN 15812 [-/127.0.0.1/-/3ms POST /login] nodejs.ForbiddenError: invalid csrf token
+    at Object.throw (D:\xsjcTony\it666\服务端\EggJS\Aelita\node_modules\koa\lib\context.js:97:11)
+    at Object.assertCsrf (D:\xsjcTony\it666\服务端\EggJS\Aelita\node_modules\egg-security\app\extend\context.js:162:32)
+    at csrf (D:\xsjcTony\it666\服务端\EggJS\Aelita\node_modules\egg-security\lib\middlewares\csrf.js:33:9)
+    at dispatch (D:\xsjcTony\it666\服务端\EggJS\Aelita\node_modules\egg-security\node_modules\koa-compose\index.js:42:32)
+    at D:\xsjcTony\it666\服务端\EggJS\Aelita\node_modules\egg-security\node_modules\koa-compose\index.js:34:12
+    at dispatch (D:\xsjcTony\it666\服务端\EggJS\Aelita\node_modules\koa\node_modules\koa-compose\index.js:42:32)
+    at session (D:\xsjcTony\it666\服务端\EggJS\Aelita\node_modules\koa-session\index.js:41:13)
+    at dispatch (D:\xsjcTony\it666\服务端\EggJS\Aelita\node_modules\koa\node_modules\koa-compose\index.js:42:32)
+    at overrideMethod (D:\xsjcTony\it666\服务端\EggJS\Aelita\node_modules\koa-override\index.js:38:12)
+    at dispatch (D:\xsjcTony\it666\服务端\EggJS\Aelita\node_modules\koa\node_modules\koa-compose\index.js:42:32)
+message: "invalid csrf token"
+pid: 15812
+hostname: DESKTOP-LES7VH3
+
+2022-02-01 04:53:53,135 ERROR 34376 [-/127.0.0.1/-/3ms GET /setCookie] nodejs.Error: Cannot send secure cookie over unencrypted connection
+    at Cookies.set (D:\xsjcTony\it666\服务端\EggJS\Aelita\node_modules\egg-cookies\lib\cookies.js:97:13)
+    at HomeController.setCookie (D:\xsjcTony\it666\服务端\EggJS\Aelita\app\controller\home.js:37:22)
+    at Object.callFn (D:\xsjcTony\it666\服务端\EggJS\Aelita\node_modules\egg-core\lib\utils\index.js:44:21)
+    at Object.classControllerMiddleware (D:\xsjcTony\it666\服务端\EggJS\Aelita\node_modules\egg-core\lib\loader\mixin\controller.js:87:20)
+    at Object.callFn (D:\xsjcTony\it666\服务端\EggJS\Aelita\node_modules\@eggjs\router\lib\utils.js:12:21)
+    at wrappedController (D:\xsjcTony\it666\服务端\EggJS\Aelita\node_modules\@eggjs\router\lib\egg_router.js:322:18)
+    at dispatch (D:\xsjcTony\it666\服务端\EggJS\Aelita\node_modules\koa-compose\index.js:44:32)
+    at next (D:\xsjcTony\it666\服务端\EggJS\Aelita\node_modules\koa-compose\index.js:45:18)
+    at D:\xsjcTony\it666\服务端\EggJS\Aelita\node_modules\@eggjs\router\lib\router.js:186:18
+    at dispatch (D:\xsjcTony\it666\服务端\EggJS\Aelita\node_modules\koa-compose\index.js:44:32)
+
+pid: 34376
+hostname: DESKTOP-LES7VH3
+
+2022-02-01 05:43:16,945 INFO 52268 [-/127.0.0.1/-/3ms GET /test] info logger
+2022-02-01 05:43:16,945 WARN 52268 [-/127.0.0.1/-/3ms GET /test] warn logger
+2022-02-01 05:43:16,945 ERROR 52268 [-/127.0.0.1/-/3ms GET /test] error logger
+2022-02-01 05:45:47,445 DEBUG 45972 [-/127.0.0.1/-/2ms GET /test] debug logger
+2022-02-01 05:45:47,445 INFO 45972 [-/127.0.0.1/-/2ms GET /test] info logger
+2022-02-01 05:45:47,446 WARN 45972 [-/127.0.0.1/-/3ms GET /test] warn logger
+2022-02-01 05:45:47,446 ERROR 45972 [-/127.0.0.1/-/3ms GET /test] error logger
+2022-02-02 01:18:12,469 INFO 45424 [egg-sequelize](0ms) Executed (default): SELECT 1+1 AS result
+2022-02-02 01:18:13,223 INFO 16360 [egg-sequelize](0ms) Executed (default): SELECT 1+1 AS result
+2022-02-02 01:18:14,167 INFO 14612 [egg-sequelize](0ms) Executed (default): SELECT 1+1 AS result
+2022-02-02 01:18:29,903 INFO 14612 [egg-sequelize](5ms) Executed (default): INSERT INTO `user` (`id`,`name`,`age`) VALUES (DEFAULT,?,?);
+2022-02-02 01:18:43,313 INFO 14612 [egg-sequelize](4ms) Executed (default): INSERT INTO `user` (`id`,`name`,`age`) VALUES (DEFAULT,?,?);

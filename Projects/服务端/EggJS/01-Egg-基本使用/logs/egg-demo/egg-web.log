@@ -1,0 +1,1765 @@
+2022-02-01 00:00:01,021 INFO 43880 [egg-logrotator] app logger reload: got log-reload message
+2022-02-01 00:01:54,116 INFO 45140 [egg:logger] init all loggers with options: {"dir":"D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\logs\\egg-demo","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-demo-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"enablePerformanceTimer":false,"type":"application"}
+2022-02-01 00:01:54,138 INFO 45140 [egg-multipart] stream mode enable
+2022-02-01 00:01:54,224 INFO 45140 [egg-static] starting static serve /public/ -> D:\xsjcTony\it666\服务端\EggJS\Aelita\app\public
+2022-02-01 00:01:54,226 INFO 45140 [egg-security] use csrf middleware
+2022-02-01 00:01:54,227 INFO 45140 [egg-security] use methodnoallow middleware
+2022-02-01 00:01:54,227 INFO 45140 [egg-security] use noopen middleware
+2022-02-01 00:01:54,229 INFO 45140 [egg-security] use nosniff middleware
+2022-02-01 00:01:54,229 INFO 45140 [egg-security] use xssProtection middleware
+2022-02-01 00:01:54,230 INFO 45140 [egg-security] use xframe middleware
+2022-02-01 00:01:54,230 INFO 45140 [egg-security] use dta middleware
+2022-02-01 00:01:54,230 INFO 45140 [egg-security] compose 7 middlewares into one security middleware
+2022-02-01 00:01:54,238 INFO 45140 [egg:core] dump config after load, 3ms
+2022-02-01 00:01:54,247 INFO 45140 [egg-watcher:application] watcher start success
+2022-02-01 00:01:54,252 INFO 45140 [egg:core] dump config after ready, 3ms
+2022-02-01 00:02:27,564 INFO 44040 [egg:logger] init all loggers with options: {"dir":"D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\logs\\egg-demo","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-demo-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"enablePerformanceTimer":false,"type":"application"}
+2022-02-01 00:02:27,585 INFO 44040 [egg-multipart] stream mode enable
+2022-02-01 00:02:27,670 INFO 44040 [egg-static] starting static serve /public/ -> D:\xsjcTony\it666\服务端\EggJS\Aelita\app\public
+2022-02-01 00:02:27,673 INFO 44040 [egg-security] use csrf middleware
+2022-02-01 00:02:27,673 INFO 44040 [egg-security] use methodnoallow middleware
+2022-02-01 00:02:27,674 INFO 44040 [egg-security] use noopen middleware
+2022-02-01 00:02:27,675 INFO 44040 [egg-security] use nosniff middleware
+2022-02-01 00:02:27,675 INFO 44040 [egg-security] use xssProtection middleware
+2022-02-01 00:02:27,676 INFO 44040 [egg-security] use xframe middleware
+2022-02-01 00:02:27,676 INFO 44040 [egg-security] use dta middleware
+2022-02-01 00:02:27,676 INFO 44040 [egg-security] compose 7 middlewares into one security middleware
+2022-02-01 00:02:27,682 INFO 44040 [egg:core] dump config after load, 3ms
+2022-02-01 00:02:27,689 INFO 44040 [egg-watcher:application] watcher start success
+2022-02-01 00:02:27,693 INFO 44040 [egg:core] dump config after ready, 3ms
+2022-02-01 00:02:34,314 INFO 43556 [egg:logger] init all loggers with options: {"dir":"D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\logs\\egg-demo","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-demo-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"enablePerformanceTimer":false,"type":"application"}
+2022-02-01 00:02:34,333 INFO 43556 [egg-multipart] stream mode enable
+2022-02-01 00:02:34,411 INFO 43556 [egg-static] starting static serve /public/ -> D:\xsjcTony\it666\服务端\EggJS\Aelita\app\public
+2022-02-01 00:02:34,413 INFO 43556 [egg-security] use csrf middleware
+2022-02-01 00:02:34,414 INFO 43556 [egg-security] use methodnoallow middleware
+2022-02-01 00:02:34,414 INFO 43556 [egg-security] use noopen middleware
+2022-02-01 00:02:34,415 INFO 43556 [egg-security] use nosniff middleware
+2022-02-01 00:02:34,416 INFO 43556 [egg-security] use xssProtection middleware
+2022-02-01 00:02:34,416 INFO 43556 [egg-security] use xframe middleware
+2022-02-01 00:02:34,416 INFO 43556 [egg-security] use dta middleware
+2022-02-01 00:02:34,417 INFO 43556 [egg-security] compose 7 middlewares into one security middleware
+2022-02-01 00:02:34,422 INFO 43556 [egg:core] dump config after load, 2ms
+2022-02-01 00:02:34,429 INFO 43556 [egg-watcher:application] watcher start success
+2022-02-01 00:02:34,434 INFO 43556 [egg:core] dump config after ready, 3ms
+2022-02-01 00:03:01,038 INFO 47312 [egg:logger] init all loggers with options: {"dir":"D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\logs\\egg-demo","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-demo-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"enablePerformanceTimer":false,"type":"application"}
+2022-02-01 00:03:01,059 INFO 47312 [egg-multipart] stream mode enable
+2022-02-01 00:03:01,141 INFO 47312 [egg-static] starting static serve /public/ -> D:\xsjcTony\it666\服务端\EggJS\Aelita\app\public
+2022-02-01 00:03:01,143 INFO 47312 [egg-security] use csrf middleware
+2022-02-01 00:03:01,144 INFO 47312 [egg-security] use methodnoallow middleware
+2022-02-01 00:03:01,144 INFO 47312 [egg-security] use noopen middleware
+2022-02-01 00:03:01,146 INFO 47312 [egg-security] use nosniff middleware
+2022-02-01 00:03:01,146 INFO 47312 [egg-security] use xssProtection middleware
+2022-02-01 00:03:01,146 INFO 47312 [egg-security] use xframe middleware
+2022-02-01 00:03:01,147 INFO 47312 [egg-security] use dta middleware
+2022-02-01 00:03:01,147 INFO 47312 [egg-security] compose 7 middlewares into one security middleware
+2022-02-01 00:03:01,152 INFO 47312 [egg:core] dump config after load, 2ms
+2022-02-01 00:03:01,160 INFO 47312 [egg-watcher:application] watcher start success
+2022-02-01 00:03:01,164 INFO 47312 [egg:core] dump config after ready, 3ms
+2022-02-01 00:03:20,917 INFO 49572 [egg:logger] init all loggers with options: {"dir":"D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\logs\\egg-demo","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-demo-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"enablePerformanceTimer":false,"type":"application"}
+2022-02-01 00:03:20,939 INFO 49572 [egg-multipart] stream mode enable
+2022-02-01 00:03:21,027 INFO 49572 [egg-static] starting static serve /public/ -> D:\xsjcTony\it666\服务端\EggJS\Aelita\app\public
+2022-02-01 00:03:21,029 INFO 49572 [egg-security] use csrf middleware
+2022-02-01 00:03:21,030 INFO 49572 [egg-security] use methodnoallow middleware
+2022-02-01 00:03:21,030 INFO 49572 [egg-security] use noopen middleware
+2022-02-01 00:03:21,032 INFO 49572 [egg-security] use nosniff middleware
+2022-02-01 00:03:21,032 INFO 49572 [egg-security] use xssProtection middleware
+2022-02-01 00:03:21,032 INFO 49572 [egg-security] use xframe middleware
+2022-02-01 00:03:21,033 INFO 49572 [egg-security] use dta middleware
+2022-02-01 00:03:21,033 INFO 49572 [egg-security] compose 7 middlewares into one security middleware
+2022-02-01 00:03:21,039 INFO 49572 [egg:core] dump config after load, 3ms
+2022-02-01 00:03:21,046 INFO 49572 [egg-watcher:application] watcher start success
+2022-02-01 00:03:21,050 INFO 49572 [egg:core] dump config after ready, 3ms
+2022-02-01 00:03:43,578 INFO 35548 [egg:logger] init all loggers with options: {"dir":"D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\logs\\egg-demo","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-demo-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"enablePerformanceTimer":false,"type":"application"}
+2022-02-01 00:03:43,597 INFO 35548 [egg-multipart] stream mode enable
+2022-02-01 00:03:43,672 INFO 35548 [egg-static] starting static serve /public/ -> D:\xsjcTony\it666\服务端\EggJS\Aelita\app\public
+2022-02-01 00:03:43,674 INFO 35548 [egg-security] use csrf middleware
+2022-02-01 00:03:43,675 INFO 35548 [egg-security] use methodnoallow middleware
+2022-02-01 00:03:43,676 INFO 35548 [egg-security] use noopen middleware
+2022-02-01 00:03:43,677 INFO 35548 [egg-security] use nosniff middleware
+2022-02-01 00:03:43,677 INFO 35548 [egg-security] use xssProtection middleware
+2022-02-01 00:03:43,678 INFO 35548 [egg-security] use xframe middleware
+2022-02-01 00:03:43,678 INFO 35548 [egg-security] use dta middleware
+2022-02-01 00:03:43,678 INFO 35548 [egg-security] compose 7 middlewares into one security middleware
+2022-02-01 00:03:43,684 INFO 35548 [egg:core] dump config after load, 3ms
+2022-02-01 00:03:43,691 INFO 35548 [egg-watcher:application] watcher start success
+2022-02-01 00:03:43,695 INFO 35548 [egg:core] dump config after ready, 3ms
+2022-02-01 00:03:59,852 INFO 33144 [egg:logger] init all loggers with options: {"dir":"D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\logs\\egg-demo","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-demo-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"enablePerformanceTimer":false,"type":"application"}
+2022-02-01 00:03:59,872 INFO 33144 [egg-multipart] stream mode enable
+2022-02-01 00:03:59,951 INFO 33144 [egg-static] starting static serve /public/ -> D:\xsjcTony\it666\服务端\EggJS\Aelita\app\public
+2022-02-01 00:03:59,953 INFO 33144 [egg-security] use csrf middleware
+2022-02-01 00:03:59,954 INFO 33144 [egg-security] use methodnoallow middleware
+2022-02-01 00:03:59,954 INFO 33144 [egg-security] use noopen middleware
+2022-02-01 00:03:59,956 INFO 33144 [egg-security] use nosniff middleware
+2022-02-01 00:03:59,956 INFO 33144 [egg-security] use xssProtection middleware
+2022-02-01 00:03:59,957 INFO 33144 [egg-security] use xframe middleware
+2022-02-01 00:03:59,957 INFO 33144 [egg-security] use dta middleware
+2022-02-01 00:03:59,957 INFO 33144 [egg-security] compose 7 middlewares into one security middleware
+2022-02-01 00:03:59,963 INFO 33144 [egg:core] dump config after load, 2ms
+2022-02-01 00:03:59,970 INFO 33144 [egg-watcher:application] watcher start success
+2022-02-01 00:03:59,974 INFO 33144 [egg:core] dump config after ready, 3ms
+2022-02-01 00:04:34,384 INFO 51236 [egg:logger] init all loggers with options: {"dir":"D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\logs\\egg-demo","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-demo-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"enablePerformanceTimer":false,"type":"application"}
+2022-02-01 00:04:34,404 INFO 51236 [egg-multipart] stream mode enable
+2022-02-01 00:04:34,484 INFO 51236 [egg-static] starting static serve /public/ -> D:\xsjcTony\it666\服务端\EggJS\Aelita\app\public
+2022-02-01 00:04:34,486 INFO 51236 [egg-security] use csrf middleware
+2022-02-01 00:04:34,487 INFO 51236 [egg-security] use methodnoallow middleware
+2022-02-01 00:04:34,488 INFO 51236 [egg-security] use noopen middleware
+2022-02-01 00:04:34,489 INFO 51236 [egg-security] use nosniff middleware
+2022-02-01 00:04:34,490 INFO 51236 [egg-security] use xssProtection middleware
+2022-02-01 00:04:34,490 INFO 51236 [egg-security] use xframe middleware
+2022-02-01 00:04:34,491 INFO 51236 [egg-security] use dta middleware
+2022-02-01 00:04:34,491 INFO 51236 [egg-security] compose 7 middlewares into one security middleware
+2022-02-01 00:04:34,497 INFO 51236 [egg:core] dump config after load, 3ms
+2022-02-01 00:04:34,504 INFO 51236 [egg-watcher:application] watcher start success
+2022-02-01 00:04:34,508 INFO 51236 [egg:core] dump config after ready, 3ms
+2022-02-01 00:05:05,396 INFO 11984 [egg:logger] init all loggers with options: {"dir":"D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\logs\\egg-demo","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-demo-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"enablePerformanceTimer":false,"type":"application"}
+2022-02-01 00:05:05,420 INFO 11984 [egg-multipart] stream mode enable
+2022-02-01 00:05:05,512 INFO 11984 [egg-static] starting static serve /public/ -> D:\xsjcTony\it666\服务端\EggJS\Aelita\app\public
+2022-02-01 00:05:05,514 INFO 11984 [egg-security] use csrf middleware
+2022-02-01 00:05:05,515 INFO 11984 [egg-security] use methodnoallow middleware
+2022-02-01 00:05:05,516 INFO 11984 [egg-security] use noopen middleware
+2022-02-01 00:05:05,517 INFO 11984 [egg-security] use nosniff middleware
+2022-02-01 00:05:05,518 INFO 11984 [egg-security] use xssProtection middleware
+2022-02-01 00:05:05,518 INFO 11984 [egg-security] use xframe middleware
+2022-02-01 00:05:05,519 INFO 11984 [egg-security] use dta middleware
+2022-02-01 00:05:05,519 INFO 11984 [egg-security] compose 7 middlewares into one security middleware
+2022-02-01 00:05:05,525 INFO 11984 [egg:core] dump config after load, 3ms
+2022-02-01 00:05:05,532 INFO 11984 [egg-watcher:application] watcher start success
+2022-02-01 00:05:05,537 INFO 11984 [egg:core] dump config after ready, 3ms
+2022-02-01 00:05:17,743 INFO 47024 [egg:logger] init all loggers with options: {"dir":"D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\logs\\egg-demo","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-demo-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"enablePerformanceTimer":false,"type":"application"}
+2022-02-01 00:05:17,764 INFO 47024 [egg-multipart] stream mode enable
+2022-02-01 00:05:17,843 INFO 47024 [egg-static] starting static serve /public/ -> D:\xsjcTony\it666\服务端\EggJS\Aelita\app\public
+2022-02-01 00:05:17,846 INFO 47024 [egg-security] use csrf middleware
+2022-02-01 00:05:17,846 INFO 47024 [egg-security] use methodnoallow middleware
+2022-02-01 00:05:17,847 INFO 47024 [egg-security] use noopen middleware
+2022-02-01 00:05:17,848 INFO 47024 [egg-security] use nosniff middleware
+2022-02-01 00:05:17,848 INFO 47024 [egg-security] use xssProtection middleware
+2022-02-01 00:05:17,849 INFO 47024 [egg-security] use xframe middleware
+2022-02-01 00:05:17,849 INFO 47024 [egg-security] use dta middleware
+2022-02-01 00:05:17,849 INFO 47024 [egg-security] compose 7 middlewares into one security middleware
+2022-02-01 00:05:17,855 INFO 47024 [egg:core] dump config after load, 3ms
+2022-02-01 00:05:17,862 INFO 47024 [egg-watcher:application] watcher start success
+2022-02-01 00:05:17,867 INFO 47024 [egg:core] dump config after ready, 4ms
+2022-02-01 00:06:12,721 INFO 35272 [egg:logger] init all loggers with options: {"dir":"D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\logs\\egg-demo","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-demo-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"enablePerformanceTimer":false,"type":"application"}
+2022-02-01 00:06:12,740 INFO 35272 [egg-multipart] stream mode enable
+2022-02-01 00:06:12,822 INFO 35272 [egg-static] starting static serve /public/ -> D:\xsjcTony\it666\服务端\EggJS\Aelita\app\public
+2022-02-01 00:06:12,824 INFO 35272 [egg-security] use csrf middleware
+2022-02-01 00:06:12,825 INFO 35272 [egg-security] use methodnoallow middleware
+2022-02-01 00:06:12,826 INFO 35272 [egg-security] use noopen middleware
+2022-02-01 00:06:12,827 INFO 35272 [egg-security] use nosniff middleware
+2022-02-01 00:06:12,827 INFO 35272 [egg-security] use xssProtection middleware
+2022-02-01 00:06:12,828 INFO 35272 [egg-security] use xframe middleware
+2022-02-01 00:06:12,828 INFO 35272 [egg-security] use dta middleware
+2022-02-01 00:06:12,828 INFO 35272 [egg-security] compose 7 middlewares into one security middleware
+2022-02-01 00:06:12,834 INFO 35272 [egg:core] dump config after load, 3ms
+2022-02-01 00:06:12,841 INFO 35272 [egg-watcher:application] watcher start success
+2022-02-01 00:06:12,845 INFO 35272 [egg:core] dump config after ready, 3ms
+2022-02-01 00:06:48,772 INFO 41784 [egg:logger] init all loggers with options: {"dir":"D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\logs\\egg-demo","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-demo-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"enablePerformanceTimer":false,"type":"application"}
+2022-02-01 00:06:48,792 INFO 41784 [egg-multipart] stream mode enable
+2022-02-01 00:06:48,872 INFO 41784 [egg-static] starting static serve /public/ -> D:\xsjcTony\it666\服务端\EggJS\Aelita\app\public
+2022-02-01 00:06:48,874 INFO 41784 [egg-security] use csrf middleware
+2022-02-01 00:06:48,875 INFO 41784 [egg-security] use methodnoallow middleware
+2022-02-01 00:06:48,875 INFO 41784 [egg-security] use noopen middleware
+2022-02-01 00:06:48,876 INFO 41784 [egg-security] use nosniff middleware
+2022-02-01 00:06:48,877 INFO 41784 [egg-security] use xssProtection middleware
+2022-02-01 00:06:48,877 INFO 41784 [egg-security] use xframe middleware
+2022-02-01 00:06:48,878 INFO 41784 [egg-security] use dta middleware
+2022-02-01 00:06:48,878 INFO 41784 [egg-security] compose 7 middlewares into one security middleware
+2022-02-01 00:06:48,883 INFO 41784 [egg:core] dump config after load, 2ms
+2022-02-01 00:06:48,890 INFO 41784 [egg-watcher:application] watcher start success
+2022-02-01 00:06:48,894 INFO 41784 [egg:core] dump config after ready, 3ms
+2022-02-01 00:12:23,428 INFO 12408 [egg:logger] init all loggers with options: {"dir":"D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\logs\\egg-demo","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-demo-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"enablePerformanceTimer":false,"type":"application"}
+2022-02-01 00:12:23,448 INFO 12408 [egg-multipart] stream mode enable
+2022-02-01 00:12:23,536 INFO 12408 [egg-static] starting static serve /public/ -> D:\xsjcTony\it666\服务端\EggJS\Aelita\app\public
+2022-02-01 00:12:23,538 INFO 12408 [egg-security] use csrf middleware
+2022-02-01 00:12:23,539 INFO 12408 [egg-security] use methodnoallow middleware
+2022-02-01 00:12:23,539 INFO 12408 [egg-security] use noopen middleware
+2022-02-01 00:12:23,540 INFO 12408 [egg-security] use nosniff middleware
+2022-02-01 00:12:23,541 INFO 12408 [egg-security] use xssProtection middleware
+2022-02-01 00:12:23,541 INFO 12408 [egg-security] use xframe middleware
+2022-02-01 00:12:23,542 INFO 12408 [egg-security] use dta middleware
+2022-02-01 00:12:23,542 INFO 12408 [egg-security] compose 7 middlewares into one security middleware
+2022-02-01 00:12:23,547 INFO 12408 [egg:core] dump config after load, 2ms
+2022-02-01 00:12:23,554 INFO 12408 [egg-watcher:application] watcher start success
+2022-02-01 00:12:23,558 INFO 12408 [egg:core] dump config after ready, 3ms
+2022-02-01 00:12:34,977 INFO 47552 [egg:logger] init all loggers with options: {"dir":"D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\logs\\egg-demo","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-demo-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"enablePerformanceTimer":false,"type":"application"}
+2022-02-01 00:12:34,998 INFO 47552 [egg-multipart] stream mode enable
+2022-02-01 00:12:35,093 INFO 47552 [egg-static] starting static serve /public/ -> D:\xsjcTony\it666\服务端\EggJS\Aelita\app\public
+2022-02-01 00:12:35,096 INFO 47552 [egg-security] use csrf middleware
+2022-02-01 00:12:35,097 INFO 47552 [egg-security] use methodnoallow middleware
+2022-02-01 00:12:35,097 INFO 47552 [egg-security] use noopen middleware
+2022-02-01 00:12:35,098 INFO 47552 [egg-security] use nosniff middleware
+2022-02-01 00:12:35,099 INFO 47552 [egg-security] use xssProtection middleware
+2022-02-01 00:12:35,099 INFO 47552 [egg-security] use xframe middleware
+2022-02-01 00:12:35,100 INFO 47552 [egg-security] use dta middleware
+2022-02-01 00:12:35,100 INFO 47552 [egg-security] compose 7 middlewares into one security middleware
+2022-02-01 00:12:35,106 INFO 47552 [egg:core] dump config after load, 3ms
+2022-02-01 00:12:35,114 INFO 47552 [egg-watcher:application] watcher start success
+2022-02-01 00:12:35,118 INFO 47552 [egg:core] dump config after ready, 3ms
+2022-02-01 00:12:39,868 INFO 35220 [egg:logger] init all loggers with options: {"dir":"D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\logs\\egg-demo","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-demo-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"enablePerformanceTimer":false,"type":"application"}
+2022-02-01 00:12:39,889 INFO 35220 [egg-multipart] stream mode enable
+2022-02-01 00:12:39,968 INFO 35220 [egg-static] starting static serve /public/ -> D:\xsjcTony\it666\服务端\EggJS\Aelita\app\public
+2022-02-01 00:12:39,970 INFO 35220 [egg-security] use csrf middleware
+2022-02-01 00:12:39,971 INFO 35220 [egg-security] use methodnoallow middleware
+2022-02-01 00:12:39,971 INFO 35220 [egg-security] use noopen middleware
+2022-02-01 00:12:39,972 INFO 35220 [egg-security] use nosniff middleware
+2022-02-01 00:12:39,973 INFO 35220 [egg-security] use xssProtection middleware
+2022-02-01 00:12:39,973 INFO 35220 [egg-security] use xframe middleware
+2022-02-01 00:12:39,974 INFO 35220 [egg-security] use dta middleware
+2022-02-01 00:12:39,974 INFO 35220 [egg-security] compose 7 middlewares into one security middleware
+2022-02-01 00:12:39,979 INFO 35220 [egg:core] dump config after load, 2ms
+2022-02-01 00:12:39,986 INFO 35220 [egg-watcher:application] watcher start success
+2022-02-01 00:12:39,990 INFO 35220 [egg:core] dump config after ready, 3ms
+2022-02-01 00:12:49,174 INFO 50108 [egg:logger] init all loggers with options: {"dir":"D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\logs\\egg-demo","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-demo-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"enablePerformanceTimer":false,"type":"application"}
+2022-02-01 00:12:49,194 INFO 50108 [egg-multipart] stream mode enable
+2022-02-01 00:12:49,273 INFO 50108 [egg-static] starting static serve /public/ -> D:\xsjcTony\it666\服务端\EggJS\Aelita\app\public
+2022-02-01 00:12:49,276 INFO 50108 [egg-security] use csrf middleware
+2022-02-01 00:12:49,276 INFO 50108 [egg-security] use methodnoallow middleware
+2022-02-01 00:12:49,277 INFO 50108 [egg-security] use noopen middleware
+2022-02-01 00:12:49,278 INFO 50108 [egg-security] use nosniff middleware
+2022-02-01 00:12:49,278 INFO 50108 [egg-security] use xssProtection middleware
+2022-02-01 00:12:49,279 INFO 50108 [egg-security] use xframe middleware
+2022-02-01 00:12:49,279 INFO 50108 [egg-security] use dta middleware
+2022-02-01 00:12:49,279 INFO 50108 [egg-security] compose 7 middlewares into one security middleware
+2022-02-01 00:12:49,285 INFO 50108 [egg:core] dump config after load, 3ms
+2022-02-01 00:12:49,292 INFO 50108 [egg-watcher:application] watcher start success
+2022-02-01 00:12:49,295 INFO 50108 [egg:core] dump config after ready, 2ms
+2022-02-01 00:44:20,129 INFO 38440 [egg:logger] init all loggers with options: {"dir":"D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\logs\\egg-demo","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-demo-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"enablePerformanceTimer":false,"type":"application"}
+2022-02-01 00:44:20,149 INFO 38440 [egg-multipart] stream mode enable
+2022-02-01 00:44:20,228 INFO 38440 [egg-static] starting static serve /public/ -> D:\xsjcTony\it666\服务端\EggJS\Aelita\app\public
+2022-02-01 00:44:20,230 INFO 38440 [egg-security] use csrf middleware
+2022-02-01 00:44:20,231 INFO 38440 [egg-security] use methodnoallow middleware
+2022-02-01 00:44:20,232 INFO 38440 [egg-security] use noopen middleware
+2022-02-01 00:44:20,233 INFO 38440 [egg-security] use nosniff middleware
+2022-02-01 00:44:20,233 INFO 38440 [egg-security] use xssProtection middleware
+2022-02-01 00:44:20,234 INFO 38440 [egg-security] use xframe middleware
+2022-02-01 00:44:20,234 INFO 38440 [egg-security] use dta middleware
+2022-02-01 00:44:20,234 INFO 38440 [egg-security] compose 7 middlewares into one security middleware
+2022-02-01 00:44:20,240 INFO 38440 [egg:core] dump config after load, 3ms
+2022-02-01 00:44:20,247 INFO 38440 [egg-watcher:application] watcher start success
+2022-02-01 00:44:20,251 INFO 38440 [egg:core] dump config after ready, 3ms
+2022-02-01 00:46:18,971 INFO 15812 [egg:logger] init all loggers with options: {"dir":"D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\logs\\egg-demo","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-demo-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"enablePerformanceTimer":false,"type":"application"}
+2022-02-01 00:46:18,991 INFO 15812 [egg-multipart] stream mode enable
+2022-02-01 00:46:19,067 INFO 15812 [egg-static] starting static serve /public/ -> D:\xsjcTony\it666\服务端\EggJS\Aelita\app\public
+2022-02-01 00:46:19,070 INFO 15812 [egg-security] use csrf middleware
+2022-02-01 00:46:19,071 INFO 15812 [egg-security] use methodnoallow middleware
+2022-02-01 00:46:19,071 INFO 15812 [egg-security] use noopen middleware
+2022-02-01 00:46:19,072 INFO 15812 [egg-security] use nosniff middleware
+2022-02-01 00:46:19,073 INFO 15812 [egg-security] use xssProtection middleware
+2022-02-01 00:46:19,073 INFO 15812 [egg-security] use xframe middleware
+2022-02-01 00:46:19,074 INFO 15812 [egg-security] use dta middleware
+2022-02-01 00:46:19,074 INFO 15812 [egg-security] compose 7 middlewares into one security middleware
+2022-02-01 00:46:19,079 INFO 15812 [egg:core] dump config after load, 2ms
+2022-02-01 00:46:19,088 INFO 15812 [egg-watcher:application] watcher start success
+2022-02-01 00:46:19,093 INFO 15812 [egg:core] dump config after ready, 4ms
+2022-02-01 00:46:57,648 INFO 50264 [egg:logger] init all loggers with options: {"dir":"D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\logs\\egg-demo","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-demo-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"enablePerformanceTimer":false,"type":"application"}
+2022-02-01 00:46:57,669 INFO 50264 [egg-multipart] stream mode enable
+2022-02-01 00:46:57,754 INFO 50264 [egg-static] starting static serve /public/ -> D:\xsjcTony\it666\服务端\EggJS\Aelita\app\public
+2022-02-01 00:46:57,757 INFO 50264 [egg-security] use csrf middleware
+2022-02-01 00:46:57,758 INFO 50264 [egg-security] use methodnoallow middleware
+2022-02-01 00:46:57,758 INFO 50264 [egg-security] use noopen middleware
+2022-02-01 00:46:57,759 INFO 50264 [egg-security] use nosniff middleware
+2022-02-01 00:46:57,760 INFO 50264 [egg-security] use xssProtection middleware
+2022-02-01 00:46:57,760 INFO 50264 [egg-security] use xframe middleware
+2022-02-01 00:46:57,761 INFO 50264 [egg-security] use dta middleware
+2022-02-01 00:46:57,761 INFO 50264 [egg-security] compose 7 middlewares into one security middleware
+2022-02-01 00:46:57,767 INFO 50264 [egg:core] dump config after load, 3ms
+2022-02-01 00:46:57,774 INFO 50264 [egg-watcher:application] watcher start success
+2022-02-01 00:46:57,779 INFO 50264 [egg:core] dump config after ready, 4ms
+2022-02-01 00:47:03,937 INFO 36464 [egg:logger] init all loggers with options: {"dir":"D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\logs\\egg-demo","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-demo-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"enablePerformanceTimer":false,"type":"application"}
+2022-02-01 00:47:03,956 INFO 36464 [egg-multipart] stream mode enable
+2022-02-01 00:47:04,039 INFO 36464 [egg-static] starting static serve /public/ -> D:\xsjcTony\it666\服务端\EggJS\Aelita\app\public
+2022-02-01 00:47:04,042 INFO 36464 [egg-security] use csrf middleware
+2022-02-01 00:47:04,043 INFO 36464 [egg-security] use methodnoallow middleware
+2022-02-01 00:47:04,043 INFO 36464 [egg-security] use noopen middleware
+2022-02-01 00:47:04,044 INFO 36464 [egg-security] use nosniff middleware
+2022-02-01 00:47:04,045 INFO 36464 [egg-security] use xssProtection middleware
+2022-02-01 00:47:04,045 INFO 36464 [egg-security] use xframe middleware
+2022-02-01 00:47:04,046 INFO 36464 [egg-security] use dta middleware
+2022-02-01 00:47:04,046 INFO 36464 [egg-security] compose 7 middlewares into one security middleware
+2022-02-01 00:47:04,052 INFO 36464 [egg:core] dump config after load, 3ms
+2022-02-01 00:47:04,059 INFO 36464 [egg-watcher:application] watcher start success
+2022-02-01 00:47:04,064 INFO 36464 [egg:core] dump config after ready, 4ms
+2022-02-01 00:52:59,376 INFO 42984 [egg:logger] init all loggers with options: {"dir":"D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\logs\\egg-demo","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-demo-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"enablePerformanceTimer":false,"type":"application"}
+2022-02-01 00:52:59,396 INFO 42984 [egg-multipart] stream mode enable
+2022-02-01 00:52:59,478 INFO 42984 [egg-static] starting static serve /public/ -> D:\xsjcTony\it666\服务端\EggJS\Aelita\app\public
+2022-02-01 00:52:59,480 INFO 42984 [egg-security] use csrf middleware
+2022-02-01 00:52:59,481 INFO 42984 [egg-security] use methodnoallow middleware
+2022-02-01 00:52:59,482 INFO 42984 [egg-security] use noopen middleware
+2022-02-01 00:52:59,483 INFO 42984 [egg-security] use nosniff middleware
+2022-02-01 00:52:59,483 INFO 42984 [egg-security] use xssProtection middleware
+2022-02-01 00:52:59,484 INFO 42984 [egg-security] use xframe middleware
+2022-02-01 00:52:59,484 INFO 42984 [egg-security] use dta middleware
+2022-02-01 00:52:59,484 INFO 42984 [egg-security] compose 7 middlewares into one security middleware
+2022-02-01 00:52:59,490 INFO 42984 [egg:core] dump config after load, 3ms
+2022-02-01 00:52:59,497 INFO 42984 [egg-watcher:application] watcher start success
+2022-02-01 00:52:59,502 INFO 42984 [egg:core] dump config after ready, 4ms
+2022-02-01 01:05:13,121 INFO 45916 [egg:logger] init all loggers with options: {"dir":"D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\logs\\egg-demo","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-demo-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"enablePerformanceTimer":false,"type":"application"}
+2022-02-01 01:05:13,140 INFO 45916 [egg-multipart] stream mode enable
+2022-02-01 01:05:13,218 INFO 45916 [egg-static] starting static serve /public/ -> D:\xsjcTony\it666\服务端\EggJS\Aelita\app\public
+2022-02-01 01:05:13,221 INFO 45916 [egg-security] use csrf middleware
+2022-02-01 01:05:13,221 INFO 45916 [egg-security] use methodnoallow middleware
+2022-02-01 01:05:13,222 INFO 45916 [egg-security] use noopen middleware
+2022-02-01 01:05:13,223 INFO 45916 [egg-security] use nosniff middleware
+2022-02-01 01:05:13,224 INFO 45916 [egg-security] use xssProtection middleware
+2022-02-01 01:05:13,224 INFO 45916 [egg-security] use xframe middleware
+2022-02-01 01:05:13,224 INFO 45916 [egg-security] use dta middleware
+2022-02-01 01:05:13,224 INFO 45916 [egg-security] compose 7 middlewares into one security middleware
+2022-02-01 01:05:13,230 INFO 45916 [egg:core] dump config after load, 3ms
+2022-02-01 01:05:13,237 INFO 45916 [egg-watcher:application] watcher start success
+2022-02-01 01:05:13,241 INFO 45916 [egg:core] dump config after ready, 3ms
+2022-02-01 01:16:38,802 INFO 48864 [egg:logger] init all loggers with options: {"dir":"D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\logs\\egg-demo","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-demo-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"enablePerformanceTimer":false,"type":"application"}
+2022-02-01 01:16:38,820 INFO 48864 [egg-multipart] stream mode enable
+2022-02-01 01:16:38,897 INFO 48864 [egg-static] starting static serve /public/ -> D:\xsjcTony\it666\服务端\EggJS\Aelita\app\public
+2022-02-01 01:16:38,899 INFO 48864 [egg-security] use csrf middleware
+2022-02-01 01:16:38,900 INFO 48864 [egg-security] use methodnoallow middleware
+2022-02-01 01:16:38,900 INFO 48864 [egg-security] use noopen middleware
+2022-02-01 01:16:38,901 INFO 48864 [egg-security] use nosniff middleware
+2022-02-01 01:16:38,902 INFO 48864 [egg-security] use xssProtection middleware
+2022-02-01 01:16:38,902 INFO 48864 [egg-security] use xframe middleware
+2022-02-01 01:16:38,903 INFO 48864 [egg-security] use dta middleware
+2022-02-01 01:16:38,903 INFO 48864 [egg-security] compose 7 middlewares into one security middleware
+2022-02-01 01:16:38,908 INFO 48864 [egg:core] dump config after load, 2ms
+2022-02-01 01:16:38,917 INFO 48864 [egg-watcher:application] watcher start success
+2022-02-01 01:16:38,921 INFO 48864 [egg:core] dump config after ready, 3ms
+2022-02-01 01:17:26,972 INFO 15008 [egg:logger] init all loggers with options: {"dir":"D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\logs\\egg-demo","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-demo-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"enablePerformanceTimer":false,"type":"application"}
+2022-02-01 01:17:26,991 INFO 15008 [egg-multipart] stream mode enable
+2022-02-01 01:17:27,070 INFO 15008 [egg-static] starting static serve /public/ -> D:\xsjcTony\it666\服务端\EggJS\Aelita\app\public
+2022-02-01 01:17:27,072 INFO 15008 [egg-security] use csrf middleware
+2022-02-01 01:17:27,073 INFO 15008 [egg-security] use methodnoallow middleware
+2022-02-01 01:17:27,074 INFO 15008 [egg-security] use noopen middleware
+2022-02-01 01:17:27,075 INFO 15008 [egg-security] use nosniff middleware
+2022-02-01 01:17:27,075 INFO 15008 [egg-security] use xssProtection middleware
+2022-02-01 01:17:27,076 INFO 15008 [egg-security] use xframe middleware
+2022-02-01 01:17:27,076 INFO 15008 [egg-security] use dta middleware
+2022-02-01 01:17:27,076 INFO 15008 [egg-security] compose 7 middlewares into one security middleware
+2022-02-01 01:17:27,081 INFO 15008 [egg:core] dump config after load, 2ms
+2022-02-01 01:17:27,090 INFO 15008 [egg-watcher:application] watcher start success
+2022-02-01 01:17:27,095 INFO 15008 [egg:core] dump config after ready, 3ms
+2022-02-01 01:18:11,196 INFO 10820 [egg:logger] init all loggers with options: {"dir":"D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\logs\\egg-demo","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-demo-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"enablePerformanceTimer":false,"type":"application"}
+2022-02-01 01:18:11,216 INFO 10820 [egg-multipart] stream mode enable
+2022-02-01 01:18:11,299 INFO 10820 [egg-static] starting static serve /public/ -> D:\xsjcTony\it666\服务端\EggJS\Aelita\app\public
+2022-02-01 01:18:11,301 INFO 10820 [egg-security] use csrf middleware
+2022-02-01 01:18:11,302 INFO 10820 [egg-security] use methodnoallow middleware
+2022-02-01 01:18:11,303 INFO 10820 [egg-security] use noopen middleware
+2022-02-01 01:18:11,304 INFO 10820 [egg-security] use nosniff middleware
+2022-02-01 01:18:11,304 INFO 10820 [egg-security] use xssProtection middleware
+2022-02-01 01:18:11,305 INFO 10820 [egg-security] use xframe middleware
+2022-02-01 01:18:11,305 INFO 10820 [egg-security] use dta middleware
+2022-02-01 01:18:11,305 INFO 10820 [egg-security] compose 7 middlewares into one security middleware
+2022-02-01 01:18:11,311 INFO 10820 [egg:core] dump config after load, 3ms
+2022-02-01 01:18:11,319 INFO 10820 [egg-watcher:application] watcher start success
+2022-02-01 01:18:11,324 INFO 10820 [egg:core] dump config after ready, 3ms
+2022-02-01 02:08:46,295 INFO 39712 [egg:logger] init all loggers with options: {"dir":"D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\logs\\egg-demo","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-demo-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"enablePerformanceTimer":false,"type":"application"}
+2022-02-01 02:08:46,315 INFO 39712 [egg-multipart] stream mode enable
+2022-02-01 02:08:46,416 INFO 39712 [egg-static] starting static serve /public/ -> D:\xsjcTony\it666\服务端\EggJS\Aelita\app\public
+2022-02-01 02:08:46,418 INFO 39712 [egg-security] use csrf middleware
+2022-02-01 02:08:46,419 INFO 39712 [egg-security] use methodnoallow middleware
+2022-02-01 02:08:46,419 INFO 39712 [egg-security] use noopen middleware
+2022-02-01 02:08:46,420 INFO 39712 [egg-security] use nosniff middleware
+2022-02-01 02:08:46,421 INFO 39712 [egg-security] use xssProtection middleware
+2022-02-01 02:08:46,421 INFO 39712 [egg-security] use xframe middleware
+2022-02-01 02:08:46,421 INFO 39712 [egg-security] use dta middleware
+2022-02-01 02:08:46,421 INFO 39712 [egg-security] compose 7 middlewares into one security middleware
+2022-02-01 02:08:46,427 INFO 39712 [egg:core] dump config after load, 3ms
+2022-02-01 02:08:46,435 INFO 39712 [egg-watcher:application] watcher start success
+2022-02-01 02:08:46,439 INFO 39712 [egg:core] dump config after ready, 3ms
+2022-02-01 02:08:47,192 INFO 43232 [egg:logger] init all loggers with options: {"dir":"D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\logs\\egg-demo","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-demo-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"enablePerformanceTimer":false,"type":"application"}
+2022-02-01 02:08:47,213 INFO 43232 [egg-multipart] stream mode enable
+2022-02-01 02:08:47,301 INFO 43232 [egg-static] starting static serve /public/ -> D:\xsjcTony\it666\服务端\EggJS\Aelita\app\public
+2022-02-01 02:08:47,304 INFO 43232 [egg-security] use csrf middleware
+2022-02-01 02:08:47,305 INFO 43232 [egg-security] use methodnoallow middleware
+2022-02-01 02:08:47,306 INFO 43232 [egg-security] use noopen middleware
+2022-02-01 02:08:47,306 INFO 43232 [egg-security] use nosniff middleware
+2022-02-01 02:08:47,307 INFO 43232 [egg-security] use xssProtection middleware
+2022-02-01 02:08:47,307 INFO 43232 [egg-security] use xframe middleware
+2022-02-01 02:08:47,308 INFO 43232 [egg-security] use dta middleware
+2022-02-01 02:08:47,308 INFO 43232 [egg-security] compose 7 middlewares into one security middleware
+2022-02-01 02:08:47,314 INFO 43232 [egg:core] dump config after load, 3ms
+2022-02-01 02:08:47,322 INFO 43232 [egg-watcher:application] watcher start success
+2022-02-01 02:08:47,326 INFO 43232 [egg:core] dump config after ready, 3ms
+2022-02-01 02:09:52,374 INFO 50544 [egg:logger] init all loggers with options: {"dir":"D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\logs\\egg-demo","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-demo-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"enablePerformanceTimer":false,"type":"application"}
+2022-02-01 02:09:52,394 INFO 50544 [egg-multipart] stream mode enable
+2022-02-01 02:09:52,478 INFO 50544 [egg-static] starting static serve /public/ -> D:\xsjcTony\it666\服务端\EggJS\Aelita\app\public
+2022-02-01 02:09:52,481 INFO 50544 [egg-security] use csrf middleware
+2022-02-01 02:09:52,482 INFO 50544 [egg-security] use methodnoallow middleware
+2022-02-01 02:09:52,482 INFO 50544 [egg-security] use noopen middleware
+2022-02-01 02:09:52,483 INFO 50544 [egg-security] use nosniff middleware
+2022-02-01 02:09:52,483 INFO 50544 [egg-security] use xssProtection middleware
+2022-02-01 02:09:52,484 INFO 50544 [egg-security] use xframe middleware
+2022-02-01 02:09:52,484 INFO 50544 [egg-security] use dta middleware
+2022-02-01 02:09:52,484 INFO 50544 [egg-security] compose 7 middlewares into one security middleware
+2022-02-01 02:09:52,490 INFO 50544 [egg:core] dump config after load, 2ms
+2022-02-01 02:09:52,498 INFO 50544 [egg-watcher:application] watcher start success
+2022-02-01 02:09:52,502 INFO 50544 [egg:core] dump config after ready, 3ms
+2022-02-01 02:10:04,355 INFO 44152 [egg:logger] init all loggers with options: {"dir":"D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\logs\\egg-demo","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-demo-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"enablePerformanceTimer":false,"type":"application"}
+2022-02-01 02:10:04,375 INFO 44152 [egg-multipart] stream mode enable
+2022-02-01 02:10:04,459 INFO 44152 [egg-static] starting static serve /public/ -> D:\xsjcTony\it666\服务端\EggJS\Aelita\app\public
+2022-02-01 02:10:04,461 INFO 44152 [egg-security] use csrf middleware
+2022-02-01 02:10:04,462 INFO 44152 [egg-security] use methodnoallow middleware
+2022-02-01 02:10:04,462 INFO 44152 [egg-security] use noopen middleware
+2022-02-01 02:10:04,463 INFO 44152 [egg-security] use nosniff middleware
+2022-02-01 02:10:04,464 INFO 44152 [egg-security] use xssProtection middleware
+2022-02-01 02:10:04,464 INFO 44152 [egg-security] use xframe middleware
+2022-02-01 02:10:04,464 INFO 44152 [egg-security] use dta middleware
+2022-02-01 02:10:04,464 INFO 44152 [egg-security] compose 7 middlewares into one security middleware
+2022-02-01 02:10:04,469 INFO 44152 [egg:core] dump config after load, 2ms
+2022-02-01 02:10:04,478 INFO 44152 [egg-watcher:application] watcher start success
+2022-02-01 02:10:04,482 INFO 44152 [egg:core] dump config after ready, 3ms
+2022-02-01 02:10:06,661 INFO 50752 [egg:logger] init all loggers with options: {"dir":"D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\logs\\egg-demo","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-demo-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"enablePerformanceTimer":false,"type":"application"}
+2022-02-01 02:10:06,680 INFO 50752 [egg-multipart] stream mode enable
+2022-02-01 02:10:06,768 INFO 50752 [egg-static] starting static serve /public/ -> D:\xsjcTony\it666\服务端\EggJS\Aelita\app\public
+2022-02-01 02:10:06,770 INFO 50752 [egg-security] use csrf middleware
+2022-02-01 02:10:06,771 INFO 50752 [egg-security] use methodnoallow middleware
+2022-02-01 02:10:06,772 INFO 50752 [egg-security] use noopen middleware
+2022-02-01 02:10:06,772 INFO 50752 [egg-security] use nosniff middleware
+2022-02-01 02:10:06,773 INFO 50752 [egg-security] use xssProtection middleware
+2022-02-01 02:10:06,773 INFO 50752 [egg-security] use xframe middleware
+2022-02-01 02:10:06,774 INFO 50752 [egg-security] use dta middleware
+2022-02-01 02:10:06,774 INFO 50752 [egg-security] compose 7 middlewares into one security middleware
+2022-02-01 02:10:06,779 INFO 50752 [egg:core] dump config after load, 2ms
+2022-02-01 02:10:06,787 INFO 50752 [egg-watcher:application] watcher start success
+2022-02-01 02:10:06,791 INFO 50752 [egg:core] dump config after ready, 3ms
+2022-02-01 02:13:28,437 INFO 51296 [egg:logger] init all loggers with options: {"dir":"D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\logs\\egg-demo","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-demo-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"enablePerformanceTimer":false,"type":"application"}
+2022-02-01 02:13:28,458 INFO 51296 [egg-multipart] stream mode enable
+2022-02-01 02:13:28,548 INFO 51296 [egg-static] starting static serve /public/ -> D:\xsjcTony\it666\服务端\EggJS\Aelita\app\public
+2022-02-01 02:13:28,550 INFO 51296 [egg-security] use csrf middleware
+2022-02-01 02:13:28,551 INFO 51296 [egg-security] use methodnoallow middleware
+2022-02-01 02:13:28,551 INFO 51296 [egg-security] use noopen middleware
+2022-02-01 02:13:28,552 INFO 51296 [egg-security] use nosniff middleware
+2022-02-01 02:13:28,553 INFO 51296 [egg-security] use xssProtection middleware
+2022-02-01 02:13:28,553 INFO 51296 [egg-security] use xframe middleware
+2022-02-01 02:13:28,554 INFO 51296 [egg-security] use dta middleware
+2022-02-01 02:13:28,554 INFO 51296 [egg-security] compose 7 middlewares into one security middleware
+2022-02-01 02:13:28,560 INFO 51296 [egg:core] dump config after load, 2ms
+2022-02-01 02:13:28,567 INFO 51296 [egg-watcher:application] watcher start success
+2022-02-01 02:13:28,571 INFO 51296 [egg:core] dump config after ready, 3ms
+2022-02-01 02:52:17,974 INFO 35712 [egg:logger] init all loggers with options: {"dir":"D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\logs\\egg-demo","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-demo-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"enablePerformanceTimer":false,"type":"application"}
+2022-02-01 02:52:18,041 INFO 35712 [egg-multipart] stream mode enable
+2022-02-01 02:52:18,727 INFO 35712 [egg-static] starting static serve /public/ -> D:\xsjcTony\it666\服务端\EggJS\Aelita\app\public
+2022-02-01 02:52:18,734 INFO 35712 [egg-security] use csrf middleware
+2022-02-01 02:52:18,740 INFO 35712 [egg-security] use methodnoallow middleware
+2022-02-01 02:52:18,745 INFO 35712 [egg-security] use noopen middleware
+2022-02-01 02:52:18,751 INFO 35712 [egg-security] use nosniff middleware
+2022-02-01 02:52:18,756 INFO 35712 [egg-security] use xssProtection middleware
+2022-02-01 02:52:18,761 INFO 35712 [egg-security] use xframe middleware
+2022-02-01 02:52:18,766 INFO 35712 [egg-security] use dta middleware
+2022-02-01 02:52:18,766 INFO 35712 [egg-security] compose 7 middlewares into one security middleware
+2022-02-01 02:52:18,775 INFO 35712 [egg:core] dump config after load, 3ms
+2022-02-01 02:52:18,781 INFO 35712 [egg-watcher:application] watcher start success
+2022-02-01 02:52:18,786 INFO 35712 [egg:core] dump config after ready, 3ms
+2022-02-01 02:52:19,336 INFO 39212 [egg:logger] init all loggers with options: {"dir":"D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\logs\\egg-demo","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-demo-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"enablePerformanceTimer":false,"type":"application"}
+2022-02-01 02:52:19,355 INFO 39212 [egg-multipart] stream mode enable
+2022-02-01 02:52:19,436 INFO 39212 [egg-static] starting static serve /public/ -> D:\xsjcTony\it666\服务端\EggJS\Aelita\app\public
+2022-02-01 02:52:19,438 INFO 39212 [egg-security] use csrf middleware
+2022-02-01 02:52:19,439 INFO 39212 [egg-security] use methodnoallow middleware
+2022-02-01 02:52:19,440 INFO 39212 [egg-security] use noopen middleware
+2022-02-01 02:52:19,440 INFO 39212 [egg-security] use nosniff middleware
+2022-02-01 02:52:19,441 INFO 39212 [egg-security] use xssProtection middleware
+2022-02-01 02:52:19,441 INFO 39212 [egg-security] use xframe middleware
+2022-02-01 02:52:19,442 INFO 39212 [egg-security] use dta middleware
+2022-02-01 02:52:19,442 INFO 39212 [egg-security] compose 7 middlewares into one security middleware
+2022-02-01 02:52:19,447 INFO 39212 [egg:core] dump config after load, 2ms
+2022-02-01 02:52:19,455 INFO 39212 [egg-watcher:application] watcher start success
+2022-02-01 02:52:19,459 INFO 39212 [egg:core] dump config after ready, 3ms
+2022-02-01 02:54:03,523 INFO 51420 [egg:logger] init all loggers with options: {"dir":"D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\logs\\egg-demo","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-demo-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"enablePerformanceTimer":false,"type":"application"}
+2022-02-01 02:54:03,544 INFO 51420 [egg-multipart] stream mode enable
+2022-02-01 02:54:03,634 INFO 51420 [egg-static] starting static serve /public/ -> D:\xsjcTony\it666\服务端\EggJS\Aelita\app\public
+2022-02-01 02:54:03,636 INFO 51420 [egg-security] use csrf middleware
+2022-02-01 02:54:03,637 INFO 51420 [egg-security] use methodnoallow middleware
+2022-02-01 02:54:03,637 INFO 51420 [egg-security] use noopen middleware
+2022-02-01 02:54:03,638 INFO 51420 [egg-security] use nosniff middleware
+2022-02-01 02:54:03,639 INFO 51420 [egg-security] use xssProtection middleware
+2022-02-01 02:54:03,639 INFO 51420 [egg-security] use xframe middleware
+2022-02-01 02:54:03,639 INFO 51420 [egg-security] use dta middleware
+2022-02-01 02:54:03,639 INFO 51420 [egg-security] compose 7 middlewares into one security middleware
+2022-02-01 02:54:03,645 INFO 51420 [egg:core] dump config after load, 2ms
+2022-02-01 02:54:03,652 INFO 51420 [egg-watcher:application] watcher start success
+2022-02-01 02:54:03,656 INFO 51420 [egg:core] dump config after ready, 3ms
+2022-02-01 02:54:30,793 INFO 47252 [egg:logger] init all loggers with options: {"dir":"D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\logs\\egg-demo","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-demo-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"enablePerformanceTimer":false,"type":"application"}
+2022-02-01 02:54:30,814 INFO 47252 [egg-multipart] stream mode enable
+2022-02-01 02:54:30,903 INFO 47252 [egg-static] starting static serve /public/ -> D:\xsjcTony\it666\服务端\EggJS\Aelita\app\public
+2022-02-01 02:54:30,905 INFO 47252 [egg-security] use csrf middleware
+2022-02-01 02:54:30,906 INFO 47252 [egg-security] use methodnoallow middleware
+2022-02-01 02:54:30,907 INFO 47252 [egg-security] use noopen middleware
+2022-02-01 02:54:30,908 INFO 47252 [egg-security] use nosniff middleware
+2022-02-01 02:54:30,908 INFO 47252 [egg-security] use xssProtection middleware
+2022-02-01 02:54:30,908 INFO 47252 [egg-security] use xframe middleware
+2022-02-01 02:54:30,909 INFO 47252 [egg-security] use dta middleware
+2022-02-01 02:54:30,909 INFO 47252 [egg-security] compose 7 middlewares into one security middleware
+2022-02-01 02:54:30,915 INFO 47252 [egg:core] dump config after load, 3ms
+2022-02-01 02:54:30,922 INFO 47252 [egg-watcher:application] watcher start success
+2022-02-01 02:54:30,926 INFO 47252 [egg:core] dump config after ready, 3ms
+2022-02-01 03:01:29,215 INFO 47604 [egg:logger] init all loggers with options: {"dir":"D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\logs\\egg-demo","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-demo-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"enablePerformanceTimer":false,"type":"application"}
+2022-02-01 03:01:29,235 INFO 47604 [egg-multipart] stream mode enable
+2022-02-01 03:01:29,322 INFO 47604 [egg-static] starting static serve /public/ -> D:\xsjcTony\it666\服务端\EggJS\Aelita\app\public
+2022-02-01 03:01:29,325 INFO 47604 [egg-security] use csrf middleware
+2022-02-01 03:01:29,326 INFO 47604 [egg-security] use methodnoallow middleware
+2022-02-01 03:01:29,326 INFO 47604 [egg-security] use noopen middleware
+2022-02-01 03:01:29,327 INFO 47604 [egg-security] use nosniff middleware
+2022-02-01 03:01:29,327 INFO 47604 [egg-security] use xssProtection middleware
+2022-02-01 03:01:29,328 INFO 47604 [egg-security] use xframe middleware
+2022-02-01 03:01:29,328 INFO 47604 [egg-security] use dta middleware
+2022-02-01 03:01:29,328 INFO 47604 [egg-security] compose 7 middlewares into one security middleware
+2022-02-01 03:01:29,334 INFO 47604 [egg:core] dump config after load, 3ms
+2022-02-01 03:01:29,340 INFO 47604 [egg-watcher:application] watcher start success
+2022-02-01 03:01:29,344 INFO 47604 [egg:core] dump config after ready, 2ms
+2022-02-01 03:02:28,313 INFO 48180 [egg:logger] init all loggers with options: {"dir":"D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\logs\\egg-demo","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-demo-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"enablePerformanceTimer":false,"type":"application"}
+2022-02-01 03:02:28,333 INFO 48180 [egg-multipart] stream mode enable
+2022-02-01 03:02:28,419 INFO 48180 [egg-static] starting static serve /public/ -> D:\xsjcTony\it666\服务端\EggJS\Aelita\app\public
+2022-02-01 03:02:28,421 INFO 48180 [egg-security] use csrf middleware
+2022-02-01 03:02:28,422 INFO 48180 [egg-security] use methodnoallow middleware
+2022-02-01 03:02:28,423 INFO 48180 [egg-security] use noopen middleware
+2022-02-01 03:02:28,424 INFO 48180 [egg-security] use nosniff middleware
+2022-02-01 03:02:28,424 INFO 48180 [egg-security] use xssProtection middleware
+2022-02-01 03:02:28,424 INFO 48180 [egg-security] use xframe middleware
+2022-02-01 03:02:28,425 INFO 48180 [egg-security] use dta middleware
+2022-02-01 03:02:28,425 INFO 48180 [egg-security] compose 7 middlewares into one security middleware
+2022-02-01 03:02:28,430 INFO 48180 [egg:core] dump config after load, 2ms
+2022-02-01 03:02:28,437 INFO 48180 [egg-watcher:application] watcher start success
+2022-02-01 03:02:28,442 INFO 48180 [egg:core] dump config after ready, 3ms
+2022-02-01 03:02:37,690 INFO 43856 [egg:logger] init all loggers with options: {"dir":"D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\logs\\egg-demo","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-demo-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"enablePerformanceTimer":false,"type":"application"}
+2022-02-01 03:02:37,709 INFO 43856 [egg-multipart] stream mode enable
+2022-02-01 03:02:37,792 INFO 43856 [egg-static] starting static serve /public/ -> D:\xsjcTony\it666\服务端\EggJS\Aelita\app\public
+2022-02-01 03:02:37,795 INFO 43856 [egg-security] use csrf middleware
+2022-02-01 03:02:37,796 INFO 43856 [egg-security] use methodnoallow middleware
+2022-02-01 03:02:37,796 INFO 43856 [egg-security] use noopen middleware
+2022-02-01 03:02:37,797 INFO 43856 [egg-security] use nosniff middleware
+2022-02-01 03:02:37,797 INFO 43856 [egg-security] use xssProtection middleware
+2022-02-01 03:02:37,798 INFO 43856 [egg-security] use xframe middleware
+2022-02-01 03:02:37,798 INFO 43856 [egg-security] use dta middleware
+2022-02-01 03:02:37,798 INFO 43856 [egg-security] compose 7 middlewares into one security middleware
+2022-02-01 03:02:37,804 INFO 43856 [egg:core] dump config after load, 3ms
+2022-02-01 03:02:37,811 INFO 43856 [egg-watcher:application] watcher start success
+2022-02-01 03:02:37,815 INFO 43856 [egg:core] dump config after ready, 3ms
+2022-02-01 03:04:27,681 INFO 47980 [egg:logger] init all loggers with options: {"dir":"D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\logs\\egg-demo","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-demo-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"enablePerformanceTimer":false,"type":"application"}
+2022-02-01 03:04:27,700 INFO 47980 [egg-multipart] stream mode enable
+2022-02-01 03:04:27,789 INFO 47980 [egg-static] starting static serve /public/ -> D:\xsjcTony\it666\服务端\EggJS\Aelita\app\public
+2022-02-01 03:04:27,791 INFO 47980 [egg-security] use csrf middleware
+2022-02-01 03:04:27,792 INFO 47980 [egg-security] use methodnoallow middleware
+2022-02-01 03:04:27,792 INFO 47980 [egg-security] use noopen middleware
+2022-02-01 03:04:27,793 INFO 47980 [egg-security] use nosniff middleware
+2022-02-01 03:04:27,794 INFO 47980 [egg-security] use xssProtection middleware
+2022-02-01 03:04:27,794 INFO 47980 [egg-security] use xframe middleware
+2022-02-01 03:04:27,794 INFO 47980 [egg-security] use dta middleware
+2022-02-01 03:04:27,794 INFO 47980 [egg-security] compose 7 middlewares into one security middleware
+2022-02-01 03:04:27,801 INFO 47980 [egg:core] dump config after load, 4ms
+2022-02-01 03:04:27,810 INFO 47980 [egg-watcher:application] watcher start success
+2022-02-01 03:04:27,814 INFO 47980 [egg:core] dump config after ready, 4ms
+2022-02-01 03:04:37,585 INFO 52400 [egg:logger] init all loggers with options: {"dir":"D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\logs\\egg-demo","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-demo-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"enablePerformanceTimer":false,"type":"application"}
+2022-02-01 03:04:37,605 INFO 52400 [egg-multipart] stream mode enable
+2022-02-01 03:04:37,690 INFO 52400 [egg-static] starting static serve /public/ -> D:\xsjcTony\it666\服务端\EggJS\Aelita\app\public
+2022-02-01 03:04:37,693 INFO 52400 [egg-security] use csrf middleware
+2022-02-01 03:04:37,693 INFO 52400 [egg-security] use methodnoallow middleware
+2022-02-01 03:04:37,694 INFO 52400 [egg-security] use noopen middleware
+2022-02-01 03:04:37,695 INFO 52400 [egg-security] use nosniff middleware
+2022-02-01 03:04:37,696 INFO 52400 [egg-security] use xssProtection middleware
+2022-02-01 03:04:37,696 INFO 52400 [egg-security] use xframe middleware
+2022-02-01 03:04:37,696 INFO 52400 [egg-security] use dta middleware
+2022-02-01 03:04:37,696 INFO 52400 [egg-security] compose 7 middlewares into one security middleware
+2022-02-01 03:04:37,702 INFO 52400 [egg:core] dump config after load, 3ms
+2022-02-01 03:04:37,709 INFO 52400 [egg-watcher:application] watcher start success
+2022-02-01 03:04:37,713 INFO 52400 [egg:core] dump config after ready, 3ms
+2022-02-01 03:06:02,969 INFO 22440 [egg:logger] init all loggers with options: {"dir":"D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\logs\\egg-demo","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-demo-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"enablePerformanceTimer":false,"type":"application"}
+2022-02-01 03:06:02,989 INFO 22440 [egg-multipart] stream mode enable
+2022-02-01 03:06:03,077 INFO 22440 [egg-static] starting static serve /public/ -> D:\xsjcTony\it666\服务端\EggJS\Aelita\app\public
+2022-02-01 03:06:03,079 INFO 22440 [egg-security] use csrf middleware
+2022-02-01 03:06:03,080 INFO 22440 [egg-security] use methodnoallow middleware
+2022-02-01 03:06:03,081 INFO 22440 [egg-security] use noopen middleware
+2022-02-01 03:06:03,081 INFO 22440 [egg-security] use nosniff middleware
+2022-02-01 03:06:03,082 INFO 22440 [egg-security] use xssProtection middleware
+2022-02-01 03:06:03,082 INFO 22440 [egg-security] use xframe middleware
+2022-02-01 03:06:03,083 INFO 22440 [egg-security] use dta middleware
+2022-02-01 03:06:03,083 INFO 22440 [egg-security] compose 7 middlewares into one security middleware
+2022-02-01 03:06:03,088 INFO 22440 [egg:core] dump config after load, 2ms
+2022-02-01 03:06:03,096 INFO 22440 [egg-watcher:application] watcher start success
+2022-02-01 03:06:03,100 INFO 22440 [egg:core] dump config after ready, 3ms
+2022-02-01 03:07:06,604 INFO 33304 [egg:logger] init all loggers with options: {"dir":"D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\logs\\egg-demo","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-demo-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"enablePerformanceTimer":false,"type":"application"}
+2022-02-01 03:07:06,625 INFO 33304 [egg-multipart] stream mode enable
+2022-02-01 03:07:06,717 INFO 33304 [egg-static] starting static serve /public/ -> D:\xsjcTony\it666\服务端\EggJS\Aelita\app\public
+2022-02-01 03:07:06,719 INFO 33304 [egg-security] use csrf middleware
+2022-02-01 03:07:06,720 INFO 33304 [egg-security] use methodnoallow middleware
+2022-02-01 03:07:06,721 INFO 33304 [egg-security] use noopen middleware
+2022-02-01 03:07:06,721 INFO 33304 [egg-security] use nosniff middleware
+2022-02-01 03:07:06,722 INFO 33304 [egg-security] use xssProtection middleware
+2022-02-01 03:07:06,722 INFO 33304 [egg-security] use xframe middleware
+2022-02-01 03:07:06,723 INFO 33304 [egg-security] use dta middleware
+2022-02-01 03:07:06,723 INFO 33304 [egg-security] compose 7 middlewares into one security middleware
+2022-02-01 03:07:06,729 INFO 33304 [egg:core] dump config after load, 3ms
+2022-02-01 03:07:06,736 INFO 33304 [egg-watcher:application] watcher start success
+2022-02-01 03:07:06,741 INFO 33304 [egg:core] dump config after ready, 2ms
+2022-02-01 03:07:27,263 INFO 44556 [egg:logger] init all loggers with options: {"dir":"D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\logs\\egg-demo","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-demo-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"enablePerformanceTimer":false,"type":"application"}
+2022-02-01 03:07:27,283 INFO 44556 [egg-multipart] stream mode enable
+2022-02-01 03:07:27,369 INFO 44556 [egg-static] starting static serve /public/ -> D:\xsjcTony\it666\服务端\EggJS\Aelita\app\public
+2022-02-01 03:07:27,371 INFO 44556 [egg-security] use csrf middleware
+2022-02-01 03:07:27,372 INFO 44556 [egg-security] use methodnoallow middleware
+2022-02-01 03:07:27,372 INFO 44556 [egg-security] use noopen middleware
+2022-02-01 03:07:27,373 INFO 44556 [egg-security] use nosniff middleware
+2022-02-01 03:07:27,373 INFO 44556 [egg-security] use xssProtection middleware
+2022-02-01 03:07:27,374 INFO 44556 [egg-security] use xframe middleware
+2022-02-01 03:07:27,374 INFO 44556 [egg-security] use dta middleware
+2022-02-01 03:07:27,374 INFO 44556 [egg-security] compose 7 middlewares into one security middleware
+2022-02-01 03:07:27,380 INFO 44556 [egg:core] dump config after load, 3ms
+2022-02-01 03:07:27,387 INFO 44556 [egg-watcher:application] watcher start success
+2022-02-01 03:07:27,391 INFO 44556 [egg:core] dump config after ready, 3ms
+2022-02-01 03:07:33,189 INFO 24300 [egg:logger] init all loggers with options: {"dir":"D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\logs\\egg-demo","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-demo-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"enablePerformanceTimer":false,"type":"application"}
+2022-02-01 03:07:33,208 INFO 24300 [egg-multipart] stream mode enable
+2022-02-01 03:07:33,293 INFO 24300 [egg-static] starting static serve /public/ -> D:\xsjcTony\it666\服务端\EggJS\Aelita\app\public
+2022-02-01 03:07:33,296 INFO 24300 [egg-security] use csrf middleware
+2022-02-01 03:07:33,297 INFO 24300 [egg-security] use methodnoallow middleware
+2022-02-01 03:07:33,297 INFO 24300 [egg-security] use noopen middleware
+2022-02-01 03:07:33,298 INFO 24300 [egg-security] use nosniff middleware
+2022-02-01 03:07:33,299 INFO 24300 [egg-security] use xssProtection middleware
+2022-02-01 03:07:33,299 INFO 24300 [egg-security] use xframe middleware
+2022-02-01 03:07:33,299 INFO 24300 [egg-security] use dta middleware
+2022-02-01 03:07:33,299 INFO 24300 [egg-security] compose 7 middlewares into one security middleware
+2022-02-01 03:07:33,305 INFO 24300 [egg:core] dump config after load, 3ms
+2022-02-01 03:07:33,312 INFO 24300 [egg-watcher:application] watcher start success
+2022-02-01 03:07:33,316 INFO 24300 [egg:core] dump config after ready, 3ms
+2022-02-01 03:07:41,176 INFO 41364 [egg:logger] init all loggers with options: {"dir":"D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\logs\\egg-demo","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-demo-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"enablePerformanceTimer":false,"type":"application"}
+2022-02-01 03:07:41,196 INFO 41364 [egg-multipart] stream mode enable
+2022-02-01 03:07:41,281 INFO 41364 [egg-static] starting static serve /public/ -> D:\xsjcTony\it666\服务端\EggJS\Aelita\app\public
+2022-02-01 03:07:41,283 INFO 41364 [egg-security] use csrf middleware
+2022-02-01 03:07:41,284 INFO 41364 [egg-security] use methodnoallow middleware
+2022-02-01 03:07:41,285 INFO 41364 [egg-security] use noopen middleware
+2022-02-01 03:07:41,285 INFO 41364 [egg-security] use nosniff middleware
+2022-02-01 03:07:41,286 INFO 41364 [egg-security] use xssProtection middleware
+2022-02-01 03:07:41,286 INFO 41364 [egg-security] use xframe middleware
+2022-02-01 03:07:41,287 INFO 41364 [egg-security] use dta middleware
+2022-02-01 03:07:41,287 INFO 41364 [egg-security] compose 7 middlewares into one security middleware
+2022-02-01 03:07:41,292 INFO 41364 [egg:core] dump config after load, 2ms
+2022-02-01 03:07:41,299 INFO 41364 [egg-watcher:application] watcher start success
+2022-02-01 03:07:41,303 INFO 41364 [egg:core] dump config after ready, 3ms
+2022-02-01 03:07:53,498 INFO 20312 [egg:logger] init all loggers with options: {"dir":"D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\logs\\egg-demo","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-demo-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"enablePerformanceTimer":false,"type":"application"}
+2022-02-01 03:07:53,517 INFO 20312 [egg-multipart] stream mode enable
+2022-02-01 03:07:53,602 INFO 20312 [egg-static] starting static serve /public/ -> D:\xsjcTony\it666\服务端\EggJS\Aelita\app\public
+2022-02-01 03:07:53,605 INFO 20312 [egg-security] use csrf middleware
+2022-02-01 03:07:53,606 INFO 20312 [egg-security] use methodnoallow middleware
+2022-02-01 03:07:53,606 INFO 20312 [egg-security] use noopen middleware
+2022-02-01 03:07:53,607 INFO 20312 [egg-security] use nosniff middleware
+2022-02-01 03:07:53,608 INFO 20312 [egg-security] use xssProtection middleware
+2022-02-01 03:07:53,608 INFO 20312 [egg-security] use xframe middleware
+2022-02-01 03:07:53,608 INFO 20312 [egg-security] use dta middleware
+2022-02-01 03:07:53,608 INFO 20312 [egg-security] compose 7 middlewares into one security middleware
+2022-02-01 03:07:53,614 INFO 20312 [egg:core] dump config after load, 3ms
+2022-02-01 03:07:53,622 INFO 20312 [egg-watcher:application] watcher start success
+2022-02-01 03:07:53,627 INFO 20312 [egg:core] dump config after ready, 4ms
+2022-02-01 03:07:57,817 INFO 52344 [egg:logger] init all loggers with options: {"dir":"D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\logs\\egg-demo","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-demo-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"enablePerformanceTimer":false,"type":"application"}
+2022-02-01 03:07:57,837 INFO 52344 [egg-multipart] stream mode enable
+2022-02-01 03:07:57,921 INFO 52344 [egg-static] starting static serve /public/ -> D:\xsjcTony\it666\服务端\EggJS\Aelita\app\public
+2022-02-01 03:07:57,924 INFO 52344 [egg-security] use csrf middleware
+2022-02-01 03:07:57,925 INFO 52344 [egg-security] use methodnoallow middleware
+2022-02-01 03:07:57,925 INFO 52344 [egg-security] use noopen middleware
+2022-02-01 03:07:57,926 INFO 52344 [egg-security] use nosniff middleware
+2022-02-01 03:07:57,927 INFO 52344 [egg-security] use xssProtection middleware
+2022-02-01 03:07:57,927 INFO 52344 [egg-security] use xframe middleware
+2022-02-01 03:07:57,927 INFO 52344 [egg-security] use dta middleware
+2022-02-01 03:07:57,927 INFO 52344 [egg-security] compose 7 middlewares into one security middleware
+2022-02-01 03:07:57,933 INFO 52344 [egg:core] dump config after load, 3ms
+2022-02-01 03:07:57,940 INFO 52344 [egg-watcher:application] watcher start success
+2022-02-01 03:07:57,944 INFO 52344 [egg:core] dump config after ready, 3ms
+2022-02-01 03:08:21,148 INFO 33884 [egg:logger] init all loggers with options: {"dir":"D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\logs\\egg-demo","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-demo-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"enablePerformanceTimer":false,"type":"application"}
+2022-02-01 03:08:21,168 INFO 33884 [egg-multipart] stream mode enable
+2022-02-01 03:08:21,252 INFO 33884 [egg-static] starting static serve /public/ -> D:\xsjcTony\it666\服务端\EggJS\Aelita\app\public
+2022-02-01 03:08:21,254 INFO 33884 [egg-security] use csrf middleware
+2022-02-01 03:08:21,255 INFO 33884 [egg-security] use methodnoallow middleware
+2022-02-01 03:08:21,256 INFO 33884 [egg-security] use noopen middleware
+2022-02-01 03:08:21,256 INFO 33884 [egg-security] use nosniff middleware
+2022-02-01 03:08:21,257 INFO 33884 [egg-security] use xssProtection middleware
+2022-02-01 03:08:21,257 INFO 33884 [egg-security] use xframe middleware
+2022-02-01 03:08:21,258 INFO 33884 [egg-security] use dta middleware
+2022-02-01 03:08:21,258 INFO 33884 [egg-security] compose 7 middlewares into one security middleware
+2022-02-01 03:08:21,263 INFO 33884 [egg:core] dump config after load, 2ms
+2022-02-01 03:08:21,270 INFO 33884 [egg-watcher:application] watcher start success
+2022-02-01 03:08:21,275 INFO 33884 [egg:core] dump config after ready, 4ms
+2022-02-01 03:08:37,056 INFO 16744 [egg:logger] init all loggers with options: {"dir":"D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\logs\\egg-demo","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-demo-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"enablePerformanceTimer":false,"type":"application"}
+2022-02-01 03:08:37,078 INFO 16744 [egg-multipart] stream mode enable
+2022-02-01 03:08:37,170 INFO 16744 [egg-static] starting static serve /public/ -> D:\xsjcTony\it666\服务端\EggJS\Aelita\app\public
+2022-02-01 03:08:37,172 INFO 16744 [egg-security] use csrf middleware
+2022-02-01 03:08:37,173 INFO 16744 [egg-security] use methodnoallow middleware
+2022-02-01 03:08:37,174 INFO 16744 [egg-security] use noopen middleware
+2022-02-01 03:08:37,174 INFO 16744 [egg-security] use nosniff middleware
+2022-02-01 03:08:37,175 INFO 16744 [egg-security] use xssProtection middleware
+2022-02-01 03:08:37,175 INFO 16744 [egg-security] use xframe middleware
+2022-02-01 03:08:37,176 INFO 16744 [egg-security] use dta middleware
+2022-02-01 03:08:37,176 INFO 16744 [egg-security] compose 7 middlewares into one security middleware
+2022-02-01 03:08:37,182 INFO 16744 [egg:core] dump config after load, 3ms
+2022-02-01 03:08:37,190 INFO 16744 [egg-watcher:application] watcher start success
+2022-02-01 03:08:37,194 INFO 16744 [egg:core] dump config after ready, 3ms
+2022-02-01 03:08:46,483 INFO 49288 [egg:logger] init all loggers with options: {"dir":"D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\logs\\egg-demo","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-demo-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"enablePerformanceTimer":false,"type":"application"}
+2022-02-01 03:08:46,504 INFO 49288 [egg-multipart] stream mode enable
+2022-02-01 03:08:46,592 INFO 49288 [egg-static] starting static serve /public/ -> D:\xsjcTony\it666\服务端\EggJS\Aelita\app\public
+2022-02-01 03:08:46,594 INFO 49288 [egg-security] use csrf middleware
+2022-02-01 03:08:46,595 INFO 49288 [egg-security] use methodnoallow middleware
+2022-02-01 03:08:46,596 INFO 49288 [egg-security] use noopen middleware
+2022-02-01 03:08:46,597 INFO 49288 [egg-security] use nosniff middleware
+2022-02-01 03:08:46,597 INFO 49288 [egg-security] use xssProtection middleware
+2022-02-01 03:08:46,598 INFO 49288 [egg-security] use xframe middleware
+2022-02-01 03:08:46,598 INFO 49288 [egg-security] use dta middleware
+2022-02-01 03:08:46,598 INFO 49288 [egg-security] compose 7 middlewares into one security middleware
+2022-02-01 03:08:46,604 INFO 49288 [egg:core] dump config after load, 3ms
+2022-02-01 03:08:46,611 INFO 49288 [egg-watcher:application] watcher start success
+2022-02-01 03:08:46,615 INFO 49288 [egg:core] dump config after ready, 3ms
+2022-02-01 03:08:54,310 INFO 39900 [egg:logger] init all loggers with options: {"dir":"D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\logs\\egg-demo","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-demo-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"enablePerformanceTimer":false,"type":"application"}
+2022-02-01 03:08:54,331 INFO 39900 [egg-multipart] stream mode enable
+2022-02-01 03:08:54,413 INFO 39900 [egg-static] starting static serve /public/ -> D:\xsjcTony\it666\服务端\EggJS\Aelita\app\public
+2022-02-01 03:08:54,415 INFO 39900 [egg-security] use csrf middleware
+2022-02-01 03:08:54,416 INFO 39900 [egg-security] use methodnoallow middleware
+2022-02-01 03:08:54,417 INFO 39900 [egg-security] use noopen middleware
+2022-02-01 03:08:54,417 INFO 39900 [egg-security] use nosniff middleware
+2022-02-01 03:08:54,418 INFO 39900 [egg-security] use xssProtection middleware
+2022-02-01 03:08:54,418 INFO 39900 [egg-security] use xframe middleware
+2022-02-01 03:08:54,418 INFO 39900 [egg-security] use dta middleware
+2022-02-01 03:08:54,419 INFO 39900 [egg-security] compose 7 middlewares into one security middleware
+2022-02-01 03:08:54,424 INFO 39900 [egg:core] dump config after load, 2ms
+2022-02-01 03:08:54,431 INFO 39900 [egg-watcher:application] watcher start success
+2022-02-01 03:08:54,436 INFO 39900 [egg:core] dump config after ready, 3ms
+2022-02-01 03:09:30,438 INFO 50268 [egg:logger] init all loggers with options: {"dir":"D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\logs\\egg-demo","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-demo-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"enablePerformanceTimer":false,"type":"application"}
+2022-02-01 03:09:30,459 INFO 50268 [egg-multipart] stream mode enable
+2022-02-01 03:09:30,555 INFO 50268 [egg-static] starting static serve /public/ -> D:\xsjcTony\it666\服务端\EggJS\Aelita\app\public
+2022-02-01 03:09:30,557 INFO 50268 [egg-security] use csrf middleware
+2022-02-01 03:09:30,558 INFO 50268 [egg-security] use methodnoallow middleware
+2022-02-01 03:09:30,559 INFO 50268 [egg-security] use noopen middleware
+2022-02-01 03:09:30,559 INFO 50268 [egg-security] use nosniff middleware
+2022-02-01 03:09:30,560 INFO 50268 [egg-security] use xssProtection middleware
+2022-02-01 03:09:30,560 INFO 50268 [egg-security] use xframe middleware
+2022-02-01 03:09:30,561 INFO 50268 [egg-security] use dta middleware
+2022-02-01 03:09:30,561 INFO 50268 [egg-security] compose 7 middlewares into one security middleware
+2022-02-01 03:09:30,567 INFO 50268 [egg:core] dump config after load, 3ms
+2022-02-01 03:09:30,575 INFO 50268 [egg-watcher:application] watcher start success
+2022-02-01 03:09:30,579 INFO 50268 [egg:core] dump config after ready, 3ms
+2022-02-01 03:10:17,601 INFO 47404 [egg:logger] init all loggers with options: {"dir":"D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\logs\\egg-demo","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-demo-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"enablePerformanceTimer":false,"type":"application"}
+2022-02-01 03:10:17,621 INFO 47404 [egg-multipart] stream mode enable
+2022-02-01 03:10:17,708 INFO 47404 [egg-static] starting static serve /public/ -> D:\xsjcTony\it666\服务端\EggJS\Aelita\app\public
+2022-02-01 03:10:17,710 INFO 47404 [egg-security] use csrf middleware
+2022-02-01 03:10:17,711 INFO 47404 [egg-security] use methodnoallow middleware
+2022-02-01 03:10:17,711 INFO 47404 [egg-security] use noopen middleware
+2022-02-01 03:10:17,712 INFO 47404 [egg-security] use nosniff middleware
+2022-02-01 03:10:17,712 INFO 47404 [egg-security] use xssProtection middleware
+2022-02-01 03:10:17,713 INFO 47404 [egg-security] use xframe middleware
+2022-02-01 03:10:17,713 INFO 47404 [egg-security] use dta middleware
+2022-02-01 03:10:17,713 INFO 47404 [egg-security] compose 7 middlewares into one security middleware
+2022-02-01 03:10:17,719 INFO 47404 [egg:core] dump config after load, 3ms
+2022-02-01 03:10:17,726 INFO 47404 [egg-watcher:application] watcher start success
+2022-02-01 03:10:17,730 INFO 47404 [egg:core] dump config after ready, 3ms
+2022-02-01 03:10:55,563 INFO 5480 [egg:logger] init all loggers with options: {"dir":"D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\logs\\egg-demo","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-demo-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"enablePerformanceTimer":false,"type":"application"}
+2022-02-01 03:10:55,583 INFO 5480 [egg-multipart] stream mode enable
+2022-02-01 03:10:55,668 INFO 5480 [egg-static] starting static serve /public/ -> D:\xsjcTony\it666\服务端\EggJS\Aelita\app\public
+2022-02-01 03:10:55,670 INFO 5480 [egg-security] use csrf middleware
+2022-02-01 03:10:55,671 INFO 5480 [egg-security] use methodnoallow middleware
+2022-02-01 03:10:55,672 INFO 5480 [egg-security] use noopen middleware
+2022-02-01 03:10:55,673 INFO 5480 [egg-security] use nosniff middleware
+2022-02-01 03:10:55,673 INFO 5480 [egg-security] use xssProtection middleware
+2022-02-01 03:10:55,674 INFO 5480 [egg-security] use xframe middleware
+2022-02-01 03:10:55,674 INFO 5480 [egg-security] use dta middleware
+2022-02-01 03:10:55,674 INFO 5480 [egg-security] compose 7 middlewares into one security middleware
+2022-02-01 03:10:55,680 INFO 5480 [egg:core] dump config after load, 3ms
+2022-02-01 03:10:55,687 INFO 5480 [egg-watcher:application] watcher start success
+2022-02-01 03:10:55,691 INFO 5480 [egg:core] dump config after ready, 3ms
+2022-02-01 03:12:05,423 INFO 44984 [egg:logger] init all loggers with options: {"dir":"D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\logs\\egg-demo","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-demo-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"enablePerformanceTimer":false,"type":"application"}
+2022-02-01 03:12:05,442 INFO 44984 [egg-multipart] stream mode enable
+2022-02-01 03:12:05,526 INFO 44984 [egg-static] starting static serve /public/ -> D:\xsjcTony\it666\服务端\EggJS\Aelita\app\public
+2022-02-01 03:12:05,528 INFO 44984 [egg-security] use csrf middleware
+2022-02-01 03:12:05,529 INFO 44984 [egg-security] use methodnoallow middleware
+2022-02-01 03:12:05,530 INFO 44984 [egg-security] use noopen middleware
+2022-02-01 03:12:05,531 INFO 44984 [egg-security] use nosniff middleware
+2022-02-01 03:12:05,531 INFO 44984 [egg-security] use xssProtection middleware
+2022-02-01 03:12:05,531 INFO 44984 [egg-security] use xframe middleware
+2022-02-01 03:12:05,532 INFO 44984 [egg-security] use dta middleware
+2022-02-01 03:12:05,532 INFO 44984 [egg-security] compose 7 middlewares into one security middleware
+2022-02-01 03:12:05,537 INFO 44984 [egg:core] dump config after load, 2ms
+2022-02-01 03:12:05,544 INFO 44984 [egg-watcher:application] watcher start success
+2022-02-01 03:12:05,548 INFO 44984 [egg:core] dump config after ready, 3ms
+2022-02-01 03:12:24,484 INFO 39048 [egg:logger] init all loggers with options: {"dir":"D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\logs\\egg-demo","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-demo-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"enablePerformanceTimer":false,"type":"application"}
+2022-02-01 03:12:24,504 INFO 39048 [egg-multipart] stream mode enable
+2022-02-01 03:12:24,596 INFO 39048 [egg-static] starting static serve /public/ -> D:\xsjcTony\it666\服务端\EggJS\Aelita\app\public
+2022-02-01 03:12:24,599 INFO 39048 [egg-security] use csrf middleware
+2022-02-01 03:12:24,599 INFO 39048 [egg-security] use methodnoallow middleware
+2022-02-01 03:12:24,600 INFO 39048 [egg-security] use noopen middleware
+2022-02-01 03:12:24,601 INFO 39048 [egg-security] use nosniff middleware
+2022-02-01 03:12:24,601 INFO 39048 [egg-security] use xssProtection middleware
+2022-02-01 03:12:24,602 INFO 39048 [egg-security] use xframe middleware
+2022-02-01 03:12:24,602 INFO 39048 [egg-security] use dta middleware
+2022-02-01 03:12:24,602 INFO 39048 [egg-security] compose 7 middlewares into one security middleware
+2022-02-01 03:12:24,608 INFO 39048 [egg:core] dump config after load, 3ms
+2022-02-01 03:12:24,615 INFO 39048 [egg-watcher:application] watcher start success
+2022-02-01 03:12:24,619 INFO 39048 [egg:core] dump config after ready, 3ms
+2022-02-01 03:12:56,560 INFO 49440 [egg:logger] init all loggers with options: {"dir":"D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\logs\\egg-demo","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-demo-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"enablePerformanceTimer":false,"type":"application"}
+2022-02-01 03:12:56,581 INFO 49440 [egg-multipart] stream mode enable
+2022-02-01 03:12:56,663 INFO 49440 [egg-static] starting static serve /public/ -> D:\xsjcTony\it666\服务端\EggJS\Aelita\app\public
+2022-02-01 03:12:56,666 INFO 49440 [egg-security] use csrf middleware
+2022-02-01 03:12:56,667 INFO 49440 [egg-security] use methodnoallow middleware
+2022-02-01 03:12:56,667 INFO 49440 [egg-security] use noopen middleware
+2022-02-01 03:12:56,668 INFO 49440 [egg-security] use nosniff middleware
+2022-02-01 03:12:56,668 INFO 49440 [egg-security] use xssProtection middleware
+2022-02-01 03:12:56,669 INFO 49440 [egg-security] use xframe middleware
+2022-02-01 03:12:56,669 INFO 49440 [egg-security] use dta middleware
+2022-02-01 03:12:56,669 INFO 49440 [egg-security] compose 7 middlewares into one security middleware
+2022-02-01 03:12:56,674 INFO 49440 [egg:core] dump config after load, 2ms
+2022-02-01 03:12:56,681 INFO 49440 [egg-watcher:application] watcher start success
+2022-02-01 03:12:56,686 INFO 49440 [egg:core] dump config after ready, 3ms
+2022-02-01 03:13:00,191 INFO 53204 [egg:logger] init all loggers with options: {"dir":"D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\logs\\egg-demo","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-demo-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"enablePerformanceTimer":false,"type":"application"}
+2022-02-01 03:13:00,210 INFO 53204 [egg-multipart] stream mode enable
+2022-02-01 03:13:00,300 INFO 53204 [egg-static] starting static serve /public/ -> D:\xsjcTony\it666\服务端\EggJS\Aelita\app\public
+2022-02-01 03:13:00,303 INFO 53204 [egg-security] use csrf middleware
+2022-02-01 03:13:00,304 INFO 53204 [egg-security] use methodnoallow middleware
+2022-02-01 03:13:00,304 INFO 53204 [egg-security] use noopen middleware
+2022-02-01 03:13:00,305 INFO 53204 [egg-security] use nosniff middleware
+2022-02-01 03:13:00,306 INFO 53204 [egg-security] use xssProtection middleware
+2022-02-01 03:13:00,306 INFO 53204 [egg-security] use xframe middleware
+2022-02-01 03:13:00,307 INFO 53204 [egg-security] use dta middleware
+2022-02-01 03:13:00,307 INFO 53204 [egg-security] compose 7 middlewares into one security middleware
+2022-02-01 03:13:00,313 INFO 53204 [egg:core] dump config after load, 3ms
+2022-02-01 03:13:00,320 INFO 53204 [egg-watcher:application] watcher start success
+2022-02-01 03:13:00,325 INFO 53204 [egg:core] dump config after ready, 4ms
+2022-02-01 03:13:05,699 INFO 38884 [egg:logger] init all loggers with options: {"dir":"D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\logs\\egg-demo","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-demo-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"enablePerformanceTimer":false,"type":"application"}
+2022-02-01 03:13:05,720 INFO 38884 [egg-multipart] stream mode enable
+2022-02-01 03:13:05,809 INFO 38884 [egg-static] starting static serve /public/ -> D:\xsjcTony\it666\服务端\EggJS\Aelita\app\public
+2022-02-01 03:13:05,811 INFO 38884 [egg-security] use csrf middleware
+2022-02-01 03:13:05,812 INFO 38884 [egg-security] use methodnoallow middleware
+2022-02-01 03:13:05,813 INFO 38884 [egg-security] use noopen middleware
+2022-02-01 03:13:05,814 INFO 38884 [egg-security] use nosniff middleware
+2022-02-01 03:13:05,814 INFO 38884 [egg-security] use xssProtection middleware
+2022-02-01 03:13:05,815 INFO 38884 [egg-security] use xframe middleware
+2022-02-01 03:13:05,815 INFO 38884 [egg-security] use dta middleware
+2022-02-01 03:13:05,815 INFO 38884 [egg-security] compose 7 middlewares into one security middleware
+2022-02-01 03:13:05,821 INFO 38884 [egg:core] dump config after load, 3ms
+2022-02-01 03:13:05,829 INFO 38884 [egg-watcher:application] watcher start success
+2022-02-01 03:13:05,833 INFO 38884 [egg:core] dump config after ready, 3ms
+2022-02-01 04:16:43,988 INFO 39768 [egg:logger] init all loggers with options: {"dir":"D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\logs\\egg-demo","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-demo-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"enablePerformanceTimer":false,"type":"application"}
+2022-02-01 04:16:44,008 INFO 39768 [egg-multipart] stream mode enable
+2022-02-01 04:16:44,094 INFO 39768 [egg-static] starting static serve /public/ -> D:\xsjcTony\it666\服务端\EggJS\Aelita\app\public
+2022-02-01 04:16:44,096 INFO 39768 [egg-security] use csrf middleware
+2022-02-01 04:16:44,097 INFO 39768 [egg-security] use methodnoallow middleware
+2022-02-01 04:16:44,098 INFO 39768 [egg-security] use noopen middleware
+2022-02-01 04:16:44,099 INFO 39768 [egg-security] use nosniff middleware
+2022-02-01 04:16:44,099 INFO 39768 [egg-security] use xssProtection middleware
+2022-02-01 04:16:44,100 INFO 39768 [egg-security] use xframe middleware
+2022-02-01 04:16:44,100 INFO 39768 [egg-security] use dta middleware
+2022-02-01 04:16:44,100 INFO 39768 [egg-security] compose 7 middlewares into one security middleware
+2022-02-01 04:16:44,106 INFO 39768 [egg:core] dump config after load, 3ms
+2022-02-01 04:16:44,113 INFO 39768 [egg-watcher:application] watcher start success
+2022-02-01 04:16:44,117 INFO 39768 [egg:core] dump config after ready, 3ms
+2022-02-01 04:45:31,695 INFO 51544 [egg:logger] init all loggers with options: {"dir":"D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\logs\\egg-demo","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-demo-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"enablePerformanceTimer":false,"type":"application"}
+2022-02-01 04:45:31,715 INFO 51544 [egg-multipart] stream mode enable
+2022-02-01 04:45:31,800 INFO 51544 [egg-static] starting static serve /public/ -> D:\xsjcTony\it666\服务端\EggJS\Aelita\app\public
+2022-02-01 04:45:31,802 INFO 51544 [egg-security] use csrf middleware
+2022-02-01 04:45:31,803 INFO 51544 [egg-security] use methodnoallow middleware
+2022-02-01 04:45:31,803 INFO 51544 [egg-security] use noopen middleware
+2022-02-01 04:45:31,804 INFO 51544 [egg-security] use nosniff middleware
+2022-02-01 04:45:31,804 INFO 51544 [egg-security] use xssProtection middleware
+2022-02-01 04:45:31,805 INFO 51544 [egg-security] use xframe middleware
+2022-02-01 04:45:31,805 INFO 51544 [egg-security] use dta middleware
+2022-02-01 04:45:31,805 INFO 51544 [egg-security] compose 7 middlewares into one security middleware
+2022-02-01 04:45:31,811 INFO 51544 [egg:core] dump config after load, 2ms
+2022-02-01 04:45:31,817 INFO 51544 [egg-watcher:application] watcher start success
+2022-02-01 04:45:31,821 INFO 51544 [egg:core] dump config after ready, 3ms
+2022-02-01 04:47:31,532 INFO 45384 [egg:logger] init all loggers with options: {"dir":"D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\logs\\egg-demo","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-demo-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"enablePerformanceTimer":false,"type":"application"}
+2022-02-01 04:47:31,553 INFO 45384 [egg-multipart] stream mode enable
+2022-02-01 04:47:31,642 INFO 45384 [egg-static] starting static serve /public/ -> D:\xsjcTony\it666\服务端\EggJS\Aelita\app\public
+2022-02-01 04:47:31,645 INFO 45384 [egg-security] use csrf middleware
+2022-02-01 04:47:31,646 INFO 45384 [egg-security] use methodnoallow middleware
+2022-02-01 04:47:31,647 INFO 45384 [egg-security] use noopen middleware
+2022-02-01 04:47:31,647 INFO 45384 [egg-security] use nosniff middleware
+2022-02-01 04:47:31,648 INFO 45384 [egg-security] use xssProtection middleware
+2022-02-01 04:47:31,648 INFO 45384 [egg-security] use xframe middleware
+2022-02-01 04:47:31,649 INFO 45384 [egg-security] use dta middleware
+2022-02-01 04:47:31,649 INFO 45384 [egg-security] compose 7 middlewares into one security middleware
+2022-02-01 04:47:31,655 INFO 45384 [egg:core] dump config after load, 3ms
+2022-02-01 04:47:31,663 INFO 45384 [egg-watcher:application] watcher start success
+2022-02-01 04:47:31,667 INFO 45384 [egg:core] dump config after ready, 3ms
+2022-02-01 04:50:32,035 INFO 48908 [egg:logger] init all loggers with options: {"dir":"D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\logs\\egg-demo","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-demo-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"enablePerformanceTimer":false,"type":"application"}
+2022-02-01 04:50:32,055 INFO 48908 [egg-multipart] stream mode enable
+2022-02-01 04:50:32,143 INFO 48908 [egg-static] starting static serve /public/ -> D:\xsjcTony\it666\服务端\EggJS\Aelita\app\public
+2022-02-01 04:50:32,145 INFO 48908 [egg-security] use csrf middleware
+2022-02-01 04:50:32,146 INFO 48908 [egg-security] use methodnoallow middleware
+2022-02-01 04:50:32,146 INFO 48908 [egg-security] use noopen middleware
+2022-02-01 04:50:32,147 INFO 48908 [egg-security] use nosniff middleware
+2022-02-01 04:50:32,148 INFO 48908 [egg-security] use xssProtection middleware
+2022-02-01 04:50:32,148 INFO 48908 [egg-security] use xframe middleware
+2022-02-01 04:50:32,149 INFO 48908 [egg-security] use dta middleware
+2022-02-01 04:50:32,149 INFO 48908 [egg-security] compose 7 middlewares into one security middleware
+2022-02-01 04:50:32,155 INFO 48908 [egg:core] dump config after load, 3ms
+2022-02-01 04:50:32,162 INFO 48908 [egg-watcher:application] watcher start success
+2022-02-01 04:50:32,166 INFO 48908 [egg:core] dump config after ready, 3ms
+2022-02-01 04:51:58,613 INFO 10900 [egg:logger] init all loggers with options: {"dir":"D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\logs\\egg-demo","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-demo-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"enablePerformanceTimer":false,"type":"application"}
+2022-02-01 04:51:58,633 INFO 10900 [egg-multipart] stream mode enable
+2022-02-01 04:51:58,720 INFO 10900 [egg-static] starting static serve /public/ -> D:\xsjcTony\it666\服务端\EggJS\Aelita\app\public
+2022-02-01 04:51:58,722 INFO 10900 [egg-security] use csrf middleware
+2022-02-01 04:51:58,723 INFO 10900 [egg-security] use methodnoallow middleware
+2022-02-01 04:51:58,724 INFO 10900 [egg-security] use noopen middleware
+2022-02-01 04:51:58,724 INFO 10900 [egg-security] use nosniff middleware
+2022-02-01 04:51:58,725 INFO 10900 [egg-security] use xssProtection middleware
+2022-02-01 04:51:58,725 INFO 10900 [egg-security] use xframe middleware
+2022-02-01 04:51:58,726 INFO 10900 [egg-security] use dta middleware
+2022-02-01 04:51:58,726 INFO 10900 [egg-security] compose 7 middlewares into one security middleware
+2022-02-01 04:51:58,732 INFO 10900 [egg:core] dump config after load, 2ms
+2022-02-01 04:51:58,740 INFO 10900 [egg-watcher:application] watcher start success
+2022-02-01 04:51:58,745 INFO 10900 [egg:core] dump config after ready, 4ms
+2022-02-01 04:53:37,627 INFO 41428 [egg:logger] init all loggers with options: {"dir":"D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\logs\\egg-demo","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-demo-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"enablePerformanceTimer":false,"type":"application"}
+2022-02-01 04:53:37,648 INFO 41428 [egg-multipart] stream mode enable
+2022-02-01 04:53:37,735 INFO 41428 [egg-static] starting static serve /public/ -> D:\xsjcTony\it666\服务端\EggJS\Aelita\app\public
+2022-02-01 04:53:37,738 INFO 41428 [egg-security] use csrf middleware
+2022-02-01 04:53:37,739 INFO 41428 [egg-security] use methodnoallow middleware
+2022-02-01 04:53:37,739 INFO 41428 [egg-security] use noopen middleware
+2022-02-01 04:53:37,740 INFO 41428 [egg-security] use nosniff middleware
+2022-02-01 04:53:37,741 INFO 41428 [egg-security] use xssProtection middleware
+2022-02-01 04:53:37,741 INFO 41428 [egg-security] use xframe middleware
+2022-02-01 04:53:37,741 INFO 41428 [egg-security] use dta middleware
+2022-02-01 04:53:37,741 INFO 41428 [egg-security] compose 7 middlewares into one security middleware
+2022-02-01 04:53:37,747 INFO 41428 [egg:core] dump config after load, 3ms
+2022-02-01 04:53:37,754 INFO 41428 [egg-watcher:application] watcher start success
+2022-02-01 04:53:37,758 INFO 41428 [egg:core] dump config after ready, 3ms
+2022-02-01 04:53:50,565 INFO 34376 [egg:logger] init all loggers with options: {"dir":"D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\logs\\egg-demo","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-demo-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"enablePerformanceTimer":false,"type":"application"}
+2022-02-01 04:53:50,585 INFO 34376 [egg-multipart] stream mode enable
+2022-02-01 04:53:50,672 INFO 34376 [egg-static] starting static serve /public/ -> D:\xsjcTony\it666\服务端\EggJS\Aelita\app\public
+2022-02-01 04:53:50,675 INFO 34376 [egg-security] use csrf middleware
+2022-02-01 04:53:50,675 INFO 34376 [egg-security] use methodnoallow middleware
+2022-02-01 04:53:50,676 INFO 34376 [egg-security] use noopen middleware
+2022-02-01 04:53:50,677 INFO 34376 [egg-security] use nosniff middleware
+2022-02-01 04:53:50,677 INFO 34376 [egg-security] use xssProtection middleware
+2022-02-01 04:53:50,678 INFO 34376 [egg-security] use xframe middleware
+2022-02-01 04:53:50,678 INFO 34376 [egg-security] use dta middleware
+2022-02-01 04:53:50,678 INFO 34376 [egg-security] compose 7 middlewares into one security middleware
+2022-02-01 04:53:50,684 INFO 34376 [egg:core] dump config after load, 3ms
+2022-02-01 04:53:50,691 INFO 34376 [egg-watcher:application] watcher start success
+2022-02-01 04:53:50,695 INFO 34376 [egg:core] dump config after ready, 3ms
+2022-02-01 04:54:05,007 INFO 52800 [egg:logger] init all loggers with options: {"dir":"D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\logs\\egg-demo","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-demo-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"enablePerformanceTimer":false,"type":"application"}
+2022-02-01 04:54:05,026 INFO 52800 [egg-multipart] stream mode enable
+2022-02-01 04:54:05,111 INFO 52800 [egg-static] starting static serve /public/ -> D:\xsjcTony\it666\服务端\EggJS\Aelita\app\public
+2022-02-01 04:54:05,113 INFO 52800 [egg-security] use csrf middleware
+2022-02-01 04:54:05,114 INFO 52800 [egg-security] use methodnoallow middleware
+2022-02-01 04:54:05,115 INFO 52800 [egg-security] use noopen middleware
+2022-02-01 04:54:05,115 INFO 52800 [egg-security] use nosniff middleware
+2022-02-01 04:54:05,116 INFO 52800 [egg-security] use xssProtection middleware
+2022-02-01 04:54:05,116 INFO 52800 [egg-security] use xframe middleware
+2022-02-01 04:54:05,117 INFO 52800 [egg-security] use dta middleware
+2022-02-01 04:54:05,117 INFO 52800 [egg-security] compose 7 middlewares into one security middleware
+2022-02-01 04:54:05,122 INFO 52800 [egg:core] dump config after load, 2ms
+2022-02-01 04:54:05,129 INFO 52800 [egg-watcher:application] watcher start success
+2022-02-01 04:54:05,133 INFO 52800 [egg:core] dump config after ready, 3ms
+2022-02-01 04:55:04,381 INFO 8856 [egg:logger] init all loggers with options: {"dir":"D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\logs\\egg-demo","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-demo-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"enablePerformanceTimer":false,"type":"application"}
+2022-02-01 04:55:04,401 INFO 8856 [egg-multipart] stream mode enable
+2022-02-01 04:55:04,488 INFO 8856 [egg-static] starting static serve /public/ -> D:\xsjcTony\it666\服务端\EggJS\Aelita\app\public
+2022-02-01 04:55:04,491 INFO 8856 [egg-security] use csrf middleware
+2022-02-01 04:55:04,491 INFO 8856 [egg-security] use methodnoallow middleware
+2022-02-01 04:55:04,492 INFO 8856 [egg-security] use noopen middleware
+2022-02-01 04:55:04,493 INFO 8856 [egg-security] use nosniff middleware
+2022-02-01 04:55:04,493 INFO 8856 [egg-security] use xssProtection middleware
+2022-02-01 04:55:04,494 INFO 8856 [egg-security] use xframe middleware
+2022-02-01 04:55:04,494 INFO 8856 [egg-security] use dta middleware
+2022-02-01 04:55:04,494 INFO 8856 [egg-security] compose 7 middlewares into one security middleware
+2022-02-01 04:55:04,500 INFO 8856 [egg:core] dump config after load, 3ms
+2022-02-01 04:55:04,507 INFO 8856 [egg-watcher:application] watcher start success
+2022-02-01 04:55:04,511 INFO 8856 [egg:core] dump config after ready, 3ms
+2022-02-01 04:56:27,707 INFO 51004 [egg:logger] init all loggers with options: {"dir":"D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\logs\\egg-demo","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-demo-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"enablePerformanceTimer":false,"type":"application"}
+2022-02-01 04:56:27,728 INFO 51004 [egg-multipart] stream mode enable
+2022-02-01 04:56:27,816 INFO 51004 [egg-static] starting static serve /public/ -> D:\xsjcTony\it666\服务端\EggJS\Aelita\app\public
+2022-02-01 04:56:27,819 INFO 51004 [egg-security] use csrf middleware
+2022-02-01 04:56:27,820 INFO 51004 [egg-security] use methodnoallow middleware
+2022-02-01 04:56:27,820 INFO 51004 [egg-security] use noopen middleware
+2022-02-01 04:56:27,821 INFO 51004 [egg-security] use nosniff middleware
+2022-02-01 04:56:27,821 INFO 51004 [egg-security] use xssProtection middleware
+2022-02-01 04:56:27,822 INFO 51004 [egg-security] use xframe middleware
+2022-02-01 04:56:27,822 INFO 51004 [egg-security] use dta middleware
+2022-02-01 04:56:27,822 INFO 51004 [egg-security] compose 7 middlewares into one security middleware
+2022-02-01 04:56:27,828 INFO 51004 [egg:core] dump config after load, 3ms
+2022-02-01 04:56:27,835 INFO 51004 [egg-watcher:application] watcher start success
+2022-02-01 04:56:27,839 INFO 51004 [egg:core] dump config after ready, 3ms
+2022-02-01 04:56:36,960 INFO 52192 [egg:logger] init all loggers with options: {"dir":"D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\logs\\egg-demo","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-demo-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"enablePerformanceTimer":false,"type":"application"}
+2022-02-01 04:56:36,979 INFO 52192 [egg-multipart] stream mode enable
+2022-02-01 04:56:37,067 INFO 52192 [egg-static] starting static serve /public/ -> D:\xsjcTony\it666\服务端\EggJS\Aelita\app\public
+2022-02-01 04:56:37,069 INFO 52192 [egg-security] use csrf middleware
+2022-02-01 04:56:37,070 INFO 52192 [egg-security] use methodnoallow middleware
+2022-02-01 04:56:37,071 INFO 52192 [egg-security] use noopen middleware
+2022-02-01 04:56:37,071 INFO 52192 [egg-security] use nosniff middleware
+2022-02-01 04:56:37,072 INFO 52192 [egg-security] use xssProtection middleware
+2022-02-01 04:56:37,072 INFO 52192 [egg-security] use xframe middleware
+2022-02-01 04:56:37,073 INFO 52192 [egg-security] use dta middleware
+2022-02-01 04:56:37,073 INFO 52192 [egg-security] compose 7 middlewares into one security middleware
+2022-02-01 04:56:37,078 INFO 52192 [egg:core] dump config after load, 2ms
+2022-02-01 04:56:37,086 INFO 52192 [egg-watcher:application] watcher start success
+2022-02-01 04:56:37,090 INFO 52192 [egg:core] dump config after ready, 3ms
+2022-02-01 05:28:43,228 INFO 51864 [egg:logger] init all loggers with options: {"dir":"D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\logs\\egg-demo","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-demo-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"enablePerformanceTimer":false,"type":"application"}
+2022-02-01 05:28:43,256 INFO 51864 [egg-multipart] stream mode enable
+2022-02-01 05:28:43,359 INFO 51864 [egg-static] starting static serve /public/ -> D:\xsjcTony\it666\服务端\EggJS\Aelita\app\public
+2022-02-01 05:28:43,362 INFO 51864 [egg-security] use csrf middleware
+2022-02-01 05:28:43,363 INFO 51864 [egg-security] use methodnoallow middleware
+2022-02-01 05:28:43,363 INFO 51864 [egg-security] use noopen middleware
+2022-02-01 05:28:43,364 INFO 51864 [egg-security] use nosniff middleware
+2022-02-01 05:28:43,364 INFO 51864 [egg-security] use xssProtection middleware
+2022-02-01 05:28:43,365 INFO 51864 [egg-security] use xframe middleware
+2022-02-01 05:28:43,365 INFO 51864 [egg-security] use dta middleware
+2022-02-01 05:28:43,365 INFO 51864 [egg-security] compose 7 middlewares into one security middleware
+2022-02-01 05:28:43,371 INFO 51864 [egg:core] dump config after load, 3ms
+2022-02-01 05:28:43,378 INFO 51864 [egg-watcher:application] watcher start success
+2022-02-01 05:28:43,382 INFO 51864 [egg:core] dump config after ready, 3ms
+2022-02-01 05:28:44,121 INFO 3164 [egg:logger] init all loggers with options: {"dir":"D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\logs\\egg-demo","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-demo-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"enablePerformanceTimer":false,"type":"application"}
+2022-02-01 05:28:44,140 INFO 3164 [egg-multipart] stream mode enable
+2022-02-01 05:28:44,227 INFO 3164 [egg-static] starting static serve /public/ -> D:\xsjcTony\it666\服务端\EggJS\Aelita\app\public
+2022-02-01 05:28:44,229 INFO 3164 [egg-security] use csrf middleware
+2022-02-01 05:28:44,230 INFO 3164 [egg-security] use methodnoallow middleware
+2022-02-01 05:28:44,230 INFO 3164 [egg-security] use noopen middleware
+2022-02-01 05:28:44,231 INFO 3164 [egg-security] use nosniff middleware
+2022-02-01 05:28:44,231 INFO 3164 [egg-security] use xssProtection middleware
+2022-02-01 05:28:44,232 INFO 3164 [egg-security] use xframe middleware
+2022-02-01 05:28:44,232 INFO 3164 [egg-security] use dta middleware
+2022-02-01 05:28:44,232 INFO 3164 [egg-security] compose 7 middlewares into one security middleware
+2022-02-01 05:28:44,238 INFO 3164 [egg:core] dump config after load, 3ms
+2022-02-01 05:28:44,245 INFO 3164 [egg-watcher:application] watcher start success
+2022-02-01 05:28:44,249 INFO 3164 [egg:core] dump config after ready, 3ms
+2022-02-01 05:37:42,498 INFO 30956 [egg:logger] init all loggers with options: {"dir":"D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\logs\\egg-demo","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-demo-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"enablePerformanceTimer":false,"type":"application"}
+2022-02-01 05:37:42,518 INFO 30956 [egg-multipart] stream mode enable
+2022-02-01 05:37:42,602 INFO 30956 [egg-static] starting static serve /public/ -> D:\xsjcTony\it666\服务端\EggJS\Aelita\app\public
+2022-02-01 05:37:42,605 INFO 30956 [egg-security] use csrf middleware
+2022-02-01 05:37:42,605 INFO 30956 [egg-security] use methodnoallow middleware
+2022-02-01 05:37:42,606 INFO 30956 [egg-security] use noopen middleware
+2022-02-01 05:37:42,607 INFO 30956 [egg-security] use nosniff middleware
+2022-02-01 05:37:42,607 INFO 30956 [egg-security] use xssProtection middleware
+2022-02-01 05:37:42,608 INFO 30956 [egg-security] use xframe middleware
+2022-02-01 05:37:42,608 INFO 30956 [egg-security] use dta middleware
+2022-02-01 05:37:42,608 INFO 30956 [egg-security] compose 7 middlewares into one security middleware
+2022-02-01 05:37:42,614 INFO 30956 [egg:core] dump config after load, 3ms
+2022-02-01 05:37:42,620 INFO 30956 [egg-watcher:application] watcher start success
+2022-02-01 05:37:42,625 INFO 30956 [egg:core] dump config after ready, 4ms
+2022-02-01 05:38:13,942 INFO 52320 [egg:logger] init all loggers with options: {"dir":"D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\logs\\egg-demo","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-demo-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"enablePerformanceTimer":false,"type":"application"}
+2022-02-01 05:38:13,962 INFO 52320 [egg-multipart] stream mode enable
+2022-02-01 05:38:14,053 INFO 52320 [egg-static] starting static serve /public/ -> D:\xsjcTony\it666\服务端\EggJS\Aelita\app\public
+2022-02-01 05:38:14,055 INFO 52320 [egg-security] use csrf middleware
+2022-02-01 05:38:14,056 INFO 52320 [egg-security] use methodnoallow middleware
+2022-02-01 05:38:14,056 INFO 52320 [egg-security] use noopen middleware
+2022-02-01 05:38:14,057 INFO 52320 [egg-security] use nosniff middleware
+2022-02-01 05:38:14,058 INFO 52320 [egg-security] use xssProtection middleware
+2022-02-01 05:38:14,058 INFO 52320 [egg-security] use xframe middleware
+2022-02-01 05:38:14,059 INFO 52320 [egg-security] use dta middleware
+2022-02-01 05:38:14,059 INFO 52320 [egg-security] compose 7 middlewares into one security middleware
+2022-02-01 05:38:14,065 INFO 52320 [egg:core] dump config after load, 3ms
+2022-02-01 05:38:14,073 INFO 52320 [egg-watcher:application] watcher start success
+2022-02-01 05:38:14,077 INFO 52320 [egg:core] dump config after ready, 3ms
+2022-02-01 05:42:01,038 INFO 51692 [egg:logger] init all loggers with options: {"dir":"D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\logs\\egg-demo","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-demo-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"enablePerformanceTimer":false,"type":"application"}
+2022-02-01 05:42:01,060 INFO 51692 [egg-multipart] stream mode enable
+2022-02-01 05:42:01,156 INFO 51692 [egg-static] starting static serve /public/ -> D:\xsjcTony\it666\服务端\EggJS\Aelita\app\public
+2022-02-01 05:42:01,159 INFO 51692 [egg-security] use csrf middleware
+2022-02-01 05:42:01,160 INFO 51692 [egg-security] use methodnoallow middleware
+2022-02-01 05:42:01,160 INFO 51692 [egg-security] use noopen middleware
+2022-02-01 05:42:01,161 INFO 51692 [egg-security] use nosniff middleware
+2022-02-01 05:42:01,162 INFO 51692 [egg-security] use xssProtection middleware
+2022-02-01 05:42:01,162 INFO 51692 [egg-security] use xframe middleware
+2022-02-01 05:42:01,162 INFO 51692 [egg-security] use dta middleware
+2022-02-01 05:42:01,162 INFO 51692 [egg-security] compose 7 middlewares into one security middleware
+2022-02-01 05:42:01,168 INFO 51692 [egg:core] dump config after load, 2ms
+2022-02-01 05:42:01,175 INFO 51692 [egg-watcher:application] watcher start success
+2022-02-01 05:42:01,180 INFO 51692 [egg:core] dump config after ready, 3ms
+2022-02-01 05:42:30,353 INFO 36124 [egg:logger] init all loggers with options: {"dir":"D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\logs\\egg-demo","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-demo-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"enablePerformanceTimer":false,"type":"application"}
+2022-02-01 05:42:30,374 INFO 36124 [egg-multipart] stream mode enable
+2022-02-01 05:42:30,462 INFO 36124 [egg-static] starting static serve /public/ -> D:\xsjcTony\it666\服务端\EggJS\Aelita\app\public
+2022-02-01 05:42:30,464 INFO 36124 [egg-security] use csrf middleware
+2022-02-01 05:42:30,465 INFO 36124 [egg-security] use methodnoallow middleware
+2022-02-01 05:42:30,466 INFO 36124 [egg-security] use noopen middleware
+2022-02-01 05:42:30,467 INFO 36124 [egg-security] use nosniff middleware
+2022-02-01 05:42:30,467 INFO 36124 [egg-security] use xssProtection middleware
+2022-02-01 05:42:30,468 INFO 36124 [egg-security] use xframe middleware
+2022-02-01 05:42:30,468 INFO 36124 [egg-security] use dta middleware
+2022-02-01 05:42:30,468 INFO 36124 [egg-security] compose 7 middlewares into one security middleware
+2022-02-01 05:42:30,474 INFO 36124 [egg:core] dump config after load, 2ms
+2022-02-01 05:42:30,481 INFO 36124 [egg-watcher:application] watcher start success
+2022-02-01 05:42:30,486 INFO 36124 [egg:core] dump config after ready, 4ms
+2022-02-01 05:42:46,504 INFO 48788 [egg:logger] init all loggers with options: {"dir":"D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\logs\\egg-demo","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-demo-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"enablePerformanceTimer":false,"type":"application"}
+2022-02-01 05:42:46,525 INFO 48788 [egg-multipart] stream mode enable
+2022-02-01 05:42:46,614 INFO 48788 [egg-static] starting static serve /public/ -> D:\xsjcTony\it666\服务端\EggJS\Aelita\app\public
+2022-02-01 05:42:46,616 INFO 48788 [egg-security] use csrf middleware
+2022-02-01 05:42:46,617 INFO 48788 [egg-security] use methodnoallow middleware
+2022-02-01 05:42:46,618 INFO 48788 [egg-security] use noopen middleware
+2022-02-01 05:42:46,619 INFO 48788 [egg-security] use nosniff middleware
+2022-02-01 05:42:46,619 INFO 48788 [egg-security] use xssProtection middleware
+2022-02-01 05:42:46,620 INFO 48788 [egg-security] use xframe middleware
+2022-02-01 05:42:46,620 INFO 48788 [egg-security] use dta middleware
+2022-02-01 05:42:46,620 INFO 48788 [egg-security] compose 7 middlewares into one security middleware
+2022-02-01 05:42:46,626 INFO 48788 [egg:core] dump config after load, 3ms
+2022-02-01 05:42:46,633 INFO 48788 [egg-watcher:application] watcher start success
+2022-02-01 05:42:46,638 INFO 48788 [egg:core] dump config after ready, 4ms
+2022-02-01 05:43:00,272 INFO 52268 [egg:logger] init all loggers with options: {"dir":"D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\logs\\egg-demo","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-demo-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"enablePerformanceTimer":false,"type":"application"}
+2022-02-01 05:43:00,291 INFO 52268 [egg-multipart] stream mode enable
+2022-02-01 05:43:00,378 INFO 52268 [egg-static] starting static serve /public/ -> D:\xsjcTony\it666\服务端\EggJS\Aelita\app\public
+2022-02-01 05:43:00,380 INFO 52268 [egg-security] use csrf middleware
+2022-02-01 05:43:00,381 INFO 52268 [egg-security] use methodnoallow middleware
+2022-02-01 05:43:00,381 INFO 52268 [egg-security] use noopen middleware
+2022-02-01 05:43:00,382 INFO 52268 [egg-security] use nosniff middleware
+2022-02-01 05:43:00,383 INFO 52268 [egg-security] use xssProtection middleware
+2022-02-01 05:43:00,383 INFO 52268 [egg-security] use xframe middleware
+2022-02-01 05:43:00,383 INFO 52268 [egg-security] use dta middleware
+2022-02-01 05:43:00,383 INFO 52268 [egg-security] compose 7 middlewares into one security middleware
+2022-02-01 05:43:00,390 INFO 52268 [egg:core] dump config after load, 3ms
+2022-02-01 05:43:00,397 INFO 52268 [egg-watcher:application] watcher start success
+2022-02-01 05:43:00,402 INFO 52268 [egg:core] dump config after ready, 4ms
+2022-02-01 05:44:56,354 INFO 22188 [egg:logger] init all loggers with options: {"dir":"D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\logs\\egg-demo","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-demo-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"enablePerformanceTimer":false,"type":"application"}
+2022-02-01 05:44:56,374 INFO 22188 [egg-multipart] stream mode enable
+2022-02-01 05:44:56,463 INFO 22188 [egg-static] starting static serve /public/ -> D:\xsjcTony\it666\服务端\EggJS\Aelita\app\public
+2022-02-01 05:44:56,465 INFO 22188 [egg-security] use csrf middleware
+2022-02-01 05:44:56,466 INFO 22188 [egg-security] use methodnoallow middleware
+2022-02-01 05:44:56,466 INFO 22188 [egg-security] use noopen middleware
+2022-02-01 05:44:56,467 INFO 22188 [egg-security] use nosniff middleware
+2022-02-01 05:44:56,468 INFO 22188 [egg-security] use xssProtection middleware
+2022-02-01 05:44:56,468 INFO 22188 [egg-security] use xframe middleware
+2022-02-01 05:44:56,468 INFO 22188 [egg-security] use dta middleware
+2022-02-01 05:44:56,469 INFO 22188 [egg-security] compose 7 middlewares into one security middleware
+2022-02-01 05:44:56,474 INFO 22188 [egg:core] dump config after load, 2ms
+2022-02-01 05:44:56,481 INFO 22188 [egg-watcher:application] watcher start success
+2022-02-01 05:44:56,485 INFO 22188 [egg:core] dump config after ready, 3ms
+2022-02-01 05:45:15,603 INFO 48668 [egg:logger] init all loggers with options: {"dir":"D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\logs\\egg-demo","encoding":"utf8","env":"local","level":"DEBUG","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-demo-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"enablePerformanceTimer":false,"type":"application"}
+2022-02-01 05:45:15,624 INFO 48668 [egg-multipart] stream mode enable
+2022-02-01 05:45:15,713 INFO 48668 [egg-static] starting static serve /public/ -> D:\xsjcTony\it666\服务端\EggJS\Aelita\app\public
+2022-02-01 05:45:15,715 INFO 48668 [egg-security] use csrf middleware
+2022-02-01 05:45:15,716 INFO 48668 [egg-security] use methodnoallow middleware
+2022-02-01 05:45:15,716 INFO 48668 [egg-security] use noopen middleware
+2022-02-01 05:45:15,717 INFO 48668 [egg-security] use nosniff middleware
+2022-02-01 05:45:15,718 INFO 48668 [egg-security] use xssProtection middleware
+2022-02-01 05:45:15,718 INFO 48668 [egg-security] use xframe middleware
+2022-02-01 05:45:15,718 INFO 48668 [egg-security] use dta middleware
+2022-02-01 05:45:15,719 INFO 48668 [egg-security] compose 7 middlewares into one security middleware
+2022-02-01 05:45:15,724 INFO 48668 [egg:core] dump config after load, 2ms
+2022-02-01 05:45:15,733 INFO 48668 [egg-watcher:application] watcher start success
+2022-02-01 05:45:15,737 INFO 48668 [egg:core] dump config after ready, 3ms
+2022-02-01 05:45:33,432 INFO 45972 [egg:logger] init all loggers with options: {"dir":"D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\logs\\egg-demo","encoding":"utf8","env":"local","level":"DEBUG","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-demo-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"enablePerformanceTimer":false,"type":"application"}
+2022-02-01 05:45:33,452 INFO 45972 [egg-multipart] stream mode enable
+2022-02-01 05:45:33,532 INFO 45972 [egg-static] starting static serve /public/ -> D:\xsjcTony\it666\服务端\EggJS\Aelita\app\public
+2022-02-01 05:45:33,534 INFO 45972 [egg-security] use csrf middleware
+2022-02-01 05:45:33,535 INFO 45972 [egg-security] use methodnoallow middleware
+2022-02-01 05:45:33,536 INFO 45972 [egg-security] use noopen middleware
+2022-02-01 05:45:33,536 INFO 45972 [egg-security] use nosniff middleware
+2022-02-01 05:45:33,537 INFO 45972 [egg-security] use xssProtection middleware
+2022-02-01 05:45:33,537 INFO 45972 [egg-security] use xframe middleware
+2022-02-01 05:45:33,537 INFO 45972 [egg-security] use dta middleware
+2022-02-01 05:45:33,538 INFO 45972 [egg-security] compose 7 middlewares into one security middleware
+2022-02-01 05:45:33,543 INFO 45972 [egg:core] dump config after load, 3ms
+2022-02-01 05:45:33,550 INFO 45972 [egg-watcher:application] watcher start success
+2022-02-01 05:45:33,554 INFO 45972 [egg:core] dump config after ready, 3ms
+2022-02-01 06:09:13,976 INFO 51108 [egg:logger] init all loggers with options: {"dir":"D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\logs\\egg-demo","encoding":"utf8","env":"local","level":"DEBUG","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-demo-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"enablePerformanceTimer":false,"type":"application"}
+2022-02-01 06:09:13,996 INFO 51108 [egg-multipart] stream mode enable
+2022-02-01 06:09:14,080 INFO 51108 [egg-static] starting static serve /public/ -> D:\xsjcTony\it666\服务端\EggJS\Aelita\app\public
+2022-02-01 06:09:14,083 INFO 51108 [egg-security] use csrf middleware
+2022-02-01 06:09:14,084 INFO 51108 [egg-security] use methodnoallow middleware
+2022-02-01 06:09:14,084 INFO 51108 [egg-security] use noopen middleware
+2022-02-01 06:09:14,085 INFO 51108 [egg-security] use nosniff middleware
+2022-02-01 06:09:14,085 INFO 51108 [egg-security] use xssProtection middleware
+2022-02-01 06:09:14,086 INFO 51108 [egg-security] use xframe middleware
+2022-02-01 06:09:14,086 INFO 51108 [egg-security] use dta middleware
+2022-02-01 06:09:14,086 INFO 51108 [egg-security] compose 7 middlewares into one security middleware
+2022-02-01 06:09:14,092 INFO 51108 [egg:core] dump config after load, 3ms
+2022-02-01 06:09:14,099 INFO 51108 [egg-watcher:application] watcher start success
+2022-02-01 06:09:14,103 INFO 51108 [egg:core] dump config after ready, 3ms
+2022-02-01 06:09:37,092 INFO 15500 [egg:logger] init all loggers with options: {"dir":"D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\logs\\egg-demo","encoding":"utf8","env":"local","level":"DEBUG","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-demo-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"enablePerformanceTimer":false,"type":"application"}
+2022-02-01 06:09:37,115 INFO 15500 [egg-multipart] stream mode enable
+2022-02-01 06:09:37,206 INFO 15500 [egg-static] starting static serve /public/ -> D:\xsjcTony\it666\服务端\EggJS\Aelita\app\public
+2022-02-01 06:09:37,208 INFO 15500 [egg-security] use csrf middleware
+2022-02-01 06:09:37,209 INFO 15500 [egg-security] use methodnoallow middleware
+2022-02-01 06:09:37,209 INFO 15500 [egg-security] use noopen middleware
+2022-02-01 06:09:37,210 INFO 15500 [egg-security] use nosniff middleware
+2022-02-01 06:09:37,211 INFO 15500 [egg-security] use xssProtection middleware
+2022-02-01 06:09:37,211 INFO 15500 [egg-security] use xframe middleware
+2022-02-01 06:09:37,211 INFO 15500 [egg-security] use dta middleware
+2022-02-01 06:09:37,211 INFO 15500 [egg-security] compose 7 middlewares into one security middleware
+2022-02-01 06:09:37,217 INFO 15500 [egg:core] dump config after load, 2ms
+2022-02-01 06:09:37,225 INFO 15500 [egg-watcher:application] watcher start success
+2022-02-01 06:09:37,229 INFO 15500 [egg:core] dump config after ready, 3ms
+2022-02-01 06:10:31,991 INFO 25872 [egg:logger] init all loggers with options: {"dir":"D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\logs\\egg-demo","encoding":"utf8","env":"local","level":"DEBUG","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-demo-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"enablePerformanceTimer":false,"type":"application"}
+2022-02-01 06:10:32,013 INFO 25872 [egg-multipart] stream mode enable
+2022-02-01 06:10:32,104 INFO 25872 [egg-static] starting static serve /public/ -> D:\xsjcTony\it666\服务端\EggJS\Aelita\app\public
+2022-02-01 06:10:32,107 INFO 25872 [egg-security] use csrf middleware
+2022-02-01 06:10:32,108 INFO 25872 [egg-security] use methodnoallow middleware
+2022-02-01 06:10:32,108 INFO 25872 [egg-security] use noopen middleware
+2022-02-01 06:10:32,109 INFO 25872 [egg-security] use nosniff middleware
+2022-02-01 06:10:32,109 INFO 25872 [egg-security] use xssProtection middleware
+2022-02-01 06:10:32,110 INFO 25872 [egg-security] use xframe middleware
+2022-02-01 06:10:32,110 INFO 25872 [egg-security] use dta middleware
+2022-02-01 06:10:32,110 INFO 25872 [egg-security] compose 7 middlewares into one security middleware
+2022-02-01 06:10:32,116 INFO 25872 [egg:core] dump config after load, 3ms
+2022-02-01 06:10:32,123 INFO 25872 [egg-watcher:application] watcher start success
+2022-02-01 06:10:32,127 INFO 25872 [egg:core] dump config after ready, 3ms
+2022-02-01 06:10:46,769 INFO 46036 [egg:logger] init all loggers with options: {"dir":"D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\logs\\egg-demo","encoding":"utf8","env":"local","level":"DEBUG","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-demo-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"enablePerformanceTimer":false,"type":"application"}
+2022-02-01 06:10:46,790 INFO 46036 [egg-multipart] stream mode enable
+2022-02-01 06:10:46,880 INFO 46036 [egg-static] starting static serve /public/ -> D:\xsjcTony\it666\服务端\EggJS\Aelita\app\public
+2022-02-01 06:10:46,882 INFO 46036 [egg-security] use csrf middleware
+2022-02-01 06:10:46,883 INFO 46036 [egg-security] use methodnoallow middleware
+2022-02-01 06:10:46,883 INFO 46036 [egg-security] use noopen middleware
+2022-02-01 06:10:46,884 INFO 46036 [egg-security] use nosniff middleware
+2022-02-01 06:10:46,884 INFO 46036 [egg-security] use xssProtection middleware
+2022-02-01 06:10:46,885 INFO 46036 [egg-security] use xframe middleware
+2022-02-01 06:10:46,885 INFO 46036 [egg-security] use dta middleware
+2022-02-01 06:10:46,885 INFO 46036 [egg-security] compose 7 middlewares into one security middleware
+2022-02-01 06:10:46,891 INFO 46036 [egg:core] dump config after load, 3ms
+2022-02-01 06:10:46,898 INFO 46036 [egg-watcher:application] watcher start success
+2022-02-01 06:10:46,902 INFO 46036 [egg:core] dump config after ready, 3ms
+2022-02-01 06:11:49,781 INFO 28140 [egg:logger] init all loggers with options: {"dir":"D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\logs\\egg-demo","encoding":"utf8","env":"local","level":"DEBUG","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-demo-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"enablePerformanceTimer":false,"type":"application"}
+2022-02-01 06:11:49,801 INFO 28140 [egg-multipart] stream mode enable
+2022-02-01 06:11:49,882 INFO 28140 [egg-static] starting static serve /public/ -> D:\xsjcTony\it666\服务端\EggJS\Aelita\app\public
+2022-02-01 06:11:49,884 INFO 28140 [egg-security] use csrf middleware
+2022-02-01 06:11:49,885 INFO 28140 [egg-security] use methodnoallow middleware
+2022-02-01 06:11:49,886 INFO 28140 [egg-security] use noopen middleware
+2022-02-01 06:11:49,886 INFO 28140 [egg-security] use nosniff middleware
+2022-02-01 06:11:49,887 INFO 28140 [egg-security] use xssProtection middleware
+2022-02-01 06:11:49,887 INFO 28140 [egg-security] use xframe middleware
+2022-02-01 06:11:49,887 INFO 28140 [egg-security] use dta middleware
+2022-02-01 06:11:49,887 INFO 28140 [egg-security] compose 7 middlewares into one security middleware
+2022-02-01 06:11:49,893 INFO 28140 [egg:core] dump config after load, 2ms
+2022-02-01 06:11:49,900 INFO 28140 [egg-watcher:application] watcher start success
+2022-02-01 06:11:49,905 INFO 28140 [egg:core] dump config after ready, 4ms
+2022-02-01 06:15:26,128 INFO 41456 [egg:logger] init all loggers with options: {"dir":"D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\logs\\egg-demo","encoding":"utf8","env":"local","level":"DEBUG","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-demo-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"enablePerformanceTimer":false,"type":"application"}
+2022-02-01 06:15:26,148 INFO 41456 [egg-multipart] stream mode enable
+2022-02-01 06:15:26,232 INFO 41456 [egg-static] starting static serve /public/ -> D:\xsjcTony\it666\服务端\EggJS\Aelita\app\public
+2022-02-01 06:15:26,235 INFO 41456 [egg-security] use csrf middleware
+2022-02-01 06:15:26,236 INFO 41456 [egg-security] use methodnoallow middleware
+2022-02-01 06:15:26,236 INFO 41456 [egg-security] use noopen middleware
+2022-02-01 06:15:26,237 INFO 41456 [egg-security] use nosniff middleware
+2022-02-01 06:15:26,237 INFO 41456 [egg-security] use xssProtection middleware
+2022-02-01 06:15:26,238 INFO 41456 [egg-security] use xframe middleware
+2022-02-01 06:15:26,238 INFO 41456 [egg-security] use dta middleware
+2022-02-01 06:15:26,238 INFO 41456 [egg-security] compose 7 middlewares into one security middleware
+2022-02-01 06:15:26,244 INFO 41456 [egg:core] dump config after load, 2ms
+2022-02-01 06:15:26,253 INFO 41456 [egg-watcher:application] watcher start success
+2022-02-01 06:15:26,258 INFO 41456 [egg:core] dump config after ready, 4ms
+2022-02-01 06:16:09,945 INFO 20604 [egg:logger] init all loggers with options: {"dir":"D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\logs\\egg-demo","encoding":"utf8","env":"local","level":"DEBUG","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-demo-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"enablePerformanceTimer":false,"type":"application"}
+2022-02-01 06:16:09,964 INFO 20604 [egg-multipart] stream mode enable
+2022-02-01 06:16:10,046 INFO 20604 [egg-static] starting static serve /public/ -> D:\xsjcTony\it666\服务端\EggJS\Aelita\app\public
+2022-02-01 06:16:10,048 INFO 20604 [egg-security] use csrf middleware
+2022-02-01 06:16:10,049 INFO 20604 [egg-security] use methodnoallow middleware
+2022-02-01 06:16:10,049 INFO 20604 [egg-security] use noopen middleware
+2022-02-01 06:16:10,050 INFO 20604 [egg-security] use nosniff middleware
+2022-02-01 06:16:10,050 INFO 20604 [egg-security] use xssProtection middleware
+2022-02-01 06:16:10,051 INFO 20604 [egg-security] use xframe middleware
+2022-02-01 06:16:10,051 INFO 20604 [egg-security] use dta middleware
+2022-02-01 06:16:10,051 INFO 20604 [egg-security] compose 7 middlewares into one security middleware
+2022-02-01 06:16:10,057 INFO 20604 [egg:core] dump config after load, 3ms
+2022-02-01 06:16:10,064 INFO 20604 [egg-watcher:application] watcher start success
+2022-02-01 06:16:10,069 INFO 20604 [egg:core] dump config after ready, 3ms
+2022-02-01 06:16:23,506 INFO 45928 [egg:logger] init all loggers with options: {"dir":"D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\logs\\egg-demo","encoding":"utf8","env":"local","level":"DEBUG","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-demo-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"enablePerformanceTimer":false,"type":"application"}
+2022-02-01 06:16:23,528 INFO 45928 [egg-multipart] stream mode enable
+2022-02-01 06:16:23,615 INFO 45928 [egg-static] starting static serve /public/ -> D:\xsjcTony\it666\服务端\EggJS\Aelita\app\public
+2022-02-01 06:16:23,618 INFO 45928 [egg-security] use csrf middleware
+2022-02-01 06:16:23,619 INFO 45928 [egg-security] use methodnoallow middleware
+2022-02-01 06:16:23,619 INFO 45928 [egg-security] use noopen middleware
+2022-02-01 06:16:23,620 INFO 45928 [egg-security] use nosniff middleware
+2022-02-01 06:16:23,621 INFO 45928 [egg-security] use xssProtection middleware
+2022-02-01 06:16:23,621 INFO 45928 [egg-security] use xframe middleware
+2022-02-01 06:16:23,621 INFO 45928 [egg-security] use dta middleware
+2022-02-01 06:16:23,621 INFO 45928 [egg-security] compose 7 middlewares into one security middleware
+2022-02-01 06:16:23,628 INFO 45928 [egg:core] dump config after load, 3ms
+2022-02-01 06:16:23,635 INFO 45928 [egg-watcher:application] watcher start success
+2022-02-01 06:16:23,639 INFO 45928 [egg:core] dump config after ready, 3ms
+2022-02-01 06:17:15,491 INFO 39208 [egg:logger] init all loggers with options: {"dir":"D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\logs\\egg-demo","encoding":"utf8","env":"local","level":"DEBUG","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-demo-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"enablePerformanceTimer":false,"type":"application"}
+2022-02-01 06:17:15,512 INFO 39208 [egg-multipart] stream mode enable
+2022-02-01 06:17:15,602 INFO 39208 [egg-static] starting static serve /public/ -> D:\xsjcTony\it666\服务端\EggJS\Aelita\app\public
+2022-02-01 06:17:15,604 INFO 39208 [egg-security] use csrf middleware
+2022-02-01 06:17:15,605 INFO 39208 [egg-security] use methodnoallow middleware
+2022-02-01 06:17:15,606 INFO 39208 [egg-security] use noopen middleware
+2022-02-01 06:17:15,607 INFO 39208 [egg-security] use nosniff middleware
+2022-02-01 06:17:15,607 INFO 39208 [egg-security] use xssProtection middleware
+2022-02-01 06:17:15,607 INFO 39208 [egg-security] use xframe middleware
+2022-02-01 06:17:15,608 INFO 39208 [egg-security] use dta middleware
+2022-02-01 06:17:15,608 INFO 39208 [egg-security] compose 7 middlewares into one security middleware
+2022-02-01 06:17:15,614 INFO 39208 [egg:core] dump config after load, 3ms
+2022-02-01 06:17:15,621 INFO 39208 [egg-watcher:application] watcher start success
+2022-02-01 06:17:15,625 INFO 39208 [egg:core] dump config after ready, 3ms
+2022-02-01 06:17:57,301 INFO 15268 [egg:logger] init all loggers with options: {"dir":"D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\logs\\egg-demo","encoding":"utf8","env":"local","level":"DEBUG","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-demo-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"enablePerformanceTimer":false,"type":"application"}
+2022-02-01 06:17:57,327 INFO 15268 [egg-multipart] stream mode enable
+2022-02-01 06:17:57,408 INFO 15268 [egg-static] starting static serve /public/ -> D:\xsjcTony\it666\服务端\EggJS\Aelita\app\public
+2022-02-01 06:17:57,410 INFO 15268 [egg-security] use csrf middleware
+2022-02-01 06:17:57,411 INFO 15268 [egg-security] use methodnoallow middleware
+2022-02-01 06:17:57,412 INFO 15268 [egg-security] use noopen middleware
+2022-02-01 06:17:57,413 INFO 15268 [egg-security] use nosniff middleware
+2022-02-01 06:17:57,413 INFO 15268 [egg-security] use xssProtection middleware
+2022-02-01 06:17:57,413 INFO 15268 [egg-security] use xframe middleware
+2022-02-01 06:17:57,414 INFO 15268 [egg-security] use dta middleware
+2022-02-01 06:17:57,414 INFO 15268 [egg-security] compose 7 middlewares into one security middleware
+2022-02-01 06:17:57,419 INFO 15268 [egg:core] dump config after load, 2ms
+2022-02-01 06:17:57,426 INFO 15268 [egg-watcher:application] watcher start success
+2022-02-01 06:17:57,430 INFO 15268 [egg:core] dump config after ready, 3ms
+2022-02-01 06:18:08,850 INFO 43336 [egg:logger] init all loggers with options: {"dir":"D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\logs\\egg-demo","encoding":"utf8","env":"local","level":"DEBUG","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-demo-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"enablePerformanceTimer":false,"type":"application"}
+2022-02-01 06:18:08,870 INFO 43336 [egg-multipart] stream mode enable
+2022-02-01 06:18:08,957 INFO 43336 [egg-static] starting static serve /public/ -> D:\xsjcTony\it666\服务端\EggJS\Aelita\app\public
+2022-02-01 06:18:08,960 INFO 43336 [egg-security] use csrf middleware
+2022-02-01 06:18:08,961 INFO 43336 [egg-security] use methodnoallow middleware
+2022-02-01 06:18:08,961 INFO 43336 [egg-security] use noopen middleware
+2022-02-01 06:18:08,962 INFO 43336 [egg-security] use nosniff middleware
+2022-02-01 06:18:08,962 INFO 43336 [egg-security] use xssProtection middleware
+2022-02-01 06:18:08,963 INFO 43336 [egg-security] use xframe middleware
+2022-02-01 06:18:08,963 INFO 43336 [egg-security] use dta middleware
+2022-02-01 06:18:08,963 INFO 43336 [egg-security] compose 7 middlewares into one security middleware
+2022-02-01 06:18:08,969 INFO 43336 [egg:core] dump config after load, 2ms
+2022-02-01 06:18:08,977 INFO 43336 [egg-watcher:application] watcher start success
+2022-02-01 06:18:08,981 INFO 43336 [egg:core] dump config after ready, 3ms
+2022-02-01 06:18:35,375 INFO 39736 [egg:logger] init all loggers with options: {"dir":"D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\logs\\egg-demo","encoding":"utf8","env":"local","level":"DEBUG","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-demo-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"enablePerformanceTimer":false,"type":"application"}
+2022-02-01 06:18:35,398 INFO 39736 [egg-multipart] stream mode enable
+2022-02-01 06:18:35,484 INFO 39736 [egg-static] starting static serve /public/ -> D:\xsjcTony\it666\服务端\EggJS\Aelita\app\public
+2022-02-01 06:18:35,487 INFO 39736 [egg-security] use csrf middleware
+2022-02-01 06:18:35,488 INFO 39736 [egg-security] use methodnoallow middleware
+2022-02-01 06:18:35,488 INFO 39736 [egg-security] use noopen middleware
+2022-02-01 06:18:35,489 INFO 39736 [egg-security] use nosniff middleware
+2022-02-01 06:18:35,489 INFO 39736 [egg-security] use xssProtection middleware
+2022-02-01 06:18:35,490 INFO 39736 [egg-security] use xframe middleware
+2022-02-01 06:18:35,490 INFO 39736 [egg-security] use dta middleware
+2022-02-01 06:18:35,490 INFO 39736 [egg-security] compose 7 middlewares into one security middleware
+2022-02-01 06:18:35,497 INFO 39736 [egg:core] dump config after load, 3ms
+2022-02-01 06:18:35,505 INFO 39736 [egg-watcher:application] watcher start success
+2022-02-01 06:18:35,509 INFO 39736 [egg:core] dump config after ready, 3ms
+2022-02-01 06:18:56,836 INFO 49904 [egg:logger] init all loggers with options: {"dir":"D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\logs\\egg-demo","encoding":"utf8","env":"local","level":"DEBUG","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-demo-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"enablePerformanceTimer":false,"type":"application"}
+2022-02-01 06:18:56,857 INFO 49904 [egg-multipart] stream mode enable
+2022-02-01 06:18:56,951 INFO 49904 [egg-static] starting static serve /public/ -> D:\xsjcTony\it666\服务端\EggJS\Aelita\app\public
+2022-02-01 06:18:56,954 INFO 49904 [egg-security] use csrf middleware
+2022-02-01 06:18:56,955 INFO 49904 [egg-security] use methodnoallow middleware
+2022-02-01 06:18:56,956 INFO 49904 [egg-security] use noopen middleware
+2022-02-01 06:18:56,957 INFO 49904 [egg-security] use nosniff middleware
+2022-02-01 06:18:56,957 INFO 49904 [egg-security] use xssProtection middleware
+2022-02-01 06:18:56,958 INFO 49904 [egg-security] use xframe middleware
+2022-02-01 06:18:56,958 INFO 49904 [egg-security] use dta middleware
+2022-02-01 06:18:56,958 INFO 49904 [egg-security] compose 7 middlewares into one security middleware
+2022-02-01 06:18:56,965 INFO 49904 [egg:core] dump config after load, 3ms
+2022-02-01 06:18:56,972 INFO 49904 [egg-watcher:application] watcher start success
+2022-02-01 06:18:56,976 INFO 49904 [egg:core] dump config after ready, 3ms
+2022-02-01 06:19:13,719 INFO 52092 [egg:logger] init all loggers with options: {"dir":"D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\logs\\egg-demo","encoding":"utf8","env":"local","level":"DEBUG","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-demo-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"enablePerformanceTimer":false,"type":"application"}
+2022-02-01 06:19:13,738 INFO 52092 [egg-multipart] stream mode enable
+2022-02-01 06:19:13,820 INFO 52092 [egg-static] starting static serve /public/ -> D:\xsjcTony\it666\服务端\EggJS\Aelita\app\public
+2022-02-01 06:19:13,822 INFO 52092 [egg-security] use csrf middleware
+2022-02-01 06:19:13,823 INFO 52092 [egg-security] use methodnoallow middleware
+2022-02-01 06:19:13,824 INFO 52092 [egg-security] use noopen middleware
+2022-02-01 06:19:13,825 INFO 52092 [egg-security] use nosniff middleware
+2022-02-01 06:19:13,825 INFO 52092 [egg-security] use xssProtection middleware
+2022-02-01 06:19:13,826 INFO 52092 [egg-security] use xframe middleware
+2022-02-01 06:19:13,826 INFO 52092 [egg-security] use dta middleware
+2022-02-01 06:19:13,826 INFO 52092 [egg-security] compose 7 middlewares into one security middleware
+2022-02-01 06:19:13,832 INFO 52092 [egg:core] dump config after load, 3ms
+2022-02-01 06:19:13,840 INFO 52092 [egg-watcher:application] watcher start success
+2022-02-01 06:19:13,844 INFO 52092 [egg:core] dump config after ready, 3ms
+2022-02-01 06:19:41,465 INFO 45956 [egg:logger] init all loggers with options: {"dir":"D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\logs\\egg-demo","encoding":"utf8","env":"local","level":"DEBUG","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-demo-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"enablePerformanceTimer":false,"type":"application"}
+2022-02-01 06:19:41,485 INFO 45956 [egg-multipart] stream mode enable
+2022-02-01 06:19:41,565 INFO 45956 [egg-static] starting static serve /public/ -> D:\xsjcTony\it666\服务端\EggJS\Aelita\app\public
+2022-02-01 06:19:41,567 INFO 45956 [egg-security] use csrf middleware
+2022-02-01 06:19:41,568 INFO 45956 [egg-security] use methodnoallow middleware
+2022-02-01 06:19:41,569 INFO 45956 [egg-security] use noopen middleware
+2022-02-01 06:19:41,569 INFO 45956 [egg-security] use nosniff middleware
+2022-02-01 06:19:41,570 INFO 45956 [egg-security] use xssProtection middleware
+2022-02-01 06:19:41,570 INFO 45956 [egg-security] use xframe middleware
+2022-02-01 06:19:41,570 INFO 45956 [egg-security] use dta middleware
+2022-02-01 06:19:41,570 INFO 45956 [egg-security] compose 7 middlewares into one security middleware
+2022-02-01 06:19:41,576 INFO 45956 [egg:core] dump config after load, 3ms
+2022-02-01 06:19:41,586 INFO 45956 [egg-watcher:application] watcher start success
+2022-02-01 06:19:41,589 INFO 45956 [egg:core] dump config after ready, 2ms
+2022-02-01 06:20:34,323 INFO 21168 [egg:logger] init all loggers with options: {"dir":"D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\logs\\egg-demo","encoding":"utf8","env":"local","level":"DEBUG","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-demo-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"enablePerformanceTimer":false,"type":"application"}
+2022-02-01 06:20:34,344 INFO 21168 [egg-multipart] stream mode enable
+2022-02-01 06:20:34,435 INFO 21168 [egg-static] starting static serve /public/ -> D:\xsjcTony\it666\服务端\EggJS\Aelita\app\public
+2022-02-01 06:20:34,437 INFO 21168 [egg-security] use csrf middleware
+2022-02-01 06:20:34,438 INFO 21168 [egg-security] use methodnoallow middleware
+2022-02-01 06:20:34,439 INFO 21168 [egg-security] use noopen middleware
+2022-02-01 06:20:34,440 INFO 21168 [egg-security] use nosniff middleware
+2022-02-01 06:20:34,440 INFO 21168 [egg-security] use xssProtection middleware
+2022-02-01 06:20:34,440 INFO 21168 [egg-security] use xframe middleware
+2022-02-01 06:20:34,441 INFO 21168 [egg-security] use dta middleware
+2022-02-01 06:20:34,441 INFO 21168 [egg-security] compose 7 middlewares into one security middleware
+2022-02-01 06:20:34,447 INFO 21168 [egg:core] dump config after load, 3ms
+2022-02-01 06:20:34,456 INFO 21168 [egg-watcher:application] watcher start success
+2022-02-01 06:20:34,461 INFO 21168 [egg:core] dump config after ready, 3ms
+2022-02-01 06:38:20,394 INFO 55344 [egg:logger] init all loggers with options: {"dir":"D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\logs\\egg-demo","encoding":"utf8","env":"local","level":"DEBUG","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-demo-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"enablePerformanceTimer":false,"type":"application"}
+2022-02-01 06:38:20,414 INFO 55344 [egg-multipart] stream mode enable
+2022-02-01 06:38:20,497 INFO 55344 [egg-static] starting static serve /public/ -> D:\xsjcTony\it666\服务端\EggJS\Aelita\app\public
+2022-02-01 06:38:20,500 INFO 55344 [egg-security] use csrf middleware
+2022-02-01 06:38:20,501 INFO 55344 [egg-security] use methodnoallow middleware
+2022-02-01 06:38:20,501 INFO 55344 [egg-security] use noopen middleware
+2022-02-01 06:38:20,502 INFO 55344 [egg-security] use nosniff middleware
+2022-02-01 06:38:20,502 INFO 55344 [egg-security] use xssProtection middleware
+2022-02-01 06:38:20,503 INFO 55344 [egg-security] use xframe middleware
+2022-02-01 06:38:20,503 INFO 55344 [egg-security] use dta middleware
+2022-02-01 06:38:20,503 INFO 55344 [egg-security] compose 7 middlewares into one security middleware
+2022-02-01 06:38:20,509 INFO 55344 [egg:core] dump config after load, 3ms
+2022-02-01 06:38:20,517 INFO 55344 [egg-watcher:application] watcher start success
+2022-02-01 06:38:20,522 INFO 55344 [egg:core] dump config after ready, 4ms
+2022-02-01 06:39:44,104 INFO 56620 [egg:logger] init all loggers with options: {"dir":"D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\logs\\egg-demo","encoding":"utf8","env":"local","level":"DEBUG","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-demo-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"enablePerformanceTimer":false,"type":"application"}
+2022-02-01 06:39:44,125 INFO 56620 [egg-multipart] stream mode enable
+2022-02-01 06:39:44,208 INFO 56620 [egg-static] starting static serve /public/ -> D:\xsjcTony\it666\服务端\EggJS\Aelita\app\public
+2022-02-01 06:39:44,211 INFO 56620 [egg-security] use csrf middleware
+2022-02-01 06:39:44,212 INFO 56620 [egg-security] use methodnoallow middleware
+2022-02-01 06:39:44,212 INFO 56620 [egg-security] use noopen middleware
+2022-02-01 06:39:44,213 INFO 56620 [egg-security] use nosniff middleware
+2022-02-01 06:39:44,214 INFO 56620 [egg-security] use xssProtection middleware
+2022-02-01 06:39:44,214 INFO 56620 [egg-security] use xframe middleware
+2022-02-01 06:39:44,215 INFO 56620 [egg-security] use dta middleware
+2022-02-01 06:39:44,215 INFO 56620 [egg-security] compose 7 middlewares into one security middleware
+2022-02-01 06:39:44,221 INFO 56620 [egg:core] dump config after load, 3ms
+2022-02-01 06:39:44,229 INFO 56620 [egg-watcher:application] watcher start success
+2022-02-01 06:39:44,233 INFO 56620 [egg:core] dump config after ready, 3ms
+2022-02-01 06:42:51,364 INFO 59036 [egg:logger] init all loggers with options: {"dir":"D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\logs\\egg-demo","encoding":"utf8","env":"local","level":"DEBUG","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-demo-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"enablePerformanceTimer":false,"type":"application"}
+2022-02-01 06:42:51,386 INFO 59036 [egg-multipart] stream mode enable
+2022-02-01 06:42:51,470 INFO 59036 [egg-static] starting static serve /public/ -> D:\xsjcTony\it666\服务端\EggJS\Aelita\app\public
+2022-02-01 06:42:51,472 INFO 59036 [egg-security] use csrf middleware
+2022-02-01 06:42:51,473 INFO 59036 [egg-security] use methodnoallow middleware
+2022-02-01 06:42:51,474 INFO 59036 [egg-security] use noopen middleware
+2022-02-01 06:42:51,474 INFO 59036 [egg-security] use nosniff middleware
+2022-02-01 06:42:51,475 INFO 59036 [egg-security] use xssProtection middleware
+2022-02-01 06:42:51,475 INFO 59036 [egg-security] use xframe middleware
+2022-02-01 06:42:51,476 INFO 59036 [egg-security] use dta middleware
+2022-02-01 06:42:51,476 INFO 59036 [egg-security] compose 7 middlewares into one security middleware
+2022-02-01 06:42:51,481 INFO 59036 [egg:core] dump config after load, 2ms
+2022-02-01 06:42:51,490 INFO 59036 [egg-watcher:application] watcher start success
+2022-02-01 06:42:51,494 INFO 59036 [egg:core] dump config after ready, 3ms
+2022-02-01 06:44:28,133 INFO 49112 [egg:logger] init all loggers with options: {"dir":"D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\logs\\egg-demo","encoding":"utf8","env":"local","level":"DEBUG","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-demo-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"enablePerformanceTimer":false,"type":"application"}
+2022-02-01 06:44:28,155 INFO 49112 [egg-multipart] stream mode enable
+2022-02-01 06:44:28,241 INFO 49112 [egg-static] starting static serve /public/ -> D:\xsjcTony\it666\服务端\EggJS\Aelita\app\public
+2022-02-01 06:44:28,244 INFO 49112 [egg-security] use csrf middleware
+2022-02-01 06:44:28,245 INFO 49112 [egg-security] use methodnoallow middleware
+2022-02-01 06:44:28,245 INFO 49112 [egg-security] use noopen middleware
+2022-02-01 06:44:28,246 INFO 49112 [egg-security] use nosniff middleware
+2022-02-01 06:44:28,247 INFO 49112 [egg-security] use xssProtection middleware
+2022-02-01 06:44:28,247 INFO 49112 [egg-security] use xframe middleware
+2022-02-01 06:44:28,247 INFO 49112 [egg-security] use dta middleware
+2022-02-01 06:44:28,247 INFO 49112 [egg-security] compose 7 middlewares into one security middleware
+2022-02-01 06:44:28,253 INFO 49112 [egg:core] dump config after load, 2ms
+2022-02-01 06:44:28,262 INFO 49112 [egg-watcher:application] watcher start success
+2022-02-01 06:44:28,266 INFO 49112 [egg:core] dump config after ready, 3ms
+2022-02-01 07:03:35,869 INFO 57188 [egg:logger] init all loggers with options: {"dir":"D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\logs\\egg-demo","encoding":"utf8","env":"local","level":"DEBUG","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-demo-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"enablePerformanceTimer":false,"type":"application"}
+2022-02-01 07:03:35,890 INFO 57188 [egg-multipart] stream mode enable
+2022-02-01 07:03:35,978 INFO 57188 [egg-static] starting static serve /public/ -> D:\xsjcTony\it666\服务端\EggJS\Aelita\app\public
+2022-02-01 07:03:35,980 INFO 57188 [egg-security] use csrf middleware
+2022-02-01 07:03:35,981 INFO 57188 [egg-security] use methodnoallow middleware
+2022-02-01 07:03:35,982 INFO 57188 [egg-security] use noopen middleware
+2022-02-01 07:03:35,983 INFO 57188 [egg-security] use nosniff middleware
+2022-02-01 07:03:35,983 INFO 57188 [egg-security] use xssProtection middleware
+2022-02-01 07:03:35,984 INFO 57188 [egg-security] use xframe middleware
+2022-02-01 07:03:35,984 INFO 57188 [egg-security] use dta middleware
+2022-02-01 07:03:35,984 INFO 57188 [egg-security] compose 7 middlewares into one security middleware
+2022-02-01 07:03:35,990 INFO 57188 [egg:core] dump config after load, 3ms
+2022-02-01 07:03:35,998 INFO 57188 [egg-watcher:application] watcher start success
+2022-02-01 07:03:36,003 INFO 57188 [egg:core] dump config after ready, 4ms
+2022-02-01 07:04:40,832 INFO 56740 [egg:logger] init all loggers with options: {"dir":"D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\logs\\egg-demo","encoding":"utf8","env":"local","level":"DEBUG","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-demo-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"enablePerformanceTimer":false,"type":"application"}
+2022-02-01 07:04:40,852 INFO 56740 [egg-multipart] stream mode enable
+2022-02-01 07:04:40,931 INFO 56740 [egg-static] starting static serve /public/ -> D:\xsjcTony\it666\服务端\EggJS\Aelita\app\public
+2022-02-01 07:04:40,933 INFO 56740 [egg-security] use csrf middleware
+2022-02-01 07:04:40,934 INFO 56740 [egg-security] use methodnoallow middleware
+2022-02-01 07:04:40,935 INFO 56740 [egg-security] use noopen middleware
+2022-02-01 07:04:40,936 INFO 56740 [egg-security] use nosniff middleware
+2022-02-01 07:04:40,936 INFO 56740 [egg-security] use xssProtection middleware
+2022-02-01 07:04:40,936 INFO 56740 [egg-security] use xframe middleware
+2022-02-01 07:04:40,937 INFO 56740 [egg-security] use dta middleware
+2022-02-01 07:04:40,937 INFO 56740 [egg-security] compose 7 middlewares into one security middleware
+2022-02-01 07:04:40,942 INFO 56740 [egg:core] dump config after load, 2ms
+2022-02-01 07:04:40,949 INFO 56740 [egg-watcher:application] watcher start success
+2022-02-01 07:04:40,953 INFO 56740 [egg:core] dump config after ready, 3ms
+2022-02-01 07:04:50,170 INFO 5440 [egg:logger] init all loggers with options: {"dir":"D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\logs\\egg-demo","encoding":"utf8","env":"local","level":"DEBUG","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-demo-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"enablePerformanceTimer":false,"type":"application"}
+2022-02-01 07:04:50,192 INFO 5440 [egg-multipart] stream mode enable
+2022-02-01 07:04:50,274 INFO 5440 [egg-static] starting static serve /public/ -> D:\xsjcTony\it666\服务端\EggJS\Aelita\app\public
+2022-02-01 07:04:50,276 INFO 5440 [egg-security] use csrf middleware
+2022-02-01 07:04:50,277 INFO 5440 [egg-security] use methodnoallow middleware
+2022-02-01 07:04:50,277 INFO 5440 [egg-security] use noopen middleware
+2022-02-01 07:04:50,278 INFO 5440 [egg-security] use nosniff middleware
+2022-02-01 07:04:50,278 INFO 5440 [egg-security] use xssProtection middleware
+2022-02-01 07:04:50,279 INFO 5440 [egg-security] use xframe middleware
+2022-02-01 07:04:50,279 INFO 5440 [egg-security] use dta middleware
+2022-02-01 07:04:50,279 INFO 5440 [egg-security] compose 7 middlewares into one security middleware
+2022-02-01 07:04:50,285 INFO 5440 [egg:core] dump config after load, 2ms
+2022-02-01 07:04:50,293 INFO 5440 [egg-watcher:application] watcher start success
+2022-02-01 07:04:50,297 INFO 5440 [egg:core] dump config after ready, 3ms
+2022-02-01 07:27:35,555 INFO 26440 [egg:logger] init all loggers with options: {"dir":"D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\logs\\egg-demo","encoding":"utf8","env":"local","level":"DEBUG","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-demo-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"enablePerformanceTimer":false,"type":"application"}
+2022-02-01 07:27:35,577 INFO 26440 [egg-multipart] stream mode enable
+2022-02-01 07:27:35,670 INFO 26440 [egg-static] starting static serve /public/ -> D:\xsjcTony\it666\服务端\EggJS\Aelita\app\public
+2022-02-01 07:27:35,672 INFO 26440 [egg-security] use csrf middleware
+2022-02-01 07:27:35,673 INFO 26440 [egg-security] use methodnoallow middleware
+2022-02-01 07:27:35,674 INFO 26440 [egg-security] use noopen middleware
+2022-02-01 07:27:35,675 INFO 26440 [egg-security] use nosniff middleware
+2022-02-01 07:27:35,675 INFO 26440 [egg-security] use xssProtection middleware
+2022-02-01 07:27:35,675 INFO 26440 [egg-security] use xframe middleware
+2022-02-01 07:27:35,676 INFO 26440 [egg-security] use dta middleware
+2022-02-01 07:27:35,676 INFO 26440 [egg-security] compose 7 middlewares into one security middleware
+2022-02-01 07:27:35,682 INFO 26440 [egg:core] dump config after load, 3ms
+2022-02-01 07:27:35,691 INFO 26440 [egg-watcher:application] watcher start success
+2022-02-01 07:27:35,696 INFO 26440 [egg:core] dump config after ready, 4ms
+2022-02-01 07:38:21,007 INFO 53352 [egg:logger] init all loggers with options: {"dir":"D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\logs\\egg-demo","encoding":"utf8","env":"local","level":"DEBUG","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-demo-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"enablePerformanceTimer":false,"type":"application"}
+2022-02-01 07:38:21,029 INFO 53352 [egg-multipart] stream mode enable
+2022-02-01 07:38:21,119 INFO 53352 [egg-static] starting static serve /public/ -> D:\xsjcTony\it666\服务端\EggJS\Aelita\app\public
+2022-02-01 07:38:21,121 INFO 53352 [egg-security] use csrf middleware
+2022-02-01 07:38:21,122 INFO 53352 [egg-security] use methodnoallow middleware
+2022-02-01 07:38:21,123 INFO 53352 [egg-security] use noopen middleware
+2022-02-01 07:38:21,124 INFO 53352 [egg-security] use nosniff middleware
+2022-02-01 07:38:21,124 INFO 53352 [egg-security] use xssProtection middleware
+2022-02-01 07:38:21,125 INFO 53352 [egg-security] use xframe middleware
+2022-02-01 07:38:21,125 INFO 53352 [egg-security] use dta middleware
+2022-02-01 07:38:21,125 INFO 53352 [egg-security] compose 7 middlewares into one security middleware
+2022-02-01 07:38:21,132 INFO 53352 [egg:core] dump config after load, 3ms
+2022-02-01 07:38:21,141 INFO 53352 [egg-watcher:application] watcher start success
+2022-02-01 07:38:21,145 INFO 53352 [egg:core] dump config after ready, 3ms
+2022-02-01 07:38:21,848 INFO 35780 [egg:logger] init all loggers with options: {"dir":"D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\logs\\egg-demo","encoding":"utf8","env":"local","level":"DEBUG","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-demo-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"enablePerformanceTimer":false,"type":"application"}
+2022-02-01 07:38:21,871 INFO 35780 [egg-multipart] stream mode enable
+2022-02-01 07:38:21,959 INFO 35780 [egg-static] starting static serve /public/ -> D:\xsjcTony\it666\服务端\EggJS\Aelita\app\public
+2022-02-01 07:38:21,962 INFO 35780 [egg-security] use csrf middleware
+2022-02-01 07:38:21,963 INFO 35780 [egg-security] use methodnoallow middleware
+2022-02-01 07:38:21,963 INFO 35780 [egg-security] use noopen middleware
+2022-02-01 07:38:21,964 INFO 35780 [egg-security] use nosniff middleware
+2022-02-01 07:38:21,965 INFO 35780 [egg-security] use xssProtection middleware
+2022-02-01 07:38:21,965 INFO 35780 [egg-security] use xframe middleware
+2022-02-01 07:38:21,965 INFO 35780 [egg-security] use dta middleware
+2022-02-01 07:38:21,965 INFO 35780 [egg-security] compose 7 middlewares into one security middleware
+2022-02-01 07:38:21,972 INFO 35780 [egg:core] dump config after load, 3ms
+2022-02-01 07:38:21,979 INFO 35780 [egg-watcher:application] watcher start success
+2022-02-01 07:38:21,983 INFO 35780 [egg:core] dump config after ready, 3ms
+2022-02-01 07:38:37,176 INFO 8376 [egg:logger] init all loggers with options: {"dir":"D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\logs\\egg-demo","encoding":"utf8","env":"local","level":"DEBUG","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-demo-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"enablePerformanceTimer":false,"type":"application"}
+2022-02-01 07:38:37,195 INFO 8376 [egg-multipart] stream mode enable
+2022-02-01 07:38:37,276 INFO 8376 [egg-static] starting static serve /public/ -> D:\xsjcTony\it666\服务端\EggJS\Aelita\app\public
+2022-02-01 07:38:37,278 INFO 8376 [egg-security] use csrf middleware
+2022-02-01 07:38:37,279 INFO 8376 [egg-security] use methodnoallow middleware
+2022-02-01 07:38:37,280 INFO 8376 [egg-security] use noopen middleware
+2022-02-01 07:38:37,280 INFO 8376 [egg-security] use nosniff middleware
+2022-02-01 07:38:37,281 INFO 8376 [egg-security] use xssProtection middleware
+2022-02-01 07:38:37,281 INFO 8376 [egg-security] use xframe middleware
+2022-02-01 07:38:37,282 INFO 8376 [egg-security] use dta middleware
+2022-02-01 07:38:37,282 INFO 8376 [egg-security] compose 7 middlewares into one security middleware
+2022-02-01 07:38:37,287 INFO 8376 [egg:core] dump config after load, 2ms
+2022-02-01 07:38:37,296 INFO 8376 [egg-watcher:application] watcher start success
+2022-02-01 07:38:37,300 INFO 8376 [egg:core] dump config after ready, 3ms
+2022-02-01 07:50:10,509 INFO 21224 [egg:logger] init all loggers with options: {"dir":"D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\logs\\egg-demo","encoding":"utf8","env":"local","level":"DEBUG","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-demo-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"enablePerformanceTimer":false,"type":"application"}
+2022-02-01 07:50:10,531 INFO 21224 [egg-multipart] stream mode enable
+2022-02-01 07:50:10,617 INFO 21224 [egg-static] starting static serve /public/ -> D:\xsjcTony\it666\服务端\EggJS\Aelita\app\public
+2022-02-01 07:50:10,620 INFO 21224 [egg-security] use csrf middleware
+2022-02-01 07:50:10,621 INFO 21224 [egg-security] use methodnoallow middleware
+2022-02-01 07:50:10,621 INFO 21224 [egg-security] use noopen middleware
+2022-02-01 07:50:10,622 INFO 21224 [egg-security] use nosniff middleware
+2022-02-01 07:50:10,622 INFO 21224 [egg-security] use xssProtection middleware
+2022-02-01 07:50:10,623 INFO 21224 [egg-security] use xframe middleware
+2022-02-01 07:50:10,623 INFO 21224 [egg-security] use dta middleware
+2022-02-01 07:50:10,623 INFO 21224 [egg-security] compose 7 middlewares into one security middleware
+2022-02-01 07:50:10,630 INFO 21224 [egg:core] dump config after load, 3ms
+2022-02-01 07:50:10,638 INFO 21224 [egg-watcher:application] watcher start success
+2022-02-01 07:50:10,643 INFO 21224 [egg:core] dump config after ready, 4ms
+2022-02-01 07:52:44,642 INFO 50040 [egg:logger] init all loggers with options: {"dir":"D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\logs\\egg-demo","encoding":"utf8","env":"local","level":"DEBUG","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-demo-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"enablePerformanceTimer":false,"type":"application"}
+2022-02-01 07:52:44,665 INFO 50040 [egg-multipart] stream mode enable
+2022-02-01 07:52:44,754 INFO 50040 [egg-static] starting static serve /public/ -> D:\xsjcTony\it666\服务端\EggJS\Aelita\app\public
+2022-02-01 07:52:44,756 INFO 50040 [egg-security] use csrf middleware
+2022-02-01 07:52:44,757 INFO 50040 [egg-security] use methodnoallow middleware
+2022-02-01 07:52:44,758 INFO 50040 [egg-security] use noopen middleware
+2022-02-01 07:52:44,758 INFO 50040 [egg-security] use nosniff middleware
+2022-02-01 07:52:44,759 INFO 50040 [egg-security] use xssProtection middleware
+2022-02-01 07:52:44,759 INFO 50040 [egg-security] use xframe middleware
+2022-02-01 07:52:44,760 INFO 50040 [egg-security] use dta middleware
+2022-02-01 07:52:44,760 INFO 50040 [egg-security] compose 7 middlewares into one security middleware
+2022-02-01 07:52:44,767 INFO 50040 [egg:core] dump config after load, 3ms
+2022-02-01 07:52:44,776 INFO 50040 [egg-watcher:application] watcher start success
+2022-02-01 07:52:44,781 INFO 50040 [egg:core] dump config after ready, 4ms
+2022-02-01 08:23:27,721 INFO 37672 [egg:logger] init all loggers with options: {"dir":"D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\logs\\egg-demo","encoding":"utf8","env":"local","level":"DEBUG","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-demo-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"enablePerformanceTimer":false,"type":"application"}
+2022-02-01 08:23:27,743 INFO 37672 [egg-multipart] stream mode enable
+2022-02-01 08:23:27,828 INFO 37672 [egg-static] starting static serve /public/ -> D:\xsjcTony\it666\服务端\EggJS\Aelita\app\public
+2022-02-01 08:23:27,831 INFO 37672 [egg-security] use csrf middleware
+2022-02-01 08:23:27,832 INFO 37672 [egg-security] use methodnoallow middleware
+2022-02-01 08:23:27,832 INFO 37672 [egg-security] use noopen middleware
+2022-02-01 08:23:27,833 INFO 37672 [egg-security] use nosniff middleware
+2022-02-01 08:23:27,833 INFO 37672 [egg-security] use xssProtection middleware
+2022-02-01 08:23:27,834 INFO 37672 [egg-security] use xframe middleware
+2022-02-01 08:23:27,834 INFO 37672 [egg-security] use dta middleware
+2022-02-01 08:23:27,834 INFO 37672 [egg-security] compose 7 middlewares into one security middleware
+2022-02-01 08:23:27,840 INFO 37672 [egg:core] dump config after load, 3ms
+2022-02-01 08:23:27,848 INFO 37672 [egg-watcher:application] watcher start success
+2022-02-01 08:23:27,852 INFO 37672 [egg:core] dump config after ready, 3ms
+2022-02-01 08:23:28,489 INFO 39336 [egg:logger] init all loggers with options: {"dir":"D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\logs\\egg-demo","encoding":"utf8","env":"local","level":"DEBUG","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-demo-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"enablePerformanceTimer":false,"type":"application"}
+2022-02-01 08:23:28,511 INFO 39336 [egg-multipart] stream mode enable
+2022-02-01 08:23:28,597 INFO 39336 [egg-static] starting static serve /public/ -> D:\xsjcTony\it666\服务端\EggJS\Aelita\app\public
+2022-02-01 08:23:28,599 INFO 39336 [egg-security] use csrf middleware
+2022-02-01 08:23:28,600 INFO 39336 [egg-security] use methodnoallow middleware
+2022-02-01 08:23:28,601 INFO 39336 [egg-security] use noopen middleware
+2022-02-01 08:23:28,602 INFO 39336 [egg-security] use nosniff middleware
+2022-02-01 08:23:28,602 INFO 39336 [egg-security] use xssProtection middleware
+2022-02-01 08:23:28,603 INFO 39336 [egg-security] use xframe middleware
+2022-02-01 08:23:28,603 INFO 39336 [egg-security] use dta middleware
+2022-02-01 08:23:28,603 INFO 39336 [egg-security] compose 7 middlewares into one security middleware
+2022-02-01 08:23:28,610 INFO 39336 [egg:core] dump config after load, 2ms
+2022-02-01 08:23:28,616 INFO 39336 [egg-watcher:application] watcher start success
+2022-02-01 08:23:28,621 INFO 39336 [egg:core] dump config after ready, 3ms
+2022-02-01 19:57:25,257 INFO 15124 [egg:logger] init all loggers with options: {"dir":"D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\logs\\egg-demo","encoding":"utf8","env":"local","level":"DEBUG","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-demo-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"enablePerformanceTimer":false,"type":"application"}
+2022-02-01 19:57:25,280 INFO 15124 [egg-multipart] stream mode enable
+2022-02-01 19:57:25,369 INFO 15124 [egg-static] starting static serve /public/ -> D:\xsjcTony\it666\服务端\EggJS\Aelita\app\public
+2022-02-01 19:57:25,372 INFO 15124 [egg-security] use csrf middleware
+2022-02-01 19:57:25,373 INFO 15124 [egg-security] use methodnoallow middleware
+2022-02-01 19:57:25,373 INFO 15124 [egg-security] use noopen middleware
+2022-02-01 19:57:25,374 INFO 15124 [egg-security] use nosniff middleware
+2022-02-01 19:57:25,375 INFO 15124 [egg-security] use xssProtection middleware
+2022-02-01 19:57:25,375 INFO 15124 [egg-security] use xframe middleware
+2022-02-01 19:57:25,375 INFO 15124 [egg-security] use dta middleware
+2022-02-01 19:57:25,375 INFO 15124 [egg-security] compose 7 middlewares into one security middleware
+2022-02-01 19:57:25,382 INFO 15124 [egg:core] dump config after load, 3ms
+2022-02-01 19:57:25,390 INFO 15124 [egg-watcher:application] watcher start success
+2022-02-01 19:57:25,395 INFO 15124 [egg:core] dump config after ready, 4ms
+2022-02-01 19:57:26,174 INFO 7692 [egg:logger] init all loggers with options: {"dir":"D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\logs\\egg-demo","encoding":"utf8","env":"local","level":"DEBUG","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-demo-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"enablePerformanceTimer":false,"type":"application"}
+2022-02-01 19:57:26,196 INFO 7692 [egg-multipart] stream mode enable
+2022-02-01 19:57:26,282 INFO 7692 [egg-static] starting static serve /public/ -> D:\xsjcTony\it666\服务端\EggJS\Aelita\app\public
+2022-02-01 19:57:26,285 INFO 7692 [egg-security] use csrf middleware
+2022-02-01 19:57:26,286 INFO 7692 [egg-security] use methodnoallow middleware
+2022-02-01 19:57:26,286 INFO 7692 [egg-security] use noopen middleware
+2022-02-01 19:57:26,287 INFO 7692 [egg-security] use nosniff middleware
+2022-02-01 19:57:26,287 INFO 7692 [egg-security] use xssProtection middleware
+2022-02-01 19:57:26,288 INFO 7692 [egg-security] use xframe middleware
+2022-02-01 19:57:26,288 INFO 7692 [egg-security] use dta middleware
+2022-02-01 19:57:26,288 INFO 7692 [egg-security] compose 7 middlewares into one security middleware
+2022-02-01 19:57:26,294 INFO 7692 [egg:core] dump config after load, 2ms
+2022-02-01 19:57:26,301 INFO 7692 [egg-watcher:application] watcher start success
+2022-02-01 19:57:26,305 INFO 7692 [egg:core] dump config after ready, 3ms
+2022-02-01 19:57:40,496 INFO 33936 [egg:logger] init all loggers with options: {"dir":"D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\logs\\egg-demo","encoding":"utf8","env":"local","level":"DEBUG","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-demo-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"enablePerformanceTimer":false,"type":"application"}
+2022-02-01 19:57:40,518 INFO 33936 [egg-multipart] stream mode enable
+2022-02-01 19:57:40,609 INFO 33936 [egg-static] starting static serve /public/ -> D:\xsjcTony\it666\服务端\EggJS\Aelita\app\public
+2022-02-01 19:57:40,611 INFO 33936 [egg-security] use csrf middleware
+2022-02-01 19:57:40,612 INFO 33936 [egg-security] use methodnoallow middleware
+2022-02-01 19:57:40,613 INFO 33936 [egg-security] use noopen middleware
+2022-02-01 19:57:40,613 INFO 33936 [egg-security] use nosniff middleware
+2022-02-01 19:57:40,614 INFO 33936 [egg-security] use xssProtection middleware
+2022-02-01 19:57:40,614 INFO 33936 [egg-security] use xframe middleware
+2022-02-01 19:57:40,615 INFO 33936 [egg-security] use dta middleware
+2022-02-01 19:57:40,615 INFO 33936 [egg-security] compose 7 middlewares into one security middleware
+2022-02-01 19:57:40,621 INFO 33936 [egg:core] dump config after load, 3ms
+2022-02-01 19:57:40,628 INFO 33936 [egg-watcher:application] watcher start success
+2022-02-01 19:57:40,632 INFO 33936 [egg:core] dump config after ready, 3ms
+2022-02-01 19:57:56,406 INFO 3136 [egg:logger] init all loggers with options: {"dir":"D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\logs\\egg-demo","encoding":"utf8","env":"local","level":"DEBUG","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-demo-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"enablePerformanceTimer":false,"type":"application"}
+2022-02-01 19:57:56,427 INFO 3136 [egg-multipart] stream mode enable
+2022-02-01 19:57:56,512 INFO 3136 [egg-static] starting static serve /public/ -> D:\xsjcTony\it666\服务端\EggJS\Aelita\app\public
+2022-02-01 19:57:56,514 INFO 3136 [egg-security] use csrf middleware
+2022-02-01 19:57:56,515 INFO 3136 [egg-security] use methodnoallow middleware
+2022-02-01 19:57:56,516 INFO 3136 [egg-security] use noopen middleware
+2022-02-01 19:57:56,516 INFO 3136 [egg-security] use nosniff middleware
+2022-02-01 19:57:56,517 INFO 3136 [egg-security] use xssProtection middleware
+2022-02-01 19:57:56,517 INFO 3136 [egg-security] use xframe middleware
+2022-02-01 19:57:56,518 INFO 3136 [egg-security] use dta middleware
+2022-02-01 19:57:56,518 INFO 3136 [egg-security] compose 7 middlewares into one security middleware
+2022-02-01 19:57:56,524 INFO 3136 [egg:core] dump config after load, 3ms
+2022-02-01 19:57:56,534 INFO 3136 [egg-watcher:application] watcher start success
+2022-02-01 19:57:56,538 INFO 3136 [egg:core] dump config after ready, 3ms
+2022-02-01 19:58:08,001 INFO 58444 [egg:logger] init all loggers with options: {"dir":"D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\logs\\egg-demo","encoding":"utf8","env":"local","level":"DEBUG","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-demo-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"enablePerformanceTimer":false,"type":"application"}
+2022-02-01 19:58:08,022 INFO 58444 [egg-multipart] stream mode enable
+2022-02-01 19:58:08,105 INFO 58444 [egg-static] starting static serve /public/ -> D:\xsjcTony\it666\服务端\EggJS\Aelita\app\public
+2022-02-01 19:58:08,107 INFO 58444 [egg-security] use csrf middleware
+2022-02-01 19:58:08,108 INFO 58444 [egg-security] use methodnoallow middleware
+2022-02-01 19:58:08,108 INFO 58444 [egg-security] use noopen middleware
+2022-02-01 19:58:08,109 INFO 58444 [egg-security] use nosniff middleware
+2022-02-01 19:58:08,109 INFO 58444 [egg-security] use xssProtection middleware
+2022-02-01 19:58:08,110 INFO 58444 [egg-security] use xframe middleware
+2022-02-01 19:58:08,110 INFO 58444 [egg-security] use dta middleware
+2022-02-01 19:58:08,110 INFO 58444 [egg-security] compose 7 middlewares into one security middleware
+2022-02-01 19:58:08,116 INFO 58444 [egg:core] dump config after load, 2ms
+2022-02-01 19:58:08,123 INFO 58444 [egg-watcher:application] watcher start success
+2022-02-01 19:58:08,127 INFO 58444 [egg:core] dump config after ready, 3ms
+2022-02-01 19:58:22,876 INFO 51824 [egg:logger] init all loggers with options: {"dir":"D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\logs\\egg-demo","encoding":"utf8","env":"local","level":"DEBUG","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-demo-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"enablePerformanceTimer":false,"type":"application"}
+2022-02-01 19:58:22,898 INFO 51824 [egg-multipart] stream mode enable
+2022-02-01 19:58:22,984 INFO 51824 [egg-static] starting static serve /public/ -> D:\xsjcTony\it666\服务端\EggJS\Aelita\app\public
+2022-02-01 19:58:22,987 INFO 51824 [egg-security] use csrf middleware
+2022-02-01 19:58:22,988 INFO 51824 [egg-security] use methodnoallow middleware
+2022-02-01 19:58:22,988 INFO 51824 [egg-security] use noopen middleware
+2022-02-01 19:58:22,989 INFO 51824 [egg-security] use nosniff middleware
+2022-02-01 19:58:22,990 INFO 51824 [egg-security] use xssProtection middleware
+2022-02-01 19:58:22,990 INFO 51824 [egg-security] use xframe middleware
+2022-02-01 19:58:22,990 INFO 51824 [egg-security] use dta middleware
+2022-02-01 19:58:22,990 INFO 51824 [egg-security] compose 7 middlewares into one security middleware
+2022-02-01 19:58:22,997 INFO 51824 [egg:core] dump config after load, 3ms
+2022-02-01 19:58:23,006 INFO 51824 [egg-watcher:application] watcher start success
+2022-02-01 19:58:23,010 INFO 51824 [egg:core] dump config after ready, 3ms
+2022-02-01 21:00:56,245 INFO 56448 [egg:logger] init all loggers with options: {"dir":"D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\logs\\egg-demo","encoding":"utf8","env":"local","level":"DEBUG","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-demo-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"enablePerformanceTimer":false,"type":"application"}
+2022-02-01 21:00:56,266 INFO 56448 [egg-multipart] stream mode enable
+2022-02-01 21:00:56,354 INFO 56448 [egg-static] starting static serve /public/ -> D:\xsjcTony\it666\服务端\EggJS\Aelita\app\public
+2022-02-01 21:00:56,356 INFO 56448 [egg-security] use csrf middleware
+2022-02-01 21:00:56,357 INFO 56448 [egg-security] use methodnoallow middleware
+2022-02-01 21:00:56,357 INFO 56448 [egg-security] use noopen middleware
+2022-02-01 21:00:56,358 INFO 56448 [egg-security] use nosniff middleware
+2022-02-01 21:00:56,359 INFO 56448 [egg-security] use xssProtection middleware
+2022-02-01 21:00:56,359 INFO 56448 [egg-security] use xframe middleware
+2022-02-01 21:00:56,359 INFO 56448 [egg-security] use dta middleware
+2022-02-01 21:00:56,360 INFO 56448 [egg-security] compose 7 middlewares into one security middleware
+2022-02-01 21:00:56,366 INFO 56448 [egg:core] dump config after load, 3ms
+2022-02-01 21:00:56,374 INFO 56448 [egg-watcher:application] watcher start success
+2022-02-01 21:00:56,378 INFO 56448 [egg:core] dump config after ready, 3ms
+2022-02-01 21:00:57,120 INFO 53232 [egg:logger] init all loggers with options: {"dir":"D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\logs\\egg-demo","encoding":"utf8","env":"local","level":"DEBUG","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-demo-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"enablePerformanceTimer":false,"type":"application"}
+2022-02-01 21:00:57,141 INFO 53232 [egg-multipart] stream mode enable
+2022-02-01 21:00:57,226 INFO 53232 [egg-static] starting static serve /public/ -> D:\xsjcTony\it666\服务端\EggJS\Aelita\app\public
+2022-02-01 21:00:57,228 INFO 53232 [egg-security] use csrf middleware
+2022-02-01 21:00:57,229 INFO 53232 [egg-security] use methodnoallow middleware
+2022-02-01 21:00:57,229 INFO 53232 [egg-security] use noopen middleware
+2022-02-01 21:00:57,230 INFO 53232 [egg-security] use nosniff middleware
+2022-02-01 21:00:57,230 INFO 53232 [egg-security] use xssProtection middleware
+2022-02-01 21:00:57,231 INFO 53232 [egg-security] use xframe middleware
+2022-02-01 21:00:57,231 INFO 53232 [egg-security] use dta middleware
+2022-02-01 21:00:57,231 INFO 53232 [egg-security] compose 7 middlewares into one security middleware
+2022-02-01 21:00:57,237 INFO 53232 [egg:core] dump config after load, 2ms
+2022-02-01 21:00:57,246 INFO 53232 [egg-watcher:application] watcher start success
+2022-02-01 21:00:57,250 INFO 53232 [egg:core] dump config after ready, 3ms
+2022-02-01 22:19:29,842 INFO 59064 [egg:logger] init all loggers with options: {"dir":"D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\logs\\egg-demo","encoding":"utf8","env":"local","level":"DEBUG","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-demo-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"enablePerformanceTimer":false,"type":"application"}
+2022-02-01 22:19:29,863 INFO 59064 [egg-multipart] stream mode enable
+2022-02-01 22:19:29,946 INFO 59064 [egg-static] starting static serve /public/ -> D:\xsjcTony\it666\服务端\EggJS\Aelita\app\public
+2022-02-01 22:19:29,949 INFO 59064 [egg-security] use csrf middleware
+2022-02-01 22:19:29,950 INFO 59064 [egg-security] use methodnoallow middleware
+2022-02-01 22:19:29,950 INFO 59064 [egg-security] use noopen middleware
+2022-02-01 22:19:29,951 INFO 59064 [egg-security] use nosniff middleware
+2022-02-01 22:19:29,951 INFO 59064 [egg-security] use xssProtection middleware
+2022-02-01 22:19:29,952 INFO 59064 [egg-security] use xframe middleware
+2022-02-01 22:19:29,952 INFO 59064 [egg-security] use dta middleware
+2022-02-01 22:19:29,952 INFO 59064 [egg-security] compose 7 middlewares into one security middleware
+2022-02-01 22:19:29,958 INFO 59064 [egg:core] dump config after load, 3ms
+2022-02-01 22:19:29,967 INFO 59064 [egg-watcher:application] watcher start success
+2022-02-01 22:19:29,971 INFO 59064 [egg:core] dump config after ready, 3ms
+2022-02-01 22:19:30,694 INFO 41916 [egg:logger] init all loggers with options: {"dir":"D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\logs\\egg-demo","encoding":"utf8","env":"local","level":"DEBUG","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-demo-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"enablePerformanceTimer":false,"type":"application"}
+2022-02-01 22:19:30,722 INFO 41916 [egg-multipart] stream mode enable
+2022-02-01 22:19:30,806 INFO 41916 [egg-static] starting static serve /public/ -> D:\xsjcTony\it666\服务端\EggJS\Aelita\app\public
+2022-02-01 22:19:30,809 INFO 41916 [egg-security] use csrf middleware
+2022-02-01 22:19:30,809 INFO 41916 [egg-security] use methodnoallow middleware
+2022-02-01 22:19:30,810 INFO 41916 [egg-security] use noopen middleware
+2022-02-01 22:19:30,811 INFO 41916 [egg-security] use nosniff middleware
+2022-02-01 22:19:30,811 INFO 41916 [egg-security] use xssProtection middleware
+2022-02-01 22:19:30,812 INFO 41916 [egg-security] use xframe middleware
+2022-02-01 22:19:30,812 INFO 41916 [egg-security] use dta middleware
+2022-02-01 22:19:30,812 INFO 41916 [egg-security] compose 7 middlewares into one security middleware
+2022-02-01 22:19:30,818 INFO 41916 [egg:core] dump config after load, 2ms
+2022-02-01 22:19:30,825 INFO 41916 [egg-watcher:application] watcher start success
+2022-02-01 22:19:30,829 INFO 41916 [egg:core] dump config after ready, 3ms
+2022-02-01 22:23:39,858 INFO 7096 [egg:logger] init all loggers with options: {"dir":"D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\logs\\egg-demo","encoding":"utf8","env":"local","level":"DEBUG","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-demo-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"enablePerformanceTimer":false,"type":"application"}
+2022-02-01 22:23:39,880 INFO 7096 [egg-multipart] stream mode enable
+2022-02-01 22:23:39,965 INFO 7096 [egg-static] starting static serve /public/ -> D:\xsjcTony\it666\服务端\EggJS\Aelita\app\public
+2022-02-01 22:23:39,968 INFO 7096 [egg-security] use csrf middleware
+2022-02-01 22:23:39,969 INFO 7096 [egg-security] use methodnoallow middleware
+2022-02-01 22:23:39,969 INFO 7096 [egg-security] use noopen middleware
+2022-02-01 22:23:39,970 INFO 7096 [egg-security] use nosniff middleware
+2022-02-01 22:23:39,971 INFO 7096 [egg-security] use xssProtection middleware
+2022-02-01 22:23:39,971 INFO 7096 [egg-security] use xframe middleware
+2022-02-01 22:23:39,971 INFO 7096 [egg-security] use dta middleware
+2022-02-01 22:23:39,971 INFO 7096 [egg-security] compose 7 middlewares into one security middleware
+2022-02-01 22:23:39,978 INFO 7096 [egg:core] dump config after load, 3ms
+2022-02-01 22:23:39,985 INFO 7096 [egg-watcher:application] watcher start success
+2022-02-01 22:23:39,989 INFO 7096 [egg:core] dump config after ready, 3ms
+2022-02-02 01:18:12,073 INFO 45424 [egg:logger] init all loggers with options: {"dir":"D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\logs\\egg-demo","encoding":"utf8","env":"local","level":"DEBUG","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-demo-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"enablePerformanceTimer":false,"type":"application"}
+2022-02-02 01:18:12,096 INFO 45424 [egg-multipart] stream mode enable
+2022-02-02 01:18:12,416 INFO 45424 [egg-static] starting static serve /public/ -> D:\xsjcTony\it666\服务端\EggJS\Aelita\app\public
+2022-02-02 01:18:12,419 INFO 45424 [egg-security] use csrf middleware
+2022-02-02 01:18:12,421 INFO 45424 [egg-security] use methodnoallow middleware
+2022-02-02 01:18:12,421 INFO 45424 [egg-security] use noopen middleware
+2022-02-02 01:18:12,422 INFO 45424 [egg-security] use nosniff middleware
+2022-02-02 01:18:12,422 INFO 45424 [egg-security] use xssProtection middleware
+2022-02-02 01:18:12,423 INFO 45424 [egg-security] use xframe middleware
+2022-02-02 01:18:12,423 INFO 45424 [egg-security] use dta middleware
+2022-02-02 01:18:12,423 INFO 45424 [egg-security] compose 7 middlewares into one security middleware
+2022-02-02 01:18:12,430 INFO 45424 [egg:core] dump config after load, 3ms
+2022-02-02 01:18:12,462 INFO 45424 [egg-watcher:application] watcher start success
+2022-02-02 01:18:12,474 INFO 45424 [egg:core] dump config after ready, 3ms
+2022-02-02 01:18:12,845 INFO 16360 [egg:logger] init all loggers with options: {"dir":"D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\logs\\egg-demo","encoding":"utf8","env":"local","level":"DEBUG","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-demo-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"enablePerformanceTimer":false,"type":"application"}
+2022-02-02 01:18:12,868 INFO 16360 [egg-multipart] stream mode enable
+2022-02-02 01:18:13,167 INFO 16360 [egg-static] starting static serve /public/ -> D:\xsjcTony\it666\服务端\EggJS\Aelita\app\public
+2022-02-02 01:18:13,169 INFO 16360 [egg-security] use csrf middleware
+2022-02-02 01:18:13,170 INFO 16360 [egg-security] use methodnoallow middleware
+2022-02-02 01:18:13,170 INFO 16360 [egg-security] use noopen middleware
+2022-02-02 01:18:13,171 INFO 16360 [egg-security] use nosniff middleware
+2022-02-02 01:18:13,172 INFO 16360 [egg-security] use xssProtection middleware
+2022-02-02 01:18:13,172 INFO 16360 [egg-security] use xframe middleware
+2022-02-02 01:18:13,173 INFO 16360 [egg-security] use dta middleware
+2022-02-02 01:18:13,173 INFO 16360 [egg-security] compose 7 middlewares into one security middleware
+2022-02-02 01:18:13,179 INFO 16360 [egg:core] dump config after load, 3ms
+2022-02-02 01:18:13,214 INFO 16360 [egg-watcher:application] watcher start success
+2022-02-02 01:18:13,229 INFO 16360 [egg:core] dump config after ready, 4ms
+2022-02-02 01:18:13,782 INFO 14612 [egg:logger] init all loggers with options: {"dir":"D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\logs\\egg-demo","encoding":"utf8","env":"local","level":"DEBUG","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-demo-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"enablePerformanceTimer":false,"type":"application"}
+2022-02-02 01:18:13,803 INFO 14612 [egg-multipart] stream mode enable
+2022-02-02 01:18:14,108 INFO 14612 [egg-static] starting static serve /public/ -> D:\xsjcTony\it666\服务端\EggJS\Aelita\app\public
+2022-02-02 01:18:14,111 INFO 14612 [egg-security] use csrf middleware
+2022-02-02 01:18:14,112 INFO 14612 [egg-security] use methodnoallow middleware
+2022-02-02 01:18:14,112 INFO 14612 [egg-security] use noopen middleware
+2022-02-02 01:18:14,113 INFO 14612 [egg-security] use nosniff middleware
+2022-02-02 01:18:14,114 INFO 14612 [egg-security] use xssProtection middleware
+2022-02-02 01:18:14,114 INFO 14612 [egg-security] use xframe middleware
+2022-02-02 01:18:14,115 INFO 14612 [egg-security] use dta middleware
+2022-02-02 01:18:14,115 INFO 14612 [egg-security] compose 7 middlewares into one security middleware
+2022-02-02 01:18:14,121 INFO 14612 [egg:core] dump config after load, 2ms
+2022-02-02 01:18:14,158 INFO 14612 [egg-watcher:application] watcher start success
+2022-02-02 01:18:14,172 INFO 14612 [egg:core] dump config after ready, 4ms

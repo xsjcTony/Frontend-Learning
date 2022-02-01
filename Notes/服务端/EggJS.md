@@ -45,6 +45,32 @@ npm i egg
 npm i -D egg-bin
 ```
 
+- 上线部署项目 [应用部署 - 为企业级框架和应用而生](https://eggjs.org/zh-cn/core/deployment.html)
+
+```shell
+npm i egg-scripts
+```
+
+
+
+### 脚手架工具
+
+- 使用 `egg-init` [egg-init - npm](https://www.npmjs.com/package/egg-init)
+
+```shell
+npm i -g egg-init
+egg-init
+npm i
+```
+
+- 指令
+
+```shell
+npm run dev # 开发环境
+npm run test # 调试环境
+npm run start # 上线环境
+```
+
 ---
 
 ## 目录规范
@@ -138,6 +164,50 @@ module.exports = (appInfo) => {
 ```
 
 
+
+### 多环境配置
+
+- 在 `config` 目录下, 可以定义多个 `运行环境` 的 `配置文件`
+
+  - `config.default.js` : 默认配置文件, 所有环境都会加载, 一般也会作为开发环境的默认配置文件
+
+  - `config.prod.js` : 只有上线环境会加载
+
+  - `config.local.js` : 只有开发环境会加载
+
+  - `config.unittest.js` / `config.test.js` : 只有测试环境会加载
+
+- 如果出现了同名配置, 具名配置文件会覆盖 `config.default.js` 中的配置
+
+
+
+### 运行环境
+
+[运行环境 - 为企业级框架和应用而生](https://eggjs.org/zh-cn/basics/env.html)
+
+- 有两种方式可以指定 `Egg` 的运行环境
+
+  - 通过 `config/env` 文件指定, 文件内容就是 `运行环境`
+
+  ```
+  prod
+  ```
+
+  - 通过 `EGG_SERVER_ENV` 环境变量指定 `运行环境`
+    - 可以配合 `cross-env` 使用
+
+  ```shell
+  EGG_SERVER_ENV=prod npm start
+  ```
+
+  ```json
+  "scripts": {
+    "dev": "cross-env EGG_SERVER_ENV=dev egg-bin dev",
+    "prod": "cross-env EGG_SERVER_ENV=prod egg-scripts start --daemon"
+  }
+  ```
+
+- 可以通过 `app.config.env` 来获取当前的 `运行环境`
 
 ---
 
@@ -404,6 +474,29 @@ module.exports = {
   - 在获取数据时, 也需要设置 `encrypt` 为 `true` , 否则不会解密
 
 
+
+### Session
+
+[Cookie 与 Session - 为企业级框架和应用而生](https://eggjs.org/zh-cn/core/cookie-and-session.html#session)
+
+- 通过内置的 `egg-session` 插件处理 [eggjs/egg-session: session plugin for egg](https://github.com/eggjs/egg-session)
+
+处理方法
+
+- 通过 `ctx.session` 来访问 / 修改当前用户的 `Session`
+- 删除的方法是将其赋值为 `null`
+
+```js
+ctx.session = null
+```
+
+外部存储
+
+[eggjs/egg-redis: redis plugin for egg](https://github.com/eggjs/egg-redis)
+
+[eggjs/egg-session-redis: redis store for egg session](https://github.com/eggjs/egg-session-redis)
+
+- 利用 `egg-redis` 配合 `egg-session-redis` 实现 
 
 ---
 
@@ -840,21 +933,352 @@ module.exports = {
 - 用于封装一些实用的 `utility` 函数
 - 通过 `ctx.helper` 访问
 
+---
+
+## 中间件 (Middleware)
+
+[中间件（Middleware） - 为企业级框架和应用而生](https://eggjs.org/zh-cn/basics/middleware.html)
+
+定义
+
+- `Egg` 的 `中间件` 和 `KOA2` 中的是一样的
 
 
 
+文件结构
+
+- 存放在目录 `app/middleware` 下, 可以新建任意 `文件`
+- 一个 `文件` 就是一个 `中间件`
 
 
 
+书写方式
+
+- `中间件` 文件必须暴露一个方法, 接收两个参数
+  - `options` : 中间件的配置项, 由 `app.config[${ middlewareName }]` 导入
+  - `app` : 当前 `Application` 的实例对象
+
+- `中间件` 内部写法和 `KOA2` 一致
+
+```js
+// app/router.js
+module.exports = (options, app) => async (ctx, next) => {
+  /* ... */
+}
+```
 
 
 
+使用中间件
+
+- 通过 `配置文件` 加载自定义中间件, 并决定他们的顺序
+  - `数组` 中的 `字符串` 为 `中间件` 的 `文件名`
+  - 全局有效
+
+```js
+module.exports = {
+  /* ... */
+  middleware: ['middlewareFileName'],
+  middlewareFileName: { // 会被传到中间件的 options 中
+    key: value
+  }
+}
+```
+
+- 在 `router` 中使用
+  - 只针对单个 `路由` 生效
+
+```js
+module.exports = (app) => {
+  const { router, controller } = app
+
+  const middleware = app.middleware.middlewareFileName({ key: value })
+
+  router.get('/testMiddleware', middleware, otherMiddlewares, controller.home.action)
+}
+```
+
+---
+
+## 国际化 / 多语言 (i18n)
+
+[国际化（I18n） - 为企业级框架和应用而生](https://eggjs.org/zh-cn/core/i18n.html)
+
+定义
+
+- 让网页在不同国家显示不同语言
+- 让网页支持语言切换
+- 由内置模块 `egg-i18n` 提供 [egg-i18n - npm](https://www.npmjs.com/package/egg-i18n)
 
 
 
+文件结构
+
+- `I18n` 多语言文件存放在 `config/locale` 目录下
+- 可以是 `js` 也可以是 `json`
+
+```js
+// en-US.js
+module.exports = {
+  Email: 'Email',
+  username: 'username',
+  password: 'password'
+}
+```
+
+```js
+// zh-CN.js
+module.exports = {
+  Email: '邮箱',
+  username: '用户名',
+  password: '密码'
+}
+```
 
 
 
+使用多语言
+
+- 通过 `ctx.__(key)` / `ctx.gettext(key)` 获取
 
 
+
+切换语言
+
+- 修改后的当前语言会记录到 `locale` 这个 `cookie` 中, 以便下次直接使用设定好的语言
+- 修改方法的优先级从高到低
+  1. query: `/?locale=en-US`
+  2. cookie: `locale=zh-TW`
+  3. header: `Accept-Language: zh-CN,zh;q=0.5`
+
+
+
+默认语言
+
+- 在 `配置文件` 中通过 `i18n.defaultLocale` 设置默认语言
+  - 默认为 `en-US`
+
+```js
+module.exports = {
+  /* ... */  
+  i18n: {
+    defaultLocale: 'en-US'
+  }
+}
+```
+
+---
+
+## MySQL
+
+[MySQL - 为企业级框架和应用而生](https://eggjs.org/zh-cn/tutorials/mysql.html)
+
+- <span style="color: #f90">不支持 `MySQL v8.0+` 的安全机制, 因为使用的是 `mysql` , 并不是 `mysql2`</span>
+
+基本使用
+
+- 需要安装插件 `egg-mysql` [eggjs/egg-mysql: MySQL plugin for egg](https://github.com/eggjs/egg-mysql)
+
+```shell
+npm i egg-mysql
+```
+
+- 在 `config/plugin.js` 中开启插件
+
+```js
+module.exports = {
+  /* ... */
+  mysql: {
+    enable: true,
+    'package': 'egg-mysql'
+  }
+}
+```
+
+- 在 `config/config.${ env }.js` 中配置数据库连接信息
+  - 示例为 `单数据源` , `多数据源` 见文档
+
+```js
+module.exports = {
+	/* ... */
+  mysql: {
+    client: {
+      host: '127.0.0.7',
+      port: 3306,
+      user: 'root',
+      password: '123456',
+      database: 'demo'
+    },
+
+    app: true, // 是否加载到 app 上, 默认为 true
+    agent: false // 是否加载到 agent 上, 默认为 false
+  }
+}
+```
+
+- 在 `Service` 层中编写数据库相关代码
+  - 通过 `this.ctx.app.mysql` 来访问
+
+```js
+class HomeService extends Service {
+  async insertUser ({ name, age }) {
+    this.ctx.app.mysql.insert('user', { name, age })
+    return 
+  }
+}
+```
+
+- 具体 `CRUD` 操作见文档
+
+---
+
+## Sequelize
+
+[Sequelize - 为企业级框架和应用而生](https://eggjs.org/zh-cn/tutorials/sequelize.html)
+
+基本使用
+
+- 安装 `egg-sequelize` 插件 [eggjs/egg-sequelize: Sequelize for Egg.js](https://github.com/eggjs/egg-sequelize)
+- 安装 `mysql2` (如果使用 `MySQL` 数据库的话)
+
+```shell
+npm i egg-sequelize mysql2
+```
+
+- 在 `config/plugin.js` 中开启插件
+
+```js
+module.exports = {
+  /* ... */
+  sequelize: {
+    enable: true,
+    'package': 'egg-sequelize'
+  }
+}
+```
+
+- 在 `config/config.${ env }.js` 中配置数据库连接信息
+  - 示例为 `单数据源` , `多数据源` 见文档
+
+```js
+module.exports = {
+	/* ... */
+  sequelize: {
+    dialect: 'mysql',
+    host: '127.0.0.1',
+    port: 3306,
+    username: 'root',
+    password: '123456',
+    database: 'demo'
+  }
+}
+```
+
+- 在 `app/model` 目录下编写 `Model`
+
+```js
+module.exports = (app) => {
+  const { /* DataTypes */ } = app.Sequelize
+
+  const newModel = app.model.define('tableName', {
+    /* columns */
+  }, {
+    /* options */
+  })
+
+  return newModel
+}
+```
+
+- 在 `Service` 层中编写数据库相关代码
+  - 通过 `this.ctx.model.newModel` / `this.ctx.app.model.newModel` 来访问
+
+```js
+class HomeService extends Service {
+  async insertUser ({ name, age }) {
+    try {
+      const res = await this.ctx.model.User.create({ name, age })
+      console.log(res)
+      return res.toJSON()
+    } catch (err) {
+      console.error(err)
+      return '插入失败'
+    }
+  }
+}
+```
+
+- 具体 `CRUD` 操作见 `Egg` 文档 / `Sequelize` 文档
+
+---
+
+## 安全
+
+[安全 - 为企业级框架和应用而生](https://eggjs.org/zh-cn/core/security.html)
+
+
+
+### CSRF
+
+定义
+
+- [CSRF](https://www.owasp.org/index.php/CSRF)（Cross-site request forgery跨站请求伪造，也被称为 `One Click Attack` 或者 `Session Riding`，通常缩写为 CSRF 或者 XSRF，是一种对网站的恶意利用。 CSRF 攻击会对网站发起恶意伪造的请求，严重影响网站的安全。因此框架内置了 CSRF 防范方案。
+
+防范方式
+
+- Synchronizer Tokens：通过响应页面时将 token 渲染到页面上，在 form 表单提交的时候通过隐藏域提交上来。
+- Double Cookie Defense：将 token 设置在 Cookie 中，在提交（POST、PUT、PATCH、DELETE 等）请求时提交 Cookie，并通过 header 或者 body 带上 Cookie 中的 token，服务端进行对比校验。
+- Custom Header：信任带有特定的 header（例如 `X-Requested-With: XMLHttpRequest`）的请求。这个方案可以被绕过，所以 rails 和 django 等框架都[放弃了该防范方式](https://www.djangoproject.com/weblog/2011/feb/08/security/)。
+
+
+
+`Egg` 中的使用方式
+
+方式一 (用于动态渲染网页)
+
+- 在 `form` 请求中增加一个名称为 `_csrf` 的 `url query` , 值为 `ctx.csrf` (动态渲染时使用)
+
+```html
+<form method="POST" action="/upload?_csrf={{ ctx.csrf | safe }}" enctype="multipart/form-data">
+```
+
+- 可以在 `配置文件` 中修改 `_csrf`
+
+```js
+// config/config.default.js
+module.exports = {
+  /* ... */
+  security: {
+    csrf: {
+      queryName: '_csrf', // 通过 query 传递 CSRF token 的默认字段为 _csrf
+      bodyName: '_csrf' // 通过 body 传递 CSRF token 的默认字段为 _csrf
+    }
+  }
+}
+```
+
+方式二 (用于静态网页)
+
+- 通过 `ajax` 请求, 从 `cookie` 中取到 `csrfToken` , 放到 `query` / `body` / `header` 中发送给服务端
+
+- 通过 `header` 传递的字段可以在 `配置文件` 中修改
+
+```js
+// config/config.default.js
+module.exports = {
+  /* ... */
+  security: {
+    csrf: {
+      headerName: 'x-csrf-token' // 通过 header 传递 CSRF token 的默认字段为 x-csrf-token
+    }
+  }
+}
+```
+
+
+
+刷新 `csrfToken`
+
+- 如果一个浏览器上发生用户切换, 却没有刷新 `csrfToken` , 容易带来安全问题
+- 通过 `ctx.rotateCsrfSecret()` 来刷新 `csrfToken`
 

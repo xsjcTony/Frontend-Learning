@@ -1,0 +1,284 @@
+{
+  "keys": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\config\\config.default.js",
+  "view": {
+    "mapping": {
+      ".html": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\config\\config.default.js"
+    },
+    "root": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg-view\\config\\config.default.js",
+    "cache": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg-view\\config\\config.default.js",
+    "defaultExtension": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg-view\\config\\config.default.js",
+    "defaultViewEngine": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg-view\\config\\config.default.js"
+  },
+  "logger": {
+    "level": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\config\\config.default.js",
+    "dir": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg\\config\\config.default.js",
+    "encoding": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg\\config\\config.default.js",
+    "env": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg\\config\\config.default.js",
+    "consoleLevel": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg\\config\\config.default.js",
+    "disableConsoleAfterReady": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg\\config\\config.default.js",
+    "outputJSON": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg\\config\\config.default.js",
+    "buffer": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg\\config\\config.default.js",
+    "appLogName": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg\\config\\config.default.js",
+    "coreLogName": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg\\config\\config.default.js",
+    "agentLogName": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg\\config\\config.default.js",
+    "errorLogName": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg\\config\\config.default.js",
+    "coreLogger": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg\\config\\config.default.js",
+    "allowDebugAtProd": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg\\config\\config.default.js",
+    "enablePerformanceTimer": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg\\config\\config.default.js"
+  },
+  "i18n": {
+    "defaultLocale": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\config\\config.default.js",
+    "dirs": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg-i18n\\config\\config.default.js",
+    "queryField": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg-i18n\\config\\config.default.js",
+    "cookieField": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg-i18n\\config\\config.default.js",
+    "cookieDomain": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg-i18n\\config\\config.default.js",
+    "cookieMaxAge": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg-i18n\\config\\config.default.js"
+  },
+  "sequelize": {
+    "dialect": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\config\\config.prod.js",
+    "host": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\config\\config.prod.js",
+    "port": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\config\\config.prod.js",
+    "username": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\config\\config.prod.js",
+    "password": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\config\\config.prod.js",
+    "database": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\config\\config.prod.js"
+  },
+  "session": {
+    "maxAge": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg-session\\config\\config.default.js",
+    "key": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg-session\\config\\config.default.js",
+    "httpOnly": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg-session\\config\\config.default.js",
+    "encrypt": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg-session\\config\\config.default.js",
+    "logValue": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg-session\\config\\config.default.js"
+  },
+  "security": {
+    "domainWhiteList": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg-security\\config\\config.default.js",
+    "protocolWhiteList": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg-security\\config\\config.default.js",
+    "defaultMiddleware": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg-security\\config\\config.default.js",
+    "csrf": {
+      "enable": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg-security\\config\\config.default.js",
+      "type": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg-security\\config\\config.default.js",
+      "ignoreJSON": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg-security\\config\\config.default.js",
+      "useSession": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg-security\\config\\config.default.js",
+      "cookieName": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg-security\\config\\config.default.js",
+      "sessionName": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg-security\\config\\config.default.js",
+      "headerName": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg-security\\config\\config.default.js",
+      "bodyName": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg-security\\config\\config.default.js",
+      "queryName": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg-security\\config\\config.default.js",
+      "refererWhiteList": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg-security\\config\\config.default.js"
+    },
+    "xframe": {
+      "enable": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg-security\\config\\config.default.js",
+      "value": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg-security\\config\\config.default.js"
+    },
+    "hsts": {
+      "enable": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg-security\\config\\config.default.js",
+      "maxAge": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg-security\\config\\config.default.js",
+      "includeSubdomains": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg-security\\config\\config.default.js"
+    },
+    "dta": {
+      "enable": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg-security\\config\\config.default.js"
+    },
+    "methodnoallow": {
+      "enable": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg-security\\config\\config.default.js"
+    },
+    "noopen": {
+      "enable": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg-security\\config\\config.default.js"
+    },
+    "nosniff": {
+      "enable": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg-security\\config\\config.default.js"
+    },
+    "referrerPolicy": {
+      "enable": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg-security\\config\\config.default.js",
+      "value": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg-security\\config\\config.default.js"
+    },
+    "xssProtection": {
+      "enable": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg-security\\config\\config.default.js",
+      "value": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg-security\\config\\config.default.js"
+    },
+    "csp": {
+      "enable": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg-security\\config\\config.default.js",
+      "policy": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg-security\\config\\config.default.js"
+    },
+    "ssrf": {
+      "ipBlackList": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg-security\\config\\config.default.js",
+      "ipExceptionList": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg-security\\config\\config.default.js",
+      "checkAddress": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg-security\\config\\config.default.js"
+    }
+  },
+  "helper": {
+    "shtml": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg-security\\config\\config.default.js"
+  },
+  "jsonp": {
+    "limit": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg-jsonp\\config\\config.default.js",
+    "callback": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg-jsonp\\config\\config.default.js",
+    "csrf": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg-jsonp\\config\\config.default.js"
+  },
+  "onerror": {
+    "errorPageUrl": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg-onerror\\config\\config.default.js",
+    "appErrorFilter": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg-onerror\\config\\config.default.js",
+    "templatePath": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg-onerror\\config\\config.default.js"
+  },
+  "watcher": {
+    "type": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg-watcher\\config\\config.default.js",
+    "eventSources": {
+      "default": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg-watcher\\config\\config.default.js",
+      "development": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg-watcher\\config\\config.default.js"
+    }
+  },
+  "customLogger": {
+    "scheduleLogger": {
+      "consoleLevel": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg-schedule\\config\\config.default.js",
+      "file": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg-schedule\\config\\config.default.js"
+    }
+  },
+  "schedule": {
+    "directory": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg-schedule\\config\\config.default.js"
+  },
+  "multipart": {
+    "mode": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg-multipart\\config\\config.default.js",
+    "autoFields": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg-multipart\\config\\config.default.js",
+    "defaultCharset": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg-multipart\\config\\config.default.js",
+    "fieldNameSize": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg-multipart\\config\\config.default.js",
+    "fieldSize": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg-multipart\\config\\config.default.js",
+    "fields": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg-multipart\\config\\config.default.js",
+    "fileSize": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg-multipart\\config\\config.default.js",
+    "files": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg-multipart\\config\\config.default.js",
+    "fileExtensions": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg-multipart\\config\\config.default.js",
+    "whitelist": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg-multipart\\config\\config.default.js",
+    "allowArrayField": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg-multipart\\config\\config.default.js",
+    "tmpdir": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg-multipart\\config\\config.default.js",
+    "cleanSchedule": {
+      "cron": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg-multipart\\config\\config.default.js",
+      "disable": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg-multipart\\config\\config.default.js"
+    }
+  },
+  "logrotator": {
+    "filesRotateByHour": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg-logrotator\\config\\config.default.js",
+    "hourDelimiter": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg-logrotator\\config\\config.default.js",
+    "filesRotateBySize": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg-logrotator\\config\\config.default.js",
+    "maxFileSize": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg-logrotator\\config\\config.default.js",
+    "maxFiles": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg-logrotator\\config\\config.default.js",
+    "rotateDuration": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg-logrotator\\config\\config.default.js",
+    "maxDays": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg-logrotator\\config\\config.default.js"
+  },
+  "static": {
+    "prefix": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg-static\\config\\config.default.js",
+    "dir": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg-static\\config\\config.default.js",
+    "dynamic": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg-static\\config\\config.default.js",
+    "preload": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg-static\\config\\config.default.js",
+    "buffer": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg-static\\config\\config.prod.js",
+    "maxFiles": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg-static\\config\\config.default.js",
+    "maxAge": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg-static\\config\\config.prod.js"
+  },
+  "ejs": {
+    "root": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg-view-ejs\\config\\config.default.js",
+    "cache": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg-view-ejs\\config\\config.default.js",
+    "debug": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg-view-ejs\\config\\config.default.js",
+    "compileDebug": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg-view-ejs\\config\\config.default.js",
+    "delimiter": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg-view-ejs\\config\\config.default.js",
+    "strict": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg-view-ejs\\config\\config.default.js"
+  },
+  "env": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg\\config\\config.default.js",
+  "name": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg\\config\\config.default.js",
+  "cookies": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg\\config\\config.default.js",
+  "proxy": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg\\config\\config.default.js",
+  "maxIpsCount": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg\\config\\config.default.js",
+  "maxProxyCount": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg\\config\\config.default.js",
+  "protocolHeaders": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg\\config\\config.default.js",
+  "ipHeaders": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg\\config\\config.default.js",
+  "hostHeaders": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg\\config\\config.default.js",
+  "pkg": {
+    "name": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg\\config\\config.default.js",
+    "version": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg\\config\\config.default.js",
+    "scripts": {
+      "dev": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg\\config\\config.default.js",
+      "prod": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg\\config\\config.default.js"
+    },
+    "type": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg\\config\\config.default.js",
+    "dependencies": {
+      "egg": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg\\config\\config.default.js",
+      "egg-scripts": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg\\config\\config.default.js",
+      "egg-sequelize": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg\\config\\config.default.js",
+      "egg-view-ejs": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg\\config\\config.default.js",
+      "mysql2": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg\\config\\config.default.js"
+    },
+    "devDependencies": {
+      "cross-env": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg\\config\\config.default.js",
+      "egg-bin": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg\\config\\config.default.js",
+      "eslint": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg\\config\\config.default.js",
+      "eslint-plugin-ember-suave": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg\\config\\config.default.js",
+      "eslint-plugin-import": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg\\config\\config.default.js"
+    }
+  },
+  "baseDir": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg\\config\\config.default.js",
+  "HOME": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg\\config\\config.default.js",
+  "rundir": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg\\config\\config.default.js",
+  "dump": {
+    "ignore": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg\\config\\config.default.js"
+  },
+  "confusedConfigurations": {
+    "bodyparser": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg\\config\\config.default.js",
+    "notFound": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg\\config\\config.default.js",
+    "sitefile": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg\\config\\config.default.js",
+    "middlewares": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg\\config\\config.default.js",
+    "httpClient": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg\\config\\config.default.js"
+  },
+  "notfound": {
+    "pageUrl": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg\\config\\config.default.js"
+  },
+  "siteFile": {
+    "/favicon.ico": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg\\config\\config.default.js"
+  },
+  "bodyParser": {
+    "enable": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg\\config\\config.default.js",
+    "encoding": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg\\config\\config.default.js",
+    "formLimit": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg\\config\\config.default.js",
+    "jsonLimit": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg\\config\\config.default.js",
+    "textLimit": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg\\config\\config.default.js",
+    "strict": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg\\config\\config.default.js",
+    "queryString": {
+      "arrayLimit": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg\\config\\config.default.js",
+      "depth": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg\\config\\config.default.js",
+      "parameterLimit": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg\\config\\config.default.js"
+    },
+    "onerror": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg\\config\\config.default.js"
+  },
+  "httpclient": {
+    "enableDNSCache": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg\\config\\config.default.js",
+    "dnsCacheLookupInterval": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg\\config\\config.default.js",
+    "dnsCacheMaxLength": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg\\config\\config.default.js",
+    "request": {
+      "timeout": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg\\config\\config.default.js"
+    },
+    "httpAgent": {
+      "keepAlive": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg\\config\\config.default.js",
+      "freeSocketTimeout": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg\\config\\config.default.js",
+      "maxSockets": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg\\config\\config.default.js",
+      "maxFreeSockets": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg\\config\\config.default.js"
+    },
+    "httpsAgent": {
+      "keepAlive": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg\\config\\config.default.js",
+      "freeSocketTimeout": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg\\config\\config.default.js",
+      "maxSockets": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg\\config\\config.default.js",
+      "maxFreeSockets": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg\\config\\config.default.js"
+    }
+  },
+  "meta": {
+    "enable": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg\\config\\config.default.js",
+    "logging": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg\\config\\config.default.js"
+  },
+  "coreMiddleware": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg\\config\\config.default.js",
+  "workerStartTimeout": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg\\config\\config.default.js",
+  "serverTimeout": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg\\config\\config.default.js",
+  "cluster": {
+    "listen": {
+      "path": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg\\config\\config.default.js",
+      "port": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg\\config\\config.default.js",
+      "hostname": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg\\config\\config.default.js"
+    }
+  },
+  "clusterClient": {
+    "maxWaitTime": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg\\config\\config.default.js",
+    "responseTimeout": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg\\config\\config.default.js"
+  },
+  "onClientError": "D:\\xsjcTony\\it666\\服务端\\EggJS\\Aelita\\node_modules\\egg\\config\\config.default.js"
+}

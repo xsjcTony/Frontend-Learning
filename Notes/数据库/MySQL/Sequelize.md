@@ -96,6 +96,7 @@ console.log('success')
 - 创建表在 `Sequelize` 中的体现就是创建一个 `Model`
 - 可以通过 `Sequelize.define()` 或新建一个 `类 extends Model` 并调用 `类.init()` 来实现, 两者等价
 - 定义完 `Model` 之后, 需要调用 `sequelize.sync()` (实例方法) 来将所有的 `Model` 同步至 `数据库`
+- 可以给每个属性加上 `validate` 以验证数据正确性, 防止 `前端` 进行篡改 [Validators | Sequelize](https://sequelize.org/v6/manual/validations-and-constraints.html#validators)
 
 ```js
 import { Sequelize, DataTypes } from 'sequelize'

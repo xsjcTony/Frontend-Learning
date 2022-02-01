@@ -1,0 +1,42 @@
+2022-01-31 22:59:24,285 INFO 42936 [Timer] D:\xsjcTony\it666\服务端\EggJS\Aelita\node_modules\egg-multipart\app\schedule\clean_tmpdir.js next time will execute after 19835717ms at 2022-02-01 04:30:00.002
+2022-01-31 22:59:24,285 INFO 42936 [Timer] D:\xsjcTony\it666\服务端\EggJS\Aelita\node_modules\egg-logrotator\app\schedule\clean_log.js next time will execute after 3635715ms at 2022-02-01 00:00:00.000
+2022-01-31 22:59:24,285 INFO 42936 [Timer] D:\xsjcTony\it666\服务端\EggJS\Aelita\node_modules\egg-logrotator\app\schedule\rotate_by_file.js next time will execute after 3636715ms at 2022-02-01 00:00:01.000
+2022-01-31 22:59:23,813 INFO 49508 [egg-schedule]: register schedule D:\xsjcTony\it666\服务端\EggJS\Aelita\node_modules\egg-multipart\app\schedule\clean_tmpdir.js
+2022-01-31 22:59:23,813 INFO 49508 [egg-schedule]: register schedule D:\xsjcTony\it666\服务端\EggJS\Aelita\node_modules\egg-logrotator\app\schedule\clean_log.js
+2022-01-31 22:59:23,814 INFO 49508 [egg-schedule]: register schedule D:\xsjcTony\it666\服务端\EggJS\Aelita\node_modules\egg-logrotator\app\schedule\rotate_by_file.js
+2022-01-31 23:03:00,440 INFO 51264 [egg-schedule]: register schedule D:\xsjcTony\it666\服务端\EggJS\Aelita\node_modules\egg-multipart\app\schedule\clean_tmpdir.js
+2022-01-31 23:03:00,440 INFO 51264 [egg-schedule]: register schedule D:\xsjcTony\it666\服务端\EggJS\Aelita\node_modules\egg-logrotator\app\schedule\clean_log.js
+2022-01-31 23:03:00,440 INFO 51264 [egg-schedule]: register schedule D:\xsjcTony\it666\服务端\EggJS\Aelita\node_modules\egg-logrotator\app\schedule\rotate_by_file.js
+2022-01-31 23:03:46,106 INFO 51084 [egg-schedule]: register schedule D:\xsjcTony\it666\服务端\EggJS\Aelita\node_modules\egg-multipart\app\schedule\clean_tmpdir.js
+2022-01-31 23:03:46,106 INFO 51084 [egg-schedule]: register schedule D:\xsjcTony\it666\服务端\EggJS\Aelita\node_modules\egg-logrotator\app\schedule\clean_log.js
+2022-01-31 23:03:46,107 INFO 51084 [egg-schedule]: register schedule D:\xsjcTony\it666\服务端\EggJS\Aelita\node_modules\egg-logrotator\app\schedule\rotate_by_file.js
+2022-01-31 23:04:09,997 INFO 33472 [egg-schedule]: register schedule D:\xsjcTony\it666\服务端\EggJS\Aelita\node_modules\egg-multipart\app\schedule\clean_tmpdir.js
+2022-01-31 23:04:09,997 INFO 33472 [egg-schedule]: register schedule D:\xsjcTony\it666\服务端\EggJS\Aelita\node_modules\egg-logrotator\app\schedule\clean_log.js
+2022-01-31 23:04:09,997 INFO 33472 [egg-schedule]: register schedule D:\xsjcTony\it666\服务端\EggJS\Aelita\node_modules\egg-logrotator\app\schedule\rotate_by_file.js
+2022-01-31 23:04:15,702 INFO 34300 [egg-schedule]: register schedule D:\xsjcTony\it666\服务端\EggJS\Aelita\node_modules\egg-multipart\app\schedule\clean_tmpdir.js
+2022-01-31 23:04:15,702 INFO 34300 [egg-schedule]: register schedule D:\xsjcTony\it666\服务端\EggJS\Aelita\node_modules\egg-logrotator\app\schedule\clean_log.js
+2022-01-31 23:04:15,702 INFO 34300 [egg-schedule]: register schedule D:\xsjcTony\it666\服务端\EggJS\Aelita\node_modules\egg-logrotator\app\schedule\rotate_by_file.js
+2022-01-31 23:13:54,752 INFO 40584 [egg-schedule]: register schedule D:\xsjcTony\it666\服务端\EggJS\Aelita\node_modules\egg-multipart\app\schedule\clean_tmpdir.js
+2022-01-31 23:13:54,752 INFO 40584 [egg-schedule]: register schedule D:\xsjcTony\it666\服务端\EggJS\Aelita\node_modules\egg-logrotator\app\schedule\clean_log.js
+2022-01-31 23:13:54,752 INFO 40584 [egg-schedule]: register schedule D:\xsjcTony\it666\服务端\EggJS\Aelita\node_modules\egg-logrotator\app\schedule\rotate_by_file.js
+2022-01-31 23:28:36,019 INFO 47832 [egg-schedule]: register schedule D:\xsjcTony\it666\服务端\EggJS\Aelita\node_modules\egg-multipart\app\schedule\clean_tmpdir.js
+2022-01-31 23:28:36,019 INFO 47832 [egg-schedule]: register schedule D:\xsjcTony\it666\服务端\EggJS\Aelita\node_modules\egg-logrotator\app\schedule\clean_log.js
+2022-01-31 23:28:36,019 INFO 47832 [egg-schedule]: register schedule D:\xsjcTony\it666\服务端\EggJS\Aelita\node_modules\egg-logrotator\app\schedule\rotate_by_file.js
+2022-01-31 23:31:21,076 INFO 49464 [egg-schedule]: register schedule D:\xsjcTony\it666\服务端\EggJS\Aelita\node_modules\egg-multipart\app\schedule\clean_tmpdir.js
+2022-01-31 23:31:21,076 INFO 49464 [egg-schedule]: register schedule D:\xsjcTony\it666\服务端\EggJS\Aelita\node_modules\egg-logrotator\app\schedule\clean_log.js
+2022-01-31 23:31:21,076 INFO 49464 [egg-schedule]: register schedule D:\xsjcTony\it666\服务端\EggJS\Aelita\node_modules\egg-logrotator\app\schedule\rotate_by_file.js
+2022-01-31 23:33:04,329 INFO 44928 [egg-schedule]: register schedule D:\xsjcTony\it666\服务端\EggJS\Aelita\node_modules\egg-multipart\app\schedule\clean_tmpdir.js
+2022-01-31 23:33:04,329 INFO 44928 [egg-schedule]: register schedule D:\xsjcTony\it666\服务端\EggJS\Aelita\node_modules\egg-logrotator\app\schedule\clean_log.js
+2022-01-31 23:33:04,329 INFO 44928 [egg-schedule]: register schedule D:\xsjcTony\it666\服务端\EggJS\Aelita\node_modules\egg-logrotator\app\schedule\rotate_by_file.js
+2022-01-31 23:39:24,243 INFO 51376 [Timer] D:\xsjcTony\it666\服务端\EggJS\Aelita\node_modules\egg-multipart\app\schedule\clean_tmpdir.js next time will execute after 17435760ms at 2022-02-01 04:30:00.003
+2022-01-31 23:39:24,243 INFO 51376 [Timer] D:\xsjcTony\it666\服务端\EggJS\Aelita\node_modules\egg-logrotator\app\schedule\clean_log.js next time will execute after 1235757ms at 2022-02-01 00:00:00.000
+2022-01-31 23:39:24,243 INFO 51376 [Timer] D:\xsjcTony\it666\服务端\EggJS\Aelita\node_modules\egg-logrotator\app\schedule\rotate_by_file.js next time will execute after 1236757ms at 2022-02-01 00:00:01.000
+2022-01-31 23:39:24,136 INFO 43880 [egg-schedule]: register schedule D:\xsjcTony\it666\服务端\EggJS\Aelita\node_modules\egg-multipart\app\schedule\clean_tmpdir.js
+2022-01-31 23:39:24,136 INFO 43880 [egg-schedule]: register schedule D:\xsjcTony\it666\服务端\EggJS\Aelita\node_modules\egg-logrotator\app\schedule\clean_log.js
+2022-01-31 23:39:24,136 INFO 43880 [egg-schedule]: register schedule D:\xsjcTony\it666\服务端\EggJS\Aelita\node_modules\egg-logrotator\app\schedule\rotate_by_file.js
+2022-02-01 00:00:00,016 INFO 51376 [Timer] D:\xsjcTony\it666\服务端\EggJS\Aelita\node_modules\egg-logrotator\app\schedule\clean_log.js next time will execute after 86399985ms at 2022-02-02 00:00:00.001
+2022-02-01 00:00:00,015 INFO 43880 [Job#16436340000145585734057315001] D:\xsjcTony\it666\服务端\EggJS\Aelita\node_modules\egg-logrotator\app\schedule\clean_log.js executing by app
+2022-02-01 00:00:00,018 INFO 43880 [Job#16436340000145585734057315001] D:\xsjcTony\it666\服务端\EggJS\Aelita\node_modules\egg-logrotator\app\schedule\clean_log.js execute succeed, used 2ms. 
+2022-02-01 00:00:01,015 INFO 43880 [Job#16436340010155585744059332001] D:\xsjcTony\it666\服务端\EggJS\Aelita\node_modules\egg-logrotator\app\schedule\rotate_by_file.js executing by app
+2022-02-01 00:00:01,019 INFO 43880 [Job#16436340010155585744059332001] D:\xsjcTony\it666\服务端\EggJS\Aelita\node_modules\egg-logrotator\app\schedule\rotate_by_file.js execute succeed, used 4ms. 
+2022-02-01 00:00:01,015 INFO 51376 [Timer] D:\xsjcTony\it666\服务端\EggJS\Aelita\node_modules\egg-logrotator\app\schedule\rotate_by_file.js next time will execute after 86399985ms at 2022-02-02 00:00:01.000
