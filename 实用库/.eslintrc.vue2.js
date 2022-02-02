@@ -306,7 +306,7 @@ module.exports = {
     'import/first': 'error',
     'import/no-webpack-loader-syntax': 'error',
     'import/newline-after-import': ['error', { count: 1 }],
-    'import/extensions': ['error', 'always', { js: 'never' }],
+    'import/extensions': ['error', 'ignorePackages', { js: 'never' }],
 
     // eslint-plugin-ember-suave
     'ember-suave/lines-between-object-properties': ['error', 'always', { exceptAfterSingleLine: true }]
