@@ -10,7 +10,21 @@
 
 ---
 
-## 数据类型
+## 赋值关系表 (Assignability Table)
+
+| Assignability |  any  | unknown | object | void  | undefined | null  | never |
+| :-----------: | :---: | :-----: | :----: | :---: | :-------: | :---: | ----- |
+|     any →     |       |  **✓**  | **✓**  | **✓** |   **✓**   | **✓** | ✕     |
+|   unknown →   | **✓** |         |   ✕    |   ✕   |     ✕     |   ✕   | ✕     |
+|   object →    | **✓** |  **✓**  |        |   ✕   |     ✕     |   ✕   | ✕     |
+|    void →     | **✓** |  **✓**  |   ✕    |       |     ✕     |   ✕   | ✕     |
+|  undefined →  | **✓** |  **✓**  |   ✓    | **✓** |           |   ✓   | ✕     |
+|    null →     | **✓** |  **✓**  |   ✓    |   ✓   |     ✓     |       | ✕     |
+|    never →    | **✓** |  **✓**  | **✓**  | **✓** |   **✓**   | **✓** |       |
+
+---
+
+## 基本数据类型
 
 
 
@@ -52,6 +66,18 @@ let arr1: Array<number> // 只能存储 number 的数组
 let arr2: string[] // 只能存储 string 的数组
 ```
 
+#### 只读数组 (ReadonlyArray)
+
+- 只能被赋值一次的特殊 `数组`
+- `TypeScript` 中对于 `数组` 类型的扩展
+- 有两种格式
+
+```TypeScript
+let arr: ReadonlyArray<number> = [1, 3, 5] // 格式一
+arr.push(7) // 会报错
+let arr2: readonly string[] = [1, 3, 5] // 格式二
+```
+
 
 
 ### 联合 |
@@ -70,7 +96,15 @@ let val: number | string | boolean // val 既可以是 number, 也可以是 stri
 - 用于 `确定长度` 并且对于每个元素 `确定数据类型` 的数组
 
 ```TypeScript
-let arr = [string, number, boolean] // 只能存储三个元素 (不能多也不能少), 第一个必须是 string, 第二个必须是 number, 第三个必须是 boolean
+let tuple: [string, number, boolean] // 只能存储三个元素 (不能多也不能少), 第一个必须是 string, 第二个必须是 number, 第三个必须是 boolean
+```
+
+#### 只读元祖
+
+- 只能被赋值一次的特殊 `元祖`
+
+```TypeScript
+let tuple: readonly [string, number, boolean]
 ```
 
 
@@ -194,6 +228,7 @@ function fn(x: string | number) {
 ### object
 
 - 表示一个 `对象`
+- 多用 `接口` ( `interface` ) 来表示
 
 ```TypeScript
 let obj: object
@@ -202,7 +237,7 @@ obj = { name: 'Tony', age: 24 }
 
 ---
 
-## 类型断言
+## 类型断言 (Type Assertions)
 
 定义
 
@@ -221,6 +256,14 @@ console.log(<string>str.length)
 // 方式二 (企业开发推荐)
 console.log((str as string).length)
 ```
+
+
+
+
+
+
+
+
 
 
 
