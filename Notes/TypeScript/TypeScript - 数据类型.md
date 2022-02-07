@@ -257,6 +257,104 @@ console.log(<string>str.length)
 console.log((str as string).length)
 ```
 
+---
+
+## 函数
+
+基本定义
+
+- 大部分和 `JavaScript` 中相同
+- 在 `TypeScript` 中需要给参数 / 返回值指定类型
+
+```typescript
+// 命名函数
+function say1 (name: string): void {
+  console.log(name)
+}
+
+// 匿名函数
+let say2 = function (name: string): void {
+  console.log(name)
+}
+
+// 箭头函数
+let say3 = (name: string): void => {
+  console.log(name)
+}
+```
+
+
+
+### 完整格式
+
+- 在 `TypeScript` 中, `函数` 的完整格式是由两部分组成的
+
+  1. 定义一个函数
+
+  2. 根据定义实现函数
+
+- 第二部函数实现中, 类型可以不写, `TypeScript` 会根据函数定义自动推导出对应的数据类型
+
+```typescript
+// 定义函数
+let add: (a: number, b: number) => number
+// 根据定义实现函数
+add = function (x: number, y: number): number {
+  return x + y
+}
+
+// 一步到位写法 (实现中不写类型)
+let add1: (a: number, b: number) => number = function (x, y) {
+  return x + y
+}
+```
+
+
+
+### 函数声明
+
+- 利用 `type` 实现, 本质是使用了 `Type Aliases` [TypeScript: Documentation - Everyday Types](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#type-aliases)
+
+```TypeScript
+type Add = (a: number, b: number) => number
+let add: Add = function (x, y) {
+  return x + y
+}
+```
+
+
+
+### 函数重载 (Function Overloads)
+
+[TypeScript: Documentation - More on Functions](https://www.typescriptlang.org/docs/handbook/2/functions.html#function-overloads)
+
+- 同名函数可以根据不同的参数实现不同的功能
+- 格式为先定义两个以上的函数, 然后再统一实现
+- <span style="color: #ff0;">能用 `联合类型` 解决的, 尽量不要用 `函数重载` , 比如下面代码示例中的, 参数数量相同但只是类型不同的情况, 换言之, 下面这个例子不是特别好, 只是可以作为格式参考</span>
+- `实现签名` (即实现的函数) 对外是不可见的
+
+```typescript
+function getArray(x: number): number[]
+function getArray(str: string): string[]
+function getArray(value: number | string): number[] | string[] {
+  if (typeof value === 'number') {
+    const arr: number[] = []
+    for (let i = 0; i < value; i++) {
+      arr.push(value)
+    }
+    return arr
+  } else {
+    return value.split('')
+  }
+}
+```
+
+
+
+
+
+
+
 
 
 
