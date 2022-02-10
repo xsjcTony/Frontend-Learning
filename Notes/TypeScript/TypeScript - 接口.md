@@ -152,6 +152,10 @@ demo() // 3
 
 ## 继承 extends
 
+
+
+### 继承接口
+
 - 继承其他 `接口` 中的属性
 - 可以继承一个或多个 `接口`
 - 被继承的 `父接口` 之间不可以有类型冲突的同名 `属性`
@@ -183,5 +187,80 @@ let rectangle: Rectangle = {
 }
 ```
 
+
+
+### 继承类
+
+- `接口` 也可以继承与一个 `类`
+- 具体见 `TypeScript - 类` 中的 `继承接口 implements`
+
 ---
+
+## 合并现象
+
+- 当定义了多个同名的 `接口` 时, 他们的内容会被自动合并
+
+```TypeScript
+interface TestInterface {
+  name: string
+}
+interface TestInterface {
+  age: number
+}
+// 相当于
+interface TestInterface {
+  name: string
+  age: number
+}
+```
+
+---
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
