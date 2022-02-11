@@ -460,7 +460,7 @@ const gender: Gender = Gender.Male // Male
 
 
 
-### 数值枚举
+### 数值枚举 (Numeric Enum)
 
 - 给成员赋值 `数值`
 
@@ -493,7 +493,7 @@ console.log(Gender.Unknown) // 888
 
 
 
-### 反向映射
+### 反向映射 (Reverse Mapping)
 
 - `数值枚举` 可以通过成员对应的 `取值` 拿到他的名称
 
@@ -507,7 +507,7 @@ console.log(Gender[888]) // Unknown
 
 
 
-### 字符串枚举
+### 字符串枚举 (String Enum)
 
 - 给成员赋值 `字符串`
 
@@ -532,7 +532,7 @@ console.log(Direction.Right) // "UP"
 
 
 
-### 异构枚举
+### 异构枚举 (Heterogeneous Enum)
 
 - 混合 `字符串枚举` / `数值枚举` 的枚举
 - 一般不推荐使用, 除非真的想尝试从 `JavaScript` 的运行时行为中获取一些优势
@@ -552,7 +552,64 @@ console.log(Direction.Right) // "UP"
 
 
 
+### 枚举成员类型 (Enum Member Type)
 
+- 以 `数值字面量` / `字符串字面量` 赋值的 `枚举成员` 可以作为类型使用
+- <span style="color: #f90;">在企业开发中不要使用这个特性</span>
+- `数值字面量` 可以赋值任意数值
+- `字符串字面量` 只能赋值枚举成员的名称
+
+```TypeScript
+enum Gender {
+  Male = 6,
+  Female = 'Test'
+}
+interface TestInterface {
+  age: Gender.Male,
+  name: Gender.Female
+}
+class Person implements TestInterface {
+  age: Gender.Male = 8 // 可以赋值任意数字
+  name: Gender.Female = Gender4.Female // 只能赋值成员名称本身
+}
+```
+
+
+
+### 联合枚举 (Union Enum)
+
+- 枚举类型本身会自动变成枚举成员的联合
+
+```TypeScript
+enum Gender {
+  Male,
+  Female
+}
+// 会被视为
+interface TestInterface {
+  gender: Gender // gender: (Gender.Male | Gender.Female)
+}
+```
+
+
+
+### 常量枚举 const
+
+[const enums - Enums](https://www.typescriptlang.org/docs/handbook/enums.html#const-enums)
+
+- `常量枚举` 不会生成真实存在的对象
+- 编译时会利用枚举成员的 `取值` 直接替换
+- 可以减少文件体积
+- 但是有一些陷阱, 具体见文档 [Const enum pitfalls - Enums](https://www.typescriptlang.org/docs/handbook/enums.html#const-enum-pitfalls)
+- `常量枚举` 只能赋值 `字面量` 或其他枚举成员
+- 可以通过 `preserveConstEnums` 选项来防止 `常量枚举` 在编译时被移除
+
+```typescript
+const enum Enum {
+  A,
+  B
+}
+```
 
 
 
