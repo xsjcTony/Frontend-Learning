@@ -611,6 +611,185 @@ const enum Enum {
 }
 ```
 
+---
+
+## 自动类型推断 (Type Inference)
+
+[TypeScript: Documentation - Type Inference](https://www.typescriptlang.org/docs/handbook/type-inference.html)
+
+定义
+
+- 不明确告诉编译器具体是什么类型, 编译器也能知道是什么类型
+
+根据初始值
+
+- 必须在定义的同时初始化, 才能自动推断
+- 若先定义再初始化, 则无法推断
+
+```TypeScript
+let value = 123 // 相当于 let value: number = 123
+let arr = [1, 'a'] // 相当于 let arr: (number | string)[] = [1, 'a']
+```
+
+根据上下文
+
+```typescript
+window.onmousedown = (event) => { // 相当于 (event: MouseEvent)
+  console.log(event.target) // 有代码提示
+}
+```
+
+---
+
+## 兼容性 (Type Compatibility)
+
+[TypeScript: Documentation - Type Compatibility](https://www.typescriptlang.org/docs/handbook/type-compatibility.html)
+
+
+
+### 类型
+
+- 如果类型 `y` 至少有和类型 `x` 相同的成员, 则 `x` 与 `y` 兼容, `y` 可以赋值给 `x`
+- 会递归检查
+
+```TypeScript
+interface TestInterface {
+  name: string
+  children: {
+    age: number
+  }
+}
+
+let t1 = { name: 'Aelita', children: { age: 18 } } // OK
+let t2 = { name: 'Tony', children: { age: 'abc' } } // 会递归检查, age类型不对, 无法兼容
+let t3 = { name: 'Ash' } // 没有 children, 无法兼容
+let t4 = { name: 'Lily', children: { age: 18 }, gender: 'female' } // OK, 可以多但不可以少
+
+let t: TestInterface
+t = t1 // OK
+t = t2 // 报错
+t = t3 // 报错
+t = t4 // OK
+```
+
+
+
+### 函数
+
+- 函数如果要兼容, 需要考虑以下几个方面
+
+参数个数
+
+- 可以将参数少的赋值给参数多的
+- 反之不行
+
+```TypeScript
+let fn1 = (x: number) => 0
+let fn2 = (x: number, y: number) => 0
+fn1 = fn2 // 报错
+fn2 = fn1 // OK
+```
+
+参数类型
+
+- 同位置的参数类型必须满足下列其一
+  - 类型一致
+  - 被赋值的函数参数类型必须是赋值函数参数类型的 `子类型`
+- 参数名称无所谓
+
+```TypeScript
+let fn1 = (x: number) => 0
+let fn2 = (x: number) => 0
+let fn3 = (x: string) => 0
+fn1 = fn2 // OK
+fn2 = fn1 // OK
+fn1 = fn3 // 报错
+fn3 = fn1 // 报错
+
+let fn1 = (x: number) => 0
+let fn2 = (x: number | string) => 0
+fn1 = fn2 // OK
+fn2 = fn1 // 报错, number 不能赋值给 number | string
+```
+
+返回值类型
+
+- 满足下列条件之一
+  - 类型一致
+  - 被赋值的函数返回值类型必须是赋值函数返回值类型的 `子类型`
+
+```TypeScript
+// 类型一致
+let fn1 = (): number => 123
+let fn2 = (): number => 456
+let fn3 = (): string => 'abc'
+fn1 = fn2 // OK
+fn2 = fn1 // OK
+fn1 = fn3 // 报错
+fn3 = fn1 // 报错
+
+// 子类型
+let x = () => ({ name: "Alice" });
+let y = () => ({ name: "Alice", location: "Seattle" });
+x = y; // OK
+y = x; // Error, because x() lacks a location property
+```
+
+函数重载
+
+- 被赋值函数的所有 `重载签名` 都必须匹配至少一个兼容的赋值函数的 `重载签名`
+
+```TypeScript
+function add(x: number, y: number): number
+function add(x: string, y: string): string
+function add(x: any, y: any): number | string {
+  return x + y
+}
+
+function sub(x: number, y: number): number
+function sub(x: any, y: any): number {
+  return x - y
+}
+
+let fn1 = add
+fn1 = sub // 报错
+
+let fn2 = sub
+fn2 = add // OK
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
