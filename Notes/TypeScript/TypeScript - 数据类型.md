@@ -80,16 +80,6 @@ let arr2: readonly string[] = [1, 3, 5] // 格式二
 
 
 
-### 联合 |
-
-- 表示这个变量可以是列举出的数据中的任何一种
-
-```TypeScript
-let val: number | string | boolean // val 既可以是 number, 也可以是 string, 还可以是 boolean
-```
-
-
-
 ### 元祖 [tuple]
 
 - `TypeScript` 中对于 `数组` 类型的扩展
@@ -126,21 +116,6 @@ val = [1, 3, 5]
 
 
 
-### unknown
-
-- 和 `any` 一样, 可以存储任意类型的数据
-- `unknown` 不能赋值给除了 `any` 以外的任何其他类型
-- 不能做任何操作
-- 比 `any` 更安全
-
-```TypeScript
-function safeParse(s: string): unknown {
-  return JSON.parse(s)
-}
-```
-
-
-
 ### void
 
 - 与 `any` 相反, 表示没有任何类型
@@ -164,6 +139,7 @@ let test2 = (): void => {
 - 表示不存在的类型
 - 一般用于抛出异常或根本没有返回值的函数
 - 也出现于 `联合` 类型的收束中
+- 是 `unknown` 的子类型
 
 ```TypeScript
 function demo (): never {
@@ -215,6 +191,84 @@ const str: any = 'it666'
 console.log(<string>str.length)
 // 方式二 (企业开发推荐)
 console.log((str as string).length)
+```
+
+---
+
+## 类型收窄 (Narrowing)
+
+[TypeScript: Documentation - Narrowing](https://www.typescriptlang.org/docs/handbook/2/narrowing.html)
+
+- 可以通过一些方式收窄 `联合类型` 的可能性
+
+
+
+### Type predicates
+
+[Using type predicates - Narrowing](https://www.typescriptlang.org/docs/handbook/2/narrowing.html#using-type-predicates)
+
+- 用户自定义的类型保护函数
+- 返回值类型为 `Type predicates` , 格式为 `parameterName is Type`
+  - 函数中返回的是 `boolean`
+- 可以应用于 `Array.filter()`
+- 一般用于比较复杂以及需要精确控制的场景
+
+```TypeScript
+function isString (value: string | number): value is string {
+  return typeof value === 'string'
+}
+
+function isFish(pet: Fish | Bird): pet is Fish {
+  return (pet as Fish).swim !== undefined;
+}
+
+const underWater: Fish[] = zoo.filter((pet): pet is Fish => isFish(pet))
+```
+
+
+
+### typeof
+
+[typeof type guard - Narrowing](https://www.typescriptlang.org/docs/handbook/2/narrowing.html#typeof-type-guards)
+
+- `TypeScript` 的 `typeof` 会返回如下 `字符串` , 意为只能 `收窄` 如下类型
+  - `string`
+  - `number`
+  - `bigint`
+  - `boolean`
+  - `symbol`
+  - `undefined`
+  - `object`
+  - `function`
+- 只能使用 `===` / `!==`
+- 利用 `typeof` 可以进行 `收窄`
+
+```TypeScript
+let value: string | number
+// value = ...
+if (typeof value === 'string') {
+  console.log(value.length)
+} else {
+  console.log(value.toFixed())
+}
+```
+
+
+
+### instanceof
+
+[instanceof narrowing - Narrowing](https://www.typescriptlang.org/docs/handbook/2/narrowing.html#instanceof-narrowing)
+
+- 一般适用于使用 `new` 创建的实例
+
+```TypeScript
+function logValue(x: Date | string) {
+  if (x instanceof Date) {
+    console.log(x.toUTCString())
+  } else {
+    console.log(x.toUpperCase())
+  }
+}
 ```
 
 ---
@@ -363,7 +417,7 @@ add(10, 20, 30, 40) // [20, 30, 40]
 
 ---
 
-## 泛型 (Generic)
+## 泛型 \<T>
 
 [TypeScript: Documentation - Generics](https://www.typescriptlang.org/docs/handbook/2/generics.html)
 
@@ -647,7 +701,7 @@ window.onmousedown = (event) => { // 相当于 (event: MouseEvent)
 
 
 
-### 类型
+### 对象
 
 - 如果类型 `y` 至少有和类型 `x` 相同的成员, 则 `x` 与 `y` 兼容, `y` 可以赋值给 `x`
 - 会递归检查
@@ -759,6 +813,626 @@ fn2 = add // OK
 ```
 
 
+
+### 枚举
+
+- `数值枚举` 与 `数值` 兼容
+- 不同的 `枚举` 之间是 **不兼容** 的
+
+```typescript
+enum Gender {
+  Male,
+  Female
+}
+let value: Gender
+value = Gender.Male // OK
+value = 3 // OK
+let num: number
+num = 5 // OK
+num = Gender.Female // OK
+```
+
+
+
+### 类
+
+- 和 `对象` / `接口` 的兼容方式差不多
+- `private` / `protected` 成员会 **影响** 兼容性
+- `static` 成员和 `constructor` **不影响** 兼容性
+
+```TypeScript
+class Person {
+  public name: string
+  public age: number
+
+  constructor (name: string, age: number) {
+    this.name = name
+    this.age = age
+  }
+}
+class Animal {
+  public name: string
+
+  constructor (name: string) {
+    this.name = name
+  }
+}
+let p: Person = new Person('Aelita', 24)
+let a: Animal = new Animal('Dog')
+p = a // 报错, 不能将少的赋值给多的
+a = p // OK
+```
+
+
+
+### 泛型
+
+- 若没有在定义中使用 `泛型参数` , 则 **不影响** 兼容性, 反之 **影响**
+
+```TypeScript
+interface TestInterface<T> {
+
+}
+
+let t1: TestInterface<number>
+let t2: TestInterface<string>
+t1 = t2 // OK, 没有使用泛型参数
+t2 = t1 // OK, 没有使用泛型参数
+
+interface TestInterface2<T> {
+  age: T
+}
+let t3: TestInterface2<number>
+let t4: TestInterface2<string>
+t3 = t4 // 报错, 使用了泛型参数
+t4 = t3 // 报错, 使用了泛型参数
+```
+
+
+
+### 基本数据类型
+
+- 见 `赋值关系表`
+
+---
+
+## 高级类型
+
+
+
+### 交叉 &
+
+- 将多个类型合并为一个类型
+
+```TypeScript
+let mergeFn = <T, U>(arg1: T, arg2: U): (T & U) => {
+  return Object.assign(arg1, arg2)
+}
+let res = mergeFn({ name: 'Aelita' }, { age: 24 })
+console.log(res) // { name: 'Aelita', age: 24 }
+```
+
+
+
+### 联合 |
+
+- 表示这个变量可以是列举出的数据中的任何一种
+
+```TypeScript
+let val: number | string | boolean // val 既可以是 number, 也可以是 string, 还可以是 boolean
+val = 123 // OK
+val = 'abc' // OK
+val = false // OK
+```
+
+#### 可辨识联合 (Discriminated Union)
+
+- 联合的每一个取值至少拥有一个 `共同可辨识特征`
+- 可以通过 `可辨识特征` 进行 `类型收窄`
+- 若需要进行完整性检查, 那么给函数加上返回值类型, 并在 `tsconfig` 中开启 `strictNullChecks`
+
+```TypeScript
+interface Square {
+  kind: 'square'
+  x: number
+}
+interface Rectangle {
+  kind: 'rectangle'
+  x: number
+  y: number
+}
+interface Circle {
+  kind: 'circle'
+  radius: number
+}
+
+type Shape = Square | Rectangle | Circle // 可辨识联合, 共同可辨识特征为 kind
+
+function area(s: Shape): number {
+  switch (s.kind) { // 通过 kind 进行类型收窄
+    case 'square':
+      return s.x ** 2
+    case 'rectangle':
+      return s.x * s.y
+    case 'circle':
+      return Math.PI * (s.radius ** 2)
+  }
+}
+```
+
+
+
+### null / undefined
+
+- 默认情况下, `null` / `undefined` 可以赋值给除了 `never` 之外的任意类型
+- `null` / `undefined` 也可以相互赋值
+
+```TypeScript
+let value1: null
+let value2: undefined
+let value3: number
+value1 = value2 // OK
+value2 = value1 // OK
+value3 = value1 // Ok
+value3 = value2 // OK
+```
+
+- 建议在 `tsconfig` 中开启 `strictNullChecks` [strictNullChecks - Docs on every TSConfig option](https://www.typescriptlang.org/tsconfig#strictNullChecks)
+  - 阻止将 `null` / `undefined` 赋值给其他类型的行为, 除非使用 `联合类型` , 比如 `string | null | undefined`
+  - 对于 `可选属性` / `可选参数` 来说, 默认情况下其类型就是 `联合类型` , 为 `当前类型 | undefined`
+  - 在使用包含 `null` / `undefined` 的 `联合类型` 的值时, 需要先检查 `null` / `undefined` 的情况, 进行收窄 ( `narrowing` )
+  - 可以使用 `!` 后缀来告诉编译器这个值不是 `null` / `undefined`
+
+```TypeScript
+function doSomething(x: string | null): void {
+  if (x === null) {
+    return
+  } else {
+    console.log("Hello, " + x.toUpperCase())
+  }
+}
+
+function liveDangerously(x?: number | null) { // x 由于是可选参数, 所以其类型为 number | null | undefined
+  console.log(x!.toFixed()) // OK, 使用 ! 就代表 x 不是 null 或 undefined
+}
+```
+
+
+
+### 字面量 (Literal)
+
+[Literal Types - Everyday Types](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#literal-types)
+
+- 在 `TypeScript` 中可以将 `字面量` 作为具体类型使用
+- 包含 `字符串` / `数值` / `true` / `false`
+- 可以用于一些比较特殊的场景, 或与其他的混合使用
+
+```typescript
+function printText(s: string, alignment: "left" | "right" | "center") {
+  // ...
+}
+function configure(x: Options | "auto") {
+  // ...
+}
+```
+
+
+
+### 索引访问类型 [type]
+
+[TypeScript: Documentation - Indexed Access Types](https://www.typescriptlang.org/docs/handbook/2/indexed-access-types.html)
+
+定义
+
+- 通过 `[]` 索引访问操作符, 得到某个索引的类型
+
+```TypeScript
+interface TestInterface {
+  a: string
+  b: number,
+  c: boolean,
+  d: symbol,
+  e: null,
+  f: undefined,
+  g: never
+}
+type MyType = TestInterface['a'] // string
+type MyType = TestInterface[keyof TestInterface] // string | number | boolean | symbol | null | undefined | never
+```
+
+- 使用 `typeof arr[number]` 可以获得数组中的类型
+
+```TypeScript
+const arr = ['str', 123]
+type res = typeof arr[number] // string | number
+```
+
+应用场景示例
+
+```TypeScript
+const obj = {
+  name: 'Aelita',
+  age: 24,
+  bool: true
+}
+
+// T[K] 代表对象中有的类型的数组, 具体由调用者决定
+function getValues <T, K extends keyof T>(obj: T, keys: K[]): T[K][] {
+  let arr: T[K][] = []
+  keys.forEach((key: K) => {
+    arr.push(obj[key])
+  })
+  return arr
+}
+
+let res = getValues(obj, ['name', 'bool']) // res: (string | boolean)[]
+console.log(res)
+```
+
+
+
+### 映射类型 (Mapped Type)
+
+[TypeScript: Documentation - Mapped Types](https://www.typescriptlang.org/docs/handbook/2/mapped-types.html)
+
+- 根据旧的 `类型` 创建出新的 `类型`
+- 基于 `索引签名`
+- 可以添加 `readonly` / `?` 修饰符
+  - 通过 `+` / `-` 控制是增加还是删除
+  - 不写的话默认为 `+` 
+
+```TypeScript
+interface TestInterface1 {
+  name: string
+  age: number
+}
+interface TestInterface2 {
+  readonly name?: string
+  readonly age?: number
+}
+
+type ReadonlyTestInterface<T> = {
+  -readonly [P in keyof T]-?: T[P] // 在 T 的基础上去除 readonly 和 ?
+}
+
+type MyType = ReadonlyTestInterface<TestInterface2> // 等于 TestInterface1
+```
+
+拆包
+
+- 将映射之后的类型还原为映射之前的类型
+
+```TypeScript
+interface MyInterface {
+  name: string
+  age: number
+}
+// 映射
+type MyType<T> = {
+  +readonly [P in keyof T]: T[P]
+}
+type Test = MyType<MyInterface>
+// 拆包
+type UnMyType<T> = {
+  -readonly [P in keyof T]: T[P]
+}
+type Test2 = UnMyType<Test>
+```
+
+
+
+### 工具类型 (Utility Type)
+
+[TypeScript: Documentation - Utility Types](https://www.typescriptlang.org/docs/handbook/utility-types.html)
+
+- 全局可用的 `TypeScript` 内置 `工具类型`
+- 可以嵌套使用
+
+`Partial<Type>` / `Readonly<Type>` / `Required<Type>`
+
+- 将原有类型中的内容变为 `可选` / `只读` / `必须`
+
+```TypeScript
+type MyType2 = Readonly<TestInterface1>
+type MyType3 = Partial<TestInterface1>
+type MyType4 = Partial<Readonly<TestInterface1>>
+type MyType5 = Required<TestInterface2>
+```
+
+`Pick<Type, Keys>`
+
+- 通过 `(联合) 字符串字面量` 将原有类型中的部分内容映射到新类型中
+
+```TypeScript
+interface Todo {
+  title: string;
+  description: string;
+  completed: boolean;
+}
+
+type TodoPreview = Pick<Todo, 'title' | 'completed'>
+
+const todo: TodoPreview = {
+  title: 'Clean room',
+  completed: false
+}
+```
+
+`Record<Keys, Type>`
+
+- 将一个类型的所有属性作为 `Key` , 映射到另一个类型上, 作为 `Value`
+
+```typescript
+type AnimalKind = 'dog' | 'cat'
+interface AnimalInfo {
+  name: string
+  age: number
+}
+type Animal = Record<AnimalKind, AnimalInfo>
+// Animal 实质上为
+/*
+{
+  dog: {
+    name: string
+    age: number
+  }
+  cat: {
+    name: string
+    age: number
+  }
+}
+*/
+```
+
+`Exclude<UnionType, ExcludedMembers>`
+
+- 从 `UnionType` 中剔除可以赋值给 `ExcludedMembers` 的类型
+
+```TypeScript
+type res = Exclude<string | number | boolean, number>
+```
+
+`Extract<Type, Union>`
+
+- 从 `Type` 中提取可以赋值给 `Union` 的类型
+
+```TypeScript
+type res = Extract<string | number | boolean, number | string>
+```
+
+`NonNullable<Type>`
+
+- 从 `Type` 中剔除 `null` / `undefined`
+
+```TypeScript
+type res = NonNullable<string | null | boolean | undefined>
+```
+
+`ReturnType<Type>`
+
+- 获取 `函数Type` 的返回值类型
+
+```TypeScript
+type res = ReturnType<() => number>
+```
+
+`ConstructorParameters<Type>`
+
+- 获取一个 `类` 的 `构造函数Type` 的参数组成的 `元祖`
+
+```TypeScript
+class Person {
+  constructor (name: string, age: number) {}
+}
+type res = ConstructorParameters<typeof Person>
+```
+
+`Parameters<Type>`
+
+- 获取 `函数Type` 的参数类型组成的 `元祖`
+
+```TypeScript
+declare function say (name: string, age: number, gender: boolean): void
+type res = Parameters<typeof say>
+```
+
+
+
+### 条件类型 (Conditional Type)
+
+[TypeScript: Documentation - Conditional Types](https://www.typescriptlang.org/docs/handbook/2/conditional-types.html)
+
+- 判断前面一个类型是否 相同于 / 继承于 后面一个类型, 返回不同的结果
+- 格式为 `T extends U ? X : Y`
+
+```TypeScript
+type MyType<T> = T extends string ? string: any
+type res = MyType<boolean>
+```
+
+#### 分布式条件类型 (Distributive Conditional Type)
+
+[Distributive Conditional Types - Conditional Types](https://www.typescriptlang.org/docs/handbook/2/conditional-types.html#distributive-conditional-types)
+
+- 当被检测类型是 `泛型` 并且是 `联合类型` 时, 就称之为 `分布式条件类型`
+- 可以实现 `Exlucde` / `Extract` / `NonNullable` 等
+
+```TypeScript
+// Exclude 的实现
+type MyType<T, U> = T extends U ? never : T
+type res = MyType<string | number | boolean, number>
+```
+
+#### infer
+
+- 在 `条件类型` 中根据 `检测类型` 推断出新的类型
+
+```TypeScript
+type MyType<T> = T extends Array<infer U> ? U : T
+type res = MyType<string | number[]> // string | number
+// 等价于
+type MyType<T> = T extends any[] ? T[number] : T
+```
+
+
+
+### unknown
+
+- `TypeScript v3.0` 新增
+- 比 `any` 更安全
+
+- 和 `any` 一样, 可以存储任意类型的数据
+- 如果没有 `类型断言` / `流程控制`
+  - `unknown` 不能赋值给除了 `any` 以外的任何其他类型
+  - 不能做任何操作 ( `===` / `!==` 除外)
+
+- 不能访问 `属性` / `方法` / 创建实例
+- 与任何类型组成的 `交叉类型` , 结果都是其他类型
+- 与除了 `any` 以外的任何类型组成的 `联合类型` , 最后结果都是 `unknown`
+- `keyof unknown` 结果为 `never`
+- 使用 `映射类型` 时, 如果遍历的是 `unknown` 类型, 那么不会映射任何属性, 会返回 `{}`
+
+```TypeScript
+function safeParse(s: string): unknown {
+  return JSON.parse(s)
+}
+```
+
+
+
+### Symbol
+
+[TypeScript: Documentation - Symbols](https://www.typescriptlang.org/docs/handbook/symbols.html)
+
+- 和 `ES6` 中的 `symbol` 一样
+
+
+
+### Iterators & Generators
+
+[TypeScript: Documentation - Iterators and Generators](https://www.typescriptlang.org/docs/handbook/iterators-and-generators.html)
+
+- 和 `ES6` 中的一样
+- 当编译目标为 `ES5` / `ES3` 时,  `for...of` 循环只能用在 `数组` 上
+
+---
+
+## 类型别名 type
+
+[Type Aliases - Everyday Types](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#type-aliases)
+
+定义
+
+- 用于给一个类型起一个其他的名字
+- 方便重复使用
+- 可以和 `接口` 相互兼容
+
+
+
+### 基本格式
+
+- 使用 `type` 关键字
+
+```typescript
+type MyString = string
+let value13: MyString = 'abc'
+```
+
+- 也可以使用 `泛型`
+
+```TypeScript
+type MyType<T> = { x: T, y: T }
+let value14: MyType<number> = { x: 123, y: 456 }
+```
+
+- 可以使用自己, 以方便配合 `可选属性` 定义一些 `树状` / `嵌套` 结构
+
+```typescript
+type MyType = {
+  name: string
+  children?: MyType
+}
+let value14: MyType = {
+  name: 'one',
+  children: {
+    name: 'two',
+    children: {
+      name: 'three'
+    }
+  }
+}
+```
+
+
+
+### 和接口的异同
+
+相同点
+
+- 都可以描述属性 / 方法
+
+```TypeScript
+type MyType = {
+  name: string
+  say (): void
+}
+
+interface MyInterface {
+  name: string
+  say (): void
+}
+```
+
+- 都可以扩展
+  - `类型别名` 通过 `& ` 扩展
+  - `接口` 通过 `extends` 扩展
+
+```TypeScript
+type MyType = {
+  name: string
+  say (): void
+}
+type MyType2 = myType & {
+  age: number
+}
+
+interface MyInterface {
+  name: string
+  say (): void
+}
+interface MyInterface2 extends MyInterface {
+  age: number
+}
+```
+
+不同点
+
+- `类型别名` 可以声明 `基本类型` / `联合类型` / `元祖` 等 , 而 `接口` 不行
+
+```TypeScript
+type MyType = boolean | string
+type MyType2 = [string, number, boolean]
+```
+
+-  `类型别名` 不会自动合并, 而 `接口` 会
+
+```TypeScript
+// 类型别名 不能创建多个同名的, 会报错
+type MyType = {
+  name: string
+}
+type MyType2 = { // 报错
+  age: number
+}
+
+// 接口 会合并
+interface MyInterface {
+  name: string
+}
+interface MyInterface {
+  age: number
+}
+```
 
 
 
