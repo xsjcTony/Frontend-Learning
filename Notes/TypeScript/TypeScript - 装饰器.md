@@ -61,6 +61,7 @@ class Person {}
   - `函数` 是为 `装饰器` 做准备工作
   - 返回的 `回调函数` 是 `装饰器` 主体
 - 绑定 `装饰器` 时, 需要加上 `()` 调用 `装饰器工厂` , 获得真正的 `装饰器`
+- 可以传递额外的参数
 
 ```TypeScript
 function demo () {
@@ -177,9 +178,167 @@ console.log(p) // Person { name: 'Tony', age: 24 }
 
 
 
+### 方法装饰器 (Method Decorator)
+
+[Method Decorators - Decorators](https://www.typescriptlang.org/docs/handbook/decorators.html#method-decorators)
+
+- 在 `方法` 声明之前的前一行绑定
+- 可以用于监视 / 修改 / 替换 `方法` 的定义
+- 传递的参数有 `3` 个
+  - `静态方法` : `类` 的定义 / `实例方法` : `类` 的原型对象
+  - 被绑定 `方法` 的名字
+  - 被绑定 `方法` 的 `属性描述对象` ( `Object.defineProperty` 的第三个参数)
+    - 在 `target < ES5` 的情况下, 这个参数不起作用, 为 `undefined`
+
+```typescript
+function test (target: any, propertyKey: string, descriptor: PropertyDescriptor) {
+  descriptor.enumerable = true
+}
+
+class Person {
+  sayName (): void {
+    console.log('My name is Aelita')
+  }
+
+  @test
+  sayAge (): void {
+    console.log('My age is 24')
+  }
+
+  static say (): void {
+    console.log('Hello World')
+  }
+}
+
+const p = new Person()
+for (const key in p) {
+  console.log(key) // sayAge
+}
+```
+
+```TypeScript
+function test (target: any, propertyKey: string, descriptor: PropertyDescriptor) {
+  descriptor.value = function (): void {
+    console.log('My name is Tony')
+  }
+}
+
+class Person {
+  @test
+  sayName (): void {
+    console.log('My name is Aelita')
+  }
+}
+
+const p = new Person()
+p.sayName()
+```
 
 
 
+### 访问器装饰器 (Accessor Decorator)
+
+[Accessor Decorators - Decorators](https://www.typescriptlang.org/docs/handbook/decorators.html#accessor-decorators)
+
+- 在 `访问器` 声明之前的前一行绑定
+- 可以用于监视 / 修改 / 替换 `访问器` 的定义
+- 传递的参数有 `3` 个
+  - `静态成员` : `类` 的定义 / `实例成员` : `类` 的原型对象
+  - 被绑定 `方法` 的名字
+  - 被绑定 `方法` 的 `属性描述对象` ( `Object.defineProperty` 的第三个参数)
+    - 在 `target < ES5` 的情况下, 这个参数不起作用, 为 `undefined`
+
+注意点
+
+- `TypeScript` 不允许同时装饰同一个成员的 `get` / `set` 访问器
+- 同一个成员的 `访问器装饰器` 必须绑定在根据文档顺序的第一个 `访问器` 上 (其实好像都可以?)
+
+```typescript
+function test (target: any, propertyKey: string, descriptor: PropertyDescriptor) {
+  descriptor.set = (value: string) => {
+    target.myName = value
+  }
+  descriptor.get = (): string => {
+    return target.myName
+  }
+}
+
+class Person {
+  private _name: string
+
+  constructor (name: string) {
+    this._name = name
+  }
+
+  @test
+  set name (value: string) {
+    this._name = value
+  }
+
+  get name (): string {
+    return this._name
+  }
+}
+
+const p = new Person('Aelita')
+console.log(p.name)
+p.name = 'zs'
+console.log(p.name)
+```
+
+
+
+### 属性装饰器 (Property Decorator)
+
+[Property Decorators - Decorators](https://www.typescriptlang.org/docs/handbook/decorators.html#property-decorators)
+
+- 在 `属性` 声明之前的前一行绑定
+- 可以用于监视 `属性` 的定义
+- 传递的参数有 `2` 个
+  - `静态属性` : `类` 的定义 / `实例属性` : `类` 的原型对象
+  - 被绑定 `属性` 的名字
+
+```typescript
+function test (target: any, propertyKey: string) {
+  target[propertyKey] = 'Aelita'
+}
+
+class Person {
+  static age: number
+  @test
+  name?: string
+}
+
+const p = new Person()
+console.log(p.name)
+
+```
+
+
+
+### 参数装饰器 (Parameter Decorator)
+
+[Parameter Decorators - Decorators](https://www.typescriptlang.org/docs/handbook/decorators.html#parameter-decorators)
+
+- 在 `参数` 声明之前隔一个 `空格` 绑定
+- 可以用于监视 / 修改 / 替换 `访问器` 的定义
+- 传递的参数有 `3` 个
+  - `静态成员` : `类` 的定义 / `实例成员` : `类` 的原型对象
+  - 被绑定的 `参数` 所在的 `方法` 的名字 ( 若使用在 `constructor` 的参数中时为 `undefined` )
+  - `参数` 在 `参数列表` 中的 `索引`
+
+```typescript
+function test (target: any, propertyKey: string, parameterIndex: number) {
+  console.log(target)
+  console.log(propertyKey)
+  console.log(parameterIndex)
+}
+
+class Person {
+  say (age: number, @test name: string): void {}
+}
+
+```
 
 
 
