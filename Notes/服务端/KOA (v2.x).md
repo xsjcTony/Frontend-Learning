@@ -320,6 +320,22 @@ app.on('error', (err, ctx) => {
 
 - <span style="color: #ff0;">一定要放在任何 `静态资源` / `路由` / `动态网页` 之前</span>
 
+---
+
+## 使用TypeScript
+
+- 安装相关依赖
+
+```shell
+npm i -D typescript ts-node @types/node @types/koa cross-env nodemon
+```
+
+- 配置 `package.json`
+
+```json
+"dev": "cross-env NODE_ENV=develop nodemon -"
+```
+
 
 
 

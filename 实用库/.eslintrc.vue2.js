@@ -1,5 +1,3 @@
-/* eslint ember-suave/lines-between-object-properties: 'off' */
-
 module.exports = {
   root: true,
   env: {
@@ -232,7 +230,7 @@ module.exports = {
     semi: ['error', 'never'],
     'no-unexpected-multiline': 'error',
     'space-before-blocks': ['error', 'always'],
-    'space-before-function-paren': ['error', 'always'],
+    'space-before-function-paren': ['error', 'never'],
     'space-infix-ops': ['error', { int32Hint: false }],
     'prefer-const': ['error', { destructuring: 'all' }],
     'no-const-assign': 'error',
@@ -290,7 +288,7 @@ module.exports = {
     eqeqeq: ['error', 'always'],
     'no-with': 'error',
     'object-curly-spacing': ['error', 'always'],
-    'lines-between-class-members': ['error', 'always', { exceptAfterSingleLine: false }],
+    'lines-between-class-members': ['error', 'always', { exceptAfterSingleLine: true }],
     'padding-line-between-statements': [
       'error',
       { blankLine: 'always', prev: '*', next: 'class' },
@@ -306,9 +304,6 @@ module.exports = {
     'import/first': 'error',
     'import/no-webpack-loader-syntax': 'error',
     'import/newline-after-import': ['error', { count: 1 }],
-    'import/extensions': ['error', 'ignorePackages', { js: 'never' }],
-
-    // eslint-plugin-ember-suave
-    'ember-suave/lines-between-object-properties': ['error', 'always', { exceptAfterSingleLine: true }]
+    'import/extensions': ['error', 'ignorePackages', { js: 'never' }]
   }
 }
