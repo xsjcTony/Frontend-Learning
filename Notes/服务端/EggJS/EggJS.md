@@ -1210,6 +1210,35 @@ class HomeService extends Service {
 
 - 具体 `CRUD` 操作见 `Egg` 文档 / `Sequelize` 文档
 
+
+
+### 使用TypeScript
+
+- 安装依赖
+  - 由于 `egg-sequelize-ts` 停止维护, 所以 `sequelize` 只能使用 `v5` , `sequelize-typescript` 只能使用 `v1`
+
+```shell
+npm i sequelize-typescript egg-sequelize-ts
+```
+
+- 配置 `config.plugin.ts`
+
+```TypeScript
+import { EggPlugin } from 'egg'
+
+const plugin: EggPlugin = {
+  // enable sequelize
+  sequelize: {
+    enable: true,
+    'package': 'egg-sequelize-ts'
+  }
+}
+
+export default plugin
+```
+
+- 具体使用见文档 [RobinBuschmann/sequelize-typescript: Decorators and some other features for sequelize](https://github.com/RobinBuschmann/sequelize-typescript#readme)
+
 ---
 
 ## 安全
@@ -1289,6 +1318,6 @@ module.exports = {
 - 使用 `egg-init` 脚手架创建 `TypeScript` 项目
 
 ```TypeScript
-egg-init projectName --type=
+egg-init projectName --type=ts
 ```
 

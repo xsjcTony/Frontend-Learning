@@ -230,7 +230,14 @@ module.exports = {
     semi: ['error', 'never'],
     'no-unexpected-multiline': 'error',
     'space-before-blocks': ['error', 'always'],
-    'space-before-function-paren': ['error', 'never'],
+    'space-before-function-paren': [
+      'error',
+      {
+        anonymous: 'never',
+        named: 'never',
+        asyncArrow: 'always'
+      }
+    ],
     'space-infix-ops': ['error', { int32Hint: false }],
     'prefer-const': ['error', { destructuring: 'all' }],
     'no-const-assign': 'error',

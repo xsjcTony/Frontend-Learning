@@ -670,3 +670,58 @@ npx sequelize db:seed:undo:all
 npx sequelize db:seed:undo --seed XXXXXXXX-XXXX.js, ...
 ```
 
+---
+
+## 使用TypeScript
+
+- 使用 `TypeScript` 编写 `迁移文件`
+- 在 `package.json` 的 `scripts` 中添加指令, 修改运行环境
+
+```json
+"sequelize-ts": "node -r ts-node/register ./node_modules/sequelize-cli/lib/sequelize"
+```
+
+- 使用 `npm run sequelize-ts` 代替 `npx sequelize` 执行指令
+
+```shell
+npm run sequelize-ts db:migrate
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
