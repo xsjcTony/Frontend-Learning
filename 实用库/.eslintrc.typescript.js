@@ -19,6 +19,19 @@ module.exports = {
     'import',
     '@typescript-eslint'
   ],
+  settings: {
+    'import/parsers': {
+      '@typescript-eslint/parser': ['.ts', '.tsx']
+    },
+    'import/resolver': {
+      node: {
+        extensions: ['.js', '.jsx', '.ts', '.tsx']
+      },
+      typescript: {
+        alwaysTryTypes: true
+      }
+    }
+  },
   rules: {
     'block-spacing': ['error', 'always'],
     camelcase: [
@@ -103,7 +116,14 @@ module.exports = {
     'import/first': 'error',
     'import/no-webpack-loader-syntax': 'error',
     'import/newline-after-import': ['error', { count: 1 }],
-    'import/extensions': ['error', 'ignorePackages'],
+    'import/extensions': [
+      'error',
+      'ignorePackages',
+      {
+        ts: 'never',
+        tsx: 'never'
+      }
+    ],
 
     // TypeScript
     '@typescript-eslint/adjacent-overload-signatures': 'error',
@@ -315,7 +335,7 @@ module.exports = {
       'error',
       {
         vars: 'all',
-        args: 'after-used',
+        args: 'none',
         ignoreRestSiblings: true
       }
     ],
