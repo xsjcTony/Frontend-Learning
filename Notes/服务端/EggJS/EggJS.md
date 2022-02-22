@@ -1282,3 +1282,13 @@ module.exports = {
 - 如果一个浏览器上发生用户切换, 却没有刷新 `csrfToken` , 容易带来安全问题
 - 通过 `ctx.rotateCsrfSecret()` 来刷新 `csrfToken`
 
+---
+
+## 使用TypeScript
+
+- 使用 `egg-init` 脚手架创建 `TypeScript` 项目
+
+```TypeScript
+egg-init projectName --type=
+```
+

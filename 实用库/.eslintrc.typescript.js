@@ -149,24 +149,8 @@ module.exports = {
     '@typescript-eslint/ban-types': [
       'error',
       {
-        types: {
-          String: {
-            message: 'Use string instead',
-            fixWith: 'string'
-          },
-          Boolean: {
-            message: 'Use boolean instead',
-            fixWith: 'boolean'
-          },
-          Number: {
-            message: 'Use number instead',
-            fixWith: 'number'
-          },
-          Symbol: {
-            message: 'Use symbol instead',
-            fixWith: 'symbol'
-          }
-        }
+        types: {},
+        extendDefaults: true
       }
     ],
     '@typescript-eslint/brace-style': ['error', '1tbs', { allowSingleLine: true }],
