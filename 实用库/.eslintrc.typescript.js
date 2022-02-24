@@ -382,7 +382,6 @@ module.exports = {
       }
     ],
     '@typescript-eslint/require-array-sort-compare': ['error', { ignoreStringArrays: false }],
-    '@typescript-eslint/require-await': 'error',
     '@typescript-eslint/restrict-plus-operands': [
       'error',
       {

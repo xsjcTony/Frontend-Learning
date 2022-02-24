@@ -1746,7 +1746,7 @@
 <template id="father">
     <div>
         <button @click="say('Tony')">我是按钮</button>
-        <son @parent-say="say"></son> <!-- 通过v-bind给子组件传递数据, 传递时使用kebab-case -->
+        <son @parent-say="say"></son>
     </div>
 </template>
 <template id="son">
