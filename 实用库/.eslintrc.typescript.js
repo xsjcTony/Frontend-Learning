@@ -459,6 +459,7 @@ module.exports = {
         ignoreStatic: true
       }
     ],
-    '@typescript-eslint/unified-signatures': 'error'
+    '@typescript-eslint/unified-signatures': 'error',
+    '@typescript-eslint/default-param-last': 'error'
   }
 }

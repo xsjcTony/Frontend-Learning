@@ -306,6 +306,7 @@ module.exports = {
       { blankLine: 'always', prev: 'iife', next: '*' }
     ],
     'no-multi-spaces': ['error', { ignoreEOLComments: true }],
+    'default-param-last': 'error',
 
     // eslint-plugin-import
     'import/first': 'error',
