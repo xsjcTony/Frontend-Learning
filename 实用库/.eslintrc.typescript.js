@@ -170,9 +170,18 @@ module.exports = {
       }
     ],
     '@typescript-eslint/consistent-type-definitions': ['error', 'interface'],
-    '@typescript-eslint/explicit-function-return-type': 'error',
+    '@typescript-eslint/explicit-function-return-type': [
+      'error',
+      {
+        allowExpressions: true,
+        allowTypedFunctionExpressions: true,
+        allowHigherOrderFunctions: true,
+        allowDirectConstAssertionInArrowFunctions: true,
+        allowConciseArrowFunctionExpressionsStartingWithVoid: true,
+        allowedNames: []
+      }
+    ],
     '@typescript-eslint/explicit-member-accessibility': ['error', { accessibility: 'explicit' }],
-    '@typescript-eslint/explicit-module-boundary-types': ['error'],
     '@typescript-eslint/func-call-spacing': ['error', 'never'],
     '@typescript-eslint/keyword-spacing': [
       'error',
