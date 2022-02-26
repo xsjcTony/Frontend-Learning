@@ -2,7 +2,8 @@ module.exports = {
   root: true,
   env: {
     node: true,
-    browser: true
+    browser: true,
+    es2022: true
   },
   'extends': [
     'plugin:vue/recommended'
@@ -11,8 +12,7 @@ module.exports = {
     parser: 'babel-eslint'
   },
   plugins: [
-    'import',
-    'ember-suave'
+    'import'
   ],
   rules: {
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',

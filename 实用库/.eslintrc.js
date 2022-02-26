@@ -10,11 +10,10 @@ module.exports = {
   env: {
     browser: true,
     node: true,
-    es2021: true
+    es2022: true
   },
   plugins: [
-    'import',
-    'ember-suave'
+    'import'
   ],
   rules: {
     'block-spacing': ['error', 'always'],
