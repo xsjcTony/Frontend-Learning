@@ -218,7 +218,7 @@ module.exports = {
       'error',
       {
         ignoreArrowShorthand: false,
-        ignoreVoidOperator: false
+        ignoreVoidOperator: true
       }
     ],
     '@typescript-eslint/no-dupe-class-members': 'error',
@@ -234,7 +234,6 @@ module.exports = {
     ],
     '@typescript-eslint/no-extra-non-null-assertion': 'error',
     '@typescript-eslint/no-extra-parens': 'error',
-    // '@typescript-eslint/no-extra-semi': 'error'
     '@typescript-eslint/no-extraneous-class': 'error',
     '@typescript-eslint/no-floating-promises': [
       'error',
@@ -262,7 +261,6 @@ module.exports = {
     ],
     '@typescript-eslint/no-loop-func': 'error',
     '@typescript-eslint/no-loss-of-precision': 'error',
-    '@typescript-eslint/no-meaningless-void-operator': ['error', { checkNever: false }],
     '@typescript-eslint/no-misused-new': 'error',
     '@typescript-eslint/no-misused-promises': [
       'error',
@@ -330,17 +328,6 @@ module.exports = {
         vars: 'all',
         args: 'none',
         ignoreRestSiblings: true
-      }
-    ],
-    '@typescript-eslint/no-use-before-define': [
-      'error',
-      {
-        functions: true,
-        classes: true,
-        variables: true,
-        enums: true,
-        typedefs: true,
-        ignoreTypeReferences: true
       }
     ],
     '@typescript-eslint/no-useless-constructor': 'error',
