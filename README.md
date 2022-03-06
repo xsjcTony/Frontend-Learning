@@ -137,13 +137,23 @@
 - 原生NodeJS
 - Express
 - KOA (v2.x)
-- PM2
 - Egg.js
   - 单元测试
+- 其他
+  - PM2
+  - Nginx
+  - JWT
+
 
 
 
 ## TypeScript
 
+- 基础
 - 数据类型
+- 接口
+- 类
+- 模块 & 命名空间
+- 装饰器
+- 声明
 

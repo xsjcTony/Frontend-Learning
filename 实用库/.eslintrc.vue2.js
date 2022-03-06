@@ -312,6 +312,18 @@ module.exports = {
     'import/first': 'error',
     'import/no-webpack-loader-syntax': 'error',
     'import/newline-after-import': ['error', { count: 1 }],
-    'import/extensions': ['error', 'ignorePackages', { js: 'never' }]
+    'import/extensions': ['error', 'ignorePackages', { js: 'never' }],
+    'import/order': [
+      'error',
+      {
+        groups: ['builtin', 'external', 'internal', 'parent', 'sibling', 'index', 'object', 'type'],
+        'newlines-between': 'ignore',
+        alphabetize: {
+          order: 'asc',
+          caseInsensitive: true
+        },
+        warnOnUnassignedImports: false
+      }
+    ]
   }
 }
