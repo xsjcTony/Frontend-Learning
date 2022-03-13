@@ -726,6 +726,28 @@ img.src = url;
 
 ---
 
+## 模块化
+
+
+
+### `require(module)()` 的代替
+
+```js
+// 假设有一个模块文件 a.js
+export default (app) => { /* ... */ }
+// 或
+module.exports = (app) => { /* ... */ }
+
+// 那么在另一个文件中想导入并立即执行的import书写方式为
+(await import('./a.js')).default(app)
+// 等价的 require 写法为
+require('./a.js')(app)
+```
+
+
+
+---
+
 ## 其他
 
 
