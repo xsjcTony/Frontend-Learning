@@ -217,7 +217,7 @@ module.exports = {
           requireLast: true
         },
         singleline: {
-          delimiter: 'semi',
+          delimiter: 'comma',
           requireLast: false
         },
         multilineDetection: 'brackets'

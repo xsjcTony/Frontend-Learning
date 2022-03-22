@@ -712,6 +712,33 @@ img.src = url;
 
 
 
+### 下载文件
+
+- 动态创建一个 `<a>` 标签
+- 根据获取到的 `blob` 创建并指定 `href` 链接
+- 指定 `download` 属性, 可选 `文件名`
+- 点击 `<a>` 标签
+- 使用完毕后释放 `blob` 链接
+
+```js
+const res = await exportAllUsersAPI() // axios 返回值, 为buffer数据
+const file = new Blob([res.data], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' })
+
+const url = URL.createObjectURL(file)
+const link = document.createElement('a')
+link.setAttribute('href', url)
+link.setAttribute('target', '_blank')
+link.setAttribute('rel', 'noopener noreferrer')
+link.setAttribute('download', 'users')
+link.click()
+
+setTimeout(() => {
+  URL.revokeObjectURL(url)
+}, 1000)
+```
+
+
+
 ---
 
 ## 网络请求相关

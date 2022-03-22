@@ -262,6 +262,20 @@ app.use(router.routes())
   .listen(3000)
 ```
 
+
+
+### 返回文件
+
+- 使用 `Content-Type` 指定 `mime` 类型
+- 使用 `ctx.attachment(filename?)` 指定需要下载以及可选 `文件名`
+
+```js
+ctx.set('Content-Type', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet') // xlsx
+ctx.attachment('users.xls') // 下载文件名
+```
+
+
+
 ---
 
 ## next方法
@@ -333,7 +347,7 @@ npm i -D typescript ts-node @types/node @types/koa cross-env nodemon
 - 配置 `package.json`
 
 ```json
-"dev": "cross-env NODE_ENV=develop nodemon -"
+"dev": "cross-env NODE_ENV=develop nodemon --exec ts-node app.ts"
 ```
 
 
