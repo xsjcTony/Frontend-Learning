@@ -648,27 +648,13 @@ function easeAnimation(ele, target) {
 
 ---
 
-## `JSON`
-
-
-
-### `eval()` / 非标准 `JSON` 字符串
-
-- `Uncaught SyntaxError: Unexpected token e in JSON at position 1` 代表服务端返回的不是标准的 `JSON` 字符串
-- 对于非标准 `JSON` 字符串要使用 `eval()` 方法来转换成 `对象` , 但是要在字符串前后加上 `(` 和 `)`
-- `eval()` 也可以转换标准的  `JSON` 字符串, 是万能的
-- <span style="color: yellow">企业开发中不要使用</span>
-
-```js
-let str = `{name: Tony, age: 24}`;
-let obj = eval("(" + str + ")");
-```
+## JSON
 
 
 
 ---
 
-## `window`
+## window
 
 
 
@@ -683,7 +669,7 @@ window.location.pathname.slice(0, window.location.pathname.lastIndexOf("/")) // 
 
 ---
 
-## `document`
+## document
 
 
 
@@ -697,7 +683,7 @@ document.domain
 
 ---
 
-## `DOM` 相关
+## DOM 相关
 
 
 
@@ -757,7 +743,7 @@ setTimeout(() => {
 
 
 
-### `require(module)()` 的代替
+### `require(module)()` 在 `ESM` 中的写法
 
 ```js
 // 假设有一个模块文件 a.js
@@ -769,6 +755,22 @@ module.exports = (app) => { /* ... */ }
 (await import('./a.js')).default(app)
 // 等价的 require 写法为
 require('./a.js')(app)
+```
+
+
+
+---
+
+## 正则表达式
+
+
+
+### 非空字符串
+
+- 也不能只包含 `空格`
+
+```js
+/^(?!\s*$).+/
 ```
 
 
