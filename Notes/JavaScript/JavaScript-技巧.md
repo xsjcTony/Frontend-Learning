@@ -6,13 +6,13 @@
 
 
 
-### `let self = this`
+### let self = this
 
 - 将当前的 `this` 存储进变量 `self` 中, 以便 `this` 更改后可以继续使用
 
 
 
-### `Object.keys()`
+### Object.keys()
 
 - 会返回一个数组, 包含了该对象的属性名称, 顺序和普通 `loop` 的顺序一样
 - 只有实现了 `Iterator` 接口的才能使用
@@ -38,8 +38,27 @@ obj.name = 'Lily' // 无效 / 报错
 ### 判断对象是否为空
 
 - 判断 `Object.getOwnPropertyNames(obj)` 的 `length` 是否为 `0`
-
 - 判断 `Object.keys(obj)` 的 `length` 是否为 `0`
+
+
+
+### 多层嵌套解构赋值
+
+- `解构赋值` 是可以多层嵌套的, 包括 `数组` 和 `对象`
+
+```js
+const person = {
+  name: {
+    firstName: 'Aelita',
+    lastName: Schaeffer
+  }
+}
+
+const { name: { firstName } } = person
+console.log(firstName) // Aelita
+```
+
+
 
 ---
 

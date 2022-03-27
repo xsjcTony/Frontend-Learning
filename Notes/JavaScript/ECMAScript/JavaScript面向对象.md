@@ -836,10 +836,10 @@ for(let key in person) {
 ### 注意点
 
 - `Object` 解构赋值和 `Array` 解构赋值除了符号不一样, 其他一模一样 (详见 `数组` 中 `解构赋值`)
-
 - `Object` 解构赋值使用 `{}`
 - 左边的 `变量名称` 必须和 `Object` 的 `属性名称` 一致, 才能解构出数据
 - 想使用新的 `变量名称` 需要使用 `originalName: newName`
+- 可以多层解构
 
 
 
@@ -882,6 +882,9 @@ console.log(n, age, s); // undefined, 24, undefined
 // 使用新变量名称
 let {name: n, age: a, say: s} = person;
 console.log(n, a, s); // "tony", 24, say() { console.log("hello world"); }
+
+// 多层解构
+let { name: { first, last } } = person
 ```
 
 
