@@ -168,6 +168,7 @@ module.exports = {
     'vue/prefer-template': 'error',
     'vue/space-infix-ops': ['error', { int32Hint: false }],
     'vue/template-curly-spacing': ['error', 'always'],
+    'vue/operator-linebreak': ['error', 'before'],
 
     // js
     'block-spacing': ['error', 'always'],
@@ -307,6 +308,7 @@ module.exports = {
     ],
     'no-multi-spaces': ['error', { ignoreEOLComments: true }],
     'default-param-last': 'error',
+    'operator-linebreak': ['error', 'before'],
 
     // eslint-plugin-import
     'import/first': 'error',

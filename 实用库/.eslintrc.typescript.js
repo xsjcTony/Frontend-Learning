@@ -110,6 +110,7 @@ module.exports = {
     eqeqeq: ['error', 'always'],
     'no-with': 'error',
     'no-multi-spaces': ['error', { ignoreEOLComments: true }],
+    'operator-linebreak': ['error', 'before'],
 
     // eslint-plugin-import
     'import/first': 'error',

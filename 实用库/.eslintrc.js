@@ -153,6 +153,7 @@ module.exports = {
     ],
     'no-multi-spaces': ['error', { ignoreEOLComments: true }],
     'default-param-last': 'error',
+    'operator-linebreak': ['error', 'before'],
 
     // eslint-plugin-import
     'import/first': 'error',
