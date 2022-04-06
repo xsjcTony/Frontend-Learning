@@ -202,6 +202,179 @@ class Footer extends Component<myProps> {
 export default Footer
 ```
 
+---
+
+## 跨组件通讯
+
+- 跨组件方式有两种方式
+  - 一层一层传递 (和 `父子组件通讯` 方法一致)
+  - 使用 `Context`
+  - 使用 `Redux` (相当于 `Vuex` )
+  - 使用 `Hooks`
+
+
+
+### Context
+
+- 一种无需为每层组件手动添加 `props` , 就能在 `组件数` 之间进行数据传递的方法
+
+创建 `Context`
+
+- `defaultValue` 会在没有 `Provider` 时被使用
+
+```tsx
+interface MyContext {
+  name: string
+  age: number
+}
+
+// 创建一个Context对象
+const MyContext = createContext<MyContext>({ name: 'Tequila', age: 18 })
+```
+
+Provider
+
+- 生产者容器组件
+- 专门负责生产数据
+- 需要提供一个 `value` 属性
+
+```tsx
+class App extends Component {
+  render() {
+    return (
+      <MyContext.Provider value={ { name: 'Aelita', age: 24 } }>
+        <Father />
+      </MyContext.Provider>
+    )
+  }
+}
+```
+
+Consumer
+
+- 消费者容器组件
+- 专门用于消费 `Provider` 产生的数据
+- 需要将一个 `函数` 作为 `子元素`
+- 函数提供一个 `value` 参数, 即为 `Provider` 提供的 `value` , 返回值为需要渲染的内容
+
+```tsx
+// 跳过 Father 组件直接传递给 Son
+class Son extends Component {
+  render() {
+    return (
+      <MyContext.Consumer>
+        {
+          value => (
+            <div>
+              <p>{ value.name }</p> { /* Aelita */ }
+              <p>{ value.age }</p> { /* 24 */ }
+            </div>
+          )
+        }
+      </MyContext.Consumer>
+    )
+  }
+}
+```
+
+Class.contextType
+
+- 另一种在组件中获取 `context` 的方式
+- 给 `组件` 添加 `contextType` 属性, 赋值为需要使用的 `context`
+- 通过 `this.context` 访问数据
+- `函数式组件` 使用 `Component.contextType`
+- `类组件` 使用 `static contextType`
+
+```tsx
+class Son extends Component {
+  static contextType = MyContext
+
+  render() {
+    return (
+      <div>
+        <p>{ this.context.name }</p> { /* Aelita */ }
+        <p>{ this.context.age }</p> { /* 24 */ }
+      </div>
+    )
+  }
+}
+```
+
+多个 `Context`
+
+- `Context` 可以有多个, 每一个 `Consumer` 需要对应一个单独的 `Context`
+
+```tsx
+import { Component, createContext } from 'react'
+
+
+interface InfoContext {
+  name: string
+  age: number
+}
+
+interface MyState {
+  info: InfoContext
+  gender: string
+}
+
+// 创建一个Context对象
+const InfoContext = createContext<InfoContext>({ name: 'Tequila', age: 18 })
+const GenderContext = createContext<string>('unknown')
+
+class App extends Component<{}, MyState> {
+  state: MyState = {
+    info: { name: 'Aelita', age: 24 },
+    gender: 'male'
+  }
+
+  render() {
+    return (
+      <InfoContext.Provider value={ this.state.info }>
+        <GenderContext.Provider value={ this.state.gender }>
+          <Father />
+        </GenderContext.Provider>
+      </InfoContext.Provider>
+    )
+  }
+}
+
+class Father extends Component {
+  render() {
+    return (
+      <div>
+        <p>I'm Father</p>
+        <Son />
+      </div>
+    )
+  }
+}
+
+class Son extends Component {
+  render() {
+    return (
+      <InfoContext.Consumer>
+        { info => (
+          <GenderContext.Consumer>
+            { gender => (
+              <div>
+                <p>{ info.name }</p> { /* Aelita */ }
+                <p>{ info.age }</p> { /* 24 */ }
+                <p>{ gender }</p> { /* male */ }
+              </div>
+            )}
+          </GenderContext.Consumer>
+        )}
+      </InfoContext.Consumer>
+    )
+  }
+}
+
+export default App
+```
+
+---
+
 
 
 
