@@ -217,6 +217,7 @@ export default Footer
 ### Context
 
 - 一种无需为每层组件手动添加 `props` , 就能在 `组件数` 之间进行数据传递的方法
+- 从上至下传递
 
 创建 `Context`
 
@@ -323,7 +324,7 @@ const InfoContext = createContext<InfoContext>({ name: 'Tequila', age: 18 })
 const GenderContext = createContext<string>('unknown')
 
 class App extends Component<{}, MyState> {
-  state: MyState = {
+  state: Readonly<MyState> = {
     info: { name: 'Aelita', age: 24 },
     gender: 'male'
   }
@@ -373,13 +374,79 @@ class Son extends Component {
 export default App
 ```
 
+
+
+### EventBus
+
+[events - npm](https://www.npmjs.com/package/events)
+
+- 使用第三方库 `events` 
+- 可以实现包括 `兄弟组件` 之间的任意跨组件通讯
+
+安装
+
+```shell
+npm i events
+npm i -D @types/events
+```
+
+基本使用
+
+- 创建全局 `eventBus` (事件管理对象)
+
+```tsx
+import { EventEmitter } from 'events'
+
+// 全局事件管理器
+const eventBus = new EventEmitter()
+```
+
+- 在需要接收数据 `组件` 的 `生命周期` 中的 `componentDidMount` 中, 添加 `eventBus` 监听的事件
+
+```tsx
+class A extends Component {
+  public componentDidMount() {
+    eventBus.addListener('say', this.aFn)
+  }
+
+  private aFn = (name: string, age: number) => {
+    console.log(name, age)
+  }
+  
+  public render() {
+    return (
+      <button onClick={ this.bBtnClick }>B button</button>
+    )
+  }
+}
+```
+
+- 在需要发送数据的 `组件` 中, 调用 `eventBus` 中对应的事件
+
+```tsx
+class B extends Component {
+  private bBtnClick = () => {
+    eventBus.emit('say', 'Aelita', 24)
+  }
+}
+```
+
+- <span style="color: #0ff">由于 `eventBus` 的性能问题, 无论是在 `React` 还是 `Vue` 中, 都要在组件销毁时取消监听对应的事件</span>
+  - `React` 中对应的是 `componentWillUnmount` 生命周期
+
+```tsx
+public componentWillUnmount() {
+  eventBus.removeListener('say', this.aFn)
+}
+```
+
+原理图示
+
+![event_bus.png](D:\xsjcTony\it666\Frontend-Learning\Notes\React\images\event_bus.png)
+
 ---
 
-
-
-
-
-
+## 
 
 
 
