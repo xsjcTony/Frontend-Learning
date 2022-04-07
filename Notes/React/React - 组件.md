@@ -433,6 +433,7 @@ class B extends Component {
 
 - <span style="color: #0ff">由于 `eventBus` 的性能问题, 无论是在 `React` 还是 `Vue` 中, 都要在组件销毁时取消监听对应的事件</span>
   - `React` 中对应的是 `componentWillUnmount` 生命周期
+  - <span style="color: #cfc">**<坑>** `Vite` 环境下, 不写会监听两次</span>
 
 ```tsx
 public componentWillUnmount() {
@@ -446,7 +447,362 @@ public componentWillUnmount() {
 
 ---
 
-## 
+## State vs Props
+
+- 都是用于存储数据的
+  - `State` 用于存储自己的数据
+  - `Props` 用于存储 `父组件` 传递过来的数据
+- 可读写性
+  - `State` 虽然可以修改, 但是理论上也是只读的, 并且除了第一次赋值时, 永远不要去直接修改
+  - `Props` 是只读的, 无法修改
+
+```tsx
+import { Component } from 'react'
+
+interface HomeProps {
+  name: string
+}
+
+interface HomeState {
+  age: number
+}
+
+class Home extends Component<HomeProps, HomeState> {
+  constructor(props: HomeProps) {
+    super(props)
+  }
+
+  public state: Readonly<HomeState> = {
+    age: 24
+  }
+
+  private btnClick = () => {
+    this.setState({
+      age: 18
+    })
+  }
+
+  public render() {
+    return (
+      <>
+        <p>{this.props.name}</p>
+        <p>{this.state.age}</p>
+        <button onClick={ this.btnClick }>Button</button>
+      </>
+    )
+  }
+}
+
+class App extends Component {
+  public render() {
+    return (
+      <div>
+        <Home name={ 'Aelita' } />
+      </div>
+    )
+  }
+}
+
+export default App
+```
+
+---
+
+## setState()
+
+- 默认情况下是 `异步` 的
+- 原因主要是为了优化性能, 将一段时间内修改的数据合并到一次 `UI更新` 中
+- <span style="color: #ff0">在 `定时器` / `原生事件` 中, `setState()` 是 **`同步`** 的</span>
+
+参数
+
+- `setState()` 可以接收第二个参数, 是数据更新之后的 `回调函数` , 在其中可以拿到更新之后的数据
+
+```tsx
+interface HomeProps {
+  name: string
+}
+
+interface HomeState {
+  age: number
+}
+
+class Home extends Component<HomeProps, HomeState> {
+  public state: Readonly<HomeState> = {
+    age: 24
+  }
+
+  private btnClick = () => {
+    this.setState({
+      age: 18
+    }, () => {
+      console.log(this.state.age) // 18
+    })
+  }
+}
+```
+
+本质
+
+- 并不是直接覆盖 `this.state` 中的数据, 而是将新 `state` 中的数据覆盖到旧的中, 类似于
+
+```tsx
+const oldState = {
+  name: 'Aelita',
+  age: 24
+}
+const newData = {
+  age: 18
+}
+const newState = Object.assign({}, oldState, newData)
+console.log(newState) // { name: 'Aelita', age: 18 }
+```
+
+合并现象
+
+- 默认情况下会收集一段时间内的数据改变, 然后统一的更新 `UI`
+- 所以以下代码会将数据从 `0` 变成 `1` , 而不是 `3`
+
+```tsx
+class Home extends Component {
+  public state: Readonly<{ count: number }> = {
+    count: 0
+  }
+
+  private btnClick = () => {
+    // 由于每次的 this.state.count 都是 0, 所以最终结果是1
+    this.setState({
+      count: this.state.count + 1
+    })
+    this.setState({
+      count: this.state.count + 1
+    })
+    this.setState({
+      count: this.state.count + 1
+    })
+  }
+
+  public render() {
+    return (
+      <>
+        <p>{ this.state.count }</p>
+        <button onClick={ this.btnClick }>Button</button>
+      </>
+    )
+  }
+}
+```
+
+解决合并现象
+
+- 在想要强制 `React` 更新 `UI` 的时候, 就可以直接给 `setState()` 传入一个函数, 参数为
+  - `prevState` : 上一次更新完毕后的 `state`
+  - `props` : 此次更新时将要被使用的 `props`
+- 所以以下代码会将数据从 `0` 变成 `3`
+
+```tsx
+class Home extends Component {
+  public state: Readonly<{ count: number }> = {
+    count: 0
+  }
+
+  private btnClick = () => {
+    this.setState((prevState, props) => ({ count: prevState.count + 1 }))
+    this.setState((prevState, props) => ({ count: prevState.count + 1 }))
+    this.setState((prevState, props) => ({ count: prevState.count + 1 }))
+  }
+
+  public render() {
+    return (
+      <>
+        <p>{ this.state.count }</p>
+        <button onClick={ this.btnClick }>Button</button>
+      </>
+    )
+  }
+}
+```
+
+---
+
+## 生命周期
+
+[React.Component – React](https://zh-hans.reactjs.org/docs/react-component.html#static-getderivedstatefromprops)
+
+[React lifecycle methods diagram](https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/)
+
+- `组件` 从生到死的过程
+- `生命周期方法` 是在特定事件点调用的方法
+- `React组件` 主要有如下几个生命周期方法
+  - `constructor` : 组件被创建的时候被调用
+  - `render` : 组件被渲染 / 更新的时候被调用
+  - `componentDidMount` : 组件被挂载, 渲染出来之后调用
+  - `componentDidUpdate` : 组件被更新, 重新渲染完毕之后调用
+  - `componentWillUnmount` : 组件被卸载之前调用
+- 不常用的生命周期方法
+  - `static getDerivedStateFromProps` : 在 `constructor` 之后, `render` 之前调用
+  - `shouldComponentUpdate` : 在组件更新时, `render` 之前调用
+  - `getSnapshotBeforeUpdate` : 在组件更新时, `render` 之后, `componentDidUpdate` 之前调用
+
+
+
+### constructor
+
+参数
+
+- `props` : `父组件` 传递过来的数据
+
+作用
+
+- 通过 `props` 接收 `父组件` 传递过来的数据
+- 通过 `this.state` 初始化内部的数据
+  - <span style="color: #0ff">一般在 `constructor` 之外定义</span>
+- 通过 `bind` 为方法绑定 `this`
+  - <span style="color: #ff0">一般会将 `方法` 作为箭头函数书写</span>
+
+
+
+### render
+
+作用
+
+- 返回组件的网页结构 (一般为 `JSX` )
+
+
+
+### componentDidMount
+
+作用
+
+- 执行依赖于 `DOM` 的操作
+- <span style="color: #0ff">**<推荐>** 发送网络请求</span>
+- 添加一些订阅
+  - 比如 `eventBus`
+  - 会在 `componentWillUnmount` 中取消订阅
+
+
+
+### componentDidUpdate
+
+`shouldComponentUpdate` 生命周期方法的返回值若为 `false` , 则不会被调用
+
+参数
+
+- `prevProps` : 组件更新之前的 `props`
+- `prevState` : 组件更新之前的 `state`
+- `snapshot` : `getSnapshotBeforeUpdate` 生命周期方法的返回值, 若没有定义则为 `undefined`
+
+作用
+
+- 对更新之后的组件进行操作
+- 比如数据发生变化之后重新发送网络请求
+
+
+
+### componentWillUnmount
+
+作用
+
+- 进行一些必要的清理操作
+  - 比如 `timer` , `eventBus` 等
+
+
+
+### static getDerivedStateFromProps
+
+- 是一个静态方法 ( `static` )
+
+参数
+
+- `props` : `父组件` 传递过来的数据
+- `state` : 当前组件的数据
+
+返回值
+
+- `对象` : 用于更新 `state`
+- `null` : 不更新任何内容
+
+作用
+
+- 只有在 `state` 的值在任何时候都取决于 `props` 才使用
+- <span style="color: #f90">尽量不要使用</span>
+
+
+
+### shouldComponentUpdate
+
+参数
+
+- `nextProps` : 更新之后的 `props`
+- `nextState` : 更新之后的 `state`
+
+返回值
+
+- `true` : 继续更新组件
+- `false` : 停止该组件的本轮更新 (无法停止 `子组件` 的更新)
+
+作用
+
+- 用于使用逻辑判断 `组件` 是否进行本轮更新 (继续执行 `render` 和 `componentDidUpdate` )
+
+
+
+### getSnapshotBeforeUpdate
+
+参数
+
+- `prevProps` : 组件更新之前的 `props`
+- `prevState` : 组件更新之前的 `state`
+
+返回值
+
+- 返回任意的值, 会作为参数传递给 `componenetDidUpdate`
+- `null` : 不返回任何值
+
+作用
+
+- 在 `DOM` 发生改变之前捕获一些信息
+- 可以用来对 `UI` 进行特殊处理, 比如捕获滚动位置
+
+
+
+### 图示
+
+![component_lifecycle.png](D:\xsjcTony\it666\Frontend-Learning\Notes\React\images\component_lifecycle.png)
+
+---
+
+## diff算法
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
