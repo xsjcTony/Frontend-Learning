@@ -744,6 +744,7 @@ class Home extends Component {
 作用
 
 - 用于使用逻辑判断 `组件` 是否进行本轮更新 (继续执行 `render` 和 `componentDidUpdate` )
+- 只作为 `性能优化` 使用
 
 
 
@@ -772,11 +773,205 @@ class Home extends Component {
 
 ---
 
-## diff算法
+## 渲染 / 更新流程
 
 
 
+### 渲染流程
 
+1. 执行 `render` 方法
+2. 将 `JSX` 转换为 `createElement()`
+3. 执行 `createElement()` 创建 `虚拟DOM树`
+4. 根据 `虚拟DOM树` 渲染出 `真实DOM` 
+
+
+
+### 更新流程
+
+1. `props` / `state` 发生改变
+2. `render` 方法重新执行
+3. 将 `JSX` 转换为 `createElement()`
+4. 执行 `createElement()` 创建 `虚拟DOM树`
+5. 新旧 `虚拟DOM树` 通过 `diff算法` 进行比较
+6. 每发现一个不同就生成一个 `mutation`
+7. 根据 `mutation` 更新 `真实DOM`
+
+
+
+### diff算法
+
+- 只会进行同层比较
+- 在比较同层的时候, 默认只会进行同位置的比较
+- 如果比较的元素为相同类型, 那么就记录变化
+- 如果比较的元素是不同类型, 那么会直接删除之前的, 并创建新的元素
+- 如果上一层比较的是不同类型的元素, 那么下一层不会进行比较, 直接创建新的元素
+
+图示
+
+![diff_algorithm.png](D:\xsjcTony\it666\Frontend-Learning\Notes\React\images\diff_algorithm.png)
+
+
+
+### 列表渲染优化
+
+- 列表渲染中 `key` 的作用可以让 `diff算法` 在同层比较时不只是对比同位置, 还会对比同层其他位置, 可以解决性能问题
+- `key` 必须是唯一的
+- `key` 不到万不得已不要使用 `index` , 反而会拖累性能
+
+图示
+
+![list_key.png](D:\xsjcTony\it666\Frontend-Learning\Notes\React\images\list_key.png)
+
+---
+
+## 性能优化
+
+[性能优化 – React](https://zh-hans.reactjs.org/docs/optimizing-performance.html)
+
+
+
+### React.PureComponent
+
+- 默认情况下, 当 `父组件` 更新时, `子组件` 也会重新渲染
+- 可以使用一些逻辑来判断 `子组件` 是否需要更新
+- 使用 `子组件` 的 `shouldComponentUpdate` 生命周期方法
+  - 若需要更新, 则返回 `true`
+  - 若不需要更新, 则返回 `false`
+- 如果只是 `浅对比` `props` 和 `state` , 那么可以让组件继承 `React.PureComponent`
+  - 如果是数据 `深层嵌套` 的, 那么可能会导致一些 `BUG` , 或者推荐使用 `immutable` 来表示数据
+  - <span style="color: #ff0">所有 `PureComponent` 的所有 `子组件` 的 `props` 更新将被跳过, 因此建议所有 `PureComponent` 的 `子组件` 都是 `PureComponent`</span>
+
+```tsx
+import { Component, PureComponent } from 'react'
+
+
+interface HomeState {
+  age: number
+}
+
+interface AppState {
+  name: string
+}
+
+class Home extends PureComponent<unknown, HomeState> {
+  public constructor(props: unknown) {
+    super(props)
+  }
+
+  public state: Readonly<HomeState> = {
+    age: 24
+  }
+
+  public render() {
+    console.log('Home render()')
+    return (
+      <>
+        <p>{ this.state.age }</p>
+      </>
+    )
+  }
+}
+
+class App extends Component<unknown, AppState> {
+  public constructor(props: unknown) {
+    super(props)
+  }
+
+  public state: Readonly<AppState> = {
+    name: 'Aelita'
+  }
+
+  private btnClick = () => {
+    this.setState({
+      name: 'Tequila'
+    })
+  }
+
+  public render() {
+    console.log('App render()')
+    return (
+      <>
+        <p>{ this.state.name }</p>
+        <button onClick={ this.btnClick }>App Button</button>
+        <Home />
+      </>
+    )
+  }
+}
+
+export default App
+```
+
+
+
+### React.memo
+
+- 由于 `函数式组件` 没有 `生命周期方法` , 那么可以使用 `React.memo` `高阶组件` 来 `浅对比` `props` 决定是否更新组件
+- 默认使用 `浅对比` , 若需要自定义对比方式, 可以作为第二个参数传入, 对比方法接收两个参数
+  - `prevProps` : 更新之前的 `props`
+  - `nextProps` : 更新之后的 `props`
+
+```tsx
+import { Component, memo } from 'react'
+
+
+interface AppState {
+  name: string
+}
+
+const Home = memo(function(): JSX.Element {
+  console.log('Home render()')
+  return (
+    <p>Home</p>
+  )
+})
+
+class App extends Component<unknown, AppState> {
+  public constructor(props: unknown) {
+    super(props)
+  }
+
+  public state: Readonly<AppState> = {
+    name: 'Aelita'
+  }
+
+  private btnClick = () => {
+    this.setState({
+      name: 'Tequila'
+    })
+  }
+
+  public render() {
+    console.log('App render()')
+    return (
+      <>
+        <p>{ this.state.name }</p>
+        <button onClick={ this.btnClick }>App Button</button>
+        <Home />
+      </>
+    )
+  }
+}
+
+export default App
+```
+
+
+
+### 注意点
+
+- 在更改 `state` 或 `props` 的时候, 永远
+  - 不要修改原有的对象
+  - 要传入一个全新的对象
+- 这是为了 `引用数据类型` 的 `浅对比` 不会因为引用了相同的地址而返回 `true` , 否则会导致 `React.PureComponent` / `React.memo` 中 `浅对比` 的 `BUG`
+- 也是为了避免在 `生命周期方法` 中的 `prevState` / `prevProps` 被修改, 从而造成 `BUG`
+- 可以多利用 `...` 扩展运算符对 `数组` / `对象` 进行 `浅拷贝` , 放在新的 `数组` / `对象` 中
+
+---
+
+## Ref
+
+[Refs and the DOM – React](https://zh-hans.reactjs.org/docs/refs-and-the-dom.html)
 
 
 
