@@ -969,11 +969,139 @@ export default App
 
 ---
 
-## Ref
+## Refs
 
 [Refs and the DOM – React](https://zh-hans.reactjs.org/docs/refs-and-the-dom.html)
 
+- 访问 `DOM` 节点
+- 访问在 `render` 方法中创建的 `React元素`
+- 作为 `ref` 的 `组件` 中的方法必须要是 `public` 才能被 `ref` 访问并调用
+- 无法为 `函数式组件` 创建 `ref` , 只有 `class组件` 可以
+- 无论什么组件中都可以使用 `DOM` 节点或 `class组件` 的 `ref`
 
+
+
+### createRef
+
+- 用于创建 `ref`
+- 在 `元素` 上通过 `ref={ this.xxxRef }` (同名变量) 绑定 `ref`
+- 通过 `xxxRef.current` 获取元素 / 组件实例
+
+```tsx
+import { Component, createRef } from 'react'
+import type { ReactNode } from 'react'
+
+
+class App extends Component {
+  // 若需要被其他组件中将本组件作为 ref 调用该方法, 则必须为 public
+  public btnClick = (): void => {
+    console.dir(this.pRef.current)
+  }
+
+  private pRef = createRef<HTMLParagraphElement>()
+
+  public render(): ReactNode {
+    console.log('App render()')
+    return (
+      <>
+        <p ref={ this.pRef }>I'm box</p>
+        <button onClick={ this.btnClick }>App Button</button>
+      </>
+    )
+  }
+}
+
+export default App
+```
+
+
+
+### 回调Refs
+
+- 用于创建 `ref`
+- 在 `元素` 上通过 `ref={ this.setXxxRef }` 的方式绑定设置 `ref` 的 `方法`
+- 通过 `xxxRef` 直接获取元素 / 组件实例
+- <span style="color: #f90">如果使用内联函数定义, 那么在更新过程中, 函数会被执行两次, 所以不建议这么操作 (虽然无伤大雅)</span>
+- `回调ref` 可以做到任何 `createRef` 可以做到的事情, 大部分情况下使用 `createRef` 即可, 某些情况下需要使用 `回调ref` (比如动态内容)
+
+```tsx
+import { Component } from 'react'
+import type { ReactNode } from 'react'
+
+
+class App extends Component {
+  public btnClick = (): void => {
+    console.dir(this.pRef)
+  }
+
+  private setPRef = (p: HTMLParagraphElement | null): void => {
+    this.pRef = p
+  }
+
+  private pRef: HTMLParagraphElement | null = null
+
+  public render(): ReactNode {
+    console.log('App render()')
+    return (
+      <>
+        <p ref={ this.setPRef }>I'm box</p>
+        <button onClick={ this.btnClick }>App Button</button>
+      </>
+    )
+  }
+}
+
+export default App
+```
+
+
+
+### Refs转发
+
+[Refs 转发 – React](https://zh-hans.reactjs.org/docs/forwarding-refs.html)
+
+- 一种将 `ref` 自动通过 `组件` 传递到其 `子组件` 的技巧
+- 可以获取到 `函数式组件` 当中的某个 `元素` (当然依然不能将 `函数是组件` 本身作为 `ref` )
+
+React.forwardRef()
+
+- 是一个 `高阶组件`
+- 专门用于转发 `ref`
+
+```tsx
+import { Component, createRef, forwardRef } from 'react'
+import type { ReactNode } from 'react'
+
+
+const About = forwardRef<HTMLSpanElement, unknown>((props, ref) => (
+  <div>
+    <p >I'm p</p>
+    <span ref={ ref }>I'm span</span>
+  </div>
+))
+
+class App extends Component {
+  private aboutSpanRef = createRef<HTMLSpanElement>()
+
+  private btnClick = (): void => {
+    console.log(this.aboutSpanRef)
+  }
+
+  public render(): ReactNode {
+    console.log('App render()')
+    return (
+      <>
+        <About ref={ this.aboutSpanRef } />
+        <button onClick={ this.btnClick }>App Button</button>
+      </>
+    )
+  }
+}
+
+export default App
+```
+
+---
 
 
 
