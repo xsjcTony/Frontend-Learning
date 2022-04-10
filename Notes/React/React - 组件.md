@@ -1103,13 +1103,350 @@ export default App
 
 ---
 
+## 受控组件
+
+[受控组件 – React](https://zh-hans.reactjs.org/docs/forms.html#controlled-components)
+
+- `值` 受到 `React` 控制的表单元素
+- `state` 成为唯一数据源
+- 可以使用 `[key]: value` 的技巧来处理多个 `受控组件`
+  - 可以给元素添加 `name` 属性, 然后通过 `event.target.name` 获取来作为 `key`
+- 默认的表单元素为 `非受控组件` , 即 `state` 不是唯一的数据源
+
+```tsx
+import { Component } from 'react'
+import type { ReactNode, ChangeEvent } from 'react'
+
+
+interface AppState {
+  name: string
+  email: string
+  phone: string
+}
+
+class App extends Component<unknown, AppState> {
+  public state: Readonly<AppState> = {
+    name: 'Aelita',
+    email: 'xsjcTony@126.com',
+    phone: '13888888888'
+  }
+
+  private handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+    this.setState({
+      [event.target.name]: event.target.value
+    } as { [P in keyof AppState]: AppState[P] }) // 为了防止TypeScript报错, 需要使用这种方式来为计算属性指定类型
+  }
+
+  public render(): ReactNode {
+    return (
+      <form>
+        <input type="text"
+               name="name"
+               value={ this.state.name }
+               onChange={ this.handleChange }
+        />
+        <input type="text"
+               name="email"
+               value={ this.state.email }
+               onChange={ this.handleChange }
+        />
+        <input type="text"
+               name="phone"
+               value={ this.state.phone }
+               onChange={ this.handleChange }
+        />
+      </form>
+    )
+  }
+}
+
+export default App
+```
+
+---
+
+## 高阶组件 (HOC)
+
+[高阶组件 – React](https://zh-hans.reactjs.org/docs/higher-order-components.html)
+
+- 全称 `High Order Component`
+- 一种复用组件逻辑的高级技巧
+- 不是一个 `API` , 而是一种基于 `React` 的组合特性而形成的 `设计模式`
+- 参数为 `组件` , 返回值为一个 `新组件` 的 `函数`
 
 
 
+### 基本格式
+
+```tsx
+import { Component } from 'react'
+import type { ComponentType } from 'react'
+
+
+// 原始组件
+class Home extends Component {
+  render() {
+    return (
+      <div>Home</div>
+    )
+  }
+}
+
+// 由于是函数, 所以可以传递任意数量的参数, 高度自定义
+// P stands for Props
+function enhanceComponent<P>(WrappedComponent: ComponentType<P>) {
+  return class extends Component {
+    render() {
+      return (
+        <WrappedComponent { ...(this.props as P) } /> // 原始组件, 可以传递任意数据, 以及透传props
+      )
+    }
+  }
+}
+
+// 通过函数生成的高阶组件
+const EnhancedComponent = enhanceComponent(Home)
+
+class App extends Component {
+  render() {
+    return (
+      <EnhancedComponent /> // 使用高阶组件
+    )
+  }
+}
+
+export default App
+```
 
 
 
+### 代码复用 / 增强Props
 
+- 可以减少冗余代码
+
+- 如下例子中将一些可以复用的 `props` 抽象出来
+  - 将从 `Consumer` 中提取数据的逻辑抽取了出来, 解决了 `Father` 组件代码冗余的问题
+- 不影响本身传递的 `props` , 可以视为增强 `props`
+
+```tsx
+import { Component, createContext, PureComponent } from 'react'
+import type { ComponentType } from 'react'
+
+
+interface UserContext {
+  name: string
+  age: number
+}
+
+interface UserProps extends UserContext {
+  country: string
+}
+
+const UserContext = createContext<UserContext>({
+  name: 'Lily',
+  age: 18
+})
+
+class Son1 extends PureComponent<UserProps> {
+  public render() {
+    return (
+      <>
+        <p>{ this.props.name }</p>
+        <p>{ this.props.age }</p>
+        <p>{ this.props.country }</p>
+      </>
+    )
+  }
+}
+
+class Son2 extends PureComponent<UserProps> {
+  public render() {
+    return (
+      <ul>
+        <li>{ this.props.name }</li>
+        <li>{ this.props.age }</li>
+        <li>{ this.props.country }</li>
+      </ul>
+    )
+  }
+}
+
+const enhanceProps = <T extends UserContext>(WrappedComponent: ComponentType<T>) => {
+  return class extends PureComponent<Omit<T, keyof UserContext>> {
+    public render() {
+      return (
+        <UserContext.Consumer>
+          { value => <WrappedComponent { ...value } { ...this.props as T } /> }
+        </UserContext.Consumer>
+      )
+    }
+  }
+}
+
+const Father1 = enhanceProps(Son1)
+const Father2 = enhanceProps(Son2)
+
+class App extends Component {
+  render() {
+    return (
+      <UserContext.Provider value={ { name: 'Aelita', age: 24 } }>
+        <Father1 country="Australia" />
+        <Father2 country="New Zealand" />
+      </UserContext.Provider>
+    )
+  }
+}
+
+export default App
+```
+
+
+
+### 拦截生命周期
+
+- 可以减少冗余代码
+- 如下例子中将 `生命周期` 拦截了下来并做了一些操作
+- 然后将操作完毕的数据通过 `props` 传递了下去, 在被包裹的组件中可以直接使用
+
+```tsx
+import { Component, PureComponent } from 'react'
+import type { ComponentType } from 'react'
+import { EventEmitter } from 'events'
+
+
+const eventBus = new EventEmitter()
+
+interface UserList {
+  list: string[]
+}
+
+class Son1 extends PureComponent<UserList> {
+  public render() {
+    return (
+      <>
+        { this.props.list.map(name => <p key={ name }>{ name }</p>) }
+      </>
+    )
+  }
+}
+
+class Son2 extends PureComponent<UserList> {
+  public render() {
+    return (
+      <ul>
+        { this.props.list.map(name => <li key={ name }>{ name }</li>) }
+      </ul>
+    )
+  }
+}
+
+const enhanceLifecycle = <T extends UserList>(WrappedComponent: ComponentType<T>) => {
+  return class extends PureComponent<Omit<T, keyof UserList>, UserList> {
+    public state: Readonly<UserList> = {
+      list: []
+    }
+
+    public componentDidMount() {
+      eventBus.addListener('update', this.update)
+    }
+
+    public componentWillUnmount() {
+      eventBus.removeListener('update', this.update)
+    }
+
+    private update = (list: string[]) => {
+      this.setState({
+        list
+      })
+    }
+
+    public render() {
+      return (
+        <WrappedComponent list={ this.state.list } { ...this.props as any } /> // 虽然是any, 但是依然会被检查类型
+      )
+    }
+  }
+}
+
+const Father1 = enhanceLifecycle(Son1)
+const Father2 = enhanceLifecycle(Son2)
+
+class App extends Component {
+  private btnClick = () => {
+    eventBus.emit('update', ['a', 'b', 'c'])
+  }
+
+  public render() {
+    return (
+      <>
+        <Father1 />
+        <Father2 />
+        <button onClick={ this.btnClick }>App Button</button>
+      </>
+    )
+  }
+}
+
+export default App
+```
+
+
+
+### 权限控制
+
+- 一个简单的检查登录状态的示例
+
+```tsx
+import { Component, PureComponent } from 'react'
+import type { ComponentType } from 'react'
+
+
+interface LoginStatus {
+  loggedIn: boolean
+}
+
+class Info extends PureComponent {
+  public render() {
+    return (
+      <div>Info</div>
+    )
+  }
+}
+
+class Login extends PureComponent {
+  public render() {
+    return (
+      <div>Login</div>
+    )
+  }
+}
+
+const checkLogin = (WrappedComponent: ComponentType) => {
+  return class extends PureComponent<LoginStatus> {
+    public render() {
+      if (this.props.loggedIn) {
+        return <WrappedComponent />
+      } else {
+        return <Login />
+      }
+    }
+  }
+}
+
+const CheckLogin = checkLogin(Info)
+
+class App extends Component {
+  public render() {
+    return (
+      <CheckLogin loggedIn />
+    )
+  }
+}
+
+export default App
+```
+
+---
 
 
 
