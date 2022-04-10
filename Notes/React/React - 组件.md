@@ -433,7 +433,6 @@ class B extends Component {
 
 - <span style="color: #0ff">由于 `eventBus` 的性能问题, 无论是在 `React` 还是 `Vue` 中, 都要在组件销毁时取消监听对应的事件</span>
   - `React` 中对应的是 `componentWillUnmount` 生命周期
-  - <span style="color: #cfc">**<坑>** `Vite` 环境下, 不写会监听两次</span>
 
 ```tsx
 public componentWillUnmount() {
@@ -505,6 +504,13 @@ class App extends Component {
 
 export default App
 ```
+
+
+
+### props.children
+
+- 可以获取当前组件的所有 `子元素` / `子组件`
+- 比如组件 `A` 的 `this.props.children` , 拿到的就是双标签 `<A></A>` 中的所有内容
 
 ---
 
@@ -1448,9 +1454,136 @@ export default App
 
 ---
 
+## Portals
+
+[Portals – React](https://zh-hans.reactjs.org/docs/portals.html)
+
+- 一种将 `子节点` 渲染到存在于 `父组件` 之外的 `DOM节点` 中的能力
+- 接收两个参数
+  - `child` : 任何可渲染的 `React子元素` , 比如 `this.props.children`
+  - `container` : 一个 `DOM` 元素
+
+`App.tsx`
+
+```tsx
+import { Component, PureComponent } from 'react'
+import { createPortal } from 'react-dom'
 
 
+const otherContainer = document.querySelector('#other')
 
+class Modal extends PureComponent {
+  public render() {
+    return createPortal(
+      this.props.children,
+      otherContainer! // 除去 null 的情况
+    )
+  }
+}
+
+class App extends Component {
+  public render() {
+    return (
+      <Modal>
+        <div id="modal">Modal</div>
+      </Modal>
+    )
+  }
+}
+
+export default App
+```
+
+`index.html`
+
+```html
+<body>
+  <div id="app"></div>
+  <div id="other"></div>
+  <script type="module" src="/src/main.tsx"></script>
+</body>
+```
+
+---
+
+## Fragments
+
+[Fragments – React](https://zh-hans.reactjs.org/docs/fragments.html)
+
+- 可以让一个组件返回多个元素
+- 以 `React.Fragment` 作为根元素, 不会被渲染出来
+- 配合 `列表渲染` 使用时, 需要添加 `key` 属性 (比如配合 `<dt>` / `<dd>` 使用)
+- 可以使用 `<></>` 双标签的 `短语法`
+  - `短语法` 不支持 `key` 属性, 所以 `列表渲染` 中不可以使用
+
+```tsx
+import { Component, Fragment, PureComponent } from 'react'
+
+
+interface HomeState {
+  nameList: string[]
+}
+
+class Home extends PureComponent<{}, HomeState> {
+  public state: HomeState = {
+    nameList: ['a', 'b', 'c']
+  }
+
+  public render() {
+    return (
+      this.state.nameList.map(name => (
+        <Fragment key={ name }>
+          <p>{ name }</p>
+          <p>{ name }</p>
+          <p>{ name }</p>
+        </Fragment>
+      ))
+    )
+  }
+}
+
+class App extends Component {
+  public render() {
+    return (
+      <>
+        <Home />
+      </>
+    )
+  }
+}
+
+export default App
+```
+
+---
+
+## StrictMode
+
+[严格模式 – React](https://zh-hans.reactjs.org/docs/strict-mode.html)
+
+- 通过 `<React.StrictMode>` 开启严格模式
+- 不会许安然处任何 `UI` 元素
+- 仅在 `开发模式` 下有效
+- 会检查一系列的坑
+
+```tsx
+import { StrictMode } from 'react'
+import { createRoot } from 'react-dom/client'
+import App from './App'
+
+
+const root = document.querySelector('#app')
+
+if (!root) {
+  throw new Error('Root element not found')
+}
+
+createRoot(root).render(
+  <StrictMode>
+    <App />
+  </StrictMode>
+)
+```
 
 
 
