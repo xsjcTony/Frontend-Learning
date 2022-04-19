@@ -218,6 +218,116 @@ props
 <Outlet />
 ```
 
+
+
+### useRoutes
+
+- 代替 `Routes` 组件的 `Hooks`
+- 使用 `JavaScript` 对象统一管理 `路由`
+
+```tsx
+import Home from '../components/Home'
+import About from '../components/About'
+import Other from '../components/Other'
+import User from '../components/User'
+import Login from '../components/Login'
+import Discover from '../components/Discover'
+
+
+const Suggestion = (): JSX.Element => <div>Suggestion</div>
+const Ranking = (): JSX.Element => <div>Ranking</div>
+const Playlist = (): JSX.Element => <div>Playlist</div>
+
+const routes = [
+  {
+    path: '/home',
+    element: <Home />
+  },
+  {
+    path: '/about/:name/:age',
+    element: <About />
+  },
+  {
+    path: '/other',
+    element: <Other />
+  },
+  {
+    path: '/user',
+    element: <User />
+  },
+  {
+    path: '/login',
+    element: <Login />
+  },
+  {
+    path: '/discover',
+    element: <Discover />,
+    children: [
+      {
+        path: '',
+        element: <Suggestion />
+      },
+      {
+        path: 'ranking',
+        element: <Ranking />
+      },
+      {
+        path: 'playlist',
+        element: <Playlist />
+      }
+    ]
+  }
+]
+
+export default routes
+```
+
+```tsx
+import { NavLink, useRoutes } from 'react-router-dom'
+import routes from './router'
+
+
+const App = (): JSX.Element => {
+  return (
+    <>
+      <NavLink to="/home?name=Aelita&age=18"
+               style={({ isActive }) => isActive ? { color: 'red' } : {}}
+      >
+        Home
+      </NavLink>
+      <NavLink to="/about/Aelita/18"
+               style={({ isActive }) => isActive ? { color: 'red' } : {}}
+      >
+        About
+      </NavLink>
+      <NavLink to="/other"
+               state={{
+                 name: 'Aelita',
+                 age: 18,
+                 gender: 'female'
+               }}
+      >
+        Other
+      </NavLink>
+      <NavLink to="/user"
+               style={({ isActive }) => isActive ? { color: 'red' } : {}}
+      >
+        User
+      </NavLink>
+      <NavLink to="/discover"
+               style={({ isActive }) => isActive ? { color: 'red' } : {}}
+      >
+        Discover
+      </NavLink>
+
+      {useRoutes(routes)}
+    </>
+  )
+}
+
+export default App
+```
+
 ---
 
 ## 参数
