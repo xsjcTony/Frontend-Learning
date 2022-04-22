@@ -191,6 +191,8 @@ export default App
 - 在 `方法` 中可以随时调用 `dispatch` 和 `getState`
 - `@reduxjs/toolkit` 中自带
 
+
+
 用途
 
 - 从 `组件` 中抽取一些和 `UI` 无关的复杂的逻辑
@@ -207,6 +209,8 @@ export default App
 |   Store   | <---- |  Reducer  | <---- |  异步请求   | <---- |  Action   |
 -------------       -------------       -------------       -------------
 ```
+
+
 
 基本使用
 
@@ -271,7 +275,115 @@ const App = (): JSX.Element => {
     <div>
       {/* 原来的 */}
       <p>{name}</p>
-      <button onClick={() => void dispatch(fetchName('Lily'))}>Set name to "Lily"</button>
+      <button onClick={() => void dispatch(fetchName('Tequila'))}>Set name to "Tequila"</button>
+    </div>
+  )
+}
+
+export default App
+```
+
+---
+
+## Redux-saga
+
+[Redux-Saga - An intuitive Redux side effect manager. | Redux-Saga](https://redux-saga.js.org/)
+
+- 用于在 `redux` 中管理 `副作用`
+- 可以执行 `异步` 操作
+- 基于 `generator`
+- 相比 `redux-thunk` 更好扩展和测试
+- 本质是拦截 `dispatch` 派发的 `action` , 从而实现在 `reducer` 执行之前进行一些操作
+
+安装
+
+```shell
+npm i redux-saga
+```
+
+基本方法
+
+- `takeEvery` : 拦截每个指定的 `action`
+- `takeLatest` : 拦截每个指定的 `action` , 并停止前一次的 `hanlder`
+- `all` : 同时进行多个 `effect` , 传入一个 `数组`
+
+基本使用
+
+- 接 `基本使用` 中的例子
+
+- 注册 `redux-saga` 中间件
+
+```typescript
+// /src/store/index.ts
+import createSagaMiddleware from 'redux-saga'
+import mySaga from './saga'
+
+
+const sagaMiddleware = createSagaMiddleware()
+
+const store = configureStore({
+  // reducer,
+  middleware: getDefaultMiddleware => getDefaultMiddleware().concat(sagaMiddleware) // 不可以使用...扩展运算符, 因为或破坏类型
+})
+
+// 注册完毕之后需要run
+sagaMiddleware.run(mySaga)
+```
+
+- 准备一个 `触发器`
+
+```typescript
+// /src/store/slices/counterSlice.ts
+const counterSlice = createSlice({
+  name: 'counter',
+  initialState,
+  reducers: {
+    // reducer
+    changeHobby: (state, action: PayloadAction<string>) => {
+      state.hobby = action.payload
+    },
+    fetchHobby: () => {} // type为 'counter/fetchHobby'
+  }
+})
+```
+
+- 在 `saga.ts` 中编写 `拦截器` 以及 `处理逻辑`
+  - 使用 `generator`
+
+```typescript
+import { takeEvery, put } from 'redux-saga/effects'
+import { changeHobby } from './slices/counterSlice'
+
+
+function* myHandler() {
+  yield new Promise(resolve => setTimeout(resolve, 2000))
+  yield put(changeHobby('TypeScript'))
+}
+
+export default function* mySaga() fetchHobby
+  yield takeEvery('counter/changeHobbyTrigger', myHandler)
+}
+```
+
+- 在 `组件` 中触发 `触发器`
+
+```tsx
+// /src/App.tsx
+import { useDispatch, useSelector } from 'react-redux'
+import type { AppDispatch } from './store'
+import { fetchHobby } from './store/slices/counterSlice'
+
+
+const App = (): JSX.Element => {
+  // 之前的
+  const hobby = useSelector((state: RootState) => state.counter.hobby)
+  const dispatch = useDispatch<AppDispatch>()
+
+  return (
+    <div>
+      {/* 之前的 */}
+      <p>{hobby}</p>
+      <button onClick={() => void dispatch(fetchHobby())}>Set hobby to "TypeScript"</button>
     </div>
   )
 }
