@@ -4,6 +4,12 @@
 
 > [Hook 简介 – React](https://zh-hans.reactjs.org/docs/hooks-intro.html)
 
+> [Hooks | React TypeScript Cheatsheets](https://react-typescript-cheatsheet.netlify.app/docs/basic/getting-started/hooks/)
+>
+> [React Hooks in TypeScript. Released in React v16.8.0, React Hooks… | by James Ravenscroft | Medium](https://medium.com/@jrwebdev/react-hooks-in-typescript-88fce7001d0d)
+>
+> [TypeScript and React: Hooks](https://fettblog.eu/typescript-react/hooks/)
+
 
 
 ## 基本概念
@@ -171,6 +177,62 @@ const Home = (): JSX.Element => {
       <p>{age}</p>
       <button onClick={() => void setAge(age + 1)}>+1</button>
       <button onClick={() => void setAge(age - 1)}>-1</button>
+    </div>
+  )
+}
+
+export default App
+```
+
+---
+
+## useContext
+
+- 返回一个 `context` 的值
+- 相当于 `Context.Consumer`
+
+基本使用
+
+- 导入
+
+```tsx
+import { useContext } from 'react'
+```
+
+- 接收一个 `Context`
+  - `createContext()` 的返回值
+
+完整示例
+
+```tsx
+import { createContext, useContext } from 'react'
+
+
+const UserContext = createContext({
+  name: 'Tequila',
+  age: 18
+})
+const ColorContext = createContext<string>('#ffc0cb')
+
+const App = (): JSX.Element => {
+  return (
+    <UserContext.Provider value={{ name: 'Aelita', age: 18 }}>
+      <ColorContext.Provider value="pink">
+        <Home />
+      </ColorContext.Provider>
+    </UserContext.Provider>
+  )
+}
+
+const Home = (): JSX.Element => {
+  const { name, age } = useContext(UserContext)
+  const color = useContext(ColorContext)
+
+  return (
+    <div>
+      <p>{name}</p>
+      <p>{age}</p>
+      <p>{color}</p>
     </div>
   )
 }
