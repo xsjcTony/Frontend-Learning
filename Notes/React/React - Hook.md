@@ -95,9 +95,90 @@ const App = (): JSX.Element => {
 export default App
 ```
 
+---
+
+## useEffect
+
+[使用 Effect Hook – React](https://zh-hans.reactjs.org/docs/hooks-effect.html)
+
+- 用于在 `组件` 中执行 `副作用` 操作, 比如
+  - 设置订阅
+  - 手动更改 `真实DOM`
+- 可以视为 `ComponentDidMount` , `ComponentDidUpdate` 和 `ComponentWillUnmount` 的组合
+- 默认情况下会在 `DOM` 每次渲染之后都执行一次 (包括 `清除` 操作)
+  - 可以使用第二个 `参数` 控制
+
+基本使用
+
+- 导入
+
+```tsx
+import { useEffect } from 'react'
+```
+
+- 接收两个参数
+  - 第一个参数: `副作用` 函数体
+    - 返回值为清除该 `副作用` 的 `函数`
+    - 会在和 `ComponentWillUnmount` 相同的时机执行
+  - 第二个参数: 一个 `数组` , 包含了一些依赖, 只有其中的值更新了才会重新执行这个 `useEffect`
+    - <span style="color: #f90">必须要包含所有可能会因为外部变化的依赖值, 否则会导致使用旧数据的 `BUG`</span>
+    - 可以传入一个空数组 `[]` 让该 `useEffect` 只执行一次
+
+完整示例
+
+```tsx
+import { useEffect, useState } from 'react'
 
 
+const App = (): JSX.Element => {
+  const [isHomeShow, setIsHomeShow] = useState<boolean>(true)
 
+  return (
+    <>
+      {isHomeShow && <Home />}
+      <hr />
+      <button onClick={() => void setIsHomeShow(!isHomeShow)}>Show / hide Home</button>
+    </>
+  )
+}
+
+const Home = (): JSX.Element => {
+  const [name, setName] = useState<string>('Aelita')
+  const [age, setAge] = useState<number>(18)
+
+  useEffect(() => {
+    // componentDidMount + componentDidUpdate
+    console.log('modify DOM')
+  })
+
+  useEffect(() => {
+    console.log('subscribe')
+
+    // componentWillUnmount
+    return () => {
+      console.log('unsubscribe')
+    }
+  })
+
+  useEffect(() => {
+    console.log(`Only trigger when age changes ${age}`)
+  }, [age])
+
+  return (
+    <div>
+      <p>{name}</p>
+      <button onClick={() => void setName('Tequila')}>change name to "Tequila"</button>
+      <p>{age}</p>
+      <button onClick={() => void setAge(age + 1)}>+1</button>
+      <button onClick={() => void setAge(age - 1)}>-1</button>
+    </div>
+  )
+}
+
+export default App
+```
+
+---
 
 
 
