@@ -1,0 +1,63 @@
+.box-enter {
+    width: 0;
+    height: 0;
+    opacity: 0;
+    background: skyblue;
+}
+
+.box-enter-active {
+    width: 100px;
+    height: 100px;
+    opacity: 1;
+    transition: all 2s;
+}
+
+.box-enter-done {
+    width: 100px;
+    height: 100px;
+    opacity: 1;
+    background: skyblue;
+}
+
+.box-exit {
+    width: 100px;
+    height: 100px;
+    opacity: 1;
+    background: #f00;
+}
+
+.box-exit-active {
+    width: 0;
+    height: 0;
+    opacity: 0;
+    background: #f00;
+    transition: all 2s;
+}
+
+.box-exit-done {
+    width: 0;
+    height: 0;
+    opacity: 0;
+    background: #f00;
+}
+
+
+.box2-appear {
+    width: 0;
+    height: 0;
+    opacity: 0;
+    background: skyblue;
+}
+
+.box2-appear-active {
+    width: 100px;
+    height: 100px;
+    opacity: 1;
+    transition: all 2s;
+}
+
+.box2-appear-done {
+    width: 100px;
+    height: 100px;
+    background: skyblue;
+}

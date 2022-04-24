@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>05-JSX-绑定属性</title>
+</head>
+<body>
+<div id="container"></div>
+
+<!-- 原生DOM -->
+<p id="box" class="active" style="color: red; font-size: 100px;">I'm p</p>
+
+<script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+<script src="https://unpkg.com/@babel/standalone/babel.js" crossorigin></script>
+
+<!-- JSX -->
+<script type="text/babel">
+  class About extends React.Component {
+    constructor(props) {
+      super(props)
+
+      this.state = {
+        message: 'Aelita'
+      }
+    }
+
+    render() {
+      return (
+        <div>
+          { /* 普通属性 */ }
+          <p id="box">{ this.state.message }</p>
+          <p aria-label={ this.state.message }>{ this.state.message }</p>
+          { /* 类名, 由于class是JavaScript关键字, 所以需要使用className */ }
+          <p className="active">{ this.state.message }</p>
+          { /* 样式, 必须使用JavaScript对象, key必须使用camelCase */ }
+          <p style={ { color: 'red', fontSize: '100px', lineHeight: 2 } }>{ this.state.message }</p>
+        </div>
+      )
+    }
+  }
+
+  ReactDOM.render(<Home/>, document.querySelector('#container'))
+</script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>02-JSX</title>
+</head>
+<body>
+<!-- Container -->
+<div id="container"></div>
+
+<!-- React Library -->
+<script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+
+<!-- Babel -->
+<script src="https://unpkg.com/@babel/standalone/babel.js" crossorigin></script>
+
+<!-- type="text/babel" 代表使用babel编译 -->
+<!-- 仅用于示例, 而不是项目中 -->
+<script type="text/babel">
+  // 数据
+  let message = 'Aelita'
+
+  // 方法
+  const myFn = () => {
+    message = 'Lily'
+    // 默认情况下不能自动更新数据, 需要重新创建虚拟DOM并手动渲染
+    myRender()
+  }
+
+  // 封装渲染操作, 使用JSX
+  const myRender = () => {
+    const root = (
+      <div>
+        <div>{ message }</div>
+        <button onClick={ myFn }>Button</button>
+      </div>
+    )
+
+    ReactDOM.render(root, document.querySelector('#container'), () => void console.log('Rendered'))
+  }
+
+  // 渲染
+  myRender()
+</script>
+</body>
+</html>

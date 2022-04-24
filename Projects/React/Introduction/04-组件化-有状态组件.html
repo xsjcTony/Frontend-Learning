@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>04-组件化-有状态组件</title>
+</head>
+<body>
+<!-- Container -->
+<div id="container"></div>
+
+<!-- React Library -->
+<script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+
+<!-- Babel -->
+<script src="https://unpkg.com/@babel/standalone/babel.js" crossorigin></script>
+
+<!-- type="text/babel" 代表使用babel编译 -->
+<!-- 仅用于示例, 而不是项目中 -->
+<script type="text/babel">
+  class About extends React.Component { // 继承React.Component即表示是一个组件
+    constructor(props) {
+      super(props)
+
+      this.state = {
+        message: 'Aelita'
+      }
+    }
+
+    // 如果是从JSX中直接调用方法, 则需要使用箭头函数, 否则this会绑定为undefined
+    // 若不是箭头函数, 则需要在JSX中调用时使用this.myFn.bind(this)
+    myFn = () => {
+      // 永远不要直接修改this.state, 而是使用setState()方法
+      this.setState({
+        message: 'Lily'
+      })
+    }
+
+    render() {
+      return (
+        <div>
+          <div>{ this.state.message }</div>
+          <button onClick={ this.myFn }>Button</button>
+        </div>
+      )
+    }
+  }
+
+  ReactDOM.render(<Home/>, document.querySelector('#container'))
+</script>
+</body>
+</html>

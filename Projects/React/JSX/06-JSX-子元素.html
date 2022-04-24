@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>05-JSX-绑定属性</title>
+</head>
+<body>
+<div id="container"></div>
+
+<script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+<script src="https://unpkg.com/@babel/standalone/babel.js" crossorigin></script>
+
+<!-- JSX -->
+<script type="text/babel">
+  class About extends React.Component {
+    constructor(props) {
+      super(props)
+
+      this.state = {
+        count: 0
+      }
+    }
+
+    render() {
+      return (
+        <div>
+          { /* 以下内容不会渲染 */ }
+          <p>{ [] }</p>
+          <p>{ true }</p>
+          <p>{ false }</p>
+          <p>{ null }</p>
+          <p>{ undefined }</p>
+
+          { /* 在使用 && 时, 必须保证第一个值是 false, 才会不会渲染&&之前的内容, 而falsy值会被渲染, 如下面一行会渲染0而不是预期的什么都没有 */ }
+          { this.state.count && <p>Rendered</p> }
+        </div>
+      )
+    }
+  }
+
+  ReactDOM.render(<Home/>, document.querySelector('#container'))
+</script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>01-基本使用</title>
+</head>
+<body>
+<!-- Container -->
+<div id="container"></div>
+
+<!-- React Library -->
+<script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+
+<script>
+  // 数据
+  let message = 'Aelita'
+
+  // 方法
+  const myFn = () => {
+    message = 'Lily'
+    // 默认情况下不能自动更新数据, 需要重新创建虚拟DOM并手动渲染
+    const div = React.createElement('div', null, message)
+    const button = React.createElement('button', { onClick: myFn }, 'Button')
+    const root = React.createElement('div', null, div, button)
+    ReactDOM.render(root, document.querySelector('#container'), () => void console.log('Rendered'))
+  }
+
+  // 创建虚拟DOM
+  /**
+   * React.createElement() 接收三个参数
+   * 1. 标签名称
+   * 2. 属性
+   * 3. 包含的内容 (可以是多个)
+   */
+  const div = React.createElement('div', null, message)
+  const button = React.createElement('button', { onClick: myFn }, 'Button') // 属性名称必须是驼峰命名 (camelCase)
+  const root = React.createElement('div', null, div, button) // 根元素
+
+  // 将虚拟DOM渲染为真实DOM
+  // 若render()方法被调用多次, 那么后渲染的会覆盖先渲染的. 所以若想渲染多个元素需要将所有想渲染的元素放到一个根元素中
+  /**
+   * ReactDOM.render() 接收三个参数
+   * 1. 被渲染的虚拟DOM
+   * 2. 要渲染到哪个元素中
+   * 3. 渲染或更新完成之后的回调函数
+   * (React 17的写法, 18中应使用 ReactDOM.createRoot(container).render())
+   */
+  ReactDOM.render(root, document.querySelector('#container'), () => void console.log('Rendered'))
+</script>
+</body>
+</html>

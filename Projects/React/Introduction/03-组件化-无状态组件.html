@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>03-组件化-无状态组件</title>
+</head>
+<body>
+<!-- Container -->
+<div id="container"></div>
+
+<!-- React Library -->
+<script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+
+<!-- Babel -->
+<script src="https://unpkg.com/@babel/standalone/babel.js" crossorigin></script>
+
+<!-- type="text/babel" 代表使用babel编译 -->
+<!-- 仅用于示例, 而不是项目中 -->
+<script type="text/babel">
+  let message = 'Aelita'
+
+  function myFn() {
+    message = 'Lily'
+    ReactDOM.render(<Home/>, document.querySelector('#container'))
+  }
+
+  function About() {
+    return (
+      <div>
+        <div>{ message }</div>
+        <button onClick={ myFn }>Button</button>
+      </div>
+    )
+  }
+
+  ReactDOM.render(<Home/>, document.querySelector('#container'))
+</script>
+</body>
+</html>

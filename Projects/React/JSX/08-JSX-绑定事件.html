@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>08-JSX-绑定事件</title>
+</head>
+<body>
+<div id="container"></div>
+
+<script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+<script src="https://unpkg.com/@babel/standalone/babel.js" crossorigin></script>
+
+<!-- JSX -->
+<script type="text/babel">
+  class About extends React.Component {
+    constructor(props) {
+      super(props)
+
+      this.state = {
+        message: 'Aelita'
+      }
+
+      this.myClick = this.btnClick.bind(this)
+    }
+
+    btnClick() {
+      this.setState({
+        message: 'Lily'
+      })
+    }
+
+    btnClickArrow = () => {
+      this.setState({
+        message: 'Lily'
+      })
+    }
+
+    render() {
+      return (
+        <div>
+          <div>{ this.state.message }</div>
+          <button onClick={ this.btnClick.bind(this, 'a', 'b') }>Button</button>
+          <button onClick={ this.btnClickArrow }>Button</button>
+          <button onClick={ this.myClick }>Button</button>
+          <button onClick={ () => { this.btnClick() } }>Button</button>
+        </div>
+      )
+    }
+  }
+
+  ReactDOM.render(<Home/>, document.querySelector('#container'))
+</script>
+</body>
+</html>
