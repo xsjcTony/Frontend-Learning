@@ -79,6 +79,103 @@
 
 ---
 
+# 26/04/2022
+
+
+
+## `ant design` 在 `Vite` 下的样式自动 `按需导入`
+
+- `ant design` 版本: `v4.20.0`
+- `vite` 版本: `v2.9.5`
+
+思路
+
+- 通过插件自动导入 `css.js` 文件, 其中包含样式
+
+插件
+
+```shell
+npm i -D vite-plugin-imp
+```
+
+安装 `less`
+
+```shell
+npm i -D less
+```
+
+`vite.config.ts`
+
+```typescript
+import vitePluginImp from 'vite-plugin-imp'
+
+
+export default defineConfig({
+  plugins: [
+    // ...
+    vitePluginImp({
+      libList: [
+        {
+          libName: 'antd',
+          style: name => `antd/es/${ name }/style/css` // css.js
+        }
+      ]
+    })
+  ]
+})
+```
+
+
+
+## `ant design` 在 `Vite` 下自定义主题
+
+- 版本同上
+
+思路
+
+- 在上面的基础上, 改为使用 `less` 文件
+- 通过 `vite` 的 `预处理器选项` 来操作变量覆盖
+
+安装 `less`
+
+```shell
+npm i -D less
+```
+
+`vite,config.ts`
+
+```typescript
+import vitePluginImp from 'vite-plugin-imp'
+
+
+export default defineConfig({
+  plugins: [
+    // ...
+    vitePluginImp({
+      libList: [
+        {
+          libName: 'antd',
+          style: name => `antd/es/${ name }/style` // 修改为使用less文件: index.js => import './index.less'
+        }
+      ]
+    })
+  ],
+  css: {
+    preprocessorOptions: {
+      // 配置 less 相关配置
+      less: {
+        modifyVars: {
+          'primary-color': '#1DA57A',
+          'link-color': '#1DA57A',
+          'border-radius-base': '2px'
+        },
+        javascriptEnabled: true
+      }
+    }
+  }
+})
+```
+
 
 
 

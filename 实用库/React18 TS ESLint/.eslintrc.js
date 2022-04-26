@@ -3,31 +3,22 @@ module.exports = {
   env: {
     node: true,
     browser: true,
-    es2022: true,
-    'vue/setup-compiler-macros': true
+    es2022: true
   },
-  'extends': [
-    'plugin:vue/vue3-recommended'
-  ],
-  parser: 'vue-eslint-parser',
+  parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaVersion: 'latest',
     sourceType: 'module',
     ecmaFeatures: {
-      impliedStrict: true
+      jsx: true
     },
-    vueFeatures: {
-      filter: false,
-      interpolationAsNonHTML: true,
-      styleCSSVariableInjection: true
-    },
-    parser: '@typescript-eslint/parser',
     tsconfigRootDir: __dirname,
     project: ['./tsconfig.json', './tsconfig.eslint.json', './tsconfig.node.json'],
-    extraFileExtensions: ['.vue']
+    jsxPragma: null
   },
   plugins: [
-    'vue',
+    'react',
+    'react-hooks',
     'import',
     '@typescript-eslint'
   ],
@@ -42,278 +33,228 @@ module.exports = {
       typescript: {
         alwaysTryTypes: true
       }
-    }
+    },
+    // React
+    react: {
+      version: 'detect'
+    },
+    componentWrapperFunctions: ['styled'],
+    formComponents: [],
+    linkComponents: []
   },
+  overrides: [
+    {
+      files: ['vite.config.ts'],
+      rules: {
+        '@typescript-eslint/no-unnecessary-condition': 'off'
+      }
+    }
+  ],
   rules: {
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
 
 
-    // vue3
-    'vue/block-lang': [
-      'error',
+    // React 18
+    'react/boolean-prop-naming': [
+      'warn',
       {
-        script: { lang: 'ts' },
-        style: { lang: 'scss' }
+        rule: '^(is|has)[A-Z]([A-Za-z0-9]?)+',
+        message: 'BOOLEAN prop ({{ propName }}) should start with "is" or "has" and use camelCase',
+        validateNested: false
       }
     ],
-    'vue/block-tag-newline': [
+    'react/default-props-match-prop-types': 'error',
+    'react/display-name': ['warn', { ignoreTranspilerName: false }],
+    'react/function-component-definition': [
       'error',
       {
-        singleline: 'consistent',
-        multiline: 'consistent',
-        maxEmptyLines: 0,
-        blocks: {
-          template: {
-            singleline: 'always',
-            multiline: 'always'
+        namedComponents: 'arrow-function',
+        unnamedComponents: 'arrow-function'
+      }
+    ],
+    'react/hook-use-state': 'error',
+    'react/iframe-missing-sandbox': 'error',
+    'react/no-array-index-key': 'error',
+    'react/no-children-prop': 'error',
+    'react/no-danger': 'error',
+    'react/no-deprecated': 'error',
+    'react/no-multi-comp': ['error', { ignoreStateless: false }],
+    'react/no-string-refs': ['error', { noTemplateLiterals: true }],
+    'react/no-this-in-sfc': 'error',
+    'react/no-unescaped-entities': [
+      'error',
+      {
+        forbid: [
+          {
+            'char': '>',
+            alternatives: ['&gt;']
           },
-          script: {
-            singleline: 'always',
-            multiline: 'always'
+          {
+            'char': '}',
+            alternatives: ['&#125;']
           },
-          style: {
-            singleline: 'always',
-            multiline: 'always',
-            maxEmptyLines: 1
+          {
+            'char': '"',
+            alternatives: ['&quot;']
+          },
+          {
+            'char': '\'',
+            alternatives: ['&apos;']
           }
-        }
-      }
-    ],
-    'vue/component-api-style': [
-      'error',
-      ['script-setup', 'composition']
-    ],
-    'vue/component-name-in-template-casing': [
-      'error',
-      'PascalCase',
-      {
-        registeredComponentsOnly: true,
-        ignores: []
-      }
-    ],
-    'vue/custom-event-name-casing': ['error', 'camelCase'],
-    'vue/html-button-has-type': ['error', {
-      button: true,
-      submit: true,
-      reset: true
-    }],
-    'vue/html-comment-content-newline': [
-      'error',
-      {
-        singleline: 'never',
-        multiline: 'always'
-      }
-    ],
-    'vue/html-comment-content-spacing': ['error', 'always'],
-    'vue/html-comment-indent': ['error', 4],
-    'vue/new-line-between-multi-line-property': ['error', { minLineOfMultilineProperty: 2 }],
-    'vue/next-tick-style': ['error', 'promise'],
-    'vue/no-boolean-default': ['error', 'no-default'],
-    'vue/no-duplicate-attr-inheritance': 'error',
-    'vue/no-multiple-objects-in-class': 'error',
-    'vue/no-reserved-component-names': [
-      'error',
-      {
-        disallowVueBuiltInComponents: true,
-        disallowVue3BuiltInComponents: true
-      }
-    ],
-    'vue/no-template-target-blank': [
-      'error',
-      {
-        allowReferrer: true,
-        enforceDynamicLinks: 'always'
-      }
-    ],
-    'vue/no-undef-components': [
-      'error',
-      {
-        ignorePatterns: [
-          /^router-/,
-          /^el/
         ]
       }
     ],
-    'vue/no-undef-properties': ['error', { ignores: ['/^\\$/'] }],
-    'vue/no-unused-properties': ['error', {
-      groups: ['props'],
-      deepData: false,
-      ignorePublicMembers: false
-    }],
-    'vue/no-unused-refs': 'error',
-    'vue/no-use-computed-property-like-method': 'error',
-    'vue/no-useless-mustaches': [
+    'react/no-unknown-property': 'error',
+    'react/no-unstable-nested-components': ['error', { allowAsProps: false }],
+    'react/no-unused-prop-types': 'error',
+    'react/prop-types': ['error', { skipUndeclared: true }],
+    'react/react-in-jsx-scope': 'off', // disabled for JSX transform from React 17
+    'react/require-default-props': 'error',
+    'react/self-closing-comp': [
       'error',
       {
-        ignoreIncludesComment: false,
-        ignoreStringEscape: false
+        component: true,
+        html: true
       }
     ],
-    'vue/no-useless-v-bind': [
+    'react/style-prop-object': ['error', { allow: [] }],
+    'react/void-dom-elements-no-children': 'error',
+
+
+    // JSX - React 18
+    'react/jsx-boolean-value': ['error', 'never'],
+    'react/jsx-child-element-spacing': 'error',
+    'react/jsx-closing-bracket-location': ['error', 'line-aligned'],
+    'react/jsx-closing-tag-location': 'error',
+    'react/jsx-curly-brace-presence': [
       'error',
       {
-        ignoreIncludesComment: false,
-        ignoreStringEscape: false
+        props: 'never',
+        children: 'never',
+        propElementValues: 'always'
       }
     ],
-    'vue/no-v-text': 'error',
-    'vue/padding-line-between-blocks': ['error', 'always'],
-    'vue/prefer-import-from-vue': 'error',
-    'vue/prefer-separate-static-class': 'error',
-    'vue/prefer-true-attribute-shorthand': ['error', 'always'],
-    'vue/require-direct-export': ['error', { disallowFunctionalComponentFunction: false }],
-    'vue/require-emit-validator': 'error',
-    'vue/require-expose': 'error',
-    'vue/script-indent': [
+    'react/jsx-curly-newline': [
+      'error',
+      {
+        multiline: 'consistent',
+        singleline: 'consistent'
+      }
+    ],
+    'react/jsx-curly-spacing': ['error', 'never'],
+    'react/jsx-equals-spacing': ['error', 'never'],
+    'react/jsx-filename-extension': ['error', { extensions: ['.tsx'] }],
+    'react/jsx-first-prop-new-line': ['error', 'multiline-multiprop'],
+    'react/jsx-fragments': ['error', 'syntax'],
+    'react/jsx-indent': [
       'error',
       2,
       {
-        baseIndent: 0,
-        switchCase: 1,
-        ignores: []
+        checkAttributes: true,
+        indentLogicalExpressions: true
       }
     ],
-    'vue/static-class-names-order': 'error',
-    'vue/v-for-delimiter-style': ['error', 'in'],
-    'vue/v-on-function-call': ['error', 'never', { ignoreIncludesComment: false }],
-
-    // vue default rules overwrite
-    'vue/multi-word-component-names': 'off',
-    'vue/first-attribute-linebreak': [
+    'react/jsx-indent-props': ['error', 'first'],
+    'react/jsx-key': [
       'error',
       {
-        singleline: 'ignore',
-        multiline: 'beside'
+        checkFragmentShorthand: true,
+        checkKeyMustBeforeSpread: false, // Maybe a breaking change in future: https://github.com/facebook/react/issues/20031#issuecomment-710346866
+        warnOnDuplicates: true
       }
     ],
-    'vue/html-closing-bracket-newline': [
+    'react/jsx-max-props-per-line': [
       'error',
       {
-        singleline: 'never',
-        multiline: 'always'
-      }
-    ],
-    'vue/html-closing-bracket-spacing': [
-      'error',
-      {
-        startTag: 'never',
-        endTag: 'never',
-        selfClosingTag: 'never'
-      }
-    ],
-    'vue/html-indent': [
-      'error',
-      4,
-      {
-        attribute: 1,
-        baseIndent: 1,
-        closeBracket: 0,
-        alignAttributesVertically: true,
-        ignores: []
-      }
-    ],
-    'vue/html-quotes': ['error', 'double', { avoidEscape: false }],
-    'vue/html-self-closing': [
-      'error',
-      {
-        html: {
-          'void': 'never',
-          normal: 'never',
-          component: 'always'
-        },
-        svg: 'always',
-        math: 'always'
-      }
-    ],
-    'vue/max-attributes-per-line': [
-      'error', {
-        singleline: {
-          max: 3
-        },
-        multiline: {
-          max: 1
+        maximum: {
+          single: 3,
+          multi: 1
         }
       }
     ],
-    'vue/multiline-html-element-content-newline': [
+    'react/jsx-no-comment-textnodes': 'error',
+    'react/jsx-no-constructed-context-values': 'error',
+    'react/jsx-no-duplicate-props': ['error', { ignoreCase: false }],
+    'react/jsx-no-script-url': [
+      'error',
+      [
+        {
+          name: 'Link',
+          props: ['to']
+        },
+        {
+          name: 'NavLink',
+          props: ['to']
+        }
+      ]
+    ],
+    'react/jsx-no-target-blank': [
       'error',
       {
-        allowEmptyLines: true
+        allowReferrer: false,
+        enforceDynamicLinks: 'always',
+        warnOnSpreadAttributes: true,
+        links: true,
+        forms: true
       }
     ],
-    'vue/mustache-interpolation-spacing': ['error', 'always'],
-    'vue/no-multi-spaces': ['error', { ignoreProperties: false }],
-    'vue/no-spaces-around-equal-signs-in-attribute': 'error',
-    'vue/no-template-shadow': 'error',
-    'vue/singleline-html-element-content-newline': 'off',
+    'react/jsx-no-undef': ['error', { allowGlobals: true }],
+    'react/jsx-no-useless-fragment': ['error', { allowExpressions: true }],
+    'react/jsx-one-expression-per-line': ['error', { allow: 'single-child' }],
+    'react/jsx-pascal-case': [
+      'error',
+      {
+        allowAllCaps: false,
+        allowLeadingUnderscore: false,
+        allowNamespace: false,
+        ignore: []
+      }
+    ],
+    'react/jsx-sort-props': [
+      'error',
+      {
+        callbacksLast: true,
+        shorthandFirst: true,
+        multiline: 'ignore',
+        ignoreCase: true,
+        noSortAlphabetically: true,
+        reservedFirst: false,
+        locale: 'auto'
+      }
+    ],
+    'react/jsx-tag-spacing': [
+      'error',
+      {
+        closingSlash: 'never',
+        beforeSelfClosing: 'always',
+        afterOpening: 'never',
+        beforeClosing: 'never'
+      }
+    ],
+    'react/jsx-uses-react': 'off', // disabled for JSX transform from React 17
+    'react/jsx-wrap-multilines': [
+      'error',
+      {
+        declaration: 'parens-new-line',
+        assignment: 'parens-new-line',
+        'return': 'parens-new-line',
+        arrow: 'parens-new-line',
+        condition: 'parens-new-line',
+        logical: 'parens-new-line',
+        prop: 'parens-new-line'
+      }
+    ],
 
-    // vue extension rules (for expression in <template>)
-    'vue/arrow-spacing': [
+
+    // React Hooks
+    'react-hooks/rules-of-hooks': 'error',
+    'react-hooks/exhaustive-deps': [
       'error',
       {
-        before: true,
-        after: true
+        // additionalHooks: ''
       }
     ],
-    'vue/block-spacing': ['error', 'always'],
-    'vue/brace-style': ['error', '1tbs', { allowSingleLine: true }],
-    'vue/camelcase': [
-      'error',
-      {
-        properties: 'always',
-        ignoreDestructuring: false
-      }
-    ],
-    'vue/comma-dangle': ['error', 'never'],
-    'vue/comma-spacing': [
-      'error',
-      {
-        before: false,
-        after: true
-      }
-    ],
-    'vue/comma-style': ['error', 'last'],
-    'vue/eqeqeq': ['error', 'always'],
-    'vue/func-call-spacing': ['error', 'never'],
-    'vue/key-spacing': [
-      'error',
-      {
-        beforeColon: false,
-        afterColon: true,
-        mode: 'strict'
-      }
-    ],
-    'vue/keyword-spacing': [
-      'error',
-      {
-        before: true,
-        after: true
-      }
-    ],
-    'vue/no-extra-parens': 'error',
-    'vue/no-irregular-whitespace': [
-      'error',
-      {
-        skipStrings: true,
-        skipComments: false,
-        skipRegExps: false,
-        skipTemplates: false,
-        skipHTMLAttributeValues: false,
-        skipHTMLTextContents: false
-      }
-    ],
-    'vue/no-loss-of-precision': 'error',
-    'vue/no-restricted-syntax': 'error',
-    'vue/no-sparse-arrays': 'error',
-    'vue/no-useless-concat': 'error',
-    'vue/object-curly-spacing': ['error', 'always'],
-    'vue/object-shorthand': ['error', 'always'],
-    'vue/prefer-template': 'error',
-    'vue/quote-props': ['error', 'as-needed', { keywords: true }],
-    'vue/space-infix-ops': ['error', { int32Hint: false }],
-    'vue/template-curly-spacing': ['error', 'always'],
-    'vue/operator-linebreak': ['error', 'before'],
 
 
     // js
@@ -393,14 +334,13 @@ module.exports = {
     eqeqeq: ['error', 'always'],
     'no-with': 'error',
     'no-multi-spaces': ['error', { ignoreEOLComments: true }],
-    'operator-linebreak': ['error', 'before'],
 
 
     // eslint-plugin-import
     'import/first': 'error',
     'import/no-webpack-loader-syntax': 'error',
     'import/newline-after-import': ['error', { count: 2 }],
-    'import/extensions': ['error', 'ignorePackages', { ts: 'never' }],
+    'import/extensions': ['error', 'ignorePackages', { ts: 'never', tsx: 'never' }],
     'import/order': [
       'error',
       {
@@ -524,7 +464,7 @@ module.exports = {
     '@typescript-eslint/no-empty-function': ['error', { allow: ['decoratedFunctions'] }],
     '@typescript-eslint/no-empty-interface': ['error', { allowSingleExtends: true }],
     '@typescript-eslint/no-extra-non-null-assertion': 'error',
-    '@typescript-eslint/no-extra-parens': 'error',
+    '@typescript-eslint/no-extra-parens': ['error', 'all', { ignoreJSX: 'multi-line' }],
     '@typescript-eslint/no-extraneous-class': 'error',
     '@typescript-eslint/no-floating-promises': [
       'error',

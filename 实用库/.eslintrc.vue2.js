@@ -326,6 +326,7 @@ module.exports = {
         },
         warnOnUnassignedImports: false
       }
-    ]
+    ],
+    'import/named': 'error'
   }
 }

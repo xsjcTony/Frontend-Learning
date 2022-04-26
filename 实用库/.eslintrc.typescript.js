@@ -106,7 +106,6 @@ module.exports = {
     'arrow-parens': ['error', 'as-needed', { requireForBlockBody: true }],
     'arrow-body-style': ['error', 'as-needed', { requireReturnForObjectLiteral: true }],
     'no-iterator': 'warn',
-    'no-undef': ['error', { 'typeof': true }],
     eqeqeq: ['error', 'always'],
     'no-with': 'error',
     'no-multi-spaces': ['error', { ignoreEOLComments: true }],
@@ -136,6 +135,7 @@ module.exports = {
         warnOnUnassignedImports: false
       }
     ],
+    'import/named': 'error',
 
     // TypeScript
     '@typescript-eslint/adjacent-overload-signatures': 'error',
