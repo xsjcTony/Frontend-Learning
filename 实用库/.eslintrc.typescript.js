@@ -83,7 +83,7 @@ module.exports = {
     'quote-props': ['error', 'as-needed', { keywords: true }],
     'no-prototype-builtins': 'error',
     'prefer-template': 'error',
-    'template-curly-spacing': ['error', 'always'],
+    'template-curly-spacing': ['error', 'never'],
     'no-eval': ['error', { allowIndirect: false }],
     'no-useless-escape': 'error',
     'no-new-func': 'error',

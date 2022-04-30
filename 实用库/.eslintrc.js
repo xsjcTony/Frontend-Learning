@@ -102,7 +102,7 @@ module.exports = {
       }
     ],
     'prefer-template': 'error',
-    'template-curly-spacing': ['error', 'always'],
+    'template-curly-spacing': ['error', 'never'],
     'no-eval': ['error', { allowIndirect: false }],
     'no-useless-escape': 'error',
     'no-new-func': 'error',

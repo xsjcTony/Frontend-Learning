@@ -312,7 +312,7 @@ module.exports = {
     'vue/prefer-template': 'error',
     'vue/quote-props': ['error', 'as-needed', { keywords: true }],
     'vue/space-infix-ops': ['error', { int32Hint: false }],
-    'vue/template-curly-spacing': ['error', 'always'],
+    'vue/template-curly-spacing': ['error', 'never'],
     'vue/operator-linebreak': ['error', 'before'],
 
 
@@ -367,7 +367,7 @@ module.exports = {
     'quote-props': ['error', 'as-needed', { keywords: true }],
     'no-prototype-builtins': 'error',
     'prefer-template': 'error',
-    'template-curly-spacing': ['error', 'always'],
+    'template-curly-spacing': ['error', 'never'],
     'no-eval': ['error', { allowIndirect: false }],
     'no-useless-escape': 'error',
     'no-new-func': 'error',

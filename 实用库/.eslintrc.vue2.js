@@ -167,7 +167,7 @@ module.exports = {
     'vue/object-curly-spacing': ['error', 'always'],
     'vue/prefer-template': 'error',
     'vue/space-infix-ops': ['error', { int32Hint: false }],
-    'vue/template-curly-spacing': ['error', 'always'],
+    'vue/template-curly-spacing': ['error', 'never'],
     'vue/operator-linebreak': ['error', 'before'],
 
     // js

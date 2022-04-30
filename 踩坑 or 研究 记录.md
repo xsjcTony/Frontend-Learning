@@ -98,12 +98,6 @@
 npm i -D vite-plugin-imp
 ```
 
-安装 `less`
-
-```shell
-npm i -D less
-```
-
 `vite.config.ts`
 
 ```typescript
@@ -142,7 +136,7 @@ export default defineConfig({
 npm i -D less
 ```
 
-`vite,config.ts`
+`vite.config.ts`
 
 ```typescript
 import vitePluginImp from 'vite-plugin-imp'

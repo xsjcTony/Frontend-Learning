@@ -1,4 +1,4 @@
-# Redux (v8)
+# Redux (v4)
 
 
 

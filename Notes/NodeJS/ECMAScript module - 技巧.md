@@ -2,7 +2,7 @@
 
 
 
-## __dirname的代替方案
+## `__dirname` 的代替方案
 
 ```js
 import { fileURLToPath } from 'url'
@@ -12,7 +12,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
 
 
-## __filename的代替方案
+## `__filename` 的代替方案
 
 ```js
 import { fileURLToPath } from 'url'
