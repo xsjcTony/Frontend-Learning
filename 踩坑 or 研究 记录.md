@@ -172,6 +172,139 @@ export default defineConfig({
 
 
 
+---
+
+# 11/05/2022
+
+
+
+## 基于 `React Router v6` 的 `路由守卫`
+
+- `react-router-dom` 版本: `^6.3.0`
+- `react` 版本: `^18.1.0`
+
+思路
+
+- 定义一个 `函数式组件` 作为 `路由守卫`
+- 通过 `useLocation` 来获取 `location` 信息
+- 通过 `<Navigate>` 组件来进行 `路由跳转`
+  - 可以设置 `replace` 删除 `栈` 中的无用历史记录
+  - 可以设置 `state` 来让跳转后的页面执行一些操作 (比如提示一些信息)
+- 将该组件作为所有需要守卫的 `父路由` , 通过 `<Outlet>` 组件来渲染子路由
+
+坑
+
+- 尽量简洁, 不要包含不必要的 `Hook` 
+  - 比如 `react-intl` 的 `useIntl` , 会导致很多的重复渲染
+- 不要包含任何 `副作用` , 尤其是关于 `DOM` 的
+  - 若实在需要则放在 `useEffect` 中, 尽量放到 `子路由` 的组件中处理
+- 不要使用 `useNavigate` 返回的函数进行函数式导航
+  - 属于 `副作用` 范畴
+
+示例
+
+```tsx
+const RouteGuard = (): JSX.Element => {
+  /**
+   * Utils
+   */
+  const dispatch = useDispatch<AppDispatch>()
+  const location = useLocation()
+
+
+  /**
+   * Data
+   */
+  const authenticated = useSelector((state: RootState) => state.authentication.authenticated)
+  const loggedIn = useSelector((state: RootState) => state.authentication.loggedIn)
+  const { pathname } = location
+
+
+  /**
+   * OAuth cookie
+   */
+  const t = Cookies.get('token')
+  if (t) {
+    dispatch(setAuthenticated(false))
+    localStorage.setItem('token', t)
+    Cookies.remove(t)
+  }
+
+
+  /**
+   * Authentication
+   */
+  if (!authenticated) {
+    try {
+      // Authentication request here
+    } catch (err) {
+      dispatch(setLoggedIn(false))
+    }
+
+    dispatch(setAuthenticated(true))
+  }
+
+  
+  /**
+   * Guard
+   */
+  if (pathname === '/login' || pathname === '/register') {
+    if (loggedIn) {
+      return <Navigate to="/admin" replace />
+    } else {
+      return <Outlet />
+    }
+  }
+
+  if (!loggedIn) {
+    return (
+      <Navigate
+        to="/login"
+        replace
+        state={{
+          type: 'prompt',
+          promptInfo: {
+            type: 'error',
+            intlId: 'error.need-login',
+            duration: 3,
+            path: pathname,
+            noPrivilege: false
+          }
+        }}
+      />
+    )
+  }
+
+  return <Outlet />
+}
+
+
+/**
+ * App Component
+ */
+const App = (): JSX.Element => (
+  <Routes>
+    <Route element={<RouteGuard />}> {/* Wrap all routes that need to be guardede */}
+      <Route index element={<Navigate to="/admin" replace />} />
+      <Route path="/admin" element={<Admin />}>
+        <Route index element={<Welcome />} />
+        <Route path="users" element={<Users />} />
+        <Route path="roles" element={<Roles />} />
+        <Route path="privileges" element={<Privileges />} />
+        <Route path="*" element={<Page404 />} />
+      </Route>
+      <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Register />} />
+      <Route path="*" element={<Page404 lang />} />
+    </Route>
+  </Routes>
+)
+
+export default App
+```
+
+
+
 
 
 
