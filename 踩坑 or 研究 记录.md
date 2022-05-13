@@ -204,6 +204,8 @@ export default defineConfig({
 示例
 
 ```tsx
+let authenticated = false
+
 const RouteGuard = (): JSX.Element => {
   /**
    * Utils
@@ -215,7 +217,6 @@ const RouteGuard = (): JSX.Element => {
   /**
    * Data
    */
-  const authenticated = useSelector((state: RootState) => state.authentication.authenticated)
   const loggedIn = useSelector((state: RootState) => state.authentication.loggedIn)
   const { pathname } = location
 
@@ -225,7 +226,7 @@ const RouteGuard = (): JSX.Element => {
    */
   const t = Cookies.get('token')
   if (t) {
-    dispatch(setAuthenticated(false))
+    authenticated = false
     localStorage.setItem('token', t)
     Cookies.remove(t)
   }
@@ -241,7 +242,7 @@ const RouteGuard = (): JSX.Element => {
       dispatch(setLoggedIn(false))
     }
 
-    dispatch(setAuthenticated(true))
+    authenticated = true
   }
 
   
@@ -302,6 +303,24 @@ const App = (): JSX.Element => (
 
 export default App
 ```
+
+
+
+---
+
+# 13/05/2022
+
+
+
+## `Redux` 循环引用问题
+
+- 比如封装了一个网络请求器, 若在请求器中用到了 `redux` 中的数据
+- 在编写 `redux-thunk` 之类的异步代码时, 调用封装的 `请求器` 会报错
+  - `cannot access xxx before initialization`
+
+
+
+---
 
 
 
