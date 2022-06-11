@@ -322,9 +322,83 @@ export default App
 
 ---
 
+# 31/05/2022
 
 
 
+## `Vite` + `React TS` 的 `alias` 配置方案
+
+- 例如 `@/components` 中的 `@` 即为 `/src` 的意思
+
+方案
+
+- 在 `tsconfig.json` 中配置 `baseUrl` 为 `./`
+
+- 配置 `paths` 中的 `@/*` 为 `["src/*"]`
+
+  ```json
+  // tsconfig.json
+  {
+    "compilerOptions": {
+      // ...
+      "baseUrl": "./", // 和 tsconfig.json 文件相同的目录, 一般为根目录
+      "paths": {
+        "@/*": ["src/*"]
+      }
+    }
+  }
+  ```
+
+- 安装 `vite-tsconfig-paths` 插件 [vite-tsconfig-paths - npm](https://www.npmjs.com/package/vite-tsconfig-paths)
+
+- 在 `vite.config.ts` 中配置该插件, 将 `tsconfig.json` 中的 `paths` 映射到 `vite` 的 `resolve.alias` 中
+
+  ```ts
+  // vite.config.ts
+  import tsconfigPaths from 'vite-tsconfig-paths'
+  
+  export default defineConfig({
+    plugins: [
+      // ...
+      tsconfigPaths()
+    ]
+  })
+  ```
+
+
+
+---
+
+# 11/06/2022
+
+
+
+## `Sequelize` 中使用 `Transaction` 必须要结束
+
+- 无论 `commit` 或 `rollback` , 一定要进行其中之一, 如果中途 `return` 掉, 那么过多的 `transaction` 会导致数据库阻塞
+
+
+
+## `Grid` 布局中的横向分割线解决方案
+
+方案
+
+- 将横向分割线的 `grid-column` 设置为 **横跨整个 `grid`**
+
+示例
+
+- `grid` 为 **两列N行**
+- 那么分割线就需要设置为 `grid-column: 1 / span 2`
+
+效果
+
+- 蓝色为分割线
+
+![dispaly-grid_horizontal_divider](D:\xsjcTony\it666\Frontend-Learning\images\dispaly-grid_horizontal_divider.png)
+
+
+
+---
 
 
 
