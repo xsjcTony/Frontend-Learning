@@ -1,8 +1,9 @@
 {
   "compilerOptions": {
     "types": ["@types/node"],
-    "noEmit": true,
-    "allowJs": true
+    "noEmit": false,
+    "allowJs": true,
+    "composite": true
   },
   "extends": "./tsconfig.json",
   "include": [".eslintrc.js"]

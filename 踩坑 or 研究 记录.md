@@ -400,6 +400,57 @@ export default App
 
 ---
 
+# 20/07/2022
+
+
+
+## `Vite` 开发时让其他设备通过IP地址访问
+
+- 需要将 `vite.config.ts` 中的 `server` 设置为 `0.0.0.0` 或 `true`
+
+```typescript
+import { defineConfig } from 'vite'
+
+export default defineConfig({
+  // ...
+  server: {
+    host: true
+  }
+})
+```
+
+
+
+## `Retina` 屏幕上 `1px` 的解决方案
+
+- 使用 `postcss-write-svg` 在 `css` 中直接画出 `1px` 的 `svg`
+
+示例
+
+- `1px` 的 `border`
+
+```css
+@svg 1px-border {
+    width: 4px;
+    height: 4px;
+
+    @rect {
+        fill: transparent;
+        width: 100%;
+        height: 100%;
+        stroke-width: 25%;
+        stroke: var(--color, #000);
+    }
+}
+
+.onepx-test-svg {
+    border: 1px solid transparent;
+    border-image: svg(1px-border param(--color red)) 1 stretch;
+}
+```
+
+
+
 
 
 
