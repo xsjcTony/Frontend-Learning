@@ -450,6 +450,33 @@ export default defineConfig({
 ```
 
 
+---
+
+# 22/07/2022
+
+
+
+## `css module` 中样式穿透
+
+- 由于 `css module` 必须要在 `jsx` 中指定 `className` , 那么对于一些组件库的修改就需要一些其他办法
+- 使用 `:global(.selector)` 的语法
+
+```scss
+.container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    :global(.icon) {
+        font-size: 120px;
+        color: var(--adm-color-danger);
+    }
+}
+```
+
+
 
 
 
