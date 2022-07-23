@@ -478,6 +478,32 @@ export default defineConfig({
 
 
 
+---
+
+# 23/07/2022
+
+
+
+## `React TS` 中 `style` 里写 `css变量` 类型报错解决方案
+
+- 为了保证尽可能的类型正确, `React` 的类型定义中的 `CSSProperties` 去掉了 `索引签名` (index signature)
+- 在任意 `.d.ts` 文件中自己扩展即可
+- 使用 `Template literal types`
+
+```typescript
+import 'react' // 一定要import
+
+declare module 'react' {
+  interface CSSProperties {
+    [key: `--${string}`]: number | string
+  }
+}
+```
+
+
+
+---
+
 
 
 
