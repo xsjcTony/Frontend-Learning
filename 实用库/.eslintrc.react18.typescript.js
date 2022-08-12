@@ -46,7 +46,15 @@ module.exports = {
     {
       files: ['vite.config.ts'],
       rules: {
-        '@typescript-eslint/no-unnecessary-condition': 'off'
+        '@typescript-eslint/no-unnecessary-condition': 'off',
+        '@typescript-eslint/triple-slash-reference': 'off'
+      }
+    },
+    {
+      files: ['*.test.*'],
+      rules: {
+        'import/named': 'off',
+        '@typescript-eslint/unbound-method': 'off'
       }
     }
   ],
@@ -200,7 +208,6 @@ module.exports = {
     ],
     'react/jsx-no-undef': ['error', { allowGlobals: true }],
     'react/jsx-no-useless-fragment': ['error', { allowExpressions: true }],
-    'react/jsx-one-expression-per-line': ['error', { allow: 'single-child' }],
     'react/jsx-pascal-case': [
       'error',
       {

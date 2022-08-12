@@ -14,14 +14,15 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    }
   },
-  "include": [
-    "src",
-    "auto-imports.d.ts"
-  ],
+  "include": ["src"],
   "references": [
-    { "path": "./tsconfig.node.json"},
+    { "path": "./tsconfig.node.json" },
     { "path": "./tsconfig.eslint.json" }
   ]
 }

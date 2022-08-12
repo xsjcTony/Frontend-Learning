@@ -46,7 +46,15 @@ module.exports = {
     {
       files: ['vite.config.ts'],
       rules: {
-        '@typescript-eslint/no-unnecessary-condition': 'off'
+        '@typescript-eslint/no-unnecessary-condition': 'off',
+        '@typescript-eslint/triple-slash-reference': 'off'
+      }
+    },
+    {
+      files: ['*.test.*'],
+      rules: {
+        'import/named': 'off',
+        '@typescript-eslint/unbound-method': 'off'
       }
     }
   ],
@@ -79,7 +87,7 @@ module.exports = {
     'react/no-children-prop': 'error',
     'react/no-danger': 'error',
     'react/no-deprecated': 'error',
-    'react/no-multi-comp': ['error', { ignoreStateless: false }],
+    'react/no-multi-comp': ['error', { ignoreStateless: true }],
     'react/no-string-refs': ['error', { noTemplateLiterals: true }],
     'react/no-this-in-sfc': 'error',
     'react/no-unescaped-entities': [
@@ -106,11 +114,11 @@ module.exports = {
       }
     ],
     'react/no-unknown-property': 'error',
-    'react/no-unstable-nested-components': ['error', { allowAsProps: false }],
+    'react/no-unstable-nested-components': ['error', { allowAsProps: true }],
     'react/no-unused-prop-types': 'error',
     'react/prop-types': ['error', { skipUndeclared: true }],
     'react/react-in-jsx-scope': 'off', // disabled for JSX transform from React 17
-    'react/require-default-props': 'error',
+    'react/require-default-props': ['error', { functions: 'defaultArguments' }],
     'react/self-closing-comp': [
       'error',
       {
@@ -124,7 +132,6 @@ module.exports = {
 
     // JSX - React 18
     'react/jsx-boolean-value': ['error', 'never'],
-    'react/jsx-child-element-spacing': 'error',
     'react/jsx-closing-bracket-location': ['error', 'line-aligned'],
     'react/jsx-closing-tag-location': 'error',
     'react/jsx-curly-brace-presence': [
@@ -201,7 +208,6 @@ module.exports = {
     ],
     'react/jsx-no-undef': ['error', { allowGlobals: true }],
     'react/jsx-no-useless-fragment': ['error', { allowExpressions: true }],
-    'react/jsx-one-expression-per-line': ['error', { allow: 'single-child' }],
     'react/jsx-pascal-case': [
       'error',
       {
@@ -218,8 +224,8 @@ module.exports = {
         shorthandFirst: true,
         multiline: 'ignore',
         ignoreCase: true,
-        noSortAlphabetically: true,
-        reservedFirst: false,
+        noSortAlphabetically: false,
+        reservedFirst: true,
         locale: 'auto'
       }
     ],
@@ -308,7 +314,7 @@ module.exports = {
     'quote-props': ['error', 'as-needed', { keywords: true }],
     'no-prototype-builtins': 'error',
     'prefer-template': 'error',
-    'template-curly-spacing': ['error', 'always'],
+    'template-curly-spacing': ['error', 'never'],
     'no-eval': ['error', { allowIndirect: false }],
     'no-useless-escape': 'error',
     'no-new-func': 'error',
@@ -386,8 +392,43 @@ module.exports = {
     '@typescript-eslint/ban-types': [
       'error',
       {
-        types: {},
-        extendDefaults: true
+        types: {
+          String: {
+            message: 'Use string instead',
+            fixWith: 'string'
+          },
+          Boolean: {
+            message: 'Use boolean instead',
+            fixWith: 'boolean'
+          },
+          Number: {
+            message: 'Use number instead',
+            fixWith: 'number'
+          },
+          Symbol: {
+            message: 'Use symbol instead',
+            fixWith: 'symbol'
+          },
+
+          Function: {
+            message: [
+              'The `Function` type accepts any function-like value.',
+              'It provides no type safety when calling the function, which can be a common source of bugs.',
+              'It also accepts things like class declarations, which will throw at runtime as they will not be called with `new`.',
+              'If you are expecting the function to accept certain arguments, you should explicitly define the function shape.'
+            ].join('\n')
+          },
+
+          // object typing
+          Object: {
+            message: [
+              'The `Object` type actually means "any non-nullish value", so it is marginally better than `unknown`.',
+              '- If you want a type meaning "any object", you probably want `Record<string, unknown>` instead.',
+              '- If you want a type meaning "any value", you probably want `unknown` instead.'
+            ].join('\n')
+          }
+        },
+        extendDefaults: false
       }
     ],
     '@typescript-eslint/brace-style': ['error', '1tbs', { allowSingleLine: true }],
@@ -553,7 +594,8 @@ module.exports = {
       {
         vars: 'all',
         args: 'none',
-        ignoreRestSiblings: true
+        ignoreRestSiblings: true,
+        destructuredArrayIgnorePattern: '^_'
       }
     ],
     '@typescript-eslint/no-useless-constructor': 'error',
