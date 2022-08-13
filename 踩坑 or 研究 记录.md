@@ -504,8 +504,44 @@ declare module 'react' {
 
 ---
 
+# 13/08/2022
 
 
+
+## `Vite + React TS` 中将 `svg` 作为 `组件` 导入
+
+- 安装 `vite-plugin-svgr`
+- 在 `vite.config.ts` 中配置
+
+```typescript
+import svgr from 'vite-plugin-svgr'
+import { defineConfig } from 'vite'
+
+export default defineConfig({
+  plugins: [
+    // ...
+    svgr()
+  ]
+})
+```
+
+- 在 `vite-env.d.ts` 中加入类型
+
+```typescript
+/// <reference types="vite-plugin-svgr/client" />
+```
+
+- 在导入时使用 `ReactComponent`
+
+```tsx
+import { ReactComponent as Logo } from '/path/to/logo.svg'
+
+const App = () => <Logo />
+```
+
+
+
+---
 
 
 
