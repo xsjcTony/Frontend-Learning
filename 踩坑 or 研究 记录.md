@@ -543,6 +543,22 @@ const App = () => <Logo />
 
 ---
 
+# 15/08/2022
+
+
+
+## `Vite` 打包时移除 `legal comment`
+
+- 虽然不知道是否合法
+- 在 `vite.config.ts` 中加入
+
+```typescript
+export default defindConfig({
+  esbuild: {
+    legalComments: 'none'
+  }
+})
+```
 
 
 
