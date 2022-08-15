@@ -335,7 +335,7 @@ module.exports = {
       }
     ],
     'arrow-parens': ['error', 'as-needed', { requireForBlockBody: true }],
-    'arrow-body-style': ['error', 'as-needed', { requireReturnForObjectLiteral: true }],
+    'arrow-body-style': ['error', 'as-needed', { requireReturnForObjectLiteral: false }],
     'no-iterator': 'warn',
     eqeqeq: ['error', 'always'],
     'no-with': 'error',
