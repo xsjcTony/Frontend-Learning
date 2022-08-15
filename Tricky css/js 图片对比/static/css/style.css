@@ -1,0 +1,138 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#page {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+
+/* 容器 */
+.wrapper {
+    width: 900px;
+    height: 600px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate3d(-50%, -50%, 0);
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+}
+
+/* 图片容器 */
+.before,
+.after {
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-color: white;
+    background-size: cover;
+    background-position: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+/* 图片 */
+.content-image {
+    height: 100%;
+}
+
+.after {
+    width: 125px;
+}
+
+/* after 和 before 的文字 */
+.before:before,
+.after:before {
+    display: inline-block;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100px;
+    height: 50px;
+    background: #6A6D71;
+    text-align: center;
+    line-height: 50px;
+    color: #fff;
+    pointer-events: none;
+    user-select: none;
+}
+
+.before:before {
+    content: 'Before';
+    right: 50px;
+}
+
+.after:before {
+    content: 'After';
+    left: 50px;
+}
+
+
+/* 拖拽条 */
+.scroller {
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    left: 100px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-radius: 50%;
+    background-color: transparent;
+    opacity: 0.9;
+    pointer-events: auto;
+    cursor: pointer;
+    z-index: 99;
+}
+
+.scroller:hover {
+    opacity: 1;
+}
+
+.scrolling {
+    pointer-events: none;
+    opacity: 1;
+}
+
+.scroller__thumb {
+    width: 100%;
+    height: 100%;
+    padding: 5px;
+}
+
+.scroller:before,
+.scroller:after {
+    content: " ";
+    display: block;
+    width: 7px;
+    height: 9999px;
+    position: absolute;
+    left: 50%;
+    margin-left: -3.5px;
+    z-index: 30;
+    transition: 0.1s;
+}
+
+.scroller:before {
+    top: 100%;
+}
+
+.scroller:after {
+    bottom: 100%;
+}
+
+.scroller {
+    border: 5px solid #fff;
+}
+
+.scroller:before,
+.scroller:after {
+    background: #fff;
+}
+

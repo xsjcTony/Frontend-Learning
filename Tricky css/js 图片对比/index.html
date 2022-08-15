@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>title</title>
+    <link rel="stylesheet" href="static/css/style.css">
+</head>
+<body>
+<div id="page">
+    <div class="wrapper">
+        <!-- 图片 -->
+        <div class="before">
+            <img class="content-image"
+                 src="static/picture/before.jpg"
+                 draggable="false" alt="">
+        </div>
+        <div class="after">
+            <img class="content-image"
+                 src="static/picture/after.jpg"
+                 draggable="false" alt="">
+        </div>
+        <!-- 拖动条 -->
+        <div class="scroller">
+            <svg class="scroller__thumb" xmlns="http://www.w3.org/2000/svg" width="100" height="100"
+                 viewbox="0 0 100 100">
+                <polygon points="0 50 37 68 37 32 0 50" style="fill:#fff"></polygon>
+                <polygon points="100 50 64 32 64 68 100 50" style="fill:#fff"></polygon>
+            </svg>
+        </div>
+    </div>
+</div>
+<script src="static/js/index.js"></script>
+</body>
+
+</html>
