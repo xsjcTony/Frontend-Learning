@@ -562,6 +562,41 @@ export default defindConfig({
 
 
 
+---
+
+# 16/08/2022
+
+
+
+## `Vitest` 使用 `c8` 时的 `exclude` 扩展默认列表
+
+- 直接在 `exclude` 数组中填写会覆盖原来的列表
+
+解决方案
+
+- 安装 `@istanbuljs/schema`
+
+```shell
+pnpm add -D @istanbuljs/schema
+```
+
+- 在 `vite.config.ts` / `vitest.config.ts` 中设置
+
+```typescript
+import nyc from '@istanbuljs/schema'
+
+// ...
+test: { // 仅在vite中需要
+  coverage: {
+    exclude: [...nyc.defaults.nyc.exclude, /* 自己的内容 */, '**/constants/**']
+  }
+}
+```
+
+
+
+---
+
 
 
 
