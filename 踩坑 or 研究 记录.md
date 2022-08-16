@@ -583,12 +583,12 @@ pnpm add -D @istanbuljs/schema
 - 在 `vite.config.ts` / `vitest.config.ts` 中设置
 
 ```typescript
-import nyc from '@istanbuljs/schema'
+import c8DefaultExclude from '@istanbuljs/schema/default-exclude.js'
 
 // ...
 test: { // 仅在vite中需要
   coverage: {
-    exclude: [...nyc.defaults.nyc.exclude, /* 自己的内容 */, '**/constants/**']
+    exclude: [...c8DefaultExclude, /* 自己的内容 */, '**/constants/**']
   }
 }
 ```
