@@ -597,6 +597,32 @@ test: { // 仅在vite中需要
 
 ---
 
+# 22/08/2022
+
+
+
+## `css` 中的 `visibility` `transition` 不生效
+
+- `visibility` 由于不是数值, 所以直接指定 `transition: visibility .5s` 是不生效的
+- 需要配合 `opacity` 使用
+- 精髓在于 `visibility` 的延迟
+  - `hidden` 的样式中**延迟** `visbiility` 的 `transition`
+  - `visible` 的样式中**不延迟**
+
+```css
+.box {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .5s, visibility 0s .5s; /* 淡出时, 延迟opacity的动画时间 */
+}
+
+.box.show {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity .5s, visibility 0s; /* 淡入时, 不延迟 */
+}
+```
+
 
 
 
