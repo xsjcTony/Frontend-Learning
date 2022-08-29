@@ -46,15 +46,7 @@ module.exports = {
     {
       files: ['vite.config.ts'],
       rules: {
-        '@typescript-eslint/no-unnecessary-condition': 'off',
-        '@typescript-eslint/triple-slash-reference': 'off'
-      }
-    },
-    {
-      files: ['*.test.*'],
-      rules: {
-        'import/named': 'off',
-        '@typescript-eslint/unbound-method': 'off'
+        '@typescript-eslint/no-unnecessary-condition': 'off'
       }
     }
   ],
@@ -132,6 +124,7 @@ module.exports = {
 
     // JSX - React 18
     'react/jsx-boolean-value': ['error', 'never'],
+    'react/jsx-child-element-spacing': 'error',
     'react/jsx-closing-bracket-location': ['error', 'line-aligned'],
     'react/jsx-closing-tag-location': 'error',
     'react/jsx-curly-brace-presence': [
@@ -208,6 +201,7 @@ module.exports = {
     ],
     'react/jsx-no-undef': ['error', { allowGlobals: true }],
     'react/jsx-no-useless-fragment': ['error', { allowExpressions: true }],
+    'react/jsx-one-expression-per-line': ['error', { allow: 'single-child' }],
     'react/jsx-pascal-case': [
       'error',
       {
@@ -256,8 +250,10 @@ module.exports = {
     // React Hooks
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': [
-      'warn',
-      { additionalHooks: 'useAsyncEffect' }
+      'error',
+      {
+        // additionalHooks: ''
+      }
     ],
 
 
@@ -333,7 +329,7 @@ module.exports = {
       }
     ],
     'arrow-parens': ['error', 'as-needed', { requireForBlockBody: true }],
-    'arrow-body-style': ['error', 'as-needed', { requireReturnForObjectLiteral: false }],
+    'arrow-body-style': ['error', 'as-needed', { requireReturnForObjectLiteral: true }],
     'no-iterator': 'warn',
     eqeqeq: ['error', 'always'],
     'no-with': 'error',
@@ -549,7 +545,13 @@ module.exports = {
     // '@typescript-eslint/no-non-null-asserted-nullish-coalescing': 'error',
     // '@typescript-eslint/no-non-null-asserted-optional-chain': 'error',
     '@typescript-eslint/no-non-null-assertion': 'error',
-    '@typescript-eslint/no-redeclare': ['error', { ignoreDeclarationMerge: true }],
+    '@typescript-eslint/no-redeclare': [
+      'error',
+      {
+        builtinGlobals: true,
+        ignoreDeclarationMerge: true
+      }
+    ],
     '@typescript-eslint/no-this-alias': [
       'error',
       {
@@ -654,7 +656,7 @@ module.exports = {
         allowNumber: true,
         allowBoolean: false,
         allowAny: false,
-        allowNullish: true,
+        allowNullish: false,
         allowRegExp: false
       }
     ],

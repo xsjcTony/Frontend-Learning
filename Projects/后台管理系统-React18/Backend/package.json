@@ -1,0 +1,81 @@
+{
+  "name": "backstage-admin-system",
+  "version": "1.0.1",
+  "description": "",
+  "private": true,
+  "egg": {
+    "typescript": true,
+    "declarations": true
+  },
+  "scripts": {
+    "start": "egg-scripts start --daemon --title=egg-server-Backstage-Admin-System",
+    "stop": "egg-scripts stop --title=egg-server-Backstage-Admin-System",
+    "dev": "egg-bin dev",
+    "debug": "egg-bin debug",
+    "test-local": "egg-bin test",
+    "test": "npm run lint -- --fix && npm run test-local",
+    "cov": "egg-bin cov",
+    "tsc": "ets && tsc -p tsconfig.json",
+    "ci": "npm run lint && npm run cov && npm run tsc",
+    "autod": "autod",
+    "lint": "eslint . --ext .ts",
+    "clean": "ets clean",
+    "sequelize-ts": "node -r ts-node/register ./node_modules/sequelize-cli/lib/sequelize",
+    "apidoc": "apidoc -i app/controller -o app/public/apidoc"
+  },
+  "dependencies": {
+    "egg": "^2.36.0",
+    "egg-cors": "^2.2.3",
+    "egg-redis": "^2.4.0",
+    "egg-scripts": "^2.17.0",
+    "egg-sequelize-ts": "^0.2.3-0",
+    "egg-session-redis": "^2.1.0",
+    "egg-validate": "^2.0.2",
+    "jsonwebtoken": "^8.5.1",
+    "mysql2": "^2.3.3",
+    "node-xlsx": "^0.21.0",
+    "nodemailer": "^6.7.5",
+    "sequelize": "^5.22.5",
+    "sequelize-typescript": "^0.6.11",
+    "svg-captcha": "^1.4.0",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "@types/jsonwebtoken": "^8.5.8",
+    "@types/mocha": "^9.1.1",
+    "@types/node": "^18.0.0",
+    "@types/nodemailer": "^6.4.4",
+    "@types/supertest": "^2.0.12",
+    "@types/uuid": "^8.3.4",
+    "@types/validator": "^13.7.3",
+    "@typescript-eslint/eslint-plugin": "^5.30.0",
+    "@typescript-eslint/parser": "^5.30.0",
+    "autod": "^3.1.2",
+    "autod-egg": "^1.1.0",
+    "egg-bin": "^5.1.1",
+    "egg-ci": "^2.1.0",
+    "egg-mock": "^4.2.1",
+    "eslint": "^8.18.0",
+    "eslint-import-resolver-node": "^0.3.6",
+    "eslint-import-resolver-typescript": "^3.1.1",
+    "eslint-plugin-import": "^2.26.0",
+    "sequelize-cli": "^6.4.1",
+    "ts-node": "^10.8.1",
+    "tslib": "^2.4.0",
+    "typescript": "^4.7.4"
+  },
+  "engines": {
+    "node": ">=8.9.0"
+  },
+  "ci": {
+    "version": "8"
+  },
+  "apidoc": {
+    "name": "Aelita's backstage management system",
+    "description": "API documentation for Aelita's BMS",
+    "title": "API Doc - Aelita's BMS",
+    "url": "http://34.116.91.48"
+  },
+  "author": "Aelita",
+  "license": "MIT"
+}

@@ -257,9 +257,7 @@ module.exports = {
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': [
       'warn',
-      {
-        // additionalHooks: ''
-      }
+      { additionalHooks: 'useAsyncEffect' }
     ],
 
 
@@ -656,7 +654,7 @@ module.exports = {
         allowNumber: true,
         allowBoolean: false,
         allowAny: false,
-        allowNullish: false,
+        allowNullish: true,
         allowRegExp: false
       }
     ],
