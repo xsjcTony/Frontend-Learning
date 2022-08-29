@@ -44,6 +44,15 @@ module.exports = {
       }
     }
   },
+  overrides:[
+    {
+      files: ['vite.config.ts'],
+      rules: {
+        '@typescript-eslint/no-unnecessary-condition': 'off',
+        '@typescript-eslint/triple-slash-reference': 'off'
+      }
+    }
+  ],
   rules: {
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
@@ -53,8 +62,8 @@ module.exports = {
     'vue/block-lang': [
       'error',
       {
-        script: { lang: 'ts' },
-        style: { lang: 'scss' }
+        script: { lang: 'ts', allowNoLang: true },
+        style: { lang: 'scss', allowNoLang: true }
       }
     ],
     'vue/block-tag-newline': [
@@ -180,13 +189,6 @@ module.exports = {
 
     // vue default rules overwrite
     'vue/multi-word-component-names': 'off',
-    'vue/first-attribute-linebreak': [
-      'error',
-      {
-        singleline: 'ignore',
-        multiline: 'beside'
-      }
-    ],
     'vue/html-closing-bracket-newline': [
       'error',
       {
@@ -446,8 +448,43 @@ module.exports = {
     '@typescript-eslint/ban-types': [
       'error',
       {
-        types: {},
-        extendDefaults: true
+        types: {
+          String: {
+            message: 'Use string instead',
+            fixWith: 'string'
+          },
+          Boolean: {
+            message: 'Use boolean instead',
+            fixWith: 'boolean'
+          },
+          Number: {
+            message: 'Use number instead',
+            fixWith: 'number'
+          },
+          Symbol: {
+            message: 'Use symbol instead',
+            fixWith: 'symbol'
+          },
+
+          Function: {
+            message: [
+              'The `Function` type accepts any function-like value.',
+              'It provides no type safety when calling the function, which can be a common source of bugs.',
+              'It also accepts things like class declarations, which will throw at runtime as they will not be called with `new`.',
+              'If you are expecting the function to accept certain arguments, you should explicitly define the function shape.'
+            ].join('\n')
+          },
+
+          // object typing
+          Object: {
+            message: [
+              'The `Object` type actually means "any non-nullish value", so it is marginally better than `unknown`.',
+              '- If you want a type meaning "any object", you probably want `Record<string, unknown>` instead.',
+              '- If you want a type meaning "any value", you probably want `unknown` instead.'
+            ].join('\n')
+          }
+        },
+        extendDefaults: false
       }
     ],
     '@typescript-eslint/brace-style': ['error', '1tbs', { allowSingleLine: true }],
@@ -524,7 +561,7 @@ module.exports = {
     '@typescript-eslint/no-empty-function': ['error', { allow: ['decoratedFunctions'] }],
     '@typescript-eslint/no-empty-interface': ['error', { allowSingleExtends: true }],
     '@typescript-eslint/no-extra-non-null-assertion': 'error',
-    '@typescript-eslint/no-extra-parens': 'error',
+    '@typescript-eslint/no-extra-parens': ['error', 'all', { ignoreJSX: 'multi-line' }],
     '@typescript-eslint/no-extraneous-class': 'error',
     '@typescript-eslint/no-floating-promises': [
       'error',
@@ -570,13 +607,7 @@ module.exports = {
     // '@typescript-eslint/no-non-null-asserted-nullish-coalescing': 'error',
     // '@typescript-eslint/no-non-null-asserted-optional-chain': 'error',
     '@typescript-eslint/no-non-null-assertion': 'error',
-    '@typescript-eslint/no-redeclare': [
-      'error',
-      {
-        builtinGlobals: true,
-        ignoreDeclarationMerge: true
-      }
-    ],
+    '@typescript-eslint/no-redeclare': ['error', { ignoreDeclarationMerge: true }],
     '@typescript-eslint/no-this-alias': [
       'error',
       {
@@ -613,7 +644,8 @@ module.exports = {
       {
         vars: 'all',
         args: 'none',
-        ignoreRestSiblings: true
+        ignoreRestSiblings: true,
+        destructuredArrayIgnorePattern: '^_'
       }
     ],
     '@typescript-eslint/no-useless-constructor': 'error',
@@ -680,7 +712,7 @@ module.exports = {
         allowNumber: true,
         allowBoolean: false,
         allowAny: false,
-        allowNullish: false,
+        allowNullish: true,
         allowRegExp: false
       }
     ],
