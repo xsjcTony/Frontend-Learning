@@ -5,5 +5,7 @@
     "composite": true
   },
   "extends": "./tsconfig.json",
-  "include": [".eslintrc.cjs"]
+  "include": [
+    ".eslintrc.cjs"
+  ]
 }

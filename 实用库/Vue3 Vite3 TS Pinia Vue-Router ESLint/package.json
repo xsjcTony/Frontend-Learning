@@ -30,6 +30,7 @@
     "sass": "^1.54.5",
     "typescript": "^4.8.2",
     "vite": "^3.0.9",
+    "vite-svg-loader": "^3.4.0",
     "vite-tsconfig-paths": "^3.5.0",
     "vue-tsc": "^0.40.4"
   }

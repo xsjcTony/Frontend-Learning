@@ -44,7 +44,7 @@ module.exports = {
       }
     }
   },
-  overrides:[
+  overrides: [
     {
       files: ['vite.config.ts'],
       rules: {
@@ -196,14 +196,6 @@ module.exports = {
         multiline: 'always'
       }
     ],
-    'vue/html-closing-bracket-spacing': [
-      'error',
-      {
-        startTag: 'never',
-        endTag: 'never',
-        selfClosingTag: 'never'
-      }
-    ],
     'vue/html-indent': [
       'error',
       4,
@@ -216,18 +208,6 @@ module.exports = {
       }
     ],
     'vue/html-quotes': ['error', 'double', { avoidEscape: false }],
-    'vue/html-self-closing': [
-      'error',
-      {
-        html: {
-          'void': 'never',
-          normal: 'never',
-          component: 'always'
-        },
-        svg: 'always',
-        math: 'always'
-      }
-    ],
     'vue/max-attributes-per-line': [
       'error', {
         singleline: {
