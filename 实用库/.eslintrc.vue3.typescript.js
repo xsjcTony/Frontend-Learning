@@ -7,7 +7,8 @@ module.exports = {
     'vue/setup-compiler-macros': true
   },
   'extends': [
-    'plugin:vue/vue3-recommended'
+    'plugin:vue/vue3-recommended',
+    'plugin:vuejs-accessibility/recommended'
   ],
   parser: 'vue-eslint-parser',
   parserOptions: {
@@ -29,7 +30,8 @@ module.exports = {
   plugins: [
     'vue',
     'import',
-    '@typescript-eslint'
+    '@typescript-eslint',
+    'vuejs-accessibility'
   ],
   settings: {
     'import/parsers': {
@@ -188,6 +190,7 @@ module.exports = {
     'vue/v-on-function-call': ['error', 'never', { ignoreIncludesComment: false }],
 
     // vue default rules overwrite
+    'vue/no-setup-props-destructure': 'off', // For reactivity transform
     'vue/multi-word-component-names': 'off',
     'vue/html-closing-bracket-newline': [
       'error',
@@ -221,7 +224,8 @@ module.exports = {
     'vue/multiline-html-element-content-newline': [
       'error',
       {
-        allowEmptyLines: true
+        allowEmptyLines: true,
+        ignores: []
       }
     ],
     'vue/mustache-interpolation-spacing': ['error', 'always'],

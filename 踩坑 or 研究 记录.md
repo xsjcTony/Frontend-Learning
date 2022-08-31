@@ -625,6 +625,29 @@ test: { // 仅在vite中需要
 
 
 
+---
+
+# 01/09/2022
+
+
+
+## 防止移动设备点击后 `hover` 效果持续存在
+
+- 在移动设备中, 如果点击了元素 (比如 `<a>` ), `hover` 效果会一直存在, 直到再次点击屏幕其他地方
+- 在 `css` 中可以通过 `@media (hover: hover)` 来判定是否有类似鼠标的输入工具触发 `hover` , 来决定是否应用 `hover`
+
+```scss
+a {
+  @media screen and (hover: hover) {
+    &:hover {
+      color: pink;
+    }
+  }
+}
+```
+
+
+
 
 
 

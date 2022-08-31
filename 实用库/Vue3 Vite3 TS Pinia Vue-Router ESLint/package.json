@@ -20,11 +20,12 @@
     "@typescript-eslint/parser": "^5.35.1",
     "@vitejs/plugin-vue": "^3.0.3",
     "autoprefixer": "^10.4.8",
-    "eslint": "8.22.0",
+    "eslint": "^8.23.0",
     "eslint-import-resolver-node": "^0.3.6",
     "eslint-import-resolver-typescript": "^3.5.0",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-vue": "^9.4.0",
+    "eslint-plugin-vuejs-accessibility": "^1.2.0",
     "postcss": "^8.4.16",
     "postcss-flexbugs-fixes": "^5.0.2",
     "sass": "^1.54.5",
@@ -33,5 +34,8 @@
     "vite-svg-loader": "^3.4.0",
     "vite-tsconfig-paths": "^3.5.0",
     "vue-tsc": "^0.40.4"
+  },
+  "peerDependencies": {
+    "postcss": "^8.4.16"
   }
 }
