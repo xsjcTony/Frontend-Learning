@@ -648,6 +648,81 @@ a {
 
 
 
+---
+
+# 05/09/2022
+
+
+
+## 按需加载 `animate.css`
+
+- `animate.css` 原生不支持按需加载
+- 需要自己手动 `@import` 需要的规则, 然后再通过 `PostCSS` 加上需要的 `prefix` , 默认的是 `animate__`
+
+```shell
+pnpm add -D postcss postcss-import @types/postcss-import postcss-prefixer
+```
+
+```json
+// package.json
+"scripts": {
+  // ...
+  "generate-animate.css": "ts-node-esm path/to/build.ts"
+}
+```
+
+```css
+/* src.css */
+/* Base */
+@import 'animate.css/source/_base.css';
+@import 'animate.css/source/_vars.css';
+
+
+/* Animations */
+@import 'animate.css/source/fading_entrances/fadeIn.css';
+@import 'animate.css/source/zooming_entrances/zoomIn.css';
+```
+
+```typescript
+// build.ts
+import { readFileSync, writeFileSync } from 'node:fs'
+import { resolve, dirname } from 'node:path'
+import { fileURLToPath } from 'node:url'
+import postcss from 'postcss'
+import atImport from 'postcss-import'
+// @ts-expect-error No .d.ts for postcss-prefixer
+import prefixer from 'postcss-prefixer'
+
+
+const __dirname = dirname(fileURLToPath(import.meta.url))
+
+
+const css = readFileSync(resolve(__dirname, 'src.css'), 'utf-8')
+
+const output = await postcss([
+  atImport(), // order matters here
+  prefixer({
+    prefix: 'animate__',
+    ignore: [/\[class\*=.*]/]
+  })
+]).process(css)
+
+writeFileSync(resolve(__dirname, 'custom_animate.css'), output.css, 'utf-8')
+
+console.log('Build "custom_animate.css" finished.')
+```
+
+```shell
+pnpm generate-animate.css
+```
+
+```typescript
+// main.ts
+import 'path/to/custom_animate.css'
+```
+
+
+
 
 
 
