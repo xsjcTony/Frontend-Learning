@@ -14,7 +14,20 @@ export default defineConfig({
     }),
     eslintPlugin({ formatter: 'stylish' }),
     tsconfigPaths({ loose: true }), // for .vue files
-    svgLoader()
+    svgLoader({
+      svgoConfig: {
+        plugins: [
+          {
+            name: 'preset-default',
+            params: {
+              overrides: {
+                removeViewBox: false
+              }
+            }
+          }
+        ]
+      }
+    })
   ],
   /*
   server: {
