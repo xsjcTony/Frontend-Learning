@@ -100,7 +100,7 @@ module.exports = {
       'PascalCase',
       {
         registeredComponentsOnly: true,
-        ignores: []
+        ignores: ['/.*button$/']
       }
     ],
     'vue/custom-event-name-casing': ['error', 'camelCase'],
@@ -248,7 +248,8 @@ module.exports = {
       'error',
       {
         properties: 'always',
-        ignoreDestructuring: false
+        ignoreDestructuring: false,
+        allow: ['^animate__']
       }
     ],
     'vue/comma-dangle': ['error', 'never'],
@@ -300,6 +301,10 @@ module.exports = {
     'vue/space-infix-ops': ['error', { int32Hint: false }],
     'vue/template-curly-spacing': ['error', 'never'],
     'vue/operator-linebreak': ['error', 'before'],
+
+
+    // vuejs-accessibility overwrite
+    'vuejs-accessibility/click-events-have-key-events': 'off',
 
 
     // js
