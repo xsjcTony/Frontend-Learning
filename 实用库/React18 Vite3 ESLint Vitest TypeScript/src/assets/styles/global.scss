@@ -1,0 +1,31 @@
+/* global style */
+:root {
+    font-family: 'Clear Sans', 'Helvetica Neue', Arial, sans-serif;
+    font-size: 16px;
+    -webkit-tap-highlight-color: transparent;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: var(--color-background);
+    transition: background-color .25s;
+}
+
+img {
+    vertical-align: bottom;
+}
+
+h1, h2, h3, h4, h5, h6, ul, ol {
+    margin: 0;
+    padding: 0;
+}
+
+ul {
+    list-style: none;
+}

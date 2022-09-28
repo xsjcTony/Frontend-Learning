@@ -1,17 +1,16 @@
-/// <reference types="vitest" />
-
-import eslintPlugin from '@nabla/vite-plugin-eslint'
+import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
+import viteSvgr from 'vite-plugin-svgr'
+import tsconfigPaths from 'vite-tsconfig-paths'
+import eslintPlugin from '@nabla/vite-plugin-eslint'
 import autoprefixer from 'autoprefixer'
 import flexBugFixes from 'postcss-flexbugs-fixes'
-import pxToViewport from 'postcss-px-to-viewport'
-import { defineConfig } from 'vite'
-import tsconfigPaths from 'vite-tsconfig-paths'
 
 
 export default defineConfig({
   plugins: [
     react(),
+    viteSvgr(),
     tsconfigPaths(),
     eslintPlugin({ formatter: 'stylish' })
   ],
@@ -22,21 +21,6 @@ export default defineConfig({
     postcss: {
       plugins: [
         autoprefixer({}),
-        pxToViewport({
-          unitToConvert: 'px',
-          viewportUnit: 'vw',
-          fontViewportUnit: 'vw',
-          viewportWidth: 750,
-          viewportHeight: 1334,
-          unitPrecision: 3,
-          propList: ['*', '!letter-spacing'],
-          selectorBlackList: ['.ignore'],
-          minPixelValue: 1,
-          mediaQuery: true,
-          replace: true,
-          landscape: false,
-          exclude: [/node_modules/]
-        }),
         flexBugFixes()
       ]
     },
@@ -44,11 +28,5 @@ export default defineConfig({
       localsConvention: 'camelCaseOnly'
     }
   },
-  test: {
-    coverage: {
-      reporter: ['text', 'html']
-    },
-    setupFiles: ['./src/test/setup.ts'],
-    environment: 'jsdom'
-  }
+  base: '/'
 })
