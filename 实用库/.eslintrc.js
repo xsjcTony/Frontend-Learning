@@ -73,6 +73,7 @@ module.exports = {
     'no-multiple-empty-lines': ['error', { max: 2 }],
     'no-multi-assign': 'error',
     'one-var': ['error', 'never'],
+    'no-plusplus': ['error', { 'allowForLoopAfterthoughts': true }],
     semi: ['error', 'never'],
     'no-unexpected-multiline': 'error',
     'space-before-blocks': ['error', 'always'],
@@ -107,8 +108,10 @@ module.exports = {
     'no-useless-escape': 'error',
     'no-new-func': 'error',
     'wrap-iife': ['error', 'outside'],
+    'prefer-rest-params': 'error',
     'no-loop-func': 'error',
     'prefer-spread': 'error',
+    'function-paren-newline': ['error', 'multiline'],
     'prefer-arrow-callback': [
       'error',
       {
@@ -125,6 +128,13 @@ module.exports = {
     ],
     'arrow-parens': ['error', 'as-needed', { requireForBlockBody: true }],
     'arrow-body-style': ['error', 'as-needed', { requireReturnForObjectLiteral: true }],
+    'no-confusing-arrow': [
+      'error',
+      {
+        'allowParens': true,
+        'onlyOneSimpleParam': false
+      }
+    ],
     'no-useless-constructor': 'error',
     'no-dupe-class-members': 'error',
     'no-duplicate-imports': ['error', { includeExports: true }],
@@ -135,7 +145,8 @@ module.exports = {
       {
         vars: 'all',
         args: 'none',
-        ignoreRestSiblings: true
+        ignoreRestSiblings: true,
+        destructuredArrayIgnorePattern: '^_'
       }
     ],
     eqeqeq: ['error', 'always'],
@@ -154,6 +165,26 @@ module.exports = {
     'no-multi-spaces': ['error', { ignoreEOLComments: true }],
     'default-param-last': 'error',
     'operator-linebreak': ['error', 'before'],
+    'no-else-return': ['error', { allowElseIf: false }],
+    'operator-linebreak': [
+      'error',
+      'before',
+      { overrides: { '=': 'none' } }
+    ],
+    'no-whitespace-before-property': 'error',
+    'array-bracket-spacing': ['error', 'never'],
+    'no-extra-parens': [
+      'error',
+      'all',
+      {
+        ignoreJSX: 'multi-line',
+        nestedBinaryExpressions: false
+      }
+    ],
+    'no-implied-eval': 'error',
+    'no-loss-of-precision': 'error',
+    'no-return-await': 'error',
+
 
     // eslint-plugin-import
     'import/first': 'error',
@@ -172,6 +203,7 @@ module.exports = {
         warnOnUnassignedImports: false
       }
     ],
-    'import/named': 'error'
+    'import/named': 'error',
+    'import/no-mutable-exports': 'error'
   }
 }

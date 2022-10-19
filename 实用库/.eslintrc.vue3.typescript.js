@@ -24,7 +24,7 @@ module.exports = {
     },
     parser: '@typescript-eslint/parser',
     tsconfigRootDir: __dirname,
-    project: ['./tsconfig.json', './tsconfig.eslint.json', './tsconfig.node.json'],
+    project: ['./tsconfig.json', './tsconfig.eslint.json', './tsconfig.node.json', './tsconfig.tailwindcss.json'],
     extraFileExtensions: ['.vue']
   },
   plugins: [
@@ -52,6 +52,12 @@ module.exports = {
       rules: {
         '@typescript-eslint/no-unnecessary-condition': 'off',
         '@typescript-eslint/triple-slash-reference': 'off'
+      }
+    },
+    {
+      files: ['main.ts'],
+      rules: {
+        'import/orders': 'off'
       }
     }
   ],
@@ -100,7 +106,7 @@ module.exports = {
       'PascalCase',
       {
         registeredComponentsOnly: true,
-        ignores: ['/.*button$/']
+        ignores: []
       }
     ],
     'vue/custom-event-name-casing': ['error', 'camelCase'],
@@ -157,7 +163,7 @@ module.exports = {
     'vue/no-useless-mustaches': [
       'error',
       {
-        ignoreIncludesComment: false,
+        ignoreIncludesComment: true,
         ignoreStringEscape: false
       }
     ],
@@ -185,7 +191,7 @@ module.exports = {
         ignores: []
       }
     ],
-    'vue/static-class-names-order': 'error',
+    'vue/static-class-names-order': 'off', // For tailwind css
     'vue/v-for-delimiter-style': ['error', 'in'],
     'vue/v-on-function-call': ['error', 'never', { ignoreIncludesComment: false }],
 
@@ -248,8 +254,7 @@ module.exports = {
       'error',
       {
         properties: 'always',
-        ignoreDestructuring: false,
-        allow: ['^animate__']
+        ignoreDestructuring: false
       }
     ],
     'vue/comma-dangle': ['error', 'never'],
@@ -303,10 +308,6 @@ module.exports = {
     'vue/operator-linebreak': ['error', 'before'],
 
 
-    // vuejs-accessibility overwrite
-    'vuejs-accessibility/click-events-have-key-events': 'off',
-
-
     // js
     'block-spacing': ['error', 'always'],
     camelcase: [
@@ -348,6 +349,7 @@ module.exports = {
     'no-multiple-empty-lines': ['error', { max: 2 }],
     'no-multi-assign': 'error',
     'one-var': ['error', 'never'],
+    'no-plusplus': ['error', { 'allowForLoopAfterthoughts': true }],
     'no-unexpected-multiline': 'error',
     'space-before-blocks': ['error', 'always'],
     'prefer-const': ['error', { destructuring: 'all' }],
@@ -363,7 +365,9 @@ module.exports = {
     'no-useless-escape': 'error',
     'no-new-func': 'error',
     'wrap-iife': ['error', 'outside'],
+    'prefer-rest-params': 'error',
     'prefer-spread': 'error',
+    'function-paren-newline': ['error', 'multiline'],
     'prefer-arrow-callback': [
       'error',
       {
@@ -380,11 +384,26 @@ module.exports = {
     ],
     'arrow-parens': ['error', 'as-needed', { requireForBlockBody: true }],
     'arrow-body-style': ['error', 'as-needed', { requireReturnForObjectLiteral: true }],
+    'no-confusing-arrow': [
+      'error',
+      {
+        'allowParens': true,
+        'onlyOneSimpleParam': false
+      }
+    ],
     'no-iterator': 'warn',
     eqeqeq: ['error', 'always'],
     'no-with': 'error',
     'no-multi-spaces': ['error', { ignoreEOLComments: true }],
     'operator-linebreak': ['error', 'before'],
+    'no-else-return': ['error', { allowElseIf: false }],
+    'operator-linebreak': [
+      'error',
+      'before',
+      { overrides: { '=': 'none' } }
+    ],
+    'no-whitespace-before-property': 'error',
+    'array-bracket-spacing': ['error', 'never'],
 
 
     // eslint-plugin-import
@@ -411,6 +430,7 @@ module.exports = {
       }
     ],
     'import/named': 'error',
+    'import/no-mutable-exports': 'error',
 
 
     // TypeScript
@@ -550,7 +570,14 @@ module.exports = {
     '@typescript-eslint/no-empty-function': ['error', { allow: ['decoratedFunctions'] }],
     '@typescript-eslint/no-empty-interface': ['error', { allowSingleExtends: true }],
     '@typescript-eslint/no-extra-non-null-assertion': 'error',
-    '@typescript-eslint/no-extra-parens': ['error', 'all', { ignoreJSX: 'multi-line' }],
+    '@typescript-eslint/no-extra-parens': [
+      'error',
+      'all',
+      {
+        ignoreJSX: 'multi-line',
+        nestedBinaryExpressions: false
+      }
+    ],
     '@typescript-eslint/no-extraneous-class': 'error',
     '@typescript-eslint/no-floating-promises': [
       'error',

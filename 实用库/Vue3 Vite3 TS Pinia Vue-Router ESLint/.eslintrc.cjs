@@ -24,7 +24,7 @@ module.exports = {
     },
     parser: '@typescript-eslint/parser',
     tsconfigRootDir: __dirname,
-    project: ['./tsconfig.json', './tsconfig.eslint.json', './tsconfig.node.json'],
+    project: ['./tsconfig.json', './tsconfig.eslint.json', './tsconfig.node.json', './tsconfig.tailwindcss.json'],
     extraFileExtensions: ['.vue']
   },
   plugins: [
@@ -52,6 +52,12 @@ module.exports = {
       rules: {
         '@typescript-eslint/no-unnecessary-condition': 'off',
         '@typescript-eslint/triple-slash-reference': 'off'
+      }
+    },
+    {
+      files: ['main.ts'],
+      rules: {
+        'import/orders': 'off'
       }
     }
   ],
@@ -157,7 +163,7 @@ module.exports = {
     'vue/no-useless-mustaches': [
       'error',
       {
-        ignoreIncludesComment: false,
+        ignoreIncludesComment: true,
         ignoreStringEscape: false
       }
     ],
@@ -185,7 +191,7 @@ module.exports = {
         ignores: []
       }
     ],
-    'vue/static-class-names-order': 'error',
+    'vue/static-class-names-order': 'off', // For tailwind css
     'vue/v-for-delimiter-style': ['error', 'in'],
     'vue/v-on-function-call': ['error', 'never', { ignoreIncludesComment: false }],
 

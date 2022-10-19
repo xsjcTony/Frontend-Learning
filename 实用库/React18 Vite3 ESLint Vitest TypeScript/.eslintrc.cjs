@@ -152,7 +152,7 @@ module.exports = {
     'react/jsx-curly-spacing': ['error', 'never'],
     'react/jsx-equals-spacing': ['error', 'never'],
     'react/jsx-filename-extension': ['error', { extensions: ['.tsx'] }],
-    'react/jsx-first-prop-new-line': ['error', 'multiline-multiprop'],
+    'react/jsx-first-prop-new-line': ['error', 'multiline'],
     'react/jsx-fragments': ['error', 'syntax'],
     'react/jsx-indent': [
       'error',
