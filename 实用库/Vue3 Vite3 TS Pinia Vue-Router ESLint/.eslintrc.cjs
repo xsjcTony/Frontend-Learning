@@ -349,6 +349,7 @@ module.exports = {
     'no-multiple-empty-lines': ['error', { max: 2 }],
     'no-multi-assign': 'error',
     'one-var': ['error', 'never'],
+    'no-plusplus': ['error', { 'allowForLoopAfterthoughts': true }],
     'no-unexpected-multiline': 'error',
     'space-before-blocks': ['error', 'always'],
     'prefer-const': ['error', { destructuring: 'all' }],
@@ -364,7 +365,9 @@ module.exports = {
     'no-useless-escape': 'error',
     'no-new-func': 'error',
     'wrap-iife': ['error', 'outside'],
+    'prefer-rest-params': 'error',
     'prefer-spread': 'error',
+    'function-paren-newline': ['error', 'multiline'],
     'prefer-arrow-callback': [
       'error',
       {
@@ -381,11 +384,26 @@ module.exports = {
     ],
     'arrow-parens': ['error', 'as-needed', { requireForBlockBody: true }],
     'arrow-body-style': ['error', 'as-needed', { requireReturnForObjectLiteral: true }],
+    'no-confusing-arrow': [
+      'error',
+      {
+        'allowParens': true,
+        'onlyOneSimpleParam': false
+      }
+    ],
     'no-iterator': 'warn',
     eqeqeq: ['error', 'always'],
     'no-with': 'error',
     'no-multi-spaces': ['error', { ignoreEOLComments: true }],
     'operator-linebreak': ['error', 'before'],
+    'no-else-return': ['error', { allowElseIf: false }],
+    'operator-linebreak': [
+      'error',
+      'before',
+      { overrides: { '=': 'none' } }
+    ],
+    'no-whitespace-before-property': 'error',
+    'array-bracket-spacing': ['error', 'never'],
 
 
     // eslint-plugin-import
@@ -412,6 +430,7 @@ module.exports = {
       }
     ],
     'import/named': 'error',
+    'import/no-mutable-exports': 'error',
 
 
     // TypeScript
@@ -551,7 +570,14 @@ module.exports = {
     '@typescript-eslint/no-empty-function': ['error', { allow: ['decoratedFunctions'] }],
     '@typescript-eslint/no-empty-interface': ['error', { allowSingleExtends: true }],
     '@typescript-eslint/no-extra-non-null-assertion': 'error',
-    '@typescript-eslint/no-extra-parens': ['error', 'all', { ignoreJSX: 'multi-line' }],
+    '@typescript-eslint/no-extra-parens': [
+      'error',
+      'all',
+      {
+        ignoreJSX: 'multi-line',
+        nestedBinaryExpressions: false
+      }
+    ],
     '@typescript-eslint/no-extraneous-class': 'error',
     '@typescript-eslint/no-floating-promises': [
       'error',
