@@ -40,7 +40,7 @@ module.exports = {
     },
     componentWrapperFunctions: ['styled'],
     formComponents: [],
-    linkComponents: []
+    linkComponents: ['Link']
   },
   overrides: [
     {
@@ -82,8 +82,7 @@ module.exports = {
       }
     ],
     'react/hook-use-state': 'error',
-    'react/iframe-missing-sandbox': 'error',
-    'react/no-array-index-key': 'error',
+    'react/no-array-index-key': 'warn',
     'react/no-children-prop': 'error',
     'react/no-danger': 'error',
     'react/no-deprecated': 'error',
@@ -251,6 +250,7 @@ module.exports = {
         prop: 'parens-new-line'
       }
     ],
+    'jsx-quotes': ['error', 'prefer-double'],
 
 
     // React Hooks
@@ -267,7 +267,7 @@ module.exports = {
       'error',
       {
         properties: 'always',
-        ignoreDestructuring: false
+        ignoreDestructuring: true
       }
     ],
     'comma-style': ['error', 'last'],
@@ -320,7 +320,7 @@ module.exports = {
     'wrap-iife': ['error', 'outside'],
     'prefer-rest-params': 'error',
     'prefer-spread': 'error',
-    'function-paren-newline': ['error', 'multiline'],
+    'function-paren-newline': ['error', 'consistent'],
     'prefer-arrow-callback': [
       'error',
       {
@@ -337,13 +337,6 @@ module.exports = {
     ],
     'arrow-parens': ['error', 'as-needed', { requireForBlockBody: true }],
     'arrow-body-style': ['error', 'as-needed', { requireReturnForObjectLiteral: false }],
-    'no-confusing-arrow': [
-      'error',
-      {
-        'allowParens': true,
-        'onlyOneSimpleParam': false
-      }
-    ],
     'no-iterator': 'warn',
     eqeqeq: ['error', 'always'],
     'no-with': 'error',
@@ -383,6 +376,7 @@ module.exports = {
     ],
     'import/named': 'error',
     'import/no-mutable-exports': 'error',
+    'import/no-duplicates': ['error', { 'considerQueryString': true }],
 
 
     // TypeScript
@@ -518,7 +512,6 @@ module.exports = {
       }
     ],
     '@typescript-eslint/no-dupe-class-members': 'error',
-    '@typescript-eslint/no-duplicate-imports': ['error', { includeExports: true }],
     '@typescript-eslint/no-empty-function': ['error', { allow: ['decoratedFunctions'] }],
     '@typescript-eslint/no-empty-interface': ['error', { allowSingleExtends: true }],
     '@typescript-eslint/no-extra-non-null-assertion': 'error',
@@ -530,6 +523,7 @@ module.exports = {
         nestedBinaryExpressions: false
       }
     ],
+    '@typescript-eslint/no-extra-semi': 'error',
     '@typescript-eslint/no-extraneous-class': 'error',
     '@typescript-eslint/no-floating-promises': [
       'error',
@@ -644,7 +638,6 @@ module.exports = {
       }
     ],
     '@typescript-eslint/prefer-optional-chain': 'error',
-    '@typescript-eslint/prefer-reduce-type-parameter': 'error',
     '@typescript-eslint/prefer-regexp-exec': 'error',
     '@typescript-eslint/prefer-return-this-type': 'error',
     '@typescript-eslint/prefer-string-starts-ends-with': 'error',

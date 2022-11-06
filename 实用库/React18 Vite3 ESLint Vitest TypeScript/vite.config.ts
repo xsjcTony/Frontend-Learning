@@ -15,7 +15,7 @@ export default defineConfig({
     eslintPlugin({ formatter: 'stylish' })
   ],
   server: {
-    host: true
+    host: false
   },
   css: {
     postcss: {

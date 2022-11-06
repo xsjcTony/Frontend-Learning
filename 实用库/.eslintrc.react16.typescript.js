@@ -116,7 +116,7 @@ module.exports = {
     'react/no-unstable-nested-components': ['error', { allowAsProps: true }],
     'react/no-unused-prop-types': 'error',
     'react/prop-types': ['error', { skipUndeclared: true }],
-    'react/react-in-jsx-scope': 'off', // disabled for JSX transform from React 17
+    'react/react-in-jsx-scope': 'error', // Turn off is using React 17+
     'react/require-default-props': ['error', { functions: 'defaultArguments' }],
     'react/self-closing-comp': [
       'error',
@@ -237,7 +237,7 @@ module.exports = {
         beforeClosing: 'never'
       }
     ],
-    'react/jsx-uses-react': 'off', // disabled for JSX transform from React 17
+    'react/jsx-uses-react': 'error', // Turn off is using React 17+
     'react/jsx-wrap-multilines': [
       'error',
       {
@@ -267,7 +267,7 @@ module.exports = {
       'error',
       {
         properties: 'always',
-        ignoreDestructuring: false
+        ignoreDestructuring: true
       }
     ],
     'comma-style': ['error', 'last'],
@@ -320,7 +320,7 @@ module.exports = {
     'wrap-iife': ['error', 'outside'],
     'prefer-rest-params': 'error',
     'prefer-spread': 'error',
-    'function-paren-newline': ['error', 'multiline-arguments'],
+    'function-paren-newline': ['error', 'consistent'],
     'prefer-arrow-callback': [
       'error',
       {
@@ -337,25 +337,18 @@ module.exports = {
     ],
     'arrow-parens': ['error', 'as-needed', { requireForBlockBody: true }],
     'arrow-body-style': ['error', 'as-needed', { requireReturnForObjectLiteral: false }],
-    'no-confusing-arrow': [
-      'error',
-      {
-        'allowParens': true,
-        'onlyOneSimpleParam': false
-      }
-    ],
     'no-iterator': 'warn',
     eqeqeq: ['error', 'always'],
     'no-with': 'error',
     'no-multi-spaces': ['error', { ignoreEOLComments: true }],
     'no-else-return': ['error', { allowElseIf: false }],
+    'no-whitespace-before-property': 'error',
+    'array-bracket-spacing': ['error', 'never'],
     'operator-linebreak': [
       'error',
       'before',
       { overrides: { '=': 'none' } }
     ],
-    'no-whitespace-before-property': 'error',
-    'array-bracket-spacing': ['error', 'never'],
 
 
     // eslint-plugin-import
@@ -645,7 +638,6 @@ module.exports = {
       }
     ],
     '@typescript-eslint/prefer-optional-chain': 'error',
-    '@typescript-eslint/prefer-reduce-type-parameter': 'error',
     '@typescript-eslint/prefer-regexp-exec': 'error',
     '@typescript-eslint/prefer-return-this-type': 'error',
     '@typescript-eslint/prefer-string-starts-ends-with': 'error',
