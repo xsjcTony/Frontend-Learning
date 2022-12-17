@@ -148,7 +148,7 @@ module.exports = {
         singleline: 'consistent'
       }
     ],
-    'react/jsx-curly-spacing': ['error', 'never'],
+    'react/jsx-curly-spacing': ['error', { when: 'never', children: true }],
     'react/jsx-equals-spacing': ['error', 'never'],
     'react/jsx-filename-extension': ['error', { extensions: ['.tsx'] }],
     'react/jsx-first-prop-new-line': ['error', 'multiline'],
@@ -338,7 +338,7 @@ module.exports = {
     'arrow-parens': ['error', 'as-needed', { requireForBlockBody: true }],
     'arrow-body-style': ['error', 'as-needed', { requireReturnForObjectLiteral: false }],
     'no-iterator': 'warn',
-    eqeqeq: ['error', 'always'],
+    eqeqeq: ['error', 'always', { 'null': 'ignore' }],
     'no-with': 'error',
     'no-multi-spaces': ['error', { ignoreEOLComments: true }],
     'no-else-return': ['error', { allowElseIf: false }],
@@ -349,6 +349,7 @@ module.exports = {
       'before',
       { overrides: { '=': 'none' } }
     ],
+    'space-in-parens': ['error', 'never'],
 
 
     // eslint-plugin-import
@@ -377,6 +378,7 @@ module.exports = {
     'import/named': 'error',
     'import/no-mutable-exports': 'error',
     'import/no-duplicates': ['error', { 'considerQueryString': true }],
+    'import/group-exports': 'error',
 
 
     // TypeScript

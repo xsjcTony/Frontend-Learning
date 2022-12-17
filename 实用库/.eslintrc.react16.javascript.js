@@ -122,7 +122,7 @@ module.exports = {
         singleline: 'consistent'
       }
     ],
-    'react/jsx-curly-spacing': ['error', 'never'],
+    'react/jsx-curly-spacing': ['error', { when: 'never', children: true }],
     'react/jsx-equals-spacing': ['error', 'never'],
     'react/jsx-filename-extension': ['error', { extensions: ['.jsx'] }],
     'react/jsx-first-prop-new-line': ['error', 'multiline'],
@@ -362,7 +362,7 @@ module.exports = {
         destructuredArrayIgnorePattern: '^_'
       }
     ],
-    eqeqeq: ['error', 'always'],
+    eqeqeq: ['error', 'always', { 'null': 'ignore' }],
     'no-with': 'error',
     'object-curly-spacing': ['error', 'always'],
     'lines-between-class-members': ['error', 'always', { exceptAfterSingleLine: true }],
@@ -398,6 +398,7 @@ module.exports = {
     'no-implied-eval': 'error',
     'no-loss-of-precision': 'error',
     'no-return-await': 'error',
+    'space-in-parens': ['error', 'never'],
 
 
     // eslint-plugin-import
@@ -425,6 +426,7 @@ module.exports = {
     ],
     'import/named': 'error',
     'import/no-mutable-exports': 'error',
-    'import/no-duplicates': ['error', { 'considerQueryString': true }]
+    'import/no-duplicates': ['error', { 'considerQueryString': true }],
+    'import/group-exports': 'error'
   }
 }
