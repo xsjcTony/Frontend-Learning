@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "types": ["@types/node"],
+    "noEmit": false,
+    "allowJs": true,
+    "composite": true
+  },
+  "extends": "./tsconfig.json",
+  "include": [
+    ".eslintrc.js",
+    "tailwind.config.js"
+  ]
+}

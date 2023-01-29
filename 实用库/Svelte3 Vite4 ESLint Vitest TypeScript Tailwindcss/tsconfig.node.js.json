@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "types": ["@types/node"],
+    "noEmit": false,
+    "allowJs": true,
+    "composite": true
+  },
+  "extends": "./tsconfig.json",
+  "include": [
+    ".eslintrc.cjs",
+    "svelte.config.js",
+    "tailwind.config.cjs"
+  ]
+}
