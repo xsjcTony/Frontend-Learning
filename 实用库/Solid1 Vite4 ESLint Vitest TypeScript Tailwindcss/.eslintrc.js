@@ -57,7 +57,7 @@ module.exports = {
     'solid/no-react-specific-props': 'error',
     'solid/no-unknown-namespaces': 'error',
     'solid/prefer-for': 'error',
-    'solid/prefer-show': 'error',
+    'solid/prefer-show': 'off',
     'solid/reactivity': 'error',
     'solid/self-closing-comp': [
       'error',
