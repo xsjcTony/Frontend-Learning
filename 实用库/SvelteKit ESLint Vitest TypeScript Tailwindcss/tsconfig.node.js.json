@@ -8,6 +8,7 @@
   "extends": "./tsconfig.json",
   "include": [
     ".eslintrc.cjs",
-    "tailwind.config.cjs"
+    "tailwind.config.cjs",
+    "svelte.config.js"
   ]
 }

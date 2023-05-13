@@ -264,9 +264,9 @@ module.exports = {
     // js
     'block-spacing': ['error', 'always'],
     camelcase: [
-      'error',
+      'off',
       {
-        properties: 'always',
+        properties: 'never',
         ignoreDestructuring: true
       }
     ],
@@ -302,7 +302,7 @@ module.exports = {
     'no-multiple-empty-lines': ['error', { max: 2 }],
     'no-multi-assign': 'error',
     'one-var': ['error', 'never'],
-    'no-plusplus': ['error', { 'allowForLoopAfterthoughts': true }],
+    'no-plusplus': ['error', { allowForLoopAfterthoughts: true }],
     'no-unexpected-multiline': 'error',
     'space-before-blocks': ['error', 'always'],
     'prefer-const': ['error', { destructuring: 'all' }],
@@ -342,20 +342,26 @@ module.exports = {
     'no-with': 'error',
     'no-multi-spaces': ['error', { ignoreEOLComments: true }],
     'no-else-return': ['error', { allowElseIf: false }],
-    'no-whitespace-before-property': 'error',
-    'array-bracket-spacing': ['error', 'never'],
     'operator-linebreak': [
       'error',
       'before',
       { overrides: { '=': 'none' } }
     ],
+    'no-whitespace-before-property': 'error',
+    'array-bracket-spacing': ['error', 'never'],
     'space-in-parens': ['error', 'never'],
 
 
     // eslint-plugin-import
     'import/first': 'error',
     'import/no-webpack-loader-syntax': 'error',
-    'import/newline-after-import': ['error', { count: 2 }],
+    'import/newline-after-import': [
+      'error',
+      {
+        count: 2,
+        considerComments: true
+      }
+    ],
     'import/extensions': ['error', 'ignorePackages', { ts: 'never', tsx: 'never' }],
     'import/order': [
       'error',
@@ -363,7 +369,7 @@ module.exports = {
         groups: ['builtin', 'external', 'internal', 'parent', 'sibling', 'index', 'object', 'type'],
         pathGroups: [
           {
-            pattern: '/src/**',
+            pattern: '/resources/js/**',
             group: 'internal'
           }
         ],
@@ -377,7 +383,7 @@ module.exports = {
     ],
     'import/named': 'error',
     'import/no-mutable-exports': 'error',
-    'import/no-duplicates': ['error', { 'considerQueryString': true }],
+    'import/no-duplicates': ['error', { considerQueryString: true }],
     'import/group-exports': 'error',
 
 
@@ -401,7 +407,6 @@ module.exports = {
         minimumDescriptionLength: 2
       }
     ],
-    '@typescript-eslint/ban-tslint-comment': 'error',
     '@typescript-eslint/ban-types': [
       'error',
       {
@@ -493,7 +498,7 @@ module.exports = {
       'error',
       {
         multiline: {
-          delimiter: 'none',
+          delimiter: 'semi',
           requireLast: true
         },
         singleline: {
@@ -514,7 +519,17 @@ module.exports = {
       }
     ],
     '@typescript-eslint/no-dupe-class-members': 'error',
-    '@typescript-eslint/no-empty-function': ['error', { allow: ['decoratedFunctions'] }],
+    '@typescript-eslint/no-empty-function': [
+      'error',
+      {
+        allow: [
+          'private-constructors',
+          'protected-constructors',
+          'decoratedFunctions',
+          'overrideMethods'
+        ]
+      }
+    ],
     '@typescript-eslint/no-empty-interface': ['error', { allowSingleExtends: true }],
     '@typescript-eslint/no-extra-non-null-assertion': 'error',
     '@typescript-eslint/no-extra-parens': [
@@ -531,7 +546,7 @@ module.exports = {
       'error',
       {
         ignoreVoid: true,
-        ignoreIIFE: false
+        ignoreIIFE: true
       }
     ],
     '@typescript-eslint/no-for-in-array': 'error',
@@ -558,7 +573,8 @@ module.exports = {
       'error',
       {
         checksConditionals: true,
-        checksVoidReturn: false
+        checksVoidReturn: false,
+        checksSpreads: true
       }
     ],
     '@typescript-eslint/no-namespace': [
@@ -570,7 +586,7 @@ module.exports = {
     ],
     // '@typescript-eslint/no-non-null-asserted-nullish-coalescing': 'error',
     // '@typescript-eslint/no-non-null-asserted-optional-chain': 'error',
-    '@typescript-eslint/no-non-null-assertion': 'error',
+    '@typescript-eslint/no-non-null-assertion': 'warn',
     '@typescript-eslint/no-redeclare': ['error', { ignoreDeclarationMerge: true }],
     '@typescript-eslint/no-this-alias': [
       'error',
@@ -635,6 +651,7 @@ module.exports = {
     '@typescript-eslint/prefer-nullish-coalescing': [
       'error',
       {
+        ignoreTernaryTests: true,
         ignoreConditionalTests: true,
         ignoreMixedLogicalExpressions: true
       }
@@ -661,7 +678,7 @@ module.exports = {
         allowTemplateLiterals: true
       }
     ],
-    '@typescript-eslint/require-array-sort-compare': ['error', { ignoreStringArrays: false }],
+    '@typescript-eslint/require-array-sort-compare': ['error', { ignoreStringArrays: true }],
     '@typescript-eslint/restrict-plus-operands': [
       'error',
       {
@@ -675,13 +692,13 @@ module.exports = {
         allowNumber: true,
         allowBoolean: false,
         allowAny: false,
-        allowNullish: true,
+        allowNullish: false,
         allowRegExp: false
       }
     ],
     '@typescript-eslint/return-await': ['error', 'in-try-catch'],
-    '@typescript-eslint/semi': ['error', 'never'],
-    '@typescript-eslint/sort-type-union-intersection-members': [
+    '@typescript-eslint/semi': ['error', 'always'],
+    '@typescript-eslint/sort-type-constituents': [
       'error',
       {
         checkIntersections: true,
@@ -740,6 +757,13 @@ module.exports = {
       }
     ],
     '@typescript-eslint/unified-signatures': 'error',
-    '@typescript-eslint/default-param-last': 'error'
+    '@typescript-eslint/default-param-last': 'error',
+    '@typescript-eslint/consistent-type-imports': [
+      'error',
+      {
+        prefer: 'type-imports',
+        fixStyle: 'separate-type-imports'
+      }
+    ]
   }
 }

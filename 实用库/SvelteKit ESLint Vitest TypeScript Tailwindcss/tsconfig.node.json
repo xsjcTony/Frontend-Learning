@@ -7,7 +7,6 @@
     "allowSyntheticDefaultImports": true
   },
   "include": [
-    "vite.config.ts",
-    "svelte.config.ts"
+    "vite.config.ts"
   ]
 }

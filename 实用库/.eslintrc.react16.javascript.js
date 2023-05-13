@@ -404,7 +404,13 @@ module.exports = {
     // eslint-plugin-import
     'import/first': 'error',
     'import/no-webpack-loader-syntax': 'error',
-    'import/newline-after-import': ['error', { count: 2 }],
+    'import/newline-after-import': [
+      'error',
+      {
+        count: 2,
+        considerComments: true
+      }
+    ],
     'import/extensions': ['error', 'ignorePackages', { js: 'never', jsx: 'never' }],
     'import/order': [
       'error',

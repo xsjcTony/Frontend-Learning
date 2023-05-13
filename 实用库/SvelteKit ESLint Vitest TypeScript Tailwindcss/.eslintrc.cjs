@@ -161,7 +161,6 @@ module.exports = {
       }
     ],
     'import/named': 'error',
-    'import/group-exports': 'error',
 
 
     // TypeScript

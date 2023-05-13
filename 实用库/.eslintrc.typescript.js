@@ -33,12 +33,13 @@ module.exports = {
     }
   },
   rules: {
+    // js
     'block-spacing': ['error', 'always'],
     camelcase: [
       'error',
       {
-        properties: 'always',
-        ignoreDestructuring: false
+        properties: 'never',
+        ignoreDestructuring: true
       }
     ],
     'comma-style': ['error', 'last'],
@@ -73,7 +74,7 @@ module.exports = {
     'no-multiple-empty-lines': ['error', { max: 2 }],
     'no-multi-assign': 'error',
     'one-var': ['error', 'never'],
-    'no-plusplus': ['error', { 'allowForLoopAfterthoughts': true }],
+    'no-plusplus': ['error', { allowForLoopAfterthoughts: true }],
     'no-unexpected-multiline': 'error',
     'space-before-blocks': ['error', 'always'],
     'prefer-const': ['error', { destructuring: 'all' }],
@@ -91,7 +92,7 @@ module.exports = {
     'wrap-iife': ['error', 'outside'],
     'prefer-rest-params': 'error',
     'prefer-spread': 'error',
-    'function-paren-newline': ['error', 'multiline'],
+    'function-paren-newline': ['error', 'consistent'],
     'prefer-arrow-callback': [
       'error',
       {
@@ -107,19 +108,11 @@ module.exports = {
       }
     ],
     'arrow-parens': ['error', 'as-needed', { requireForBlockBody: true }],
-    'arrow-body-style': ['error', 'as-needed', { requireReturnForObjectLiteral: true }],
-    'no-confusing-arrow': [
-      'error',
-      {
-        'allowParens': true,
-        'onlyOneSimpleParam': false
-      }
-    ],
+    'arrow-body-style': ['error', 'as-needed', { requireReturnForObjectLiteral: false }],
     'no-iterator': 'warn',
-    eqeqeq: ['error', 'always'],
+    eqeqeq: ['error', 'always', { 'null': 'ignore' }],
     'no-with': 'error',
     'no-multi-spaces': ['error', { ignoreEOLComments: true }],
-    'operator-linebreak': ['error', 'before'],
     'no-else-return': ['error', { allowElseIf: false }],
     'operator-linebreak': [
       'error',
@@ -128,24 +121,24 @@ module.exports = {
     ],
     'no-whitespace-before-property': 'error',
     'array-bracket-spacing': ['error', 'never'],
+    'space-in-parens': ['error', 'never'],
 
 
     // eslint-plugin-import
     'import/first': 'error',
     'import/no-webpack-loader-syntax': 'error',
-    'import/newline-after-import': ['error', { count: 1 }],
-    'import/extensions': [
-      'error',
-      'ignorePackages',
-      {
-        ts: 'never',
-        tsx: 'never'
-      }
-    ],
+    'import/newline-after-import': ['error', { count: 2 }],
+    'import/extensions': ['error', 'ignorePackages', { ts: 'never', tsx: 'never' }],
     'import/order': [
       'error',
       {
         groups: ['builtin', 'external', 'internal', 'parent', 'sibling', 'index', 'object', 'type'],
+        pathGroups: [
+          {
+            pattern: '/src/**',
+            group: 'internal'
+          }
+        ],
         'newlines-between': 'ignore',
         alphabetize: {
           order: 'asc',
@@ -156,6 +149,8 @@ module.exports = {
     ],
     'import/named': 'error',
     'import/no-mutable-exports': 'error',
+    'import/no-duplicates': ['error', { considerQueryString: true }],
+    'import/group-exports': 'error',
 
 
     // TypeScript
@@ -178,12 +173,46 @@ module.exports = {
         minimumDescriptionLength: 2
       }
     ],
-    '@typescript-eslint/ban-tslint-comment': 'error',
     '@typescript-eslint/ban-types': [
       'error',
       {
-        types: {},
-        extendDefaults: true
+        types: {
+          String: {
+            message: 'Use string instead',
+            fixWith: 'string'
+          },
+          Boolean: {
+            message: 'Use boolean instead',
+            fixWith: 'boolean'
+          },
+          Number: {
+            message: 'Use number instead',
+            fixWith: 'number'
+          },
+          Symbol: {
+            message: 'Use symbol instead',
+            fixWith: 'symbol'
+          },
+
+          Function: {
+            message: [
+              'The `Function` type accepts any function-like value.',
+              'It provides no type safety when calling the function, which can be a common source of bugs.',
+              'It also accepts things like class declarations, which will throw at runtime as they will not be called with `new`.',
+              'If you are expecting the function to accept certain arguments, you should explicitly define the function shape.'
+            ].join('\n')
+          },
+
+          // object typing
+          Object: {
+            message: [
+              'The `Object` type actually means "any non-nullish value", so it is marginally better than `unknown`.',
+              '- If you want a type meaning "any object", you probably want `Record<string, unknown>` instead.',
+              '- If you want a type meaning "any value", you probably want `unknown` instead.'
+            ].join('\n')
+          }
+        },
+        extendDefaults: false
       }
     ],
     '@typescript-eslint/brace-style': ['error', '1tbs', { allowSingleLine: true }],
@@ -199,7 +228,7 @@ module.exports = {
       'error',
       {
         assertionStyle: 'as',
-        objectLiteralTypeAssertions: 'allow'
+        objectLiteralTypeAssertions: 'allow-as-parameter'
       }
     ],
     '@typescript-eslint/consistent-type-definitions': ['error', 'interface'],
@@ -235,11 +264,11 @@ module.exports = {
       'error',
       {
         multiline: {
-          delimiter: 'none',
+          delimiter: 'semi',
           requireLast: true
         },
         singleline: {
-          delimiter: 'comma',
+          delimiter: 'semi',
           requireLast: false
         },
         multilineDetection: 'brackets'
@@ -256,24 +285,24 @@ module.exports = {
       }
     ],
     '@typescript-eslint/no-dupe-class-members': 'error',
-    '@typescript-eslint/no-duplicate-imports': ['error', { includeExports: true }],
     '@typescript-eslint/no-empty-function': ['error', { allow: ['decoratedFunctions'] }],
     '@typescript-eslint/no-empty-interface': ['error', { allowSingleExtends: true }],
-    '@typescript-eslint/no-explicit-any': [
+    '@typescript-eslint/no-extra-non-null-assertion': 'error',
+    '@typescript-eslint/no-extra-parens': [
       'error',
+      'all',
       {
-        fixToUnknown: false,
-        ignoreRestArgs: true
+        ignoreJSX: 'multi-line',
+        nestedBinaryExpressions: false
       }
     ],
-    '@typescript-eslint/no-extra-non-null-assertion': 'error',
-    '@typescript-eslint/no-extra-parens': ['error', 'all', { nestedBinaryExpressions: false }],
+    '@typescript-eslint/no-extra-semi': 'error',
     '@typescript-eslint/no-extraneous-class': 'error',
     '@typescript-eslint/no-floating-promises': [
       'error',
       {
         ignoreVoid: true,
-        ignoreIIFE: false
+        ignoreIIFE: true
       }
     ],
     '@typescript-eslint/no-for-in-array': 'error',
@@ -300,7 +329,8 @@ module.exports = {
       'error',
       {
         checksConditionals: true,
-        checksVoidReturn: false
+        checksVoidReturn: false,
+        checksSpreads: true
       }
     ],
     '@typescript-eslint/no-namespace': [
@@ -312,14 +342,8 @@ module.exports = {
     ],
     // '@typescript-eslint/no-non-null-asserted-nullish-coalescing': 'error',
     // '@typescript-eslint/no-non-null-asserted-optional-chain': 'error',
-    '@typescript-eslint/no-non-null-assertion': 'error',
-    '@typescript-eslint/no-redeclare': [
-      'error',
-      {
-        builtinGlobals: true,
-        ignoreDeclarationMerge: true
-      }
-    ],
+    '@typescript-eslint/no-non-null-assertion': 'warn',
+    '@typescript-eslint/no-redeclare': ['error', { ignoreDeclarationMerge: true }],
     '@typescript-eslint/no-this-alias': [
       'error',
       {
@@ -351,17 +375,13 @@ module.exports = {
     '@typescript-eslint/no-unnecessary-qualifier': 'error',
     '@typescript-eslint/no-unnecessary-type-assertion': 'error',
     '@typescript-eslint/no-unnecessary-type-constraint': 'error',
-    '@typescript-eslint/no-unsafe-argument': 'error',
-    '@typescript-eslint/no-unsafe-assignment': 'error',
-    '@typescript-eslint/no-unsafe-call': 'error',
-    '@typescript-eslint/no-unsafe-member-access': 'error',
-    '@typescript-eslint/no-unsafe-return': 'error',
     '@typescript-eslint/no-unused-vars': [
       'error',
       {
         vars: 'all',
         args: 'none',
-        ignoreRestSiblings: true
+        ignoreRestSiblings: true,
+        destructuredArrayIgnorePattern: '^_'
       }
     ],
     '@typescript-eslint/no-useless-constructor': 'error',
@@ -387,12 +407,12 @@ module.exports = {
     '@typescript-eslint/prefer-nullish-coalescing': [
       'error',
       {
+        ignoreTernaryTests: true,
         ignoreConditionalTests: true,
         ignoreMixedLogicalExpressions: true
       }
     ],
     '@typescript-eslint/prefer-optional-chain': 'error',
-    '@typescript-eslint/prefer-reduce-type-parameter': 'error',
     '@typescript-eslint/prefer-regexp-exec': 'error',
     '@typescript-eslint/prefer-return-this-type': 'error',
     '@typescript-eslint/prefer-string-starts-ends-with': 'error',
@@ -414,7 +434,7 @@ module.exports = {
         allowTemplateLiterals: true
       }
     ],
-    '@typescript-eslint/require-array-sort-compare': ['error', { ignoreStringArrays: false }],
+    '@typescript-eslint/require-array-sort-compare': ['error', { ignoreStringArrays: true }],
     '@typescript-eslint/restrict-plus-operands': [
       'error',
       {
@@ -433,7 +453,7 @@ module.exports = {
       }
     ],
     '@typescript-eslint/return-await': ['error', 'in-try-catch'],
-    '@typescript-eslint/semi': ['error', 'never'],
+    '@typescript-eslint/semi': ['error', 'always'],
     '@typescript-eslint/sort-type-union-intersection-members': [
       'error',
       {
@@ -493,6 +513,13 @@ module.exports = {
       }
     ],
     '@typescript-eslint/unified-signatures': 'error',
-    '@typescript-eslint/default-param-last': 'error'
+    '@typescript-eslint/default-param-last': 'error',
+    '@typescript-eslint/consistent-type-imports': [
+      'error',
+      {
+        prefer: 'type-imports',
+        fixStyle: 'separate-type-imports'
+      }
+    ]
   }
 }
