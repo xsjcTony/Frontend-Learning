@@ -14,7 +14,7 @@ module.exports = {
       jsx: true
     },
     tsconfigRootDir: __dirname,
-    project: ['./tsconfig.json', './tsconfig.eslint.json'],
+    project: ['./tsconfig.json', './tsconfig.node.js.json'],
     jsxPragma: null
   },
   plugins: [
@@ -504,7 +504,7 @@ module.exports = {
       'error',
       {
         multiline: {
-          delimiter: 'semi',
+          delimiter: 'none',
           requireLast: true
         },
         singleline: {
@@ -703,7 +703,7 @@ module.exports = {
       }
     ],
     '@typescript-eslint/return-await': ['error', 'in-try-catch'],
-    '@typescript-eslint/semi': ['error', 'always'],
+    '@typescript-eslint/semi': ['error', 'never'],
     '@typescript-eslint/sort-type-constituents': [
       'error',
       {

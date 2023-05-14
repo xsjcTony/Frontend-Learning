@@ -7,6 +7,7 @@
   },
   "extends": "./tsconfig.json",
   "include": [
-    ".eslintrc.js"
+    ".eslintrc.js",
+    "babel.config.js"
   ]
 }

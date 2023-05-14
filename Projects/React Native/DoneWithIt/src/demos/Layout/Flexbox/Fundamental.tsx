@@ -1,5 +1,6 @@
 import { StatusBar } from 'expo-status-bar'
 import { View, StyleSheet } from 'react-native'
+import type { JSX } from 'react'
 
 
 const App = (): JSX.Element => (
@@ -16,26 +17,19 @@ const App = (): JSX.Element => (
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center'
+    backgroundColor: '#fff'
   },
   first: {
-    backgroundColor: 'dodgerblue',
-    width: 100,
-    height: 300,
-    alignSelf: 'flex-start'
+    flex: 2,
+    backgroundColor: 'dodgerblue'
   },
   second: {
-    backgroundColor: 'gold',
-    width: 100,
-    height: 200
+    flex: 1,
+    backgroundColor: 'gold'
   },
   third: {
-    backgroundColor: 'tomato',
-    width: 100,
-    height: 100
+    flex: 1,
+    backgroundColor: 'tomato'
   }
 })
 

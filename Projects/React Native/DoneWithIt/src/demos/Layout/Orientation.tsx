@@ -1,16 +1,17 @@
 import { useDeviceOrientation } from '@react-native-community/hooks'
 import { StatusBar } from 'expo-status-bar'
 import { SafeAreaView, StyleSheet, View } from 'react-native'
+import type { JSX } from 'react'
 
 
 const App = (): JSX.Element => {
-  const { landscape } = useDeviceOrientation()
+  const orientation = useDeviceOrientation()
 
   const ViewStyle = StyleSheet.create({
     viewStyle: {
       backgroundColor: 'dodgerblue',
       width: '100%',
-      height: landscape ? '100%' : '30%'
+      height: orientation === 'landscape' ? '100%' : '30%'
     }
   })
 

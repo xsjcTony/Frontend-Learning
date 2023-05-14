@@ -6,4 +6,9 @@ declare global {
     const value: ImageRequireSource
     export default value
   }
+
+  module '*.jpg' {
+    const value: ImageRequireSource
+    export default value
+  }
 }

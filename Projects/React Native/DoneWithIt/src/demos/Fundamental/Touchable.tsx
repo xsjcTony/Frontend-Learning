@@ -10,6 +10,7 @@ import {
   TouchableWithoutFeedback,
   View
 } from 'react-native'
+import type { JSX } from 'react'
 
 
 const App = (): JSX.Element => {

@@ -1,5 +1,6 @@
 import { StatusBar } from 'expo-status-bar'
 import { Dimensions, Platform, SafeAreaView, StyleSheet, View } from 'react-native'
+import type { JSX } from 'react'
 
 
 const App = (): JSX.Element => {

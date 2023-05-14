@@ -1,5 +1,6 @@
 import { StatusBar } from 'expo-status-bar'
 import { Button, Platform, SafeAreaView, StyleSheet, StatusBar as NativeStatusBar } from 'react-native'
+import type { JSX } from 'react'
 
 
 const App = (): JSX.Element => {
