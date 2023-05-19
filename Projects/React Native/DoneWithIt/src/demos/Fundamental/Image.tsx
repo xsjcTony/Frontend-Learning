@@ -1,6 +1,6 @@
-import icon from '@assets/icon-image.png'
 import { StatusBar } from 'expo-status-bar'
 import { Image, SafeAreaView, StyleSheet, Text } from 'react-native'
+import icon from '@assets/icon-image.png'
 import type { JSX } from 'react'
 
 

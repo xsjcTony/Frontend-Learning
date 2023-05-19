@@ -7,12 +7,13 @@ module.exports = (api) => {
       [
         'module-resolver',
         {
-          extensions: ['.ios.js', '.android.js', '.js', '.ts', '.tsx', '.json'],
+          extensions: ['.js', '.ts', '.tsx', '.json', '.ios.tsx', '.android.tsx'],
           alias: {
             '@': './src',
             '@assets': './src/assets',
             '@screens': './src/screens',
-            '@constants': './src/constants'
+            '@constants': './src/constants',
+            '@components': './src/components'
           }
         }
       ]
