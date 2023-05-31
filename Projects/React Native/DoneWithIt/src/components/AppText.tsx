@@ -1,4 +1,5 @@
-import { Platform, StyleSheet, Text } from 'react-native'
+import { Text } from 'react-native'
+import DEFAULT_STYLES from '@constants/styles'
 import type { JSX, PropsWithChildren } from 'react'
 import type { TextStyle } from 'react-native'
 
@@ -12,21 +13,10 @@ const AppText = ({
   children,
   style
 }: PropsWithChildren<AppTextProps>): JSX.Element => (
-  <Text style={[styles.text, style]}>
+  <Text style={[DEFAULT_STYLES.TEXT, style]}>
     {children}
   </Text>
 )
-
-
-const styles = StyleSheet.create({
-  text: {
-    fontSize: 18,
-    fontFamily: Platform.select({
-      ios: 'Avenir',
-      'default': 'Roboto'
-    })
-  }
-})
 
 
 export default AppText

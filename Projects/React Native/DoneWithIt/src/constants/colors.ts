@@ -4,6 +4,7 @@ const COLORS = {
 
   MEDIUM_GREY: '#6e6969',
   LIGHT_GREY: '#f8f4f4',
+  DARK_GREY: '#0c0c0c',
 
   BLACK: '#000',
   WHITE: '#fff',

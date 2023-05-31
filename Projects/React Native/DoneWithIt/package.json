@@ -10,6 +10,8 @@
   },
   "dependencies": {
     "@react-native-community/hooks": "^3.0.0",
+    "@react-native-picker/picker": "~2.4.8",
+    "ahooks": "^3.7.7",
     "expo": "~48.0.17",
     "expo-constants": "^14.2.1",
     "expo-status-bar": "~1.4.4",
@@ -18,10 +20,10 @@
     "react-native-gesture-handler": "~2.10.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.22.0",
+    "@babel/core": "^7.22.1",
     "@types/react": "~18.2.7",
-    "@typescript-eslint/eslint-plugin": "^5.59.7",
-    "@typescript-eslint/parser": "^5.59.7",
+    "@typescript-eslint/eslint-plugin": "^5.59.8",
+    "@typescript-eslint/parser": "^5.59.8",
     "babel-plugin-module-resolver": "^5.0.0",
     "eslint": "^8.41.0",
     "eslint-import-resolver-node": "^0.3.7",
