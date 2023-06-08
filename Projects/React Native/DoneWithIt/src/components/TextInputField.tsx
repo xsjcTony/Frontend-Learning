@@ -25,6 +25,8 @@ const TextInputField = <T extends FieldValues, N extends FieldPath<T>>({
     formState: { errors }
   } = useController({ control, name })
 
+  const errorMessage = errors[name]?.message
+
 
   return (
     <View>
@@ -36,7 +38,7 @@ const TextInputField = <T extends FieldValues, N extends FieldPath<T>>({
         onBlur={onBlur}
         onChangeText={onChange}
       />
-      <ErrorMessage errorMsg={errors[name]?.message as string | undefined} />
+      <ErrorMessage errorMessage={typeof errorMessage !== 'object' ? errorMessage : void 0} />
     </View>
   )
 }

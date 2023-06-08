@@ -5,12 +5,12 @@ import type { JSX } from 'react'
 
 
 interface ErrorMessageProps {
-  errorMsg: string | undefined
+  errorMessage: string | undefined
 }
 
 
-const ErrorMessage = ({ errorMsg }: ErrorMessageProps): JSX.Element | null => errorMsg
-  ? <AppText style={styles.error}>{errorMsg}</AppText>
+const ErrorMessage = ({ errorMessage }: ErrorMessageProps): JSX.Element | null => errorMessage
+  ? <AppText style={styles.error}>{errorMessage}</AppText>
   : null
 
 

@@ -66,7 +66,7 @@ const LoginScreen = (): JSX.Element => {
 
       <AppButton
         title="Login"
-        onPress={handleSubmit(onSubmit, err => void console.log(err))}
+        onPress={handleSubmit(onSubmit)}
       />
     </Screen>
   )
