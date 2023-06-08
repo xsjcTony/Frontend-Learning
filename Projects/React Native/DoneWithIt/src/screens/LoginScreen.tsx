@@ -1,36 +1,76 @@
+import { zodResolver } from '@hookform/resolvers/zod'
+import { useForm } from 'react-hook-form'
 import { Image, StyleSheet } from 'react-native'
+import { z } from 'zod'
 import logo from '@assets/logo-red.png'
 import AppButton from '@components/AppButton'
-import AppTextInput from '@components/AppTextInput'
 import Screen from '@components/Screen'
+import TextInputField from '@components/TextInputField'
 import type { JSX } from 'react'
+import type { SubmitHandler } from 'react-hook-form'
 
 
-const LoginScreen = (): JSX.Element => (
-  <Screen style={styles.container}>
-    <Image source={logo} style={styles.logo} />
+type LoginFormSchema = z.infer<typeof loginFormSchema>
 
-    <AppTextInput
-      autoCapitalize="none"
-      autoComplete="email"
-      autoCorrect={false}
-      icon="email"
-      keyboardType="email-address"
-      placeholder="Email"
-    />
 
-    <AppTextInput
-      secureTextEntry
-      autoCapitalize="none"
-      autoComplete="new-password"
-      autoCorrect={false}
-      icon="lock"
-      placeholder="Password"
-    />
+const loginFormSchema = z.object({
+  email: z.string().min(1).email(),
+  password: z.string().min(4)
+})
 
-    <AppButton title="Login" onPress={() => void console.log(1)} />
-  </Screen>
-)
+
+const LoginScreen = (): JSX.Element => {
+
+  const {
+    control,
+    handleSubmit
+  } = useForm<LoginFormSchema>({
+    resolver: zodResolver(loginFormSchema),
+    defaultValues: {
+      email: '',
+      password: ''
+    }
+  })
+
+
+  const onSubmit: SubmitHandler<LoginFormSchema> = (data) => {
+    console.log(data)
+  }
+
+
+  return (
+    <Screen style={styles.container}>
+      <Image source={logo} style={styles.logo} />
+
+      <TextInputField
+        autoCapitalize="none"
+        autoComplete="email"
+        autoCorrect={false}
+        control={control}
+        icon="email"
+        keyboardType="email-address"
+        name="email"
+        placeholder="Email"
+      />
+
+      <TextInputField
+        secureTextEntry
+        autoCapitalize="none"
+        autoComplete="new-password"
+        autoCorrect={false}
+        control={control}
+        icon="lock"
+        name="password"
+        placeholder="Password"
+      />
+
+      <AppButton
+        title="Login"
+        onPress={handleSubmit(onSubmit, err => void console.log(err))}
+      />
+    </Screen>
+  )
+}
 
 
 const styles = StyleSheet.create({

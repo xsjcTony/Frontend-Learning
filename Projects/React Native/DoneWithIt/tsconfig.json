@@ -3,12 +3,14 @@
   "compilerOptions": {
     "strict": true,
     "baseUrl": ".",
+    "types": ["react-native"],
     "paths": {
       "@/*": ["src/*"],
       "@assets/*": ["src/assets/*"],
       "@screens/*": ["src/screens/*"],
       "@constants/*": ["src/constants/*"],
-      "@components/*": ["src/components/*"]
+      "@components/*": ["src/components/*"],
+      "@utils/*": ["src/utils/*"]
     }
   }
 }
