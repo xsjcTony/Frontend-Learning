@@ -1,9 +1,9 @@
 import { useController } from 'react-hook-form'
 import { View } from 'react-native'
-import AppTextInput from '@components/AppTextInput'
-import ErrorMessage from '@components/ErrorMessage'
+import AppTextInput from '@components/fields/AppTextInput'
+import ErrorMessage from '@components/fields/ErrorMessage'
 import COLORS from '@constants/colors'
-import type { AppTextInputProps } from '@components/AppTextInput'
+import type { AppTextInputProps } from '@components/fields/AppTextInput'
 import type { JSX } from 'react'
 import type { Control, FieldPath, FieldValues } from 'react-hook-form'
 

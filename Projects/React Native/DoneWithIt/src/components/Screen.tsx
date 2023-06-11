@@ -1,11 +1,11 @@
 import Constants from 'expo-constants'
 import { StyleSheet, View } from 'react-native'
 import type { JSX, PropsWithChildren } from 'react'
-import type { ViewStyle } from 'react-native'
+import type { ViewStyle, StyleProp } from 'react-native'
 
 
 interface ScreenProps {
-  style?: ViewStyle
+  style?: StyleProp<ViewStyle>
 }
 
 

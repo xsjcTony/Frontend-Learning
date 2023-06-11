@@ -1,32 +1,44 @@
+/* eslint-disable @typescript-eslint/switch-exhaustiveness-check */
+
 import { setErrorMap, ZodIssueCode } from 'zod'
 import { capitalize } from '@/utils'
 
 
 setErrorMap((issue, ctx) => {
-  let message: string
+  const fieldName = capitalize(issue.path.at(-1) ?? 'This field')
+
+  let message = ctx.defaultError
+
+
+  ctx.data === '' && (message = `${fieldName} is required`)
 
 
   switch (issue.code) {
     case ZodIssueCode.too_small:
       switch (issue.type) {
         case 'string':
-          const fieldName = capitalize(issue.path.at(-1) ?? 'This field');
-
-          (ctx.data as string).length === 0
-            ? message = `${fieldName} is required`
-            : message = `${fieldName} must be at least ${issue.minimum} characters`
+          (ctx.data as string).length > 0
+          && (message = `${fieldName} must be at least ${issue.minimum} characters`)
           break
-        default:
-          message = ctx.defaultError
+
+        case 'number':
+          message = `${fieldName} must be greater than or equal to ${issue.minimum}`
+          break
       }
       break
+
+    case ZodIssueCode.too_big:
+      switch (issue.type) {
+        case 'number':
+          message = `${fieldName} must be less than or equal to ${issue.maximum}`
+          break
+      }
+      break
+
     case ZodIssueCode.invalid_string:
       typeof issue.validation === 'string'
-        ? message = `${capitalize(issue.validation)} is invalid`
-        : message = ctx.defaultError
+      && (message = `${capitalize(issue.validation)} is invalid`)
       break
-    default:
-      message = ctx.defaultError
   }
 
 

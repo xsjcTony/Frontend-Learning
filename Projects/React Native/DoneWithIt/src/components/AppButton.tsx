@@ -1,13 +1,13 @@
 import { StyleSheet, Text, TouchableOpacity } from 'react-native'
 import COLORS from '@constants/colors'
 import type { JSX } from 'react'
-import type { ViewStyle, TouchableOpacityProps } from 'react-native'
+import type { ViewStyle, TouchableOpacityProps, StyleProp } from 'react-native'
 
 
 interface AppButtonProps {
   title: string
   color?: 'primary' | 'secondary'
-  style?: ViewStyle
+  style?: StyleProp<ViewStyle>
   onPress?: TouchableOpacityProps['onPress']
 }
 

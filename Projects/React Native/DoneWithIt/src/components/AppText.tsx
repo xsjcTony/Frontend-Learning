@@ -1,11 +1,11 @@
 import { Text } from 'react-native'
 import DEFAULT_STYLES from '@constants/styles'
 import type { JSX, PropsWithChildren } from 'react'
-import type { TextStyle } from 'react-native'
+import type { TextStyle, StyleProp } from 'react-native'
 
 
 interface AppTextProps {
-  style?: TextStyle
+  style?: StyleProp<TextStyle>
 }
 
 

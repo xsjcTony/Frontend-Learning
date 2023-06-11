@@ -10,30 +10,32 @@ import type { JSX } from 'react'
 import type { SubmitHandler } from 'react-hook-form'
 
 
-type LoginFormSchema = z.infer<typeof loginFormSchema>
+type RegisterFormSchema = z.infer<typeof registerFormSchema>
 
 
-const loginFormSchema = z.object({
+const registerFormSchema = z.object({
+  name: z.string().min(1),
   email: z.string().min(1).email(),
   password: z.string().min(4)
 })
 
 
-const LoginScreen = (): JSX.Element => {
+const RegisterScreen = (): JSX.Element => {
 
   const {
     control,
     handleSubmit
-  } = useForm<LoginFormSchema>({
-    resolver: zodResolver(loginFormSchema),
+  } = useForm<RegisterFormSchema>({
+    resolver: zodResolver(registerFormSchema),
     defaultValues: {
+      name: '',
       email: '',
       password: ''
     }
   })
 
 
-  const onSubmit: SubmitHandler<LoginFormSchema> = (data) => {
+  const onSubmit: SubmitHandler<RegisterFormSchema> = (data) => {
     console.log(data)
   }
 
@@ -41,6 +43,16 @@ const LoginScreen = (): JSX.Element => {
   return (
     <Screen style={styles.container}>
       <Image source={logo} style={styles.logo} />
+
+      <TextInputField
+        autoCapitalize="words"
+        autoComplete="name"
+        autoCorrect={false}
+        control={control}
+        icon="account"
+        name="name"
+        placeholder="Name"
+      />
 
       <TextInputField
         autoCapitalize="none"
@@ -65,7 +77,7 @@ const LoginScreen = (): JSX.Element => {
       />
 
       <AppButton
-        title="Login"
+        title="Register"
         onPress={handleSubmit(onSubmit)}
       />
     </Screen>
@@ -87,4 +99,4 @@ const styles = StyleSheet.create({
 })
 
 
-export default LoginScreen
+export default RegisterScreen
