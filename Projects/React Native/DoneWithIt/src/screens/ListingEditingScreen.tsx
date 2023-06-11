@@ -6,6 +6,7 @@ import AppButton from '@components/AppButton'
 import PickerField from '@components/fields/PickerField'
 import TextInputField from '@components/fields/TextInputField'
 import Screen from '@components/Screen'
+import type { Item } from '@components/fields/AppPicker'
 import type { JSX } from 'react'
 import type { SubmitHandler } from 'react-hook-form'
 
@@ -16,9 +17,21 @@ type ListingEditingFormSchema = z.infer<typeof listEditingFormSchema>
 const listEditingFormSchema = z.object({
   title: z.string().min(1),
   price: z.coerce.number().min(1).max(10000),
-  category: z.object({ label: z.string().min(1) }).nullable(),
+  category: z
+    .object({
+      label: z.string().min(1),
+      value: z.number()
+    })
+    .nullable(),
   description: z.string().optional()
 })
+
+
+const categories: Item[] = [
+  { label: 'Furniture', value: 1 },
+  { label: 'Clothing', value: 2 },
+  { label: 'Camera', value: 3 }
+]
 
 
 const ListingEditingScreen = (): JSX.Element => {
@@ -56,23 +69,26 @@ const ListingEditingScreen = (): JSX.Element => {
         <TextInputField
           control={control}
           inputMode="numeric"
+          maxLength={8}
           name="price"
           placeholder="Price"
         />
 
         <PickerField
           control={control}
-          items={[{ label: '123', value: 0 }]}
+          items={categories}
           name="category"
           placeholder="Category"
         />
 
         <TextInputField
+          multiline
           autoCapitalize="sentences"
           control={control}
-          icon="lock"
           name="description"
+          numberOfLines={3}
           placeholder="Description"
+          textAlignVertical="top"
         />
 
         <AppButton

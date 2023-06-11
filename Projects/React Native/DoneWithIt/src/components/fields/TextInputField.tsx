@@ -6,6 +6,7 @@ import COLORS from '@constants/colors'
 import type { AppTextInputProps } from '@components/fields/AppTextInput'
 import type { JSX } from 'react'
 import type { Control, FieldPath, FieldValues } from 'react-hook-form'
+import type { StyleProp, ViewStyle } from 'react-native'
 
 
 interface TextInputFieldProps<T extends FieldValues, N extends FieldPath<T>> extends AppTextInputProps {
@@ -17,6 +18,8 @@ interface TextInputFieldProps<T extends FieldValues, N extends FieldPath<T>> ext
 const TextInputField = <T extends FieldValues, N extends FieldPath<T>>({
   control,
   name,
+  multiline,
+  numberOfLines,
   ...props
 }: TextInputFieldProps<T, N>): JSX.Element => {
 
@@ -28,12 +31,21 @@ const TextInputField = <T extends FieldValues, N extends FieldPath<T>>({
   const errorMessage = errors[name]?.message
 
 
+  const inputStyles: StyleProp<ViewStyle> = [
+    errors[name] && { borderColor: COLORS.DANGER },
+    !!multiline && (numberOfLines ?? 0) > 1 && { borderRadius: 30 }
+  ]
+
+
   return (
     <View>
       <AppTextInput
         {...props}
         ref={ref}
-        style={errors[name] && { borderColor: COLORS.DANGER }}
+        multiline={multiline}
+        numberOfLines={numberOfLines}
+        placeholderTextColor={COLORS.MEDIUM_GREY}
+        style={inputStyles}
         value={value}
         onBlur={onBlur}
         onChangeText={onChange}

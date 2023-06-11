@@ -2,7 +2,7 @@ import { Image, StyleSheet, View } from 'react-native'
 import jacketImg from '@assets/jacket.jpg'
 import moshImg from '@assets/mosh.jpg'
 import AppText from '@components/AppText'
-import ListItem from '@components/ListItem'
+import ListItem from '@components/lists/ListItem'
 import COLORS from '@constants/colors'
 import type { JSX } from 'react'
 
