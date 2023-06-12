@@ -2,6 +2,7 @@ import { MaterialCommunityIcons } from '@expo/vector-icons'
 import { StyleSheet, View } from 'react-native'
 import COLORS from '@constants/colors'
 import type { ComponentProps, JSX } from 'react'
+import type { StyleProp, ViewStyle } from 'react-native'
 
 
 interface IconProps {
@@ -9,6 +10,7 @@ interface IconProps {
   size?: number
   backgroundColor?: string
   iconColor?: string
+  containerStyle?: StyleProp<ViewStyle>
 }
 
 
@@ -16,12 +18,14 @@ const Icon = ({
   name,
   size = 40,
   backgroundColor = COLORS.BLACK,
-  iconColor = COLORS.WHITE
+  iconColor = COLORS.WHITE,
+  containerStyle
 }: IconProps): JSX.Element => (
   <View
     style={[
       styles.container,
-      { width: size, height: size, backgroundColor }
+      { width: size, height: size, backgroundColor },
+      containerStyle
     ]}
   >
     <MaterialCommunityIcons color={iconColor} name={name} size={size / 2} />

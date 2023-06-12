@@ -2,6 +2,7 @@ import { MaterialCommunityIcons } from '@expo/vector-icons'
 import { useBoolean } from 'ahooks'
 import { Button, FlatList, Modal, StyleSheet, TouchableWithoutFeedback, View } from 'react-native'
 import AppText from '@components/AppText'
+import IconPickerItem from '@components/fields/AppPicker/IconPickerItem'
 import PickerItem from '@components/fields/AppPicker/PickerItem'
 import Screen from '@components/Screen'
 import COLORS from '@constants/colors'
@@ -14,6 +15,8 @@ import type { ViewStyle, StyleProp } from 'react-native'
 interface Item {
   label: string
   value: number
+  backgroundColor?: string
+  icon?: ComponentProps<typeof MaterialCommunityIcons>['name']
 }
 
 
@@ -23,6 +26,7 @@ interface AppPickerProps {
   items: Item[]
   selectedItem?: Item
   onSelectItem?: (item: Item) => void
+  iconPicker?: boolean
   style?: StyleProp<ViewStyle>
 }
 
@@ -33,6 +37,7 @@ const AppPicker = ({
   items,
   selectedItem,
   onSelectItem,
+  iconPicker = false,
   style
 }: AppPickerProps): JSX.Element => {
 
@@ -62,10 +67,21 @@ const AppPicker = ({
         <Screen>
           <Button title="Close" onPress={closeModal} />
           <FlatList
+            columnWrapperStyle={styles.iconRowWrapper}
+            contentContainerStyle={iconPicker && styles.iconList}
             data={items}
             keyExtractor={({ value }) => value.toString()}
-            renderItem={({ item }) =>
-              <PickerItem label={item.label} onPress={onPress(item)} />}
+            numColumns={iconPicker ? 3 : void 0}
+            renderItem={iconPicker
+              ? ({ item }) => (
+                <IconPickerItem
+                  backgroundColor={item.backgroundColor}
+                  icon={item.icon ?? 'help'}
+                  label={item.label}
+                  onPress={onPress(item)}
+                />
+              )
+              : ({ item }) => <PickerItem label={item.label} onPress={onPress(item)} />}
           />
         </Screen>
       </Modal>
@@ -90,6 +106,14 @@ const styles = StyleSheet.create({
   picker: {
     ...DEFAULT_STYLES.TEXT,
     flex: 1
+  },
+  iconList: {
+    paddingVertical: 15,
+    rowGap: 15,
+    columnGap: 30
+  },
+  iconRowWrapper: {
+    justifyContent: 'space-around'
   }
 })
 

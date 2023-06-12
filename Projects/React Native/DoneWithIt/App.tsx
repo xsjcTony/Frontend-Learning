@@ -1,10 +1,25 @@
-import ListingEditingScreen from '@screens/ListingEditingScreen'
+import { StyleSheet } from 'react-native'
+import { GestureHandlerRootView } from 'react-native-gesture-handler'
+import ListingEditScreen from '@screens/ListingEditScreen'
+import { setupErrorMessages } from '@utils/setup'
 import type { JSX } from 'react'
 
-import '@constants/errors'
+
+setupErrorMessages()
 
 
-const App = (): JSX.Element => <ListingEditingScreen />
+const App = (): JSX.Element => (
+  <GestureHandlerRootView style={styles.container}>
+    <ListingEditScreen />
+  </GestureHandlerRootView>
+)
+
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1
+  }
+})
 
 
 export default App

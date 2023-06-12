@@ -12,12 +12,14 @@ import type { StyleProp, ViewStyle } from 'react-native'
 interface TextInputFieldProps<T extends FieldValues, N extends FieldPath<T>> extends AppTextInputProps {
   control: Control<T>
   name: N
+  containerStyle?: StyleProp<ViewStyle>
 }
 
 
 const TextInputField = <T extends FieldValues, N extends FieldPath<T>>({
   control,
   name,
+  containerStyle,
   multiline,
   numberOfLines,
   ...props
@@ -38,7 +40,7 @@ const TextInputField = <T extends FieldValues, N extends FieldPath<T>>({
 
 
   return (
-    <View>
+    <View style={containerStyle}>
       <AppTextInput
         {...props}
         ref={ref}

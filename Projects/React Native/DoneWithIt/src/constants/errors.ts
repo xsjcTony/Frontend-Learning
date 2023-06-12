@@ -1,10 +1,11 @@
 /* eslint-disable @typescript-eslint/switch-exhaustiveness-check */
 
-import { setErrorMap, ZodIssueCode } from 'zod'
+import { ZodIssueCode } from 'zod'
 import { capitalize } from '@/utils'
+import type { ZodErrorMap } from 'zod'
 
 
-setErrorMap((issue, ctx) => {
+const defaultErrorMap: ZodErrorMap = (issue, ctx) => {
   const fieldName = capitalize(issue.path.at(-1) ?? 'This field')
 
   let message = ctx.defaultError
@@ -43,4 +44,9 @@ setErrorMap((issue, ctx) => {
 
 
   return { message }
-})
+}
+
+
+export {
+  defaultErrorMap
+}

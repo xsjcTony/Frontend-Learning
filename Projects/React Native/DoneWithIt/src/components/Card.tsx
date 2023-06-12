@@ -20,7 +20,7 @@ const Card = ({
   <View style={styles.card}>
     <Image source={image} style={styles.image} />
     <View style={styles.detailsContainer}>
-      <AppText style={styles.title}>{title}</AppText>
+      <AppText numberOfLines={3} style={styles.title}>{title}</AppText>
       <AppText style={styles.subTitle}>{subTitle}</AppText>
     </View>
   </View>

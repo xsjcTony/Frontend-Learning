@@ -1,3 +1,4 @@
+import { MaterialCommunityIcons } from '@expo/vector-icons'
 import { Image, StyleSheet, TouchableHighlight, View } from 'react-native'
 import { Swipeable } from 'react-native-gesture-handler'
 import AppText from '@components/AppText'
@@ -16,6 +17,7 @@ interface ListItemProps {
   onPress?: TouchableHighlightProps['onPress']
   renderRightActions?: SwipeableProps['renderRightActions']
   iconProps?: IconProps
+  showChevrons?: boolean
 }
 
 
@@ -25,7 +27,8 @@ const ListItem = ({
   subTitle,
   onPress,
   renderRightActions,
-  iconProps
+  iconProps,
+  showChevrons = false
 }: ListItemProps): JSX.Element => (
   <Swipeable renderRightActions={renderRightActions}>
     <TouchableHighlight
@@ -36,10 +39,11 @@ const ListItem = ({
       <>
         {iconProps && <Icon {...iconProps} />}
         {image && <Image source={image} style={styles.image} />}
-        <View>
-          <AppText style={styles.title}>{title}</AppText>
-          {subTitle && <AppText style={styles.subTitle}>{subTitle}</AppText>}
+        <View style={styles.content}>
+          <AppText numberOfLines={1} style={styles.title}>{title}</AppText>
+          {subTitle && <AppText numberOfLines={2} style={styles.subTitle}>{subTitle}</AppText>}
         </View>
+        {showChevrons && <MaterialCommunityIcons color={COLORS.MEDIUM_GREY} name="chevron-right" size={25} />}
       </>
     </TouchableHighlight>
   </Swipeable>
@@ -58,6 +62,9 @@ const styles = StyleSheet.create({
     width: 70,
     height: 70,
     borderRadius: 9999
+  },
+  content: {
+    flex: 1
   },
   title: {
     fontWeight: '500'

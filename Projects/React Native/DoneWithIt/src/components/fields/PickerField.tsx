@@ -6,17 +6,20 @@ import COLORS from '@constants/colors'
 import type { AppPickerProps } from '@components/fields/AppPicker'
 import type { JSX } from 'react'
 import type { Control, FieldPath, FieldValues } from 'react-hook-form'
+import type { StyleProp, ViewStyle } from 'react-native'
 
 
 interface PickerFieldProps<T extends FieldValues, N extends FieldPath<T>> extends AppPickerProps {
   control: Control<T>
   name: N
+  containerStyle?: StyleProp<ViewStyle>
 }
 
 
 const PickerField = <T extends FieldValues, N extends FieldPath<T>>({
   control,
   name,
+  containerStyle,
   ...props
 }: PickerFieldProps<T, N>): JSX.Element => {
 
@@ -29,7 +32,7 @@ const PickerField = <T extends FieldValues, N extends FieldPath<T>>({
 
 
   return (
-    <View>
+    <View style={containerStyle}>
       <AppPicker
         {...props}
         selectedItem={value}

@@ -1,19 +1,15 @@
 import { Text } from 'react-native'
 import DEFAULT_STYLES from '@constants/styles'
-import type { JSX, PropsWithChildren } from 'react'
-import type { TextStyle, StyleProp } from 'react-native'
-
-
-interface AppTextProps {
-  style?: StyleProp<TextStyle>
-}
+import type { JSX } from 'react'
+import type { TextProps } from 'react-native'
 
 
 const AppText = ({
   children,
-  style
-}: PropsWithChildren<AppTextProps>): JSX.Element => (
-  <Text style={[DEFAULT_STYLES.TEXT, style]}>
+  style,
+  ...props
+}: TextProps): JSX.Element => (
+  <Text style={[DEFAULT_STYLES.TEXT, style]} {...props}>
     {children}
   </Text>
 )
