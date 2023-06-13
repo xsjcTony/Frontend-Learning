@@ -1,5 +1,5 @@
-const stringToNumber = (val: unknown): unknown => {
-  if (typeof val !== 'string' || val === '') {
+const stringToNumber = (val: string): number | string => {
+  if (val === '') {
     return val
   }
 

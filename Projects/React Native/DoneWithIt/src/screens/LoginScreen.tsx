@@ -14,8 +14,8 @@ type LoginFormSchema = z.infer<typeof loginFormSchema>
 
 
 const loginFormSchema = z.object({
-  email: z.string().min(1).email(),
-  password: z.string().min(4)
+  email: z.string().trim().min(1).email(),
+  password: z.string().trim().min(4)
 })
 
 

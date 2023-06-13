@@ -6,7 +6,7 @@ import AppButton from '@components/AppButton'
 import PickerField from '@components/fields/PickerField'
 import TextInputField from '@components/fields/TextInputField'
 import Screen from '@components/Screen'
-import { stringToNumber } from '@utils/preprocesses'
+import { stringToNumber } from '@utils/transform'
 import type { Item } from '@components/fields/AppPicker'
 import type { JSX } from 'react'
 import type { SubmitHandler } from 'react-hook-form'
@@ -16,18 +16,17 @@ type ListingEditingFormSchema = z.infer<typeof listEditingFormSchema>
 
 
 const listEditingFormSchema = z.object({
-  title: z.string().min(1),
-  price: z.preprocess(
-    stringToNumber,
-    z.number().min(1).max(10000)
-  ),
+  title: z.string().trim().min(1),
+  price: z.string().trim()
+    .transform(stringToNumber)
+    .pipe(z.number().min(1).max(10000)),
   category: z
     .object({
-      label: z.string().min(1),
+      label: z.string().trim().min(1),
       value: z.number()
     })
     .nullable(),
-  description: z.string().optional()
+  description: z.string().trim().optional()
 })
 
 
@@ -124,7 +123,7 @@ const ListingEditScreen = (): JSX.Element => {
         <TextInputField
           containerStyle={styles.price}
           control={control}
-          inputMode="numeric"
+          inputMode="decimal"
           maxLength={8}
           name="price"
           placeholder="Price"
@@ -151,7 +150,7 @@ const ListingEditScreen = (): JSX.Element => {
 
         <AppButton
           title="Post"
-          onPress={handleSubmit(onSubmit, err => void console.log(err))}
+          onPress={handleSubmit(onSubmit)}
         />
       </View>
     </Screen>
@@ -166,7 +165,7 @@ const styles = StyleSheet.create({
     rowGap: 20
   },
   price: {
-    width: '32.5%'
+    width: '35%'
   },
   category: {
     width: '55%'

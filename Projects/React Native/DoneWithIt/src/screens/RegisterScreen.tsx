@@ -14,9 +14,9 @@ type RegisterFormSchema = z.infer<typeof registerFormSchema>
 
 
 const registerFormSchema = z.object({
-  name: z.string().min(1),
-  email: z.string().min(1).email(),
-  password: z.string().min(4)
+  name: z.string().trim().min(1),
+  email: z.string().trim().min(1).email(),
+  password: z.string().trim().min(4)
 })
 
 

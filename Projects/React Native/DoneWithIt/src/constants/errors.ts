@@ -5,20 +5,20 @@ import { capitalize } from '@/utils'
 import type { ZodErrorMap } from 'zod'
 
 
-const defaultErrorMap: ZodErrorMap = (issue, ctx) => {
+const defaultErrorMap: ZodErrorMap = (issue, { data, defaultError }) => {
   const fieldName = capitalize(issue.path.at(-1) ?? 'This field')
 
-  let message = ctx.defaultError
+  let message = defaultError
 
 
-  ctx.data === '' && (message = `${fieldName} is required`)
+  data === '' && (message = `${fieldName} is required`)
 
 
   switch (issue.code) {
     case ZodIssueCode.too_small:
       switch (issue.type) {
         case 'string':
-          (ctx.data as string).length > 0
+          (data as string).length > 0
           && (message = `${fieldName} must be at least ${issue.minimum} characters`)
           break
 
