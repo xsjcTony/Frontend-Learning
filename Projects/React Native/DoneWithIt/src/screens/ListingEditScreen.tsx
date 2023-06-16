@@ -12,6 +12,8 @@ import type { JSX } from 'react'
 import type { SubmitHandler } from 'react-hook-form'
 
 
+type ListingEditingFormSchemaInput = z.input<typeof listEditingFormSchema>
+
 type ListingEditingFormSchema = z.infer<typeof listEditingFormSchema>
 
 
@@ -93,11 +95,10 @@ const ListingEditScreen = (): JSX.Element => {
   const {
     control,
     handleSubmit
-  } = useForm<ListingEditingFormSchema>({
+  } = useForm<ListingEditingFormSchemaInput, any, ListingEditingFormSchema>({
     resolver: zodResolver(listEditingFormSchema),
     defaultValues: {
       title: '',
-      // @ts-expect-error - placeholder empty string here
       price: '',
       category: null,
       description: ''
