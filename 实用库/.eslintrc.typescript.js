@@ -264,7 +264,7 @@ module.exports = {
       'error',
       {
         multiline: {
-          delimiter: 'semi',
+          delimiter: 'none',
           requireLast: true
         },
         singleline: {
@@ -453,8 +453,8 @@ module.exports = {
       }
     ],
     '@typescript-eslint/return-await': ['error', 'in-try-catch'],
-    '@typescript-eslint/semi': ['error', 'always'],
-    '@typescript-eslint/sort-type-union-intersection-members': [
+    '@typescript-eslint/semi': ['error', 'never'],
+    '@typescript-eslint/sort-type-constituents': [
       'error',
       {
         checkIntersections: true,

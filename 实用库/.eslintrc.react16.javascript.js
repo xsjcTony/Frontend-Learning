@@ -310,7 +310,7 @@ module.exports = {
     'prefer-const': ['error', { destructuring: 'all' }],
     'no-const-assign': 'error',
     'no-var': 'error',
-    'no-new-object': 'error',
+    'no-object-constructor': 'error',
     'object-shorthand': ['error', 'always'],
     'quote-props': ['error', 'as-needed', { keywords: true }],
     'no-prototype-builtins': 'error',
@@ -399,6 +399,14 @@ module.exports = {
     'no-loss-of-precision': 'error',
     'no-return-await': 'error',
     'space-in-parens': ['error', 'never'],
+    'spaced-comment': [
+      'error',
+      'always',
+      {
+        exceptions: ['-', '+', '*'],
+        markers: ['/']
+      }
+    ],
 
 
     // eslint-plugin-import
@@ -432,7 +440,6 @@ module.exports = {
     ],
     'import/named': 'error',
     'import/no-mutable-exports': 'error',
-    'import/no-duplicates': ['error', { 'considerQueryString': true }],
-    'import/group-exports': 'error'
+    'import/no-duplicates': ['error', { 'considerQueryString': true }]
   }
 }

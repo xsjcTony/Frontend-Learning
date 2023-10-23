@@ -308,7 +308,7 @@ module.exports = {
     'prefer-const': ['error', { destructuring: 'all' }],
     'no-const-assign': 'error',
     'no-var': 'error',
-    'no-new-object': 'error',
+    'no-object-constructor': 'error',
     'object-shorthand': ['error', 'always'],
     'quote-props': ['error', 'as-needed', { keywords: true }],
     'no-prototype-builtins': 'error',
@@ -350,6 +350,14 @@ module.exports = {
     'no-whitespace-before-property': 'error',
     'array-bracket-spacing': ['error', 'never'],
     'space-in-parens': ['error', 'never'],
+    'spaced-comment': [
+      'error',
+      'always',
+      {
+        exceptions: ['-', '+', '*'],
+        markers: ['/']
+      }
+    ],
 
 
     // eslint-plugin-import
@@ -384,7 +392,6 @@ module.exports = {
     'import/named': 'error',
     'import/no-mutable-exports': 'error',
     'import/no-duplicates': ['error', { considerQueryString: true }],
-    'import/group-exports': 'error',
 
 
     // TypeScript
@@ -653,7 +660,8 @@ module.exports = {
       {
         ignoreTernaryTests: true,
         ignoreConditionalTests: true,
-        ignoreMixedLogicalExpressions: true
+        ignoreMixedLogicalExpressions: true,
+        ignorePrimitives: { 'boolean': true, string: true }
       }
     ],
     '@typescript-eslint/prefer-optional-chain': 'error',
@@ -682,7 +690,7 @@ module.exports = {
     '@typescript-eslint/restrict-plus-operands': [
       'error',
       {
-        checkCompoundAssignments: true,
+        skipCompoundAssignments: true,
         allowAny: false
       }
     ],
